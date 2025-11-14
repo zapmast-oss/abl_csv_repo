@@ -10,6 +10,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 APPEARANCE_CANDIDATES = [
@@ -499,7 +500,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     text_dir = base_dir / "out" / "txt_out"
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / out_path.name.replace(".csv", ".txt")
-    text_path.write_text(build_text_report(text_df), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(text_df)), encoding="utf-8")
 
     preview = report.head(12)
     print("Bullpen Stress Index (top 12):")

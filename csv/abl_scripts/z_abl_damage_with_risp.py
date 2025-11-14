@@ -8,6 +8,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -428,7 +429,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--teams", type=str, help="Override file for team info.")
     parser.add_argument("--min_pa", type=int, default=80, help="Minimum PA to qualify.")
     parser.add_argument("--min_pa_risp", type=int, default=20, help="Minimum PA with RISP.")
-    parser.add_argument("--out", type=str, default="out/z_ABL_Damage_With_RISP.csv", help="Output CSV path.")
+    parser.add_argument("--out", type=str, default="out/csv_out/z_ABL_Damage_With_RISP.csv", help="Output CSV path.")
     return parser.parse_args(list(argv) if argv is not None else None)
 
 
@@ -502,7 +503,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     csv_df.to_csv(out_path, index=False)
 
     text_report = build_text_report(stats.head(25), args.min_pa, args.min_pa_risp)
-    out_path.with_suffix(".txt").write_text(text_report, encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    text_path = txt_dir / out_path.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(text_report), encoding="utf-8")
 
     if stats.empty:
         print("No hitters met the PA thresholds.")

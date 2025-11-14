@@ -1,6 +1,7 @@
 """Centralized configuration for ABL scripts; read-only helpers for OOTP CSV data."""
 
 import os
+from datetime import datetime
 from pathlib import Path
 
 LEAGUE_ID = 200
@@ -34,3 +35,20 @@ def csv_path(name: str) -> Path:
 def abl_csv_path(name: str) -> Path:
     """Return the path to an analytics CSV (abl_*.csv, standings snapshots, etc)."""
     return ANALYTICS_CSV_ROOT / name
+
+
+def stamp_text_block(text: str) -> str:
+    """Insert a 'Generated on' line beneath the title of any text report."""
+    payload = (text or "").rstrip("\n")
+    lines = payload.splitlines()
+    timestamp = f"Generated on: {datetime.now():%Y-%m-%d %H:%M:%S}"
+    if not lines:
+        return f"{timestamp}\n"
+
+    insert_at = 1
+    if len(lines) > 1:
+        underline = lines[1].strip()
+        if underline and len(set(underline)) == 1 and underline[0] in {"=", "-", "_"}:
+            insert_at = 2
+    stamped = lines[:insert_at] + [timestamp, ""] + lines[insert_at:]
+    return "\n".join(stamped).rstrip() + "\n"

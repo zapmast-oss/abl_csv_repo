@@ -10,6 +10,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -322,8 +323,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--records", type=str, help="Override team records file.")
     parser.add_argument("--parks", type=str, help="Override park factors.")
     parser.add_argument("--teams", type=str, help="Override team info.")
-    parser.add_argument("--out_next10", type=str, default="out/z_ABL_Runways_Next10_Games.csv", help="Next games CSV.")
-    parser.add_argument("--out_summary", type=str, default="out/z_ABL_Runways_Summary.csv", help="Summary CSV.")
+    parser.add_argument("--out_next10", type=str, default="out/csv_out/z_ABL_Runways_Next10_Games.csv", help="Next games CSV.")
+    parser.add_argument("--out_summary", type=str, default="out/csv_out/z_ABL_Runways_Summary.csv", help="Summary CSV.")
     parser.add_argument("--today", type=str, help="Override today date (YYYY-MM-DD).")
     parser.add_argument("--window", type=int, default=10, help="Number of games to scan.")
     args = parser.parse_args(list(argv) if argv is not None else None)
@@ -485,8 +486,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Opp% is the opponent winning percentage from team records.",
         ],
     )
-    next10_txt_path = next10_path.with_suffix(".txt")
-    next10_txt_path.write_text(next10_text_output, encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    next10_txt_path = txt_dir / next10_path.with_suffix(".txt").name
+    next10_txt_path.write_text(stamp_text_block(next10_text_output), encoding="utf-8")
 
     summary_path = Path(args.out_summary)
     if not summary_path.is_absolute():
@@ -551,8 +554,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         def_lines,
     )
     text_output = f"{easiest_table}\n\n{toughest_table}"
-    text_path = summary_path.with_suffix(".txt")
-    text_path.write_text(text_output, encoding="utf-8")
+    text_path = txt_dir / summary_path.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(text_output), encoding="utf-8")
     print(text_output)
 
 

@@ -8,6 +8,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 POSITION_ORDER = ["P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"]
@@ -285,7 +286,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--fielding", type=str, help="Override fielding path.")
     parser.add_argument("--teams", type=str, help="Override team info path.")
     parser.add_argument("--roster", type=str, help="Override roster path.")
-    parser.add_argument("--out", type=str, default="out/z_ABL_Zone_Rating_Spotlight.csv", help="Output CSV path.")
+    parser.add_argument("--out", type=str, default="out/csv_out/z_ABL_Zone_Rating_Spotlight.csv", help="Output CSV path.")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
     base_dir = Path(args.base).resolve()
@@ -392,8 +393,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Top two players listed by innings share with ZR for quick reference.",
         ],
     )
-    text_path = out_path.with_suffix(".txt")
-    text_path.write_text(text_output, encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    text_path = txt_dir / out_path.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(text_output), encoding="utf-8")
     print(text_output)
 
 

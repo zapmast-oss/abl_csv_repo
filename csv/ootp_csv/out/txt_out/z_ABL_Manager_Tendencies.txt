@@ -1,0 +1,48 @@
+ABL Manager Tendencies
+==========================
+Generated on: 2025-11-14 06:53:22
+
+Summarizes each skipper's small-ball usage, hook speed, and platoon appetite versus league norms.
+Useful for scouting playoff matchupsâ€”know who bunts, who yanks starters fast, and who trusts platoons.
+
+Manager / Team                 | Rating         Idx | Small          Idx | Hook           Idx | Platoon          Idx
+--------------------------------------------------------------------------------------------------------------------
+William Ross (SEA A-W)         | Elite        1.756 | Bunt & Run   1.714 | Short Leash  1.098 | Heavy Platoon  2.455
+Jason Wainwright (CHA N-E)     | Balanced     1.056 | Bunt & Run   1.569 | Short Leash  1.137 | Static         0.462
+Matt Petrie (LV A-W)           | Elite        1.405 | Bunt & Run   1.351 | Standard     0.980 | Heavy Platoon  1.883
+Dennis Salvino (NY A-E)        | Balanced     0.996 | Pressure     1.167 | Standard     0.863 | Balanced       0.958
+T.J. Cameron (ATL N-E)         | Balanced     1.031 | Pressure     1.147 | Short Leash  1.098 | Static         0.848
+Bill Hurff (BOS A-E)           | Aggressive   1.332 | Pressure     1.116 | Short Leash  1.020 | Heavy Platoon  1.861
+Danny Sanchez (PHI A-E)        | Conservative  0.821 | Balanced     1.091 | Standard     0.941 | Static         0.429
+Greg Asche (DEN A-W)           | Conservative  0.792 | Balanced     1.076 | Standard     0.902 | Static         0.396
+Mark Averill (PIT A-E)         | Balanced     0.939 | Balanced     1.010 | Standard     0.980 | Static         0.826
+Dave Walkling (LA N-W)         | Balanced     1.053 | Balanced     0.974 | Standard     0.941 | Targeted       1.244
+Brian Parsley (DAL N-C)        | Balanced     1.063 | Balanced     0.969 | Short Leash  1.098 | Balanced       1.123
+Seth Coe (MIA N-E)             | Conservative  0.881 | Balanced     0.968 | Standard     0.980 | Static         0.694
+Mike Khoury (TB N-E)           | Balanced     1.021 | Balanced     0.955 | Standard     0.863 | Targeted       1.244
+Tim Staheli (POR A-W)          | Aggressive   1.242 | Balanced     0.929 | Standard     0.902 | Heavy Platoon  1.894
+Francisco Hernandez (NAS A-C)  | Conservative  0.895 | Balanced     0.907 | Standard     0.941 | Static         0.837
+Chris Allison (CIN A-C)        | Balanced     0.971 | Swing Away   0.892 | Short Leash  1.098 | Balanced       0.925
+Matt Mead (CHI N-C)            | Conservative  0.834 | Swing Away   0.884 | Standard     0.902 | Static         0.716
+Tyler Trowbridge (SF N-W)      | Conservative  0.857 | Swing Away   0.829 | Short Leash  1.059 | Static         0.683
+Jose Perez (DET N-C)           | Conservative  0.766 | Swing Away   0.818 | Standard     0.941 | Static         0.539
+Bill Benisch (PHO N-W)         | Aggressive   1.230 | Swing Away   0.809 | Short Leash  1.020 | Heavy Platoon  1.861
+Ryan Messmer (STL A-C)         | Conservative  0.755 | Swing Away   0.786 | Standard     0.941 | Static         0.539
+Carlos Sanchez (HOU A-C)       | Passive      0.698 | Swing Away   0.748 | Short Leash  1.137 | Static         0.209
+Jesse Wade (SD N-W)            | Conservative  0.758 | Swing Away   0.723 | Short Leash  1.098 | Static         0.451
+Shawn Thompson (MIN N-C)       | Conservative  0.849 | Swing Away   0.565 | Short Leash  1.059 | Balanced       0.925
+
+Key:
+  Small-ball ratings: Bunt & Run (>=1.30), Pressure (1.10-1.29), Balanced (0.90-1.09), Swing Away (<0.90).
+  Hook ratings: Quick Hook (>=1.15), Short Leash (1.00-1.14), Standard (0.85-0.99), Patient (<0.85).
+  Platoon ratings: Heavy (>=1.50), Targeted (1.15-1.49), Balanced (0.85-1.14), Static (<0.85).
+  Manager ratings: Elite (>=1.40), Aggressive (1.15-1.39), Balanced (0.90-1.14), Conservative (0.70-0.89), Passive (<0.70).
+
+Definitions:
+  smallball_index = 0.6*steal_plus + 0.4*bunt_plus (plus metrics use league avg as 1.00).
+  sb_attempts_pg = (SB + CS) per estimated game (starter count fallback).
+  sh_pg = sac bunts per estimated game.
+  quick_hook_rate = share of starts <5 IP with <=3 ER; hook index compares to league rate.
+  avg_ip_start = innings per start (context for hook decisions).
+  platoon_usage_rate = |PA vs RHP - PA vs LHP| / total PA (lineup-derived when splits absent).
+  manager_index = average of the three indices above (available components only).

@@ -8,6 +8,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 PITCH_LOG_CANDIDATES = [
     "pitcher_game_log.csv",
@@ -502,7 +503,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         out_path.parent.mkdir(parents=True, exist_ok=True)
         empty_df.to_csv(out_path, index=False)
         text_path = out_path.with_suffix(".txt")
-        text_path.write_text("No starter data available.", encoding="utf-8")
+        text_path.write_text(stamp_text_block("No starter data available."), encoding="utf-8")
         print("No starter data available; CSV written with headers only.")
         return
 
@@ -529,7 +530,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     final_df.to_csv(out_path, index=False)
     text_path = resolve_text_path(out_path)
-    text_path.write_text(build_text_report(final_df), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(final_df)), encoding="utf-8")
 
     print("Rotation stability (top 12):")
     print(final_df.head(12).to_string(index=False))

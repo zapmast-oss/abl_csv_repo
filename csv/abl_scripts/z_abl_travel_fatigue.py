@@ -9,6 +9,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -449,8 +450,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--gamelogs", type=str, help="Override game log path.")
     parser.add_argument("--teams", type=str, help="Override team info path.")
     parser.add_argument("--parks", type=str, help="Override park info path.")
-    parser.add_argument("--out_summary", type=str, default="out/z_ABL_Travel_Fatigue_Summary.csv", help="Summary CSV path.")
-    parser.add_argument("--out_legs", type=str, default="out/z_ABL_Travel_Fatigue_Legs.csv", help="Legs CSV path.")
+    parser.add_argument("--out_summary", type=str, default="out/csv_out/z_ABL_Travel_Fatigue_Summary.csv", help="Summary CSV path.")
+    parser.add_argument("--out_legs", type=str, default="out/csv_out/z_ABL_Travel_Fatigue_Legs.csv", help="Legs CSV path.")
     parser.add_argument("--short_miles", type=float, default=300.0, help="Short-haul threshold in miles.")
     parser.add_argument("--long_miles", type=float, default=800.0, help="Long-haul threshold.")
     args = parser.parse_args(list(argv) if argv is not None else None)
@@ -526,8 +527,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Distance splits available in CSV when park coordinates exist.",
         ],
     )
-    text_path = out_summary.with_suffix(".txt")
-    text_path.write_text(text_output, encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    text_path = txt_dir / out_summary.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(text_output), encoding="utf-8")
     print(text_output)
 
 

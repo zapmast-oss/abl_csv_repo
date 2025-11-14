@@ -9,6 +9,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -369,6 +370,50 @@ def text_summary(current: pd.DataFrame, team_counts: pd.DataFrame) -> str:
     for _, row in team_counts.iterrows():
         lines.append(f"{row['team_display']:<12} ({row['conf_div']}) : {int(row['slumping_players'])} crashers")
     return "\n".join(lines)
+
+
+def history_text_report(history: pd.DataFrame, lookback_days: int) -> str:
+    if history.empty:
+        subtitle = "No slump windows matched the configured thresholds."
+        table = render_text_table(
+            history,
+            [
+                ("Player", "player_name", 22, False, ""),
+            ],
+            "ABL System Crash Slumps (History)",
+            subtitle,
+            [],
+            [],
+        )
+        return table
+
+    history = history.sort_values(by=["date_end", "delta_OPS"], ascending=[False, True]).head(25).copy()
+    history["date_start"] = pd.to_datetime(history["date_start"]).dt.strftime("%Y-%m-%d")
+    history["date_end"] = pd.to_datetime(history["date_end"]).dt.strftime("%Y-%m-%d")
+    columns = [
+        ("Player", "player_name", 22, False, ""),
+        ("Team", "team_display", 8, False, ""),
+        ("Conf", "conf_div", 6, False, ""),
+        ("Start", "date_start", 10, False, ""),
+        ("End", "date_end", 10, False, ""),
+        ("PA", "PA_window", 5, True, ".0f"),
+        ("OPS_w", "OPS_window", 6, True, ".3f"),
+        ("OPS_sea", "OPS_season", 7, True, ".3f"),
+        ("delta", "delta_OPS", 6, True, ".3f"),
+    ]
+    subtitle = (
+        f"Most recent slump windows (lookback {lookback_days} days)"
+        if lookback_days and lookback_days > 0
+        else "Most recent slump windows (full history)"
+    )
+    key_lines = [
+        "History highlights the most recent 25 'System Crash' windows across the league.",
+    ]
+    notes = [
+        "delta = OPS_window - OPS_season; negative values indicate steep drop-offs.",
+        "PA column shows plate appearances captured in the rolling window (>=80% of configured target).",
+    ]
+    return render_text_table(history, columns, "ABL System Crash Slumps (History)", subtitle, key_lines, notes)
 def classify_rating(delta: float) -> str:
     if pd.isna(delta):
         return "Unknown"
@@ -385,8 +430,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--gamelogs", type=str, help="Override gamelog path.")
     parser.add_argument("--totals", type=str, help="Override totals path.")
     parser.add_argument("--teams", type=str, help="Override team info path.")
-    parser.add_argument("--out_current", type=str, default="out/z_ABL_System_Crash_Slumps_Current.csv", help="Current slumps CSV.")
-    parser.add_argument("--out_history", type=str, default="out/z_ABL_System_Crash_Slumps_History.csv", help="History CSV.")
+    parser.add_argument("--out_current", type=str, default="out/csv_out/z_ABL_System_Crash_Slumps_Current.csv", help="Current slumps CSV.")
+    parser.add_argument("--out_history", type=str, default="out/csv_out/z_ABL_System_Crash_Slumps_History.csv", help="History CSV.")
     parser.add_argument("--window_pa", type=int, default=50, help="Rolling PA target.")
     parser.add_argument("--delta_thresh", type=float, default=-0.200, help="OPS delta threshold (<= value flags slump).")
     parser.add_argument("--min_pa_season", type=int, default=100, help="Minimum season PA to consider.")
@@ -403,10 +448,23 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         win_df = rolling_windows(group, args.window_pa)
         if not win_df.empty:
             window_frames.append(win_df)
-    if not window_frames:
+    if window_frames:
+        windows = pd.concat(window_frames, ignore_index=True)
+    else:
         print("No rolling windows met the criteria.")
-        return
-    windows = pd.concat(window_frames, ignore_index=True)
+        windows = pd.DataFrame(
+            columns=[
+                "team_id",
+                "player_id",
+                "player_name",
+                "date_start",
+                "date_end",
+                "PA_window",
+                "games_in_window",
+                "days_in_window",
+                "OPS_window",
+            ]
+        )
     windows = windows.merge(totals, on=["team_id", "player_id"], how="left")
     windows["team_display"] = windows["team_id"].map(team_names).fillna(windows["team_id"].astype(str))
     windows["conf_div"] = windows["team_id"].map(conf_map).fillna("")
@@ -419,7 +477,6 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     slumps = windows[windows["slump_flag"] == "SYSTEM_CRASH"].copy()
     if slumps.empty:
         print("No current slumps detected.")
-        return
 
     latest = (
         slumps.sort_values("date_end")
@@ -461,7 +518,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         history_path = base_dir / history_path
     history_path.parent.mkdir(parents=True, exist_ok=True)
     max_date = slumps["date_end"].max()
-    if args.lookback_days and args.lookback_days > 0:
+    if args.lookback_days and args.lookback_days > 0 and pd.notna(max_date):
         cutoff = max_date - timedelta(days=args.lookback_days)
         history = slumps[slumps["date_end"] >= cutoff].copy()
     else:
@@ -497,7 +554,16 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     team_counts["team_display"] = team_counts["team_id"].map(team_names).fillna(team_counts["team_id"].astype(str))
     team_counts["conf_div"] = team_counts["team_id"].map(conf_map).fillna("")
 
-    print(text_summary(current_out, team_counts))
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    current_txt_path = txt_dir / current_path.with_suffix(".txt").name
+    current_txt = text_summary(current_out, team_counts)
+    current_txt_path.write_text(stamp_text_block(current_txt), encoding="utf-8")
+    history_txt_path = txt_dir / history_path.with_suffix(".txt").name
+    history_txt = history_text_report(history_out, args.lookback_days)
+    history_txt_path.write_text(stamp_text_block(history_txt), encoding="utf-8")
+
+    print(current_txt)
 
 
 if __name__ == "__main__":

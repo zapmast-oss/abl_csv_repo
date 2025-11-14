@@ -9,6 +9,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -266,3 +267,229 @@ def text_table(
             parts = []
             for _, col_name, width, align_right, fmt in columns:
                 value = row.get(col_name, "")
+                if isinstance(value, (int, float, np.number)):
+                    if pd.isna(value):
+                        text_value = "NA"
+                    else:
+                        text_value = format(value, fmt) if fmt else str(value)
+                else:
+                    text_value = str(value)
+                fmt_str = f"{{:>{width}}}" if align_right else f"{{:<{width}}}"
+                parts.append(fmt_str.format(text_value[:width]))
+            lines.append(" ".join(parts))
+    lines.append("")
+    if key_lines:
+        lines.append("Key:")
+        for entry in key_lines:
+            lines.append(f"  {entry}")
+        lines.append("")
+    if def_lines:
+        lines.append("Definitions:")
+        for entry in def_lines:
+            lines.append(f"  {entry}")
+    return "\n".join(lines).rstrip()
+
+
+TABLE_COLUMNS: Sequence[Tuple[str, str, int, bool, str]] = [
+    ("Team", "team_display", 18, False, ""),
+    ("Games", "games_current", 6, True, ".0f"),
+    ("HR", "HR_current", 4, True, ".0f"),
+    ("PA", "PA_current", 6, True, ".0f"),
+    ("HR/PA", "HR_per_PA_current", 8, True, ".3f"),
+    ("ΔHR/PA", "delta_HR_per_PA", 8, True, ".3f"),
+]
+
+CSV_COLUMNS = [
+    "team_id",
+    "team_display",
+    "week_start",
+    "week_end",
+    "games_current",
+    "HR_current",
+    "PA_current",
+    "HR_per_PA_current",
+    "games_prev",
+    "HR_prev",
+    "PA_prev",
+    "HR_per_PA_prev",
+    "delta_HR_per_PA",
+    "pct_change",
+    "surge_flag",
+    "rating",
+]
+
+
+def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Track weekly HR surge/outage trends.")
+    parser.add_argument("--base", type=str, default=".", help="Base directory for CSV exports.")
+    parser.add_argument("--logs", type=str, help="Override team game log CSV.")
+    parser.add_argument("--boxes", type=str, help="Override team box log CSV when logs missing.")
+    parser.add_argument("--games", type=str, help="Override schedule/games CSV for park info.")
+    parser.add_argument("--teams", type=str, help="Override team info CSV.")
+    parser.add_argument("--parks", type=str, help="Override park info CSV.")
+    parser.add_argument("--week-end", type=str, dest="week_end", help="Force week end date (YYYY-MM-DD).")
+    parser.add_argument("--limit", type=int, default=10, help="Max entries per section in the text report.")
+    parser.add_argument(
+        "--out",
+        type=str,
+        default="out/csv_out/z_ABL_Power_Surge_Outages.csv",
+        help="Output CSV path (defaults to out/csv_out/...).",
+    )
+    return parser.parse_args(list(argv) if argv is not None else None)
+
+
+def empty_logs_frame() -> pd.DataFrame:
+    return pd.DataFrame(columns=["team_id", "game_date", "park_id", "HR", "PA"])
+
+
+def classify_delta(delta: float) -> str:
+    if pd.isna(delta):
+        return ""
+    if delta >= 0.015:
+        return "Firestorm"
+    if delta >= 0.008:
+        return "Heating Up"
+    if delta <= -0.015:
+        return "Blackout"
+    if delta <= -0.008:
+        return "Cooling Off"
+    return ""
+
+
+def build_team_trends(
+    logs: pd.DataFrame,
+    team_names: Dict[int, str],
+    week_end: Optional[str],
+) -> Tuple[pd.DataFrame, Optional[Tuple[Tuple[pd.Timestamp, pd.Timestamp], Tuple[pd.Timestamp, pd.Timestamp]]]]:
+    if logs.empty or logs["game_date"].dropna().empty:
+        return pd.DataFrame(columns=CSV_COLUMNS), None
+    current_window, prior_window = determine_weeks(logs["game_date"], week_end)
+    current = aggregate_week(logs, ["team_id"], current_window[0], current_window[1])
+    prior = aggregate_week(logs, ["team_id"], prior_window[0], prior_window[1])
+    if current.empty:
+        return pd.DataFrame(columns=CSV_COLUMNS), (current_window, prior_window)
+    merged = merge_weeks(current, prior, ["team_id"])
+    merged = merged.rename(
+        columns={
+            "games": "games_current",
+            "HR": "HR_current",
+            "PA": "PA_current",
+            "HR_per_PA": "HR_per_PA_current",
+        }
+    )
+    merged["team_display"] = merged["team_id"].apply(lambda tid: team_names.get(tid, f"Team {int(tid)}"))
+    for col in ["games_prev", "HR_prev", "PA_prev"]:
+        merged[col] = merged[col].fillna(0)
+    merged["HR_per_PA_prev"] = merged["HR_per_PA_prev"]
+    merged["week_start"] = merged["week_start"].dt.strftime("%Y-%m-%d")
+    merged["week_end"] = merged["week_end"].dt.strftime("%Y-%m-%d")
+    merged["delta_HR_per_PA"] = merged["delta_HR_per_PA"].round(4)
+    merged["pct_change"] = merged["pct_change"].round(4)
+    merged["HR_per_PA_current"] = merged["HR_per_PA_current"].round(4)
+    merged["HR_per_PA_prev"] = merged["HR_per_PA_prev"].round(4)
+    merged["rating"] = merged["delta_HR_per_PA"].apply(classify_delta)
+    merged = merged.sort_values(by="delta_HR_per_PA", ascending=False, na_position="last").reset_index(drop=True)
+    return merged, (current_window, prior_window)
+
+
+def render_report_text(
+    surges: pd.DataFrame,
+    outages: pd.DataFrame,
+    windows: Optional[Tuple[Tuple[pd.Timestamp, pd.Timestamp], Tuple[pd.Timestamp, pd.Timestamp]]],
+    limit: int,
+) -> str:
+    if windows:
+        (curr_start, curr_end), (prev_start, prev_end) = windows
+        header = (
+            f"Window: {curr_start:%Y-%m-%d} to {curr_end:%Y-%m-%d} "
+            f"(compared to {prev_start:%Y-%m-%d} to {prev_end:%Y-%m-%d})"
+        )
+    else:
+        header = "Window: No valid date range detected."
+    surges_section = text_table(
+        surges.head(limit),
+        TABLE_COLUMNS,
+        "Power Surges",
+        "Largest increases in HR per PA week-over-week",
+        [
+            "Surge flag triggers when HR/PA jumps by >= 0.005 over the prior week.",
+        ],
+        [
+            "HR/PA = home runs divided by plate appearances.",
+            "ΔHR/PA compares current seven-day window to the previous seven-day window.",
+        ],
+    )
+    outages_section = text_table(
+        outages.head(limit),
+        TABLE_COLUMNS,
+        "Power Outages",
+        "Largest drops in HR per PA week-over-week",
+        [
+            "Outage flag triggers when HR/PA falls by <= -0.005 over the prior week.",
+        ],
+        [
+            "Games/HR/PA columns reference the current seven-day window.",
+            "Prior metrics are included in the CSV for deeper dives.",
+        ],
+    )
+    return "\n\n".join([header, surges_section, outages_section])
+
+
+def write_report(
+    base_dir: Path,
+    csv_path_value: str,
+    report_df: pd.DataFrame,
+    text_payload: str,
+) -> None:
+    out_path = (base_dir / csv_path_value).resolve()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    csv_df = report_df.reindex(columns=CSV_COLUMNS)
+    csv_df.to_csv(out_path, index=False)
+    text_filename = out_path.with_suffix(".txt").name
+    if out_path.parent.name.lower() == "csv_out":
+        text_dir = out_path.parent.parent / "txt_out"
+    else:
+        text_dir = out_path.parent
+    text_dir.mkdir(parents=True, exist_ok=True)
+    (text_dir / text_filename).write_text(stamp_text_block(text_payload), encoding="utf-8")
+
+
+def main(argv: Optional[Sequence[str]] = None) -> None:
+    args = parse_args(argv)
+    base_dir = Path(args.base).resolve()
+    logs = empty_logs_frame()
+    try:
+        logs = load_logs(
+            base_dir,
+            resolve_path(base_dir, args.logs),
+            resolve_path(base_dir, args.boxes),
+            resolve_path(base_dir, args.games),
+        )
+    except (FileNotFoundError, ValueError) as exc:
+        print(f"Warning: {exc}")
+    team_names = load_team_names(base_dir, resolve_path(base_dir, args.teams))
+    report_df, windows = build_team_trends(logs, team_names, args.week_end)
+    if report_df.empty:
+        text_payload = (
+            "ABL Power Surge & Outage Tracker\n"
+            "Data unavailable for the requested window; ensure batting logs are exported before running this report."
+        )
+        write_report(base_dir, args.out, report_df, text_payload)
+        print("No power surge/outage data available; emitted placeholder outputs.")
+        return
+    surges = report_df[report_df["surge_flag"] == "SURGE"].sort_values(
+        by="delta_HR_per_PA", ascending=False, na_position="last"
+    )
+    outages = report_df[report_df["surge_flag"] == "OUTAGE"].sort_values(
+        by="delta_HR_per_PA", ascending=True, na_position="last"
+    )
+    text_payload = render_report_text(surges, outages, windows, args.limit)
+    write_report(base_dir, args.out, report_df, text_payload)
+    print(
+        f"Power surge/outage report created with {len(report_df)} teams: "
+        f"{surges['team_id'].nunique()} surges, {outages['team_id'].nunique()} outages."
+    )
+
+
+if __name__ == "__main__":
+    main()

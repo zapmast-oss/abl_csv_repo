@@ -9,6 +9,7 @@ from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -651,7 +652,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / text_filename
-    text_path.write_text(build_text_report(report, within=args.within), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(report, within=args.within)), encoding="utf-8")
     print("Milestones (top 25):")
     if report.empty:
         print("  No players currently within range.")

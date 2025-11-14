@@ -8,6 +8,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -26,6 +27,15 @@ TEAM_INFO_CANDIDATES = [
     "teams.csv",
     "standings.csv",
     "team_record.csv",
+]
+EMPTY_SPLITS_COLUMNS = [
+    "player_id",
+    "team_id",
+    "bats",
+    "PA_vR",
+    "OPS_vR",
+    "PA_vL",
+    "OPS_vL",
 ]
 
 
@@ -138,7 +148,10 @@ def load_roster_names(base: Path, override: Optional[Path]) -> Tuple[Dict[int, s
 def load_splits(base: Path, override: Optional[Path]) -> pd.DataFrame:
     df = read_first(base, override, SPLIT_CANDIDATES)
     if df is None:
-        raise FileNotFoundError("Unable to locate splits vs hand data.")
+        print(
+            "Warning: batting splits vs hand file not found; generating empty Platoon Assassins report."
+        )
+        return pd.DataFrame(columns=EMPTY_SPLITS_COLUMNS)
     id_col = pick_column(df, "player_id", "playerid", "PlayerID")
     team_col = pick_column(df, "team_id", "teamid", "TeamID")
     bats_col = pick_column(df, "bats", "bat_hand", "handedness")
@@ -212,7 +225,18 @@ def expand_rows(base_df: pd.DataFrame, names: Dict[int, str], positions: Dict[in
                     "disadv_ops": row["OPS_vR"],
                 }
             )
-    return pd.DataFrame(rows)
+    columns = [
+        "player_id",
+        "team_id",
+        "player_name",
+        "bats",
+        "adv_context",
+        "adv_pa",
+        "adv_ops",
+        "disadv_pa",
+        "disadv_ops",
+    ]
+    return pd.DataFrame(rows, columns=columns)
 
 
 def rate_delta(delta: float) -> str:
@@ -238,8 +262,6 @@ def compute_metrics(
     min_pa_both: int,
     min_pa_adv: int,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    if df.empty:
-        return df, df
     df = df.copy()
     df["delta_ops"] = df["adv_ops"] - df["disadv_ops"]
     df["pa_balance_ratio"] = df.apply(
@@ -277,14 +299,16 @@ def compute_metrics(
     df["lg_ops_adv"] = qualified["lg_ops_adv"].iloc[0] if not qualified.empty else np.nan
     df["lg_ops_disadv"] = qualified["lg_ops_disadv"].iloc[0] if not qualified.empty else np.nan
     df["lg_delta_ops"] = qualified["lg_delta_ops"].iloc[0] if not qualified.empty else np.nan
+    df["delta_z"] = np.nan
     df = df.merge(
         qualified[["player_id", "adv_context", "delta_z"]],
         on=["player_id", "adv_context"],
         how="left",
         suffixes=("", "_qual"),
     )
-    df["delta_z"] = df["delta_z"].fillna(df["delta_z_qual"])
-    df = df.drop(columns=["delta_z_qual"])
+    if "delta_z_qual" in df.columns:
+        df["delta_z"] = df["delta_z"].fillna(df["delta_z_qual"])
+        df = df.drop(columns=["delta_z_qual"])
     df["clutch_rating"] = df["delta_ops"].apply(rate_delta)
     return df, qualified
 
@@ -299,7 +323,7 @@ def build_text_report(df: pd.DataFrame, min_pa_both: int, min_pa_adv: int) -> st
     ]
     header = (
         f"{'Player (Team)':<28} {'CD':<4} {'Context':<13} {'Rating':<11} "
-        f"{'OPS_adv':>7} {'OPS_dis':>8} {'ΔOPS':>7} {'PA_adv':>7}"
+        f"{'OPS_adv':>7} {'OPS_dis':>8} {'Î”OPS':>7} {'PA_adv':>7}"
     )
     lines.append(header)
     lines.append("-" * len(header))
@@ -325,9 +349,9 @@ def build_text_report(df: pd.DataFrame, min_pa_both: int, min_pa_adv: int) -> st
     lines.append("Definitions:")
     lines.append("  adv_context identifies the matchup (LHB vs RHP or RHB vs LHP).")
     lines.append("  adv_ops/disadv_ops = OPS versus advantaged vs disadvantaged hand.")
-    lines.append("  ΔOPS = advantaged OPS minus disadvantaged OPS.")
+    lines.append("  Î”OPS = advantaged OPS minus disadvantaged OPS.")
     lines.append("  PA balance ratio = exposure balance between both sides (1.0 = even).")
-    lines.append("  League OPS figures and ΔOPS mean appear in the CSV for reference.")
+    lines.append("  League OPS figures and Î”OPS mean appear in the CSV for reference.")
     return "\n".join(lines)
 
 
@@ -353,11 +377,11 @@ def print_top_table(df: pd.DataFrame) -> None:
             "clutch_rating": "Rating",
             "adv_ops": "OPS_adv",
             "disadv_ops": "OPS_dis",
-            "delta_ops": "ΔOPS",
+            "delta_ops": "Î”OPS",
             "adv_pa": "PA_adv",
         }
     )
-    for col in ["OPS_adv", "OPS_dis", "ΔOPS"]:
+    for col in ["OPS_adv", "OPS_dis", "Î”OPS"]:
         display_df[col] = display_df[col].map(lambda v: f"{v:.3f}" if not pd.isna(v) else "NA ")
     print(display_df.to_string(index=False))
 
@@ -406,11 +430,20 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     csv_df = final.copy()
-    for col in ["adv_ops", "disadv_ops", "delta_ops", "pa_balance_ratio", "lg_ops_adv", "lg_ops_disadv", "lg_delta_ops"]:
+    numeric_cols = [
+        "adv_ops",
+        "disadv_ops",
+        "delta_ops",
+        "pa_balance_ratio",
+        "lg_ops_adv",
+        "lg_ops_disadv",
+        "lg_delta_ops",
+    ]
+    for col in numeric_cols:
         if col in csv_df.columns:
-            csv_df[col] = csv_df[col].round(3)
+            csv_df[col] = pd.to_numeric(csv_df[col], errors="coerce").round(3)
     if "delta_z" in csv_df.columns:
-        csv_df["delta_z"] = csv_df["delta_z"].round(2)
+        csv_df["delta_z"] = pd.to_numeric(csv_df["delta_z"], errors="coerce").round(2)
     csv_columns = [
         "team_id",
         "team_display",
@@ -440,7 +473,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     else:
         text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)
-    (text_dir / text_filename).write_text(text_report, encoding="utf-8")
+    (text_dir / text_filename).write_text(stamp_text_block(text_report), encoding="utf-8")
 
     if final.empty:
         print("No hitters met the qualification thresholds.")

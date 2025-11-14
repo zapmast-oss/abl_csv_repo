@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 TEAM_META_CANDIDATES = [
@@ -467,7 +468,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     text_path = text_dir / text_filename
     text_df = report.copy()
     text_df["conf_div"] = text_df["team_id"].map(conf_div_map).fillna("")
-    text_path.write_text(build_text_report(text_df), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(text_df)), encoding="utf-8")
 
     preview = report.head(12)
     print("Division leverage (top 12):")

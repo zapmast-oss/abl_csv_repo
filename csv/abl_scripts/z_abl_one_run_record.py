@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 LOG_CANDIDATES = [
@@ -334,7 +335,7 @@ def build_text_report(df: pd.DataFrame, limit: int = 24) -> str:
     lines = [
         "ABL One-Run Record",
         "=" * 22,
-        "Shows how each club fares in one-run decisions versus its overall pace—perfect for clutch/luck chatter.",
+        "Shows how each club fares in one-run decisions versus its overall paceâ€”perfect for clutch/luck chatter.",
         "Use it to flag teams overachieving (or melting down) in coin-flip finishes.",
         "",
     ]
@@ -400,11 +401,11 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     report_df.to_csv(output_path, index=False)
     if report_df.empty:
-        text_path.write_text("No qualifying games found.", encoding="utf-8")
+        text_path.write_text(stamp_text_block("No qualifying games found."), encoding="utf-8")
         print("No qualifying teams found; CSV is empty.")
         return
 
-    text_path.write_text(build_text_report(report_df), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(report_df)), encoding="utf-8")
 
     preview = report_df.head(12)
     print("One-run performance (top 12):")

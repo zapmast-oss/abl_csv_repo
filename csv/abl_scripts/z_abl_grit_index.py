@@ -9,6 +9,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -602,7 +603,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     else:
         text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)
-    (text_dir / text_filename).write_text(text_report, encoding="utf-8")
+    (text_dir / text_filename).write_text(stamp_text_block(text_report), encoding="utf-8")
 
     print_top_table(aggregates)
 

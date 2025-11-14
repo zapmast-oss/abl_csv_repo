@@ -8,6 +8,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_RANGE = (1, 24)
 
@@ -283,7 +284,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/z_ABL_Team_BABIP_Luck.csv",
+        default="out/csv_out/z_ABL_Team_BABIP_Luck.csv",
         help="Output CSV path.",
     )
     return parser.parse_args(argv if argv is not None else None)
@@ -301,8 +302,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     final_df.to_csv(out_path, index=False)
 
-    text_path = out_path.with_suffix(".txt")
-    text_path.write_text(build_text_report(final_df), encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    text_path = txt_dir / out_path.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(build_text_report(final_df)), encoding="utf-8")
 
     print("Team BABIP luck (top 12):")
     print(final_df.head(12).to_string(index=False))

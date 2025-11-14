@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 LOG_CANDIDATES = [
@@ -224,14 +225,14 @@ def build_text_report(df: pd.DataFrame, limit: int = 24) -> str:
         tag = "Gauntlet" if pd.notna(row["sos14_diff_vs_league"]) and row["sos14_diff_vs_league"] >= 0.02 else "Soft" if pd.notna(row["sos14_diff_vs_league"]) and row["sos14_diff_vs_league"] <= -0.02 else "Neutral"
         lines.append(
             f"{name:<20} {tag:<8} | SOS {row['sos14_avg_opp_winpct']:.3f} "
-            f"| League {row['league_last14_winpct']:.3f} | Δ {row['sos14_diff_vs_league']:+.3f} "
+            f"| League {row['league_last14_winpct']:.3f} | Î” {row['sos14_diff_vs_league']:+.3f} "
             f"| Record {int(row['last14_w'])}-{int(row['last14_l'])}"
         )
     lines.append("")
     lines.append("Key:")
     lines.append("  SOS = average opponent win% over same 14-day window.")
-    lines.append("  Gauntlet -> facing tougher slate (Δ >= +0.020).")
-    lines.append("  Soft     -> easier slate (Δ <= -0.020).")
+    lines.append("  Gauntlet -> facing tougher slate (Î” >= +0.020).")
+    lines.append("  Soft     -> easier slate (Î” <= -0.020).")
     lines.append("  Neutral  -> within +/-0.019 of league average.")
     return "\n".join(lines)
 
@@ -249,8 +250,8 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/z_ABL_SOS_Last14.csv",
-        help="Output CSV (default: out/z_ABL_SOS_Last14.csv).",
+        default="out/csv_out/z_ABL_SOS_Last14.csv",
+        help="Output CSV (default: out/csv_out/z_ABL_SOS_Last14.csv).",
     )
     return parser.parse_args(argv)
 
@@ -307,8 +308,10 @@ def main(argv: Optional[List[str]] = None) -> None:
     output_path = (base_dir / args.out).resolve()
     output_path.parent.mkdir(parents=True, exist_ok=True)
     report.to_csv(output_path, index=False)
-    text_path = output_path.with_suffix(".txt")
-    text_path.write_text(build_text_report(report), encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    text_path = txt_dir / output_path.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(build_text_report(report)), encoding="utf-8")
 
     preview = report.head(12)
     print("SOS last 14 days (top 12):")

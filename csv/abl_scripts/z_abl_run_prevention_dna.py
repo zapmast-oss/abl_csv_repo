@@ -9,6 +9,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 FIELDING_CANDIDATES = [
@@ -325,7 +326,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     text_path = (txt_dir / out_path.stem).with_suffix(".txt")
     text_df = df.copy()
     text_df["conf_div"] = text_df["team_id"].map(conf_div_map).fillna("")
-    text_path.write_text(build_output_text(text_df, zr_proxy=zr_proxy), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_output_text(text_df, zr_proxy=zr_proxy)), encoding="utf-8")
 
     preview = df.head(12)
     print("Run Prevention DNA (top 12):")

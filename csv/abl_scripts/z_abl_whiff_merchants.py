@@ -8,6 +8,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -329,7 +330,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--pitchdetail", type=str, help="Override path for pitch-type summary.")
     parser.add_argument("--teams", type=str, help="Override path for team info.")
     parser.add_argument("--roster", type=str, help="Override path for roster file.")
-    parser.add_argument("--out", type=str, default="out/z_ABL_Whiff_Merchants.csv", help="Output CSV path.")
+    parser.add_argument("--out", type=str, default="out/csv_out/z_ABL_Whiff_Merchants.csv", help="Output CSV path.")
     parser.add_argument("--min_ip_sp", type=float, default=30.0, help="Minimum IP for SP/Swing qualification.")
     parser.add_argument("--min_ip_rp", type=float, default=15.0, help="Minimum IP for RP qualification.")
     parser.add_argument("--min_pitches_total", type=int, default=300, help="Minimum total pitches for CSW stability.")
@@ -556,8 +557,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             f"Top pitch requires >= {args.min_pitches_type} pitches; usage/CSW/whiff derived per type.",
         ],
     )
-    text_path = out_path.with_suffix(".txt")
-    text_path.write_text(text_output, encoding="utf-8")
+    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    text_path = txt_dir / out_path.with_suffix(".txt").name
+    text_path.write_text(stamp_text_block(text_output), encoding="utf-8")
     print(text_output)
 
 

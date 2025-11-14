@@ -9,6 +9,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -385,7 +386,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     text_dir = base_dir / "out" / "txt_out"
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / out_path.name.replace(".csv", ".txt")
-    text_path.write_text(build_text_report(final_df, limit=None), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(final_df, limit=None)), encoding="utf-8")
     print("Basepath Pressure (top 12):")
     print(final_df.head(12).to_string(index=False))
     print(f"\nWrote {len(final_df)} rows to {out_path}.")

@@ -9,6 +9,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -460,7 +461,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / text_filename
-    text_path.write_text(text_output, encoding="utf-8")
+    text_path.write_text(stamp_text_block(text_output), encoding="utf-8")
     c_line = f"FIP constant c = {c:.3f}"
     if c_note:
         c_line = f"{c_line} {c_note}"

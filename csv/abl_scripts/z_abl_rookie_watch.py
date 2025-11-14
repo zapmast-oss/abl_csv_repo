@@ -8,6 +8,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -1048,7 +1049,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         },
     )
     hit_txt_path = resolve_text_path(out_hit)
-    hit_txt_path.write_text(hit_text, encoding="utf-8")
+    hit_txt_path.write_text(stamp_text_block(hit_text), encoding="utf-8")
 
     pit_text_cols = [
         ("Player", "player_name", 24, False),
@@ -1088,7 +1089,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         },
     )
     pit_txt_path = resolve_text_path(out_pit)
-    pit_txt_path.write_text(pit_text, encoding="utf-8")
+    pit_txt_path.write_text(stamp_text_block(pit_text), encoding="utf-8")
 
     print(hit_text)
     print("")

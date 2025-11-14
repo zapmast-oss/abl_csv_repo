@@ -1,0 +1,45 @@
+ABL Rookie Watch (Hitters)
+==========================
+Generated on: 2025-11-14 06:53:27
+
+
+Spotlights rookie-eligible bats clearing the PA floor and ranks them by age-adjusted OPS pace.
+Great for quickly seeing which first-year hitters are already tilting lineups versus those still ramping up.
+
+Player                   Team                 Rating           OPS   OPS+   Age+    Def  WAR162
+-----------------------------------------------------------------------------------------------
+Nigel Hudson             Charlotte (N-E)      Meteoric       1.180    164    156   -0.5     4.2
+Jesus Vasquez            Houston (A-C)        Impact         0.817    113    127   -2.0     1.9
+Alex Lander              St. Louis (A-C)      Impact         0.894    124    126   -0.0     3.8
+Hirotoshi Nishimoto      Minneapolis (N-C)    Impact         0.887    123    125    0.0     1.6
+Eddie Rodriguez          Las Vegas (A-W)      Impact         0.880    122    124   -0.6     3.7
+Luke Margalit            San Francisco (N-W)  Steady         0.839    116    117   -2.1     2.3
+Tony Bautista            Denver (A-W)         Steady         0.818    113    115   -0.1     1.7
+Rich Vela                Dallas (N-C)         Steady         0.802    111    112   -0.1     3.1
+David Avila              Las Vegas (A-W)      Steady         0.680     94    106    0.7     2.5
+Tim Wheeldon             New York (A-E)       Steady         0.792    110    104    1.1     3.7
+Mike Hargett             Portland (A-W)       Steady         0.731    101    103    0.3     0.6
+Bill Rambow              Dallas (N-C)         Steady         0.820    114    101   -3.7     3.5
+Jordan Pedroza           Cincinnati (A-C)     Steady         0.749    104    101    0.5     3.6
+Pete Rick                Miami (N-E)          Steady         0.650     90    101    3.3     1.5
+Adam Wilson              Seattle (A-W)        Steady         0.681     94    101    0.5     1.4
+Alejandro Rosado         Dallas (N-C)         Learning       0.633     88     95    0.5     1.3
+Renault Buso             Portland (A-W)       Learning       0.669     93     94   -1.1    -0.5
+Jon Dominguez            Las Vegas (A-W)      Learning       0.710     98     94   -0.0     4.3
+Sam Ashworth             Phoenix (N-W)        Learning       0.744    103     92   -0.3     1.8
+Jose Barajas             Miami (N-E)          Learning       0.639     89     90    2.0     1.0
+Chris Sullivan           St. Louis (A-C)      Learning       0.600     83     89    2.2     1.9
+Chris Gillum             St. Louis (A-C)      Learning       0.602     84     85    1.1    -1.1
+Jake Simper              Detroit (N-C)        Learning       0.560     78     85   -0.5    -1.0
+Jeff Smith               Las Vegas (A-W)      Learning       0.682     95     84    0.3     0.8
+Andy Ayala               Boston (A-E)         Learning       0.550     76     81    0.1    -1.4
+
+Threshold: PA >= 50 (unless show_all).
+
+Key:
+  Meteoric >=150 AgeAdj OPS+, Impact 120-149, Steady 100-119, Learning 80-99, Finding Feet <80.
+
+Definitions:
+  OPS+ numbers adjust for park and league average (100 = league average).
+  AgeAdj OPS+ compares to same-age peers when available.
+  WAR pace scaled to 162 games using league-average games played.

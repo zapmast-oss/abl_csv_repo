@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 LOG_CANDIDATES = [
@@ -383,8 +384,8 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/z_ABL_Blowout_Resilience.csv",
-        help="Output CSV (default: out/z_ABL_Blowout_Resilience.csv).",
+        default="out/csv_out/z_ABL_Blowout_Resilience.csv",
+        help="Output CSV (default: out/csv_out/z_ABL_Blowout_Resilience.csv).",
     )
     return parser.parse_args(argv)
 
@@ -406,11 +407,11 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     report_df.to_csv(output_path, index=False)
     if report_df.empty:
-        text_path.write_text("No qualifying games found.", encoding="utf-8")
+        text_path.write_text(stamp_text_block("No qualifying games found."), encoding="utf-8")
         print("No qualifying teams found; CSV is empty.")
         return
 
-    text_path.write_text(build_text_report(report_df), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(report_df)), encoding="utf-8")
     preview = report_df.head(12)
     print("Blowout resilience (top 12):")
     print(preview.to_string(index=False))

@@ -12,6 +12,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 RECORD_CANDIDATES = [
@@ -679,7 +680,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     df_csv.to_csv(out_path, index=False)
 
     text_path = resolve_text_path(out_path)
-    text_path.write_text(build_text_report(text_df), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(text_df)), encoding="utf-8")
 
     preview = df_csv.head(12)
     print("Run Creation Profile (top 12):")

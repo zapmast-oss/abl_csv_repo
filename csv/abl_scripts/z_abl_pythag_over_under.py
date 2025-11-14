@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 CANDIDATE_FILES = [
@@ -342,7 +343,7 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     if report_df.empty:
         report_df["conf_div"] = ""
-        text_path.write_text("No qualifying teams found.", encoding="utf-8")
+        text_path.write_text(stamp_text_block("No qualifying teams found."), encoding="utf-8")
     else:
         meta = build_team_meta(base_dir)
         report_df["conf_div"] = ""
@@ -361,7 +362,7 @@ def main(argv: Optional[List[str]] = None) -> None:
                 by=["conf_div", "pythag_diff_wins", "team_display"],
                 ascending=[True, False, True],
             )
-        text_path.write_text(build_text_report(report_df), encoding="utf-8")
+        text_path.write_text(stamp_text_block(build_text_report(report_df)), encoding="utf-8")
         column_order = [
             "team_id",
             "team_display",

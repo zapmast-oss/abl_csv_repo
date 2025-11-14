@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from abl_config import stamp_text_block
 
 CANDIDATE_LOGS = [
     "team_game_log.csv",
@@ -485,9 +486,9 @@ def main(argv: Optional[List[str]] = None) -> None:
             "description",
         ]
         result_df = result_df.reindex(columns=ordered_cols)
-        text_path.write_text(build_text_report(result_df, window=args.window), encoding="utf-8")
+        text_path.write_text(stamp_text_block(build_text_report(result_df, window=args.window)), encoding="utf-8")
     else:
-        text_path.write_text("No qualifying games found.", encoding="utf-8")
+        text_path.write_text(stamp_text_block("No qualifying games found."), encoding="utf-8")
 
     result_df.to_csv(output_path, index=False)
 

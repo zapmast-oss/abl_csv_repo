@@ -9,6 +9,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -439,7 +440,7 @@ def build_text_report(df: pd.DataFrame, limit: int = 24) -> str:
         "ABL Manager Tendencies",
         "=" * 26,
         "Summarizes each skipper's small-ball usage, hook speed, and platoon appetite versus league norms.",
-        "Useful for scouting playoff matchups—know who bunts, who yanks starters fast, and who trusts platoons.",
+        "Useful for scouting playoff matchupsâ€”know who bunts, who yanks starters fast, and who trusts platoons.",
         "",
     ]
     table_header = (
@@ -636,7 +637,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / text_filename
-    text_path.write_text(build_text_report(report), encoding="utf-8")
+    text_path.write_text(stamp_text_block(build_text_report(report)), encoding="utf-8")
 
     preview = report.head(12)
     print("Manager Tendencies (top 12):")
