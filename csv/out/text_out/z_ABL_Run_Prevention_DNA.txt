@@ -1,0 +1,43 @@
+ABL Run Prevention DNA
+=========================
+Generated on: 2025-11-14 12:41:11
+
+Defense efficiency, range, and mistake rates blended to show who prevents runs.
+Use it to spot elite or leaky gloves before setting lineups or pitching plans.
+
+Team               Div Profile        DER     ZR  Err/9  DP/9
+-----------------------------------------------------------------------
+Las Vegas          A-W Playmaking    0.738    4.21   0.258   0.351
+Houston            A-C Clean         0.724    4.22   0.191   0.340
+Cincinnati         A-C Elite         0.721    4.14   0.129   0.248
+Philadelphia       A-E Clean         0.715    4.22   0.119   0.216
+San Francisco      N-W Playmaking    0.714    4.17   0.210   0.336
+Charlotte          N-E Clean         0.714    4.16   0.172   0.313
+St. Louis          A-C Clean         0.712    4.17   0.149   0.404
+Detroit            N-C Playmaking    0.709    4.20   0.213   0.365
+Pittsburgh         A-E Clean         0.705    4.22   0.140   0.290
+Los Angeles        N-W Clean         0.704    4.16   0.196   0.371
+San Diego          N-W Playmaking    0.703    4.33   0.215   0.517
+Minneapolis        N-C Clean         0.703    4.20   0.152   0.250
+Denver             A-W Clean         0.702    4.26   0.176   0.456
+Nashville          A-C Middle        0.697    4.24   0.258   0.258
+Phoenix            N-W Middle        0.697    4.20   0.105   0.283
+Chicago            N-C Middle        0.697    4.16   0.116   0.233
+Boston             A-E Middle        0.696    4.15   0.075   0.376
+New York           A-E Middle        0.693    4.21   0.291   0.248
+Atlanta            N-E Middle        0.688    4.16   0.182   0.278
+Dallas             N-C Middle        0.685    4.22   0.244   0.244
+Miami              N-E Middle        0.685    4.16   0.171   0.278
+Seattle            A-W Leaky         0.680    4.18   0.194   0.347
+Tampa Bay          N-E Leaky         0.676    4.20   0.198   0.375
+Portland           A-W Leaky         0.667    4.19   0.201   0.360
+
+Key:
+  DER     -> Share of balls in play turned into outs (higher = cleaner fielding).
+  ZR      -> Summed zone rating contributions; positive values mean above-average range.
+  Errors/9-> Errors committed per nine defensive innings (lower = steadier hands).
+  DP/9    -> Double plays turned per nine defensive innings (higher = slick infield).
+  Profiles: Elite (DER >= .715 & Err/9 <= .18), Clean (0.700-0.714 with low errors), Playmaking (high DER but messy), Middle (0.680-0.699), Leaky (<0.680).
+
+Definition: Run Prevention DNA blends DER, range (ZR), and mistake/situational rates to show how each defense prevents runs.
+Note: ZR column uses team range factor because no zone-rating stats were exported.

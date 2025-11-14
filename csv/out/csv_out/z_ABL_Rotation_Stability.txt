@@ -1,0 +1,46 @@
+ABL Rotation Stability
+============================
+Generated on: 2025-11-14 12:41:08
+
+
+Measures how heavily each club leans on its top five starters, how deep they work, and whether injuries are forcing churn.
+Helps flag playoff-ready rotations versus staffs still scrambling for healthy innings.
+
+Team                         Rating        Top5   AvgIP     QS%   IL Days  IL Arms
+----------------------------------------------------------------------------------
+New York (A-E)               Stable       0.839    5.05   0.290        NA       NA
+Miami (N-E)                  Mixed        0.839    4.63   0.258        NA       NA
+Phoenix (N-W)                Elite        0.823    5.06   0.306        NA       NA
+Charlotte (N-E)              Stable       0.823    4.82   0.290        NA       NA
+Portland (A-W)               Mixed        0.823    4.15   0.194        NA       NA
+San Francisco (N-W)          Elite        0.806    5.18   0.355        NA       NA
+Las Vegas (A-W)              Elite        0.806    5.02   0.355        NA       NA
+Los Angeles (N-W)            Elite        0.806    5.02   0.323        NA       NA
+Houston (A-C)                Stable       0.806    5.02   0.274        NA       NA
+Dallas (N-C)                 Mixed        0.806    4.77   0.274        NA       NA
+St. Louis (A-C)              Stable       0.790    5.24   0.274        NA       NA
+Philadelphia (A-E)           Stable       0.790    5.23   0.306        NA       NA
+Detroit (N-C)                Mixed        0.790    4.79   0.258        NA       NA
+Seattle (A-W)                Mixed        0.790    4.63   0.258        NA       NA
+Cincinnati (A-C)             Stable       0.774    5.13   0.290        NA       NA
+Boston (A-E)                 Mixed        0.758    4.79   0.323        NA       NA
+Atlanta (N-E)                Mixed        0.742    4.42   0.242        NA       NA
+Chicago (N-C)                Mixed        0.726    5.15   0.306        NA       NA
+Tampa Bay (N-E)              Mixed        0.710    5.13   0.242        NA       NA
+Pittsburgh (A-E)             Mixed        0.694    4.26   0.194        NA       NA
+Denver (A-W)                 Mixed        0.661    4.61   0.290        NA       NA
+Nashville (A-C)              Mixed        0.661    4.48   0.210        NA       NA
+Minneapolis (N-C)            Volatile     0.645    4.90   0.242        NA       NA
+San Diego (N-W)              Volatile     0.629    4.69   0.258        NA       NA
+
+Key:
+  Elite  -> top5_share >= 0.80, Avg IP >= 5.0, QS% >= 0.300.
+  Stable -> top5_share >= 0.75 and Avg IP >= 4.8.
+  Mixed  -> top5_share >= 0.65 (heavier rotation mix).
+  Volatile -> top5_share < 0.65 (frequent shuffling).
+
+Definitions:
+  Top5 share: starts handled by the five busiest starters.
+  AvgIP: average innings per start.
+  QS%: quality-start rate (>=6 IP, <=3 ER when ER available).
+  IL metrics: starter IL days total and current IL headcount (blank if unavailable).

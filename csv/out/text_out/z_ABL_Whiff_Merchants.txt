@@ -1,0 +1,43 @@
+ABL Whiff Merchants
+===================
+Generated on: 2025-11-14 12:41:20
+
+League K% 0.151, CSW% stable base NA
+
+Player                   Tm    Conf   Role   Rating            IP     K%    K/9   CSW%  Whiff+ Top Pitch 
+---------------------------------------------------------------------------------------------------------
+Jose Coronado            STL   A-C    SP     Whiff Wizard    51.3  0.273  10.34     NA   1.786           
+Dylan Wilson             HOU   A-C    SP     Whiff Wizard    49.7  0.261   9.97     NA   1.709           
+Jerry Romero             LA    N-W    SP     Whiff Wizard    50.0  0.251  10.08     NA   1.669           
+Edgar Gonzalez           CHI   N-C    SP     Whiff Wizard    48.0  0.252   9.75     NA   1.660           
+Stephen Grimes           PHO   N-W    SP     Whiff Wizard    49.3  0.250   9.30     NA   1.627           
+Bobby Rodriguez          LV    A-W    SP     Whiff Wizard    56.3  0.246   9.11     NA   1.597           
+Gil Medina               CIN   A-C    Swing  Whiff Wizard    37.7  0.238   9.32     NA   1.570           
+Sergio Lopez             SEA   A-W    Swing  Whiff Wizard    30.7  0.233   9.10     NA   1.537           
+Dabir Aly                CHA   N-E    SP     Whiff Wizard    35.0  0.224   8.23     NA   1.451           
+Jonathan Guzman          DAL   N-C    RP     Whiff Wizard    16.3  0.200   8.82     NA   1.367           
+Victor Martinez          BOS   A-E    SP     Whiff Wizard    44.3  0.206   8.12     NA   1.363           
+Jon Solis                DET   N-C    SP     Whiff Wizard    39.3  0.205   7.78     NA   1.340           
+Jon Ramirez              SF    N-W    SP     Whiff Wizard    40.0  0.201   7.88     NA   1.328           
+Edwin Martinez           CHA   N-E    RP     K Maestro       18.3  0.193   7.85     NA   1.287           
+Emilio Lopez             MIN   N-C    SP     K Maestro       40.7  0.191   7.97     NA   1.286           
+Noor Durrani             NY    A-E    SP     K Maestro       38.0  0.192   7.82     NA   1.281           
+David Acuna              PIT   A-E    SP     K Maestro       41.0  0.190   7.90     NA   1.279           
+Oscar Herrera            LV    A-W    SP     K Maestro       53.0  0.193   7.47     NA   1.270           
+Gilberto Flores          PHI   A-E    SP     K Maestro       53.0  0.196   7.13     NA   1.269           
+Gil Aguilar              MIA   N-E    SP     K Maestro       52.3  0.189   7.39     NA   1.245           
+David Victorero          MIA   N-E    SP     K Maestro       31.0  0.185   7.26     NA   1.223           
+Bill Ybanez              ATL   N-E    SP     K Maestro       44.7  0.184   7.25     NA   1.215           
+Danny Davalos            PIT   A-E    Swing  K Maestro       30.7  0.189   6.75     NA   1.214           
+Alex Diaz                CHI   N-C    Swing  K Maestro       32.0  0.185   7.03     NA   1.212           
+Arturo Gonzalez          SF    N-W    SP     K Maestro       51.0  0.184   7.06     NA   1.209           
+
+Key:
+  Ratings: Whiff Wizard (>=1.30), K Maestro (1.15-1.29), Miss Maker (1.00-1.14), Steady (0.85-0.99), Needs Bite (<0.85).
+  perf_flag: ELITE (>=1.15), IMPACT (1.00-1.14), STEADY (0.85-0.99).
+
+Definitions:
+  K% = strikeouts per batter faced; K/9 = strikeouts per 9 IP.
+  CSW% = (Called Strikes + Whiffs) / total pitches (needs >= min_pitches_total).
+  Whiff Index blends K%+, CSW%+, and K/9+ (weights 50/30/20, reweighted when missing).
+  Top pitch requires >= 100 pitches; usage/CSW/whiff derived per type.

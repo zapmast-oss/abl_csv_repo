@@ -1,33 +1,64 @@
+from pathlib import Path
+ROOT    = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "output"
+OUT_TXT = OUT_DIR / "text"
+OUT_CSV = OUT_DIR / "csv"
+OUT_TXT.mkdir(parents=True, exist_ok=True)
+OUT_CSV.mkdir(parents=True, exist_ok=True)
+print("OUT_TXT:", OUT_TXT)
+print("OUT_CSV:", OUT_CSV)
+
 import os
-import pathlib
 import subprocess
 from subprocess import DEVNULL, STDOUT
 
-DEFAULT_DATA_ROOT = pathlib.Path(
-    r'C:\Users\earld\OneDrive\Documents\Out of the Park Developments\OOTP Baseball 26\saved_games\Action Baseball League.lg\import_export\csv'
+DEFAULT_DATA_ROOT = Path(
+    r"C:\Users\earld\OneDrive\Documents\Out of the Park Developments\OOTP Baseball 26\saved_games\Action Baseball League.lg\import_export\csv"
 )
-script_dir = pathlib.Path(__file__).resolve().parent
-configured = os.environ.get('ABL_CSV_EXEC_ROOT')
-data_root_candidate = pathlib.Path(configured) if configured else DEFAULT_DATA_ROOT
-if (data_root_candidate / 'ootp_csv').exists():
-    data_base = (data_root_candidate / 'ootp_csv').resolve()
-elif data_root_candidate.exists():
-    data_base = data_root_candidate.resolve()
-else:
-    data_base = (script_dir / 'ootp_csv').resolve()
-scripts = sorted((script_dir / 'abl_scripts').glob('z_abl_*.py'), key=lambda p: p.name)
-failures = []
-for script in scripts:
-    print(f'Running {script.name}...')
-    proc = subprocess.run(
-        ['python', str(script), '--base', str(data_base)],
-        cwd=script_dir,
-        stdout=DEVNULL,
-        stderr=STDOUT,
-    )
-    if proc.returncode != 0:
-        failures.append(script.name)
-if failures:
-    print('Scripts failed:', ', '.join(failures))
-else:
-    print('All z_abl scripts completed successfully.')
+SCRIPT_DIR = Path(__file__).resolve().parent
+
+
+def resolve_data_root() -> Path:
+    configured = os.environ.get("ABL_CSV_EXEC_ROOT")
+    if configured:
+        candidate = Path(configured)
+        if candidate.exists():
+            return candidate
+    if DEFAULT_DATA_ROOT.exists():
+        return DEFAULT_DATA_ROOT
+    return SCRIPT_DIR / "ootp_csv"
+
+
+def build_base_arg(data_root: Path) -> Path:
+    if (data_root / "ootp_csv").exists():
+        return (data_root / "ootp_csv").resolve()
+    return data_root.resolve()
+
+
+def main() -> None:
+    data_root = resolve_data_root()
+    data_base = build_base_arg(data_root)
+    scripts = sorted((SCRIPT_DIR / "abl_scripts").glob("z_abl_*.py"), key=lambda p: p.name)
+    failures: list[str] = []
+    print(f"DATA_ROOT: {data_root}")
+    print(f"--base passed to scripts: {data_base}")
+    _start_cwd = os.getcwd()
+    for script in scripts:
+        print(f"Running {script.name}...")
+        proc = subprocess.run(
+            ["python", str(script), "--base", str(data_base)],
+            cwd=SCRIPT_DIR,
+            stdout=DEVNULL,
+            stderr=STDOUT,
+        )
+        assert os.getcwd() == _start_cwd, "A report script changed CWD; remove os.chdir() in that script."
+        if proc.returncode != 0:
+            failures.append(script.name)
+    if failures:
+        print("Scripts failed:", ", ".join(failures))
+    else:
+        print("All z_abl scripts completed successfully.")
+
+
+if __name__ == "__main__":
+    main()

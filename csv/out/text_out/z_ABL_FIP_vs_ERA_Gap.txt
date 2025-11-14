@@ -1,0 +1,43 @@
+ABL FIP vs ERA Gap
+==================
+Generated on: 2025-11-14 12:40:51
+
+Highlights pitchers whose ERA deviates from FIP to flag luck-driven results and possible regression paths. FIP constant c = 3.250
+
+Player                   Team       CD   Role   Rating              IP     ERA     FIP    Delta     K%    BB%
+-------------------------------------------------------------------------------------------------------------
+Fernando Borrego         POR        A-W  SP     Tough Luck        31.0    9.29    5.73     3.56  0.138  0.145
+Antonio Romo             SEA        A-W  SP     Tough Luck        33.0    8.18    4.83     3.36  0.096  0.076
+Bobby Kinney             MIN        N-C  RP     Tough Luck        15.0    6.60    3.65     2.95  0.159  0.072
+Adam Strate              POR        A-W  SP     Tough Luck        40.0    6.97    4.10     2.88  0.150  0.091
+David Acuna              PIT        A-E  SP     Tough Luck        41.0    6.37    3.76     2.60  0.190  0.095
+Tony Espinal             CHI        N-C  SP     Tough Luck        33.0    7.91    5.40     2.51  0.122  0.122
+Alex Alvarez             NAS        A-C  SP     Tough Luck        42.0    5.57    3.65     1.92  0.176  0.101
+Ricky Torres             ATL        N-E  SP     Tough Luck        32.0    5.91    4.06     1.84  0.146  0.097
+Jose Flores              DET        N-C  SP     Tough Luck        36.0    5.75    4.11     1.64  0.097  0.019
+Bill Ybanez              ATL        N-E  SP     Tough Luck        44.0    5.11    3.66     1.45  0.184  0.087
+Benedicto Brown          LA         N-W  SP     Tough Luck        31.0    5.81    4.38     1.43  0.164  0.100
+Noor Durrani             NY         A-E  SP     Tough Luck        38.0    5.68    4.30     1.38  0.192  0.105
+Joel Valenty             LA         N-W  SP     Tough Luck        48.0    4.50    3.31     1.19  0.150  0.063
+Sergio Martinez          TB         N-E  SP     Tough Luck        49.0    4.78    3.60     1.18  0.153  0.088
+Warren Holster           DAL        N-C  SP     Tough Luck        45.0    4.40    3.32     1.08  0.151  0.085
+Dave Lamb                POR        A-W  SP     Tough Luck        39.0    5.77    4.69     1.08  0.131  0.120
+David Rodriguez          POR        A-W  SP     Headwind          38.0    4.50    3.54     0.96  0.150  0.096
+Jonathan Guzman          DAL        N-C  RP     Headwind          16.0    5.62    4.75     0.88  0.200  0.125
+Bill Borden              MIA        N-E  SP     Headwind          46.0    4.89    4.03     0.86  0.135  0.062
+Ricardo Sanchez          SEA        A-W  SP     Headwind          49.0    5.33    4.54     0.79  0.141  0.091
+Victor Martinez          BOS        A-E  SP     Headwind          44.0    4.30    3.52     0.77  0.206  0.113
+Julio Gonzalez           TB         N-E  SP     Headwind          50.0    4.86    4.11     0.75  0.123  0.068
+Miguel Velasquez         BOS        A-E  SP     Headwind          45.0    5.00    4.27     0.73  0.137  0.063
+Chris Stella             MIA        N-E  SP     Headwind          52.0    4.50    3.85     0.65  0.149  0.068
+Rick Satchell            CIN        A-C  SP     Headwind          52.0    4.50    3.85     0.65  0.101  0.055
+
+Key:
+  perf_flag: UNDERPERFORM >= +0.50 (ERA >> FIP), OVERPERFORM <= -0.50 (ERA << FIP).
+  Rating tiers: Tough Luck (>= +1.00), Headwind (+0.50 to +0.99), Neutral (-0.49 to +0.49), Tailwind (-0.99 to -0.50), Magic Touch (<= -1.00).
+  QUAL requires IP >= 30.0 for SP/Swing, >= 15.0 for RP.
+
+Definitions:
+  Delta = ERA - FIP (positive suggests rougher results than peripherals).
+  FIP uses league-wide constant derived from HR, BB, SO, IP population.
+  K% and BB% use BF when available.

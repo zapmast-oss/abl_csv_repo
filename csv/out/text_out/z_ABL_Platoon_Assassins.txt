@@ -1,0 +1,23 @@
+ABL Platoon Assassins
+=========================
+Generated on: 2025-11-14 12:41:06
+
+Spotlights hitters who torch the advantaged matchup (LHB vs RHP or RHB vs LHP) far beyond the norm.
+Great for lineup notes: lean on these bats when the platoon edge is in their favor.
+
+Player (Team)                CD   Context       Rating      OPS_adv  OPS_dis   Î”OPS  PA_adv
+--------------------------------------------------------------------------------------------
+(No hitters met the qualification thresholds.)
+
+Thresholds: adv PA >= 40, both-hand PA >= 60.
+
+Key:
+  Terminator >= +0.200 deltas; Assassin 0.120-0.199; Crusher 0.060-0.119; Leveraged 0-0.059;
+  Neutralized -0.059~-0.001; Exposed <= -0.060 (opponents flip the platoon).
+
+Definitions:
+  adv_context identifies the matchup (LHB vs RHP or RHB vs LHP).
+  adv_ops/disadv_ops = OPS versus advantaged vs disadvantaged hand.
+  Î”OPS = advantaged OPS minus disadvantaged OPS.
+  PA balance ratio = exposure balance between both sides (1.0 = even).
+  League OPS figures and Î”OPS mean appear in the CSV for reference.

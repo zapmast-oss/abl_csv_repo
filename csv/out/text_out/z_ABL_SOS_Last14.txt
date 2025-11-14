@@ -1,0 +1,35 @@
+ABL SOS Last 14
+==================
+Generated on: 2025-11-14 12:41:13
+
+
+Portland             Gauntlet | SOS 0.574 | League 0.500 | Î” +0.074 | Record 4-9
+Phoenix              Gauntlet | SOS 0.562 | League 0.500 | Î” +0.062 | Record 8-5
+Seattle              Gauntlet | SOS 0.556 | League 0.500 | Î” +0.056 | Record 7-6
+Detroit              Gauntlet | SOS 0.556 | League 0.500 | Î” +0.056 | Record 5-8
+Los Angeles          Gauntlet | SOS 0.556 | League 0.500 | Î” +0.056 | Record 4-9
+Minneapolis          Gauntlet | SOS 0.556 | League 0.500 | Î” +0.056 | Record 3-10
+Pittsburgh           Gauntlet | SOS 0.544 | League 0.500 | Î” +0.044 | Record 4-9
+Charlotte            Gauntlet | SOS 0.527 | League 0.500 | Î” +0.027 | Record 9-4
+Philadelphia         Gauntlet | SOS 0.527 | League 0.500 | Î” +0.027 | Record 6-7
+Atlanta              Gauntlet | SOS 0.521 | League 0.500 | Î” +0.021 | Record 5-8
+New York             Neutral  | SOS 0.515 | League 0.500 | Î” +0.015 | Record 5-8
+Houston              Neutral  | SOS 0.515 | League 0.500 | Î” +0.015 | Record 5-8
+San Diego            Neutral  | SOS 0.509 | League 0.500 | Î” +0.009 | Record 8-5
+Boston               Neutral  | SOS 0.503 | League 0.500 | Î” +0.003 | Record 8-5
+Cincinnati           Neutral  | SOS 0.497 | League 0.500 | Î” -0.003 | Record 7-6
+San Francisco        Neutral  | SOS 0.485 | League 0.500 | Î” -0.015 | Record 7-6
+Denver               Soft     | SOS 0.467 | League 0.500 | Î” -0.033 | Record 7-6
+Las Vegas            Soft     | SOS 0.450 | League 0.500 | Î” -0.050 | Record 10-3
+Miami                Soft     | SOS 0.444 | League 0.500 | Î” -0.056 | Record 8-5
+Dallas               Soft     | SOS 0.438 | League 0.500 | Î” -0.062 | Record 7-6
+St. Louis            Soft     | SOS 0.432 | League 0.500 | Î” -0.068 | Record 6-7
+Chicago              Soft     | SOS 0.426 | League 0.500 | Î” -0.074 | Record 7-6
+Nashville            Soft     | SOS 0.420 | League 0.500 | Î” -0.080 | Record 9-4
+Tampa Bay            Soft     | SOS 0.420 | League 0.500 | Î” -0.080 | Record 7-6
+
+Key:
+  SOS = average opponent win% over same 14-day window.
+  Gauntlet -> facing tougher slate (Î” >= +0.020).
+  Soft     -> easier slate (Î” <= -0.020).
+  Neutral  -> within +/-0.019 of league average.

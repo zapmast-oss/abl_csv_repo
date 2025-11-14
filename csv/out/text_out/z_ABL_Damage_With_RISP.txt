@@ -1,0 +1,20 @@
+ABL Damage With RISP
+===========================
+Generated on: 2025-11-14 12:40:41
+
+
+Player                 Tm    Rating      OPS  RISP OPS    dOPS    PA   PA_R
+---------------------------------------------------------------------------
+(No hitters met the qualification thresholds.)
+
+Thresholds: overall PA >= 80, RISP PA >= 20.
+
+Key:
+  Icewater >= +0.150 delta OPS, Clutch 0.075-0.149, Steady within +/-0.025, Pressing -0.099 to -0.026, Chilled <= -0.100.
+
+Definitions:
+  OPS = season-wide on-base plus slugging.
+  RISP OPS = OPS limited to PA with runners in scoring position.
+  dOPS = OPS_RISP - OPS_overall (positive = better with ducks on the pond).
+  z_Score contextualizes dOPS relative to league distribution (>= thresholds).
+  League averages (OPS and RISP OPS) printed in CSV for reference.
