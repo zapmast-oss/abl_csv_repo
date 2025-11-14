@@ -1,6 +1,6 @@
 ABL Firestarter Table
 =========================
-Generated on: 2025-11-14 12:40:52
+Generated on: 2025-11-14 13:49:17
 
 Shows how each clubâ€™s leadoff OBP and first-inning production fuel early offense,
 spotlighting teams that seize momentum by scoring before opponents settle in.

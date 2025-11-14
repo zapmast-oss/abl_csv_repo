@@ -1,7 +1,9 @@
 ABL Manager Tendencies
 ==========================
+Generated on: 2025-11-14 13:49:27
+
 Summarizes each skipper's small-ball usage, hook speed, and platoon appetite versus league norms.
-Useful for scouting playoff matchups—know who bunts, who yanks starters fast, and who trusts platoons.
+Useful for scouting playoff matchupsâ€”know who bunts, who yanks starters fast, and who trusts platoons.
 
 Manager / Team                 | Rating         Idx | Small          Idx | Hook           Idx | Platoon          Idx
 --------------------------------------------------------------------------------------------------------------------

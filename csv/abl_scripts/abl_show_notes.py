@@ -89,7 +89,7 @@ def main() -> None:
 
     full_text = "\n".join(parts)
     full_text = add_broadcast_line_spacing(full_text)
-    out_dir = Path("out") / "txt_out"
+    out_dir = Path("out") / "text_out"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "ABL_Show_Notes.txt"
     out_path.write_text(full_text, encoding="utf-8")

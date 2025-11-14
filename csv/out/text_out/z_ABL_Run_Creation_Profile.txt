@@ -1,5 +1,7 @@
 ABL Run Creation Profile
 ============================
+Generated on: 2025-11-14 13:49:35
+
 
 Breaks down how each lineup manufactures runs: long ball share, stolen-base pressure, and two-out conversion rate.
 Great for spotting clubs that live on slugging versus those who pressure defenses or cash in late-inning chances.

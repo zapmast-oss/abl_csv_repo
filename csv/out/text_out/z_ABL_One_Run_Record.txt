@@ -1,6 +1,8 @@
 ABL One-Run Record
 ======================
-Shows how each club fares in one-run decisions versus its overall pace—perfect for clutch/luck chatter.
+Generated on: 2025-11-14 13:49:30
+
+Shows how each club fares in one-run decisions versus its overall paceâ€”perfect for clutch/luck chatter.
 Use it to flag teams overachieving (or melting down) in coin-flip finishes.
 
 Team                 CD   Profile      1R W-L    Pct  Overall    dPct

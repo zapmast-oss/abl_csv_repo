@@ -1,5 +1,7 @@
 ABL Division Leverage
 ========================
+Generated on: 2025-11-14 13:49:16
+
 Shows each club's divisional record plus the share of remaining intra-division games to judge leverage.
 
 Team                   CD   Profile    Div Record              Remaining Div Games             

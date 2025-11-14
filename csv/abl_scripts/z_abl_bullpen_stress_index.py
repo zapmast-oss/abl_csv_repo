@@ -497,7 +497,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     report.to_csv(out_path, index=False)
 
-    text_dir = base_dir / "out" / "txt_out"
+    text_dir = base_dir / "out" / "text_out"
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / out_path.name.replace(".csv", ".txt")
     text_path.write_text(stamp_text_block(build_text_report(text_df)), encoding="utf-8")

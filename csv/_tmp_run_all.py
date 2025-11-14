@@ -1,8 +1,9 @@
 from pathlib import Path
-ROOT    = Path(__file__).resolve().parents[1]
-OUT_DIR = ROOT / "output"
-OUT_TXT = OUT_DIR / "text"
-OUT_CSV = OUT_DIR / "csv"
+SCRIPT_DIR = Path(__file__).resolve().parent
+ROOT = SCRIPT_DIR.parent
+OUT_DIR = SCRIPT_DIR / "out"
+OUT_TXT = OUT_DIR / "text_out"
+OUT_CSV = OUT_DIR / "csv_out"
 OUT_TXT.mkdir(parents=True, exist_ok=True)
 OUT_CSV.mkdir(parents=True, exist_ok=True)
 print("OUT_TXT:", OUT_TXT)
@@ -15,7 +16,6 @@ from subprocess import DEVNULL, STDOUT
 DEFAULT_DATA_ROOT = Path(
     r"C:\Users\earld\OneDrive\Documents\Out of the Park Developments\OOTP Baseball 26\saved_games\Action Baseball League.lg\import_export\csv"
 )
-SCRIPT_DIR = Path(__file__).resolve().parent
 
 
 def resolve_data_root() -> Path:

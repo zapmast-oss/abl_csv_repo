@@ -1,6 +1,6 @@
 ABL FIP vs ERA Gap
 ==================
-Generated on: 2025-11-14 12:40:51
+Generated on: 2025-11-14 13:49:16
 
 Highlights pitchers whose ERA deviates from FIP to flag luck-driven results and possible regression paths. FIP constant c = 3.250
 
