@@ -1,0 +1,43 @@
+ABL Bullpen Stress Index
+===========================
+Last-14/7-day bullpen workload snapshot: innings per game, back-to-back usage, and high-leverage share.
+Meaning: higher stress scores flag pens carrying heavier loads and potential fatigue risk; inherited runner data adds season-long context.
+
+Team                   CD   Rating     Stress14  Stress7   IP/G14    B2B14  HiLev14    IR   IRS%
+------------------------------------------------------------------------------------------------
+Miami                  N-E  High          2.928    3.111     2.38    0.217    0.870    NA     NA
+Phoenix                N-W  Moderate      2.222    1.556     1.83    0.111    0.667    NA     NA
+Atlanta                N-E  Moderate      2.432    1.979     2.00    0.182    0.682    NA     NA
+Dallas                 N-C  Critical      3.137    2.944     2.62    0.174    0.870    NA     NA
+Detroit                N-C  Critical      3.167    3.667     2.69    0.100    0.850    NA     NA
+Charlotte              N-E  High          2.755    2.767     2.23    0.143    0.905    NA     NA
+San Diego              N-W  High          2.627    3.212     2.08    0.200    0.900    NA     NA
+Tampa Bay              N-E  Moderate      2.250    1.562     1.83    0.167    0.667    NA     NA
+Los Angeles            N-W  High          2.740    3.500     2.31    0.045    0.818    NA     NA
+San Francisco          N-W  Critical      3.011    4.417     2.64    0.100    0.650    NA     NA
+Minneapolis            N-C  Moderate      2.118    2.104     1.75    0.158    0.579    NA     NA
+Chicago                N-C  Moderate      2.333    2.617     1.90    0.200    0.667    NA     NA
+Denver                 A-W  Critical      3.192    2.933     2.62    0.192    0.962    NA     NA
+Cincinnati             A-C  Moderate      2.469    2.429     2.00    0.125    0.812    NA     NA
+New York               A-E  High          2.816    2.200     2.45    0.111    0.611    NA     NA
+Nashville              A-C  High          2.853    3.167     2.31    0.182    0.909    NA     NA
+Las Vegas              A-W  High          2.773    2.375     2.27    0.188    0.812    NA     NA
+Portland               A-W  Critical      3.044    2.900     2.62    0.048    0.810    NA     NA
+St. Louis              A-C  Moderate      2.136    2.300     1.64    0.000    1.000    NA     NA
+Boston                 A-E  Moderate      2.073    2.600     1.46    0.278    0.944    NA     NA
+Pittsburgh             A-E  High          2.854    2.385     2.42    0.125    0.750    NA     NA
+Philadelphia           A-E  Moderate      2.067    1.833     1.60    0.200    0.733    NA     NA
+Houston                A-C  Manageable    1.650    1.333     1.25    0.133    0.667    NA     NA
+Seattle                A-W  Critical      3.329    3.162     2.75    0.263    0.895    NA     NA
+
+Key (Ratings):
+  Critical >=3.0 | High 2.5-2.99 | Moderate 2.0-2.49 | Manageable <2.0 (Unknown if data gaps).
+
+Definitions:
+  Stress14/7 = composite bullpen strain over last 14 / last 7 days.
+  IP/G14 (IP/G7) = bullpen innings per team game across last 14 (7) days.
+  B2B14 (B2B7) = share of relief appearances made on back-to-back days in last 14 (7) days.
+  HiLev14 (HiLev7) = share of outings with leverage index >=1.5 or marked SV/HLD/GF/save-sit.
+  IR/IRS% = season-long inherited runners and their scoring rate from the sortable pitching report.
+  Stress Index = IP/G + 0.5*B2B Rate + 0.5*High-Leverage Share (higher = more strain).
+  Windows always reference the anchor_date-based last-14 and last-7 day periods.

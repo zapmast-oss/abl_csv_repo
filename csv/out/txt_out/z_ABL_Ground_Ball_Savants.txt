@@ -1,0 +1,40 @@
+ABL Ground Ball Savants
+=======================
+Spotlights sinker specialists who keep contact on the ground, turn double plays, and choke off HR damage. League GB% 0.506, DP/9 0.874
+
+Player                   Team       CD   Role   Rating                  IP     GB%    DP/9   HR/FB  Savant+  Team IF ZR
+-----------------------------------------------------------------------------------------------------------------------
+Jon Moreno               DET        N-C  RP     Wormburner Supreme    16.3   0.455   3.306      NA    1.860         5.2
+Michael Castillo         DEN        A-W  RP     Wormburner Supreme    16.7   0.629   2.160      NA    1.652        -1.4
+Adam Jahn                LA         N-W  Swing  Wormburner Supreme    34.3   0.634   1.573   0.033    1.525         1.8
+Emilio Ortega            TB         N-E  RP     Wormburner Supreme    15.3   0.645   1.761      NA    1.522         0.2
+Adam Smith               BOS        A-E  RP     Wormburner Supreme    17.3   0.658   1.558      NA    1.461         5.6
+Miguel Salgado           HOU        A-C  SP     Wormburner Supreme    30.0   0.580   1.800      NA    1.451         8.6
+Antonio Romo             SEA        A-W  SP     Wormburner Supreme    33.0   0.623   1.636      NA    1.446        -2.1
+Brett Helvie             DET        N-C  SP     Wormburner Supreme    48.7   0.500   1.110   0.018    1.409         5.2
+Damian Serano            DEN        A-W  SP     Wormburner Supreme    40.7   0.538   1.992   0.093    1.405        -1.4
+Kennie Murdock           SD         N-W  SP     Wormburner Supreme    34.3   0.671   1.311      NA    1.384         2.5
+Danny LaRocque           SD         N-W  RP     Wormburner Supreme    16.3   0.571   1.653      NA    1.384         2.5
+Arthur Rizzo             SD         N-W  SP     Wormburner Supreme    36.3   0.536   1.982   0.154    1.366         2.5
+Dabir Aly                CHA        N-E  SP     Wormburner Supreme    35.0   0.508   1.800   0.062    1.344         4.6
+Jorge Galvez             BOS        A-E  SP     Wormburner Supreme    46.3   0.496   1.554   0.035    1.343         5.6
+Kyle Chambers            SF         N-W  SP     Wormburner Supreme    55.3   0.517   1.464   0.034    1.341        -1.1
+Jacob Sutherland         NAS        A-C  RP     Wormburner Supreme    24.3   0.481   1.849      NA    1.340        -2.6
+Willie Gomez             STL        A-C  SP     Wormburner Supreme    36.3   0.537   1.734   0.079    1.330         3.7
+Rene Oregon              SEA        A-W  SP     Wormburner Supreme    43.7   0.540   1.649   0.065    1.326        -2.1
+Adam Strate              POR        A-W  SP     Wormburner Supreme    40.3   0.576   1.562   0.083    1.313        -3.9
+Jaylen Taylor            LV         A-W  SP     Wormburner Supreme    47.7   0.565   1.322   0.043    1.306        -2.7
+Manny Garcia             DEN        A-W  SP     Dirt Artist           38.3   0.568   1.643   0.211    1.275        -1.4
+Robbie Kendall           SD         N-W  SP     Dirt Artist           49.3   0.541   1.642   0.118    1.271         2.5
+Warren Holster           DAL        N-C  SP     Dirt Artist           45.3   0.526   0.794   0.022    1.246        -3.8
+David Wells              PHO        N-W  RP     Dirt Artist           20.3   0.558   1.328      NA    1.242         1.6
+Edwin Martinez           CHA        N-E  RP     Dirt Artist           18.3   0.649   0.982      NA    1.229         4.6
+
+Key:
+  Ratings: Wormburner Supreme (>=1.30), Dirt Artist (1.15-1.29), Ground Boss (1.00-1.14), Steady Roller (0.85-0.99), Flyer Risk (<0.85).
+  Badges: Sinkerballer (GB+ >=1.20 & HR/FB <= 95% of league), DP Machine (DP9+ >=1.35).
+
+Definitions:
+  GB% = GB / opponent BIP; DP/9 from GIDP induced. HR/FB uses OF-only flyballs when available.
+  Savant Index blends GB dominance (60%), DP knack (30%), and HR avoidance (10% inverse).
+  Infield synergy uses summed ZR at 1B-3B-SS scaled vs league (team_if_zr_plus).

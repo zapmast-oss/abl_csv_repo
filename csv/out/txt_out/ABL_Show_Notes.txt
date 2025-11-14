@@ -1,0 +1,158 @@
+=== Action Baseball League - Show Notes ===
+Generated on: 2025-11-13 11:08:24
+
+=== Standings & run differential ===
+=== Action Baseball League Standings ===
+                  Team  W  L   PCT   GB
+    Las Vegas Gamblers 24  8 0.750  0.0
+    Charlotte Colonels 22 10 0.688  0.0
+       Dallas Rustlers 19 13 0.594  0.0
+     Denver Rocketeers 18 14 0.563  6.0
+      Miami Hurricanes 18 14 0.563  4.0
+       Nashville Blues 18 14 0.563  0.0
+San Francisco Warriors 18 14 0.563  0.0
+       Boston Patriots 17 15 0.531  0.0
+          Chicago Fire 17 15 0.531  2.0
+         Detroit Dukes 17 15 0.531  2.0
+   St. Louis Stallions 17 15 0.531  1.0
+    Cincinnati Cougars 16 16 0.500  2.0
+    Los Angeles Cobras 16 16 0.500  2.0
+         New York Aces 16 16 0.500  1.0
+     Phoenix Firebirds 16 16 0.500  2.0
+        Seattle Comets 16 16 0.500  8.0
+     Philadelphia Fury 15 17 0.469  2.0
+     San Diego Seraphs 14 18 0.438  4.0
+       Tampa Bay Storm 14 18 0.438  8.0
+     Houston Mavericks 13 19 0.406  5.0
+    Pittsburgh Express 12 20 0.375  5.0
+  Minneapolis Blizzard 11 21 0.344  8.0
+         Atlanta Kings 10 22 0.313 12.0
+  Portland Lumberjacks 10 22 0.313 14.0
+
+=== Last 10 ===
+=== ABL Last 10 (per team) ===
+ team_id           team_display  last10_w  last10_l  last10_diff
+       1       Miami Hurricanes         7         3            4
+       2      Phoenix Firebirds         7         3            4
+       6     Charlotte Colonels         7         3            4
+      16        Nashville Blues         7         3            4
+      17     Las Vegas Gamblers         7         3            4
+      13      Denver Rocketeers         6         4            2
+       7      San Diego Seraphs         6         4            2
+       4        Dallas Rustlers         6         4            2
+      24         Seattle Comets         5         5            0
+      20        Boston Patriots         5         5            0
+       8        Tampa Bay Storm         5         5            0
+      10 San Francisco Warriors         5         5            0
+      22      Philadelphia Fury         5         5            0
+      14     Cincinnati Cougars         5         5            0
+      19    St. Louis Stallions         5         5            0
+       3          Atlanta Kings         4         6           -2
+      23      Houston Mavericks         4         6           -2
+      18   Portland Lumberjacks         4         6           -2
+      21     Pittsburgh Express         4         6           -2
+      12           Chicago Fire         4         6           -2
+       5          Detroit Dukes         3         7           -4
+      15          New York Aces         3         7           -4
+       9     Los Angeles Cobras         3         7           -4
+      11   Minneapolis Blizzard         3         7           -4
+
+Saved last 10 data to abl_last10.csv
+
+=== Streaks (winning & losing) ===
+=== Top ABL Winning Streaks ===
+  team_display  w  l   pct streak_display
+DEN Rocketeers 18 14 0.563             W5
+      TB Storm 14 18 0.438             W2
+   SF Warriors 18 14 0.563             W2
+    SD Seraphs 14 18 0.438             W2
+    SEA Comets 16 16 0.500             W2
+
+=== Top ABL Losing Streaks ===
+   team_display  w  l   pct streak_display
+        NY Aces 16 16 0.500             L3
+   DAL Rustlers 19 13 0.594             L2
+       CHI Fire 17 15 0.531             L2
+      DET Dukes 17 15 0.531             L2
+POR Lumberjacks 10 22 0.313             L2
+
+--- Streaks (Broadcast lines) ---
+DEN Rocketeers: 18-14 (0.563), on a 5-game winning streak
+TB Storm: 14-18 (0.438), on a 2-game winning streak
+SF Warriors: 18-14 (0.563), on a 2-game winning streak
+
+SD Seraphs: 14-18 (0.438), on a 2-game winning streak
+SEA Comets: 16-16 (0.500), on a 2-game winning streak
+NY Aces: 16-16 (0.500), on a 3-game losing streak
+
+DAL Rustlers: 19-13 (0.594), on a 2-game losing streak
+CHI Fire: 17-15 (0.531), on a 2-game losing streak
+DET Dukes: 17-15 (0.531), on a 2-game losing streak
+
+POR Lumberjacks: 10-22 (0.313), on a 2-game losing streak
+
+=== Top players (hitters & pitchers) ===
+=== Top 5 ABL Hitters (Season 1981) ===
+    player_name    team_display  pa   avg  hr  rbi   ops
+     Juan Perez    BOS Patriots 131 0.269  14   25 1.073
+     Joe Turner    BOS Patriots  81 0.357  10   23 1.205
+ Miguel Morales        CHI Fire 142 0.336  10   26 1.085
+Orlando Greeley       LA Cobras 135 0.370   9   31 1.112
+Jeremy Campbell POR Lumberjacks 129 0.215   9   22 0.737
+
+--- Hitters (Broadcast lines) ---
+#1 hitter: Juan Perez (BOS Patriots): AVG 0.269, 14 HR, 25 RBI, OPS 1.073.
+#2 hitter: Joe Turner (BOS Patriots): AVG 0.357, 10 HR, 23 RBI, OPS 1.205.
+#3 hitter: Miguel Morales (CHI Fire): AVG 0.336, 10 HR, 26 RBI, OPS 1.085.
+
+#4 hitter: Orlando Greeley (LA Cobras): AVG 0.370, 9 HR, 31 RBI, OPS 1.112.
+#5 hitter: Jeremy Campbell (POR Lumberjacks): AVG 0.215, 9 HR, 22 RBI, OPS 0.737.
+
+=== Top 5 ABL Pitchers (Season 1981) ===
+   player_name  team_display   ip  w  l  era  k  whip
+Chris Collette   CIN Cougars 24.0  3  1 0.38 14  1.21
+   Noah Debrah STL Stallions 22.0  2  0 0.82 13  1.00
+Antonio Pineda   SF Warriors 52.3  6  1 1.38 39  1.11
+ Mike Randolph  BOS Patriots 35.7  2  1 1.51 18  0.87
+     Dabir Aly  CHA Colonels 35.0  3  2 1.54 32  1.29
+
+--- Pitchers (Broadcast lines) ---
+#1 pitcher: Chris Collette (CIN Cougars): 3-1, 24.0 IP, ERA 0.38, 14 K, WHIP 1.21.
+#2 pitcher: Noah Debrah (STL Stallions): 2-0, 22.0 IP, ERA 0.82, 13 K, WHIP 1.00.
+#3 pitcher: Antonio Pineda (SF Warriors): 6-1, 52.3 IP, ERA 1.38, 39 K, WHIP 1.11.
+
+#4 pitcher: Mike Randolph (BOS Patriots): 2-1, 35.7 IP, ERA 1.51, 18 K, WHIP 0.87.
+#5 pitcher: Dabir Aly (CHA Colonels): 3-2, 35.0 IP, ERA 1.54, 32 K, WHIP 1.29.
+
+=== Fun leaders (speed & strikeout artists) ===
+=== Top 5 ABL Base Stealers (Season 1981) ===
+    player_name team_display  pa  sb  cs   sbp   avg
+   David Olguin   SEA Comets 140  15   2 0.882 0.256
+  Charles Crane  LV Gamblers 138  10   2 0.833 0.254
+Jonathan Mestas      NY Aces 142  10   5 0.667 0.316
+ Mario Smithson  LV Gamblers 116   9   3 0.750 0.298
+Gustavo Navarro    ATL Kings 142   8   1 0.889 0.150
+
+--- Speed Demons (Broadcast lines) ---
+#1 speedster: David Olguin (SEA Comets): 15 SB, 2 CS, SB% 0.882, AVG 0.256.
+#2 speedster: Charles Crane (LV Gamblers): 10 SB, 2 CS, SB% 0.833, AVG 0.254.
+#3 speedster: Jonathan Mestas (NY Aces): 10 SB, 5 CS, SB% 0.667, AVG 0.316.
+
+#4 speedster: Mario Smithson (LV Gamblers): 9 SB, 3 CS, SB% 0.750, AVG 0.298.
+#5 speedster: Gustavo Navarro (ATL Kings): 8 SB, 1 CS, SB% 0.889, AVG 0.150.
+
+=== Top 5 ABL Strikeout Pitchers (Season 1981) ===
+    player_name  team_display   ip  k   k9  era
+  Jose Coronado STL Stallions 51.3 59 10.3 3.16
+Bobby Rodriguez   LV Gamblers 56.3 57  9.1 2.56
+   Jerry Romero     LA Cobras 50.0 56 10.1 4.14
+   Dylan Wilson HOU Mavericks 49.7 55 10.0 3.08
+ Edgar Gonzalez      CHI Fire 48.0 52  9.8 2.62
+
+--- Strikeout Artists (Broadcast lines) ---
+#1 strikeout arm: Jose Coronado (STL Stallions): 59 K in 51.3 IP, K/9 10.3, ERA 3.16.
+#2 strikeout arm: Bobby Rodriguez (LV Gamblers): 57 K in 56.3 IP, K/9 9.1, ERA 2.56.
+#3 strikeout arm: Jerry Romero (LA Cobras): 56 K in 50.0 IP, K/9 10.1, ERA 4.14.
+
+#4 strikeout arm: Dylan Wilson (HOU Mavericks): 55 K in 49.7 IP, K/9 10.0, ERA 3.08.
+#5 strikeout arm: Edgar Gonzalez (CHI Fire): 52 K in 48.0 IP, K/9 9.8, ERA 2.62.

@@ -1,0 +1,69 @@
+ABL Standings Report (as of 1981-05-11)
+
+          team_display status  w  l  t  g   pct   gb  streak  run_diff  magic_number  pos
+    Las Vegas Gamblers    HOT 24  8  0 32 0.750  0.0      -2        59           125    1
+    Charlotte Colonels   GOOD 22 10  0 32 0.688  0.0      -1        50           127    1
+       Dallas Rustlers   FAIR 19 13  0 32 0.594  0.0      -2        28           129    1
+San Francisco Warriors   FAIR 18 14  0 32 0.563  0.0       2        29           129    1
+       Nashville Blues   FAIR 18 14  0 32 0.563  0.0       1        26           130    1
+       Boston Patriots    AVG 17 15  0 32 0.531  0.0       2        11           130    1
+      Miami Hurricanes   FAIR 18 14  0 32 0.563  4.0       1       -13          1000    2
+     Denver Rocketeers   FAIR 18 14  0 32 0.563  6.0       5        16          1000    2
+          Chicago Fire    AVG 17 15  0 32 0.531  2.0      -2         2          1000    2
+   St. Louis Stallions    AVG 17 15  0 32 0.531  1.0       1        29          1000    2
+    Los Angeles Cobras    AVG 16 16  0 32 0.500  2.0       1        -1          1000    2
+         New York Aces    AVG 16 16  0 32 0.500  1.0      -3         4          1000    2
+         Detroit Dukes    AVG 17 15  0 32 0.531  2.0      -2         7          1000    3
+     Phoenix Firebirds    AVG 16 16  0 32 0.500  2.0      -1       -17          1000    3
+    Cincinnati Cougars    AVG 16 16  0 32 0.500  2.0      -2        15          1000    3
+        Seattle Comets    AVG 16 16  0 32 0.500  8.0       2       -18          1000    3
+     Philadelphia Fury     OK 15 17  0 32 0.469  2.0      -1         4          1000    3
+       Tampa Bay Storm     OK 14 18  0 32 0.438  8.0       2       -12          1000    3
+     San Diego Seraphs     OK 14 18  0 32 0.438  4.0       2       -22          1000    4
+     Houston Mavericks     OK 13 19  0 32 0.406  5.0       2       -28          1000    4
+    Pittsburgh Express   COLD 12 20  0 32 0.375  5.0      -1       -42          1000    4
+  Minneapolis Blizzard   COLD 11 21  0 32 0.344  8.0      -1       -24          1000    4
+         Atlanta Kings   COLD 10 22  0 32 0.313 12.0       1       -27          1000    4
+  Portland Lumberjacks   COLD 10 22  0 32 0.313 14.0      -2       -76          1000    4
+
+--- Broadcast lines ---
+Las Vegas Gamblers: 24-8-0 (0.750), GB 0.0, run diff 59, pos 1, status HOT
+Charlotte Colonels: 22-10-0 (0.688), GB 0.0, run diff 50, pos 1, status GOOD
+Dallas Rustlers: 19-13-0 (0.594), GB 0.0, run diff 28, pos 1, status FAIR
+San Francisco Warriors: 18-14-0 (0.563), GB 0.0, run diff 29, pos 1, status FAIR
+Nashville Blues: 18-14-0 (0.563), GB 0.0, run diff 26, pos 1, status FAIR
+Boston Patriots: 17-15-0 (0.531), GB 0.0, run diff 11, pos 1, status AVG
+Miami Hurricanes: 18-14-0 (0.563), GB 4.0, run diff -13, pos 2, status FAIR
+Denver Rocketeers: 18-14-0 (0.563), GB 6.0, run diff 16, pos 2, status FAIR
+Chicago Fire: 17-15-0 (0.531), GB 2.0, run diff 2, pos 2, status AVG
+St. Louis Stallions: 17-15-0 (0.531), GB 1.0, run diff 29, pos 2, status AVG
+Los Angeles Cobras: 16-16-0 (0.500), GB 2.0, run diff -1, pos 2, status AVG
+New York Aces: 16-16-0 (0.500), GB 1.0, run diff 4, pos 2, status AVG
+Detroit Dukes: 17-15-0 (0.531), GB 2.0, run diff 7, pos 3, status AVG
+Phoenix Firebirds: 16-16-0 (0.500), GB 2.0, run diff -17, pos 3, status AVG
+Cincinnati Cougars: 16-16-0 (0.500), GB 2.0, run diff 15, pos 3, status AVG
+Seattle Comets: 16-16-0 (0.500), GB 8.0, run diff -18, pos 3, status AVG
+Philadelphia Fury: 15-17-0 (0.469), GB 2.0, run diff 4, pos 3, status OK
+Tampa Bay Storm: 14-18-0 (0.438), GB 8.0, run diff -12, pos 3, status OK
+San Diego Seraphs: 14-18-0 (0.438), GB 4.0, run diff -22, pos 4, status OK
+Houston Mavericks: 13-19-0 (0.406), GB 5.0, run diff -28, pos 4, status OK
+Pittsburgh Express: 12-20-0 (0.375), GB 5.0, run diff -42, pos 4, status COLD
+Minneapolis Blizzard: 11-21-0 (0.344), GB 8.0, run diff -24, pos 4, status COLD
+Atlanta Kings: 10-22-0 (0.313), GB 12.0, run diff -27, pos 4, status COLD
+Portland Lumberjacks: 10-22-0 (0.313), GB 14.0, run diff -76, pos 4, status COLD
+
+Recent News
+- 1981-05-11: NBC's Top Player Named — D.J. Rivera captured all the headlines last week and today he added to his booty with the National Baseball Conference Player of the Week trophy.nnThe Los Angeles Cobras third baseman hammered league hurlers for 10 hits in 21 at-bats, a .476 average and 3 home runs. He also co...
+
+Recent Trades
+- 1981-03-06: The Portland Lumberjacks trade 23-year old SS Noah White to the Boston Patriots for 31-year old C Renault Buso (retaining 75%).
+- 1981-03-04: The Tampa Bay Storm trade 29-year old LHP Willie Leyba to the Chicago Fire for 24-year old minor league RHP Dave Guadalupe.
+- 1981-02-21: The Dallas Rustlers trade 21-year old minor league 2B Corey Nelson to the Nashville Blues for 37-year old RF Bill Rambow (retaining 75%).
+- 1981-02-14: The Houston Mavericks trade 20-year old minor league RHP Jayden Martin, 20-year old minor league RF Juan Santos, 20-year old minor league C Tony Rodriquez, and 21-year old minor league RF <Jeremiah Matth
+- 1981-02-12: The Phoenix Firebirds trade 27-year old C Jordan Pedroza to the Cincinnati Cougars for 27-year old RHP Jorge Nino.
+
+Recent Player Awards
+- Player of the Week (NBC): D.J. Rivera (Los Angeles Cobras) on 1981-05-11
+- Player of the Week (ABC): Antonio Serrano (Pittsburgh Express) on 1981-05-11
+- Player of the Month (NBC): Orlando Greeley (Los Angeles Cobras) on 1981-05-01
+- Player of the Month (ABC): Juan Perez (Boston Patriots) on 1981-05-01

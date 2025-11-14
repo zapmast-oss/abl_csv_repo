@@ -1,0 +1,11 @@
+=== Sunday NBC Feature Options ===
+ game_date conference  same_div  team_id_A team_name_A  team_id_B team_name_B  act_wpct_A  act_wpct_B  py_wpct_A  py_wpct_B  l10_wpct_A  l10_wpct_B  hr_pa_A  hr_pa_B  matchup_score
+1981-05-17        NBC     False          1       Miami          4      Dallas     0.56250     0.59375    0.56250    0.59375     0.56250     0.59375     0.04     0.04      78.639881
+1981-05-17        NBC     False          5     Detroit          2     Phoenix     0.53125     0.50000    0.53125    0.50000     0.53125     0.50000     0.04     0.04      78.639881
+1981-05-17        NBC     False          8   Tampa Bay         12     Chicago     0.43750     0.53125    0.43750    0.53125     0.43750     0.53125     0.04     0.04      68.491071
+
+=== Sunday ABC Feature Options ===
+ game_date conference  same_div  team_id_A  team_name_A  team_id_B team_name_B  act_wpct_A  act_wpct_B  py_wpct_A  py_wpct_B  l10_wpct_A  l10_wpct_B  hr_pa_A  hr_pa_B  matchup_score
+1981-05-17        ABC     False         19    St. Louis         13      Denver     0.53125     0.56250    0.53125    0.56250     0.53125     0.56250     0.04     0.04      78.639881
+1981-05-17        ABC     False         20       Boston         24     Seattle     0.53125     0.50000    0.53125    0.50000     0.53125     0.50000     0.04     0.04      78.639881
+1981-05-17        ABC     False         22 Philadelphia         23     Houston     0.46875     0.40625    0.46875    0.40625     0.46875     0.40625     0.04     0.04      73.565476

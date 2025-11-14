@@ -1,0 +1,40 @@
+ABL Outfield Arms
+=================
+Highlights the outfielders who gun down runners (assists/1000 INN) or freeze them (no-go rate). League A/1000 9.38, League No-Go NA
+
+Player                 Tm    Conf   Pos    INN  A/1000    CS% Team A/1000 Rating          
+------------------------------------------------------------------------------------------
+Alex Moreno            DAL   N-C    CF   256.0   23.44     NA       10.17 Sniper Arm      
+Brandon Barclay        SD    N-W    CF   253.0   19.76     NA        9.60 Sniper Arm      
+Apostolos Georghiou    HOU   A-C    CF   205.0   19.51     NA        7.09 Sniper Arm      
+Jonathan Mestas        NY    A-E    CF   261.0   19.16     NA        8.41 Sniper Arm      
+Walter Kimpton         TB    N-E    CF   265.0   18.87     NA       11.61 Sniper Arm      
+Jeremy Campbell        POR   A-W    CF   228.0   17.54     NA       11.78 Sniper Arm      
+Luis Hard              PIT   A-E    CF   235.0   17.02     NA        8.36 Sniper Arm      
+Brett Petrillo         NAS   A-C    LF   243.0   16.46     NA       10.75 Sniper Arm      
+Jonathan Luna          ATL   N-E    CF   244.0   16.39     NA        9.55 Sniper Arm      
+Frank Jimenez          TB    N-E    RF   262.0   15.27     NA       11.61 Sniper Arm      
+Josh Harrison          PHO   N-W    CF   267.0   14.98     NA       10.49 Sniper Arm      
+Bill Haywood           LA    N-W    RF   208.0   14.42     NA        4.58 Sniper Arm      
+Tony Jones             CIN   A-C    RF   215.0   13.95     NA        9.60 Sniper Arm      
+Ethan Harrison         DET   N-C    RF   221.0   13.57     NA        9.04 Sniper Arm      
+Santiago Castro        CHA   N-E    CF   226.0   13.27     NA        7.87 Sniper Arm      
+Juan Grant             NAS   A-C    CF   262.0   11.45     NA       10.75 Strong Arm      
+Xavier Little          DEN   A-W    CF   269.0   11.15     NA        8.08 Strong Arm      
+David Olguin           SEA   A-W    RF   276.0   10.87     NA        5.68 Strong Arm      
+Luke Margalit          SF    N-W    RF   211.0    9.48     NA        5.83 Steady Arm      
+Bill Rambow            DAL   N-C    RF   214.0    9.35     NA       10.17 Steady Arm      
+Jon Laflin             PHO   N-W    RF   219.0    9.13     NA       10.49 Steady Arm      
+Nukie Frondarina       POR   A-W    LF   226.0    8.85     NA       11.78 Steady Arm      
+Miguel Salazar         CHA   N-E    RF   233.0    8.58     NA        7.87 Steady Arm      
+Victor Torres          CIN   A-C    LF   241.0    8.30     NA        9.60 Tested Often    
+Scott Reis             CIN   A-C    CF   250.0    8.00     NA        9.60 Tested Often    
+
+Key:
+  Ratings: Sniper Arm (ArmA+ >=1.30), Respected Cannon (NoGo+ >=1.25), Strong Arm (ArmA+ >=1.10), Steady Arm (>=0.90), Tested Often (<0.90).
+  Badges: Sniper (ArmA+>=1.30 & A/1000>=6.0), Respect (NoGo+>=1.25 & attempts>=threshold).
+
+Definitions:
+  A/1000 = outfield assists per 1000 innings.
+  No-go rate = holds / advance attempts when opportunity data exists.
+  Team context shows total OF assists per 1000 innings for comparison.

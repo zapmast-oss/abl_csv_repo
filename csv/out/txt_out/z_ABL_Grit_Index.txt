@@ -1,0 +1,40 @@
+ABL Grit Index
+=====================
+Measures which clubs claw back from late deficits, thrive in extras, and deliver walk-off blows.
+Valuable for spotting resilient teams that can steal playoff-style games even when the bats go cold.
+
+Team                     CD   Rating          Grit    Trail6%   Extras%  Walk-off
+---------------------------------------------------------------------------------
+Boston                   A-E  Scrappy        0.440      0.261     1.000         3
+Philadelphia             A-E  Searching      0.373      0.276     0.750         3
+San Francisco            N-W  Searching      0.330      0.200     0.714         5
+Dallas                   N-C  Searching      0.321      0.273     0.571         4
+Phoenix                  N-W  Searching      0.319      0.125     0.800         5
+Miami                    N-E  Searching      0.318      0.229     0.667         1
+Detroit                  N-C  Searching      0.269      0.192     0.500         7
+Las Vegas                A-W  Searching      0.268      0.217     0.500         3
+Nashville                A-C  Searching      0.264      0.115     0.667         2
+Portland                 A-W  Searching      0.258      0.091     0.667         4
+Cincinnati               A-C  Searching      0.250      0.240     0.400         3
+Charlotte                N-E  Searching      0.243      0.167     0.500         3
+Seattle                  A-W  Searching      0.229      0.125     0.500         5
+Pittsburgh               A-E  Searching      0.226      0.133     0.500         3
+St. Louis                A-C  Searching      0.210      0.214     0.333         1
+Denver                   A-W  Searching      0.207      0.211     0.286         5
+Los Angeles              N-W  Searching      0.206      0.154     0.375         5
+Atlanta                  N-E  Searching      0.195      0.083     0.500         1
+Houston                  A-C  Searching      0.195      0.176     0.333         2
+Tampa Bay                N-E  Searching      0.187      0.161     0.333         2
+San Diego                N-W  Searching      0.152      0.091     0.333         2
+Chicago                  N-C  Searching      0.139      0.071     0.333         1
+Minneapolis              N-C  Searching      0.052      0.097     0.000         1
+New York                 A-E  Searching      0.020      0.034     0.000         1
+
+Key:
+  Ironclad >= 0.60, Steely 0.50-0.59, Scrappy 0.40-0.49, Searching < 0.40.
+
+Definitions:
+  Trail6 Win% = record in games where the club trailed entering the 7th inning.
+  Extras Win% = record in extra-inning games (max inning > 9).
+  Walk-off Rate = walk-off wins / games; home teams only.
+  Grit Index = weighted blend: 50% Trail6 Win%, 30% Extras Win%, 20% Walk-off Rate.

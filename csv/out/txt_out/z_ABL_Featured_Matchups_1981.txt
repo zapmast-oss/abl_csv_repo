@@ -1,0 +1,71 @@
+--- Featured Matchup #1 ---
+AWAY - Chicago Fire: 17-15 (0.531), GB 2.0, run diff 2, status OK
+HOME - Miami Hurricanes: 18-14 (0.563), GB 4.0, run diff -13, status OK
+
+Probable starters:
+Heriberto Jimenez (CHI) – 6-1, 3.65 ERA, 56.2 IP, 44 K
+Gil Aguilar (MIA) – 3-3, 2.41 ERA, 52.1 IP, 43 K
+
+Top WAR players:
+CHI WAR leader (batting): Miguel Martinez – 1.6 WAR
+MIA WAR leader (pitching): Gil Aguilar – 1.1 WAR
+
+--- Featured Matchup #2 ---
+AWAY - Denver Rocketeers: 18-14 (0.563), GB 6.0, run diff 16, status OK
+HOME - Nashville Blues: 18-14 (0.563), GB 0.0, run diff 26, status OK
+
+Probable starters:
+Damian Serano (DEN) – 2-4, 4.87 ERA, 40.2 IP, 19 K
+Antonio Hernandez (NAS) – 4-2, 3.99 ERA, 38.1 IP, 24 K
+
+Top WAR players:
+DEN WAR leader (batting): Xavier Little – 1.5 WAR
+NAS WAR leader (batting): Andres Salas – 1.2 WAR
+
+--- Featured Matchup #3 ---
+AWAY - San Francisco Warriors: 18-14 (0.563), GB 0.0, run diff 29, status OK
+HOME - Charlotte Colonels: 22-10 (0.688), GB 0.0, run diff 50, status HOT
+
+Probable starters:
+Erik Bunker (SF) – stats unavailable
+Manny Gonzalez (CHA) – stats unavailable
+
+Top WAR players:
+SF WAR leader (pitching): Antonio Pineda – 1.6 WAR
+CHA WAR leader (batting): Manny Flores – 1.8 WAR
+
+--- Featured Matchup #4 ---
+AWAY - Las Vegas Gamblers: 24-8 (0.750), GB 0.0, run diff 59, status HOT
+HOME - St. Louis Stallions: 17-15 (0.531), GB 1.0, run diff 29, status OK
+
+Probable starters:
+Fernando Bennett (LV) – 2-0, 1.80 ERA, 15.0 IP, 5 K
+Mario Flores (STL) – 1-2, 4.06 ERA, 37.2 IP, 21 K
+
+Top WAR players:
+LV WAR leader (pitching): Bobby Rodriguez – 2.3 WAR
+STL WAR leader (pitching): Jose Coronado – 1.2 WAR
+
+--- Featured Matchup #5 ---
+AWAY - Detroit Dukes: 17-15 (0.531), GB 2.0, run diff 7, status OK
+HOME - Phoenix Firebirds: 16-16 (0.500), GB 2.0, run diff -17, status OK
+
+Probable starters:
+Martin Martinez (DET) – 0-0, 3.07 ERA, 14.2 IP, 11 K
+Nate Lucas (PHO) – 3-2, 3.98 ERA, 43.0 IP, 23 K
+
+Top WAR players:
+DET WAR leader (pitching): Mike Miranda – 1.2 WAR
+PHO WAR leader (pitching): Stephen Grimes – 1.4 WAR
+
+--- Featured Matchup #6 ---
+AWAY - Nashville Blues: 18-14 (0.563), GB 0.0, run diff 26, status OK
+HOME - Las Vegas Gamblers: 24-8 (0.750), GB 0.0, run diff 59, status HOT
+
+Probable starters:
+Antonio Hernandez (NAS) – 4-2, 3.99 ERA, 38.1 IP, 24 K
+Fernando Bennett (LV) – 2-0, 1.80 ERA, 15.0 IP, 5 K
+
+Top WAR players:
+NAS WAR leader (batting): Andres Salas – 1.2 WAR
+LV WAR leader (pitching): Bobby Rodriguez – 2.3 WAR

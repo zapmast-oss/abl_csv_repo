@@ -1,0 +1,39 @@
+ABL Run Creation Profile
+============================
+
+Breaks down how each lineup manufactures runs: long ball share, stolen-base pressure, and two-out conversion rate.
+Great for spotting clubs that live on slugging versus those who pressure defenses or cash in late-inning chances.
+
+Team                   Power            Pressure         Clutch               HR%  SB Att/G  2-out RBI%
+-------------------------------------------------------------------------------------------------------
+Miami                  Slugging         Aggressive       Two-out Machine    0.537     0.875       0.537
+Phoenix                Slugging         Selective        Two-out Machine    0.495     0.688       0.607
+Atlanta                Slugging         Aggressive       Two-out Machine    0.405     1.094       0.655
+Dallas                 Slugging         Aggressive       Two-out Machine    0.533     0.969       0.692
+Detroit                Punchy           Selective        Two-out Machine    0.396     0.562       0.564
+Charlotte              Slugging         Relentless       Two-out Machine    0.558     1.531       0.773
+San Diego              Slugging         Selective        Two-out Machine    0.442     0.469       0.612
+Tampa Bay              Slugging         Selective        Two-out Machine    0.510     0.719       0.584
+Los Angeles            Slugging         Selective        Two-out Machine    0.507     0.562       0.620
+San Francisco          Slugging         Selective        Two-out Machine    0.664     0.625       0.718
+Minneapolis            Slugging         Station-to-Station Two-out Machine    0.486     0.281       0.523
+Chicago                Slugging         Aggressive       Two-out Machine    0.614     0.844       0.579
+Denver                 Slugging         Relentless       Two-out Machine    0.541     1.219       0.692
+Cincinnati             Slugging         Selective        Two-out Machine    0.645     0.625       0.730
+New York               Slugging         Aggressive       Two-out Machine    0.500     1.031       0.615
+Nashville              Slugging         Aggressive       Two-out Machine    0.422     0.969       0.565
+Las Vegas              Slugging         Relentless       Two-out Machine    0.423     1.531       0.483
+Portland               Slugging         Aggressive       Two-out Machine    0.679     1.094       0.706
+St. Louis              Slugging         Selective        Two-out Machine    0.709     0.469       0.843
+Boston                 Slugging         Aggressive       Two-out Machine    0.835     1.094       0.661
+Pittsburgh             Slugging         Aggressive       Two-out Machine    0.562     0.938       0.785
+Philadelphia           Slugging         Selective        Two-out Machine    0.524     0.781       0.790
+Houston                Slugging         Selective        Two-out Machine    0.598     0.781       0.761
+Seattle                Balanced         Relentless       Timely             0.230     1.469       0.273
+
+Key:
+  HR% uses explicit HR RBIs parsed from game logs; SB Att/G = (SB+CS)/G.
+  PWR Slugging >=40%, Punchy 30-39%, Balanced 20-29%, Small-ball <20%.
+  SPD Relentless >=1.20 att/G, Aggressive 0.80-1.19, Selective 0.40-0.79, Station-to-Station <0.40.
+  CLT Two-out Machine >=30%, Timely 20-29%, Occasional 10-19%, Needs Spark <10%.
+Definition: HR% is runs via HR / total runs; SB pressure measures attempts per game; 2-out RBI% shows production after two outs.
