@@ -1,6 +1,6 @@
 ABL System Crash Slumps (History)
 =================================
-Generated on: 2025-11-14 13:49:43
+Generated on: 2025-11-14 14:24:34
 
 Most recent slump windows (lookback 28 days)
 

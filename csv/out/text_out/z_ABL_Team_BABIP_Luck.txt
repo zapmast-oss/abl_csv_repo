@@ -1,6 +1,6 @@
 ABL Team BABIP Luck
 ========================
-Generated on: 2025-11-14 13:49:43
+Generated on: 2025-11-14 14:24:35
 
 
 Tampa Bay (N-E)          | Bat 0.327 (LUCK   ) | Pitch 0.319 (UNLUCKY) | Hot & leaking

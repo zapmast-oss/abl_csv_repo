@@ -1,6 +1,6 @@
 ABL Catcher Battery Value
 =========================
-Generated on: 2025-11-14 13:49:04
+Generated on: 2025-11-14 14:23:20
 
 Battery impact leaderboard: quantifies how each catcher influences steals and pitcher ERA when he is behind the plate.
 League CS% NA, Avg ERA w/ catcher NA

@@ -1,6 +1,6 @@
 ABL Home/Road Splits
 ==========================
-Generated on: 2025-11-14 13:49:25
+Generated on: 2025-11-14 14:24:00
 
 Compares each club's home versus road win percentage and scoring profile to expose venue edges.
 Useful for matchup prep: target teams that feast in their park or wilt when they leave it.
