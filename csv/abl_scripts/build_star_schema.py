@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 from pathlib import Path
+import io
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -12,6 +13,43 @@ TEAM_PARK_PATH = (
     ABL_STATS
     / "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv"
 )
+TEAM_STAFF_PATH = (
+    ABL_STATS
+    / "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv"
+)
+COACHES_PATH = ROOT / "csv" / "ootp_csv" / "coaches.csv"
+
+STAFF_ROLE_COLUMNS = [
+    "GM",
+    "MA",
+    "BN",
+    "PC",
+    "HC",
+    "SC",
+    "TT",
+    "OWN",
+    "1BC",
+    "3BC",
+]
+
+STAFF_COMMENT_BLOCK = [
+    "# Column Documentation: csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+    "# ID: Team ID",
+    "# Team Name: Franchise name",
+    "# Abbr: Team abbreviation",
+    "# GM: General manager",
+    "# MA: Manager (dugout skipper)",
+    "# BN: Bench coach",
+    "# PC: Pitching coach",
+    "# HC: Hitting coach",
+    "# SC: Scouting director",
+    "# TT: Team trainer",
+    "# OWN: Owner",
+    "# 1BC: First-base coach",
+    "# 3BC: Third-base coach",
+]
+
+COACH_LOOKUP: pd.DataFrame | None = None
 _TEAM_LOOKUP: pd.DataFrame | None = None
 
 
@@ -54,6 +92,35 @@ def ensure_team_id(df: pd.DataFrame, name_col: str = "Team Name") -> pd.DataFram
         mapping = lookup.set_index(name_col)["ID"]
         df["ID"] = df[name_col].map(mapping)
         df["ID"] = pd.to_numeric(df["ID"], errors="coerce")
+    return df
+
+
+def get_coach_lookup() -> pd.Series:
+    global COACH_LOOKUP
+    if COACH_LOOKUP is None:
+        coaches = pd.read_csv(COACHES_PATH)
+        coaches["full_name"] = (
+            coaches["first_name"].astype(str).str.strip()
+            + " "
+            + coaches["last_name"].astype(str).str.strip()
+        ).str.lower().str.strip()
+        COACH_LOOKUP = coaches[["coach_id", "full_name"]].drop_duplicates(
+            subset="full_name", keep="first"
+        )
+    return COACH_LOOKUP.set_index("full_name")["coach_id"]
+
+
+def attach_coach_ids(df: pd.DataFrame) -> pd.DataFrame:
+    lookup = get_coach_lookup()
+    for column in STAFF_ROLE_COLUMNS:
+        id_col = f"{column}_ID"
+        df[id_col] = (
+            df[column]
+            .astype(str)
+            .str.strip()
+            .str.lower()
+            .map(lookup)
+        )
     return df
 
 
@@ -103,6 +170,17 @@ def build_dim_team_park(summary: list[str]) -> None:
         / "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv"
     )
     write_output(parks, "dim_team_park.csv", summary)
+
+
+def build_dim_team_staff(summary: list[str]) -> None:
+    staff = read_csv(TEAM_STAFF_PATH)
+    staff_with_ids = attach_coach_ids(staff.copy())
+    write_output(staff_with_ids, "dim_team_staff.csv", summary)
+
+    buffer = io.StringIO()
+    staff_with_ids.to_csv(buffer, index=False)
+    comment_text = "\n".join(STAFF_COMMENT_BLOCK) + "\n"
+    TEAM_STAFF_PATH.write_text(comment_text + buffer.getvalue(), encoding="utf-8")
 
 
 def build_fact_team_batting(summary: list[str]) -> None:
@@ -196,6 +274,7 @@ def main() -> None:
     build_dim_player_profile(summary)
     build_dim_player_ratings(summary)
     build_dim_team_park(summary)
+    build_dim_team_staff(summary)
 
     build_fact_team_batting(summary)
     build_fact_team_pitching(summary)
