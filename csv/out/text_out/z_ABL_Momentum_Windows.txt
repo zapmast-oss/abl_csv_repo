@@ -1,6 +1,6 @@
 ABL Momentum Windows
 ========================
-Generated on: 2025-11-15 19:22:33
+Generated on: 2025-11-15 19:52:21
 
 Compares each team's last 10 games vs the previous 10 to show real momentum swings.
 Great for broadcast color: highlight surges, slides, and steady clubs at a glance.

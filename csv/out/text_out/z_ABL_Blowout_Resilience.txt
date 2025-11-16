@@ -1,6 +1,6 @@
 ABL Blowout Resilience
 ==========================
-Generated on: 2025-11-15 19:22:08
+Generated on: 2025-11-15 19:51:56
 
 Regular-season only: shows how often each club thrives in 5+ run decisions and how big those wins typically are.
 Meaning: higher win% and positive margin in blowouts signal resiliency when games get lopsided.

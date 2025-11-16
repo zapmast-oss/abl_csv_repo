@@ -87,6 +87,44 @@ def main() -> None:
         print(validator_proc.stderr.strip())
     if validator_proc.returncode != 0:
         failures.append("validate_managers.py")
+
+    print("Generating manager one-pager...")
+    onepager_proc = subprocess.run(
+        [
+            "python",
+            "csv/abl_scripts/report_managers_onepager.py",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if onepager_proc.stdout:
+        print(onepager_proc.stdout.strip())
+    if onepager_proc.stderr:
+        print(onepager_proc.stderr.strip())
+    if onepager_proc.returncode != 0:
+        failures.append("report_managers_onepager.py")
+
+    prep_db = ROOT / "data_work" / "abl.db"
+    if prep_db.exists():
+        print("Generating broadcast prep packets...")
+        prep_proc = subprocess.run(
+            [
+                "python",
+                "csv/abl_scripts/report_broadcast_prep.py",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        if prep_proc.stdout:
+            print(prep_proc.stdout.strip())
+        if prep_proc.stderr:
+            print(prep_proc.stderr.strip())
+        if prep_proc.returncode != 0:
+            failures.append("report_broadcast_prep.py")
+    else:
+        print("Skipping broadcast prep (database missing)")
     if failures:
         print("Scripts failed:", ", ".join(failures))
     else:
@@ -95,5 +133,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
 
 

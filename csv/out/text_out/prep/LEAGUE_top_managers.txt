@@ -1,0 +1,16 @@
+League Top Managers
+===================
+Generated: 2025-11-16 03:57:44Z
+
+Rank Name                         Team                     W     L    Win%  Titles
+----------------------------------------------------------------------------------
+1    Seth Coe                     Miami Hurricanes       806   675   0.544       2
+2    Mike Shoulders               n/a                    803   639   0.557       1
+3    Collin Todd                  Fremont Marksmen (BO   534   435   0.551       1
+4    Carlos Sanchez               Houston Mavericks      790   695   0.532       1
+5    Bryan Moody                  n/a                    683   605   0.530       1
+6    Jose Perez                   Detroit Dukes          274   244   0.529       1
+7    Rafael Loza                  n/a                    407   396   0.507       1
+8    Glenn Brophy                 n/a                    292   356   0.451       1
+9    Chris Allison                Cincinnati Cougars     473   369   0.562       0
+10   Greg Asche                   Denver Rocketeers       18    14   0.562       0
