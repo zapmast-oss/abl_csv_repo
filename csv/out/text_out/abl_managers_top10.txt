@@ -1,0 +1,17 @@
+ABL Managers Top 10 (Championships, Win%)
+Source index: C:\SBV_mainC\ootp_all_reports\history\league_200_all_managers_index.html
+Source leaders: C:\SBV_mainC\ootp_all_reports\history\league_200_all_managers_leaders.html
+Template counts: {'A': 46, 'B': 46}
+
+ 1. Seth Coe | W-L: 806-675 (0.544) | Titles: 2 | Career %: 0.544 | Current Team: Miami Hurricanes
+ 2. Mike Shoulders | W-L: 803-639 (0.557) | Titles: 1 | Career %: 0.557 | Current Team: n/a
+ 3. Collin Todd | W-L: 534-435 (0.551) | Titles: 1 | Career %: 0.551 | Current Team: Fremont Marksmen (BOS)
+ 4. Carlos Sanchez | W-L: 790-695 (0.532) | Titles: 1 | Career %: 0.532 | Current Team: Houston Mavericks
+ 5. Bryan Moody | W-L: 683-605 (0.530) | Titles: 1 | Career %: 0.530 | Current Team: n/a
+ 6. Jose Perez | W-L: 274-244 (0.529) | Titles: 1 | Career %: 0.529 | Current Team: Detroit Dukes
+ 7. Rafael Loza | W-L: 407-396 (0.507) | Titles: 1 | Career %: 0.507 | Current Team: n/a
+ 8. Glenn Brophy | W-L: 292-356 (0.451) | Titles: 1 | Career %: 0.451 | Current Team: n/a
+ 9. Greg Asche | W-L: 18-14 (0.562) | Titles: 0 | Career %: 0.562 | Current Team: Denver Rocketeers
+10. Chris Allison | W-L: 473-369 (0.562) | Titles: 0 | Career %: 0.562 | Current Team: Cincinnati Cougars
+
+Generated via csv/abl_scripts/parse_managers.py

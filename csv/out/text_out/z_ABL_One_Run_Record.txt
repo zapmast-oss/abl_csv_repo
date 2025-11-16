@@ -1,6 +1,6 @@
 ABL One-Run Record
 ======================
-Generated on: 2025-11-14 14:24:09
+Generated on: 2025-11-15 19:22:34
 
 Shows how each club fares in one-run decisions versus its overall paceâ€”perfect for clutch/luck chatter.
 Use it to flag teams overachieving (or melting down) in coin-flip finishes.

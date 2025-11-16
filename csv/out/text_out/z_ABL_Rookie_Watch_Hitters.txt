@@ -1,6 +1,6 @@
 ABL Rookie Watch (Hitters)
 ==========================
-Generated on: 2025-11-14 14:24:14
+Generated on: 2025-11-15 19:22:37
 
 
 Spotlights rookie-eligible bats clearing the PA floor and ranks them by age-adjusted OPS pace.

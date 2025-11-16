@@ -1,4 +1,4 @@
-from pathlib import Path
+﻿from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT = SCRIPT_DIR.parent
 OUT_DIR = SCRIPT_DIR / "out"
@@ -54,6 +54,39 @@ def main() -> None:
         assert os.getcwd() == _start_cwd, "A report script changed CWD; remove os.chdir() in that script."
         if proc.returncode != 0:
             failures.append(script.name)
+    print("Running manager parser...")
+    parser_proc = subprocess.run(
+        [
+            "python",
+            "csv/abl_scripts/parse_managers.py",
+            "--index",
+            "data_raw/ootp_html/history/league_200_all_managers_index.html",
+        ],
+        cwd=ROOT,
+        stdout=DEVNULL,
+        stderr=STDOUT,
+    )
+    if parser_proc.returncode != 0:
+        failures.append("parse_managers.py")
+
+    print("Validating managers...")
+    validator_proc = subprocess.run(
+        [
+            "python",
+            "csv/abl_scripts/validate_managers.py",
+            "--src",
+            "csv/out/csv_out/abl_managers_summary.csv",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if validator_proc.stdout:
+        print(validator_proc.stdout.strip())
+    if validator_proc.stderr:
+        print(validator_proc.stderr.strip())
+    if validator_proc.returncode != 0:
+        failures.append("validate_managers.py")
     if failures:
         print("Scripts failed:", ", ".join(failures))
     else:
@@ -62,3 +95,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+

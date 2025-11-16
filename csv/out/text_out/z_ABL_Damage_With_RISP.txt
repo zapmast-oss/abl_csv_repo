@@ -1,6 +1,6 @@
 ABL Damage With RISP
 ===========================
-Generated on: 2025-11-14 14:23:21
+Generated on: 2025-11-15 19:22:10
 
 
 Player                 Tm    Rating      OPS  RISP OPS    dOPS    PA   PA_R

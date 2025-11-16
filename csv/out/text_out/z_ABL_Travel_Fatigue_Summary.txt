@@ -1,6 +1,6 @@
 ABL Travel Fatigue
 ==================
-Generated on: 2025-11-14 14:24:36
+Generated on: 2025-11-15 19:22:49
 
 Teams struggling most after no-rest travel (>=5 such games)
 
