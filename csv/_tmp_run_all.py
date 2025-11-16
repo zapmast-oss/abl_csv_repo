@@ -125,6 +125,22 @@ def main() -> None:
             failures.append("report_broadcast_prep.py")
     else:
         print("Skipping broadcast prep (database missing)")
+
+    matchup_home = os.environ.get("MATCHUP_HOME")
+    matchup_away = os.environ.get("MATCHUP_AWAY")
+    if matchup_home and matchup_away:
+        print(f"Generating manager matchup card: {matchup_home} vs {matchup_away} (env)")
+        matchup_proc = subprocess.run(["python", "csv/abl_scripts/report_manager_matchup.py", "--home", matchup_home, "--away", matchup_away], cwd=ROOT, capture_output=True, text=True)
+        if matchup_proc.stdout:
+            print(matchup_proc.stdout.strip())
+        if matchup_proc.stderr:
+            print(matchup_proc.stderr.strip())
+        if matchup_proc.returncode != 0:
+            failures.append("report_manager_matchup.py")
+    elif matchup_home or matchup_away:
+        print("MATCHUP_HOME and MATCHUP_AWAY must both be set; skipping matchup card.")
+    else:
+        print("No matchup env found; skipping manager matchup card.")
     if failures:
         print("Scripts failed:", ", ".join(failures))
     else:
