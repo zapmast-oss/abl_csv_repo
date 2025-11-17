@@ -1,6 +1,6 @@
 ABL Late-Inning Clutch
 ==========================
-Generated on: 2025-11-15 19:52:19
+Generated on: 2025-11-16 23:48:56
 
 Shows which clubs win the 7th inning onward: run differential, comeback wins, and blown leads.
 Great for identifying playoff-ready resilience and spotting bullpens that spring leaks late.

@@ -6,4 +6,4 @@ Bullets:
   - Career snapshot: 321-359, 0.472 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
   - Strength cue: resilience despite bumps.
   - Risk cue: variance watch.
-Generated: 2025-11-17 07:36:28Z
+Generated: 2025-11-17 07:49:14Z

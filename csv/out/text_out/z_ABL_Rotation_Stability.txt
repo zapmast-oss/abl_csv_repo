@@ -1,6 +1,6 @@
 ABL Rotation Stability
 ============================
-Generated on: 2025-11-15 19:52:25
+Generated on: 2025-11-16 23:49:01
 
 
 Measures how heavily each club leans on its top five starters, how deep they work, and whether injuries are forcing churn.

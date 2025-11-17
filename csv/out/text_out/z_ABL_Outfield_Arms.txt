@@ -1,6 +1,6 @@
 ABL Outfield Arms
 =================
-Generated on: 2025-11-15 19:52:22
+Generated on: 2025-11-16 23:48:59
 
 Highlights the outfielders who gun down runners (assists/1000 INN) or freeze them (no-go rate). League A/1000 9.38, League No-Go NA
 

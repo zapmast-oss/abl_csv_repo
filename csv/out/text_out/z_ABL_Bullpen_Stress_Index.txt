@@ -1,6 +1,6 @@
 ABL Bullpen Stress Index
 ===========================
-Generated on: 2025-11-15 19:51:56
+Generated on: 2025-11-16 23:48:35
 
 Last-14/7-day bullpen workload snapshot: innings per game, back-to-back usage, and high-leverage share.
 Meaning: higher stress scores flag pens carrying heavier loads and potential fatigue risk; inherited runner data adds season-long context.

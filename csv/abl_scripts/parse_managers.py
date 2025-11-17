@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import csv
@@ -436,22 +436,28 @@ def write_csv_output(records: List[ManagerRecord], detail_map: Dict[str, Dict[st
 def write_top10_text(records: List[ManagerRecord], detail_map: Dict[str, Dict[str, Optional[object]]], text_path: Path, index_path: Path, leaders_path: Optional[Path], template_counts: Dict[str, int], conflicts: List[str]) -> None:
     text_path.parent.mkdir(parents=True, exist_ok=True)
     lines: List[str] = []
-    lines.append("ABL Managers Top 10 (Championships, Win%)")
-    lines.append(f"Source index: {index_path}")
+    lines.append("ABL Managers Top 10 (Championships priority, Win% tiebreak)")
+    lines.append(f"Source index : {index_path}")
     if leaders_path:
         lines.append(f"Source leaders: {leaders_path}")
     lines.append(f"Template counts: {template_counts}")
     if conflicts:
         lines.append(f"Conflicts: {len(conflicts)} (see console for details)")
     lines.append("")
+    header = f"{'Rank':<4} {'Manager':<26} {'Team':<22} {'W':>6} {'L':>6} {'Win%':>7} {'Titles':>7} {'Career%':>8}"
+    lines.append(header)
+    lines.append("-" * len(header))
     for idx, rec in enumerate(sorted(records, key=sort_key, reverse=True)[:10], 1):
         detail = detail_map.get(rec.name, {})
+        team = detail.get("current_team") or rec.team or "n/a"
+        wins = rec.wins if rec.wins is not None else "--"
+        losses = rec.losses if rec.losses is not None else "--"
         win_pct = f"{rec.win_pct:.3f}" if rec.win_pct is not None else "n/a"
         career_pct = detail.get("career_win_pct")
         career_pct_str = f"{career_pct:.3f}" if isinstance(career_pct, float) else "n/a"
+        titles = rec.championships if rec.championships is not None else 0
         lines.append(
-            f"{idx:2d}. {rec.name} | W-L: {rec.wins}-{rec.losses} ({win_pct}) | Titles: {rec.championships or 0} | "
-            f"Career %: {career_pct_str} | Current Team: {detail.get('current_team') or rec.team or 'n/a'}"
+            f"{idx:<4} {rec.name:<26.26} {team:<22.22} {wins:>6} {losses:>6} {win_pct:>7} {titles:>7} {career_pct_str:>8}"
         )
     lines.append("")
     lines.append("Generated via csv/abl_scripts/parse_managers.py")
