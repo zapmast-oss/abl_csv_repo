@@ -1,4 +1,4 @@
-Boston Patriots — Manager Prep
+Boston Patriots - Manager Prep
 Manager: Bill Hurff | Team: Boston Patriots | Titles: 0
 Record: 746-736 (0.503)
 Ten-second take: Steady hand keeping the club above water.
@@ -6,4 +6,4 @@ Bullets:
   - Career snapshot: 746-736, 0.503 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
   - Strength cue: scrappy, above water.
   - Risk cue: thin margin; sub-.500 vs elites.
-Generated: 2025-11-16 03:57:44Z
+Generated: 2025-11-17 07:36:28Z

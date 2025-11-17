@@ -1,9 +1,9 @@
-Portland Lumberjacks — Manager Prep
-Manager: Javy Navarro | Team: Portland Lumberjacks | Titles: 0
-Record: 382-421 (0.476)
-Ten-second take: Scrappy leader fighting to change the narrative.
+Portland Lumberjacks - Manager Prep
+Manager: Tim Staheli | Team: Portland Lumberjacks | Titles: 0
+Record: 622-610 (0.505)
+Ten-second take: Steady hand keeping the club above water.
 Bullets:
-  - Career snapshot: 382-421, 0.476 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
-  - Strength cue: resilience despite bumps.
-  - Risk cue: variance watch.
-Generated: 2025-11-16 03:57:44Z
+  - Career snapshot: 622-610, 0.505 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
+  - Strength cue: scrappy, above water.
+  - Risk cue: thin margin; sub-.500 vs elites.
+Generated: 2025-11-17 07:36:28Z

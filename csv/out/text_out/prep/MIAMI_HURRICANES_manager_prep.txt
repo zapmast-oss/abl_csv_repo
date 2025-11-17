@@ -1,9 +1,9 @@
-Miami Hurricanes — Manager Prep
-Manager: Arturo Guerra | Team: Miami Hurricanes | Titles: 0
-Record: 223-254 (0.468)
-Ten-second take: Scrappy leader fighting to change the narrative.
+Miami Hurricanes - Manager Prep
+Manager: Seth Coe | Team: Miami Hurricanes | Titles: 2
+Record: 806-675 (0.544)
+Ten-second take: Title winner who knows how to close tight races.
 Bullets:
-  - Career snapshot: 223-254, 0.468 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
-  - Strength cue: resilience despite bumps.
+  - Career snapshot: 806-675, 0.544 win%, Titles: 2, Last Refreshed: 2025-11-16T03:52:44+00:00
+  - Strength cue: scrappy, above water.
   - Risk cue: variance watch.
-Generated: 2025-11-16 03:57:44Z
+Generated: 2025-11-17 07:36:28Z

@@ -1,4 +1,4 @@
-Denver Rocketeers — Manager Prep
+Denver Rocketeers - Manager Prep
 Manager: Greg Asche | Team: Denver Rocketeers | Titles: 0
 Record: 18-14 (0.562)
 Ten-second take: High-win manager pushing toward that first crown.
@@ -6,4 +6,4 @@ Bullets:
   - Career snapshot: 18-14, 0.562 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
   - Strength cue: high win% vs peers.
   - Risk cue: guard against complacency.
-Generated: 2025-11-16 03:57:44Z
+Generated: 2025-11-17 07:36:28Z

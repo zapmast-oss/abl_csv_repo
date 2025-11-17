@@ -1,4 +1,4 @@
-Seattle Comets — Manager Prep
+Seattle Comets - Manager Prep
 Manager: William Ross | Team: Seattle Comets | Titles: 0
 Record: 16-16 (0.500)
 Ten-second take: Steady hand keeping the club above water.
@@ -6,4 +6,4 @@ Bullets:
   - Career snapshot: 16-16, 0.500 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
   - Strength cue: scrappy, above water.
   - Risk cue: thin margin; sub-.500 vs elites.
-Generated: 2025-11-16 03:57:44Z
+Generated: 2025-11-17 07:36:28Z

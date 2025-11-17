@@ -2,16 +2,21 @@
 
 import argparse
 import csv
+import re
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+
+from abl_team_helper import allowed_team_ids
 
 CSV_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = CSV_ROOT.parent
 DEFAULT_DB = REPO_ROOT / "data_work" / "abl.db"
 DEFAULT_CSV = CSV_ROOT / "out" / "csv_out" / "abl_managers_summary.csv"
 DEFAULT_OUT_DIR = CSV_ROOT / "out" / "text_out" / "prep" / "matchups"
+TEAMS_CSV = CSV_ROOT / "ootp_csv" / "teams.csv"
+LEAGUE_ID = 200
 UTC_FMT = "%Y-%m-%d %H:%M:%S"
 
 def normalize_token(text: str) -> str:
@@ -19,6 +24,14 @@ def normalize_token(text: str) -> str:
     while "__" in cleaned:
         cleaned = cleaned.replace("__", "_")
     return cleaned.strip("_") or "UNK"
+
+def normalize_match_key(value: Optional[str]) -> Optional[str]:
+    if not value:
+        return None
+    base = re.sub(r"\s*\(.*\)$", "", value)
+    base = base.replace("-", " ")
+    clean = " ".join(base.lower().split())
+    return clean or None
 
 def load_csv_fallback(path: Path) -> Dict[str, str]:
     fallback: Dict[str, str] = {}
@@ -32,6 +45,46 @@ def load_csv_fallback(path: Path) -> Dict[str, str]:
             if name and team:
                 fallback[name] = team
     return fallback
+
+def build_allowed_lookup() -> Dict[str, Dict[str, Optional[object]]]:
+    lookup: Dict[str, Dict[str, Optional[object]]] = {}
+    allowed_ids = set(allowed_team_ids())
+    if not TEAMS_CSV.exists():
+        return lookup
+    with TEAMS_CSV.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            try:
+                team_id = int(row.get("team_id", 0))
+                league_id = int(row.get("league_id", 0))
+            except ValueError:
+                continue
+            if team_id not in allowed_ids or league_id != LEAGUE_ID:
+                continue
+            city = (row.get("name") or "").strip()
+            nickname = (row.get("nickname") or "").strip()
+            abbr = (row.get("abbr") or "").strip()
+            display = f"{city} {nickname}".strip() or city or nickname or (row.get("team_name") or "").strip()
+            if not display:
+                display = f"Team {team_id}"
+            info = {"team_id": team_id, "league_id": league_id, "display": display}
+            variants = {display, city, nickname, abbr, f"{abbr} {nickname}".strip()}
+            for variant in variants:
+                key = normalize_match_key(variant)
+                if key:
+                    lookup[key] = info
+    return lookup
+
+def match_allowed_team(raw: Optional[str], lookup: Dict[str, Dict[str, Optional[object]]]) -> Optional[Dict[str, Optional[object]]]:
+    key = normalize_match_key(raw)
+    if not key:
+        return None
+    if key in lookup:
+        return lookup[key]
+    for lookup_key, info in lookup.items():
+        if key == lookup_key or key in lookup_key or lookup_key in key:
+            return info
+    return None
 
 def fetch_managers(db_path: Path) -> List[Dict[str, Optional[object]]]:
     with sqlite3.connect(db_path) as conn:
@@ -54,7 +107,24 @@ def score_team(team: str, target: str) -> int:
         return 2
     return 99
 
-def resolve_team(records: List[Dict[str, Optional[object]]], query: str) -> Dict[str, Optional[object]]:
+def filter_allowed_records(records: List[Dict[str, Optional[object]]], lookup: Dict[str, Dict[str, Optional[object]]]) -> List[Dict[str, Optional[object]]]:
+    filtered: List[Dict[str, Optional[object]]] = []
+    for row in records:
+        info = match_allowed_team(row.get("current_team"), lookup)
+        if not info:
+            continue
+        row["team_id"] = info["team_id"]
+        row["league_id"] = info["league_id"]
+        row["current_team"] = info["display"]
+        filtered.append(row)
+    return filtered
+
+def resolve_team(records: List[Dict[str, Optional[object]]], query: str, lookup: Dict[str, Dict[str, Optional[object]]]) -> Dict[str, Optional[object]]:
+    target_info = match_allowed_team(query, lookup)
+    if target_info:
+        for rec in records:
+            if rec.get("team_id") == target_info["team_id"]:
+                return rec
     target = query.strip().lower()
     candidates = [rec for rec in records if rec.get("current_team")]
     if not candidates:
@@ -134,7 +204,7 @@ def format_side(label: str, row: Optional[Dict[str, Optional[object]]]) -> List[
 
 def build_card(home_team: str, away_team: str, home_row: Optional[Dict[str, Optional[object]]], away_row: Optional[Dict[str, Optional[object]]]) -> str:
     timestamp = datetime.now(timezone.utc)
-    header = f"ABL Matchup Card — {home_team} vs {away_team} (UTC: {timestamp.strftime('%Y-%m-%d %H:%M')})"
+    header = f"ABL Matchup Card - {home_team} vs {away_team} (UTC: {timestamp.strftime('%Y-%m-%d %H:%M')})"
     lines: List[str] = [header, "=" * len(header)]
     lines.extend(format_side("HOME", home_row))
     lines.extend(format_side("AWAY", away_row))
@@ -147,8 +217,8 @@ def build_card(home_team: str, away_team: str, home_row: Optional[Dict[str, Opti
         home_row.get("total_titles") if home_row else None,
         away_row.get("total_titles") if away_row else None,
     )
-    lines.append(f"Edge (Win%):   {win_edge:<5}   (Δ = {win_delta})")
-    lines.append(f"Edge (Titles): {title_edge:<5}   (Δ = {title_delta})")
+    lines.append(f"Edge (Win%):   {win_edge:<5}   (delta = {win_delta})")
+    lines.append(f"Edge (Titles): {title_edge:<5}   (delta = {title_delta})")
     home_take = ten_second_take(int(home_row.get("total_titles") or 0), float(home_row.get("career_win_pct") or 0.0)) if home_row else "Unknown profile"
     away_take = ten_second_take(int(away_row.get("total_titles") or 0), float(away_row.get("career_win_pct") or 0.0)) if away_row else "Unknown profile"
     lines.append(f"Ten-second take (HOME): {home_take}")
@@ -182,6 +252,17 @@ def main() -> None:
             if fb:
                 row["current_team"] = fb
 
+    lookup = build_allowed_lookup()
+    if not lookup:
+        raise SystemExit(f"Unable to load allowed teams from {TEAMS_CSV}")
+    records = filter_allowed_records(records, lookup)
+    if not records:
+        raise SystemExit("No managers found for the 24 ABL clubs.")
+    league_ids = {row.get("league_id") for row in records if row.get("league_id") is not None}
+    team_ids = sorted({row.get("team_id") for row in records if row.get("team_id") is not None})
+    print(f"[check] Manager matchup league_ids after filter: {league_ids}")
+    print(f"[check] Manager matchup team_ids after filter: {team_ids}")
+
     if args.verify:
         home_query = "Miami Hurricanes"
         away_query = "Chicago Fire"
@@ -191,8 +272,8 @@ def main() -> None:
         home_query = args.home
         away_query = args.away
 
-    home_row = resolve_team(records, home_query)
-    away_row = resolve_team(records, away_query)
+    home_row = resolve_team(records, home_query, lookup)
+    away_row = resolve_team(records, away_query, lookup)
 
     home_team = home_row.get("current_team") or home_query
     away_team = away_row.get("current_team") or away_query

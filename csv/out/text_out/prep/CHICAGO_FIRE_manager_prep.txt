@@ -1,4 +1,4 @@
-Chicago Fire — Manager Prep
+Chicago Fire - Manager Prep
 Manager: Matt Mead | Team: Chicago Fire | Titles: 0
 Record: 775-712 (0.521)
 Ten-second take: Steady hand keeping the club above water.
@@ -6,4 +6,4 @@ Bullets:
   - Career snapshot: 775-712, 0.521 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
   - Strength cue: scrappy, above water.
   - Risk cue: variance watch.
-Generated: 2025-11-16 03:57:44Z
+Generated: 2025-11-17 07:36:28Z
