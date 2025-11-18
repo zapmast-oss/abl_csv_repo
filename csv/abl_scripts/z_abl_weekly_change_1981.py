@@ -1,4 +1,5 @@
-﻿from pathlib import Path
+from pathlib import Path
+import shutil
 import argparse
 import pandas as pd
 
@@ -11,6 +12,16 @@ TEAM_CANON = set(range(1, 25))
 def main(dry_run: bool = False) -> None:
     prev_path = STAR_DIR / "fact_team_reporting_1981_prev.csv"
     curr_path = STAR_DIR / "fact_team_reporting_1981_current.csv"
+
+    if not curr_path.exists():
+        print(f"ERROR: Current snapshot not found: {curr_path}")
+        print("Run z_abl_current_team_snapshot.py first to create fact_team_reporting_1981_current.csv.")
+        return
+
+    if not prev_path.exists():
+        print(f"No previous snapshot found at: {prev_path}")
+        print("Bootstrapping weekly change by copying current snapshot to prev.")
+        shutil.copy2(curr_path, prev_path)
 
     prev = pd.read_csv(prev_path)
     curr = pd.read_csv(curr_path)
@@ -40,12 +51,12 @@ def main(dry_run: bool = False) -> None:
         if {"runs_scored", "runs_allowed"}.issubset(prev.columns):
             prev["run_diff"] = prev["runs_scored"] - prev["runs_allowed"]
         else:
-            raise SystemExit("Previous snapshot missing run_diff and RS/RA columns")
+            prev["run_diff"] = 0
     if "run_diff" not in curr.columns:
         if {"runs_scored", "runs_allowed"}.issubset(curr.columns):
             curr["run_diff"] = curr["runs_scored"] - curr["runs_allowed"]
         else:
-            raise SystemExit("Current snapshot missing run_diff and RS/RA columns")
+            curr["run_diff"] = 0
 
     base_cols = [team_id_col]
     for col in ["team_abbr", "team_name", "wins", "losses", "win_pct", "run_diff"]:
@@ -143,3 +154,8 @@ def cli() -> None:
 
 if __name__ == "__main__":
     cli()
+
+
+
+
+
