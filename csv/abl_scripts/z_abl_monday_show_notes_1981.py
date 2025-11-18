@@ -15,174 +15,195 @@ def ensure_file(path: Path) -> bool:
     return True
 
 
-def load_optional(path: Path, label: str):
-    if path.exists():
-        df = pd.read_csv(path)
-        print(f"{label} columns:", list(df.columns))
-        return df
-    print(f"{label} not found at: {path}")
-    return None
+def _blank_series(length: int):
+    return pd.Series(["" for _ in range(length)])
 
 
-def build_division_leaders(standings: pd.DataFrame) -> pd.DataFrame:
-    leader_rows = []
-    for (sub_league, division), grp in standings.groupby(["sub_league", "division"], dropna=False):
-        grp_sorted = grp.sort_values(by=["win_pct", "run_diff"], ascending=[False, False])
-        leader_rows.append(grp_sorted.iloc[0])
-    leaders = pd.DataFrame(leader_rows).reset_index(drop=True)
-    return pd.DataFrame(
-        {
-            "section": "division_leader",
-            "subsection": leaders["division"],
-            "team_abbr": leaders["team_abbr"],
-            "team_name": leaders["team_name"],
-            "sub_league": leaders["sub_league"],
-            "division": leaders["division"],
-            "wins": leaders["wins"],
-            "losses": leaders["losses"],
-            "win_pct": leaders["win_pct"],
-            "run_diff": leaders["run_diff"],
-            "note_metric_1": leaders["games"],
-            "note_metric_2": "",
-            "manager_name": "",
-        }
-    )
-
-
-def build_power_top(power: pd.DataFrame) -> pd.DataFrame:
-    top = power.sort_values(by="power_rank").head(5)
-    return pd.DataFrame(
-        {
-            "section": "power_top5",
-            "subsection": "",
-            "team_abbr": top["team_abbr"],
-            "team_name": top["team_name"],
-            "sub_league": top["sub_league"],
-            "division": top["division"],
-            "wins": top["wins"],
-            "losses": top["losses"],
-            "win_pct": top["win_pct"],
-            "run_diff": top["run_diff"],
-            "note_metric_1": top["power_rank"],
-            "note_metric_2": top["games"],
-            "manager_name": "",
-        }
-    )
-
-
-def build_change_section(
-    change_df: pd.DataFrame, standings_lookup: pd.DataFrame, section: str
-) -> pd.DataFrame:
-    if change_df.empty:
-        return pd.DataFrame(
-            columns=[
-                "section",
-                "subsection",
-                "team_abbr",
-                "team_name",
-                "sub_league",
-                "division",
-                "wins",
-                "losses",
-                "win_pct",
-                "run_diff",
-                "note_metric_1",
-                "note_metric_2",
-                "manager_name",
-            ]
-        )
-    joined = change_df.merge(standings_lookup, on="team_abbr", how="left", validate="one_to_one")
-    if joined["team_name"].isna().any():
-        missing = joined[joined["team_name"].isna()]["team_abbr"].unique()
-        raise ValueError(f"{section}: Missing standings info for teams: {missing}")
-    return pd.DataFrame(
-        {
-            "section": section,
-            "subsection": "",
-            "team_abbr": joined["team_abbr"],
-            "team_name": joined["team_name"],
-            "sub_league": joined["sub_league"],
-            "division": joined["division"],
-            "wins": joined["wins"],
-            "losses": joined["losses"],
-            "win_pct": joined["win_pct"],
-            "run_diff": joined["run_diff"],
-            "note_metric_1": joined.get("delta_wins", 0),
-            "note_metric_2": joined.get("delta_run_diff", 0),
-            "manager_name": "",
-        }
-    )
-
-
-def build_manager_spotlight(managers: pd.DataFrame) -> pd.DataFrame:
-    spotlight = managers.sort_values(by=["win_pct", "run_diff"], ascending=[False, False]).head(3)
-    return pd.DataFrame(
-        {
-            "section": "manager_spotlight",
-            "subsection": "",
-            "team_abbr": spotlight["team_abbr"],
-            "team_name": spotlight["team_name"],
-            "sub_league": spotlight["sub_league"],
-            "division": spotlight["division"],
-            "wins": spotlight["wins"],
-            "losses": spotlight["losses"],
-            "win_pct": spotlight["win_pct"],
-            "run_diff": spotlight["run_diff"],
-            "note_metric_1": spotlight["manager_career_win_pct"],
-            "note_metric_2": spotlight["manager_total_seasons"],
-            "manager_name": spotlight["manager_name"],
-        }
-    )
+def _repeat(value, length: int):
+    return [value] * length
 
 
 def main(dry_run: bool = False):
     standings_path = STAR_DIR / "monday_1981_standings_by_division.csv"
     power_path = STAR_DIR / "monday_1981_power_ranking.csv"
-    manager_path = STAR_DIR / "fact_manager_scorecard_1981_current.csv"
+    mgr_path = STAR_DIR / "fact_manager_scorecard_1981_current.csv"
     risers_path = STAR_DIR / "monday_1981_risers.csv"
     fallers_path = STAR_DIR / "monday_1981_fallers.csv"
 
-    if not all(ensure_file(p) for p in [standings_path, power_path, manager_path]):
+    required = [standings_path, power_path, mgr_path]
+    if not all(ensure_file(p) for p in required):
         return
 
     standings = pd.read_csv(standings_path)
     power = pd.read_csv(power_path)
-    managers = pd.read_csv(manager_path)
+    mgr = pd.read_csv(mgr_path)
+
+    risers = pd.read_csv(risers_path) if risers_path.exists() else None
+    fallers = pd.read_csv(fallers_path) if fallers_path.exists() else None
+
     print("Standings columns:", list(standings.columns))
     print("Power columns:", list(power.columns))
-    print("Manager scorecard columns:", list(managers.columns))
-
-    risers = load_optional(risers_path, "Risers file")
-    fallers = load_optional(fallers_path, "Fallers file")
+    print("Manager scorecard columns:", list(mgr.columns))
+    if risers is not None:
+        print("Risers columns:", list(risers.columns))
+    if fallers is not None:
+        print("Fallers columns:", list(fallers.columns))
 
     sections = []
-    sections.append(build_division_leaders(standings))
-    sections.append(build_power_top(power))
 
-    standings_lookup = standings[
-        ["team_abbr", "team_name", "sub_league", "division", "wins", "losses", "win_pct", "run_diff"]
-    ].copy()
+    standings = standings.copy()
+    if "games" not in standings.columns:
+        standings["games"] = standings["wins"] + standings["losses"]
+
+    div_rows = []
+    for (sl, div), group in standings.groupby(["sub_league", "division"]):
+        top = group.sort_values(by=["win_pct", "run_diff"], ascending=[False, False]).head(1)
+        div_rows.append(top.iloc[0])
+    if div_rows:
+        div_leaders = pd.DataFrame(div_rows).reset_index(drop=True)
+        gb_col = "GB" if "GB" in div_leaders.columns else None
+        note_metric_2 = (
+            div_leaders[gb_col]
+            if gb_col
+            else _blank_series(len(div_leaders))
+        )
+        sections.append(
+            pd.DataFrame(
+                {
+                    "section": _repeat("division_leader", len(div_leaders)),
+                    "subsection": div_leaders["division"],
+                    "team_abbr": div_leaders["team_abbr"],
+                    "team_name": div_leaders["team_name"],
+                    "sub_league": div_leaders["sub_league"],
+                    "division": div_leaders["division"],
+                    "wins": div_leaders["wins"],
+                    "losses": div_leaders["losses"],
+                    "win_pct": div_leaders["win_pct"],
+                    "run_diff": div_leaders["run_diff"],
+                    "note_metric_1": div_leaders["games"],
+                    "note_metric_2": note_metric_2.reset_index(drop=True),
+                    "manager_name": _blank_series(len(div_leaders)),
+                }
+            )
+        )
+
+    power = power.copy()
+    if "games" not in power.columns:
+        power["games"] = power["wins"] + power["losses"]
+    if {"team_abbr", "power_rank"}.issubset(power.columns):
+        top_power = power.sort_values("power_rank").head(5).reset_index(drop=True)
+        sections.append(
+            pd.DataFrame(
+                {
+                    "section": _repeat("power_top5", len(top_power)),
+                    "subsection": _blank_series(len(top_power)),
+                    "team_abbr": top_power["team_abbr"],
+                    "team_name": top_power["team_name"],
+                    "sub_league": top_power["sub_league"],
+                    "division": top_power["division"],
+                    "wins": top_power["wins"],
+                    "losses": top_power["losses"],
+                    "win_pct": top_power["win_pct"],
+                    "run_diff": top_power["run_diff"],
+                    "note_metric_1": top_power["power_rank"],
+                    "note_metric_2": top_power["games"],
+                    "manager_name": _blank_series(len(top_power)),
+                }
+            )
+        )
+
+    def build_change_section(df: pd.DataFrame, name: str):
+        if df is None or df.empty or "team_abbr" not in df.columns:
+            return None
+        joined = df.merge(
+            standings,
+            on="team_abbr",
+            how="left",
+            suffixes=("", "_standings"),
+        ).reset_index(drop=True)
+        if joined["team_name"].isna().any():
+            missing = joined[joined["team_name"].isna()]["team_abbr"].unique()
+            raise ValueError(f"{name}: missing standings info for teams {missing}")
+        note_metric_1 = (
+            joined["delta_wins"] if "delta_wins" in joined.columns else pd.Series([0] * len(joined))
+        )
+        note_metric_2 = (
+            joined["delta_run_diff"]
+            if "delta_run_diff" in joined.columns
+            else pd.Series([0] * len(joined))
+        )
+        return pd.DataFrame(
+            {
+                "section": _repeat(name, len(joined)),
+                "subsection": _blank_series(len(joined)),
+                "team_abbr": joined["team_abbr"],
+                "team_name": joined["team_name"],
+                "sub_league": joined["sub_league"],
+                "division": joined["division"],
+                "wins": joined["wins"],
+                "losses": joined["losses"],
+                "win_pct": joined["win_pct"],
+                "run_diff": joined["run_diff"],
+                "note_metric_1": note_metric_1.reset_index(drop=True),
+                "note_metric_2": note_metric_2.reset_index(drop=True),
+                "manager_name": _blank_series(len(joined)),
+            }
+        )
 
     if risers is not None:
         risers_sorted = risers.sort_values(
-            by=["delta_wins", "delta_run_diff", "delta_win_pct"], ascending=[False, False, False]
+            by=["delta_wins", "delta_run_diff", "delta_win_pct"],
+            ascending=[False, False, False],
         ).head(5)
-        sections.append(build_change_section(risers_sorted, standings_lookup, "riser"))
-    else:
-        print("No risers file; skipping riser section.")
+        riser_section = build_change_section(risers_sorted, "riser")
+        if riser_section is not None:
+            sections.append(riser_section)
 
     if fallers is not None:
         fallers_sorted = fallers.sort_values(
-            by=["delta_wins", "delta_run_diff", "delta_win_pct"], ascending=[True, True, True]
+            by=["delta_wins", "delta_run_diff", "delta_win_pct"],
+            ascending=[True, True, True],
         ).head(5)
-        sections.append(build_change_section(fallers_sorted, standings_lookup, "faller"))
-    else:
-        print("No fallers file; skipping faller section.")
+        faller_section = build_change_section(fallers_sorted, "faller")
+        if faller_section is not None:
+            sections.append(faller_section)
 
-    sections.append(build_manager_spotlight(managers))
+    mgr_sorted = mgr.sort_values(by=["win_pct", "run_diff"], ascending=[False, False]).head(3).reset_index(drop=True)
+    note_metric_1_mgr = (
+        mgr_sorted["manager_career_win_pct"]
+        if "manager_career_win_pct" in mgr_sorted.columns
+        else _blank_series(len(mgr_sorted))
+    )
+    note_metric_2_mgr = (
+        mgr_sorted["manager_total_seasons"]
+        if "manager_total_seasons" in mgr_sorted.columns
+        else _blank_series(len(mgr_sorted))
+    )
+    sections.append(
+        pd.DataFrame(
+            {
+                "section": _repeat("manager_spotlight", len(mgr_sorted)),
+                "subsection": _blank_series(len(mgr_sorted)),
+                "team_abbr": mgr_sorted["team_abbr"],
+                "team_name": mgr_sorted["team_name"],
+                "sub_league": mgr_sorted["sub_league"],
+                "division": mgr_sorted["division"],
+                "wins": mgr_sorted["wins"],
+                "losses": mgr_sorted["losses"],
+                "win_pct": mgr_sorted["win_pct"],
+                "run_diff": mgr_sorted["run_diff"],
+                "note_metric_1": note_metric_1_mgr.reset_index(drop=True),
+                "note_metric_2": note_metric_2_mgr.reset_index(drop=True),
+                "manager_name": mgr_sorted["manager_name"],
+            }
+        )
+    )
+
+    if not sections:
+        print("No sections built; check inputs.")
+        return
 
     show_notes = pd.concat(sections, ignore_index=True)
-
     out_path = STAR_DIR / "monday_1981_show_notes.csv"
     if not dry_run:
         show_notes.to_csv(out_path, index=False)
