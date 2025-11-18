@@ -38,6 +38,7 @@ def main():
     run_script("z_abl_weekly_change_1981.py")
     run_script("z_abl_monday_packet_1981.py")
     run_script("z_abl_manager_scorecard_1981.py")
+    run_script("z_abl_monday_show_notes_1981.py")
 
     print("\n=== WEEKLY 1981 PIPELINE COMPLETE ===")
     print("Updated artifacts:")
@@ -49,6 +50,7 @@ def main():
     print(" - monday_1981_risers.csv")
     print(" - monday_1981_fallers.csv")
     print(" - fact_manager_scorecard_1981_current.csv")
+    print(" - monday_1981_show_notes.csv")
 
 
 if __name__ == "__main__":
