@@ -18,7 +18,6 @@ def pick_column(df: pd.DataFrame, keywords, numeric=False):
     """
     Pick a column whose name contains ALL of the given keywords (case-insensitive).
     If numeric=True, restrict to numeric dtypes.
-    Raise ValueError with clear message if not found.
     """
     cols = list(df.columns)
     lowered = [c.lower() for c in cols]
@@ -36,7 +35,6 @@ def pick_column(df: pd.DataFrame, keywords, numeric=False):
             f"Could not find column matching keywords {keywords} in {list(df.columns)}"
         )
 
-    # deterministic: sort alphabetically
     candidates.sort()
     chosen = candidates[0]
     print(f"[INFO] Using column '{chosen}' for keywords {keywords}")
@@ -57,7 +55,8 @@ def enforce_team_ids(df: pd.DataFrame) -> None:
         bad = df.loc[~df["team_id"].between(1, 24)]
         if not bad.empty:
             raise ValueError(
-                f"Found team_id outside 1..24:\n{bad[['team_id']].drop_duplicates()}"
+                "Found team_id outside 1..24:\n"
+                + str(bad[['team_id']].drop_duplicates())
             )
 
 
@@ -70,9 +69,14 @@ def load_df(path: Path, label: str) -> pd.DataFrame:
     return df
 
 
+# ---------- SECTION BUILDERS ----------
+
+
 def build_standings_section(standings: pd.DataFrame) -> str:
-    # Identify basic columns
+    # Division column
     div_col = pick_column(standings, ["div"])
+
+    # Team name column
     team_name_col = None
     for cand in ["team_name", "name", "team"]:
         matches = [c for c in standings.columns if c.lower() == cand]
@@ -81,7 +85,6 @@ def build_standings_section(standings: pd.DataFrame) -> str:
             print(f"[INFO] Using '{team_name_col}' as team name column in standings")
             break
     if team_name_col is None:
-        # Fallback: first non-id column
         non_id_cols = [
             c for c in standings.columns if not any(x in c.lower() for x in ["id"])
         ]
@@ -90,20 +93,26 @@ def build_standings_section(standings: pd.DataFrame) -> str:
         team_name_col = non_id_cols[0]
         print(f"[WARN] Fallback team name column in standings: '{team_name_col}'")
 
-    wins_col = pick_column(standings, ["win"])
-    try:
-        pct_col = pick_column(standings, ["pct"], numeric=True)
-    except ValueError:
-        pct_col = None
-        print("[WARN] No win_pct column found; will sort by wins only")
-    losses_col_candidates = [c for c in standings.columns if "loss" in c.lower()]
-    if losses_col_candidates:
-        losses_col_candidates.sort()
-        losses_col = losses_col_candidates[0]
+    # Wins / losses / pct
+    wins_col = "wins" if "wins" in standings.columns else pick_column(
+        standings, ["wins"]
+    )
+    print(f"[INFO] Using '{wins_col}' as wins column in standings")
+
+    losses_candidates = [c for c in standings.columns if "loss" in c.lower()]
+    if losses_candidates:
+        losses_candidates.sort()
+        losses_col = losses_candidates[0]
         print(f"[INFO] Using '{losses_col}' as losses column in standings")
     else:
         losses_col = None
         print("[WARN] No losses column found; will omit L in W-L if needed")
+
+    try:
+        pct_col = pick_column(standings, ["pct"], numeric=True)
+    except ValueError:
+        pct_col = None
+        print("[WARN] No win_pct column found; sorting by wins only")
 
     lines = ["Division leaders (top 2 per division):"]
 
@@ -137,7 +146,8 @@ def build_standings_section(standings: pd.DataFrame) -> str:
 
 def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
     rank_col = pick_column(power, ["rank"])
-    # team name column
+
+    # Team name column
     team_name_col = None
     for cand in ["team_name", "name", "team"]:
         matches = [c for c in power.columns if c.lower() == cand]
@@ -154,28 +164,33 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
         team_name_col = non_id_cols[0]
         print(f"[WARN] Fallback team name column in power: '{team_name_col}'")
 
-    # attempt to join with standings for W-L
+    # Join to standings on team_abbr if possible (for W-L)
     merge_key = None
-    for key in ["team_id", "teamid"]:
+    for key in ["team_abbr", "team_id", "teamid"]:
         if key in power.columns and key in standings.columns:
             merge_key = key
             break
 
     if merge_key:
         merged = power.merge(
-            standings, on=merge_key, how="left", suffixes=("", "_stand")
+            standings,
+            on=merge_key,
+            how="left",
+            suffixes=("", "_stand"),
         )
         print(f"[INFO] Joined power to standings on {merge_key}")
     else:
         merged = power
         print("[WARN] Could not join power to standings; will omit W-L in this section")
 
-    # try to pick wins/losses for merged
+    # Wins / losses, if available
     wins_col = None
     losses_col = None
     if merge_key:
         try:
-            wins_col = pick_column(merged, ["win"])
+            wins_col = "wins" if "wins" in merged.columns else pick_column(
+                merged, ["wins"]
+            )
             loss_candidates = [c for c in merged.columns if "loss" in c.lower()]
             if loss_candidates:
                 loss_candidates.sort()
@@ -189,6 +204,7 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
     for _, row in top.iterrows():
         rank = int(row[rank_col]) if pd.notna(row[rank_col]) else row[rank_col]
         team = str(row[team_name_col])
+
         if wins_col and losses_col and wins_col in row and losses_col in row:
             try:
                 w = int(row[wins_col])
@@ -198,15 +214,35 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
                 rec = team
         else:
             rec = team
+
         lines.append(f"{rank}) {rec}")
 
     return "\n".join(lines)
 
 
+def _pick_change_col(df: pd.DataFrame, label: str) -> str:
+    # Prefer delta_win_pct, then delta_run_diff, then any 'delta'
+    for key in ["delta_win_pct", "delta_run_diff"]:
+        matches = [c for c in df.columns if c.lower() == key]
+        if matches:
+            print(f"[INFO] Using '{matches[0]}' as primary change column in {label}")
+            return matches[0]
+
+    delta_candidates = [c for c in df.columns if "delta" in c.lower()]
+    if not delta_candidates:
+        raise ValueError(f"No delta/change column found in {label}: {df.columns}")
+    delta_candidates.sort()
+    print(
+        f"[WARN] Fallback change column in {label}: '{delta_candidates[0]}' "
+        f"from candidates {delta_candidates}"
+    )
+    return delta_candidates[0]
+
+
 def build_risers_fallers_section(
     risers: pd.DataFrame, fallers: pd.DataFrame, standings: pd.DataFrame
 ) -> str:
-    # identify team name col for risers/fallers
+    # Team name columns for risers/fallers
     def team_name_col_for(df: pd.DataFrame, label: str) -> str:
         for cand in ["team_name", "name", "team"]:
             matches = [c for c in df.columns if c.lower() == cand]
@@ -224,17 +260,12 @@ def build_risers_fallers_section(
     riser_team_col = team_name_col_for(risers, "risers")
     faller_team_col = team_name_col_for(fallers, "fallers")
 
-    # change/delta column
-    change_col_r = pick_column(risers, ["change"]) if any(
-        "change" in c.lower() for c in risers.columns
-    ) else pick_column(risers, ["delta"])
-    change_col_f = pick_column(fallers, ["change"]) if any(
-        "change" in c.lower() for c in fallers.columns
-    ) else pick_column(fallers, ["delta"])
+    change_col_r = _pick_change_col(risers, "risers")
+    change_col_f = _pick_change_col(fallers, "fallers")
 
-    # join with standings for record if possible
+    # Join back to standings on team_abbr if possible
     merge_key = None
-    for key in ["team_id", "teamid"]:
+    for key in ["team_abbr", "team_id", "teamid"]:
         if key in risers.columns and key in standings.columns:
             merge_key = key
             break
@@ -254,11 +285,13 @@ def build_risers_fallers_section(
             "[WARN] Could not join risers/fallers to standings; will omit records if needed"
         )
 
-    # try to get wins/losses from merged if available
+    # Wins / losses
     wins_col = None
     losses_col = None
     try:
-        wins_col = pick_column(risers_merged, ["win"])
+        wins_col = "wins" if "wins" in risers_merged.columns else pick_column(
+            risers_merged, ["wins"]
+        )
         loss_candidates = [
             c for c in risers_merged.columns if "loss" in c.lower()
         ]
@@ -270,7 +303,7 @@ def build_risers_fallers_section(
 
     lines = []
 
-    # Risers
+    # Risers: biggest positive change
     r_sorted = risers_merged.sort_values(by=change_col_r, ascending=False).head(3)
     lines.append("Risers (top 3 by change):")
     for _, row in r_sorted.iterrows():
@@ -287,7 +320,7 @@ def build_risers_fallers_section(
             rec = f"{team} (change={delta})"
         lines.append(f"- {rec}")
 
-    # Fallers
+    # Fallers: biggest negative change
     f_sorted = fallers_merged.sort_values(by=change_col_f, ascending=True).head(3)
     lines.append("\nFallers (top 3 by negative change):")
     for _, row in f_sorted.iterrows():
@@ -310,7 +343,7 @@ def build_risers_fallers_section(
 def build_manager_section(
     mgr_score: pd.DataFrame, mgr_dim: pd.DataFrame
 ) -> str | None:
-    # Need manager_id
+    # Manager id column
     mgr_id_col = None
     for cand in ["manager_id", "person_id"]:
         if cand in mgr_score.columns:
@@ -321,11 +354,16 @@ def build_manager_section(
         print("[WARN] No manager_id/person_id column found; skipping manager section")
         return None
 
-    # join with dim for names
+    # Align DIM id column
     if mgr_id_col not in mgr_dim.columns:
-        possible = [c for c in mgr_dim.columns if "manager" in c.lower() and "id" in c.lower()]
+        possible = [
+            c for c in mgr_dim.columns
+            if "manager" in c.lower() and "id" in c.lower()
+        ]
         if not possible:
-            print("[WARN] Manager DIM has no matching id column; skipping manager section")
+            print(
+                "[WARN] Manager DIM has no matching id column; skipping manager section"
+            )
             return None
         mgr_dim_id_col = possible[0]
         mgr_dim = mgr_dim.rename(columns={mgr_dim_id_col: mgr_id_col})
@@ -335,7 +373,7 @@ def build_manager_section(
 
     merged = mgr_score.merge(mgr_dim, on=mgr_id_col, how="left", suffixes=("", "_dim"))
 
-    # find score column
+    # Find a score/rating column if one exists
     score_cols = [
         c
         for c in merged.columns
@@ -343,14 +381,16 @@ def build_manager_section(
         and pd.api.types.is_numeric_dtype(merged[c])
     ]
     if not score_cols:
-        print("[WARN] No numeric 'score' or 'rating' column found; skipping manager section")
+        print(
+            "[WARN] No numeric 'score' or 'rating' column found; skipping manager section"
+        )
         return None
 
     score_cols.sort()
     score_col = score_cols[0]
     print(f"[INFO] Using '{score_col}' as manager score column")
 
-    # pick name columns
+    # Manager full name
     first_col = None
     last_col = None
     for c in merged.columns:
@@ -360,11 +400,15 @@ def build_manager_section(
         if "last" in lc and "name" in lc:
             last_col = c
     if not first_col or not last_col:
-        print("[WARN] Manager DIM missing clear first/last name; will use fallback name field")
+        print(
+            "[WARN] Manager DIM missing clear first/last name; will use fallback name field"
+        )
         name_col_candidates = [
             c
             for c in merged.columns
-            if "name" in c.lower() and not any(x in c.lower() for x in ["first", "last"])
+            if "name" in c.lower() and not any(
+                x in c.lower() for x in ["first", "last"]
+            )
         ]
         name_col_candidates.sort()
         name_col = name_col_candidates[0] if name_col_candidates else mgr_id_col
@@ -376,7 +420,7 @@ def build_manager_section(
             + merged[last_col].astype(str).str.strip()
         )
 
-    # try to identify team name for context
+    # Team name, if available
     team_name_col = None
     for cand in ["team_name", "name", "team"]:
         matches = [c for c in merged.columns if c.lower() == cand]
@@ -385,13 +429,10 @@ def build_manager_section(
             print(f"[INFO] Using '{team_name_col}' as manager team name column")
             break
 
-    # Stock up: top 3 by score
     up = merged.sort_values(by=score_col, ascending=False).head(3)
-    # Stock down: bottom 3 by score
     down = merged.sort_values(by=score_col, ascending=True).head(3)
 
     lines = []
-
     lines.append("Managers – stock up (top 3 by manager score):")
     for _, row in up.iterrows():
         name = str(row["mgr_full_name"])
@@ -413,6 +454,9 @@ def build_manager_section(
             lines.append(f"- {name} (score={score})")
 
     return "\n".join(lines)
+
+
+# ---------- MAIN ----------
 
 
 def main():
