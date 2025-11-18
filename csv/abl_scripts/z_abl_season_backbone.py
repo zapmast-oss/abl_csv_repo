@@ -1,28 +1,22 @@
-# NOTE: superseded by z_abl_season_backbone.py; kept temporarily for reference.`n"""ABL 1980 Season Backbone: one-row summary per club for broadcast context."""
-
-from __future__ import annotations
-
-import sys
-from pathlib import Path
-from typing import Dict, Tuple
-
+﻿from pathlib import Path
+import argparse
 import pandas as pd
 
 from abl_config import LEAGUE_ID, RAW_CSV_ROOT, TEAM_IDS
 from abl_team_helper import load_abl_teams
 
-CSV_ROOT = Path(__file__).resolve().parents[1]
-OUT_PATH = CSV_ROOT / "out" / "csv_out" / "z_ABL_1980_Season_Backbone.csv"
-SEASON = 1980
+SCRIPT_PATH = Path(__file__).resolve()
+CSV_ROOT = SCRIPT_PATH.parents[1]
+STAR_DIR = CSV_ROOT / "out" / "star_schema"
 TEAM_SET = set(TEAM_IDS)
 
 
-def load_team_records() -> pd.DataFrame:
+def load_team_records(season: int) -> pd.DataFrame:
     path = RAW_CSV_ROOT / "team_history_record.csv"
     df = pd.read_csv(path)
     df = df[
         (df["league_id"] == LEAGUE_ID)
-        & (df["year"] == SEASON)
+        & (df["year"] == season)
         & (df["team_id"].isin(TEAM_SET))
     ].copy()
     df["team_id"] = df["team_id"].astype(int)
@@ -32,12 +26,12 @@ def load_team_records() -> pd.DataFrame:
     return df[["team_id", "wins", "losses", "sub_league_id"]]
 
 
-def load_runs_scored() -> pd.DataFrame:
+def load_runs_scored(season: int) -> pd.DataFrame:
     path = RAW_CSV_ROOT / "team_history_batting_stats.csv"
     df = pd.read_csv(path)
     df = df[
         (df["league_id"] == LEAGUE_ID)
-        & (df["year"] == SEASON)
+        & (df["year"] == season)
         & (df["team_id"].isin(TEAM_SET))
     ].copy()
     df["team_id"] = df["team_id"].astype(int)
@@ -45,12 +39,12 @@ def load_runs_scored() -> pd.DataFrame:
     return df[["team_id", "runs_scored"]]
 
 
-def load_runs_allowed() -> pd.DataFrame:
+def load_runs_allowed(season: int) -> pd.DataFrame:
     path = RAW_CSV_ROOT / "team_history_pitching_stats.csv"
     df = pd.read_csv(path)
     df = df[
         (df["league_id"] == LEAGUE_ID)
-        & (df["year"] == SEASON)
+        & (df["year"] == season)
         & (df["team_id"].isin(TEAM_SET))
     ].copy()
     df["team_id"] = df["team_id"].astype(int)
@@ -58,12 +52,12 @@ def load_runs_allowed() -> pd.DataFrame:
     return df[["team_id", "runs_allowed"]]
 
 
-def load_playoff_flags() -> Tuple[pd.DataFrame, int]:
+def load_playoff_flags(season: int) -> tuple[pd.DataFrame, int | None]:
     path = RAW_CSV_ROOT / "team_history.csv"
     df = pd.read_csv(path)
     df = df[
         (df["league_id"] == LEAGUE_ID)
-        & (df["year"] == SEASON)
+        & (df["year"] == season)
         & (df["team_id"].isin(TEAM_SET))
     ][["team_id", "made_playoffs", "won_playoffs"]].copy()
     df["team_id"] = df["team_id"].astype(int)
@@ -92,28 +86,20 @@ def compute_pythag(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def determine_conference_winners(df: pd.DataFrame) -> Dict[int, int]:
-    """Approximate conference champions by best regular-season record per sub-league."""
-    ranked = df.sort_values(
-        ["sub_league_id", "wins", "run_diff"], ascending=[True, False, False]
-    )
+def determine_conference_winners(df: pd.DataFrame) -> dict[int, int]:
+    ranked = df.sort_values(["sub_league_id", "wins", "run_diff"], ascending=[True, False, False])
     winners = ranked.groupby("sub_league_id").head(1)
     return {row["team_id"]: 1 for _, row in winners.iterrows()}
 
 
-def build_backbone() -> Tuple[pd.DataFrame, Dict[int, Dict[str, str]], int]:
-    teams_lookup_df = load_abl_teams().rename(
-        columns={"name": "team_name", "abbr": "team_abbr"}
-    )
-    team_lookup = {
-        row["team_id"]: {"name": row["team_name"], "abbr": row["team_abbr"]}
-        for _, row in teams_lookup_df.iterrows()
-    }
+def build_season_backbone(season: int, dry_run: bool = False) -> pd.DataFrame:
+    records = load_team_records(season)
+    if records.empty:
+        raise SystemExit(f"No team records found for season {season}")
 
-    records = load_team_records()
-    batting = load_runs_scored()
-    pitching = load_runs_allowed()
-    playoff_flags, champion_id = load_playoff_flags()
+    batting = load_runs_scored(season)
+    pitching = load_runs_allowed(season)
+    playoff_flags, champion_id = load_playoff_flags(season)
 
     df = (
         records.merge(batting, on="team_id", how="left")
@@ -125,15 +111,15 @@ def build_backbone() -> Tuple[pd.DataFrame, Dict[int, Dict[str, str]], int]:
     df["runs_allowed"] = df["runs_allowed"].fillna(0)
     df["made_playoffs"] = df["made_playoffs"].fillna(0).astype(int)
     df["won_title"] = df["won_title"].fillna(0).astype(int)
-    df["season"] = SEASON
+    df["season"] = season
 
     df = compute_pythag(df)
-
     conference_flags = determine_conference_winners(df)
     df["won_conference"] = df["team_id"].map(conference_flags).fillna(0).astype(int)
 
-    df["team_name"] = df["team_id"].map(lambda tid: team_lookup[tid]["name"])
-    df["team_abbr"] = df["team_id"].map(lambda tid: team_lookup[tid]["abbr"])
+    teams_lookup_df = load_abl_teams().rename(columns={"name": "team_name", "abbr": "team_abbr"})
+    df["team_name"] = df["team_id"].map(teams_lookup_df.set_index("team_id")["team_name"])
+    df["team_abbr"] = df["team_id"].map(teams_lookup_df.set_index("team_id")["team_abbr"])
 
     df = df[
         [
@@ -153,60 +139,32 @@ def build_backbone() -> Tuple[pd.DataFrame, Dict[int, Dict[str, str]], int]:
             "made_playoffs",
             "won_conference",
             "won_title",
-            "sub_league_id",
         ]
-    ].sort_values("team_id")
-    return df.reset_index(drop=True), team_lookup, champion_id
+    ].sort_values("team_id").reset_index(drop=True)
 
+    if (df["team_id"] < 1).any() or (df["team_id"] > 24).any():
+        raise SystemExit("Detected team_id outside ABL canon")
 
-def write_output(df: pd.DataFrame) -> None:
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    df_output = df.drop(columns=["sub_league_id"])
-    df_output.to_csv(OUT_PATH, index=False)
+    if not dry_run:
+        output_path = STAR_DIR / f"fact_schedule_{season}.csv"
+        STAR_DIR.mkdir(parents=True, exist_ok=True)
+        df.to_csv(output_path, index=False)
+        print(f"Wrote {output_path}")
 
-
-def validate_output() -> None:
-    df = pd.read_csv(OUT_PATH)
-    if len(df) != len(TEAM_SET):
-        raise SystemExit(f"Validation failed: expected {len(TEAM_SET)} rows, found {len(df)}.")
-    if not set(df["team_id"]).issubset(TEAM_SET):
-        raise SystemExit("Validation failed: team_id outside canonical set.")
-    if (df["season"] != SEASON).any():
-        raise SystemExit("Validation failed: season column contains non-1980 values.")
+    return df
 
 
 def main() -> None:
-    try:
-        backbone, team_lookup, champion_id = build_backbone()
-        write_output(backbone)
-        validate_output()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--season", type=int, required=True, help="Season year (e.g. 1980)")
+    parser.add_argument("--dry-run", action="store_true", help="Run without writing output CSV")
+    args = parser.parse_args()
 
-        playoff_teams = int(backbone["made_playoffs"].sum())
-        conference_winners = backbone.loc[backbone["won_conference"] == 1, "team_id"].tolist()
-        conference_labels = []
-        for idx, team_id in enumerate(conference_winners):
-            info = team_lookup.get(team_id, {"name": f"Team {team_id}"})
-            conference_labels.append(f"Conf {idx + 1}: {info['name']} (team_id={team_id})")
-
-        champ_label = (
-            f"{team_lookup.get(champion_id, {'name': 'Unknown'})['name']} (team_id={champion_id})"
-            if champion_id is not None
-            else "Unknown"
-        )
-        print(
-            f"1980 Playoffs: {playoff_teams} playoff teams, "
-            + ", ".join(conference_labels)
-            + f", Grand Champion = {champ_label}"
-        )
-        print(
-            f"1980 Season Backbone: {len(backbone)} teams, champion team_id={champion_id}, "
-            f"wrote {OUT_PATH.name}"
-        )
-    except Exception as exc:  # noqa: BLE001
-        print(f"Error: {exc}", file=sys.stderr)
-        sys.exit(1)
+    df = build_season_backbone(season=args.season, dry_run=args.dry_run)
+    print(f"SEASON_BACKBONE {args.season}: built {len(df)} teams")
+    print("Sample:")
+    print(df.head(10))
 
 
 if __name__ == "__main__":
     main()
-
