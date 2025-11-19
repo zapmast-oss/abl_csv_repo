@@ -147,6 +147,14 @@ def build_standings_section(standings: pd.DataFrame) -> str:
 def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
     rank_col = pick_column(power, ["rank"])
 
+    tendency_col = None
+    for col in power.columns:
+        col_lower = col.lower()
+        if "tend" in col_lower or "trend" in col_lower:
+            tendency_col = col
+            print(f"[INFO] Using '{tendency_col}' as tendency column in power rankings")
+            break
+
     # Team name column
     team_name_col = None
     for cand in ["team_name", "name", "team"]:
@@ -198,9 +206,9 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
         except ValueError:
             print("[WARN] Could not identify W/L columns for power section")
 
-    top = merged.sort_values(by=rank_col, ascending=True).head(5)
+    top = merged.sort_values(by=rank_col, ascending=True).head(9)
 
-    lines = ["Power board (top 5 by power rank):"]
+    lines = ["Power board (top 9 by power rank):"]
     for _, row in top.iterrows():
         rank = int(row[rank_col]) if pd.notna(row[rank_col]) else row[rank_col]
         team = str(row[team_name_col])
@@ -215,7 +223,15 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
         else:
             rec = team
 
-        lines.append(f"{rank}) {rec}")
+        tendency_str = ""
+        if tendency_col and tendency_col in row:
+            val = row[tendency_col]
+            if pd.notna(val):
+                val_str = str(val).strip()
+                if val_str:
+                    tendency_str = f" [{val_str}]"
+
+        lines.append(f"{rank}) {rec}{tendency_str}")
 
     return "\n".join(lines)
 
@@ -308,16 +324,17 @@ def build_risers_fallers_section(
     lines.append("Risers (top 3 by change):")
     for _, row in r_sorted.iterrows():
         team = str(row[riser_team_col])
-        delta = row[change_col_r]
+        delta_raw = pd.to_numeric(row[change_col_r], errors="coerce")
+        change_str = f"{float(delta_raw) * 100:+.1f}%" if pd.notna(delta_raw) else "n/a"
         if wins_col and losses_col and wins_col in row and losses_col in row:
             try:
                 w = int(row[wins_col])
                 l = int(row[losses_col])
-                rec = f"{team} (change={delta}, record={w}-{l})"
+                rec = f"{team} (change={change_str}, record={w}-{l})"
             except Exception:
-                rec = f"{team} (change={delta})"
+                rec = f"{team} (change={change_str})"
         else:
-            rec = f"{team} (change={delta})"
+            rec = f"{team} (change={change_str})"
         lines.append(f"- {rec}")
 
     # Fallers: biggest negative change
@@ -325,16 +342,17 @@ def build_risers_fallers_section(
     lines.append("\nFallers (top 3 by negative change):")
     for _, row in f_sorted.iterrows():
         team = str(row[faller_team_col])
-        delta = row[change_col_f]
+        delta_raw = pd.to_numeric(row[change_col_f], errors="coerce")
+        change_str = f"{float(delta_raw) * 100:+.1f}%" if pd.notna(delta_raw) else "n/a"
         if wins_col and losses_col and wins_col in row and losses_col in row:
             try:
                 w = int(row[wins_col])
                 l = int(row[losses_col])
-                rec = f"{team} (change={delta}, record={w}-{l})"
+                rec = f"{team} (change={change_str}, record={w}-{l})"
             except Exception:
-                rec = f"{team} (change={delta})"
+                rec = f"{team} (change={change_str})"
         else:
-            rec = f"{team} (change={delta})"
+            rec = f"{team} (change={change_str})"
         lines.append(f"- {rec}")
 
     return "\n".join(lines)
