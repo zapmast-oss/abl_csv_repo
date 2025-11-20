@@ -1,0 +1,16 @@
+ABL Managers Snapshot
+========================================================================
+Total managers tracked: 46
+
+Rank Name                             W     L    Win%  Titles
+-------------------------------------------------------------
+1    Seth Coe                       806   675   0.544       2
+2    Mike Shoulders                 803   639   0.557       1
+3    Collin Todd                    534   435   0.551       1
+4    Carlos Sanchez                 790   695   0.532       1
+5    Bryan Moody                    683   605   0.530       1
+6    Jose Perez                     274   244   0.529       1
+7    Rafael Loza                    407   396   0.507       1
+8    Glenn Brophy                   292   356   0.451       1
+9    Chris Allison                  473   369   0.562       0
+10   Greg Asche                      18    14   0.562       0

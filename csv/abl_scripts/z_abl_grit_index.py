@@ -599,7 +599,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     text_report = build_text_report(aggregates)
     text_filename = out_path.with_suffix(".txt").name
     if out_path.parent.name.lower() in {'csv_out'}:
-        text_dir = out_path.parent.parent / "txt_out"
+        text_dir = out_path.parent.parent / "text_out"
     else:
         text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)

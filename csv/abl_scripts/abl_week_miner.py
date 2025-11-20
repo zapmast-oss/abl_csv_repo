@@ -1303,7 +1303,7 @@ def main():
         text = summarize_category(section_rows, title)
         if text:
             sections.append(text)
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     txt_path = txt_dir / "z_ABL_Week_Miner.txt"
     txt_path.write_text("\n\n".join(sections), encoding="utf-8")

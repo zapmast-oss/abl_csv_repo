@@ -140,7 +140,7 @@ def resolve_text_path(csv_path: Path) -> Path:
     text_name = csv_path.with_suffix(".txt").name
     parent = csv_path.parent
     if parent.name.lower() in {'csv_out'}:
-        text_dir = parent.parent / "txt_out"
+        text_dir = parent.parent / "text_out"
     else:
         text_dir = parent
     text_dir.mkdir(parents=True, exist_ok=True)

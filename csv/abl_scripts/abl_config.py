@@ -21,7 +21,7 @@ ANALYTICS_CSV_ROOT = Path(os.environ.get("ABL_ANALYTICS_ROOT", DEFAULT_ANALYTICS
 
 # Output directories for generated CSV/TXT artifacts.
 CSV_OUT_ROOT = Path(os.environ.get("ABL_CSV_OUT", ROOT_DIR / "out" / "csv_out")).resolve()
-TXT_OUT_ROOT = Path(os.environ.get("ABL_TXT_OUT", ROOT_DIR / "out" / "txt_out")).resolve()
+TXT_OUT_ROOT = Path(os.environ.get("ABL_TXT_OUT", ROOT_DIR / "out" / "text_out")).resolve()
 
 # Backwards-compatible alias used by older scripts.
 CSV_ROOT = RAW_CSV_ROOT
