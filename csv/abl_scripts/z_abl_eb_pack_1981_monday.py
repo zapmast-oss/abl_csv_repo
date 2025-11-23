@@ -144,124 +144,79 @@ def build_standings_section(standings: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
-    rank_col = "rank" if "rank" in power.columns else pick_column(power, ["rank"])
+def build_power_section(
+    power: pd.DataFrame,
+    standings: pd.DataFrame | None = None,
+) -> str:
+    """
+    Build the power board section for EB using ONLY csv/out/abl_power_rankings.csv.
 
+    Expected columns in `power`:
+      - rank (int)
+      - team_name (str, full name)
+      - points (numeric or string)
+      - tendency (optional, e.g. '++', '+', 'o', '-', '--')
+    """
+    print(
+        "[INFO] Building power board from abl_power_rankings.csv using rank/team_name/points/tendency"
+    )
+
+    df = power.copy()
+
+    # Normalize headers
+    rename_map = {}
+    if "Rank" in df.columns:
+        rename_map["Rank"] = "rank"
+    if "Team Name" in df.columns:
+        rename_map["Team Name"] = "team_name"
+    elif "Team" in df.columns:
+        rename_map["Team"] = "team_name"
+    if "Points" in df.columns:
+        rename_map["Points"] = "points"
     tendency_col = None
-    for col in power.columns:
-        col_lower = col.lower()
-        if "tend" in col_lower or "trend" in col_lower:
-            tendency_col = col
-            print(f"[INFO] Using '{tendency_col}' as tendency column in power rankings")
+    for col in df.columns:
+        if col in rename_map:
+            continue
+        if "tend" in col.lower() or "trend" in col.lower():
+            rename_map[col] = "tendency"
+            tendency_col = "tendency"
             break
+    df = df.rename(columns=rename_map)
+    if tendency_col is None and "tendency" in df.columns:
+        tendency_col = "tendency"
 
-    # Team name column
-    team_name_col = None
-    for cand in ["team_name", "name", "team"]:
-        matches = [c for c in power.columns if c.lower() == cand]
-        if matches:
-            team_name_col = matches[0]
-            print(f"[INFO] Using '{team_name_col}' as team name column in power")
-            break
-    if team_name_col is None:
-        non_id_cols = [
-            c for c in power.columns if not any(x in c.lower() for x in ["id"])
-        ]
-        if not non_id_cols:
-            raise ValueError("Could not determine team name column in power rankings")
-        team_name_col = non_id_cols[0]
-        print(f"[WARN] Fallback team name column in power: '{team_name_col}'")
-
-    # Join to standings for W-L (prefer team_id, then team_abbr, then team_name)
-    name_keys = {"team_name", "name", "team"}
-    merge_power_col = merge_stand_col = None
-    for cand in ["team_id", "ID", "id"]:
-        if cand in power.columns:
-            for stand_cand in ["team_id", "ID", "id"]:
-                if stand_cand in standings.columns:
-                    merge_power_col, merge_stand_col = cand, stand_cand
-                    break
-        if merge_power_col:
-            break
-    if merge_power_col is None:
-        for cand in ["team_abbr", "abbr"]:
-            if cand in power.columns:
-                for stand_cand in ["team_abbr", "abbr"]:
-                    if stand_cand in standings.columns:
-                        merge_power_col, merge_stand_col = cand, stand_cand
-                        break
-            if merge_power_col:
-                break
-    if merge_power_col is None:
-        for cand in name_keys:
-            if cand in power.columns:
-                for stand_cand in name_keys:
-                    if stand_cand in standings.columns:
-                        merge_power_col, merge_stand_col = cand, stand_cand
-                        break
-            if merge_power_col:
-                break
-
-    if merge_power_col:
-        p_copy = power.copy()
-        s_copy = standings.copy()
-        if merge_power_col in name_keys or merge_stand_col in name_keys:
-            p_copy["_merge_key"] = p_copy[merge_power_col].astype(str).str.strip().str.lower()
-            s_copy["_merge_key"] = s_copy[merge_stand_col].astype(str).str.strip().str.lower()
-        else:
-            p_copy = p_copy.rename(columns={merge_power_col: "_merge_key"})
-            s_copy = s_copy.rename(columns={merge_stand_col: "_merge_key"})
-        merged = p_copy.merge(
-            s_copy,
-            on="_merge_key",
-            how="left",
-            suffixes=("", "_stand"),
+    # Validate required columns
+    required = {"rank", "team_name", "points"}
+    missing = required.difference(df.columns)
+    if missing:
+        raise SystemExit(
+            "Power ranking CSV missing required columns: rank/team_name/points"
         )
-        print(f"[INFO] Joined power to standings on {merge_power_col} -> {merge_stand_col}")
-    else:
-        merged = power
-        print("[WARN] Could not join power to standings; will omit W-L in this section")
 
-    # Wins / losses, if available
-    wins_col = None
-    losses_col = None
-    try:
-        wins_col = "wins" if "wins" in merged.columns else pick_column(
-            merged, ["wins"]
-        )
-        loss_candidates = [c for c in merged.columns if "loss" in c.lower()]
-        if loss_candidates:
-            loss_candidates.sort()
-            losses_col = loss_candidates[0]
-    except ValueError:
-        print("[WARN] Could not identify W/L columns for power section")
+    # Sort by rank and take top 9
+    df = df.sort_values("rank", ascending=True)
+    top = df.head(9)
 
-    top = merged.sort_values(by=rank_col, ascending=True).head(9)
+    lines: list[str] = []
+    lines.append("Power board (top 9 by power rank):")
 
-    lines = ["Power board (top 9 by power rank):"]
     for _, row in top.iterrows():
-        rank = int(row[rank_col]) if pd.notna(row[rank_col]) else row[rank_col]
-        team = str(row[team_name_col])
+        rank_val = int(row["rank"])
+        name = str(row["team_name"]).strip()
 
-        if wins_col and losses_col and wins_col in row and losses_col in row:
-            try:
-                w = int(row[wins_col])
-                l = int(row[losses_col])
-                rec = f"{team} ({w}-{l})"
-            except Exception:
-                rec = team
+        pts = row["points"]
+        if pd.api.types.is_number(pts):
+            points_str = f"{float(pts):.1f}"
         else:
-            rec = team
+            points_str = str(pts)
 
         tendency_str = ""
-        if tendency_col and tendency_col in row:
-            val = row[tendency_col]
-            if pd.notna(val):
-                val_str = str(val).strip()
-                if val_str:
-                    tendency_str = f" [{val_str}]"
+        if tendency_col and tendency_col in row.index:
+            val = str(row[tendency_col]).strip()
+            if val and val.lower() != "nan":
+                tendency_str = f" [{val}]"
 
-        lines.append(f"{rank}) {rec}{tendency_str}")
+        lines.append(f"{rank_val}) {name} {points_str}{tendency_str}")
 
     return "\n".join(lines)
 
@@ -517,7 +472,7 @@ def main():
     text_out_dir.mkdir(parents=True, exist_ok=True)
 
     standings_path = star_schema_dir / "monday_1981_standings_by_division.csv"
-    power_path = star_schema_dir / "monday_1981_power_ranking.csv"
+    power_path = root / "csv" / "out" / "abl_power_rankings.csv"
     risers_path = star_schema_dir / "monday_1981_risers.csv"
     fallers_path = star_schema_dir / "monday_1981_fallers.csv"
     mgr_score_path = star_schema_dir / "fact_manager_scorecard_1981_current.csv"
@@ -525,7 +480,7 @@ def main():
 
     # Load data
     standings = load_df(standings_path, "Monday standings by division")
-    power = load_df(power_path, "Monday power ranking")
+    power = load_df(power_path, "ABL power ranking")
     risers = load_df(risers_path, "Monday risers")
     fallers = load_df(fallers_path, "Monday fallers")
     mgr_score = load_df(mgr_score_path, "Manager scorecard current")

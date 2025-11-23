@@ -9,15 +9,15 @@ Division leaders (top 2 per division):
 - NBC Western Division: San Francisco Warriors (18-14), Los Angeles Cobras (16-16)
 
 Power board (top 9 by power rank):
-1) Las Vegas Gamblers (24-8)
-2) Charlotte Colonels (22-10)
-3) Dallas Rustlers (19-13)
-4) Nashville Blues (18-14)
-5) Denver Rocketeers (18-14)
-6) Miami Hurricanes (18-14)
-7) San Francisco Warriors (18-14)
-8) St. Louis Stallions (17-15)
-9) Boston Patriots (17-15)
+1) Las Vegas Gamblers 137.0 [o]
+2) Charlotte Colonels 126.8 [o]
+3) Denver Rocketeers 108.3 [++]
+4) Dallas Rustlers 106.9 [o]
+5) Miami Hurricanes 106.3 [++]
+6) Nashville Blues 106.3 [++]
+7) San Francisco Warriors 103.3 [-]
+8) Boston Patriots 97.6 [o]
+9) St. Louis Stallions 96.6 [+]
 
 Risers (top 3 by change):
 - DEN (change=+6.3%, record=18-14)
