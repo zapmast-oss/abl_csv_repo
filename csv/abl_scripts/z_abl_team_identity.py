@@ -165,3 +165,15 @@ def build_team_identity_card(team_abbr: str) -> dict:
         },
     }
     return card
+
+
+if __name__ == "__main__":
+    import sys
+    import json
+
+    if len(sys.argv) != 2:
+        raise SystemExit("Usage: py csv/abl_scripts/z_abl_team_identity.py <TEAM_ABBR>")
+
+    abbr = sys.argv[1]
+    card = build_team_identity_card(abbr)
+    print(json.dumps(card, indent=2, ensure_ascii=False, default=str))

@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import json
 import pandas as pd
 from textwrap import dedent
 
@@ -67,6 +68,63 @@ def load_df(path: Path, label: str) -> pd.DataFrame:
     df = maybe_filter_league(df)
     enforce_team_ids(df)
     return df
+
+
+# ---------- PACK LOADERS ----------
+
+
+def _text_out_dir() -> Path:
+    return Path(__file__).resolve().parents[2] / "csv" / "out" / "text_out"
+
+
+def load_identity_pack() -> dict:
+    path = _text_out_dir() / "eb_team_identity_pack_1981.json"
+    if not path.exists():
+        print(f"[WARN] Identity pack not found at {path}; skipping section.")
+        return {}
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[WARN] Failed to load identity pack ({path}): {exc}")
+        return {}
+    if isinstance(data, list):
+        pack = {}
+        for item in data:
+            abbr = str(item.get("team_abbr", "")).strip().upper()
+            if abbr:
+                pack[abbr] = item
+        return pack
+    if isinstance(data, dict):
+        return {str(k).strip().upper(): v for k, v in data.items()}
+    print(f"[WARN] Identity pack had unexpected shape; skipping: {path}")
+    return {}
+
+
+def load_player_of_week() -> dict | None:
+    path = _text_out_dir() / "eb_player_of_week_1981.json"
+    if not path.exists():
+        print("[INFO] Player-of-the-Week file not found; skipping section.")
+        return None
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[WARN] Failed to load player-of-the-week file ({path}): {exc}")
+        return None
+
+
+def load_war_leaders() -> dict | None:
+    path = _text_out_dir() / "eb_war_leaders_1981.json"
+    if not path.exists():
+        print("[INFO] WAR leaders file not found; skipping section.")
+        return None
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[WARN] Failed to load WAR leaders file ({path}): {exc}")
+        return None
 
 
 # ---------- SECTION BUILDERS ----------
@@ -459,6 +517,137 @@ def build_manager_section(
     return "\n".join(lines)
 
 
+# ---------- EXTRA SECTIONS ----------
+
+
+def build_identity_section(identity_pack: dict) -> str:
+    if not identity_pack:
+        return ""
+
+    def _fmt(val, fmt: str) -> str:
+        try:
+            num = float(val)
+            return format(num, fmt)
+        except Exception:
+            return "n/a"
+
+    lines: list[str] = []
+    lines.append("Team Identity – 1981 Snapshot")
+    lines.append("-----------------------------")
+
+    for abbr in sorted(identity_pack.keys()):
+        card = identity_pack[abbr] or {}
+        team_name = str(card.get("team_name", "")).strip()
+        identity = card.get("identity", {}) or {}
+        one_run = identity.get("one_run", {}) or {}
+        babip = identity.get("babip_luck", {}) or {}
+        system = identity.get("system_crash", {}) or {}
+
+        one_w = one_run.get("one_run_w")
+        one_l = one_run.get("one_run_l")
+        one_wpct = one_run.get("one_run_winpct")
+        overall = one_run.get("overall_winpct")
+        share = one_run.get("one_run_share")
+
+        one_wpct_str = _fmt(one_wpct, ".3f") if one_wpct is not None else "n/a"
+        overall_str = _fmt(overall, ".3f") if overall is not None else "n/a"
+        share_str = _fmt(share, ".3f") if share is not None else "n/a"
+
+        bat_flag = babip.get("bat_flag", "n/a")
+        pitch_flag = babip.get("pitch_flag", "n/a")
+        babip_rating = babip.get("rating", "n/a")
+
+        system_rating = system.get("rating", "n/a")
+
+        lines.append(f"{abbr} – {team_name}")
+        if one_w is not None and one_l is not None:
+            lines.append(
+                f"  One-run: {one_w}-{one_l} ({one_wpct_str}) vs overall {overall_str}; share: {share_str}"
+            )
+        else:
+            lines.append("  One-run: n/a")
+        lines.append(f"  BABIP luck: bat={bat_flag}, pitch={pitch_flag}, rating={babip_rating}")
+        lines.append(f"  System: {system_rating}")
+        lines.append("")
+
+    return "\n".join(lines).rstrip()
+
+
+def build_player_of_week_section(pofw: dict | None) -> str:
+    if not pofw:
+        return ""
+
+    def _fmt_entry(entry: dict) -> list[str]:
+        league = entry.get("league", "")
+        player = entry.get("player_name", "")
+        team_abbr = entry.get("team_abbr", "")
+        team_name = entry.get("team_name", "")
+        pos = entry.get("position", "")
+        line = entry.get("line", "")
+        slash = entry.get("slash_line", "")
+        note = entry.get("note", "")
+        out = []
+        out.append(f"{league}: {player} ({team_abbr} – {team_name}, {pos})")
+        if line:
+            out.append(f"  Line: {line}")
+        if slash:
+            out.append(f"  Slash: {slash}")
+        if note:
+            out.append(f"  Note: {note}")
+        return out
+
+    lines: list[str] = []
+    lines.append("Players of the Week")
+    lines.append("-------------------")
+    for league in ["ABC", "NBC"]:
+        entry = pofw.get(league)
+        if not entry:
+            continue
+        lines.extend(_fmt_entry(entry))
+        lines.append("")
+
+    return "\n".join(lines).rstrip()
+
+
+def build_war_leaders_section(war_data: dict | None) -> str:
+    if not war_data:
+        return ""
+
+    def _fmt_group(items: list[dict]) -> list[str]:
+        lines: list[str] = []
+        for item in items:
+            rank = item.get("rank", "")
+            player = item.get("player_name", "")
+            team_abbr = item.get("team_abbr", "")
+            team_name = item.get("team_name", "")
+            role = item.get("position") or item.get("role") or ""
+            war_val = item.get("war", "")
+            line = item.get("line", "")
+            war_str = f"{float(war_val):.1f}" if pd.api.types.is_number(war_val) else str(war_val)
+            lines.append(f"  {rank}) {player} ({team_abbr} – {team_name}, {role}) – {war_str} WAR")
+            if line:
+                lines.append(f"     {line}")
+        return lines
+
+    lines: list[str] = []
+    for league in ["ABC", "NBC"]:
+        league_data = war_data.get(league)
+        if not league_data:
+            continue
+        lines.append(f"WAR Leaders – {league}")
+        lines.append("-----------------")
+        bat = league_data.get("bat", []) or []
+        pitch = league_data.get("pitch", []) or []
+        lines.append("Batters:")
+        lines.extend(_fmt_group(bat))
+        lines.append("")
+        lines.append("Pitchers:")
+        lines.extend(_fmt_group(pitch))
+        lines.append("")
+
+    return "\n".join(lines).rstrip()
+
+
 # ---------- MAIN ----------
 
 
@@ -504,6 +693,19 @@ def main():
 
     if mgr_section:
         text_parts.extend(["", mgr_section])
+
+    # Append extended sections
+    identity_pack = load_identity_pack()
+    pofw_data = load_player_of_week()
+    war_data = load_war_leaders()
+
+    identity_section = build_identity_section(identity_pack)
+    pofw_section = build_player_of_week_section(pofw_data)
+    war_section = build_war_leaders_section(war_data)
+
+    for section in [identity_section, pofw_section, war_section]:
+        if section:
+            text_parts.extend(["", section])
 
     full_text = dedent("\n".join(text_parts)).strip() + "\n"
 
