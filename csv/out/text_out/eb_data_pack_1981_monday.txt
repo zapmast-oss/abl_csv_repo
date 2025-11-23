@@ -20,11 +20,11 @@ Power board (top 9 by power rank):
 9) Boston Patriots (17-15)
 
 Risers (top 3 by change):
-- LV (change=+0.0%, record=24-8)
-- CHA (change=+0.0%, record=22-10)
-- DAL (change=+0.0%, record=19-13)
+- DEN (change=+6.3%, record=18-14)
+- MIA (change=+6.3%, record=18-14)
+- SD (change=+5.3%, record=14-18)
 
 Fallers (top 3 by negative change):
-- LV (change=+0.0%, record=24-8)
-- CHA (change=+0.0%, record=22-10)
-- DAL (change=+0.0%, record=19-13)
+- DET (change=-8.4%, record=17-15)
+- NY (change=-7.7%, record=16-16)
+- LV (change=-5.8%, record=24-8)

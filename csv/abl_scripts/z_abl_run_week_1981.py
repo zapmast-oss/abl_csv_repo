@@ -6,6 +6,10 @@ SCRIPT_PATH = Path(__file__).resolve()
 CSV_ROOT = SCRIPT_PATH.parents[1]
 STAR_DIR = CSV_ROOT / "out" / "star_schema"
 
+# NOTE:
+#   This script no longer rotates CURRENT -> PREV. Seed PREV first with
+#   z_abl_seed_prev_from_games_1981.py --asof <prior Monday>. This script will
+#   rebuild CURRENT and downstream artifacts only.
 
 def run_script(rel_path: str, args=None):
     if args is None:
@@ -21,18 +25,12 @@ def run_script(rel_path: str, args=None):
 
 def main():
     prev_path = STAR_DIR / "fact_team_reporting_1981_prev.csv"
-    curr_path = STAR_DIR / "fact_team_reporting_1981_current.csv"
-
-    if curr_path.exists():
-        print(f"Found existing current snapshot: {curr_path}")
-        print(f"Rotating current -> prev at: {prev_path}")
-        if prev_path.exists():
-            prev_path.unlink()
-        curr_path.rename(prev_path)
-        print("Rotation complete.")
-    else:
-        print("No existing current snapshot found.")
-        print("This appears to be a first-run scenario; skipping rotation.")
+    if not prev_path.exists():
+        print(
+            "WARNING: fact_team_reporting_1981_prev.csv not found. "
+            "Seed it with z_abl_seed_prev_from_games_1981.py --asof <prior Monday> "
+            "before running this wrapper."
+        )
 
     run_script("z_abl_current_team_snapshot.py")
     run_script("z_abl_weekly_change_1981.py")
@@ -42,7 +40,6 @@ def main():
 
     print("\n=== WEEKLY 1981 PIPELINE COMPLETE ===")
     print("Updated artifacts:")
-    print(" - fact_team_reporting_1981_prev.csv")
     print(" - fact_team_reporting_1981_current.csv")
     print(" - fact_team_reporting_1981_weekly_change.csv")
     print(" - monday_1981_standings_by_division.csv")

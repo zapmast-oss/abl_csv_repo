@@ -2,6 +2,11 @@ from pathlib import Path
 import sys
 import subprocess
 
+# Turnkey reminder:
+#   1) Seed PREV from games: z_abl_seed_prev_from_games_1981.py --asof <prior Monday>
+#   2) Run the weekly wrapper: z_abl_run_week_1981.py (rebuilds CURRENT + packet inputs)
+#   3) Run EB pack: this script (z_abl_monday_eb_turnkey_1981.py)
+
 
 def run_script(path: Path, label: str) -> None:
     if not path.exists():

@@ -145,7 +145,7 @@ def build_standings_section(standings: pd.DataFrame) -> str:
 
 
 def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
-    rank_col = pick_column(power, ["rank"])
+    rank_col = "rank" if "rank" in power.columns else pick_column(power, ["rank"])
 
     tendency_col = None
     for col in power.columns:
@@ -172,21 +172,52 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
         team_name_col = non_id_cols[0]
         print(f"[WARN] Fallback team name column in power: '{team_name_col}'")
 
-    # Join to standings on team_abbr if possible (for W-L)
-    merge_key = None
-    for key in ["team_abbr", "team_id", "teamid"]:
-        if key in power.columns and key in standings.columns:
-            merge_key = key
+    # Join to standings for W-L (prefer team_id, then team_abbr, then team_name)
+    name_keys = {"team_name", "name", "team"}
+    merge_power_col = merge_stand_col = None
+    for cand in ["team_id", "ID", "id"]:
+        if cand in power.columns:
+            for stand_cand in ["team_id", "ID", "id"]:
+                if stand_cand in standings.columns:
+                    merge_power_col, merge_stand_col = cand, stand_cand
+                    break
+        if merge_power_col:
             break
+    if merge_power_col is None:
+        for cand in ["team_abbr", "abbr"]:
+            if cand in power.columns:
+                for stand_cand in ["team_abbr", "abbr"]:
+                    if stand_cand in standings.columns:
+                        merge_power_col, merge_stand_col = cand, stand_cand
+                        break
+            if merge_power_col:
+                break
+    if merge_power_col is None:
+        for cand in name_keys:
+            if cand in power.columns:
+                for stand_cand in name_keys:
+                    if stand_cand in standings.columns:
+                        merge_power_col, merge_stand_col = cand, stand_cand
+                        break
+            if merge_power_col:
+                break
 
-    if merge_key:
-        merged = power.merge(
-            standings,
-            on=merge_key,
+    if merge_power_col:
+        p_copy = power.copy()
+        s_copy = standings.copy()
+        if merge_power_col in name_keys or merge_stand_col in name_keys:
+            p_copy["_merge_key"] = p_copy[merge_power_col].astype(str).str.strip().str.lower()
+            s_copy["_merge_key"] = s_copy[merge_stand_col].astype(str).str.strip().str.lower()
+        else:
+            p_copy = p_copy.rename(columns={merge_power_col: "_merge_key"})
+            s_copy = s_copy.rename(columns={merge_stand_col: "_merge_key"})
+        merged = p_copy.merge(
+            s_copy,
+            on="_merge_key",
             how="left",
             suffixes=("", "_stand"),
         )
-        print(f"[INFO] Joined power to standings on {merge_key}")
+        print(f"[INFO] Joined power to standings on {merge_power_col} -> {merge_stand_col}")
     else:
         merged = power
         print("[WARN] Could not join power to standings; will omit W-L in this section")
@@ -194,17 +225,16 @@ def build_power_section(power: pd.DataFrame, standings: pd.DataFrame) -> str:
     # Wins / losses, if available
     wins_col = None
     losses_col = None
-    if merge_key:
-        try:
-            wins_col = "wins" if "wins" in merged.columns else pick_column(
-                merged, ["wins"]
-            )
-            loss_candidates = [c for c in merged.columns if "loss" in c.lower()]
-            if loss_candidates:
-                loss_candidates.sort()
-                losses_col = loss_candidates[0]
-        except ValueError:
-            print("[WARN] Could not identify W/L columns for power section")
+    try:
+        wins_col = "wins" if "wins" in merged.columns else pick_column(
+            merged, ["wins"]
+        )
+        loss_candidates = [c for c in merged.columns if "loss" in c.lower()]
+        if loss_candidates:
+            loss_candidates.sort()
+            losses_col = loss_candidates[0]
+    except ValueError:
+        print("[WARN] Could not identify W/L columns for power section")
 
     top = merged.sort_values(by=rank_col, ascending=True).head(9)
 

@@ -1,3 +1,10 @@
+"""Compute week-over-week deltas between PREV and CURRENT ABL team snapshots.
+
+Expect fact_team_reporting_1981_prev.csv to be seeded separately from games.csv
+for the prior Monday (via z_abl_seed_prev_from_games_1981.py). This script reads
+PREV and CURRENT, computes deltas, and writes fact_team_reporting_1981_weekly_change.csv.
+"""
+
 from pathlib import Path
 import shutil
 import argparse

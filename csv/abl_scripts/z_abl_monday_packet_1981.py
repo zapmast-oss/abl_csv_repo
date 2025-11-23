@@ -39,16 +39,19 @@ def main(dry_run: bool = False) -> None:
         standings.to_csv(out_standings, index=False)
     print("MONDAY PACKET: wrote division standings to", out_standings)
 
-    power_cols = ["team_abbr", "team_name", "sub_league", "division", "games", "wins", "losses", "win_pct", "run_diff"]
-    power = curr[power_cols].copy().sort_values(
-        by=["win_pct", "run_diff"],
-        ascending=[False, False],
-    ).reset_index(drop=True)
-    power["power_rank"] = range(1, len(power) + 1)
     out_power = STAR_DIR / "monday_1981_power_ranking.csv"
-    if not dry_run:
-        power.to_csv(out_power, index=False)
-    print("MONDAY PACKET: wrote power ranking to", out_power)
+    if out_power.exists():
+        print("MONDAY PACKET: power ranking already present; leaving as-is:", out_power)
+    else:
+        power_cols = ["team_abbr", "team_name", "sub_league", "division", "games", "wins", "losses", "win_pct", "run_diff"]
+        power = curr[power_cols].copy().sort_values(
+            by=["win_pct", "run_diff"],
+            ascending=[False, False],
+        ).reset_index(drop=True)
+        power["power_rank"] = range(1, len(power) + 1)
+        if not dry_run:
+            power.to_csv(out_power, index=False)
+        print("MONDAY PACKET: wrote fallback power ranking to", out_power)
 
     change_path = STAR_DIR / "fact_team_reporting_1981_weekly_change.csv"
     if not change_path.exists():
@@ -69,19 +72,18 @@ def main(dry_run: bool = False) -> None:
         return
 
     base_cols = [team_col]
-    for col in ["delta_wins", "delta_run_diff", "delta_win_pct", "games_this_week"]:
+    for col in ["delta_wins", "delta_run_diff", "delta_win_pct", "games_this_week", "wins_curr", "losses_curr"]:
         if col in change.columns:
             base_cols.append(col)
 
     change_sel = change[base_cols].copy().rename(columns={team_col: "team_abbr"})
 
-    sort_cols = [c for c in ["delta_wins", "delta_run_diff", "delta_win_pct"] if c in change_sel.columns]
-    if not sort_cols:
-        print("MONDAY PACKET: weekly change missing delta columns; skipping risers/fallers.")
+    if "delta_win_pct" not in change_sel.columns:
+        print("MONDAY PACKET: weekly change missing delta_win_pct; skipping risers/fallers.")
         return
 
-    risers = change_sel.sort_values(by=sort_cols, ascending=[False] * len(sort_cols)).head(5)
-    fallers = change_sel.sort_values(by=sort_cols, ascending=[True] * len(sort_cols)).head(5)
+    risers = change_sel.sort_values(by="delta_win_pct", ascending=False).head(3)
+    fallers = change_sel.sort_values(by="delta_win_pct", ascending=True).head(3)
 
     out_risers = STAR_DIR / "monday_1981_risers.csv"
     out_fallers = STAR_DIR / "monday_1981_fallers.csv"
