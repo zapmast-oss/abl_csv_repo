@@ -1,6 +1,6 @@
 ABL Pythagorean Over/Under
 ================================
-Generated on: 2025-11-25 01:22:43
+Generated on: 2025-11-25 02:08:23
 
 Shows which clubs are beating or trailing their runs-based expectation (Pythagorean).
 Perfect for spotting lucky hot streaks versus true talent (Actual vs Pythag win%).

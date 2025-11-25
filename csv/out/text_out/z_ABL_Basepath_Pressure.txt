@@ -1,6 +1,6 @@
 ABL Basepath Pressure
 ==========================
-Generated on: 2025-11-25 01:22:10
+Generated on: 2025-11-25 02:07:50
 
 By Pressure Index - compares each club's stolen-base volume and UBR per game to league norms.
 Pressure Index = average of SB attempts per game plus and UBR per game plus; values above 1.00 mean above-average pressure.

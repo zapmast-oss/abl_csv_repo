@@ -1,6 +1,6 @@
 ABL Run Prevention DNA
 =========================
-Generated on: 2025-11-25 01:22:46
+Generated on: 2025-11-25 02:08:27
 
 Defense efficiency, range, and mistake rates blended to show who prevents runs.
 Use it to spot elite or leaky gloves before setting lineups or pitching plans.
