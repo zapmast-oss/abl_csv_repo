@@ -1,4 +1,4 @@
 ABL Power Surge & Outage Tracker
-Generated on: 2025-11-16 23:49:00
+Generated on: 2025-11-25 01:22:42
 
 Data unavailable for the requested window; ensure batting logs are exported before running this report.

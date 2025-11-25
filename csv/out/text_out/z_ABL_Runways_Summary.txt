@@ -1,6 +1,6 @@
 Top Runways (Easiest)
 =====================
-Generated on: 2025-11-16 23:49:05
+Generated on: 2025-11-25 01:22:48
 
 
 Team     Conf    Gms  Runway Rating          Opp% EnvDiff Flags     

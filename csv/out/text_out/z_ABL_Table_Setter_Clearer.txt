@@ -1,6 +1,6 @@
 ABL Table Setter vs Clearer
 ===========================
-Generated on: 2025-11-16 23:49:11
+Generated on: 2025-11-25 01:22:56
 
 
 Player                   Tm     Conf   Role          Rating          Setter+  Clearer+   Score    PA

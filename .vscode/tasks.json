@@ -1,4 +1,4 @@
-﻿{
+{
     "version": "2.0.0",
     "tasks": [
         {
@@ -18,6 +18,10 @@
             "presentation": {
                 "reveal": "always",
                 "panel": "dedicated"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
             }
         }
     ]

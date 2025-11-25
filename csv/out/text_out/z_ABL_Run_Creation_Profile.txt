@@ -1,6 +1,6 @@
 ABL Run Creation Profile
 ============================
-Generated on: 2025-11-16 23:49:04
+Generated on: 2025-11-25 01:22:46
 
 
 Breaks down how each lineup manufactures runs: long ball share, stolen-base pressure, and two-out conversion rate.
