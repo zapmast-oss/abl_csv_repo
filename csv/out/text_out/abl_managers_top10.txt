@@ -1,0 +1,19 @@
+ABL Managers Top 10 (Championships priority, Win% tiebreak)
+Source index : C:\SBV_mainC\ootp_all_reports\history\league_200_all_managers_index.html
+Source leaders: C:\SBV_mainC\ootp_all_reports\history\league_200_all_managers_leaders.html
+Template counts: {'A': 46, 'B': 46}
+
+Rank Manager                    Team                        W      L    Win%  Titles  Career%
+---------------------------------------------------------------------------------------------
+1    Seth Coe                   Miami Hurricanes          806    675   0.544       2    0.544
+2    Mike Shoulders             n/a                       803    639   0.557       1    0.557
+3    Collin Todd                Fremont Marksmen (BOS)    534    435   0.551       1    0.551
+4    Carlos Sanchez             Houston Mavericks         790    695   0.532       1    0.532
+5    Bryan Moody                n/a                       683    605   0.530       1    0.530
+6    Jose Perez                 Detroit Dukes             274    244   0.529       1    0.529
+7    Rafael Loza                n/a                       407    396   0.507       1    0.507
+8    Glenn Brophy               n/a                       292    356   0.451       1    0.451
+9    Greg Asche                 Denver Rocketeers          18     14   0.562       0    0.562
+10   Chris Allison              Cincinnati Cougars        473    369   0.562       0    0.562
+
+Generated via csv/abl_scripts/parse_managers.py

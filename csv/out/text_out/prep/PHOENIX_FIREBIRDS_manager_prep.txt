@@ -1,0 +1,9 @@
+Phoenix Firebirds - Manager Prep
+Manager: Bill Benisch | Team: Phoenix Firebirds | Titles: 0
+Record: 608-553 (0.524)
+Ten-second take: Steady hand keeping the club above water.
+Bullets:
+  - Career snapshot: 608-553, 0.524 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
+  - Strength cue: scrappy, above water.
+  - Risk cue: variance watch.
+Generated: 2025-11-25 10:08:41Z

@@ -1,0 +1,16 @@
+League Top Managers
+===================
+Generated: 2025-11-25 10:08:41Z
+
+Rank Name                         Team                     W     L    Win%  Titles
+----------------------------------------------------------------------------------
+1    Seth Coe                     Miami Hurricanes       806   675   0.544       2
+2    Carlos Sanchez               Houston Mavericks      790   695   0.532       1
+3    Jose Perez                   Detroit Dukes          274   244   0.529       1
+4    Chris Allison                Cincinnati Cougars     473   369   0.562       0
+5    Greg Asche                   Denver Rocketeers       18    14   0.562       0
+6    Scott Willett                Cincinnati Cougars     438   368   0.543       0
+7    Bill Benisch                 Phoenix Firebirds      608   553   0.524       0
+8    Matt Mead                    Chicago Fire           775   712   0.521       0
+9    Matt Petrie                  Las Vegas Gamblers     601   570   0.513       0
+10   Jason Wainwright             Charlotte Colonels     707   676   0.511       0

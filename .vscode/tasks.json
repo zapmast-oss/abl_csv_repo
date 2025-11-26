@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run ABL Prep + Matchup",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "csv/_tmp_run_all.py"
+            ],
+            "options": {
+                "env": {
+                    "MATCHUP_HOME": "",
+                    "MATCHUP_AWAY": ""
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

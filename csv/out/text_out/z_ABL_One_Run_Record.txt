@@ -1,0 +1,38 @@
+ABL One-Run Record
+======================
+Generated on: 2025-11-25 02:08:21
+
+Shows how each club fares in one-run decisions versus its overall paceâ€”perfect for clutch/luck chatter.
+Use it to flag teams overachieving (or melting down) in coin-flip finishes.
+
+Team                 CD   Profile      1R W-L    Pct  Overall    dPct
+---------------------------------------------------------------------
+Phoenix              N-W  Clutch          5-0  1.000    0.500  +0.500
+Pittsburgh           A-E  Clutch          4-3  0.571    0.375  +0.196
+Miami                N-E  Clutch          3-1  0.750    0.562  +0.188
+San Francisco        N-W  Clutch          3-1  0.750    0.562  +0.188
+Houston              A-C  Clutch          6-5  0.545    0.406  +0.139
+Portland             A-W  Clutch          3-4  0.429    0.312  +0.116
+Detroit              N-C  Clutch          7-4  0.636    0.531  +0.105
+Atlanta              N-E  Clutch          4-6  0.400    0.312  +0.088
+Los Angeles          N-W  Clutch          4-3  0.571    0.500  +0.071
+Boston               A-E  Clutch          6-4  0.600    0.531  +0.069
+Seattle              A-W  Clutch          5-4  0.556    0.500  +0.056
+Minneapolis          N-C  Clutch          4-6  0.400    0.344  +0.056
+Philadelphia         A-E  Even            4-4  0.500    0.469  +0.031
+Las Vegas            A-W  Even            6-2  0.750    0.750  +0.000
+Chicago              N-C  Even            4-4  0.500    0.531  -0.031
+Cincinnati           A-C  Cold            4-5  0.444    0.500  -0.056
+Denver               A-W  Cold            7-7  0.500    0.562  -0.062
+Nashville            A-C  Cold            2-2  0.500    0.562  -0.062
+San Diego            N-W  Cold            3-5  0.375    0.438  -0.062
+St. Louis            A-C  Cold            3-5  0.375    0.531  -0.156
+Charlotte            N-E  Cold            5-5  0.500    0.688  -0.188
+Dallas               N-C  Cold            4-6  0.400    0.594  -0.194
+Tampa Bay            N-E  Cold            2-7  0.222    0.438  -0.215
+New York             A-E  Cold            1-6  0.143    0.500  -0.357
+
+Key:
+  Clutch -> One-run win% exceeds overall by 0.050+
+  Even   -> Within +/- 0.049 of overall win%
+  Cold   -> One-run win% trails overall by 0.050+

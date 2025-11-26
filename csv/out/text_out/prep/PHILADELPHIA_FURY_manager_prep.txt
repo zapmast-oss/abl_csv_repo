@@ -1,0 +1,9 @@
+Philadelphia Fury - Manager Prep
+Manager: Danny Sanchez | Team: Philadelphia Fury | Titles: 0
+Record: 384-527 (0.422)
+Ten-second take: Scrappy leader fighting to change the narrative.
+Bullets:
+  - Career snapshot: 384-527, 0.422 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
+  - Strength cue: resilience despite bumps.
+  - Risk cue: variance watch.
+Generated: 2025-11-25 10:08:41Z

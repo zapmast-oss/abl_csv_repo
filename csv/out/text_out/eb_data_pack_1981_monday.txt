@@ -1,0 +1,30 @@
+EB DATA PACK – MONDAY 1981 SNAPSHOT
+
+Division leaders (top 2 per division):
+- ABC Central Division: Nashville Blues (18-14), St. Louis Stallions (17-15)
+- ABC Eastern Division: Boston Patriots (17-15), New York Aces (16-16)
+- ABC Western Division: Las Vegas Gamblers (24-8), Denver Rocketeers (18-14)
+- NBC Central Division: Dallas Rustlers (19-13), Chicago Fire (17-15)
+- NBC Eastern Division: Charlotte Colonels (22-10), Miami Hurricanes (18-14)
+- NBC Western Division: San Francisco Warriors (18-14), Los Angeles Cobras (16-16)
+
+Power board (top 9 by power rank):
+1) Las Vegas Gamblers 137.0 [o]
+2) Charlotte Colonels 126.8 [o]
+3) Denver Rocketeers 108.3 [++]
+4) Dallas Rustlers 106.9 [o]
+5) Miami Hurricanes 106.3 [++]
+6) Nashville Blues 106.3 [++]
+7) San Francisco Warriors 103.3 [-]
+8) Boston Patriots 97.6 [o]
+9) St. Louis Stallions 96.6 [+]
+
+Risers (top 3 by change):
+- DEN (change=+6.3%, record=18-14)
+- MIA (change=+6.3%, record=18-14)
+- SD (change=+5.3%, record=14-18)
+
+Fallers (top 3 by negative change):
+- DET (change=-8.4%, record=17-15)
+- NY (change=-7.7%, record=16-16)
+- LV (change=-5.8%, record=24-8)

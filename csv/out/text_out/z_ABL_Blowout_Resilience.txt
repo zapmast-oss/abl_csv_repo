@@ -1,0 +1,42 @@
+ABL Blowout Resilience
+==========================
+Generated on: 2025-11-25 02:07:52
+
+Regular-season only: shows how often each club thrives in 5+ run decisions and how big those wins typically are.
+Meaning: higher win% and positive margin in blowouts signal resiliency when games get lopsided.
+
+Team                   CD   Tag           Blowouts    Win%  AvgDiff   Share      Overall
+----------------------------------------------------------------------------------------
+Las Vegas              A-W  Dominant           7-2   0.778     4.00   0.281         24-8
+San Francisco          N-W  Dominant           8-3   0.727     3.36   0.344        18-14
+St. Louis              A-C  Tough              4-2   0.667     4.00   0.188        17-15
+Denver                 A-W  Tough              4-2   0.667     2.17   0.188        18-14
+Boston                 A-E  Tough              2-1   0.667     3.67   0.094        17-15
+New York               A-E  Tough              7-4   0.636     0.73   0.344        16-16
+Tampa Bay              N-E  Tough              7-4   0.636     0.09   0.344        14-18
+Chicago                N-C  Tough              5-3   0.625     0.75   0.250        17-15
+Charlotte              N-E  Tough              3-2   0.600     3.60   0.156        22-10
+Dallas                 N-C  Tough              3-2   0.600     1.20   0.156        19-13
+Nashville              A-C  Tough              6-6   0.500     1.00   0.375        18-14
+Cincinnati             A-C  Tough              5-5   0.500     0.60   0.312        16-16
+Philadelphia           A-E  Tough              4-4   0.500     1.00   0.250        15-17
+Minneapolis            N-C  Tough              4-4   0.500     0.38   0.250        11-21
+Detroit                N-C  Fragile            4-5   0.444     0.00   0.281        17-15
+Los Angeles            N-W  Fragile            3-4   0.429    -1.14   0.219        16-16
+Atlanta                N-E  Fragile            4-6   0.400    -0.10   0.312        10-22
+Houston                A-C  Fragile            2-3   0.400    -2.60   0.156        13-19
+San Diego              N-W  Fragile            3-5   0.375    -2.00   0.250        14-18
+Phoenix                N-W  Fragile            4-7   0.364    -1.45   0.344        16-16
+Miami                  N-E  Fragile            3-6   0.333    -3.33   0.281        18-14
+Seattle                A-W  Fragile            2-4   0.333    -3.33   0.188        16-16
+Portland               A-W  Fragile           4-10   0.286    -4.00   0.438        10-22
+Pittsburgh             A-E  Fragile            2-6   0.250    -3.62   0.250        12-20
+
+Key:
+  Dominant -> blowout win% >= 0.700
+  Tough    -> blowout win% between 0.500 and 0.699
+  Fragile  -> blowout win% < 0.500
+
+Definitions:
+  Blowout game: decided by 5+ runs (abs(runs_for - runs_against) >= 5).
+  Share = blowout games / total games; AvgDiff = mean run differential in blowouts.

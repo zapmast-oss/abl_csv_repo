@@ -1,0 +1,9 @@
+Cincinnati Cougars - Manager Prep
+Manager: Chris Allison | Team: Cincinnati Cougars | Titles: 0
+Record: 473-369 (0.562)
+Ten-second take: High-win manager pushing toward that first crown.
+Bullets:
+  - Career snapshot: 473-369, 0.562 win%, Titles: 0, Last Refreshed: 2025-11-16T03:52:44+00:00
+  - Strength cue: high win% vs peers.
+  - Risk cue: guard against complacency.
+Generated: 2025-11-25 10:08:41Z

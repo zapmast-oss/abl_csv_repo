@@ -1,0 +1,43 @@
+ABL Late-Inning Clutch
+==========================
+Generated on: 2025-11-25 02:08:15
+
+Shows which clubs win the 7th inning onward: run differential, comeback wins, and blown leads.
+Great for identifying playoff-ready resilience and spotting bullpens that spring leaks late.
+
+Team                 CD   Profile   RunDiff 7+       7+ RF/RA   Comebacks   Blown L
+-----------------------------------------------------------------------------------
+Phoenix              N-W  Surge          +17.0      71.0/54.0           4         2
+St. Louis            A-C  Surge          +15.0     101.0/86.0           6         7
+Seattle              A-W  Surge          +15.0      95.0/80.0           3         4
+Philadelphia         A-E  Surge          +14.0      90.0/76.0           8         3
+Nashville            A-C  Surge          +13.0      82.0/69.0           3         2
+San Francisco        N-W  Surge          +12.0      90.0/78.0           5         1
+Tampa Bay            N-E  Surge          +12.0      97.0/85.0           5         3
+Detroit              N-C  Surge          +12.0      93.0/81.0           5         4
+Miami                N-E  Surge          +10.0      84.0/74.0           8         2
+Charlotte            N-E  Surge          +10.0      80.0/70.0           3         5
+Dallas               N-C  Steady          +7.0      84.0/77.0           6        10
+Pittsburgh           A-E  Steady          +1.0      75.0/74.0           4         2
+Cincinnati           A-C  Fade            -1.0      90.0/91.0           6         6
+Denver               A-W  Fade            -2.0    101.0/103.0           4         9
+Portland             A-W  Fade            -3.0      83.0/86.0           3         3
+Boston               A-E  Fade            -5.0      77.0/82.0           6         5
+Los Angeles          N-W  Fade            -8.0     93.0/101.0           4         5
+Houston              A-C  Fade           -11.0      69.0/80.0           6         3
+New York             A-E  Fade           -11.0      85.0/96.0           1         4
+San Diego            N-W  Fade           -15.0      84.0/99.0           3         4
+Chicago              N-C  Fade           -15.0      71.0/86.0           2         3
+Minneapolis          N-C  Fade           -17.0      58.0/75.0           3         6
+Las Vegas            A-W  Fade           -25.0      73.0/98.0           5         7
+Atlanta              N-E  Fade           -25.0      60.0/85.0           2         5
+
+Key:
+  Surge  -> 7th+ run differential >= +10.
+  Steady -> between 0 and +9.9.
+  Fade   -> negative run differential in late innings.
+
+Definitions:
+  Late innings = 7th inning onward (including extras).
+  Comeback win = trailing after 6 complete and still win.
+  Blown lead = leading after 6 complete but lose the game.

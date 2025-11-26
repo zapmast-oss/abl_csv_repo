@@ -1,0 +1,57 @@
+{
+  "season": 1981,
+  "created_at": "2025-11-25T10:08:29.400399Z",
+  "archive_dir": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981",
+  "files": [
+    {
+      "file": "fact_team_reporting_1981_current.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\fact_team_reporting_1981_current.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\fact_team_reporting_1981_current.csv"
+    },
+    {
+      "file": "fact_team_reporting_1981_prev.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\fact_team_reporting_1981_prev.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\fact_team_reporting_1981_prev.csv"
+    },
+    {
+      "file": "fact_team_reporting_1981_weekly_change.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\fact_team_reporting_1981_weekly_change.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\fact_team_reporting_1981_weekly_change.csv"
+    },
+    {
+      "file": "monday_1981_standings_by_division.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\monday_1981_standings_by_division.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\monday_1981_standings_by_division.csv"
+    },
+    {
+      "file": "monday_1981_power_ranking.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\monday_1981_power_ranking.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\monday_1981_power_ranking.csv"
+    },
+    {
+      "file": "fact_manager_scorecard_1981_current.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\fact_manager_scorecard_1981_current.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\fact_manager_scorecard_1981_current.csv"
+    },
+    {
+      "file": "monday_1981_show_notes.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\monday_1981_show_notes.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\monday_1981_show_notes.csv"
+    },
+    {
+      "file": "monday_1981_risers.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\monday_1981_risers.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\monday_1981_risers.csv"
+    },
+    {
+      "file": "monday_1981_fallers.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\star_schema\\monday_1981_fallers.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\monday_1981_fallers.csv"
+    },
+    {
+      "file": "z_ABL_DIM_Managers.csv",
+      "source": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\csv_out\\z_ABL_DIM_Managers.csv",
+      "target": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\archive\\season_1981\\z_ABL_DIM_Managers.csv"
+    }
+  ]
+}

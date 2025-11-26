@@ -1,0 +1,45 @@
+ABL Heat Check
+===============
+Generated on: 2025-11-25 02:08:11
+
+Tracks the hottest 7-day OPS runs versus the previous week to spotlight true lineup infernos.
+Useful for identifying short-term matchup boosts or warning signs of regression before it hits the box score.
+
+Player                       Tm   CD   Rating         OPS7   OPSpr7    dOPS   PA7
+---------------------------------------------------------------------------------
+Antonio Serrano              PIT  A-E  Inferno       0.643    0.308   0.335    30
+Chris Gillum                 STL  A-C  Scorching     0.375    0.087   0.288    24
+D.J. Rivera                  LA   N-W  Scorching     0.500    0.217   0.283    25
+Robert Garcia                SF   N-W  Scorching     0.455    0.200   0.255    23
+Jose Orozco                  NAS  A-C  Scorching     0.609    0.393   0.216    23
+Chris Frison                 NY   A-E  Scorching     0.450    0.235   0.215    22
+Sandy Fierro                 BOS  A-E  Scorching     0.308    0.100   0.208    26
+Juan Aranda                  DET  N-C  Scorching     0.444    0.250   0.194    27
+Josh Harrison                PHO  N-W  Scorching     0.421    0.227   0.194    20
+Xavier Little                DEN  A-W  Scorching     0.542    0.355   0.187    25
+Hirotoshi Nishimoto          MIN  N-C  Hot           0.455    0.280   0.175    23
+Artur Vaulin                 SD   N-W  Hot           0.455    0.286   0.169    22
+Dustin Meredith              CHA  N-E  Hot           0.500    0.346   0.154    20
+Devon Barlow                 DAL  N-C  Hot           0.333    0.182   0.152    24
+Maynard Bell                 BOS  A-E  Hot           0.231    0.080   0.151    27
+Pedro Rivera                 LA   N-W  Hot           0.440    0.292   0.148    26
+Jesus Vasquez                HOU  A-C  Hot           0.462    0.316   0.146    26
+Robby Chacon                 NY   A-E  Hot           0.435    0.290   0.144    23
+Walter Kimpton               TB   N-E  Hot           0.385    0.241   0.143    27
+Adrian Smith                 MIN  N-C  Hot           0.318    0.176   0.142    22
+Brent Keyser                 HOU  A-C  Hot           0.333    0.192   0.141    30
+Victor Torres                CIN  A-C  Hot           0.417    0.276   0.141    24
+Scott Reis                   CIN  A-C  Hot           0.458    0.320   0.138    24
+David Olguin                 SEA  A-W  Hot           0.462    0.324   0.138    27
+Masakuni Shiratori           SD   N-W  Hot           0.455    0.318   0.136    25
+
+Thresholds: last7 PA >= 20; prior7 PA >= 10 to compare.
+
+Key:
+  Inferno dOPS >= +0.300, Scorching 0.180-0.299, Hot 0.060-0.179, Steady +/-0.059,
+  Cooling -0.179 to -0.060, Ice Cold <= -0.180.
+
+Definitions:
+  last7 = most recent 7-day OPS window; prior7 = the 7-day span immediately before that.
+  dOPS = last7 OPS minus prior7 OPS (blank when prior7 PA below threshold).
+  Season OPS/PA provide macro context for each hitter's year-long baseline.
