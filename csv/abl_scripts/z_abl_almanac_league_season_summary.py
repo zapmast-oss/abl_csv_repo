@@ -1,249 +1,278 @@
-from __future__ import annotations
+#!/usr/bin/env python
+"""
+Build league-season summary for a given season/league_id.
+
+Inputs (expected to exist before running):
+
+- dim_team_park: csv/out/star_schema/dim_team_park.csv
+- league standings HTML:
+    csv/in/almanac_core/<season>/leagues/league_<league_id>_standings.html
+- league stats HTML (team batting + team pitching):
+    csv/in/almanac_core/<season>/leagues/league_<league_id>_stats.html
+
+Output:
+
+csv/out/almanac/<season>/league_season_summary_<season>_league<league_id>.csv
+
+Columns:
+
+season, league_id, team_id, team_abbr, team_name, conf, division,
+wins, losses, pct, runs_for, runs_against, run_diff
+"""
 
 import argparse
-import sys
 import re
-import zipfile
+import sys
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 
-REQUIRED_STANDINGS_COLS = ["team_name", "wins", "losses", "pct"]
-OPTIONAL_COLS_MAP = {
-    "gb": "gb",
-    "pyt_rec": "pyt_rec",
-    "pyt_diff": "pyt_diff",
-    "home_rec": "home_rec",
-    "away_rec": "away_rec",
-    "xinn_rec": "xinn_rec",
-    "one_run_rec": "one_run_rec",
-    "magic_num": "magic_num",
-    "streak": "streak",
-    "last10": "last10",
-}
+# ---------------------------------------------------------------------------
+# Utilities
+# ---------------------------------------------------------------------------
+
+def log(msg: str) -> None:
+    print(msg, file=sys.stdout)
 
 
-def load_standings(path: Path) -> pd.DataFrame:
-    if not path.exists():
-        print(f"Error: standings file not found at {path}", file=sys.stderr)
-        sys.exit(1)
-    df = pd.read_csv(path)
-    print(f"[INFO] Loaded {len(df)} rows from standings_enriched: {path}")
-    missing = [c for c in REQUIRED_STANDINGS_COLS if c not in df.columns]
-    if missing:
-        print(f"Error: standings missing required columns: {missing}", file=sys.stderr)
-        print(f"Columns present: {list(df.columns)}", file=sys.stderr)
-        sys.exit(1)
-    return df
+def norm_name(value: str) -> str:
+    """Normalize a team name for joining: lowercase, strip, remove non-alnum."""
+    if pd.isna(value):
+        return ""
+    s = str(value).lower().strip()
+    s = re.sub(r"[^a-z0-9]+", "", s)
+    return s
 
 
-def normalize_name(val: str) -> str:
-    """Lowercase alnum key for joining."""
-    return re.sub(r"[^a-z0-9]", "", str(val).lower())
+def find_first_column(df: pd.DataFrame, candidates) -> str:
+    """Return the first column name in df whose lowercase matches any candidate."""
+    lower_map = {c.lower(): c for c in df.columns}
+    for cand in candidates:
+        if cand.lower() in lower_map:
+            return lower_map[cand.lower()]
+    raise KeyError(f"None of {candidates} found in columns={list(df.columns)}")
 
 
-def assert_no_nan(df: pd.DataFrame, cols: list[str], context: str) -> None:
-    bad = df[cols].isna().any()
-    if bad.any():
-        missing = [c for c in cols if bad[c]]
-        raise ValueError(f"{context}: NaN in columns {missing}")
+def load_dim_team_park(dim_path: Path, league_id: int) -> pd.DataFrame:
+    if not dim_path.exists():
+        raise FileNotFoundError(f"dim_team_park not found: {dim_path}")
 
-
-def load_team_runs_from_games(season_dir: Path, season: int, league_id: int, dim_path: Path) -> pd.DataFrame:
-    games_path = season_dir / f"games_{season}_league{league_id}.csv"
-    if not games_path.exists():
-        raise FileNotFoundError(f"games file not found at {games_path}")
     dim = pd.read_csv(dim_path)
-    dim["team_name_norm"] = dim["Team Name"].apply(normalize_name)
-    dim["city_norm"] = dim["City"].str.split("(").str[0].apply(normalize_name)
-    dim["abbr_norm"] = dim["Abbr"].apply(normalize_name)
-
-    override = {
-        "seatlle": "seattle",
-        "tampabay": "tampa",
-    }
-
-    key_map = {}
-    for _, row in dim.iterrows():
-        for raw in {row.team_name_norm, row.city_norm, row.abbr_norm}:
-            key = override.get(raw, raw)
-            key_map[key] = {
-                "team_id": row["ID"],
-                "team_abbr": row["Abbr"],
-                "team_name": row["Team Name"],
-                "conf": row.get("SL"),
-                "division": row.get("DIV"),
-            }
-
-    games = pd.read_csv(games_path)
-    home = games.rename(
-        columns={
-            "home_team_name": "team_name",
-            "home_runs": "runs_for",
-            "away_runs": "runs_against",
-        }
-    )[["team_name", "runs_for", "runs_against"]]
-    away = games.rename(
-        columns={
-            "away_team_name": "team_name",
-            "away_runs": "runs_for",
-            "home_runs": "runs_against",
-        }
-    )[["team_name", "runs_for", "runs_against"]]
-    tall = pd.concat([home, away], ignore_index=True)
-    tall["key"] = tall["team_name"].apply(normalize_name).apply(lambda k: override.get(k, k))
-
-    agg = tall.groupby("key")[["runs_for", "runs_against"]].sum().reset_index()
-
-    records = []
-    for _, row in agg.iterrows():
-        key = row["key"]
-        if key not in key_map:
-            # Ignore non-team aggregates (e.g., conference rows if any)
-            continue
-        meta = key_map[key]
-        records.append(
-            {
-                "season": season,
-                "league_id": league_id,
-                "team_id": meta["team_id"],
-                "team_abbr": meta["team_abbr"],
-                "team_name": meta["team_name"],
-                "conf": meta.get("conf"),
-                "division": meta.get("division"),
-                "runs_for": row["runs_for"],
-                "runs_against": row["runs_against"],
-            }
-        )
-
-    stats = pd.DataFrame.from_records(records)
-    stats["runs_for"] = pd.to_numeric(stats["runs_for"], errors="raise")
-    stats["runs_against"] = pd.to_numeric(stats["runs_against"], errors="raise")
-    stats["run_diff"] = stats["runs_for"] - stats["runs_against"]
-    assert_no_nan(stats, ["runs_for", "runs_against", "run_diff"], "team season runs")
-    return stats
-
-
-def load_team_runs_from_stats_html(season: int, league_id: int, dim_path: Path) -> pd.DataFrame:
-    """Read runs for/against from league stats HTML inside the almanac zip."""
-    zip_path = Path("data_raw/ootp_html") / f"almanac_{season}.zip"
-    internal = f"almanac_{season}/leagues/league_{league_id}_stats.html"
-    if not zip_path.exists():
-        raise FileNotFoundError(f"Almanac zip not found at {zip_path}")
-    with zipfile.ZipFile(zip_path, "r") as zf:
-        try:
-            html_bytes = zf.read(internal)
-        except KeyError as exc:
-            raise FileNotFoundError(f"Stats HTML {internal} not found in {zip_path}") from exc
-
-    tables = pd.read_html(html_bytes)
-    bat_tables = []
-    pit_tables = []
-    for tbl in tables:
-        cols_norm = [normalize_name(c) for c in tbl.columns]
-        if "team" in cols_norm and "r" in cols_norm:
-            if any(c in cols_norm for c in ["avg", "obp", "slg", "ab"]):
-                bat_tables.append(tbl)
-            elif any(c in cols_norm for c in ["era", "whip", "ha", "ip", "oavg", "h"]):
-                pit_tables.append(tbl)
-    if not bat_tables or not pit_tables:
-        raise ValueError("Could not locate batting/pitching tables with Team/R columns in stats HTML.")
-
-    def collect_runs(tables_list: list[pd.DataFrame]) -> pd.DataFrame:
-        frames = []
-        for df in tables_list:
-            df = df.rename(columns={df.columns[0]: "team"})
-            r_col = None
-            for c in df.columns:
-                if normalize_name(c) == "r":
-                    r_col = c
-                    break
-            if r_col is None:
-                continue
-            df = df[["team", r_col]].copy()
-            df = df[
-                ~df["team"].astype(str).str.contains("Totals", case=False, na=False)
-                & ~df["team"].astype(str).str.contains("Average", case=False, na=False)
-            ].copy()
-            df["key"] = df["team"].apply(normalize_name).apply(lambda k: override.get(k, k))
-            df = df.rename(columns={r_col: "runs"})
-            frames.append(df)
-        if not frames:
-            raise ValueError("No usable runs tables found in stats HTML.")
-        combined = pd.concat(frames, ignore_index=True)
-        combined = combined.drop_duplicates(subset="key", keep="first")
-        return combined
-
-    # Build dim map
-    dim = pd.read_csv(dim_path)
-    dim["team_name_norm"] = dim["Team Name"].apply(normalize_name)
-    dim["city_norm"] = dim["City"].str.split("(").str[0].apply(normalize_name)
-    dim["abbr_norm"] = dim["Abbr"].apply(normalize_name)
-    override = {"seatlle": "seattle", "tampabay": "tampa"}
-    key_map = {}
-    for _, row in dim.iterrows():
-        for raw in {row.team_name_norm, row.city_norm, row.abbr_norm}:
-            key = override.get(raw, raw)
-            key_map[key] = {
-                "team_id": row["ID"],
-                "team_abbr": row["Abbr"],
-                "team_name": row["Team Name"],
-                "conf": row.get("SL"),
-                "division": row.get("DIV"),
-            }
-
-    # Extract runs
-    bat_runs = collect_runs(bat_tables)
-    pit_runs = collect_runs(pit_tables)
-    bat_runs["runs"] = pd.to_numeric(bat_runs["runs"], errors="raise")
-    pit_runs["runs"] = pd.to_numeric(pit_runs["runs"], errors="raise")
-    merged = bat_runs.merge(pit_runs, on="key", suffixes=("_for", "_against"), validate="1:1")
-
-    records = []
-    for _, row in merged.iterrows():
-        key = row["key"]
-        if key not in key_map:
-            continue
-        meta = key_map[key]
-        records.append(
-            {
-                "season": season,
-                "league_id": league_id,
-                "team_id": meta["team_id"],
-                "team_abbr": meta["team_abbr"],
-                "team_name": meta["team_name"],
-                "conf": meta.get("conf"),
-                "division": meta.get("division"),
-                "runs_for": row["runs_for"],
-                "runs_against": row["runs_against"],
-            }
-        )
-    stats = pd.DataFrame.from_records(records)
-    stats["run_diff"] = stats["runs_for"] - stats["runs_against"]
-    assert_no_nan(stats, ["runs_for", "runs_against", "run_diff"], "team season runs (stats html)")
-    return stats
-
-
-def build_summary(df: pd.DataFrame, season: int, league_id: int, season_dir: Path) -> pd.DataFrame:
-    df = df.copy()
-
-    # Drop non-team rows (e.g., conference summary lines) if present
-    if "team_id" in df.columns:
-        df = df[df["team_id"].notna()].copy()
+    has_league = "league_id" in dim.columns
+    if has_league:
+        dim = dim[dim["league_id"] == league_id].copy()
+        if dim.empty:
+            raise ValueError(f"dim_team_park has no rows for league_id={league_id}")
     else:
-        banned = {"American Baseball Conference", "National Baseball Conference"}
-        df = df[~df["team_name"].astype(str).isin(banned)].copy()
+        log(f"[WARN] dim_team_park missing league_id column; assuming it is already filtered for league_id={league_id}.")
+        dim["league_id"] = league_id
 
-    # Ensure core columns
-    for col in ["season", "league_id"]:
-        if col not in df.columns:
-            df[col] = season if col == "season" else league_id
+    team_id_col = find_first_column(dim, ["team_id", "ID"])
+    name_col = find_first_column(dim, ["Team Name", "Name", "team_name", "City"])
+    abbr_col = find_first_column(dim, ["Abbr", "team_abbr"])
+    conf_col = find_first_column(dim, ["conf", "conference", "Conference", "SL"])
+    div_col = find_first_column(dim, ["division", "Division", "div", "DIV", "DIV.1"])
 
-    # Map optional columns if present
-    extras = {dest: src for src, dest in OPTIONAL_COLS_MAP.items() if src in df.columns}
+    dim_use = dim[[team_id_col, "league_id", name_col, abbr_col, conf_col, div_col]].copy()
+    dim_use = dim_use.rename(
+        columns={
+            team_id_col: "team_id",
+            name_col: "team_name",
+            abbr_col: "team_abbr",
+            conf_col: "conf",
+            div_col: "division",
+        }
+    )
 
-    base_cols = [
+    dim_use["name_key"] = dim_use["team_name"].map(norm_name)
+
+    if dim_use["name_key"].duplicated().any():
+        dups = dim_use[dim_use["name_key"].duplicated(keep=False)]
+        raise ValueError(
+            f"dim_team_park has duplicate name_key values; cannot join safely:\n{dups}"
+        )
+
+    log(f"[INFO] Loaded {len(dim_use)} teams from dim_team_park (league_id={league_id})")
+    return dim_use
+
+
+# ---------------------------------------------------------------------------
+# Parse stats HTML for RS / RA
+# ---------------------------------------------------------------------------
+
+def load_team_batting_pitching(stats_html: Path, expected_teams: int) -> pd.DataFrame:
+    if not stats_html.exists():
+        raise FileNotFoundError(f"Stats HTML not found: {stats_html}")
+
+    log(f"[INFO] Reading stats HTML from {stats_html}")
+    tables = pd.read_html(stats_html)
+    log(f"[DEBUG] stats_html: parsed {len(tables)} tables")
+
+    batting_candidates = []
+    pitching_candidates = []
+
+    for i, t in enumerate(tables):
+        cols = [str(c).strip() for c in t.columns]
+        lower = [c.lower() for c in cols]
+
+        if "team" in lower and "r" in lower:
+            has_avg_like = any(k in lower for k in ["avg", "ab", "obp", "slg"])
+            has_era_like = any(k in lower for k in ["era", "ip"])
+
+            if has_avg_like:
+                batting_candidates.append((i, t))
+            if has_era_like:
+                pitching_candidates.append((i, t))
+
+    if not batting_candidates:
+        raise ValueError("Could not find a team batting table with columns [Team, R, AVG/AB] in stats_html.")
+    if not pitching_candidates:
+        raise ValueError("Could not find a team pitching table with columns [Team, R, ERA/IP] in stats_html.")
+
+    # Extract team + R columns
+    def extract_team_r(df, label):
+        cols = [str(c).strip() for c in df.columns]
+        lower = [c.lower() for c in cols]
+        team_col = cols[lower.index("team")]
+        r_col = cols[lower.index("r")]
+
+        out = df[[team_col, r_col]].copy()
+        out = out.rename(columns={team_col: "team_name_src", r_col: label})
+        out["name_key"] = out["team_name_src"].map(norm_name)
+        return out
+
+    bat_frames = [extract_team_r(tbl, "runs_for") for _, tbl in batting_candidates]
+    pit_frames = [extract_team_r(tbl, "runs_against") for _, tbl in pitching_candidates]
+    bat_df = pd.concat(bat_frames, ignore_index=True)
+    pit_df = pd.concat(pit_frames, ignore_index=True)
+
+    # Aggregate in case there are duplicates / multiple tables
+    bat_agg = bat_df.groupby("name_key", as_index=False)["runs_for"].sum()
+    pit_agg = pit_df.groupby("name_key", as_index=False)["runs_against"].sum()
+
+    merged = pd.merge(bat_agg, pit_agg, on="name_key", how="outer", validate="1:1")
+
+    if merged.shape[0] != expected_teams:
+        log(
+            f"[WARN] Combined batting/pitching rows={merged.shape[0]} (expected {expected_teams}); proceeding with aggregated set."
+        )
+
+    merged["runs_for"] = pd.to_numeric(merged["runs_for"], errors="coerce")
+    merged["runs_against"] = pd.to_numeric(merged["runs_against"], errors="coerce")
+    merged["run_diff"] = merged["runs_for"] - merged["runs_against"]
+
+    log(f"[INFO] Derived RS/RA from stats HTML for {len(merged)} keys")
+    return merged
+
+
+# ---------------------------------------------------------------------------
+# Parse standings HTML for W / L / PCT
+# ---------------------------------------------------------------------------
+
+def load_team_standings(standings_html: Path, expected_teams: int) -> pd.DataFrame:
+    if not standings_html.exists():
+        raise FileNotFoundError(f"Standings HTML not found: {standings_html}")
+
+    log(f"[INFO] Reading standings HTML from {standings_html}")
+    tables = pd.read_html(standings_html)
+    log(f"[DEBUG] standings_html: parsed {len(tables)} tables")
+
+    pieces = []
+
+    for t in tables:
+        cols = [str(c).strip() for c in t.columns]
+        lower = [c.lower() for c in cols]
+
+        # We want tables that look like: Team, W, L, PCT, ...
+        if "team" in lower and "w" in lower and "pct" in lower:
+            team_col = cols[lower.index("team")]
+            w_col = cols[lower.index("w")]
+            l_col = cols[lower.index("l")]
+            pct_col = cols[lower.index("pct")]
+
+            sub = t[[team_col, w_col, l_col, pct_col]].copy()
+            sub = sub.rename(
+                columns={
+                    team_col: "team_name_src",
+                    w_col: "wins",
+                    l_col: "losses",
+                    pct_col: "pct",
+                }
+            )
+            pieces.append(sub)
+
+    if not pieces:
+        raise ValueError("Could not find any standings tables with [Team, W, L, PCT] in standings_html.")
+
+    standings = pd.concat(pieces, ignore_index=True)
+
+    # Normalize team name and drop duplicates across divisions/wildcards
+    standings["name_key"] = standings["team_name_src"].map(norm_name)
+    standings["wins"] = pd.to_numeric(standings["wins"], errors="coerce")
+    standings["losses"] = pd.to_numeric(standings["losses"], errors="coerce")
+    standings["pct"] = pd.to_numeric(standings["pct"], errors="coerce")
+
+    standings = standings.drop_duplicates(subset=["name_key"], keep="first")
+
+    if standings.shape[0] != expected_teams:
+        log(
+            f"[WARN] Standings have {standings.shape[0]} unique teams (by name_key), "
+            f"expected {expected_teams}."
+        )
+
+    log(f"[INFO] Derived W/L/PCT from standings HTML for {standings.shape[0]} teams")
+    return standings
+
+
+# ---------------------------------------------------------------------------
+# Main builder
+# ---------------------------------------------------------------------------
+
+def build_league_season_summary(season: int, league_id: int) -> pd.DataFrame:
+    # Paths
+    dim_path = Path("csv/out/star_schema/dim_team_park.csv")
+    core_root = Path("csv/in/almanac_core") / str(season) / "leagues"
+    stats_html = core_root / f"league_{league_id}_stats.html"
+    standings_html = core_root / f"league_{league_id}_standings.html"
+
+    log(f"[DEBUG] season={season}, league_id={league_id}")
+    log(f"[DEBUG] dim_team_park={dim_path}")
+    log(f"[DEBUG] stats_html={stats_html}")
+    log(f"[DEBUG] standings_html={standings_html}")
+
+    # Load dimension
+    dim = load_dim_team_park(dim_path, league_id)
+    expected_teams = len(dim)
+
+    # Load RS/RA and standings
+    rsra = load_team_batting_pitching(stats_html, expected_teams)
+    st = load_team_standings(standings_html, expected_teams)
+
+    # Join RS/RA + dimension
+    teams = pd.merge(
+        dim,
+        rsra,
+        on="name_key",
+        how="left",
+        validate="1:1",
+    )
+
+    # Join W/L/PCT
+    teams = pd.merge(
+        teams,
+        st[["name_key", "wins", "losses", "pct"]],
+        on="name_key",
+        how="left",
+        validate="1:1",
+    )
+
+    teams["season"] = season
+    # league_id already present and filtered; keep as-is
+
+    # Reorder columns
+    cols = [
         "season",
         "league_id",
         "team_id",
@@ -254,92 +283,55 @@ def build_summary(df: pd.DataFrame, season: int, league_id: int, season_dir: Pat
         "wins",
         "losses",
         "pct",
+        "runs_for",
+        "runs_against",
+        "run_diff",
     ]
+    teams = teams[cols].copy()
 
-    present_base = [c for c in base_cols if c in df.columns]
-    missing_base = [c for c in base_cols if c not in df.columns]
-    if missing_base:
-        print(f"[WARN] Missing expected columns (will fill with NA): {missing_base}")
-        for col in missing_base:
-            df[col] = pd.NA
-        present_base = base_cols
+    # Type coercion and validation
+    for c in ["wins", "losses", "pct", "runs_for", "runs_against", "run_diff"]:
+        teams[c] = pd.to_numeric(teams[c], errors="coerce")
 
-    cols_out = present_base + [extras[k] for k in extras]
-    summary = df[cols_out].copy()
+    # Check for NaNs in headline metrics
+    bad = teams[
+        teams[["wins", "losses", "pct", "runs_for", "runs_against", "run_diff"]].isna().any(axis=1)
+    ]
+    if not bad.empty:
+        raise ValueError(
+            "league_season_summary has NaNs in headline metric columns for these teams:\n"
+            f"{bad[['team_name', 'team_abbr', 'wins', 'losses', 'pct', 'runs_for', 'runs_against', 'run_diff']]}"
+        )
 
-    # Replace run_diff using canonical season runs from games
-    dim_path = Path("csv/out/star_schema/dim_team_park.csv")
-    try:
-        stats = load_team_runs_from_stats_html(season, league_id, dim_path)
-    except Exception as exc:
-        print(f"[WARN] Falling back to games aggregation for runs due to: {exc}")
-        stats = load_team_runs_from_games(season_dir, season, league_id, dim_path)
+    # Sort in a stable way: conf/division, then wins desc, pct desc, team_name
+    teams = teams.sort_values(
+        by=["conf", "division", "wins", "pct", "team_name"],
+        ascending=[True, True, False, False, True],
+    ).reset_index(drop=True)
 
-    summary["join_key"] = summary["team_id"]
-    stats["join_key"] = stats["team_id"]
-    merged = summary.merge(
-        stats[
-            [
-                "join_key",
-                "runs_for",
-                "runs_against",
-                "run_diff",
-            ]
-        ],
-        on="join_key",
-        how="left",
-        validate="1:1",
-    )
-    merged = merged.drop(columns=["join_key"])
-    assert_no_nan(merged, ["runs_for", "runs_against", "run_diff"], "league_season_summary")
-    summary = merged
+    # Helpful debug line for ATL if present
+    atl = teams[teams["team_abbr"] == "ATL"]
+    if not atl.empty:
+        log("[DEBUG] ATL row (sanity check):")
+        log(atl.to_string(index=False))
 
-    # Ordering
-    sort_keys = []
-    if "conf" in summary.columns:
-        sort_keys.append("conf")
-    if "division" in summary.columns:
-        sort_keys.append("division")
-    sort_keys.extend(["wins", "pct"])
-    summary = summary.sort_values(sort_keys, ascending=[True, True, False, False][: len(sort_keys)])
-
-    return summary
+    return teams
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build league-season summary from standings_enriched.")
-    parser.add_argument("--season", type=int, required=True, help="Season year (e.g., 1972)")
-    parser.add_argument("--league-id", type=int, required=True, help="League ID (ABL=200)")
-    parser.add_argument(
-        "--almanac-root",
-        default=Path("csv/out/almanac"),
-        type=Path,
-        help="Root of almanac outputs (default: csv/out/almanac)",
-    )
-    return parser.parse_args()
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description="Build league-season summary from almanac core + dim_team_park.")
+    parser.add_argument("--season", type=int, required=True, help="Season year, e.g. 1972")
+    parser.add_argument("--league-id", type=int, required=True, help="League ID, e.g. 200")
+    args = parser.parse_args(argv)
 
+    df = build_league_season_summary(args.season, args.league_id)
 
-def main() -> int:
-    args = parse_args()
-    season_dir = args.almanac_root / str(args.season)
-    standings_path = season_dir / f"standings_{args.season}_league{args.league_id}_enriched.csv"
-    out_path = season_dir / f"league_season_summary_{args.season}_league{args.league_id}.csv"
+    out_root = Path("csv/out/almanac") / str(args.season)
+    out_root.mkdir(parents=True, exist_ok=True)
+    out_path = out_root / f"league_season_summary_{args.season}_league{args.league_id}.csv"
 
-    print(f"[DEBUG] season={args.season}, league_id={args.league_id}")
-    print(f"[DEBUG] standings_path={standings_path}")
-
-    df = load_standings(standings_path)
-    summary = build_summary(df, args.season, args.league_id, season_dir)
-
-    # Debug trace for ATL in 1972/200
-    if args.season == 1972 and args.league_id == 200:
-        atl_row = summary[summary["team_abbr"] == "ATL"]
-        print("[DEBUG] ATL row after recompute:")
-        print(atl_row[["team_name", "team_abbr", "runs_for", "runs_against", "run_diff", "wins", "losses"]])
-
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    summary.to_csv(out_path, index=False)
-    print(f"[INFO] Wrote league season summary to {out_path} ({len(summary)} rows)")
+    df.to_csv(out_path, index=False)
+    log(f"[OK] Wrote league season summary to {out_path}")
     return 0
 
 
