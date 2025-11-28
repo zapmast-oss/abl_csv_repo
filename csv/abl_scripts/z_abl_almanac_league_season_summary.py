@@ -75,6 +75,8 @@ def load_dim_team_park(dim_path: Path, league_id: int) -> pd.DataFrame:
     conf_col = find_first_column(dim, ["conf", "conference", "Conference", "SL"])
     div_col = find_first_column(dim, ["division", "Division", "div", "DIV", "DIV.1"])
 
+    city_col = "City" if "City" in dim.columns else None
+
     dim_use = dim[[team_id_col, "league_id", name_col, abbr_col, conf_col, div_col]].copy()
     dim_use = dim_use.rename(
         columns={
@@ -86,7 +88,15 @@ def load_dim_team_park(dim_path: Path, league_id: int) -> pd.DataFrame:
         }
     )
 
-    dim_use["name_key"] = dim_use["team_name"].map(norm_name)
+    full_key = dim_use["team_name"].map(norm_name)
+    if city_col:
+        city_base = dim[city_col].str.split("(").str[0].str.strip()
+        city_key = city_base.map(norm_name)
+    else:
+        city_key = full_key
+
+    dim_use["name_key"] = full_key
+    dim_use["city_key"] = city_key
 
     if dim_use["name_key"].duplicated().any():
         dups = dim_use[dim_use["name_key"].duplicated(keep=False)]
@@ -162,6 +172,9 @@ def load_team_batting_pitching(stats_html: Path, expected_teams: int) -> pd.Data
     merged["runs_for"] = pd.to_numeric(merged["runs_for"], errors="coerce")
     merged["runs_against"] = pd.to_numeric(merged["runs_against"], errors="coerce")
     merged["run_diff"] = merged["runs_for"] - merged["runs_against"]
+    merged = merged.rename(columns={"name_key": "city_key"})
+    override = {"seatlle": "seattle", "tampabay": "tampa"}
+    merged["city_key"] = merged["city_key"].replace(override)
 
     log(f"[INFO] Derived RS/RA from stats HTML for {len(merged)} keys")
     return merged
@@ -210,6 +223,11 @@ def load_team_standings(standings_html: Path, expected_teams: int) -> pd.DataFra
 
     # Normalize team name and drop duplicates across divisions/wildcards
     standings["name_key"] = standings["team_name_src"].map(norm_name)
+    override = {
+        "seatlle": "seattle",
+        "seatllecomets": "seattlecomets",
+    }
+    standings["name_key"] = standings["name_key"].replace(override)
     standings["wins"] = pd.to_numeric(standings["wins"], errors="coerce")
     standings["losses"] = pd.to_numeric(standings["losses"], errors="coerce")
     standings["pct"] = pd.to_numeric(standings["pct"], errors="coerce")
@@ -251,13 +269,7 @@ def build_league_season_summary(season: int, league_id: int) -> pd.DataFrame:
     st = load_team_standings(standings_html, expected_teams)
 
     # Join RS/RA + dimension
-    teams = pd.merge(
-        dim,
-        rsra,
-        on="name_key",
-        how="left",
-        validate="1:1",
-    )
+    teams = pd.merge(dim, rsra, on="city_key", how="left", validate="1:1")
 
     # Join W/L/PCT
     teams = pd.merge(
