@@ -127,14 +127,36 @@ def build_story_section(df_story: pd.DataFrame) -> list[str]:
     for group, sub in df_story.groupby("story_group"):
         lines.append(f"### {group}")
         for _, r in sub.iterrows():
-            metric_name = r["metric_name"]
-            metric_val = r["metric_value"]
-            suffix = ""
-            if "month" in r and not pd.isna(r.get("month")):
-                suffix = f" ({r.get('month')})"
-            lines.append(
-                f"- {r['team_name']} ({r['team_abbr']}){suffix}: {metric_name}={metric_val}"
-            )
+            if "Month of Glory" in group or "Month of Misery" in group:
+                try:
+                    mw = int(r.get("month_wins", 0))
+                    ml = int(r.get("month_losses", 0))
+                    mp = float(r.get("month_win_pct", 0.0))
+                    delta = float(r.get("metric_value", 0.0))
+                    lines.append(
+                        f"- {r['team_name']} ({r['team_abbr']}): went {mw}-{ml} that month ({mp:.3f}), delta vs season={delta:+.3f}"
+                    )
+                except Exception:
+                    lines.append(
+                        f"- {r['team_name']} ({r['team_abbr']}): metric={r['metric_name']} value={r['metric_value']}"
+                    )
+            elif "Second-Half Surges" in group or "Second-Half Collapses" in group:
+                try:
+                    hw = int(r.get("half_wins", 0))
+                    hl = int(r.get("half_losses", 0))
+                    hp = float(r.get("half_win_pct", 0.0))
+                    delta = float(r.get("metric_value", 0.0))
+                    lines.append(
+                        f"- {r['team_name']} ({r['team_abbr']}): went {hw}-{hl} in the 2nd half ({hp:.3f}), delta vs season={delta:+.3f}"
+                    )
+                except Exception:
+                    lines.append(
+                        f"- {r['team_name']} ({r['team_abbr']}): metric={r['metric_name']} value={r['metric_value']}"
+                    )
+            else:
+                lines.append(
+                    f"- {r['team_name']} ({r['team_abbr']}): {r['metric_name']}={r['metric_value']}"
+                )
         lines.append("")
     return lines
 

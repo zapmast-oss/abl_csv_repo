@@ -130,6 +130,8 @@ def build_season_run_diff_giants(league: pd.DataFrame) -> pd.DataFrame:
     top["comparison_note"] = top.apply(
         lambda r: f"led the league with a run differential of {int(round(r.season_run_diff)):+d}.", axis=1
     )
+    for col in ["half_games", "half_wins", "half_losses", "half_win_pct", "month_games", "month_wins", "month_losses", "month_win_pct"]:
+        top[col] = pd.NA
     check_no_nan(top, ["metric_value"], "Season Run Diff Giants")
     return top[
         [
@@ -147,6 +149,10 @@ def build_season_run_diff_giants(league: pd.DataFrame) -> pd.DataFrame:
             "metric_value",
             "focus_label",
             "comparison_note",
+            "half_games",
+            "half_wins",
+            "half_losses",
+            "half_win_pct",
         ]
     ]
 
@@ -171,6 +177,8 @@ def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
         lambda r: f"stood out on pct: {r.pct:.3f}.",
         axis=1,
     )
+    for col in ["half_games", "half_wins", "half_losses", "half_win_pct", "month_games", "month_wins", "month_losses", "month_win_pct"]:
+        top[col] = pd.NA
     check_no_nan(top, ["metric_value"], "Season Win Pct Giants")
     return top[
         [
@@ -188,6 +196,14 @@ def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
             "metric_value",
             "focus_label",
             "comparison_note",
+            "half_games",
+            "half_wins",
+            "half_losses",
+            "half_win_pct",
+            "month_games",
+            "month_wins",
+            "month_losses",
+            "month_win_pct",
         ]
     ]
 
@@ -211,6 +227,15 @@ def build_second_half_swing(half: pd.DataFrame, positive: bool, label: str, stor
     df["rank"] = df.index + 1
     df["metric_name"] = "half_win_pct_delta_vs_season"
     df["metric_value"] = df["half_win_pct_delta_vs_season"]
+    # carry half record fields if present
+    for src, dest in [
+        ("half_games", "half_games"),
+        ("half_wins", "half_wins"),
+        ("half_losses", "half_losses"),
+        ("half_win_pct", "half_win_pct"),
+    ]:
+        if src in df.columns:
+            df[dest] = df[src]
     df["focus_label"] = df.apply(lambda r: f"{r.team_name} ({r.team_abbr})", axis=1)
     if positive:
         df["comparison_note"] = df.apply(
@@ -222,6 +247,9 @@ def build_second_half_swing(half: pd.DataFrame, positive: bool, label: str, stor
             lambda r: f"faded after midseason: {r.half_win_pct:.3f} in the second half (delta {r.half_win_pct_delta_vs_season:+.3f} vs season).",
             axis=1,
         )
+    for col in ["month_games", "month_wins", "month_losses", "month_win_pct"]:
+        if col not in df.columns:
+            df[col] = pd.NA
     check_no_nan(df, ["metric_value"], label)
     return df[
         [
@@ -239,6 +267,14 @@ def build_second_half_swing(half: pd.DataFrame, positive: bool, label: str, stor
             "metric_value",
             "focus_label",
             "comparison_note",
+            "half_games",
+            "half_wins",
+            "half_losses",
+            "half_win_pct",
+            "month_games",
+            "month_wins",
+            "month_losses",
+            "month_win_pct",
         ]
     ]
 
@@ -271,6 +307,15 @@ def build_month_momentum(monthly: pd.DataFrame, positive: bool, label: str, stor
             lambda r: f"In {r.month}, slumped below their season pace: {r.month_win_pct:.3f} (delta {r.month_win_pct_delta_vs_season:+.3f}).",
             axis=1,
         )
+    # carry month record fields if present
+    for src, dest in [
+        ("games", "month_games"),
+        ("wins", "month_wins"),
+        ("losses", "month_losses"),
+        ("month_win_pct", "month_win_pct"),
+    ]:
+        if src in df.columns:
+            df[dest] = df[src]
     check_no_nan(df, ["metric_value"], label)
     return df[
         [
@@ -288,6 +333,10 @@ def build_month_momentum(monthly: pd.DataFrame, positive: bool, label: str, stor
             "metric_value",
             "focus_label",
             "comparison_note",
+            "month_games",
+            "month_wins",
+            "month_losses",
+            "month_win_pct",
         ]
     ]
 
