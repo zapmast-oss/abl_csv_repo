@@ -54,16 +54,16 @@ This menu collects high-level story candidates for the full season. Use it as an
 
 ## Season giants – run differential
 
-- **Atlanta Kings** (ATL) — Atlanta Kings stood out on run_diff: 122.  
-  _National Baseball Conference  NBC Eastern Division  run_diff=122_
-- **Denver Rocketeers** (DEN) — Denver Rocketeers stood out on run_diff: 103.  
-  _American Baseball Conference  ABC Western Division  run_diff=103_
-- **Miami Hurricanes** (MIA) — Miami Hurricanes stood out on run_diff: 102.  
-  _National Baseball Conference  NBC Eastern Division  run_diff=102_
-- **New York Aces** (NY) — New York Aces stood out on run_diff: 78.  
-  _American Baseball Conference  ABC Eastern Division  run_diff=78_
-- **Chicago Fire** (CHI) — Chicago Fire stood out on run_diff: 46.  
-  _National Baseball Conference  NBC Central Division  run_diff=46_
+- **Miami Hurricanes** (MIA) — Miami Hurricanes stood out on run_diff: 101.  
+  _National Baseball Conference  NBC Eastern Division  run_diff=101_
+- **Atlanta Kings** (ATL) — Atlanta Kings stood out on run_diff: 92.  
+  _National Baseball Conference  NBC Eastern Division  run_diff=92_
+- **San Francisco Warriors** (SF) — San Francisco Warriors stood out on run_diff: 89.  
+  _National Baseball Conference  NBC Western Division  run_diff=89_
+- **Denver Rocketeers** (DEN) — Denver Rocketeers stood out on run_diff: 83.  
+  _American Baseball Conference  ABC Western Division  run_diff=83_
+- **New York Aces** (NY) — New York Aces stood out on run_diff: 65.  
+  _American Baseball Conference  ABC Eastern Division  run_diff=65_
 
 ## Season giants – winning percentage
 
