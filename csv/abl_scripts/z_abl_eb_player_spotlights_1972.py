@@ -82,8 +82,14 @@ def main() -> int:
     # ensure team identity present
     key_cols = ["team_id", "team_abbr", "team_name", "conf", "division"]
     league_key = league[["team_id", "team_abbr", "team_name", "conf", "division"]].drop_duplicates()
-    hitters = hitters.merge(league_key, on=["team_id", "team_abbr", "team_name"], how="left")
-    pitchers = pitchers.merge(league_key, on=["team_id", "team_abbr", "team_name"], how="left")
+    for df in (hitters, pitchers):
+        for col in ["team_id", "team_abbr", "team_name"]:
+            if col not in df.columns:
+                df[col] = pd.NA
+            df[col] = df[col].astype(str)
+        df[:] = df  # type: ignore
+    hitters = hitters.merge(league_key, on=["team_abbr", "team_name"], how="left")
+    pitchers = pitchers.merge(league_key, on=["team_abbr", "team_name"], how="left")
 
     lines: list[str] = []
     lines.append(f"# EB Player Spotlights {season} – Data Brief (DO NOT PUBLISH)")

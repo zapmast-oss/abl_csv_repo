@@ -47,6 +47,15 @@ def add_rank(df: pd.DataFrame, ascending: bool) -> pd.DataFrame:
 
 def build_hitting_leaders(bat: pd.DataFrame) -> pd.DataFrame:
     bat = norm_cols(bat)
+    # numeric coercion
+    for col in bat.columns:
+        if col not in {"player_name", "team_name"}:
+            try:
+                bat[col] = pd.to_numeric(bat[col], errors="coerce")
+            except Exception:
+                pass
+    bat = bat[bat["player_name"].notna()]
+    bat = bat[bat["player_name"] != "Player"]
     if bat.empty:
         return pd.DataFrame(columns=["player_name", "team_id", "team_abbr", "team_name", "conf", "division", "metric_primary", "metric_secondary", "rank_overall"])
     pa_col = detect_col(bat, ["PA"])
@@ -86,6 +95,14 @@ def build_hitting_leaders(bat: pd.DataFrame) -> pd.DataFrame:
 
 def build_pitching_leaders(pit: pd.DataFrame) -> pd.DataFrame:
     pit = norm_cols(pit)
+    for col in pit.columns:
+        if col not in {"player_name", "team_name"}:
+            try:
+                pit[col] = pd.to_numeric(pit[col], errors="coerce")
+            except Exception:
+                pass
+    pit = pit[pit["player_name"].notna()]
+    pit = pit[pit["player_name"] != "Player"]
     if pit.empty:
         return pd.DataFrame(columns=["player_name", "team_id", "team_abbr", "team_name", "conf", "division", "metric_primary", "metric_secondary", "rank_overall"])
     ip_col = detect_col(pit, ["IP"])
