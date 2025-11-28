@@ -24,7 +24,7 @@ def parse_scores_html(html_text: str, season: int, league_id: int, filename: str
     day = int(m.group(2))
     game_date = dt.date(season, month, day)
 
-    tables = pd.read_html(html_text)
+    tables = pd.read_html(StringIO(html_text))
 
     team_rows = []
     game_rows = []
