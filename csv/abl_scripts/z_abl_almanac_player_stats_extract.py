@@ -27,7 +27,7 @@ def find_cols(tbl: pd.DataFrame, needles: Iterable[str]) -> bool:
 
 def pick_name_col(df: pd.DataFrame) -> str:
     for c in df.columns:
-        cl = c.lower()
+        cl = str(c).lower()
         if "player" in cl or "name" in cl:
             return c
     raise KeyError("No player/name column found")
@@ -124,12 +124,15 @@ def main() -> int:
 
     batting_tables, pitching_tables = collect_tables(stats_html)
     if not batting_tables:
-        raise RuntimeError("No batting tables found in stats HTML")
+        log("[WARN] No batting tables found; creating empty batting dataframe.")
+        bat_df = pd.DataFrame(columns=["player_name", "team_name"])
+    else:
+        bat_df = pd.concat(batting_tables, ignore_index=True)
     if not pitching_tables:
-        raise RuntimeError("No pitching tables found in stats HTML")
-
-    bat_df = pd.concat(batting_tables, ignore_index=True)
-    pit_df = pd.concat(pitching_tables, ignore_index=True)
+        log("[WARN] No pitching tables found; creating empty pitching dataframe.")
+        pit_df = pd.DataFrame(columns=["player_name", "team_name"])
+    else:
+        pit_df = pd.concat(pitching_tables, ignore_index=True)
 
     dim = load_dim_team(dim_path)
     bat_df, miss_bat = join_team(bat_df, dim)
