@@ -1,171 +1,21 @@
-#!/usr/bin/env python
-"""
-z_abl_almanac_flashback_story_pack.py
-
-Builds Flashback story candidates for a given ABL season from the
-almanac-derived summary tables.
-
-Inputs (under csv/out/almanac/<season>/):
-- league_season_summary_<season>_league<league_id>.csv
-- half_summary_<season>_league<league_id>.csv
-- team_monthly_momentum_<season>_league<league_id>.csv
-- team_weekly_momentum_<season>_league<league_id>.csv  (not yet used, but wired for future)
-
-Output:
-- flashback_story_candidates_<season>_league<league_id>.csv
-
-Story groups (40 rows total):
-1) Season Giants – Run Differential (5)
-2) Season Giants – Winning Percentage (5)
-3) Second-Half Surges (5)
-4) Second-Half Collapses (5)
-5) Month of Glory – Overachievers (10)
-6) Month of Misery – Slumps (10)
-
-This version:
-- Explicitly pulls run_diff and pct from league_season_summary
-- Sets a metric_value field for every candidate
-- Guards against NaNs in the headline metrics (run_diff, pct, deltas)
-"""
+from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
-from typing import List, Tuple
 
 import pandas as pd
 
 
-# ---------------------------------------------------------------------------
-# Small utility helpers
-# ---------------------------------------------------------------------------
-
-def log(msg: str, level: str = "INFO") -> None:
-    print(f"[{level}] {msg}")
+def log(msg: str) -> None:
+    print(msg)
 
 
-def load_csv(path: Path, desc: str) -> pd.DataFrame:
-    if not path.exists():
-        raise FileNotFoundError(f"{desc} not found at {path}")
-    log(f"Loading {desc} from {path}", "INFO")
-    return pd.read_csv(path)
-
-
-def ensure_columns(df: pd.DataFrame, required: List[str], desc: str) -> None:
-    missing = [c for c in required if c not in df.columns]
+def ensure_columns(df: pd.DataFrame, cols: list[str], label: str) -> None:
+    missing = [c for c in cols if c not in df.columns]
     if missing:
-        raise KeyError(f"{desc} is missing required columns: {missing}")
+        raise KeyError(f"{label} is missing required columns: {missing}. Present: {list(df.columns)}")
 
-
-def normalize_conf_div(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Make sure we have 'conf' and 'division' columns, even if the source
-    used 'conference' or 'division_name', etc.
-    """
-    df = df.copy()
-    if "conf" not in df.columns:
-        if "conference" in df.columns:
-            df["conf"] = df["conference"]
-        elif "Conference" in df.columns:
-            df["conf"] = df["Conference"]
-    if "division" not in df.columns:
-        if "division_name" in df.columns:
-            df["division"] = df["division_name"]
-        elif "Division" in df.columns:
-            df["division"] = df["Division"]
-    return df
-
-
-def backfill_identity(
-    target: pd.DataFrame,
-    league: pd.DataFrame,
-    keys: Tuple[str, ...] = ("team_id", "team_abbr"),
-) -> pd.DataFrame:
-    """
-    Ensure the target table has the canonical identity fields by merging
-    from league summary if needed.
-
-    Identity columns we want:
-        season, league_id, team_id, team_abbr, team_name, conf, division
-    """
-    target = target.copy()
-    league = normalize_conf_div(league.copy())
-
-    identity_cols = [
-        "season",
-        "league_id",
-        "team_id",
-        "team_abbr",
-        "team_name",
-        "conf",
-        "division",
-    ]
-
-    # Work out merge key: prefer team_id if present, else team_abbr
-    merge_key = None
-    for k in keys:
-        if k in target.columns and k in league.columns:
-            merge_key = k
-            break
-
-    if merge_key is None:
-        raise KeyError(
-            "Cannot backfill identity: none of the keys "
-            f"{keys} found in both target and league summary."
-        )
-
-    # Only keep identity columns from league once
-    league_id_cols = [c for c in identity_cols if c in league.columns] + [merge_key]
-    league_id_cols = list(dict.fromkeys(league_id_cols))  # unique, preserve order
-
-    # Merge, but do not lose existing non-null identity fields in target
-    merged = target.merge(
-        league[league_id_cols].drop_duplicates(merge_key),
-        on=merge_key,
-        how="left",
-        suffixes=("", "_league"),
-    )
-
-    # For each identity column, prefer target's own value then league's
-    for col in identity_cols:
-        if col in target.columns and col in merged.columns:
-            # Already there; if we also have col_league, fill nulls from it
-            league_col = f"{col}_league"
-            if league_col in merged.columns:
-                merged[col] = merged[col].fillna(merged[league_col])
-        elif col in merged.columns:
-            # Came from league
-            pass
-        else:
-            league_col = f"{col}_league"
-            if league_col in merged.columns:
-                merged[col] = merged[league_col]
-
-    # Drop any *_league helper columns
-    drop_cols = [c for c in merged.columns if c.endswith("_league")]
-    merged = merged.drop(columns=drop_cols)
-
-    return merged
-
-
-def check_no_nan(df: pd.DataFrame, cols: List[str], context: str) -> None:
-    """
-    Ensure there are no NaNs in the given columns. If there are,
-    raise a clear error so we can fix upstream.
-    """
-    bad_cols = []
-    for c in cols:
-        if c in df.columns and df[c].isna().any():
-            bad_cols.append(c)
-    if bad_cols:
-        raise ValueError(
-            f"{context}: found NaN values in headline metric columns {bad_cols}. "
-            "Check upstream tables (league summary / momentum)."
-        )
-
-
-# ---------------------------------------------------------------------------
-# Story builders
-# ---------------------------------------------------------------------------
 
 def check_no_nan(df: pd.DataFrame, cols: list[str], label: str) -> None:
     bad = df[cols].isna().any()
@@ -184,10 +34,77 @@ def ensure_base_cols(df: pd.DataFrame) -> pd.DataFrame:
         "conf",
         "division",
     ]
-    missing = [c for c in required if c not in df.columns]
-    if missing:
-        raise KeyError(f"Missing required identity columns: {missing}")
+    ensure_columns(df, required, "identity")
     return df.copy()
+
+
+def load_csv(path: Path, label: str) -> pd.DataFrame:
+    if not path.exists():
+        raise FileNotFoundError(f"{label} not found at {path}")
+    df = pd.read_csv(path)
+    log(f"[INFO] Loaded {len(df)} rows from {label}")
+    return df
+
+
+def normalize_conf_div(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    # Harmonize conference/division column names if alternates exist
+    if "conference" in df.columns and "conf" not in df.columns:
+        df["conf"] = df["conference"]
+    if "division" not in df.columns:
+        # try DIV, DIVISION
+        for cand in ["DIV", "division_name"]:
+            if cand in df.columns:
+                df["division"] = df[cand]
+                break
+    return df
+
+
+def backfill_identity(target: pd.DataFrame, league: pd.DataFrame) -> pd.DataFrame:
+    target = target.copy()
+    league_map = league.set_index("team_id")
+    for col in ["team_abbr", "team_name", "conf", "division", "season", "league_id"]:
+        if col not in target.columns and col in league_map.columns:
+            target[col] = target["team_id"].map(league_map[col])
+        elif col in league_map.columns:
+            # fill missing values only
+            target[col] = target[col].fillna(target["team_id"].map(league_map[col]))
+    return target
+
+
+def backfill_season_run_diff(league: pd.DataFrame, monthly: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Ensure league has numeric runs_for/runs_against/run_diff by deriving from monthly if needed."""
+    league = league.copy()
+    agg = None
+    if monthly is not None and {"runs_for", "runs_against"}.issubset(monthly.columns):
+        agg = (
+            monthly.groupby("team_id")[["runs_for", "runs_against"]]
+            .sum()
+            .reset_index()
+            .assign(run_diff=lambda d: d["runs_for"] - d["runs_against"])
+        )
+
+    if {"runs_for", "runs_against"}.issubset(league.columns):
+        league["runs_for"] = pd.to_numeric(league["runs_for"], errors="coerce")
+        league["runs_against"] = pd.to_numeric(league["runs_against"], errors="coerce")
+    elif agg is not None:
+        league = league.merge(agg.rename(columns={"runs_for": "runs_for_src", "runs_against": "runs_against_src"}), on="team_id", how="left")
+        existing_rf = pd.to_numeric(league["runs_for"], errors="coerce") if "runs_for" in league else pd.Series([pd.NA] * len(league))
+        existing_ra = pd.to_numeric(league["runs_against"], errors="coerce") if "runs_against" in league else pd.Series([pd.NA] * len(league))
+        league["runs_for"] = existing_rf.fillna(league["runs_for_src"])
+        league["runs_against"] = existing_ra.fillna(league["runs_against_src"])
+        league = league.drop(columns=[c for c in ["runs_for_src", "runs_against_src"] if c in league.columns])
+
+    if "run_diff" not in league.columns:
+        league["run_diff"] = pd.NA
+    league["run_diff"] = pd.to_numeric(league["run_diff"], errors="coerce")
+
+    if {"runs_for", "runs_against"}.issubset(league.columns):
+        league["run_diff"] = league["run_diff"].fillna(league["runs_for"] - league["runs_against"])
+    elif agg is not None and "run_diff" in agg.columns:
+        league["run_diff"] = league["run_diff"].fillna(league["team_id"].map(agg.set_index("team_id")["run_diff"]))
+
+    return league
 
 
 def build_season_run_diff_giants(league: pd.DataFrame) -> pd.DataFrame:
@@ -236,26 +153,14 @@ def build_season_run_diff_giants(league: pd.DataFrame) -> pd.DataFrame:
 
 def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
     df = ensure_base_cols(league)
-
     if "pct" not in df.columns:
         if "win_pct" in df.columns:
             df["pct"] = df["win_pct"]
         else:
-            raise KeyError(
-                "league_season_summary is missing pct/win_pct; "
-                "cannot build winning-percentage stories."
-            )
-
+            raise KeyError("league_season_summary is missing pct/win_pct; cannot build win-pct stories.")
     df["pct"] = pd.to_numeric(df["pct"], errors="coerce")
     df = df.dropna(subset=["pct"])
-
-    top = (
-        df.sort_values("pct", ascending=False)
-        .head(5)
-        .reset_index(drop=True)
-        .copy()
-    )
-
+    top = df.sort_values("pct", ascending=False).head(5).reset_index(drop=True).copy()
     top["story_group"] = "Season Giants – Winning Percentage"
     top["story_type"] = "season_win_pct_giant"
     top["rank"] = top.index + 1
@@ -266,9 +171,7 @@ def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
         lambda r: f"stood out on pct: {r.pct:.3f}.",
         axis=1,
     )
-
-    check_no_nan(top, ["metric_value"], "Season Win% Giants")
-
+    check_no_nan(top, ["metric_value"], "Season Win Pct Giants")
     return top[
         [
             "season",
@@ -289,187 +192,169 @@ def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
     ]
 
 
-def build_second_half_swing(
-    half: pd.DataFrame, positive: bool, label: str, story_type: str
-) -> pd.DataFrame:
-    df = half.copy()
-
-    # Expect half_label, half_win_pct, half_win_pct_delta_vs_season
-    ensure_columns(
-        df,
-        ["half_label", "half_win_pct", "half_win_pct_delta_vs_season"],
-        "half_summary",
-    )
-
+def build_second_half_swing(half: pd.DataFrame, positive: bool, label: str, story_type: str) -> pd.DataFrame:
+    df = ensure_base_cols(half)
+    ensure_columns(df, ["half_label", "half_win_pct", "half_win_pct_delta_vs_season"], "half_summary")
     df["half_win_pct"] = pd.to_numeric(df["half_win_pct"], errors="coerce")
-    df["half_win_pct_delta_vs_season"] = pd.to_numeric(
-        df["half_win_pct_delta_vs_season"], errors="coerce"
-    )
-
-    # Only second half; filter strictly for that label
-    mask_half = df["half_label"].str.lower().str.contains("2nd")
+    df["half_win_pct_delta_vs_season"] = pd.to_numeric(df["half_win_pct_delta_vs_season"], errors="coerce")
+    mask_half = df["half_label"].str.lower().str.contains("2") | df["half_label"].str.lower().str.contains("second")
     df = df[mask_half].copy()
-
-    # Filter for positive or negative deltas
     if positive:
         df = df[df["half_win_pct_delta_vs_season"] > 0].copy()
-        df = df.sort_values(
-            "half_win_pct_delta_vs_season", ascending=False
-        )
+        df = df.sort_values("half_win_pct_delta_vs_season", ascending=False)
     else:
         df = df[df["half_win_pct_delta_vs_season"] < 0].copy()
-        df = df.sort_values(
-            "half_win_pct_delta_vs_season", ascending=True
-        )
-
-    df = df.reset_index(drop=True).head(5).copy()
-
+        df = df.sort_values("half_win_pct_delta_vs_season", ascending=True)
+    df = df.head(5).reset_index(drop=True).copy()
     df["story_group"] = label
     df["story_type"] = story_type
-    df["rank_in_group"] = df.index + 1
+    df["rank"] = df.index + 1
     df["metric_name"] = "half_win_pct_delta_vs_season"
     df["metric_value"] = df["half_win_pct_delta_vs_season"]
-
-    check_no_nan(
-        df,
-        ["half_win_pct", "half_win_pct_delta_vs_season", "metric_value"],
-        label,
-    )
-
-    return df
-
-
-def build_month_momentum(
-    monthly: pd.DataFrame, positive: bool, label: str, story_type: str, limit: int
-) -> pd.DataFrame:
-    df = monthly.copy()
-
-    ensure_columns(
-        df,
-        ["month", "month_win_pct", "month_win_pct_delta_vs_season"],
-        "team_monthly_momentum",
-    )
-
-    df["month_win_pct"] = pd.to_numeric(df["month_win_pct"], errors="coerce")
-    df["month_win_pct_delta_vs_season"] = pd.to_numeric(
-        df["month_win_pct_delta_vs_season"], errors="coerce"
-    )
-
+    df["focus_label"] = df.apply(lambda r: f"{r.team_name} ({r.team_abbr})", axis=1)
     if positive:
-        df = df[df["month_win_pct_delta_vs_season"] > 0].copy()
-        df = df.sort_values(
-            "month_win_pct_delta_vs_season", ascending=False
+        df["comparison_note"] = df.apply(
+            lambda r: f"caught fire after midseason: {r.half_win_pct:.3f} in the second half (delta {r.half_win_pct_delta_vs_season:+.3f} vs season).",
+            axis=1,
         )
     else:
-        df = df[df["month_win_pct_delta_vs_season"] < 0].copy()
-        df = df.sort_values(
-            "month_win_pct_delta_vs_season", ascending=True
+        df["comparison_note"] = df.apply(
+            lambda r: f"faded after midseason: {r.half_win_pct:.3f} in the second half (delta {r.half_win_pct_delta_vs_season:+.3f} vs season).",
+            axis=1,
         )
+    check_no_nan(df, ["metric_value"], label)
+    return df[
+        [
+            "season",
+            "league_id",
+            "story_group",
+            "story_type",
+            "rank",
+            "team_id",
+            "team_abbr",
+            "team_name",
+            "conf",
+            "division",
+            "metric_name",
+            "metric_value",
+            "focus_label",
+            "comparison_note",
+        ]
+    ]
 
-    df = df.reset_index(drop=True).head(limit).copy()
 
+def build_month_momentum(monthly: pd.DataFrame, positive: bool, label: str, story_type: str, limit: int) -> pd.DataFrame:
+    df = ensure_base_cols(monthly)
+    ensure_columns(df, ["month", "month_win_pct", "month_win_pct_delta_vs_season"], "team_monthly_momentum")
+    df["month_win_pct"] = pd.to_numeric(df["month_win_pct"], errors="coerce")
+    df["month_win_pct_delta_vs_season"] = pd.to_numeric(df["month_win_pct_delta_vs_season"], errors="coerce")
+    if positive:
+        df = df[df["month_win_pct_delta_vs_season"] > 0].copy()
+        df = df.sort_values("month_win_pct_delta_vs_season", ascending=False)
+    else:
+        df = df[df["month_win_pct_delta_vs_season"] < 0].copy()
+        df = df.sort_values("month_win_pct_delta_vs_season", ascending=True)
+    df = df.head(limit).reset_index(drop=True).copy()
     df["story_group"] = label
     df["story_type"] = story_type
-    df["rank_in_group"] = df.index + 1
+    df["rank"] = df.index + 1
     df["metric_name"] = "month_win_pct_delta_vs_season"
     df["metric_value"] = df["month_win_pct_delta_vs_season"]
+    df["focus_label"] = df["month"].astype(str)
+    if positive:
+        df["comparison_note"] = df.apply(
+            lambda r: f"In {r.month}, played above their season pace: {r.month_win_pct:.3f} (delta {r.month_win_pct_delta_vs_season:+.3f}).",
+            axis=1,
+        )
+    else:
+        df["comparison_note"] = df.apply(
+            lambda r: f"In {r.month}, slumped below their season pace: {r.month_win_pct:.3f} (delta {r.month_win_pct_delta_vs_season:+.3f}).",
+            axis=1,
+        )
+    check_no_nan(df, ["metric_value"], label)
+    return df[
+        [
+            "season",
+            "league_id",
+            "story_group",
+            "story_type",
+            "rank",
+            "team_id",
+            "team_abbr",
+            "team_name",
+            "conf",
+            "division",
+            "metric_name",
+            "metric_value",
+            "focus_label",
+            "comparison_note",
+        ]
+    ]
 
-    check_no_nan(
-        df,
-        ["month_win_pct", "month_win_pct_delta_vs_season", "metric_value"],
-        label,
-    )
-
-    return df
-
-
-# ---------------------------------------------------------------------------
-# Main driver
-# ---------------------------------------------------------------------------
 
 def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Build Flashback story candidates from almanac-derived tables."
-    )
-    parser.add_argument(
-        "--season",
-        type=int,
-        required=True,
-        help="Season year (e.g. 1972)",
-    )
-    parser.add_argument(
-        "--league-id",
-        type=int,
-        default=200,
-        help="League ID (default 200 for ABL)",
-    )
+    parser = argparse.ArgumentParser(description="Build Flashback story candidates from almanac tables.")
+    parser.add_argument("--season", type=int, required=True, help="Season year (e.g. 1972)")
+    parser.add_argument("--league-id", type=int, default=200, help="League ID (default 200)")
     parser.add_argument(
         "--almanac-root",
         type=str,
         default="csv/out/almanac",
         help="Root folder for almanac-derived CSV outputs.",
     )
-
     args = parser.parse_args()
     season = args.season
     league_id = args.league_id
 
-    log(f"season={season}, league_id={league_id}", "DEBUG")
-
     root = Path(args.almanac_root) / str(season)
-
     league_path = root / f"league_season_summary_{season}_league{league_id}.csv"
     half_path = root / f"half_summary_{season}_league{league_id}.csv"
     monthly_path = root / f"team_monthly_momentum_{season}_league{league_id}.csv"
-    weekly_path = root / f"team_weekly_momentum_{season}_league{league_id}.csv"  # reserved
-
     out_path = root / f"flashback_story_candidates_{season}_league{league_id}.csv"
 
-    # Load base tables
+    log(f"[DEBUG] season={season}, league_id={league_id}")
+    log(f"[DEBUG] league_path={league_path}")
+    log(f"[DEBUG] half_path={half_path}")
+    log(f"[DEBUG] monthly_path={monthly_path}")
+
     league = load_csv(league_path, "league_season_summary")
     half = load_csv(half_path, "half_summary")
     monthly = load_csv(monthly_path, "team_monthly_momentum")
 
-    # Normalise league identity fields
     league = normalize_conf_div(league)
+    half = normalize_conf_div(half)
+    monthly = normalize_conf_div(monthly)
+
+    # Backfill run differential if the league summary lacks it
+    league = backfill_season_run_diff(league, monthly)
 
     # Backfill identity into half/monthly from league summary
     half = backfill_identity(half, league)
     monthly = backfill_identity(monthly, league)
 
-    # Build story slices
     season_rd = build_season_run_diff_giants(league)
     season_wp = build_season_win_pct_giants(league)
-
     second_half_surges = build_second_half_swing(
-        half,
-        positive=True,
-        label="Second-Half Surges",
-        story_type="SECOND_HALF_SURGE",
+        half, positive=True, label="Second-Half Surges", story_type="second_half_surge"
     )
     second_half_collapses = build_second_half_swing(
-        half,
-        positive=False,
-        label="Second-Half Collapses",
-        story_type="SECOND_HALF_COLLAPSE",
+        half, positive=False, label="Second-Half Collapses", story_type="second_half_collapse"
     )
-
     month_glory = build_month_momentum(
         monthly,
         positive=True,
         label="Month of Glory – Overachievers",
-        story_type="MONTH_GLORY",
+        story_type="month_glory_overachiever",
         limit=10,
     )
     month_misery = build_month_momentum(
         monthly,
         positive=False,
         label="Month of Misery – Slumps",
-        story_type="MONTH_MISERY",
+        story_type="month_misery_slump",
         limit=10,
     )
 
-    # Concatenate all candidates
     candidates = pd.concat(
         [
             season_rd,
@@ -482,37 +367,14 @@ def main() -> int:
         ignore_index=True,
     )
 
-    # Final sanity: identity + metric_value should be present
-    identity_cols = [
-        "season",
-        "league_id",
-        "team_id",
-        "team_abbr",
-        "team_name",
-        "conf",
-        "division",
-    ]
-    for col in identity_cols:
-        if col not in candidates.columns:
-            raise KeyError(
-                f"Story candidates missing identity column '{col}'. "
-                "Check backfill_identity logic."
-            )
-
     check_no_nan(candidates, ["metric_value"], "Flashback story candidates")
 
-    # Sort by story_group, then rank_in_group
-    if "story_group" in candidates.columns and "rank_in_group" in candidates.columns:
-        candidates = candidates.sort_values(
-            ["story_group", "rank_in_group", "team_name"]
-        ).reset_index(drop=True)
+    candidates = candidates.sort_values(["story_group", "rank", "team_name"]).reset_index(drop=True)
 
-    # Write output
     out_path.parent.mkdir(parents=True, exist_ok=True)
     candidates.to_csv(out_path, index=False)
-    log(f"Wrote Flashback story candidates to {out_path}", "OK")
-    log(f"Total rows: {len(candidates)}", "INFO")
-
+    log(f"[OK] Wrote Flashback story candidates to {out_path}")
+    log(f"[INFO] Total rows: {len(candidates)}")
     return 0
 
 
