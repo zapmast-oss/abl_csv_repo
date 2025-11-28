@@ -167,44 +167,75 @@ def check_no_nan(df: pd.DataFrame, cols: List[str], context: str) -> None:
 # Story builders
 # ---------------------------------------------------------------------------
 
+def check_no_nan(df: pd.DataFrame, cols: list[str], label: str) -> None:
+    bad = df[cols].isna().any()
+    if bad.any():
+        bad_cols = [c for c in cols if bad[c]]
+        raise ValueError(f"{label}: found NaN values in columns {bad_cols}. Check upstream tables.")
+
+
+def ensure_base_cols(df: pd.DataFrame) -> pd.DataFrame:
+    required = [
+        "season",
+        "league_id",
+        "team_id",
+        "team_abbr",
+        "team_name",
+        "conf",
+        "division",
+    ]
+    missing = [c for c in required if c not in df.columns]
+    if missing:
+        raise KeyError(f"Missing required identity columns: {missing}")
+    return df.copy()
+
+
 def build_season_run_diff_giants(league: pd.DataFrame) -> pd.DataFrame:
-    df = league.copy()
-
-    # Normalise and ensure run_diff and pct exist
-    if "run_diff" not in df.columns:
-        if {"runs_for", "runs_against"}.issubset(df.columns):
-            df["run_diff"] = df["runs_for"] - df["runs_against"]
-        else:
-            raise KeyError(
-                "league_season_summary is missing run_diff and "
-                "runs_for/runs_against; cannot build run-diff stories."
-            )
-
-    # Guarantee numeric
-    df["run_diff"] = pd.to_numeric(df["run_diff"], errors="coerce")
-
-    # Sort and take top 5
-    top = (
-        df.sort_values("run_diff", ascending=False)
-        .head(5)
-        .reset_index(drop=True)
-        .copy()
-    )
-
+    df = ensure_base_cols(league)
+    if {"runs_for", "runs_against"}.issubset(df.columns):
+        df["season_run_diff"] = pd.to_numeric(df["runs_for"], errors="coerce") - pd.to_numeric(
+            df["runs_against"], errors="coerce"
+        )
+    elif "run_diff" in df.columns:
+        df["season_run_diff"] = pd.to_numeric(df["run_diff"], errors="coerce")
+    else:
+        raise KeyError(
+            "league_season_summary missing run_diff and runs_for/runs_against; cannot build run-diff stories."
+        )
+    df = df.dropna(subset=["season_run_diff"])
+    top = df.sort_values("season_run_diff", ascending=False).head(5).reset_index(drop=True).copy()
     top["story_group"] = "Season Giants – Run Differential"
-    top["story_type"] = "SEASON_GIANTS_RUN_DIFF"
-    top["rank_in_group"] = top.index + 1
+    top["story_type"] = "season_run_diff_giant"
+    top["rank"] = top.index + 1
     top["metric_name"] = "run_diff"
-    top["metric_value"] = top["run_diff"]
-
-    # Sanity: no NaNs in metric_value / run_diff
-    check_no_nan(top, ["run_diff", "metric_value"], "Season Run Diff Giants")
-
-    return top
+    top["metric_value"] = top["season_run_diff"]
+    top["focus_label"] = top.apply(lambda r: f"{r.team_name} ({r.team_abbr})", axis=1)
+    top["comparison_note"] = top.apply(
+        lambda r: f"led the league with a run differential of {int(round(r.season_run_diff)):+d}.", axis=1
+    )
+    check_no_nan(top, ["metric_value"], "Season Run Diff Giants")
+    return top[
+        [
+            "season",
+            "league_id",
+            "story_group",
+            "story_type",
+            "rank",
+            "team_id",
+            "team_abbr",
+            "team_name",
+            "conf",
+            "division",
+            "metric_name",
+            "metric_value",
+            "focus_label",
+            "comparison_note",
+        ]
+    ]
 
 
 def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
-    df = league.copy()
+    df = ensure_base_cols(league)
 
     if "pct" not in df.columns:
         if "win_pct" in df.columns:
@@ -216,6 +247,7 @@ def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
             )
 
     df["pct"] = pd.to_numeric(df["pct"], errors="coerce")
+    df = df.dropna(subset=["pct"])
 
     top = (
         df.sort_values("pct", ascending=False)
@@ -225,14 +257,36 @@ def build_season_win_pct_giants(league: pd.DataFrame) -> pd.DataFrame:
     )
 
     top["story_group"] = "Season Giants – Winning Percentage"
-    top["story_type"] = "SEASON_GIANTS_WIN_PCT"
-    top["rank_in_group"] = top.index + 1
+    top["story_type"] = "season_win_pct_giant"
+    top["rank"] = top.index + 1
     top["metric_name"] = "pct"
     top["metric_value"] = top["pct"]
+    top["focus_label"] = top.apply(lambda r: f"{r.team_name} ({r.team_abbr})", axis=1)
+    top["comparison_note"] = top.apply(
+        lambda r: f"stood out on pct: {r.pct:.3f}.",
+        axis=1,
+    )
 
-    check_no_nan(top, ["pct", "metric_value"], "Season Win% Giants")
+    check_no_nan(top, ["metric_value"], "Season Win% Giants")
 
-    return top
+    return top[
+        [
+            "season",
+            "league_id",
+            "story_group",
+            "story_type",
+            "rank",
+            "team_id",
+            "team_abbr",
+            "team_name",
+            "conf",
+            "division",
+            "metric_name",
+            "metric_value",
+            "focus_label",
+            "comparison_note",
+        ]
+    ]
 
 
 def build_second_half_swing(
