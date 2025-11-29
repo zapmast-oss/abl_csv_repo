@@ -63,6 +63,19 @@ def main() -> int:
             for n in names
             if f"league_{league_id}" in n and "players_pitching_reg_by_letter" in n.lower()
         ]
+        extras_patterns = [
+            "top_players_page",
+            "top_game_performances",
+            "preseason_predictions",
+            "preseason_prediction",
+            "positional_strength_overview_teams",
+            "positional_strength_overview_positions",
+            "financial_report",
+            "transactions_0_0",
+            "top_prospects",
+            "stats",
+        ]
+        extras = [n for n in names if f"league_{league_id}" in n and any(p in n for p in extras_patterns)]
         if not batting_players or not pitching_players:
             raise RuntimeError(
                 f"No player batting/pitching pages found for league {league_id} in zip {zip_path}"
@@ -73,6 +86,7 @@ def main() -> int:
         copied += extract_files(zf, stats, dest_dir)
         copied += extract_files(zf, batting_players, dest_dir)
         copied += extract_files(zf, pitching_players, dest_dir)
+        copied += extract_files(zf, extras, dest_dir)
 
     log("[INFO] Extracted files:")
     for name in copied:
