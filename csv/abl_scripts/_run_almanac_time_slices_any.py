@@ -47,13 +47,25 @@ def main() -> int:
 
     season = args.season
     league_id = args.league_id
+    almanac_zip = Path(__file__).resolve().parents[2] / "data_raw" / "ootp_html" / f"almanac_{season}.zip"
 
     repo_root = Path(__file__).resolve().parents[2]
     scripts_root = repo_root / "csv" / "abl_scripts"
 
+    log(f"[INFO] Using almanac zip: {almanac_zip}")
+
     run_step(
         "Scores pipeline",
-        [sys.executable, str(scripts_root / "z_abl_almanac_scores_pipeline.py"), "--season", str(season), "--league-id", str(league_id)],
+        [
+            sys.executable,
+            str(scripts_root / "z_abl_almanac_scores_pipeline.py"),
+            "--almanac-zip",
+            str(almanac_zip),
+            "--season",
+            str(season),
+            "--league-id",
+            str(league_id),
+        ],
     )
     run_step(
         "Time slices enriched",

@@ -72,6 +72,10 @@ def main():
 
     print(f"[INFO] Running EB regular-season pipeline for season {season}, league {league_id}")
     print("[INFO] Current working directory:", os.getcwd())
+    repo_root = Path(__file__).resolve().parents[2]
+
+    # Ensure enriched time slices exist before momentum step
+    ensure_time_slices_enriched(season, league_id, repo_root)
 
     # 14 core steps, mirroring the 1972 runner but parameterized by season.
     steps = [

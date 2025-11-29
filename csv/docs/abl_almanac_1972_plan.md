@@ -26,6 +26,18 @@ We **never** ask Codex/ChatGPT to read the whole 2GB. Instead:
 
 ---
 
+## Turnkey EB pipeline (preferred for any season)
+
+If you want the full EB-ready regular-season pack for a single season, run from the repo root:
+
+```
+python csv/abl_scripts/_run_eb_regular_season_any.py --season 1980 --league-id 200
+```
+
+That script now handles everything end to end: it extracts the core almanac HTML, builds league summaries, ensures time-slice score and *_enriched CSVs via `_run_almanac_time_slices_any.py`, then builds momentum layers, the flashback story pack, EB briefs, player context (players, schedule, financials), and schedule context. Use this as the default unless you are debugging individual parsers.
+
+---
+
 ## 2. 1972 Almanac Structure (from `almanac_1972.zip`)
 
 Top-level folder inside the zip:
@@ -290,3 +302,15 @@ EB’s writing prompts will reference these tables rather than raw HTML. Codex/C
 6. Connect these tables to EB’s “story candidates” and ABL Flashback / Legacy episode templates.
 
 Measure twice, cut once. 1972 is the proving ground; once the scripts are validated there, they can be applied to the rest of the ABL timeline.
+
+---
+
+## Running multiple seasons (1973-1980)
+
+To run several seasons in one pass, use the range runner from the repo root:
+
+```
+python csv/abl_scripts/_run_eb_regular_season_range.py --start-season 1973 --end-season 1980 --league-id 200
+```
+
+This loops season by season via the turnkey runner above, logging any failures and continuing through the requested span.
