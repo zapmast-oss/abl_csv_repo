@@ -53,6 +53,7 @@ def main() -> int:
         names = zf.namelist()
         standings = [n for n in names if f"league_{league_id}_standings.html" in n]
         stats = [n for n in names if f"league_{league_id}_stats.html" in n]
+        schedule_files = [n for n in names if f"league_{league_id}_schedule" in n]
         batting_players = [
             n
             for n in names
@@ -74,6 +75,9 @@ def main() -> int:
             "transactions_0_0",
             "top_prospects",
             "stats",
+            "schedule_grid",
+            "schedule_evaluator",
+            "schedule_evaluation",
         ]
         extras = [n for n in names if f"league_{league_id}" in n and any(p in n for p in extras_patterns)]
         if not batting_players or not pitching_players:
@@ -84,6 +88,7 @@ def main() -> int:
         copied = []
         copied += extract_files(zf, standings, dest_dir)
         copied += extract_files(zf, stats, dest_dir)
+        copied += extract_files(zf, schedule_files, dest_dir)
         copied += extract_files(zf, batting_players, dest_dir)
         copied += extract_files(zf, pitching_players, dest_dir)
         copied += extract_files(zf, extras, dest_dir)
@@ -91,6 +96,11 @@ def main() -> int:
     log("[INFO] Extracted files:")
     for name in copied:
         log(f"  - {name}")
+    sched_copied = [c for c in copied if "schedule" in c]
+    if sched_copied:
+        log("[INFO] Extracted schedule files:")
+        for c in sched_copied:
+            log(f"  - {c}")
     return 0
 
 

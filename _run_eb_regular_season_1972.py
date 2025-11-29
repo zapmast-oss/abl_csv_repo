@@ -82,12 +82,15 @@ def verify_outputs() -> None:
         "player_financials": base / f"player_financials_{SEASON}_league{LEAGUE_ID}.csv",
         "transactions": base / f"transactions_{SEASON}_league{LEAGUE_ID}.csv",
         "player_top_prospects": base / f"player_top_prospects_{SEASON}_league{LEAGUE_ID}.csv",
+        "team_schedule": base / f"team_schedule_{SEASON}_league{LEAGUE_ID}.csv",
+        "schedule_evaluator": base / f"schedule_evaluator_{SEASON}_league{LEAGUE_ID}.csv",
     }
     md_targets: dict[str, Path] = {
         "eb_flashback_brief": base / f"eb_flashback_brief_{SEASON}_league{LEAGUE_ID}.md",
         "eb_player_spotlights": base / f"eb_player_spotlights_{SEASON}_league{LEAGUE_ID}.md",
         "eb_player_leaders": base / f"eb_player_leaders_{SEASON}_league{LEAGUE_ID}.md",
         "eb_player_context": base / f"eb_player_context_{SEASON}_league{LEAGUE_ID}.md",
+        "eb_schedule_context": base / f"eb_schedule_context_{SEASON}_league{LEAGUE_ID}.md",
     }
 
     log("[VERIFY] Checking CSV outputs...")
@@ -118,6 +121,8 @@ def main() -> int:
         ("EB player spotlights", [py, "csv/abl_scripts/z_abl_eb_player_spotlights_1972.py", "--season", str(SEASON), "--league-id", str(LEAGUE_ID)]),
         ("EB player leaders brief", [py, "csv/abl_scripts/z_abl_eb_player_leaders_1972.py", "--season", str(SEASON), "--league-id", str(LEAGUE_ID)]),
         ("EB player context brief", [py, "csv/abl_scripts/z_abl_eb_player_context_1972.py", "--season", str(SEASON), "--league-id", str(LEAGUE_ID)]),
+        ("Schedule extract", [py, "csv/abl_scripts/z_abl_almanac_schedule_extract.py", "--season", str(SEASON), "--league-id", str(LEAGUE_ID)]),
+        ("EB schedule context brief", [py, "csv/abl_scripts/z_abl_eb_schedule_context_1972.py", "--season", str(SEASON), "--league-id", str(LEAGUE_ID)]),
     ]
 
     for idx, (label, cmd) in enumerate(scripts, start=1):
