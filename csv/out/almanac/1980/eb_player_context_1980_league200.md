@@ -1,23 +1,23 @@
-# EB Player Context 1980 – Data Brief (DO NOT PUBLISH)
+# EB Player Context 1980 — Data Brief (DO NOT PUBLISH)
 _League ID 200_
 
 ## Highest-paid players
-- Scott Reis (CIN) — salary: 1,900,000
-- Warren Ufena (HOU) — salary: 1,800,000
-- Eric Gray (ATL) — salary: 1,560,000
-- Nate Smeltz (nan) — salary: 1,420,000
-- Victor Torres (CIN) — salary: 1,400,000
+- Scott Reis — Cincinnati (CIN) — salary: 1,900,000
+- Warren Ufena — Houston (HOU) — salary: 1,800,000
+- Eric Gray — Atlanta (ATL) — salary: 1,560,000
+- Nate Smeltz — Tampa Bay — salary: 1,420,000
+- Victor Torres — Cincinnati (CIN) — salary: 1,400,000
 
 ## Top prospects on the horizon
-- Amari Edwards (DAL) — nan
-- Jose Rios (ATL) — LF
-- Chris Collette (CIN) — nan
-- Antonio Tejada (MIA) — C
-- Javier Guzman (MIN) — nan
-- Chris Barksdale (LA) — nan
-- Lorenzo Calderon (NAS) — 1B
-- Soren Wagner (STL) — 3B
-- Luis Otero (nan) — C
-- Fernando Rodriguez (HOU) — nan
+- Amari Edwards — Dallas (DAL)
+- Jose Rios — Atlanta (ATL) — LF
+- Chris Collette — Cincinnati (CIN)
+- Antonio Tejada — Miami (MIA) — C
+- Javier Guzman — Minneapolis (MIN)
+- Chris Barksdale — Los Angeles (LA)
+- Lorenzo Calderon — Nashville (NAS) — 1B
+- Soren Wagner — St. Louis (STL) — 3B
+- Luis Otero — Seatlle — C
+- Fernando Rodriguez — Houston (HOU)
 
-## Preseason hype – who delivered?
+## Preseason hype — who delivered?

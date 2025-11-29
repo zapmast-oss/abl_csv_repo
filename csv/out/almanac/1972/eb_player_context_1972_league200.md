@@ -1,23 +1,23 @@
-# EB Player Context 1972 – Data Brief (DO NOT PUBLISH)
+# EB Player Context 1972 — Data Brief (DO NOT PUBLISH)
 _League ID 200_
 
 ## Highest-paid players
-- Scott Reis (CIN) — salary: 700,000
-- Bill Rambow (nan) — salary: 650,000
-- Preston Strate (MIA) — salary: 650,000
-- Sergio Artola (DET) — salary: 600,000
-- Danny Eastman (STL) — salary: 600,000
+- Scott Reis — Cincinnati (CIN) — salary: 700,000
+- Bill Rambow — Seatlle — salary: 650,000
+- Preston Strate — Miami (MIA) — salary: 650,000
+- Sergio Artola — Detroit (DET) — salary: 600,000
+- Danny Eastman — St. Louis (STL) — salary: 600,000
 
 ## Top prospects on the horizon
-- Jon Ramirez (SF) — nan
-- Jesus Gago (POR) — 2B
-- David Villarreal (NAS) — SS
-- Esteban Martinez (CIN) — 2B
-- Marcos Valverde (ATL) — SS
-- Bobby Scott (POR) — 3B
-- Alex Raez (DAL) — nan
-- Jerry Bustos (LV) — nan
-- Jalen Smith (MIA) — SS
-- Shinki Yamamoto (DET) — 3B
+- Jon Ramirez — San Francisco (SF)
+- Jesus Gago — Portland (POR) — 2B
+- David Villarreal — Nashville (NAS) — SS
+- Esteban Martinez — Cincinnati (CIN) — 2B
+- Marcos Valverde — Atlanta (ATL) — SS
+- Bobby Scott — Portland (POR) — 3B
+- Alex Raez — Dallas (DAL)
+- Jerry Bustos — Las Vegas (LV)
+- Jalen Smith — Miami (MIA) — SS
+- Shinki Yamamoto — Detroit (DET) — 3B
 
-## Preseason hype – who delivered?
+## Preseason hype — who delivered?

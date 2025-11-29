@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Tuple
 
 import pandas as pd
 
@@ -28,6 +28,61 @@ def norm_cols(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def norm_key(val: str) -> str:
+    return "".join(ch for ch in str(val).strip().lower() if ch.isalnum())
+
+
+def load_team_lookup(team_path: Path) -> pd.DataFrame:
+    dim = pd.read_csv(team_path)
+    team_id_col = "team_id" if "team_id" in dim.columns else "ID"
+    abbr_col = "team_abbr" if "team_abbr" in dim.columns else "Abbr"
+    name_col = "team_name" if "team_name" in dim.columns else ("Team Name" if "Team Name" in dim.columns else "Name")
+    conf_col = "conf" if "conf" in dim.columns else ("SL" if "SL" in dim.columns else None)
+    div_col = "division" if "division" in dim.columns else ("DIV" if "DIV" in dim.columns else None)
+
+    use_cols = [team_id_col, abbr_col, name_col]
+    if conf_col:
+        use_cols.append(conf_col)
+    if div_col:
+        use_cols.append(div_col)
+    df = dim[use_cols].copy()
+    df = df.rename(
+        columns={
+            team_id_col: "team_id",
+            abbr_col: "team_abbr",
+            name_col: "team_name",
+            conf_col: "conf",
+            div_col: "division",
+        }
+    )
+    df["team_key"] = df["team_name"].map(norm_key)
+    return df
+
+
+def load_player_lookup(player_profile_path: Path, team_lookup: pd.DataFrame) -> pd.DataFrame:
+    profile = pd.read_csv(player_profile_path)
+    name_col = "player_name" if "player_name" in profile.columns else ("Name" if "Name" in profile.columns else None)
+    id_col = "player_id" if "player_id" in profile.columns else ("ID" if "ID" in profile.columns else None)
+    team_col = None
+    for cand in ["TM", "Team", "ORG"]:
+        if cand in profile.columns:
+            team_col = cand
+            break
+    if name_col is None or team_col is None:
+        raise RuntimeError("player profile missing required columns for name/team mapping")
+    use_cols = [name_col, team_col]
+    if id_col:
+        use_cols.append(id_col)
+    pf = profile[use_cols].copy()
+    pf = pf.rename(columns={name_col: "player_name", team_col: "team_name", id_col: "player_id"})
+    pf["player_key"] = pf["player_name"].map(norm_key)
+    pf["team_key"] = pf["team_name"].map(norm_key)
+    # merge to team lookup to attach abbr/id
+    merged = pf.merge(team_lookup.drop(columns=["team_name"]), on="team_key", how="left")
+    merged = merged.drop_duplicates(subset=["player_key"])
+    return merged
+
+
 def detect_col(df: pd.DataFrame, candidates) -> Optional[str]:
     cols = {c.lower(): c for c in df.columns}
     for cand in candidates:
@@ -43,6 +98,20 @@ def add_rank(df: pd.DataFrame, ascending: bool) -> pd.DataFrame:
     df = df.copy()
     df["rank_overall"] = range(1, len(df) + 1)
     return df
+
+
+def attach_team(df: pd.DataFrame, player_lookup: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    df = df.copy()
+    df["player_key"] = df["player_name"].map(norm_key)
+    merged = df.merge(player_lookup, on="player_key", how="left", suffixes=("", "_lkp"))
+    for col in ["team_id", "team_abbr", "team_name", "conf", "division"]:
+        lkp = f"{col}_lkp"
+        if lkp in merged.columns:
+            merged[col] = merged[col].combine_first(merged[lkp])
+            merged = merged.drop(columns=[lkp])
+    return merged
 
 
 def build_hitting_leaders(bat: pd.DataFrame) -> pd.DataFrame:
@@ -148,6 +217,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build player leaderboards from extracted player stats.")
     parser.add_argument("--season", type=int, required=True)
     parser.add_argument("--league-id", type=int, required=True)
+    parser.add_argument("--player-profile", type=Path, default=Path("csv/out/star_schema/dim_player_profile.csv"))
+    parser.add_argument("--team-dim", type=Path, default=Path("csv/out/star_schema/dim_team_park.csv"))
     args = parser.parse_args()
     season = args.season
     league_id = args.league_id
@@ -159,8 +230,14 @@ def main() -> int:
     bat = pd.read_csv(bat_path)
     pit = pd.read_csv(pit_path)
 
+    team_lookup = load_team_lookup(args.team_dim)
+    player_lookup = load_player_lookup(args.player_profile, team_lookup)
+
     hit_leaders = build_hitting_leaders(bat)
     pit_leaders = build_pitching_leaders(pit)
+
+    hit_leaders = attach_team(hit_leaders, player_lookup)
+    pit_leaders = attach_team(pit_leaders, player_lookup)
 
     for df in (hit_leaders, pit_leaders):
         df["season"] = season

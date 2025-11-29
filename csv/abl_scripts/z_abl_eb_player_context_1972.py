@@ -10,7 +10,7 @@ import pandas as pd
 
 
 def log(msg: str) -> None:
-    print(msg)
+    print(msg, flush=True)
 
 
 def load_csv(path: Path) -> pd.DataFrame:
@@ -27,6 +27,18 @@ def numeric_series(series: pd.Series) -> pd.Series:
     return pd.to_numeric(series.replace({r"[$,]": ""}, regex=True), errors="coerce")
 
 
+def team_label(row: pd.Series) -> str:
+    abbr = row.get("team_abbr") or row.get("team_name_y")
+    name = row.get("team_name") or row.get("team_name_x") or row.get("team_name_y")
+    if pd.notna(name) and pd.notna(abbr):
+        return f"{name} ({abbr})"
+    if pd.notna(name):
+        return str(name)
+    if pd.notna(abbr):
+        return str(abbr)
+    return "Free agent"
+
+
 def build_financial_section(fin_df: pd.DataFrame) -> List[str]:
     lines = ["## Highest-paid players"]
     if fin_df.empty:
@@ -41,8 +53,7 @@ def build_financial_section(fin_df: pd.DataFrame) -> List[str]:
     fin_df[salary_col] = numeric_series(fin_df[salary_col])
     top = fin_df.sort_values(salary_col, ascending=False).head(5)
     for _, r in top.iterrows():
-        team = r.get("team_abbr") or r.get("team_name_y") or r.get("team_name_x") or ""
-        lines.append(f"- {r.get('player_name','?')} ({team}) — salary: {r[salary_col]:,.0f}")
+        lines.append(f"- {r.get('player_name','?')} — {team_label(r)} — salary: {r[salary_col]:,.0f}")
     lines.append("")
     return lines
 
@@ -59,15 +70,18 @@ def build_prospect_section(pro_df: pd.DataFrame) -> List[str]:
         pro_df = pro_df.sort_values(rank_col)
     top = pro_df.head(10)
     for _, r in top.iterrows():
-        team = r.get("team_abbr") or r.get("team_name_y") or r.get("team_name_x") or ""
         pos = r.get("Pos") or r.get("position") or ""
-        lines.append(f"- {r.get('player_name','?')} ({team}) — {pos}")
+        pos_str = str(pos).strip() if pd.notna(pos) and str(pos).strip() else ""
+        if pos_str:
+            lines.append(f"- {r.get('player_name','?')} — {team_label(r)} — {pos_str}")
+        else:
+            lines.append(f"- {r.get('player_name','?')} — {team_label(r)}")
     lines.append("")
     return lines
 
 
 def build_preseason_section(pre_df: pd.DataFrame, bat_df: pd.DataFrame, pit_df: pd.DataFrame) -> List[str]:
-    lines = ["## Preseason hype – who delivered?"]
+    lines = ["## Preseason hype — who delivered?"]
     if pre_df.empty:
         lines.append("- Data not available.")
         lines.append("")
@@ -80,23 +94,28 @@ def build_preseason_section(pre_df: pd.DataFrame, bat_df: pd.DataFrame, pit_df: 
     for _, r in pre_players.iterrows():
         name = r["player_name"]
         stat_line = ""
+        tlabel = team_label(r)
         found = False
         if not bat_df.empty:
             match = bat_df[bat_df["player_name"] == name]
             if not match.empty:
                 m = match.iloc[0]
-                slash = "/".join(f"{float(m[c]):.3f}" for c in ["AVG", "OBP", "SLG"] if c in match.columns and pd.notna(m.get(c)))
+                slash = "/".join(
+                    f"{float(m[c]):.3f}"
+                    for c in ["AVG", "OBP", "SLG"]
+                    if c in match.columns and pd.notna(m.get(c))
+                )
                 stat_line = slash or ""
                 found = True
         if not found and not pit_df.empty:
             match = pit_df[pit_df["player_name"] == name]
             if not match.empty:
                 m = match.iloc[0]
-                if "ERA" in match.columns:
+                if "ERA" in match.columns and pd.notna(m.get("ERA")):
                     stat_line = f"ERA {m['ERA']}"
                 found = True
         verdict = "delivered" if found else "no stat found"
-        lines.append(f"- {name} — {verdict} ({stat_line})")
+        lines.append(f"- {name} — {tlabel} — {verdict} ({stat_line})")
     lines.append("")
     return lines
 
@@ -117,7 +136,7 @@ def main() -> int:
     pitching = load_csv(base / f"player_pitching_{season}_league{league_id}.csv")
 
     md_lines: List[str] = []
-    md_lines.append(f"# EB Player Context {season} – Data Brief (DO NOT PUBLISH)")
+    md_lines.append(f"# EB Player Context {season} — Data Brief (DO NOT PUBLISH)")
     md_lines.append(f"_League ID {league_id}_")
     md_lines.append("")
     md_lines.extend(build_financial_section(financials))
