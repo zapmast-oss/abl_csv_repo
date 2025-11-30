@@ -123,6 +123,12 @@ def main():
         (14, "EB player context",
             "csv/abl_scripts/z_abl_eb_player_context_1972.py",
             ["--season", str(season), "--league-id", str(league_id)]),
+        (15, "Champions from standings",
+            "csv/abl_scripts/z_abl_almanac_champions_from_standings.py",
+            ["--season", str(season), "--league-id", str(league_id), "--write-csv"]),
+        (16, "EB regular-season pack",
+            "csv/abl_scripts/z_abl_eb_regular_season_pack_any.py",
+            ["--season", str(season), "--league-id", str(league_id)]),
     ]
 
     for num, title, script, extra_args in steps:
@@ -153,6 +159,7 @@ def main():
         f"player_top_prospects_{season}_league{league_id}.csv",
         f"team_schedule_{season}_league{league_id}.csv",
         f"schedule_evaluator_{season}_league{league_id}.csv",
+        f"league_champions_{season}_league{league_id}.csv",
     ]
 
     md_outputs = [
@@ -161,6 +168,7 @@ def main():
         f"eb_schedule_context_{season}_league{league_id}.md",
         f"eb_player_leaders_{season}_league{league_id}.md",
         f"eb_player_context_{season}_league{league_id}.md",
+        f"eb_regular_season_pack_{season}_league{league_id}.md",
     ]
 
     print("[VERIFY] Checking CSV outputs...")

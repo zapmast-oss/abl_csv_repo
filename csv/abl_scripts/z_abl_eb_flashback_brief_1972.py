@@ -9,7 +9,6 @@ Assumptions:
   - Run from repo root.
   - Required source CSVs already exist under csv/out/almanac/{season}/.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -17,6 +16,8 @@ from pathlib import Path
 from typing import Iterable
 
 import pandas as pd
+
+from eb_text_utils import normalize_eb_text
 
 
 def log(msg: str) -> None:
@@ -41,17 +42,18 @@ def find_first(df: pd.DataFrame, substrings: Iterable[str]) -> str:
 
 
 def detect_league_cols(df: pd.DataFrame) -> dict[str, str]:
-    cols = {}
-    cols["team_name"] = find_first(df, ["team"])
-    cols["team_abbr"] = find_first(df, ["abbr"])
-    cols["wins"] = find_first(df, ["win"])
-    cols["losses"] = find_first(df, ["loss"])
-    cols["pct"] = find_first(df, ["pct"])
-    cols["runs_for"] = find_first(df, ["runs_for"])
-    cols["runs_against"] = find_first(df, ["runs_against"])
-    cols["run_diff"] = find_first(df, ["run_diff"])
-    cols["conf"] = find_first(df, ["conf"])
-    cols["division"] = find_first(df, ["div"])
+    cols = {
+        "team_name": find_first(df, ["team"]),
+        "team_abbr": find_first(df, ["abbr"]),
+        "wins": find_first(df, ["win"]),
+        "losses": find_first(df, ["loss"]),
+        "pct": find_first(df, ["pct"]),
+        "runs_for": find_first(df, ["runs_for"]),
+        "runs_against": find_first(df, ["runs_against"]),
+        "run_diff": find_first(df, ["run_diff"]),
+        "conf": find_first(df, ["conf"]),
+        "division": find_first(df, ["div"]),
+    }
     return cols
 
 
@@ -97,15 +99,8 @@ def build_league_section(df: pd.DataFrame, cols: dict[str, str]) -> list[str]:
     return lines
 
 
-def build_conf_div_section(df_conf: pd.DataFrame, conf_cols: dict[str, str], df_div: pd.DataFrame, div_cols: dict[str, str]) -> list[str]:
+def build_division_section(df_div: pd.DataFrame, div_cols: dict[str, str]) -> list[str]:
     lines: list[str] = []
-    lines.append("## 4k View – Conference Snapshot")
-    lines.append("")
-    for _, r in df_conf.iterrows():
-        lines.append(
-            f"- {r['conf']}: wins={r[conf_cols['wins']]}, losses={r[conf_cols['losses']]}, pct_avg={r[conf_cols['pct']]:.3f}, run_diff_total={r[conf_cols['run_diff']]}"
-        )
-    lines.append("")
     lines.append("## 4k View – Division Snapshot")
     lines.append("")
     for _, r in df_div.iterrows():
@@ -197,11 +192,14 @@ def main() -> int:
     lines.append("")
 
     lines.extend(build_league_section(league_df, league_cols))
-    lines.extend(build_conf_div_section(conf_df, conf_cols, div_df, div_cols))
+    lines.extend(build_division_section(div_df, div_cols))
     lines.extend(build_story_section(story_df))
 
+    full_text = "\n".join(lines)
+    full_text = normalize_eb_text(full_text)
+
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text("\n".join(lines), encoding="utf-8")
+    out_path.write_text(full_text, encoding="utf-8")
     log(f"[OK] Wrote EB flashback brief to {out_path}")
     return 0
 

@@ -20,11 +20,6 @@ Top winning percentage:
 - 6 (CHA) — pct=0.562, record=91-71
 - 21 (PIT) — pct=0.556, record=90-72
 
-## 4k View – Conference Snapshot
-
-- American Baseball Conference: wins=972, losses=972, pct_avg=0.500, run_diff_total=0
-- National Baseball Conference: wins=972, losses=972, pct_avg=0.500, run_diff_total=0
-
 ## 4k View – Division Snapshot
 
 - American Baseball Conference / ABC Central Division: wins=326, losses=322, pct_avg=0.503, run_diff_total=-1

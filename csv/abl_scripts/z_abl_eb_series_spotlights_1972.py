@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+
 import pandas as pd
+
+from eb_text_utils import normalize_eb_text
 
 # -------------------------------------------------------------------
 # Config – 1972 / league 200 only
@@ -229,7 +232,7 @@ def main() -> int:
     md = build_spotlights(df_team)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(md, encoding="utf-8")
+    OUTPUT_PATH.write_text(normalize_eb_text(md), encoding="utf-8")
     print(f"[OK] Wrote EB series spotlight brief to {OUTPUT_PATH}")
     return 0
 

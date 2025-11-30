@@ -17,7 +17,7 @@ _League ID 200_
 - Chris Barksdale — Los Angeles (LA)
 - Lorenzo Calderon — Nashville (NAS) — 1B
 - Soren Wagner — St. Louis (STL) — 3B
-- Luis Otero — Seatlle — C
+- Luis Otero — Seattle Comets (SEA) — C
 - Fernando Rodriguez — Houston (HOU)
 
 ## Preseason hype — who delivered?

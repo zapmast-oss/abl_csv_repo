@@ -8,6 +8,8 @@ from typing import List
 
 import pandas as pd
 
+from eb_text_utils import normalize_eb_text
+
 
 def log(msg: str) -> None:
     print(msg, flush=True)
@@ -104,7 +106,7 @@ def fmt_slash(row: pd.Series) -> str:
 
 
 def build_hits_section(df: pd.DataFrame, season: int) -> list[str]:
-    lines = [f"## Top Bats of \u2019{str(season)[-2:]}"]
+    lines = [f"## Top bats — career through {season}"]
     for _, r in df.head(15).iterrows():
         bits = []
         slash = fmt_slash(r)
@@ -118,7 +120,7 @@ def build_hits_section(df: pd.DataFrame, season: int) -> list[str]:
         tlabel = team_label(r)
         parts = [f"- {r['player_name']}"]
         if tlabel:
-            parts.append(f"{tlabel}")
+            parts.append(tlabel)
         if slash:
             parts.append(slash)
         if bits:
@@ -128,8 +130,8 @@ def build_hits_section(df: pd.DataFrame, season: int) -> list[str]:
     return lines
 
 
-def build_pitch_section(df: pd.DataFrame) -> list[str]:
-    lines = ["## Aces on the Hill"]
+def build_pitch_section(df: pd.DataFrame, season: int) -> list[str]:
+    lines = [f"## Aces on the hill — career through {season}"]
     for _, r in df.head(15).iterrows():
         bits = []
         for col in ("ERA", "IP", "SO", "WHIP", "WAR", "SV"):
@@ -142,7 +144,7 @@ def build_pitch_section(df: pd.DataFrame) -> list[str]:
         tlabel = team_label(r)
         parts = [f"- {r['player_name']}"]
         if tlabel:
-            parts.append(f"{tlabel}")
+            parts.append(tlabel)
         if bits:
             parts.append(", ".join(bits))
         lines.append(" — ".join(parts))
@@ -170,16 +172,18 @@ def main() -> int:
     pitchers = enrich_with_team(pitchers, player_lookup)
 
     lines: list[str] = []
-    lines.append(f"# EB Player Spotlights {season} — Data Brief (DO NOT PUBLISH)")
+    lines.append(f"# EB Player Spotlights {season} — Career Context (DO NOT PUBLISH)")
     lines.append(f"_League ID {league_id}_")
     lines.append("")
     lines.append("Internal data brief for EB: player performance highlights for the season.")
     lines.append("")
     lines.extend(build_hits_section(hitters, season))
-    lines.extend(build_pitch_section(pitchers))
+    lines.extend(build_pitch_section(pitchers, season))
 
     out_path = base / f"eb_player_spotlights_{season}_league{league_id}.md"
-    out_path.write_text("\n".join(lines), encoding="utf-8")
+    full_text = "\n".join(lines)
+    full_text = normalize_eb_text(full_text)
+    out_path.write_text(full_text, encoding="utf-8")
     log(f"[OK] Wrote {out_path}")
     return 0
 

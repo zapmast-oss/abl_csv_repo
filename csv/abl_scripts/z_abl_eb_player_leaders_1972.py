@@ -8,6 +8,8 @@ from typing import Optional
 
 import pandas as pd
 
+from eb_text_utils import normalize_eb_text
+
 
 def log(msg: str) -> None:
     print(msg, flush=True)
@@ -155,6 +157,7 @@ def main() -> int:
 
     ip_col = "IP" if "IP" in pitching_full.columns else None
     if ip_col:
+
         def ip_to_float(val):
             try:
                 if isinstance(val, str) and "." in val:
@@ -186,18 +189,18 @@ def main() -> int:
     if not leaders:
         raise RuntimeError("No leaders found to report.")
 
-    md_lines = []
-    md_lines.append(f"# EB Player Leaders {season} — Data Brief (DO NOT PUBLISH)")
+    md_lines: list[str] = []
+    md_lines.append(f"# EB Player Leaders {season} — Career Context (DO NOT PUBLISH)")
     md_lines.append(f"_League ID {league_id}_")
     md_lines.append("")
-    md_lines.append("## League batting leaders")
+    md_lines.append(f"## Career batting leaders through {season}")
     for leader in leaders:
         if leader["stat_name"] in {"HR", "SB", "AVG", "OPS"}:
             md_lines.append(
                 f"- {leader['stat_name']} leader: {leader['player_name']} — {team_label(pd.Series(leader))} — {leader['stat_value']}"
             )
     md_lines.append("")
-    md_lines.append("## League pitching leaders")
+    md_lines.append(f"## Career pitching leaders through {season}")
     for leader in leaders:
         if leader["stat_name"] in {"ERA", "SO", "SV"}:
             md_lines.append(
@@ -206,7 +209,9 @@ def main() -> int:
     md_lines.append("")
 
     out_path = base / f"eb_player_leaders_{season}_league{league_id}.md"
-    out_path.write_text("\n".join(md_lines), encoding="utf-8")
+    full_text = "\n".join(md_lines)
+    full_text = normalize_eb_text(full_text)
+    out_path.write_text(full_text, encoding="utf-8")
     log(f"[OK] Wrote player leaders brief to {out_path}")
     return 0
 

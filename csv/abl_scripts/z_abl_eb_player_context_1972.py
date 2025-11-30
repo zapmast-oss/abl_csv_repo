@@ -8,6 +8,8 @@ from typing import List
 
 import pandas as pd
 
+from eb_text_utils import normalize_eb_text
+
 
 def log(msg: str) -> None:
     print(msg, flush=True)
@@ -143,8 +145,11 @@ def main() -> int:
     md_lines.extend(build_prospect_section(prospects))
     md_lines.extend(build_preseason_section(preseason, batting, pitching))
 
+    full_text = "\n".join(md_lines)
+    full_text = normalize_eb_text(full_text)
+
     out_path = base / f"eb_player_context_{season}_league{league_id}.md"
-    out_path.write_text("\n".join(md_lines), encoding="utf-8")
+    out_path.write_text(full_text, encoding="utf-8")
     log(f"[OK] Wrote player context brief to {out_path}")
     return 0
 
