@@ -1,0 +1,232 @@
+# ABL 1978 Regular Season – EB Pack (League 200)
+---
+# EB Flashback 1978 – Data Brief (DO NOT PUBLISH)
+
+_League ID 200_
+
+This brief is for Ernie Bewell’s internal use. It summarizes key 5k/4k/3k data for the season.
+
+## 5k View – League Snapshot
+
+Top run differential:
+- 18 (POR) — run_diff=154, RS=778, RA=624
+- 20 (BOS) — run_diff=139, RS=688, RA=549
+- 2 (PHO) — run_diff=116, RS=705, RA=589
+- 14 (CIN) — run_diff=100, RS=768, RA=668
+- 15 (NY) — run_diff=81, RS=601, RA=520
+
+Top winning percentage:
+- 20 (BOS) — pct=0.630, record=102-60
+- 18 (POR) — pct=0.580, record=94-68
+- 15 (NY) — pct=0.574, record=93-69
+- 23 (HOU) — pct=0.549, record=89-73
+- 7 (SD) — pct=0.549, record=89-73
+
+## 4k View – Division Snapshot
+
+- American Baseball Conference / ABC Central Division: wins=314, losses=334, pct_avg=0.484, run_diff_total=-29
+- American Baseball Conference / ABC Eastern Division: wins=349, losses=299, pct_avg=0.539, run_diff_total=77
+- American Baseball Conference / ABC Western Division: wins=309, losses=339, pct_avg=0.477, run_diff_total=-48
+- National Baseball Conference / NBC Central Division: wins=329, losses=319, pct_avg=0.507, run_diff_total=33
+- National Baseball Conference / NBC Eastern Division: wins=327, losses=321, pct_avg=0.505, run_diff_total=40
+- National Baseball Conference / NBC Western Division: wins=316, losses=332, pct_avg=0.487, run_diff_total=-73
+
+## 3k View – Flashback Story Candidates
+
+### Month of Glory – Overachievers
+- St. Louis Stallions (STL): went 1-0 that month (1.000), delta vs season=+0.599
+- Las Vegas Gamblers (LV): went 1-0 that month (1.000), delta vs season=+0.593
+- Pittsburgh Express (PIT): went 1-0 that month (1.000), delta vs season=+0.580
+- Los Angeles Cobras (LA): went 1-0 that month (1.000), delta vs season=+0.525
+- Dallas Rustlers (DAL): went 1-0 that month (1.000), delta vs season=+0.519
+- Charlotte Colonels (CHA): went 2-0 that month (1.000), delta vs season=+0.519
+- Nashville Blues (NAS): went 2-0 that month (1.000), delta vs season=+0.519
+- Charlotte Colonels (CHA): went 1-0 that month (1.000), delta vs season=+0.519
+- Tampa Bay Storm (TB): went 1-0 that month (1.000), delta vs season=+0.506
+- Cincinnati Cougars (CIN): went 2-0 that month (1.000), delta vs season=+0.494
+
+### Month of Misery – Slumps
+- New York Aces (NY): went 0-2 that month (0.000), delta vs season=-0.574
+- Philadelphia Fury (PHI): went 0-1 that month (0.000), delta vs season=-0.531
+- Miami Hurricanes (MIA): went 0-2 that month (0.000), delta vs season=-0.531
+- Seattle Comets (SEA): went 0-1 that month (0.000), delta vs season=-0.525
+- Minneapolis Blizzard (MIN): went 0-2 that month (0.000), delta vs season=-0.525
+- Detroit Dukes (DET): went 0-1 that month (0.000), delta vs season=-0.512
+- Chicago Fire (CHI): went 0-1 that month (0.000), delta vs season=-0.512
+- Atlanta Kings (ATL): went 0-1 that month (0.000), delta vs season=-0.512
+- Cincinnati Cougars (CIN): went 0-1 that month (0.000), delta vs season=-0.506
+- Nashville Blues (NAS): went 0-1 that month (0.000), delta vs season=-0.481
+
+### Season Giants – Run Differential
+- Portland Lumberjacks (POR): run_diff=154.0
+- Boston Patriots (BOS): run_diff=139.0
+- Phoenix Firebirds (PHO): run_diff=116.0
+- Cincinnati Cougars (CIN): run_diff=100.0
+- New York Aces (NY): run_diff=81.0
+
+### Season Giants – Winning Percentage
+- Boston Patriots (BOS): pct=0.63
+- Portland Lumberjacks (POR): pct=0.58
+- New York Aces (NY): pct=0.574
+- Houston Mavericks (HOU): pct=0.549
+- San Diego Seraphs (SD): pct=0.549
+
+### Second-Half Collapses
+- Dallas Rustlers (DAL): went 34-47 in the 2nd half (0.420), delta vs season=-0.061
+- Las Vegas Gamblers (LV): went 28-52 in the 2nd half (0.350), delta vs season=-0.057
+- Portland Lumberjacks (POR): went 44-40 in the 2nd half (0.524), delta vs season=-0.056
+- Charlotte Colonels (CHA): went 35-44 in the 2nd half (0.443), delta vs season=-0.038
+- Detroit Dukes (DET): went 38-42 in the 2nd half (0.475), delta vs season=-0.037
+
+### Second-Half Surges
+- San Francisco Warriors (SF): went 36-42 in the 2nd half (0.462), delta vs season=+0.079
+- Cincinnati Cougars (CIN): went 44-36 in the 2nd half (0.550), delta vs season=+0.044
+- Seattle Comets (SEA): went 44-34 in the 2nd half (0.564), delta vs season=+0.039
+- Denver Rocketeers (DEN): went 34-46 in the 2nd half (0.425), delta vs season=+0.030
+- Los Angeles Cobras (LA): went 40-40 in the 2nd half (0.500), delta vs season=+0.025
+
+---
+
+## Champions & All-Star Context
+
+### Playoff Field – ABC
+- East: Boston Patriots (BOS) — 102-60, run_diff=139
+- Central: Houston Mavericks (HOU) — 89-73, run_diff=74
+- West: Portland Lumberjacks (POR) — 94-68, run_diff=154
+- Wild Card: New York Aces (NY) — 93-69, run_diff=81
+
+### Playoff Field – NBC
+- East: Miami Hurricanes (MIA) — 86-76, run_diff=29
+- Central: Minneapolis Blizzard (MIN) — 85-77, run_diff=13
+- West: San Diego Seraphs (SD) — 89-73, run_diff=7
+- Wild Card: Phoenix Firebirds (PHO) — 88-74, run_diff=116
+
+---
+
+# EB Player Context 1978 — Data Brief (DO NOT PUBLISH)
+_League ID 200_
+
+## Highest-paid players
+- Victor Torres — Cincinnati (CIN) — salary: 1,400,000
+- Brett Petrillo — Nashville (NAS) — salary: 1,340,000
+- Warren Ufena — Houston (HOU) — salary: 970,000
+- Victor Campos — Atlanta (ATL) — salary: 920,000
+- Nate Smeltz — St. Louis (STL) — salary: 890,000
+
+## Top prospects on the horizon
+- Daniel Mendez — Nashville (NAS)
+- Jose Rios — Atlanta (ATL) — LF
+- Chris Collette — Cincinnati (CIN)
+- Arturo Gonzalez — San Francisco (SF)
+- Chris Barksdale — Los Angeles (LA)
+- Jaylen Taylor — Las Vegas (LV)
+- Lorenzo Calderon — Nashville (NAS) — 1B
+- David Reeder — Charlotte (CHA) — C
+- Leo Fuentes — Detroit (DET) — SS
+- Armando Antigua — San Francisco (SF) — SS
+
+## Preseason hype — who delivered?
+
+---
+
+## Preseason hype — who delivered?
+_Based on preseason predictions and actual 1978 performance._
+
+**Over-delivered**
+- O. Garcia — Free agent — score: 3.10
+- J. Williams — Free agent — score: -0.00
+- J. Cuba — Free agent — score: 0.00
+- J. Bryant — Free agent — score: 0.00
+- E. Gonzalez — Free agent — score: -0.70
+- T. Oubre — Free agent — score: -3.02
+
+**Delivered**
+- S. Grimes — Free agent — score: -3.03
+- N. Lucas — Free agent — score: -3.26
+- S. Szell — Free agent — score: -3.36
+- A. Garay — Free agent — score: -3.39
+- J. Good — Free agent — score: -3.49
+- B. Borden — Free agent — score: -3.51
+
+**Under-delivered**
+- M. Reynoso — Free agent — score: -3.53
+- A. Perez — Free agent — score: -3.60
+- I. Simmons — Free agent — score: -3.64
+- M. Stanley — Free agent — score: -3.73
+- T. Miller — Free agent — score: -3.78
+- D. Acuna — Free agent — score: -3.90
+- M. Saunders — Free agent — score: -4.06
+- J. Solis — Free agent — score: -4.10
+
+---
+
+# EB Player Leaders 1978 — Career Context (DO NOT PUBLISH)
+_League ID 200_
+
+## Career batting leaders through 1978
+- HR leader: Jeremy Campbell — Portland Lumberjacks (POR) — 295.0
+- SB leader: Michael Dickens — Free agent — 476.0
+- AVG leader: Julian Frederick — Free agent — 0.327
+- OPS leader: Adan Reid — Free agent — 0.934
+
+## Career pitching leaders through 1978
+- ERA leader: Garret Brown — Free agent — 2.14
+- SO leader: Tony Oubre — New York Aces (NY) — 1581.0
+- SV leader: Garret Brown — Free agent — 256.0
+
+---
+
+# EB Player Spotlights 1978 — Career Context (DO NOT PUBLISH)
+_League ID 200_
+
+Internal data brief for EB: player performance highlights for the season.
+
+## Top bats — career through 1978
+- Scott Reis — Cincinnati Cougars (CIN) — 0.282/0.395/0.492 — HR: 236.0, RBI: 881.0, OPS: 0.888, WAR: 78.4
+- Victor Torres — San Diego Seraphs (SD) — 0.282/0.402/0.451 — HR: 185.0, RBI: 660.0, OPS: 0.853, WAR: 69.2
+- Brett Petrillo — Portland Lumberjacks (POR) — 0.283/0.390/0.475 — HR: 201.0, RBI: 838.0, OPS: 0.865, WAR: 55.6
+- Ethan Harrison — Cincinnati Cougars (CIN) — 0.264/0.392/0.483 — HR: 204.0, RBI: 789.0, OPS: 0.874, WAR: 43.5
+- Jonathan Mestas — New York Aces (NY) — 0.249/0.336/0.334 — HR: 65.0, RBI: 457.0, OPS: 0.670, WAR: 43.5
+- Shane Cobb — Chicago Fire (CHI) — 0.271/0.330/0.400 — HR: 136.0, RBI: 699.0, OPS: 0.731, WAR: 41.8
+- Francisco Fernandez — Detroit Dukes (DET) — 0.313/0.391/0.466 — HR: 113.0, RBI: 681.0, OPS: 0.858, WAR: 39.8
+- Victor Campos — St. Louis Stallions (STL) — 0.274/0.378/0.503 — HR: 251.0, RBI: 781.0, OPS: 0.881, WAR: 39.3
+- Eric Gray — Pittsburgh Express (PIT) — 0.298/0.382/0.417 — HR: 50.0, RBI: 412.0, OPS: 0.799, WAR: 39.1
+- Warren Ufena — Free agent — 0.264/0.411/0.419 — HR: 100.0, RBI: 473.0, OPS: 0.830, WAR: 38.3
+- Brent Keyser — Houston Mavericks (HOU) — 0.297/0.375/0.450 — HR: 107.0, RBI: 727.0, OPS: 0.825, WAR: 37.6
+- Alex Lander — Miami Hurricanes (MIA) — 0.258/0.365/0.459 — HR: 265.0, RBI: 872.0, OPS: 0.824, WAR: 37.3
+- Preston Strate — Miami Hurricanes (MIA) — 0.298/0.408/0.420 — HR: 51.0, RBI: 428.0, OPS: 0.828, WAR: 36.9
+- Antonio Serrano — Pittsburgh Express (PIT) — 0.307/0.397/0.507 — HR: 206.0, RBI: 825.0, OPS: 0.904, WAR: 36.6
+- Leonardo Gonzalez — Free agent — 0.268/0.353/0.454 — HR: 165.0, RBI: 552.0, OPS: 0.807, WAR: 35.7
+
+## Aces on the hill — career through 1978
+- Garret Brown — Free agent — ERA: 2.140, IP: 744.1, SO: 415.0, SV: 256.0
+- Alex Dunlap — Free agent — ERA: 2.180, IP: 202.1, SO: 134.0, SV: 55.0
+- Hector Huerta — Free agent — ERA: 2.200, IP: 159.1, SO: 159.0, SV: 4.0
+- Ed Banta — Free agent — ERA: 2.200, IP: 233.2, SO: 132.0, SV: 10.0
+- Bob Newman — Pittsburgh Express (PIT) — ERA: 2.300, IP: 528.1, SO: 382.0, SV: 160.0
+- Josh Maras — Miami Hurricanes (MIA) — ERA: 2.510, IP: 513.2, SO: 291.0, SV: 107.0
+- Omar Espinoza — Free agent — ERA: 2.560, IP: 365.1, SO: 383.0, SV: 117.0
+- Andrew Williamson — Houston Mavericks (HOU) — ERA: 2.600, IP: 670.1, SO: 601.0, SV: 199.0
+- Victor Hernandez — Houston Mavericks (HOU) — ERA: 2.600, IP: 225.0, SO: 109.0, SV: 2.0
+- Alex Reyes — San Francisco Warriors (SF) — ERA: 2.650, IP: 659.2, SO: 303.0, SV: 116.0
+- Bill Mendoza — Free agent — ERA: 2.720, IP: 158.2, SO: 102.0, SV: 3.0
+- Raul Mitchell — Free agent — ERA: 2.750, IP: 219.1, SO: 126.0, SV: 0.0
+- Atsumi Okinaka — Free agent — ERA: 2.760, IP: 182.1, SO: 71.0, SV: 0.0
+- Justin Bowen — San Diego Seraphs (SD) — ERA: 2.790, IP: 368.0, SO: 203.0, SV: 30.0
+- Mike Overmiller — Free agent — ERA: 2.800, IP: 225.1, SO: 171.0, SV: 37.0
+
+---
+
+# EB Schedule Context 1978 – Data Brief (DO NOT PUBLISH)
+_League ID 200_
+
+## Schedule Overview
+- [WARN] Games-by-team file not found or missing team/date columns; schedule overview skipped.
+
+## Brutal Stretches
+- [WARN] Unable to compute brutal stretches from schedule data.
+
+## All-Star Break
+- Host: New York Aces
+- Winner: NBC
+- Exact calendar dates: [not auto-detected]
