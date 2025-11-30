@@ -1,0 +1,232 @@
+# ABL 1974 Regular Season – EB Pack (League 200)
+---
+# EB Flashback 1974 – Data Brief (DO NOT PUBLISH)
+
+_League ID 200_
+
+This brief is for Ernie Bewell’s internal use. It summarizes key 5k/4k/3k data for the season.
+
+## 5k View – League Snapshot
+
+Top run differential:
+- 13 (DEN) — run_diff=116, RS=762, RA=646
+- 2 (PHO) — run_diff=113, RS=705, RA=592
+- 7 (SD) — run_diff=104, RS=718, RA=614
+- 15 (NY) — run_diff=95, RS=691, RA=596
+- 1 (MIA) — run_diff=89, RS=717, RA=628
+
+Top winning percentage:
+- 2 (PHO) — pct=0.599, record=97-65
+- 13 (DEN) — pct=0.586, record=95-67
+- 21 (PIT) — pct=0.562, record=91-71
+- 1 (MIA) — pct=0.562, record=91-71
+- 7 (SD) — pct=0.556, record=90-72
+
+## 4k View – Division Snapshot
+
+- American Baseball Conference / ABC Central Division: wins=315, losses=335, pct_avg=0.484, run_diff_total=-148
+- American Baseball Conference / ABC Eastern Division: wins=325, losses=323, pct_avg=0.502, run_diff_total=74
+- American Baseball Conference / ABC Western Division: wins=333, losses=315, pct_avg=0.514, run_diff_total=74
+- National Baseball Conference / NBC Central Division: wins=332, losses=316, pct_avg=0.512, run_diff_total=55
+- National Baseball Conference / NBC Eastern Division: wins=306, losses=342, pct_avg=0.472, run_diff_total=-172
+- National Baseball Conference / NBC Western Division: wins=334, losses=314, pct_avg=0.516, run_diff_total=117
+
+## 3k View – Flashback Story Candidates
+
+### Month of Glory – Overachievers
+- Charlotte Colonels (CHA): went 3-1 that month (0.750), delta vs season=+0.380
+- Cincinnati Cougars (CIN): went 3-1 that month (0.750), delta vs season=+0.275
+- St. Louis Stallions (STL): went 3-1 that month (0.750), delta vs season=+0.253
+- Atlanta Kings (ATL): went 3-1 that month (0.750), delta vs season=+0.238
+- Detroit Dukes (DET): went 20-6 that month (0.769), delta vs season=+0.220
+- Minneapolis Blizzard (MIN): went 3-1 that month (0.750), delta vs season=+0.207
+- Dallas Rustlers (DAL): went 18-8 that month (0.692), delta vs season=+0.198
+- San Diego Seraphs (SD): went 3-1 that month (0.750), delta vs season=+0.194
+- Pittsburgh Express (PIT): went 3-1 that month (0.750), delta vs season=+0.188
+- Miami Hurricanes (MIA): went 3-1 that month (0.750), delta vs season=+0.188
+
+### Month of Misery – Slumps
+- New York Aces (NY): went 0-4 that month (0.000), delta vs season=-0.525
+- Chicago Fire (CHI): went 0-4 that month (0.000), delta vs season=-0.463
+- Phoenix Firebirds (PHO): went 1-3 that month (0.250), delta vs season=-0.349
+- Portland Lumberjacks (POR): went 1-4 that month (0.200), delta vs season=-0.331
+- St. Louis Stallions (STL): went 1-4 that month (0.200), delta vs season=-0.297
+- San Francisco Warriors (SF): went 1-3 that month (0.250), delta vs season=-0.244
+- Nashville Blues (NAS): went 1-3 that month (0.250), delta vs season=-0.225
+- Miami Hurricanes (MIA): went 9-17 that month (0.346), delta vs season=-0.216
+- Nashville Blues (NAS): went 7-19 that month (0.269), delta vs season=-0.206
+- Detroit Dukes (DET): went 9-17 that month (0.346), delta vs season=-0.203
+
+### Season Giants – Run Differential
+- Denver Rocketeers (DEN): run_diff=116.0
+- Phoenix Firebirds (PHO): run_diff=113.0
+- San Diego Seraphs (SD): run_diff=104.0
+- New York Aces (NY): run_diff=95.0
+- Miami Hurricanes (MIA): run_diff=89.0
+
+### Season Giants – Winning Percentage
+- Phoenix Firebirds (PHO): pct=0.599
+- Denver Rocketeers (DEN): pct=0.586
+- Pittsburgh Express (PIT): pct=0.562
+- Miami Hurricanes (MIA): pct=0.562
+- San Diego Seraphs (SD): pct=0.556
+
+### Second-Half Collapses
+- Nashville Blues (NAS): went 33-47 in the 2nd half (0.412), delta vs season=-0.062
+- Atlanta Kings (ATL): went 36-44 in the 2nd half (0.450), delta vs season=-0.062
+- Las Vegas Gamblers (LV): went 32-48 in the 2nd half (0.400), delta vs season=-0.051
+- San Diego Seraphs (SD): went 43-42 in the 2nd half (0.506), delta vs season=-0.050
+- Cincinnati Cougars (CIN): went 34-46 in the 2nd half (0.425), delta vs season=-0.050
+
+### Second-Half Surges
+- New York Aces (NY): went 48-31 in the 2nd half (0.608), delta vs season=+0.083
+- St. Louis Stallions (STL): went 48-37 in the 2nd half (0.565), delta vs season=+0.068
+- Detroit Dukes (DET): went 53-34 in the 2nd half (0.609), delta vs season=+0.060
+- San Francisco Warriors (SF): went 43-35 in the 2nd half (0.551), delta vs season=+0.057
+- Pittsburgh Express (PIT): went 58-40 in the 2nd half (0.592), delta vs season=+0.030
+
+---
+
+## Champions & All-Star Context
+
+### Playoff Field – ABC
+- East: Pittsburgh Express (PIT) — 91-71, run_diff=77
+- Central: St. Louis Stallions (STL) — 81-82, run_diff=-10
+- West: Denver Rocketeers (DEN) — 95-67, run_diff=116
+- Wild Card: Portland Lumberjacks (POR) — 86-76, run_diff=49
+
+### Playoff Field – NBC
+- East: Miami Hurricanes (MIA) — 91-71, run_diff=89
+- Central: Detroit Dukes (DET) — 89-73, run_diff=57
+- West: Phoenix Firebirds (PHO) — 97-65, run_diff=113
+- Wild Card: San Diego Seraphs (SD) — 90-72, run_diff=104
+
+---
+
+# EB Player Context 1974 — Data Brief (DO NOT PUBLISH)
+_League ID 200_
+
+## Highest-paid players
+- Brent Keyser — Houston (HOU) — salary: 750,000
+- Scott Reis — Cincinnati (CIN) — salary: 700,000
+- Adan Reid — New York (NY) — salary: 690,000
+- Angelo Villa — Miami (MIA) — salary: 680,000
+- Boboy Nierva — Philadelphia (PHI) — salary: 660,000
+
+## Top prospects on the horizon
+- Jon Ramirez — San Francisco (SF)
+- Arturo Gonzalez — San Francisco (SF)
+- Roberto Rodriguez — Detroit (DET) — 3B
+- Yen Do — Charlotte (CHA) — SS
+- Christian Bracamonte — Phoenix (PHO)
+- Ryan Cheeks — Los Angeles (LA) — 1B
+- Omar Gonzalez — Boston (BOS) — CF
+- Johnny Romero — Nashville (NAS)
+- Pedro Casarez — Phoenix (PHO) — 2B
+- Leon Armas — Los Angeles (LA)
+
+## Preseason hype — who delivered?
+
+---
+
+## Preseason hype — who delivered?
+_Based on preseason predictions and actual 1974 performance._
+
+**Over-delivered**
+- A. Garcia — Free agent — score: 0.50
+- J. Bryant — Free agent — score: 0.00
+- C. Allen — Free agent — score: 0.00
+- J. Griffin — Free agent — score: -0.50
+- T. Oubre — Free agent — score: -3.02
+- D. Ward — Free agent — score: -3.09
+
+**Delivered**
+- R. Delgadillo — Free agent — score: -3.15
+- A. Collins — Free agent — score: -3.32
+- B. Williamson — Free agent — score: -3.32
+- F. Galicia — Free agent — score: -3.36
+- A. Hernandez — Free agent — score: -3.39
+- B. Borden — Free agent — score: -3.51
+
+**Under-delivered**
+- J. Contreras — Free agent — score: -3.51
+- P. Magana — Free agent — score: -3.52
+- M. Gemmill — Free agent — score: -3.57
+- M. Howard — Free agent — score: -3.59
+- P. Reina — Free agent — score: -3.66
+- R. Oregon — Free agent — score: -3.72
+- M. Stanley — Free agent — score: -3.73
+- B. Helvie — Free agent — score: -3.99
+
+---
+
+# EB Player Leaders 1974 — Career Context (DO NOT PUBLISH)
+_League ID 200_
+
+## Career batting leaders through 1974
+- HR leader: Jeremy Campbell — Portland Lumberjacks (POR) — 295.0
+- SB leader: Michael Dickens — Free agent — 476.0
+- AVG leader: Julian Frederick — Free agent — 0.327
+- OPS leader: Adan Reid — Free agent — 0.934
+
+## Career pitching leaders through 1974
+- ERA leader: Garret Brown — Free agent — 2.14
+- SO leader: Tony Oubre — New York Aces (NY) — 1581.0
+- SV leader: Garret Brown — Free agent — 256.0
+
+---
+
+# EB Player Spotlights 1974 — Career Context (DO NOT PUBLISH)
+_League ID 200_
+
+Internal data brief for EB: player performance highlights for the season.
+
+## Top bats — career through 1974
+- Scott Reis — Cincinnati Cougars (CIN) — 0.282/0.395/0.492 — HR: 236.0, RBI: 881.0, OPS: 0.888, WAR: 78.4
+- Victor Torres — San Diego Seraphs (SD) — 0.282/0.402/0.451 — HR: 185.0, RBI: 660.0, OPS: 0.853, WAR: 69.2
+- Brett Petrillo — Portland Lumberjacks (POR) — 0.283/0.390/0.475 — HR: 201.0, RBI: 838.0, OPS: 0.865, WAR: 55.6
+- Ethan Harrison — Cincinnati Cougars (CIN) — 0.264/0.392/0.483 — HR: 204.0, RBI: 789.0, OPS: 0.874, WAR: 43.5
+- Jonathan Mestas — New York Aces (NY) — 0.249/0.336/0.334 — HR: 65.0, RBI: 457.0, OPS: 0.670, WAR: 43.5
+- Shane Cobb — Chicago Fire (CHI) — 0.271/0.330/0.400 — HR: 136.0, RBI: 699.0, OPS: 0.731, WAR: 41.8
+- Francisco Fernandez — Detroit Dukes (DET) — 0.313/0.391/0.466 — HR: 113.0, RBI: 681.0, OPS: 0.858, WAR: 39.8
+- Victor Campos — St. Louis Stallions (STL) — 0.274/0.378/0.503 — HR: 251.0, RBI: 781.0, OPS: 0.881, WAR: 39.3
+- Eric Gray — Pittsburgh Express (PIT) — 0.298/0.382/0.417 — HR: 50.0, RBI: 412.0, OPS: 0.799, WAR: 39.1
+- Warren Ufena — Free agent — 0.264/0.411/0.419 — HR: 100.0, RBI: 473.0, OPS: 0.830, WAR: 38.3
+- Brent Keyser — Houston Mavericks (HOU) — 0.297/0.375/0.450 — HR: 107.0, RBI: 727.0, OPS: 0.825, WAR: 37.6
+- Alex Lander — Miami Hurricanes (MIA) — 0.258/0.365/0.459 — HR: 265.0, RBI: 872.0, OPS: 0.824, WAR: 37.3
+- Preston Strate — Miami Hurricanes (MIA) — 0.298/0.408/0.420 — HR: 51.0, RBI: 428.0, OPS: 0.828, WAR: 36.9
+- Antonio Serrano — Pittsburgh Express (PIT) — 0.307/0.397/0.507 — HR: 206.0, RBI: 825.0, OPS: 0.904, WAR: 36.6
+- Leonardo Gonzalez — Free agent — 0.268/0.353/0.454 — HR: 165.0, RBI: 552.0, OPS: 0.807, WAR: 35.7
+
+## Aces on the hill — career through 1974
+- Garret Brown — Free agent — ERA: 2.140, IP: 744.1, SO: 415.0, SV: 256.0
+- Alex Dunlap — Free agent — ERA: 2.180, IP: 202.1, SO: 134.0, SV: 55.0
+- Hector Huerta — Free agent — ERA: 2.200, IP: 159.1, SO: 159.0, SV: 4.0
+- Ed Banta — Free agent — ERA: 2.200, IP: 233.2, SO: 132.0, SV: 10.0
+- Bob Newman — Pittsburgh Express (PIT) — ERA: 2.300, IP: 528.1, SO: 382.0, SV: 160.0
+- Josh Maras — Miami Hurricanes (MIA) — ERA: 2.510, IP: 513.2, SO: 291.0, SV: 107.0
+- Omar Espinoza — Free agent — ERA: 2.560, IP: 365.1, SO: 383.0, SV: 117.0
+- Andrew Williamson — Houston Mavericks (HOU) — ERA: 2.600, IP: 670.1, SO: 601.0, SV: 199.0
+- Victor Hernandez — Houston Mavericks (HOU) — ERA: 2.600, IP: 225.0, SO: 109.0, SV: 2.0
+- Alex Reyes — San Francisco Warriors (SF) — ERA: 2.650, IP: 659.2, SO: 303.0, SV: 116.0
+- Bill Mendoza — Free agent — ERA: 2.720, IP: 158.2, SO: 102.0, SV: 3.0
+- Raul Mitchell — Free agent — ERA: 2.750, IP: 219.1, SO: 126.0, SV: 0.0
+- Atsumi Okinaka — Free agent — ERA: 2.760, IP: 182.1, SO: 71.0, SV: 0.0
+- Justin Bowen — San Diego Seraphs (SD) — ERA: 2.790, IP: 368.0, SO: 203.0, SV: 30.0
+- Mike Overmiller — Free agent — ERA: 2.800, IP: 225.1, SO: 171.0, SV: 37.0
+
+---
+
+# EB Schedule Context 1974 – Data Brief (DO NOT PUBLISH)
+_League ID 200_
+
+## Schedule Overview
+- [WARN] Games-by-team file not found or missing team/date columns; schedule overview skipped.
+
+## Brutal Stretches
+- [WARN] Unable to compute brutal stretches from schedule data.
+
+## All-Star Break
+- Host: St. Louis Stallions
+- Winner: NBC
+- Exact calendar dates: [not auto-detected]
