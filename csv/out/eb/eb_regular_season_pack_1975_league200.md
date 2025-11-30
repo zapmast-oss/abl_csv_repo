@@ -1,0 +1,232 @@
+# ABL 1975 Regular Season – EB Pack (League 200)
+---
+# EB Flashback 1975 – Data Brief (DO NOT PUBLISH)
+
+_League ID 200_
+
+This brief is for Ernie Bewell’s internal use. It summarizes key 5k/4k/3k data for the season.
+
+## 5k View – League Snapshot
+
+Top run differential:
+- 5 (DET) — run_diff=183, RS=779, RA=596
+- 21 (PIT) — run_diff=163, RS=773, RA=610
+- 1 (MIA) — run_diff=133, RS=714, RA=581
+- 24 (SEA) — run_diff=122, RS=791, RA=669
+- 15 (NY) — run_diff=116, RS=769, RA=653
+
+Top winning percentage:
+- 21 (PIT) — pct=0.636, record=103-59
+- 5 (DET) — pct=0.623, record=101-61
+- 1 (MIA) — pct=0.623, record=101-61
+- 23 (HOU) — pct=0.568, record=92-70
+- 24 (SEA) — pct=0.568, record=92-70
+
+## 4k View – Division Snapshot
+
+- American Baseball Conference / ABC Central Division: wins=329, losses=319, pct_avg=0.507, run_diff_total=57
+- American Baseball Conference / ABC Eastern Division: wins=330, losses=318, pct_avg=0.509, run_diff_total=6
+- American Baseball Conference / ABC Western Division: wins=313, losses=335, pct_avg=0.483, run_diff_total=-63
+- National Baseball Conference / NBC Central Division: wins=305, losses=343, pct_avg=0.471, run_diff_total=-88
+- National Baseball Conference / NBC Eastern Division: wins=332, losses=316, pct_avg=0.512, run_diff_total=9
+- National Baseball Conference / NBC Western Division: wins=335, losses=313, pct_avg=0.517, run_diff_total=79
+
+## 3k View – Flashback Story Candidates
+
+### Month of Glory – Overachievers
+- Las Vegas Gamblers (LV): went 4-1 that month (0.800), delta vs season=+0.325
+- Nashville Blues (NAS): went 4-1 that month (0.800), delta vs season=+0.288
+- Denver Rocketeers (DEN): went 18-9 that month (0.667), delta vs season=+0.266
+- Tampa Bay Storm (TB): went 21-6 that month (0.778), delta vs season=+0.259
+- Denver Rocketeers (DEN): went 16-9 that month (0.640), delta vs season=+0.239
+- Dallas Rustlers (DAL): went 17-11 that month (0.607), delta vs season=+0.224
+- Dallas Rustlers (DAL): went 3-2 that month (0.600), delta vs season=+0.217
+- San Diego Seraphs (SD): went 18-7 that month (0.720), delta vs season=+0.208
+- Chicago Fire (CHI): went 16-9 that month (0.640), delta vs season=+0.183
+- Chicago Fire (CHI): went 17-10 that month (0.630), delta vs season=+0.173
+
+### Month of Misery – Slumps
+- Tampa Bay Storm (TB): went 0-5 that month (0.000), delta vs season=-0.519
+- Philadelphia Fury (PHI): went 0-5 that month (0.000), delta vs season=-0.414
+- Detroit Dukes (DET): went 9-18 that month (0.333), delta vs season=-0.290
+- Portland Lumberjacks (POR): went 1-4 that month (0.200), delta vs season=-0.288
+- Cincinnati Cougars (CIN): went 1-4 that month (0.200), delta vs season=-0.269
+- Miami Hurricanes (MIA): went 10-17 that month (0.370), delta vs season=-0.253
+- Seattle Comets (SEA): went 3-6 that month (0.333), delta vs season=-0.235
+- Los Angeles Cobras (LA): went 6-22 that month (0.214), delta vs season=-0.230
+- Dallas Rustlers (DAL): went 4-22 that month (0.154), delta vs season=-0.229
+- Denver Rocketeers (DEN): went 5-20 that month (0.200), delta vs season=-0.201
+
+### Season Giants – Run Differential
+- Detroit Dukes (DET): run_diff=183.0
+- Pittsburgh Express (PIT): run_diff=163.0
+- Miami Hurricanes (MIA): run_diff=133.0
+- Seattle Comets (SEA): run_diff=122.0
+- New York Aces (NY): run_diff=116.0
+
+### Season Giants – Winning Percentage
+- Pittsburgh Express (PIT): pct=0.636
+- Detroit Dukes (DET): pct=0.623
+- Miami Hurricanes (MIA): pct=0.623
+- Houston Mavericks (HOU): pct=0.568
+- Seattle Comets (SEA): pct=0.568
+
+### Second-Half Collapses
+- Seattle Comets (SEA): went 41-42 in the 2nd half (0.494), delta vs season=-0.074
+- Tampa Bay Storm (TB): went 36-43 in the 2nd half (0.456), delta vs season=-0.063
+- Cincinnati Cougars (CIN): went 33-46 in the 2nd half (0.418), delta vs season=-0.051
+- Dallas Rustlers (DAL): went 27-52 in the 2nd half (0.342), delta vs season=-0.041
+- Minneapolis Blizzard (MIN): went 30-49 in the 2nd half (0.380), delta vs season=-0.040
+
+### Second-Half Surges
+- Denver Rocketeers (DEN): went 37-42 in the 2nd half (0.468), delta vs season=+0.067
+- Los Angeles Cobras (LA): went 39-40 in the 2nd half (0.494), delta vs season=+0.050
+- Phoenix Firebirds (PHO): went 57-39 in the 2nd half (0.594), delta vs season=+0.045
+- Houston Mavericks (HOU): went 53-34 in the 2nd half (0.609), delta vs season=+0.041
+- Nashville Blues (NAS): went 43-36 in the 2nd half (0.544), delta vs season=+0.032
+
+---
+
+## Champions & All-Star Context
+
+### Playoff Field – ABC
+- East: Pittsburgh Express (PIT) — 103-59, run_diff=163
+- Central: Houston Mavericks (HOU) — 92-70, run_diff=116
+- West: Seattle Comets (SEA) Comets (SEA) — 92-70, run_diff=122
+- Wild Card: New York Aces (NY) — 89-73, run_diff=116
+
+### Playoff Field – NBC
+- East: Miami Hurricanes (MIA) — 101-61, run_diff=133
+- Central: Detroit Dukes (DET) — 101-61, run_diff=183
+- West: San Francisco Warriors (SF) — 91-71, run_diff=115
+- Wild Card: Phoenix Firebirds (PHO) — 89-73, run_diff=42
+
+---
+
+# EB Player Context 1975 — Data Brief (DO NOT PUBLISH)
+_League ID 200_
+
+## Highest-paid players
+- Brent Keyser — Houston (HOU) — salary: 750,000
+- Boboy Nierva — Philadelphia (PHI) — salary: 710,000
+- Scott Reis — Cincinnati (CIN) — salary: 700,000
+- Angelo Villa — Miami (MIA) — salary: 680,000
+- Juan Perez — San Francisco (SF) — salary: 650,000
+
+## Top prospects on the horizon
+- Chris Collette — Cincinnati (CIN)
+- Manny Flores — Charlotte (CHA) — LF
+- Jaylen Taylor — Las Vegas (LV)
+- Jon Ramirez — San Francisco (SF)
+- Yen Do — Charlotte (CHA) — SS
+- Johnny Romero — Nashville (NAS)
+- Emanuel Avila — Philadelphia (PHI) — CF
+- Roberto Rodriguez — Detroit (DET) — 3B
+- David Rodriguez — San Francisco (SF)
+- Ryan Cheeks — Los Angeles (LA) — 1B
+
+## Preseason hype — who delivered?
+
+---
+
+## Preseason hype — who delivered?
+_Based on preseason predictions and actual 1975 performance._
+
+**Over-delivered**
+- O. Garcia — Free agent — score: 3.10
+- N. Olesen — Free agent — score: 0.00
+- J. Allison — Free agent — score: 0.00
+- T. Oubre — Free agent — score: -3.02
+- R. Delgadillo — Free agent — score: -3.15
+- A. Villa — Free agent — score: -3.17
+
+**Delivered**
+- R. Alcantara — Free agent — score: -3.27
+- J. Good — Free agent — score: -3.49
+- P. Magana — Free agent — score: -3.52
+- M. Reynoso — Free agent — score: -3.53
+- N. Altman — Free agent — score: -3.60
+- T. Gutierrez — Free agent — score: -3.63
+
+**Under-delivered**
+- I. Simmons — Free agent — score: -3.64
+- P. Reina — Free agent — score: -3.66
+- M. Stanley — Free agent — score: -3.73
+- B. Helvie — Free agent — score: -3.99
+- M. Martinson — Free agent — score: -4.01
+- D. Carbajal — Free agent — score: -4.04
+- M. Saunders — Free agent — score: -4.06
+- J. bin Dabir — Free agent — score: -4.17
+
+---
+
+# EB Player Leaders 1975 — Career Context (DO NOT PUBLISH)
+_League ID 200_
+
+## Career batting leaders through 1975
+- HR leader: Jeremy Campbell — Portland Lumberjacks (POR) — 295.0
+- SB leader: Michael Dickens — Free agent — 476.0
+- AVG leader: Julian Frederick — Free agent — 0.327
+- OPS leader: Adan Reid — Free agent — 0.934
+
+## Career pitching leaders through 1975
+- ERA leader: Garret Brown — Free agent — 2.14
+- SO leader: Tony Oubre — New York Aces (NY) — 1581.0
+- SV leader: Garret Brown — Free agent — 256.0
+
+---
+
+# EB Player Spotlights 1975 — Career Context (DO NOT PUBLISH)
+_League ID 200_
+
+Internal data brief for EB: player performance highlights for the season.
+
+## Top bats — career through 1975
+- Scott Reis — Cincinnati Cougars (CIN) — 0.282/0.395/0.492 — HR: 236.0, RBI: 881.0, OPS: 0.888, WAR: 78.4
+- Victor Torres — San Diego Seraphs (SD) — 0.282/0.402/0.451 — HR: 185.0, RBI: 660.0, OPS: 0.853, WAR: 69.2
+- Brett Petrillo — Portland Lumberjacks (POR) — 0.283/0.390/0.475 — HR: 201.0, RBI: 838.0, OPS: 0.865, WAR: 55.6
+- Ethan Harrison — Cincinnati Cougars (CIN) — 0.264/0.392/0.483 — HR: 204.0, RBI: 789.0, OPS: 0.874, WAR: 43.5
+- Jonathan Mestas — New York Aces (NY) — 0.249/0.336/0.334 — HR: 65.0, RBI: 457.0, OPS: 0.670, WAR: 43.5
+- Shane Cobb — Chicago Fire (CHI) — 0.271/0.330/0.400 — HR: 136.0, RBI: 699.0, OPS: 0.731, WAR: 41.8
+- Francisco Fernandez — Detroit Dukes (DET) — 0.313/0.391/0.466 — HR: 113.0, RBI: 681.0, OPS: 0.858, WAR: 39.8
+- Victor Campos — St. Louis Stallions (STL) — 0.274/0.378/0.503 — HR: 251.0, RBI: 781.0, OPS: 0.881, WAR: 39.3
+- Eric Gray — Pittsburgh Express (PIT) — 0.298/0.382/0.417 — HR: 50.0, RBI: 412.0, OPS: 0.799, WAR: 39.1
+- Warren Ufena — Free agent — 0.264/0.411/0.419 — HR: 100.0, RBI: 473.0, OPS: 0.830, WAR: 38.3
+- Brent Keyser — Houston Mavericks (HOU) — 0.297/0.375/0.450 — HR: 107.0, RBI: 727.0, OPS: 0.825, WAR: 37.6
+- Alex Lander — Miami Hurricanes (MIA) — 0.258/0.365/0.459 — HR: 265.0, RBI: 872.0, OPS: 0.824, WAR: 37.3
+- Preston Strate — Miami Hurricanes (MIA) — 0.298/0.408/0.420 — HR: 51.0, RBI: 428.0, OPS: 0.828, WAR: 36.9
+- Antonio Serrano — Pittsburgh Express (PIT) — 0.307/0.397/0.507 — HR: 206.0, RBI: 825.0, OPS: 0.904, WAR: 36.6
+- Leonardo Gonzalez — Free agent — 0.268/0.353/0.454 — HR: 165.0, RBI: 552.0, OPS: 0.807, WAR: 35.7
+
+## Aces on the hill — career through 1975
+- Garret Brown — Free agent — ERA: 2.140, IP: 744.1, SO: 415.0, SV: 256.0
+- Alex Dunlap — Free agent — ERA: 2.180, IP: 202.1, SO: 134.0, SV: 55.0
+- Hector Huerta — Free agent — ERA: 2.200, IP: 159.1, SO: 159.0, SV: 4.0
+- Ed Banta — Free agent — ERA: 2.200, IP: 233.2, SO: 132.0, SV: 10.0
+- Bob Newman — Pittsburgh Express (PIT) — ERA: 2.300, IP: 528.1, SO: 382.0, SV: 160.0
+- Josh Maras — Miami Hurricanes (MIA) — ERA: 2.510, IP: 513.2, SO: 291.0, SV: 107.0
+- Omar Espinoza — Free agent — ERA: 2.560, IP: 365.1, SO: 383.0, SV: 117.0
+- Andrew Williamson — Houston Mavericks (HOU) — ERA: 2.600, IP: 670.1, SO: 601.0, SV: 199.0
+- Victor Hernandez — Houston Mavericks (HOU) — ERA: 2.600, IP: 225.0, SO: 109.0, SV: 2.0
+- Alex Reyes — San Francisco Warriors (SF) — ERA: 2.650, IP: 659.2, SO: 303.0, SV: 116.0
+- Bill Mendoza — Free agent — ERA: 2.720, IP: 158.2, SO: 102.0, SV: 3.0
+- Raul Mitchell — Free agent — ERA: 2.750, IP: 219.1, SO: 126.0, SV: 0.0
+- Atsumi Okinaka — Free agent — ERA: 2.760, IP: 182.1, SO: 71.0, SV: 0.0
+- Justin Bowen — San Diego Seraphs (SD) — ERA: 2.790, IP: 368.0, SO: 203.0, SV: 30.0
+- Mike Overmiller — Free agent — ERA: 2.800, IP: 225.1, SO: 171.0, SV: 37.0
+
+---
+
+# EB Schedule Context 1975 – Data Brief (DO NOT PUBLISH)
+_League ID 200_
+
+## Schedule Overview
+- [WARN] Games-by-team file not found or missing team/date columns; schedule overview skipped.
+
+## Brutal Stretches
+- [WARN] Unable to compute brutal stretches from schedule data.
+
+## All-Star Break
+- Host: Miami Hurricanes
+- Winner: NBC
+- Exact calendar dates: [not auto-detected]
