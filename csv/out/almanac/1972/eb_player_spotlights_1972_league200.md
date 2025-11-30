@@ -1,9 +1,9 @@
-# EB Player Spotlights 1972 — Data Brief (DO NOT PUBLISH)
+# EB Player Spotlights 1972 — Career Context (DO NOT PUBLISH)
 _League ID 200_
 
 Internal data brief for EB: player performance highlights for the season.
 
-## Top Bats of ’72
+## Top bats — career through 1972
 - Scott Reis — Cincinnati Cougars (CIN) — 0.282/0.395/0.492 — HR: 236.0, RBI: 881.0, OPS: 0.888, WAR: 78.4
 - Victor Torres — San Diego Seraphs (SD) — 0.282/0.402/0.451 — HR: 185.0, RBI: 660.0, OPS: 0.853, WAR: 69.2
 - Brett Petrillo — Portland Lumberjacks (POR) — 0.283/0.390/0.475 — HR: 201.0, RBI: 838.0, OPS: 0.865, WAR: 55.6
@@ -20,7 +20,7 @@ Internal data brief for EB: player performance highlights for the season.
 - Antonio Serrano — Pittsburgh Express (PIT) — 0.307/0.397/0.507 — HR: 206.0, RBI: 825.0, OPS: 0.904, WAR: 36.6
 - Leonardo Gonzalez — Free agent — 0.268/0.353/0.454 — HR: 165.0, RBI: 552.0, OPS: 0.807, WAR: 35.7
 
-## Aces on the Hill
+## Aces on the hill — career through 1972
 - Garret Brown — Free agent — ERA: 2.140, IP: 744.1, SO: 415.0, SV: 256.0
 - Alex Dunlap — Free agent — ERA: 2.180, IP: 202.1, SO: 134.0, SV: 55.0
 - Hector Huerta — Free agent — ERA: 2.200, IP: 159.1, SO: 159.0, SV: 4.0

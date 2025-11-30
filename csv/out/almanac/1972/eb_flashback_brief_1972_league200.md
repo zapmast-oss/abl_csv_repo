@@ -20,11 +20,6 @@ Top winning percentage:
 - 10 (SF) — pct=0.562, record=91-71
 - 15 (NY) — pct=0.556, record=90-72
 
-## 4k View – Conference Snapshot
-
-- American Baseball Conference: wins=972, losses=972, pct_avg=0.500, run_diff_total=0
-- National Baseball Conference: wins=972, losses=972, pct_avg=0.500, run_diff_total=0
-
 ## 4k View – Division Snapshot
 
 - American Baseball Conference / ABC Central Division: wins=305, losses=343, pct_avg=0.470, run_diff_total=-126

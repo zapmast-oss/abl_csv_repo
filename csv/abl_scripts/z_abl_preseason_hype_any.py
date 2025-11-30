@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
-from eb_text_utils import canonicalize_team_city, normalize_eb_text
+from eb_text_utils import canonicalize_team_city, format_team_label, normalize_eb_text
 from z_abl_almanac_html_helpers import parse_preseason_predictions
 
 
@@ -148,9 +148,7 @@ def build_md(buckets: Dict[str, List[Dict[str, Any]]], season: int) -> str:
         if not buckets[key]:
             lines.append("- None")
         for rec in buckets[key]:
-            team_label = rec.get("team_name") or rec.get("team_abbr") or ""
-            if rec.get("team_abbr") and rec.get("team_name"):
-                team_label = f"{rec['team_name']} ({rec['team_abbr']})"
+            team_label = format_team_label(rec.get("team_name"), rec.get("team_abbr"))
             score = rec.get("score")
             score_str = f"{score:.2f}" if isinstance(score, (int, float)) else "n/a"
             lines.append(f"- {rec.get('player_name','Unknown')} — {team_label} — score: {score_str}")

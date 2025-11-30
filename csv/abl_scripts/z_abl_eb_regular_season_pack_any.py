@@ -49,6 +49,29 @@ def playoff_section(champions: dict, conf_order: Sequence[str] = ("ABC", "NBC"))
     return "\n".join(lines).strip()
 
 
+def splice_month_glory_misery(flashback_md: str, month_md: str) -> str:
+    """
+    Replace the old Month-of-Glory / Month-of-Misery block in flashback_md
+    with the new fragment from month_md, if both are available.
+    """
+    if not month_md:
+        return flashback_md
+
+    marker_start = "### Month of Glory"
+    marker_end = "### Season Giants"
+
+    start_idx = flashback_md.find(marker_start)
+    end_idx = flashback_md.find(marker_end)
+
+    if start_idx == -1 or end_idx == -1 or end_idx <= start_idx:
+        print("[WARN] Could not locate Month-of-Glory block in flashback_md; leaving as-is.")
+        return flashback_md
+
+    month_block = month_md.strip() + "\n\n"
+    new_md = flashback_md[:start_idx] + month_block + flashback_md[end_idx:]
+    return new_md
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build EB regular-season pack markdown for any season/league.")
     parser.add_argument("--season", type=int, required=True)
@@ -77,6 +100,14 @@ def main() -> int:
         almanac_dir / f"eb_flashback_brief_{season}_league{league_id}.md",
         "eb_flashback_brief",
     )
+    month_md_path = eb_out_dir / f"eb_month_glory_misery_{season}_league{league_id}.md"
+    month_md = ""
+    if month_md_path.exists():
+        month_md = month_md_path.read_text(encoding="utf-8")
+    else:
+        log(f"[WARN] Month-of-Glory fragment not found: {month_md_path}")
+
+    flashback = splice_month_glory_misery(flashback, month_md)
 
     components = [
         ("eb_monthly_timeline", almanac_dir / f"eb_monthly_timeline_{season}_league{league_id}.md"),

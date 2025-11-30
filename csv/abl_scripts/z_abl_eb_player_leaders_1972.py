@@ -8,7 +8,7 @@ from typing import Optional
 
 import pandas as pd
 
-from eb_text_utils import canonicalize_team_city, normalize_eb_text
+from eb_text_utils import canonicalize_team_city, format_team_label, normalize_eb_text
 
 
 def log(msg: str) -> None:
@@ -60,15 +60,9 @@ def load_player_lookup(profile_path: Path, team_lookup: pd.DataFrame) -> pd.Data
 
 
 def team_label(row: pd.Series) -> str:
-    abbr = row.get("team_abbr")
     name = canonicalize_team_city(row.get("team_name"))
-    if pd.notna(name) and pd.notna(abbr):
-        return f"{name} ({abbr})"
-    if pd.notna(name):
-        return str(name)
-    if pd.notna(abbr):
-        return str(abbr)
-    return "Free agent"
+    abbr = row.get("team_abbr")
+    return format_team_label(name, abbr)
 
 
 def load_csv(path: Path) -> pd.DataFrame:
