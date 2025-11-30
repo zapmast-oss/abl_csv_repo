@@ -8,7 +8,7 @@ from typing import List
 
 import pandas as pd
 
-from eb_text_utils import normalize_eb_text
+from eb_text_utils import canonicalize_team_city, normalize_eb_text
 
 
 def log(msg: str) -> None:
@@ -32,6 +32,7 @@ def numeric_series(series: pd.Series) -> pd.Series:
 def team_label(row: pd.Series) -> str:
     abbr = row.get("team_abbr") or row.get("team_name_y")
     name = row.get("team_name") or row.get("team_name_x") or row.get("team_name_y")
+    name = canonicalize_team_city(name)
     if pd.notna(name) and pd.notna(abbr):
         return f"{name} ({abbr})"
     if pd.notna(name):

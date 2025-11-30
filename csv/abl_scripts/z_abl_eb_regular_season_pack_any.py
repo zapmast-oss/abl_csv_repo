@@ -2,8 +2,7 @@
 """
 Assemble the EB regular-season pack markdown for any season/league.
 
-This stitches together the core EB markdown briefs and injects playoff fields
-from the standings HTML via get_league_champions_from_standings.
+Stitches together EB briefs, playoff fields, and preseason hype output.
 """
 from __future__ import annotations
 
@@ -63,6 +62,7 @@ def main() -> int:
 
     repo_root = Path(__file__).resolve().parents[2]
     almanac_dir = repo_root / "csv" / "out" / "almanac" / str(season)
+    eb_out_dir = repo_root / "csv" / "out" / "eb"
 
     log(f"[INFO] Building EB pack for season={season}, league={league_id}")
 
@@ -81,6 +81,7 @@ def main() -> int:
     components = [
         ("eb_monthly_timeline", almanac_dir / f"eb_monthly_timeline_{season}_league{league_id}.md"),
         ("eb_player_context", almanac_dir / f"eb_player_context_{season}_league{league_id}.md"),
+        ("eb_preseason_hype", eb_out_dir / f"eb_preseason_hype_{season}_league{league_id}.md"),
         ("eb_player_leaders", almanac_dir / f"eb_player_leaders_{season}_league{league_id}.md"),
         ("eb_player_spotlights", almanac_dir / f"eb_player_spotlights_{season}_league{league_id}.md"),
         ("eb_schedule_context", almanac_dir / f"eb_schedule_context_{season}_league{league_id}.md"),
@@ -106,11 +107,14 @@ def main() -> int:
     full_text = "\n".join([s for s in sections if s != ""])
     full_text = normalize_eb_text(full_text).rstrip() + "\n"
 
-    out_path = almanac_dir / f"eb_regular_season_pack_{season}_league{league_id}.md"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+    eb_out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = eb_out_dir / f"eb_regular_season_pack_{season}_league{league_id}.md"
     out_path.write_text(full_text, encoding="utf-8")
+    legacy_path = almanac_dir / f"eb_regular_season_pack_{season}_league{league_id}.md"
+    legacy_path.parent.mkdir(parents=True, exist_ok=True)
+    legacy_path.write_text(full_text, encoding="utf-8")
 
-    log(f"[OK] Wrote EB regular-season pack to {out_path}")
+    log(f"[OK] Wrote EB regular-season pack to {out_path} (legacy copy at {legacy_path})")
     return 0
 
 

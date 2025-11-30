@@ -73,11 +73,20 @@ def main():
     print(f"[INFO] Running EB regular-season pipeline for season {season}, league {league_id}")
     print("[INFO] Current working directory:", os.getcwd())
     repo_root = Path(__file__).resolve().parents[2]
+    preseason_html_default = (
+        repo_root
+        / "csv"
+        / "in"
+        / "almanac_core"
+        / str(season)
+        / "leagues"
+        / f"league_{league_id}_preseason_prediction_report.html"
+    )
 
     # Ensure enriched time slices exist before momentum step
     ensure_time_slices_enriched(season, league_id, repo_root)
 
-    # 14 core steps, mirroring the 1972 runner but parameterized by season.
+    # 17 core steps, mirroring the 1972 runner but parameterized by season.
     steps = [
         (1,  "Extract core almanac HTML",
             "csv/abl_scripts/z_abl_almanac_league200_extract_core.py",
@@ -123,10 +132,13 @@ def main():
         (14, "EB player context",
             "csv/abl_scripts/z_abl_eb_player_context_1972.py",
             ["--season", str(season), "--league-id", str(league_id)]),
-        (15, "Champions from standings",
+        (15, "Preseason hype vs performance",
+            "csv/abl_scripts/z_abl_preseason_hype_any.py",
+            ["--season", str(season), "--league-id", str(league_id), "--preseason-html", str(preseason_html_default)]),
+        (16, "Champions from standings",
             "csv/abl_scripts/z_abl_almanac_champions_from_standings.py",
             ["--season", str(season), "--league-id", str(league_id), "--write-csv"]),
-        (16, "EB regular-season pack",
+        (17, "EB regular-season pack",
             "csv/abl_scripts/z_abl_eb_regular_season_pack_any.py",
             ["--season", str(season), "--league-id", str(league_id)]),
     ]
@@ -183,6 +195,20 @@ def main():
     print("[VERIFY] Checking markdown outputs...")
     for name in md_outputs:
         path = os.path.join(base, name)
+        if os.path.exists(path):
+            size = os.path.getsize(path)
+            print(f"  - {name}: {size} bytes")
+        else:
+            print(f"  - {name}: MISSING")
+
+    eb_out_dir = os.path.join("csv", "out", "eb")
+    eb_md_outputs = [
+        f"eb_preseason_hype_{season}_league{league_id}.md",
+        f"eb_regular_season_pack_{season}_league{league_id}.md",
+    ]
+    print("[VERIFY] Checking EB markdown outputs...")
+    for name in eb_md_outputs:
+        path = os.path.join(eb_out_dir, name)
         if os.path.exists(path):
             size = os.path.getsize(path)
             print(f"  - {name}: {size} bytes")
