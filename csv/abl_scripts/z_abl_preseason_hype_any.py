@@ -2,16 +2,12 @@
 """
 Build preseason hype brief for EB based on hyped players' season WAR.
 
-- Parse the preseason prediction HTML to get distinct player IDs and display names.
-- Look up full names from dim_player_profile.
-- Look up season WAR and team abbreviation from star-schema batting and pitching facts.
-- Bucket players into Over-delivered / Delivered / Under-delivered based on season WAR.
-- Render markdown with lines like: Full Name (CIN) - WAR: 3.45
-
 Rules:
-- Use season WAR only (from fact tables), not career WAR.
-- No "Free agent" labels. If team is missing, omit the parentheses.
-- Put team abbreviation after the player name in parentheses, not after the team name.
+- Parse preseason prediction HTML by player_id.
+- Resolve full name from dim_player_profile (First Name + Last Name).
+- Resolve team abbreviation from season stats, then HTML, then profile team/org fields.
+- Never emit "Free agent" or "nan"; hard fail if any player lacks name or team.
+- Emit markdown: Full Name (TM) - WAR: X.XX.
 """
 
 from __future__ import annotations
@@ -19,29 +15,58 @@ from __future__ import annotations
 import argparse
 import logging
 import re
+import sys
 from pathlib import Path
-from typing import Tuple
+from typing import List, Tuple
 
 import pandas as pd
 from bs4 import BeautifulSoup
 
+logger = logging.getLogger(__name__)
 
-def _get_repo_root() -> Path:
-    """
-    Return the repo root (abl_csv_repo) based on this script's location.
 
-    Assumes this file lives at: <repo_root>/csv/abl_scripts/z_abl_preseason_hype_any.py
-    """
+# ---------------------------------------------------------------------------
+# Paths and CLI
+# ---------------------------------------------------------------------------
+
+def get_repo_root() -> Path:
+    """Return repo root assuming this file lives under csv/abl_scripts."""
     return Path(__file__).resolve().parents[2]
 
 
-def _parse_preseason_players(html_path: Path) -> pd.DataFrame:
-    """
-    Parse preseason prediction HTML and return a DataFrame with:
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Build EB preseason hype fragment.")
+    parser.add_argument("--season", type=int, required=True, help="Season year, e.g. 1980")
+    parser.add_argument("--league-id", type=int, default=200, help="League ID (default 200)")
+    parser.add_argument(
+        "--preseason-html",
+        type=str,
+        default=None,
+        help=(
+            "Optional explicit path to preseason prediction HTML. "
+            "Defaults to csv/in/almanac_core/{season}/leagues/league_{league_id}_preseason_prediction_report.html"
+        ),
+    )
+    parser.add_argument(
+        "--output-md",
+        type=str,
+        default=None,
+        help="Optional output markdown path override.",
+    )
+    return parser.parse_args()
 
+
+# ---------------------------------------------------------------------------
+# HTML parsing
+# ---------------------------------------------------------------------------
+
+def parse_preseason_players(html_path: Path) -> pd.DataFrame:
+    """Parse preseason prediction HTML and return hype players.
+
+    Columns:
       player_id      int
-      display_name   str  (as shown in the link, e.g. "M. Morales, CF")
-      team_abbr_html str  (team abbreviation from the same row, e.g. "CHI")
+      raw_name       str
+      raw_team_abbr  str
     """
     if not html_path.exists():
         raise FileNotFoundError(f"Preseason HTML not found: {html_path}")
@@ -49,353 +74,255 @@ def _parse_preseason_players(html_path: Path) -> pd.DataFrame:
     html_text = html_path.read_text(encoding="utf-8", errors="ignore")
     soup = BeautifulSoup(html_text, "html.parser")
 
-    records = []
-
+    records: List[dict] = []
     for a in soup.find_all("a", href=True):
         href = a["href"]
         if "player_" not in href:
             continue
-
         m = re.search(r"player_(\d+)\.html", href)
         if not m:
             continue
         player_id = int(m.group(1))
-
         tr = a.find_parent("tr")
         if tr is None:
             continue
-
-        display_name = a.get_text(strip=True)
-
-        # Try to find the first team link in this row
+        raw_name = a.get_text(strip=True)
         team_abbr = ""
         for link in tr.find_all("a", href=True):
-            if "teams/team_" in link["href"]:
+            if "team_" in link["href"]:
                 team_abbr = link.get_text(strip=True)
                 break
-
-        records.append(
-            {
-                "player_id": player_id,
-                "display_name": display_name,
-                "team_abbr_html": team_abbr,
-            }
-        )
-
-    if not records:
-        logging.warning("No preseason players found in HTML: %s", html_path)
-        return pd.DataFrame(columns=["player_id", "display_name", "team_abbr_html"])
+        records.append({"player_id": player_id, "raw_name": raw_name, "raw_team_abbr": team_abbr})
 
     df = pd.DataFrame.from_records(records)
-
-    # Deduplicate by player_id to avoid multiple rows for the same player
     df = df.drop_duplicates(subset=["player_id"]).reset_index(drop=True)
-
-    logging.info("Parsed %d preseason hype rows from HTML", len(df))
+    logger.info("Parsed %d preseason hype players from HTML", len(df))
     return df
 
 
-def _load_dim_player_profile(root: Path) -> pd.DataFrame:
-    """
-    Load dim_player_profile and return columns needed to build full names.
+# ---------------------------------------------------------------------------
+# Load reference data
+# ---------------------------------------------------------------------------
 
-    Expected columns:
-      - ID
-      - First Name
-      - Last Name
-    """
+def load_dim_player_profile(root: Path) -> pd.DataFrame:
+    """Load player profile with ID, names, and optional team/org fields."""
     path = root / "csv" / "out" / "star_schema" / "dim_player_profile.csv"
     if not path.exists():
         raise FileNotFoundError(f"dim_player_profile not found at {path}")
-
     df = pd.read_csv(path)
-    for col in ["ID", "First Name", "Last Name"]:
-        if col not in df.columns:
-            raise ValueError(f"dim_player_profile is missing required column '{col}'")
+    required = {"ID", "First Name", "Last Name"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"dim_player_profile missing columns: {sorted(missing)}")
+    keep = ["ID", "First Name", "Last Name"]
+    for opt in ["TM", "TM.1", "ORG", "ORG.1"]:
+        if opt in df.columns:
+            keep.append(opt)
+    df = df[keep].copy()
+    df["ID"] = pd.to_numeric(df["ID"], errors="coerce").astype("Int64")
+    df["full_name"] = (
+        df["First Name"].fillna("").astype(str).str.strip()
+        + " "
+        + df["Last Name"].fillna("").astype(str).str.strip()
+    ).str.strip()
+    return df
 
-    return df[["ID", "First Name", "Last Name"]]
 
+def load_season_war(root: Path, season: int, league_id: int) -> pd.DataFrame:
+    """Load season WAR and team abbreviation from batting/pitching fact tables.
 
-def _load_season_war(root: Path) -> pd.DataFrame:
+    Tries season-specific files first, then generic. Sums batting + pitching WAR.
     """
-    Load season WAR and team abbreviation from star-schema batting and pitching facts.
+    base = root / "csv" / "out" / "star_schema"
 
-    Returns a DataFrame with:
-      ID           int
-      TM           str  (team abbreviation, from batting if available, else pitching)
-      WAR_season   float (WAR_bat + WAR_pit; missing treated as 0.0)
-    """
-    bat_path = root / "csv" / "out" / "star_schema" / "fact_player_batting.csv"
-    pit_path = root / "csv" / "out" / "star_schema" / "fact_player_pitching.csv"
+    def fact_candidates(prefix: str) -> List[Path]:
+        return [
+            base / f"{prefix}_{season}_league{league_id}.csv",
+            base / f"{prefix}_{season}.csv",
+            base / f"{prefix}.csv",
+        ]
 
-    if not bat_path.exists() and not pit_path.exists():
-        raise FileNotFoundError("Neither batting nor pitching fact table found for players.")
+    def load_fact(paths: List[Path], team_cols: List[str], war_col: str, team_label: str) -> pd.DataFrame:
+        for p in paths:
+            if not p.exists():
+                continue
+            df = pd.read_csv(p)
+            if "season" in df.columns:
+                df = df[df["season"] == season]
+            team_col = next((c for c in team_cols if c in df.columns), None)
+            if team_col is None or war_col not in df.columns or "ID" not in df.columns:
+                continue
+            out = df[["ID", team_col, war_col]].copy()
+            out.rename(columns={team_col: f"team_abbr_{team_label}", war_col: f"WAR_{team_label}"}, inplace=True)
+            out["ID"] = pd.to_numeric(out["ID"], errors="coerce").astype("Int64")
+            out[f"WAR_{team_label}"] = pd.to_numeric(out[f"WAR_{team_label}"], errors="coerce").fillna(0.0)
+            return out
+        return pd.DataFrame()
 
-    war_frames = []
+    bat = load_fact(fact_candidates("fact_player_batting"), ["TM", "team_abbr", "Tm", "tm"], "WAR", "bat")
+    pit = load_fact(fact_candidates("fact_player_pitching"), ["TM_p1", "TM", "team_abbr", "Tm", "tm"], "WAR", "pit")
 
-    if bat_path.exists():
-        bat = pd.read_csv(bat_path)
-        required = {"ID", "TM", "WAR"}
-        missing = required - set(bat.columns)
-        if missing:
-            raise ValueError(
-                f"fact_player_batting missing columns {sorted(missing)} at {bat_path}"
-            )
-        bat = bat[["ID", "TM", "WAR"]].copy()
-        bat.rename(columns={"TM": "TM_bat", "WAR": "WAR_bat"}, inplace=True)
-        war_frames.append(bat)
+    if bat.empty and pit.empty:
+        raise FileNotFoundError("No season WAR found in batting or pitching fact tables.")
+
+    if bat.empty:
+        stats = pit
+    elif pit.empty:
+        stats = bat
     else:
-        logging.warning("fact_player_batting not found at %s", bat_path)
+        stats = bat.merge(pit, on="ID", how="outer")
 
-    if pit_path.exists():
-        pit = pd.read_csv(pit_path)
-        required = {"ID", "TM_p1", "WAR"}
-        missing = required - set(pit.columns)
-        if missing:
-            raise ValueError(
-                f"fact_player_pitching missing columns {sorted(missing)} at {pit_path}"
-            )
-        pit = pit[["ID", "TM_p1", "WAR"]].copy()
-        pit.rename(columns={"TM_p1": "TM_pit", "WAR": "WAR_pit"}, inplace=True)
-        if war_frames:
-            stats = war_frames[0].merge(pit, on="ID", how="outer")
-        else:
-            stats = pit
-    else:
-        logging.warning("fact_player_pitching not found at %s", pit_path)
-        stats = war_frames[0]
-
-    # Ensure WAR_bat and WAR_pit exist and are numeric
     if "WAR_bat" not in stats.columns:
         stats["WAR_bat"] = 0.0
     if "WAR_pit" not in stats.columns:
         stats["WAR_pit"] = 0.0
 
-    stats["WAR_bat"] = pd.to_numeric(stats["WAR_bat"], errors="coerce").fillna(0.0)
-    stats["WAR_pit"] = pd.to_numeric(stats["WAR_pit"], errors="coerce").fillna(0.0)
-
     stats["WAR_season"] = stats["WAR_bat"] + stats["WAR_pit"]
 
-    # Team abbreviation: batting team preferred, else pitching team
-    stats["TM_bat"] = stats.get("TM_bat", "")
-    stats["TM_pit"] = stats.get("TM_pit", "")
-    stats["TM"] = stats["TM_bat"]
-    stats.loc[stats["TM"].isna() | (stats["TM"] == ""), "TM"] = stats["TM_pit"]
+    stats["team_abbr_stats"] = stats.get("team_abbr_bat", "")
+    mask = stats["team_abbr_stats"].isna() | (stats["team_abbr_stats"] == "")
+    stats.loc[mask, "team_abbr_stats"] = stats.get("team_abbr_pit", "")
 
-    out = stats[["ID", "TM", "WAR_season"]].copy()
-    logging.info("Loaded season WAR for %d players", len(out))
-    return out
+    return stats[["ID", "team_abbr_stats", "WAR_season"]]
 
 
-def _build_full_name(row: pd.Series) -> str:
-    """
-    Build full name from dim_player_profile when possible,
-    otherwise fall back to the display name from the HTML.
-    """
-    fn = row.get("First Name")
-    ln = row.get("Last Name")
-    if isinstance(fn, str) and isinstance(ln, str) and fn and ln:
-        return f"{fn} {ln}"
+# ---------------------------------------------------------------------------
+# Resolution
+# ---------------------------------------------------------------------------
 
-    disp = str(row.get("display_name", "")).strip()
-    if "," in disp:
-        disp = disp.split(",", 1)[0].strip()
-    return disp
+def resolve_team_abbr(row: pd.Series) -> str:
+    """Choose first non-empty, non-free-agent team abbreviation."""
+    candidates = [
+        str(row.get("team_abbr_stats", "")),
+        str(row.get("raw_team_abbr", "")),
+        str(row.get("TM", "")),
+        str(row.get("TM.1", "")),
+        str(row.get("ORG", "")),
+        str(row.get("ORG.1", "")),
+    ]
+    for cand in candidates:
+        val = cand.strip()
+        if not val:
+            continue
+        if val.lower() in {"free agent", "fa", "nan"}:
+            continue
+        return val
+    return ""
 
 
-def _bucket_war(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """
-    Assign players to Over-delivered / Delivered / Under-delivered buckets
-    based on season WAR.
+def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, stats: pd.DataFrame) -> pd.DataFrame:
+    """Join hype with profiles and stats; enforce full_name/team completeness."""
+    merged = hype.merge(profiles, left_on="player_id", right_on="ID", how="left", suffixes=("", "_prof"))
+    logging.info("Hype rows matched to profiles: %d of %d", merged["First Name"].notna().sum(), len(merged))
 
-    - If at least 3 players, use 1/3 and 2/3 quantiles.
-    - If fewer, fall back to min/max logic without crashing.
-    """
+    merged = merged.merge(stats, left_on="player_id", right_on="ID", how="left", suffixes=("", "_stat"))
+    logging.info("Hype rows matched to season stats: %d of %d", merged["WAR_season"].notna().sum(), len(merged))
+
+    merged["full_name"] = merged.apply(lambda r: f"{r.get('First Name', '').strip()} {r.get('Last Name', '').strip()}".strip(), axis=1)
+    merged["team_abbr"] = merged.apply(resolve_team_abbr, axis=1)
+    merged["war_value"] = pd.to_numeric(merged.get("WAR_season", 0), errors="coerce").fillna(0.0)
+
+    bad_name = merged[merged["full_name"].isna() | (merged["full_name"].str.strip() == "")]
+    bad_team = merged[merged["team_abbr"].isna() | (merged["team_abbr"].str.strip() == "")]
+    if not bad_name.empty or not bad_team.empty:
+        logging.error("Preseason hype mapping failed. Offending rows:")
+        logging.error(pd.concat([bad_name, bad_team], ignore_index=True)[["player_id", "raw_name", "full_name", "team_abbr"]])
+        raise RuntimeError("Missing full_name or team_abbr for some hype players.")
+
+    return merged[["player_id", "full_name", "team_abbr", "war_value"]]
+
+
+# ---------------------------------------------------------------------------
+# Bucketing and rendering
+# ---------------------------------------------------------------------------
+
+def bucket_war(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     if df.empty:
-        return df.copy(), df.copy(), df.copy()
-
-    war_series = df["WAR_season"].astype(float).sort_values()
-
-    if len(war_series) >= 3:
-        low_cut = float(war_series.quantile(1.0 / 3.0))
-        high_cut = float(war_series.quantile(2.0 / 3.0))
+        return df, df, df
+    war = df["war_value"].astype(float).sort_values()
+    if len(war) >= 3:
+        low_cut = float(war.quantile(1.0 / 3.0))
+        high_cut = float(war.quantile(2.0 / 3.0))
     else:
-        low_cut = float(war_series.min())
-        high_cut = float(war_series.max())
+        low_cut = float(war.min())
+        high_cut = float(war.max())
 
-    def assign_bucket(w: float) -> str:
-        if w >= high_cut:
+    def assign(val: float) -> str:
+        if val >= high_cut:
             return "over"
-        if w <= low_cut:
+        if val <= low_cut:
             return "under"
         return "delivered"
 
     df = df.copy()
-    df["bucket"] = df["WAR_season"].astype(float).apply(assign_bucket)
-
-    over = df[df["bucket"] == "over"].sort_values("WAR_season", ascending=False)
-    delivered = df[df["bucket"] == "delivered"].sort_values(
-        "WAR_season", ascending=False
-    )
-    under = df[df["bucket"] == "under"].sort_values("WAR_season", ascending=True)
-
+    df["bucket"] = df["war_value"].apply(assign)
+    over = df[df["bucket"] == "over"].sort_values("war_value", ascending=False)
+    delivered = df[df["bucket"] == "delivered"].sort_values("war_value", ascending=False)
+    under = df[df["bucket"] == "under"].sort_values("war_value", ascending=True)
     return over, delivered, under
 
 
-def _render_markdown(df: pd.DataFrame, season: int) -> str:
-    """
-    Render the preseason hype markdown fragment.
-
-    All lines are of the form:
-      Full Name (TM) - WAR: 3.45
-
-    If team abbreviation is unavailable for some player, omit the parentheses:
-      Full Name - WAR: 3.45
-
-    No "Free agent" strings are ever emitted here.
-    """
-    lines = []
+def render_markdown(df: pd.DataFrame, season: int) -> str:
+    lines: List[str] = []
     lines.append("## Preseason hype - who delivered?")
-    lines.append(
-        f"_Based on preseason predictions and {season} season WAR among hyped players._"
-    )
+    lines.append(f"_Based on preseason predictions and {season} season WAR among hyped players._")
     lines.append("")
 
-    over, delivered, under = _bucket_war(df)
+    over, delivered, under = bucket_war(df)
 
-    def emit_bucket(title: str, bucket_df: pd.DataFrame) -> None:
+    def emit(title: str, bucket: pd.DataFrame) -> None:
         lines.append(f"**{title}**")
-        if bucket_df.empty:
+        if bucket.empty:
             lines.append("- (none)")
             lines.append("")
             return
-        for _, row in bucket_df.iterrows():
-            name = str(row["full_name"])
-            team = str(row.get("team_abbr", "") or "").strip()
-            war_val = float(row["WAR_season"])
-            if team:
-                lines.append(f"- {name} ({team}) - WAR: {war_val:.2f}")
-            else:
-                lines.append(f"- {name} - WAR: {war_val:.2f}")
+        for _, row in bucket.iterrows():
+            lines.append(f"- {row['full_name']} ({row['team_abbr']}) - WAR: {row['war_value']:.2f}")
         lines.append("")
 
-    emit_bucket("Over-delivered", over)
-    emit_bucket("Delivered", delivered)
-    emit_bucket("Under-delivered", under)
+    emit("Over-delivered", over)
+    emit("Delivered", delivered)
+    emit("Under-delivered", under)
 
     return "\n".join(lines).rstrip() + "\n"
 
 
-def build_preseason_hype_fragment(
-    season: int, league_id: int, preseason_html: Path | None
-) -> Path:
-    """
-    Orchestrate the preseason hype brief construction for one season/league.
+# ---------------------------------------------------------------------------
+# Main orchestration
+# ---------------------------------------------------------------------------
 
-    Uses:
-      - Preseason HTML (predictions) to identify the hyped players.
-      - dim_player_profile for full names.
-      - fact_player_batting + fact_player_pitching for season WAR and team abbreviations.
-    """
-    root = _get_repo_root()
-
+def build_preseason_hype_fragment(season: int, league_id: int, preseason_html: Path | None, output_md: Path | None) -> Path:
+    root = get_repo_root()
     if preseason_html is None:
-        preseason_html = (
-            root
-            / "csv"
-            / "in"
-            / "almanac_core"
-            / str(season)
-            / "leagues"
-            / f"league_{league_id}_preseason_prediction_report.html"
-        )
+        preseason_html = root / "csv" / "in" / "almanac_core" / str(season) / "leagues" / f"league_{league_id}_preseason_prediction_report.html"
 
     logging.info("Using preseason HTML: %s", preseason_html)
-    hype_df = _parse_preseason_players(preseason_html)
+    hype = parse_preseason_players(preseason_html)
+    if hype.empty:
+        raise RuntimeError("No hype players parsed from preseason HTML; aborting.")
 
-    if hype_df.empty:
-        logging.warning("No hype players parsed; writing a minimal placeholder fragment.")
-        out_dir = root / "csv" / "out" / "eb"
-        out_dir.mkdir(parents=True, exist_ok=True)
-        out_path = out_dir / f"eb_preseason_hype_{season}_league{league_id}.md"
-        out_path.write_text(
-            "## Preseason hype - who delivered?\n"
-            f"_Based on preseason predictions and {season} season WAR among hyped players._\n\n"
-            "- (no hyped players parsed)\n",
-            encoding="utf-8",
-        )
-        return out_path
+    profiles = load_dim_player_profile(root)
+    stats = load_season_war(root, season, league_id)
+    resolved = resolve_players(hype, profiles, stats)
 
-    profiles = _load_dim_player_profile(root)
-    stats = _load_season_war(root)
-
-    merged = hype_df.merge(
-        profiles, left_on="player_id", right_on="ID", how="left", suffixes=("", "_prof")
-    )
-    logging.info(
-        "Hype rows whose names were enriched from dim_player_profile: %d",
-        merged["First Name"].notna().sum(),
-    )
-
-    merged = merged.merge(
-        stats, left_on="player_id", right_on="ID", how="left", suffixes=("", "_stat")
-    )
-    logging.info(
-        "Hype rows matched to season stats: %d", merged["WAR_season"].notna().sum()
-    )
-
-    merged["full_name"] = merged.apply(_build_full_name, axis=1)
-    merged["team_abbr"] = merged["TM"].fillna("").astype(str)
-    merged["WAR_season"] = pd.to_numeric(
-        merged["WAR_season"], errors="coerce"
-    ).fillna(0.0)
-
-    md = _render_markdown(merged, season=season)
+    md_text = render_markdown(resolved, season)
 
     out_dir = root / "csv" / "out" / "eb"
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"eb_preseason_hype_{season}_league{league_id}.md"
-    out_path.write_text(md, encoding="utf-8")
-
+    out_path = output_md if output_md else out_dir / f"eb_preseason_hype_{season}_league{league_id}.md"
+    out_path.write_text(md_text, encoding="utf-8")
     logging.info("Wrote preseason hype fragment to %s", out_path)
     return out_path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Build EB preseason hype fragment from almanac preseason predictions."
-    )
-    parser.add_argument(
-        "--season",
-        type=int,
-        required=True,
-        help="Season year, e.g. 1972 or 1980",
-    )
-    parser.add_argument(
-        "--league-id",
-        type=int,
-        default=200,
-        help="League ID (default 200 for ABL).",
-    )
-    parser.add_argument(
-        "--preseason-html",
-        type=str,
-        default=None,
-        help=(
-            "Optional explicit path to preseason prediction HTML. "
-            "If omitted, defaults to "
-            "csv/in/almanac_core/{season}/leagues/league_{league_id}_preseason_prediction_report.html"
-        ),
-    )
-
-    args = parser.parse_args()
-
+    args = parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s:%(message)s")
 
     html_path = Path(args.preseason_html) if args.preseason_html else None
-    out_path = build_preseason_hype_fragment(
-        season=args.season, league_id=args.league_id, preseason_html=html_path
-    )
+    output_md = Path(args.output_md) if args.output_md else None
+
+    out_path = build_preseason_hype_fragment(args.season, args.league_id, html_path, output_md)
     print(f"[OK] Wrote preseason hype brief to {out_path}")
 
 
