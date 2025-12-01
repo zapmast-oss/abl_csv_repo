@@ -241,8 +241,8 @@ def load_html_war(root: Path, season: int, player_ids: List[int]) -> Dict[int, f
     with zipfile.ZipFile(almanac_zip, "r") as zf:
         for pid in player_ids:
             candidates = [
-                f"players/player_{pid}.html",
                 f"almanac_{season}/players/player_{pid}.html",
+                f"players/player_{pid}.html",
             ]
             try:
                 for html_name in candidates:
