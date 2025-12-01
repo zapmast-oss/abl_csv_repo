@@ -134,11 +134,11 @@ def load_dim_player_profile(root: Path) -> pd.DataFrame:
 
 
 def load_players_csv(root: Path) -> pd.DataFrame:
-    """Load ootp players.csv for additional name resolution."""
+    """Load ootp players.csv for additional name/position resolution."""
     path = root / "csv" / "ootp_csv" / "players.csv"
     if not path.exists():
         logging.warning("players.csv not found at %s; skipping extra name resolution", path)
-        return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full"])
+        return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full", "players_position"])
     df = pd.read_csv(path)
     id_col = None
     for cand in ["player_id", "id", "ID"]:
@@ -147,16 +147,24 @@ def load_players_csv(root: Path) -> pd.DataFrame:
             break
     first_col = next((c for c in ["first_name", "First Name", "first name"] if c in df.columns), None)
     last_col = next((c for c in ["last_name", "Last Name", "last name"] if c in df.columns), None)
+    pos_col = "position" if "position" in df.columns else None
     if id_col is None or first_col is None or last_col is None:
         logging.warning("players.csv missing id/first/last columns; skipping extra names")
-        return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full"])
-    out = df[[id_col, first_col, last_col]].rename(
-        columns={id_col: "ID", first_col: "players_first", last_col: "players_last"}
+        return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full", "players_position"])
+    keep = [id_col, first_col, last_col]
+    if pos_col:
+        keep.append(pos_col)
+    out = df[keep].rename(
+        columns={id_col: "ID", first_col: "players_first", last_col: "players_last", pos_col: "players_position" if pos_col else pos_col}
     )
     out["ID"] = pd.to_numeric(out["ID"], errors="coerce").astype("Int64")
     out["players_first"] = out["players_first"].fillna("").astype(str).str.strip()
     out["players_last"] = out["players_last"].fillna("").astype(str).str.strip()
     out["players_full"] = (out["players_first"] + " " + out["players_last"]).str.strip()
+    if pos_col:
+        out["players_position"] = out["players_position"].fillna("").astype(str).str.strip()
+    else:
+        out["players_position"] = ""
     return out
 
 
@@ -343,6 +351,17 @@ def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.Data
     merged["full_name"] = merged.apply(build_full_name, axis=1)
     merged["team_abbr"] = merged.apply(resolve_team_abbr, axis=1)
 
+    # Position: prefer players.csv, else parse from raw_name after comma
+    def pick_position(row: pd.Series) -> str:
+        pos = row.get("players_position", "")
+        if isinstance(pos, str) and pos.strip():
+            return pos.strip()
+        raw = str(row.get("raw_name", "")).strip()
+        if "," in raw:
+            return raw.split(",", 1)[1].strip()
+        return ""
+    merged["position"] = merged.apply(pick_position, axis=1)
+
     # war from stats, then fallback to HTML per-player pages if still zero/NA
     merged["war_value"] = pd.to_numeric(merged.get("WAR_season", 0), errors="coerce").fillna(0.0)
     def apply_html_war(row: pd.Series) -> float:
@@ -366,7 +385,7 @@ def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.Data
         logging.error(pd.concat([bad_name, bad_team], ignore_index=True)[["player_id", "raw_name", "full_name", "team_abbr"]])
         raise RuntimeError("Missing full_name or team_abbr for some hype players.")
 
-    return merged[["player_id", "full_name", "team_abbr", "war_value"]]
+    return merged[["player_id", "full_name", "team_abbr", "position", "war_value"]]
 
 
 # ---------------------------------------------------------------------------
@@ -407,6 +426,26 @@ def render_markdown(df: pd.DataFrame, season: int) -> str:
 
     over, delivered, under = bucket_war(df)
 
+    pos_map = {
+        "1": "P",
+        "2": "C",
+        "3": "1B",
+        "4": "2B",
+        "5": "3B",
+        "6": "SS",
+        "7": "LF",
+        "8": "CF",
+        "9": "RF",
+    }
+
+    def norm_pos(val: str) -> str:
+        v = (val or "").strip()
+        if not v:
+            return ""
+        if v in pos_map:
+            return pos_map[v]
+        return v
+
     def emit(title: str, bucket: pd.DataFrame) -> None:
         lines.append(f"**{title}**")
         if bucket.empty:
@@ -414,7 +453,14 @@ def render_markdown(df: pd.DataFrame, season: int) -> str:
             lines.append("")
             return
         for _, row in bucket.iterrows():
-            lines.append(f"- {row['full_name']} ({row['team_abbr']}) - WAR: {row['war_value']:.2f}")
+            pos_raw = str(row.get("position", "") or "").strip()
+            pos = norm_pos(pos_raw)
+            team = row["team_abbr"]
+            if pos:
+                label = f"{row['full_name']} ({pos}, {team})"
+            else:
+                label = f"{row['full_name']} ({team})"
+            lines.append(f"- {label} - WAR: {row['war_value']:.2f}")
         lines.append("")
 
     emit("Over-delivered", over)
