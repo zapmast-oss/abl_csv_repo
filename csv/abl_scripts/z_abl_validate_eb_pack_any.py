@@ -112,9 +112,9 @@ def parse_month_glory_top(section_lines: List[str]) -> Optional[Dict[str, object
             continue
         if capture and line.strip().startswith("- "):
             txt = line.strip()[2:]
-            # Example: "Atlanta (Atlanta) — in June went 18-8 (0.692), delta vs season=+0.203"
+            # Example: "Atlanta (Atlanta) - in June went 18-8 (0.692), delta vs season=+0.203"
             m = re.match(
-                r"(.+)\s+—\s+in\s+([A-Za-z]+)\s+went\s+(\d+)-(\d+)\s+\(([\d\.]+)\),\s+delta vs season=([+\-]?\d+\.\d+)",
+                r"(.+)\s+[-–—]\s+in\s+([A-Za-z]+)\s+went\s+(\d+)-(\d+)\s+\(([\d\.]+)\),\s+delta vs season=([+\-]?\d+\.\d+)",
                 txt,
             )
             if m:
