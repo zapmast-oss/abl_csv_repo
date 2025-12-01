@@ -35,60 +35,59 @@ def parse_preseason_predictions(html_path: Path) -> List[Dict[str, Any]]:
     - 'rank'         (int)  # 1-based rank within that hype_role if detectable, else None
     - 'source'       (str)  # short string describing which block/table it came from
     """
-    html_text = _read_html_text(html_path)
-    soup = BeautifulSoup(html_text, "html.parser")
+    import re
+
+    html_path = Path(html_path)
+    if not html_path.exists():
+        raise FileNotFoundError(f"Preseason prediction HTML not found: {html_path}")
+
+    text = html_path.read_text(encoding="utf-8")
+    soup = BeautifulSoup(text, "html.parser")
 
     entries: List[Dict[str, Any]] = []
+    pid_re = re.compile(r"player_(\d+)\.html")
 
-    # First, try to parse with pandas for structured tables.
-    try:
-        tables = pd.read_html(html_text)
-    except ValueError:
-        tables = []
-
-    for idx, df in enumerate(tables):
-        col_map = _normalize_table_columns(df)
-        if not col_map:
+    for tr in soup.find_all("tr"):
+        player_link = tr.find("a", href=lambda h: h and "players/player_" in h)
+        if not player_link:
             continue
-        player_col = col_map.get("player")
-        team_col = col_map.get("team")
-        if not player_col or not team_col:
-            continue
-        cols_lower = [str(c).lower() for c in df.columns]
-        role = "preseason_pitcher" if any("era" in c or "ip" in c for c in cols_lower) else "preseason_hitter"
-        for ridx, row in df.iterrows():
-            player_name = str(row[player_col]).strip()
-            team_name = str(row[team_col]).strip()
-            if not player_name or player_name.lower() == "player":
-                continue
-            entries.append(
-                {
-                    "player_name": player_name,
-                    "team_name": team_name,
-                    "hype_role": role,
-                    "rank": ridx + 1,
-                    "source": f"table_{idx}",
-                }
-            )
 
-    # Fallback: if nothing parsed, emit a generic placeholder to avoid empty output.
-    if not entries:
-        for li in soup.find_all("li"):
-            text = li.get_text(" ", strip=True)
-            if not text:
-                continue
-            entries.append(
-                {
-                    "player_name": text,
-                    "team_name": "",
-                    "hype_role": "preseason",
-                    "rank": None,
-                    "source": "generic_preseason",
-                }
-            )
+        href = player_link.get("href", "")
+        m = pid_re.search(href)
+        player_id: Optional[int]
+        if m:
+            try:
+                player_id = int(m.group(1))
+            except Exception:
+                player_id = None
+        else:
+            player_id = None
+
+        raw_name = player_link.get_text(" ", strip=True)
+        # Drop position and anything after the first comma.
+        if "," in raw_name:
+            short_name = raw_name.split(",", 1)[0].strip()
+        else:
+            short_name = raw_name.strip()
+
+        team_link = tr.find("a", href=lambda h: h and "teams/team_" in h)
+        team_name = ""
+        if team_link:
+            team_name = team_link.get_text(" ", strip=True)
+
+        entries.append(
+            {
+                "player_name": short_name,
+                "team_name": team_name,
+                "hype_role": "preseason",
+                "rank": None,
+                "source": "preseason_prediction",
+                "player_id": player_id,
+            }
+        )
 
     if not entries:
-        # Last-resort single placeholder
+        # Last-resort single placeholder so downstream code doesn't explode
         entries.append(
             {
                 "player_name": "Unknown",
@@ -96,8 +95,10 @@ def parse_preseason_predictions(html_path: Path) -> List[Dict[str, Any]]:
                 "hype_role": "preseason",
                 "rank": None,
                 "source": "generic_preseason",
+                "player_id": None,
             }
         )
+
     return entries
 
 
