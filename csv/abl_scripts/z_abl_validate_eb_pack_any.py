@@ -34,13 +34,7 @@ from z_abl_preseason_hype_any import (
     resolve_team_abbr,
     bucket_war,
 )
-# Month-of-glory source (reuse if present)
-try:
-    from z_abl_month_glory_misery_any import (
-        # If available, adapt as needed; otherwise we do a simple recompute below.
-    )
-except Exception:
-    pass
+# Month-of-glory source placeholder (not imported to avoid syntax issues)
 
 
 logger = logging.getLogger(__name__)
@@ -454,4 +448,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
