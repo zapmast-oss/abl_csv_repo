@@ -142,7 +142,7 @@ def parse_schedule_grid(html_path, season: int):
     grid = grid.iloc[1:].copy()
     grid.columns = header
 
-    # First two header entries are month/day; rest are team columns.
+    # First two header entries are month/day; rest are team columns (team abbreviations).
     if len(grid.columns) < 3:
         raise ValueError("Schedule grid table does not have enough columns (need month, day, teams)")
     month_col = grid.columns[0]
@@ -164,7 +164,17 @@ def parse_schedule_grid(html_path, season: int):
 
         for team_label in team_cols:
             val = row.get(team_label, "")
-            played = not (pd.isna(val) or str(val).strip() == "")
+            text = "" if pd.isna(val) else str(val).strip()
+            played = text != ""
+            # crude home/away: OOTP often uses "@OPP" to mark away
+            is_home = None
+            opp = text
+            if played:
+                if text.startswith("@"):
+                    is_home = False
+                    opp = text[1:].strip()
+                else:
+                    is_home = True
             records.append(
                 {
                     "season": int(season),
@@ -173,7 +183,9 @@ def parse_schedule_grid(html_path, season: int):
                     "day": day,
                     "team_raw": str(team_label),
                     "played": bool(played),
-                    "is_home": None,
+                    "is_home": is_home,
+                    "cell_text": text,
+                    "opponent_raw": opp if played else "",
                 }
             )
 
