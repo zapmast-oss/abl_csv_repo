@@ -1,5 +1,5 @@
 # ABL 1980 Regular Season – EB Pack (League 200)
-Generated on: 2025-11-30 22:45:49 (local time)
+Generated on: 2025-12-01 05:52:18 (local time)
 ---
 # EB Flashback 1980 – Data Brief (DO NOT PUBLISH)
 
@@ -131,34 +131,54 @@ _League ID 200_
 
 ---
 
-## Preseason hype — who delivered?
-_Based on preseason predictions and actual 1980 performance._
+## Preseason hype - who delivered?
+_Based on preseason predictions and 1980 WAR among hyped players._
 
 **Over-delivered**
-- O. Garcia — Free agent — score: 3.10
-- J. Coronado — Free agent — score: 2.60
-- J. Cuba — Free agent — score: 0.00
-- A. Gonzalez — Free agent — score: 0.00
-- J. Cortez — Free agent — score: 0.00
-- B. Lopez — Free agent — score: 0.00
+- Scott Reis - WAR: 78.40
+- Brett Petrillo - WAR: 55.60
+- Ethan Harrison - WAR: 43.50
+- Shane Cobb - WAR: 41.80
+- W. Ufena - WAR: 38.30
+- Brent Keyser - WAR: 37.60
+- Alex Lander - WAR: 37.30
+- Preston Strate - WAR: 36.90
+- Antonio Serrano - WAR: 36.60
+- L. Gonzalez - WAR: 35.70
+- Juan Perez - WAR: 29.00
+- Nick Perez - WAR: 28.40
+- Nate Smeltz - WAR: 27.00
 
 **Delivered**
-- B. Rodriguez — Free agent — score: -2.97
-- T. Oubre — Free agent — score: -3.02
-- S. Grimes — Free agent — score: -3.03
-- G. Mac — Free agent — score: -3.24
-- G. Aguilar — Free agent — score: -3.27
-- S. Szell — Free agent — score: -3.36
+- Jeremy Campbell - WAR: 23.60
+- M. Morales - WAR: 23.20
+- Pat Watters - WAR: 22.30
+- M. Dickens - WAR: 19.60
+- Eddie Rodriguez - WAR: 13.70
+- L. Sanchez - WAR: 6.30
+- D. Olguin - WAR: 3.80
+- Omar Garcia - WAR: 3.10
+- J. Coronado - WAR: 2.60
+- Arturo Gonzalez - WAR: 0.00
+- Jose Cuba - WAR: 0.00
+- Jose Cortez - WAR: 0.00
+- B. Lopez - WAR: 0.00
 
 **Under-delivered**
-- J. Contreras — Free agent — score: -3.51
-- A. Strate — Free agent — score: -3.51
-- T. Zacate — Free agent — score: -3.58
-- A. Perez — Free agent — score: -3.60
-- H. Jimenez — Free agent — score: -3.63
-- R. Satchell — Free agent — score: -3.91
-- B. Helvie — Free agent — score: -3.99
-- C. Jorge — Free agent — score: -4.99
+- B. Rodriguez - WAR: -2.97
+- Tony Oubre - WAR: -3.02
+- S. Grimes - WAR: -3.03
+- Gia-Long Mac - WAR: -3.24
+- G. Aguilar - WAR: -3.27
+- Scott Szell - WAR: -3.36
+- Jose Contreras - WAR: -3.51
+- Adam Strate - WAR: -3.51
+- Tony Zacate - WAR: -3.58
+- A. Perez - WAR: -3.60
+- H. Jimenez - WAR: -3.63
+- Rick Satchell - WAR: -3.91
+- Brett Helvie - WAR: -3.99
+- Chris Jorge - WAR: -4.99
 
 ---
 
