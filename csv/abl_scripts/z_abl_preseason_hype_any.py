@@ -288,6 +288,15 @@ def load_html_war(root: Path, season: int, player_ids: List[int]) -> Dict[int, f
                             break
                         except Exception:
                             pass
+                    # if still not found, look for an Overall row
+                    overall = tbl[tbl.iloc[:, 0].astype(str).str.lower() == "overall"]
+                    if not overall.empty and pd.notna(overall["WAR"]).any():
+                        try:
+                            wars[pid] = float(overall["WAR"].iloc[0])
+                            found = True
+                            break
+                        except Exception:
+                            pass
                 else:
                     # No explicit WAR column; skip to avoid bogus values
                     continue
