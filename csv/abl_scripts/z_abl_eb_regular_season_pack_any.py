@@ -7,6 +7,7 @@ Stitches together EB briefs, playoff fields, and preseason hype output.
 from __future__ import annotations
 
 import argparse
+import logging
 from pathlib import Path
 from typing import Sequence
 
@@ -25,6 +26,13 @@ def read_md(path: Path, label: str) -> str:
     text = path.read_text(encoding="utf-8").strip()
     log(f"[INFO] Loaded {label}: {len(text)} chars")
     return text
+
+
+def _read_optional_fragment(path: Path) -> str | None:
+    if not path.exists():
+        logging.warning("EB fragment not found: %s", path)
+        return None
+    return path.read_text(encoding="utf-8")
 
 
 def playoff_section(champions: dict, conf_order: Sequence[str] = ("ABC", "NBC")) -> str:
@@ -115,10 +123,12 @@ def main() -> int:
         ("eb_preseason_hype", eb_out_dir / f"eb_preseason_hype_{season}_league{league_id}.md"),
         ("eb_player_leaders", almanac_dir / f"eb_player_leaders_{season}_league{league_id}.md"),
         ("eb_player_spotlights", almanac_dir / f"eb_player_spotlights_{season}_league{league_id}.md"),
-        ("eb_schedule_context", almanac_dir / f"eb_schedule_context_{season}_league{league_id}.md"),
         ("eb_series_spotlights", almanac_dir / f"eb_series_spotlights_{season}_league{league_id}.md"),
         ("eb_all_star", almanac_dir / f"eb_all_star_{season}_league{league_id}.md"),
     ]
+
+    schedule_fragment_path = eb_out_dir / f"eb_schedule_context_{season}_league{league_id}.md"
+    schedule_fragment = _read_optional_fragment(schedule_fragment_path)
 
     body_parts: list[str] = []
     if flashback:
@@ -130,6 +140,15 @@ def main() -> int:
         content = read_md(path, label)
         if content:
             body_parts.append(content)
+        if label == "eb_player_spotlights":
+            body_parts.append("## EB Schedule Context")
+            if schedule_fragment:
+                body_parts.append(schedule_fragment.rstrip())
+            else:
+                body_parts.append(
+                    "[WARN] Schedule context fragment not found; run z_abl_eb_schedule_context_any.py first."
+                )
+            body_parts.append("")
 
     header = f"# ABL {season} Regular Season – EB Pack (League {league_id})"
     sections = [header, "", "---", ""]

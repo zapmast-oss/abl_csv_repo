@@ -218,16 +218,10 @@ Internal data brief for EB: player performance highlights for the season.
 
 ---
 
-# EB Schedule Context 1973 – Data Brief (DO NOT PUBLISH)
-_League ID 200_
+## EB Schedule Context
 
-## Schedule Overview
-- [WARN] Games-by-team file not found or missing team/date columns; schedule overview skipped.
+---
 
-## Brutal Stretches
-- [WARN] Unable to compute brutal stretches from schedule data.
+[WARN] Schedule context fragment not found; run z_abl_eb_schedule_context_any.py first.
 
-## All-Star Break
-- Host: San Francisco Warriors
-- Winner: NBC
-- Exact calendar dates: [not auto-detected]
+---
