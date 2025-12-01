@@ -254,6 +254,97 @@ def detect_asg_dates_from_grid(df: pd.DataFrame) -> Tuple[Optional[date], Option
     return None, None, None
 
 
+def detect_postseason_blocks(df: pd.DataFrame) -> Tuple[Optional[date], List[Tuple[date, date]]]:
+    """Find regular-season end and split postseason into contiguous blocks by team counts.
+
+    Logic:
+      - Total teams = unique team_raw in grid.
+      - Final regular-season date = last date where games are played by all teams.
+      - Postseason start = first played date after that.
+      - Blocks = contiguous played-date ranges after postseason start.
+    """
+    # total teams in grid
+    total_teams = df["team_raw"].nunique()
+    daily = df[df["played"]].groupby("date")["team_raw"].nunique().reset_index(name="teams")
+    daily = daily.sort_values("date")
+
+    postseason_start: Optional[date] = None
+    post_start_idx = None
+    # find last date with full participation
+    full_daily = daily[daily["teams"] == total_teams]
+    if not full_daily.empty:
+        last_full = full_daily["date"].max()
+        after = daily[daily["date"] > last_full]
+        if not after.empty:
+            postseason_start = after.iloc[0]["date"]
+            post_start_idx = daily.index.get_loc(after.index[0])
+
+    blocks: List[Tuple[date, date]] = []
+    if postseason_start is not None and post_start_idx is not None:
+        post = daily[daily["date"] >= postseason_start]
+        if not post.empty:
+            prev = None
+            start = None
+            for d in post["date"]:
+                if start is None:
+                    start = d
+                    prev = d
+                    continue
+                if (d - prev).days <= 1:
+                    prev = d
+                else:
+                    blocks.append((start, prev))
+                    start = d
+                    prev = d
+            if start is not None:
+                blocks.append((start, prev))
+    return postseason_start, blocks
+
+
+def detect_playoff_series(df: pd.DataFrame, postseason_start: Optional[date], post_blocks: List[Tuple[date, date]]) -> Dict[str, Tuple[Optional[date], Optional[date]]]:
+    """Detect DCS/CCS/GS ranges. Prefer contiguous blocks; fallback to team-count thresholds."""
+    result = {"DCS": (None, None), "CCS": (None, None), "GS": (None, None)}
+    if not postseason_start:
+        return result
+
+    # Prefer contiguous blocks (first three blocks => DCS, CCS, GS)
+    if post_blocks:
+        labels = ["DCS", "CCS", "GS"]
+        for lbl, blk in zip(labels, post_blocks):
+            result[lbl] = (pd.to_datetime(blk[0]).date(), pd.to_datetime(blk[1]).date())
+        return result
+
+    # Fallback: thresholds
+    daily = df[df["played"]].groupby("date")["team_raw"].nunique().reset_index(name="teams")
+    daily = daily[daily["date"] >= postseason_start].sort_values("date")
+    if daily.empty:
+        return result
+    dcs_start = daily["date"].min()
+    ccs_start = daily.loc[daily["teams"] <= 4, "date"].min() if (daily["teams"] <= 4).any() else None
+    gs_start = daily.loc[daily["teams"] <= 2, "date"].min() if (daily["teams"] <= 2).any() else None
+
+    dcs_end = None
+    ccs_end = None
+    gs_end = None
+    if ccs_start:
+        dcs_end = ccs_start - pd.Timedelta(days=1)
+    else:
+        dcs_end = daily["date"].max()
+    if gs_start:
+        ccs_end = gs_start - pd.Timedelta(days=1)
+        gs_end = daily["date"].max()
+    elif ccs_start:
+        ccs_end = daily["date"].max()
+
+    result["DCS"] = (pd.to_datetime(dcs_start).date() if pd.notna(dcs_start) else None,
+                     pd.to_datetime(dcs_end).date() if pd.notna(dcs_end) else None)
+    result["CCS"] = (pd.to_datetime(ccs_start).date() if ccs_start is not None and pd.notna(ccs_start) else None,
+                     pd.to_datetime(ccs_end).date() if ccs_end is not None and pd.notna(ccs_end) else None)
+    result["GS"] = (pd.to_datetime(gs_start).date() if gs_start is not None and pd.notna(gs_start) else None,
+                    pd.to_datetime(gs_end).date() if gs_end is not None and pd.notna(gs_end) else None)
+    return result
+
+
 def validate_schedule_context(season: int, league_id: int, pack_lines: List[str], root: Path) -> Tuple[bool, str]:
     section = extract_section(pack_lines, "## EB Schedule Context")
     if not section:
@@ -274,8 +365,37 @@ def validate_schedule_context(season: int, league_id: int, pack_lines: List[str]
     df_played = df[df["played"]]
     if df_played.empty:
         return False, "No played games in grid."
-    opening_date = df_played["date"].min()
-    final_date = df_played["date"].max()
+
+    # Compute opening day as first played date AFTER a gap of >=3 off-days in late March/early April.
+    daily = df.groupby("date")["played"].sum().reset_index().sort_values("date")
+    gap_start = None
+    gap_end = None
+    last_played_before_gap = None
+    for i in range(1, len(daily) - 2):
+        window = daily.iloc[i : i + 3]
+        if window["played"].sum() == 0 and window["date"].iloc[0].month in {3, 4}:
+            gap_start = window["date"].iloc[0]
+            gap_end = window["date"].iloc[-1]
+            # find last played date before gap
+            prev_played = daily[daily["date"] < gap_start]
+            if not prev_played[prev_played["played"] > 0].empty:
+                last_played_before_gap = prev_played[prev_played["played"] > 0]["date"].max()
+            break
+    if gap_end is not None:
+        after_gap = daily[daily["date"] > gap_end]
+        opening_date = after_gap[after_gap["played"] > 0]["date"].min()
+    else:
+        # fallback to earliest played date
+        opening_date = df_played["date"].min()
+
+    postseason_start, post_blocks = detect_postseason_blocks(df)
+    # Determine regular-season final date: last played date before postseason_start (if present)
+    if postseason_start:
+        final_date = df_played[df_played["date"] < postseason_start]["date"].max()
+        if pd.isna(final_date):
+            final_date = df_played["date"].max()
+    else:
+        final_date = df_played["date"].max()
     derby_date, asg_date, extra_date = detect_asg_dates_from_grid(df)
 
     def parse_date_str(s: str) -> Optional[date]:
@@ -307,9 +427,26 @@ def validate_schedule_context(season: int, league_id: int, pack_lines: List[str]
     if mismatches:
         for m in mismatches:
             logger.error("[FAIL] Schedule context mismatch: %s", m)
+        # Log postseason blocks for reference
+        if postseason_start:
+            labels = ["DCS", "CCS", "GS"]
+            for idx, blk in enumerate(post_blocks):
+                lbl = labels[idx] if idx < len(labels) else f"PO{idx+1}"
+                logger.info("Postseason block %s: %s to %s", lbl, blk[0], blk[1])
+            series = detect_playoff_series(df, postseason_start, post_blocks)
+            for name, (s, e) in series.items():
+                logger.info("%s: %s to %s", name, s, e)
         return False, "Schedule context mismatches found."
 
     logger.info("[OK] Schedule context dates match grid for season %s.", season)
+    if postseason_start:
+        labels = ["DCS", "CCS", "GS"]
+        for idx, blk in enumerate(post_blocks):
+            lbl = labels[idx] if idx < len(labels) else f"PO{idx+1}"
+            logger.info("Postseason block %s: %s to %s", lbl, blk[0], blk[1])
+        series = detect_playoff_series(df, postseason_start, post_blocks)
+        for name, (s, e) in series.items():
+            logger.info("%s: %s to %s", name, s, e)
     return True, "PASS"
 
 
