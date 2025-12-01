@@ -264,30 +264,33 @@ def load_html_war(root: Path, season: int, player_ids: List[int]) -> Dict[int, f
             for tbl in tables:
                 # Normalize column labels
                 tbl.columns = [c[1] if isinstance(c, tuple) else c for c in tbl.columns]
-                if "WAR" not in tbl.columns:
-                    continue
-                for col in ["Year", "Season", "year", "season"]:
-                    if col in tbl.columns:
-                        sub = tbl[tbl[col].astype(str) == str(season)]
-                        if not sub.empty and pd.notna(sub["WAR"]).any():
-                            try:
-                                wars[pid] = float(sub["WAR"].iloc[0])
-                                found = True
-                                break
-                            except Exception:
-                                pass
-                if found:
-                    break
-                # fallback: first column may be year
-                first_col = tbl.columns[0]
-                sub = tbl[tbl[first_col].astype(str) == str(season)]
-                if not sub.empty and "WAR" in sub and pd.notna(sub["WAR"]).any():
-                    try:
-                        wars[pid] = float(sub["WAR"].iloc[0])
-                        found = True
+                # Preferred: explicit WAR column
+                if "WAR" in tbl.columns:
+                    for col in ["Year", "Season", "year", "season"]:
+                        if col in tbl.columns:
+                            sub = tbl[tbl[col].astype(str) == str(season)]
+                            if not sub.empty and pd.notna(sub["WAR"]).any():
+                                try:
+                                    wars[pid] = float(sub["WAR"].iloc[0])
+                                    found = True
+                                    break
+                                except Exception:
+                                    pass
+                    if found:
                         break
-                    except Exception:
-                        pass
+                    # fallback: first column may be year
+                    first_col = tbl.columns[0]
+                    sub = tbl[tbl[first_col].astype(str) == str(season)]
+                    if not sub.empty and pd.notna(sub["WAR"]).any():
+                        try:
+                            wars[pid] = float(sub["WAR"].iloc[0])
+                            found = True
+                            break
+                        except Exception:
+                            pass
+                else:
+                    # No explicit WAR column; skip to avoid bogus values
+                    continue
             if found:
                 continue
     logging.info("HTML WAR fallback found values for %d players", len(wars))
