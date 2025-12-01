@@ -202,135 +202,8 @@ def load_dim_team_lookup(root: Path) -> Dict[str, str]:
     return lookup
 
 
-def load_season_war(root: Path, season: int, league_id: int) -> pd.DataFrame:
-    """Load season WAR and team abbreviation from batting/pitching fact tables.
-
-    Tries season-specific files first, then generic. Sums batting + pitching WAR.
-    """
-    base = root / "csv" / "out" / "star_schema"
-
-    def fact_candidates(prefix: str) -> List[Path]:
-        return [
-            base / f"{prefix}_{season}_league{league_id}.csv",
-            base / f"{prefix}_{season}.csv",
-            base / f"{prefix}.csv",
-        ]
-
-    def load_fact(paths: List[Path], team_cols: List[str], war_col: str, team_label: str) -> pd.DataFrame:
-        for p in paths:
-            if not p.exists():
-                continue
-            df = pd.read_csv(p)
-            if "season" in df.columns:
-                df = df[df["season"] == season]
-            team_col = next((c for c in team_cols if c in df.columns), None)
-            if team_col is None or war_col not in df.columns or "ID" not in df.columns:
-                continue
-            out = df[["ID", team_col, war_col]].copy()
-            out.rename(columns={team_col: f"team_abbr_{team_label}", war_col: f"WAR_{team_label}"}, inplace=True)
-            out["ID"] = pd.to_numeric(out["ID"], errors="coerce").astype("Int64")
-            out[f"WAR_{team_label}"] = pd.to_numeric(out[f"WAR_{team_label}"], errors="coerce").fillna(0.0)
-            return out
-        return pd.DataFrame()
-
-    bat = load_fact(fact_candidates("fact_player_batting"), ["TM", "team_abbr", "Tm", "tm"], "WAR", "bat")
-    pit = load_fact(fact_candidates("fact_player_pitching"), ["TM_p1", "TM", "team_abbr", "Tm", "tm"], "WAR", "pit")
-
-    if bat.empty and pit.empty:
-        raise FileNotFoundError("No season WAR found in batting or pitching fact tables.")
-
-    if bat.empty:
-        stats = pit
-    elif pit.empty:
-        stats = bat
-    else:
-        stats = bat.merge(pit, on="ID", how="outer")
-
-    if "WAR_bat" not in stats.columns:
-        stats["WAR_bat"] = 0.0
-    if "WAR_pit" not in stats.columns:
-        stats["WAR_pit"] = 0.0
-
-    stats["WAR_season"] = stats["WAR_bat"] + stats["WAR_pit"]
-
-    if "team_abbr_bat" not in stats.columns:
-        stats["team_abbr_bat"] = ""
-    if "team_abbr_pit" not in stats.columns:
-        stats["team_abbr_pit"] = ""
-
-    stats["team_abbr_stats"] = stats["team_abbr_bat"].fillna("")
-    mask = stats["team_abbr_stats"].isna() | (stats["team_abbr_stats"] == "")
-    stats.loc[mask, "team_abbr_stats"] = stats.loc[mask, "team_abbr_pit"].fillna("")
-
-    return stats[["ID", "team_abbr_stats", "team_abbr_bat", "team_abbr_pit", "WAR_season"]]
-
-
-def load_html_war(root: Path, season: int, player_ids: List[int]) -> Dict[int, float]:
-    """Fallback: read per-player HTML pages from almanac zip to extract season WAR."""
-    almanac_zip = root / "data_raw" / "ootp_html" / f"almanac_{season}.zip"
-    if not almanac_zip.exists():
-        logging.warning("Almanac zip not found for HTML WAR fallback: %s", almanac_zip)
-        return {}
-    wars: Dict[int, float] = {}
-    with zipfile.ZipFile(almanac_zip, "r") as zf:
-        for pid in player_ids:
-            candidates = [
-                f"almanac_{season}/players/player_{pid}.html",
-                f"players/player_{pid}.html",
-            ]
-            try:
-                for html_name in candidates:
-                    try:
-                        with zf.open(html_name) as fp:
-                            html_text = fp.read().decode("utf-8", errors="ignore")
-                        break
-                    except KeyError:
-                        html_text = None
-                if html_text is None:
-                    continue
-            except KeyError:
-                continue
-            try:
-                tables = pd.read_html(html_text)
-            except Exception:
-                continue
-            found = False
-            for tbl in tables:
-                # Normalize column labels
-                tbl.columns = [c[1] if isinstance(c, tuple) else c for c in tbl.columns]
-                # Preferred: explicit WAR column
-                if "WAR" in tbl.columns:
-                    for col in ["Year", "Season", "year", "season"]:
-                        if col in tbl.columns:
-                            sub = tbl[tbl[col].astype(str) == str(season)]
-                            if not sub.empty and pd.notna(sub["WAR"]).any():
-                                try:
-                                    wars[pid] = float(sub["WAR"].iloc[0])
-                                    found = True
-                                    break
-                                except Exception:
-                                    pass
-                    if found:
-                        break
-                    # fallback: if table has exactly one row, use its WAR
-                    if len(tbl) == 1 and pd.notna(tbl["WAR"]).any():
-                        try:
-                            wars[pid] = float(tbl["WAR"].iloc[0])
-                            found = True
-                            break
-                        except Exception:
-                            pass
-                else:
-                    # No explicit WAR column; skip to avoid bogus values
-                    continue
-            if found:
-                continue
-    logging.info("HTML WAR fallback found values for %d players", len(wars))
-    return wars
-
-
 def load_html_war_and_team(root: Path, season: int, player_ids: List[int], team_lookup: Dict[str, str]) -> Tuple[Dict[int, float], Dict[int, str]]:
-    """Parse player pages from the almanac to extract season WAR and team."""
+    """Parse player pages from the almanac to extract season WAR and team (HTML is source of truth)."""
     almanac_zip = root / "data_raw" / "ootp_html" / f"almanac_{season}.zip"
     if not almanac_zip.exists():
         logging.warning("Almanac zip not found for HTML WAR fallback: %s", almanac_zip)
@@ -401,9 +274,6 @@ def load_html_war_and_team(root: Path, season: int, player_ids: List[int], team_
 def resolve_team_abbr(row: pd.Series) -> str:
     """Choose first non-empty, non-free-agent team abbreviation."""
     candidates = [
-        str(row.get("team_abbr_stats", "")),
-        str(row.get("team_abbr_bat", "")),
-        str(row.get("team_abbr_pit", "")),
         str(row.get("team_abbr_html", "")),
         str(row.get("raw_team_abbr", "")),
         str(row.get("TM", "")),
@@ -421,16 +291,13 @@ def resolve_team_abbr(row: pd.Series) -> str:
     return ""
 
 
-def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.DataFrame, stats: pd.DataFrame, html_war: Dict[int, float], html_team: Dict[int, str]) -> pd.DataFrame:
-    """Join hype with profiles/players/stats/html; enforce full_name/team completeness."""
+def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.DataFrame, html_war: Dict[int, float], html_team: Dict[int, str]) -> pd.DataFrame:
+    """Join hype with profiles/players/html; enforce full_name/team completeness."""
     merged = hype.merge(profiles, left_on="player_id", right_on="ID", how="left", suffixes=("", "_prof"))
     logging.info("Hype rows matched to profiles: %d of %d", merged["full_name"].notna().sum(), len(merged))
 
     if not players.empty:
         merged = merged.merge(players, left_on="player_id", right_on="ID", how="left", suffixes=("", "_ply"))
-
-    merged = merged.merge(stats, left_on="player_id", right_on="ID", how="left", suffixes=("", "_stat"))
-    logging.info("Hype rows matched to season stats: %d of %d", merged["WAR_season"].notna().sum(), len(merged))
 
     # attach html team if available
     if html_team:
@@ -468,7 +335,7 @@ def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.Data
     merged["position"] = merged.apply(pick_position, axis=1)
 
     # war from stats, then fallback to HTML per-player pages if still zero/NA
-    merged["war_value"] = pd.to_numeric(merged.get("WAR_season", 0), errors="coerce").fillna(0.0)
+    merged["war_value"] = 0.0
     def apply_html_war(row: pd.Series) -> float:
         val = float(row.get("war_value", 0.0))
         pid = row.get("player_id")
@@ -594,10 +461,9 @@ def build_preseason_hype_fragment(season: int, league_id: int, preseason_html: P
 
     profiles = load_dim_player_profile(root)
     players = load_players_csv(root)
-    stats = load_season_war(root, season, league_id)
     team_lookup = load_dim_team_lookup(root)
     html_war, html_team = load_html_war_and_team(root, season, hype["player_id"].tolist(), team_lookup)
-    resolved = resolve_players(hype, profiles, players, stats, html_war, html_team)
+    resolved = resolve_players(hype, profiles, players, html_war, html_team)
 
     md_text = render_markdown(resolved, season)
 
