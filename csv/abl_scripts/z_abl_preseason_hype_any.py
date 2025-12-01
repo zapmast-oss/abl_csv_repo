@@ -139,7 +139,11 @@ def load_players_csv(root: Path) -> pd.DataFrame:
         logging.warning("players.csv not found at %s; skipping extra name resolution", path)
         return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full"])
     df = pd.read_csv(path)
-    id_col = "id" if "id" in df.columns else ("ID" if "ID" in df.columns else None)
+    id_col = None
+    for cand in ["player_id", "id", "ID"]:
+        if cand in df.columns:
+            id_col = cand
+            break
     first_col = next((c for c in ["first_name", "First Name", "first name"] if c in df.columns), None)
     last_col = next((c for c in ["last_name", "Last Name", "last name"] if c in df.columns), None)
     if id_col is None or first_col is None or last_col is None:
@@ -250,7 +254,7 @@ def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.Data
     logging.info("Hype rows matched to profiles: %d of %d", merged["full_name"].notna().sum(), len(merged))
 
     if not players.empty:
-        merged = merged.merge(players, on="ID", how="left", suffixes=("", "_ply"))
+        merged = merged.merge(players, left_on="player_id", right_on="ID", how="left", suffixes=("", "_ply"))
 
     merged = merged.merge(stats, left_on="player_id", right_on="ID", how="left", suffixes=("", "_stat"))
     logging.info("Hype rows matched to season stats: %d of %d", merged["WAR_season"].notna().sum(), len(merged))
