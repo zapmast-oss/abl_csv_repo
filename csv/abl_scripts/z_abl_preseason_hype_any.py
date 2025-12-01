@@ -115,17 +115,44 @@ def load_dim_player_profile(root: Path) -> pd.DataFrame:
     if missing:
         raise ValueError(f"dim_player_profile missing columns: {sorted(missing)}")
     keep = ["ID", "First Name", "Last Name"]
-    for opt in ["TM", "TM.1", "ORG", "ORG.1"]:
+    for opt in ["Name", "Name.1", "TM", "TM.1", "ORG", "ORG.1"]:
         if opt in df.columns:
             keep.append(opt)
     df = df[keep].copy()
     df["ID"] = pd.to_numeric(df["ID"], errors="coerce").astype("Int64")
-    df["full_name"] = (
-        df["First Name"].fillna("").astype(str).str.strip()
-        + " "
-        + df["Last Name"].fillna("").astype(str).str.strip()
-    ).str.strip()
+
+    # Build full_name with fallbacks
+    df["First Name"] = df["First Name"].fillna("").astype(str).str.strip()
+    df["Last Name"] = df["Last Name"].fillna("").astype(str).str.strip()
+    df["full_name"] = (df["First Name"] + " " + df["Last Name"]).str.strip()
+    if "Name" in df.columns:
+        df.loc[df["full_name"] == "", "full_name"] = df.loc[df["full_name"] == "", "Name"].fillna("").astype(str).str.strip()
+    if "Name.1" in df.columns:
+        df.loc[df["full_name"] == "", "full_name"] = df.loc[df["full_name"] == "", "Name.1"].fillna("").astype(str).str.strip()
     return df
+
+
+def load_players_csv(root: Path) -> pd.DataFrame:
+    """Load ootp players.csv for additional name resolution."""
+    path = root / "csv" / "ootp_csv" / "players.csv"
+    if not path.exists():
+        logging.warning("players.csv not found at %s; skipping extra name resolution", path)
+        return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full"])
+    df = pd.read_csv(path)
+    id_col = "id" if "id" in df.columns else ("ID" if "ID" in df.columns else None)
+    first_col = next((c for c in ["first_name", "First Name", "first name"] if c in df.columns), None)
+    last_col = next((c for c in ["last_name", "Last Name", "last name"] if c in df.columns), None)
+    if id_col is None or first_col is None or last_col is None:
+        logging.warning("players.csv missing id/first/last columns; skipping extra names")
+        return pd.DataFrame(columns=["ID", "players_first", "players_last", "players_full"])
+    out = df[[id_col, first_col, last_col]].rename(
+        columns={id_col: "ID", first_col: "players_first", last_col: "players_last"}
+    )
+    out["ID"] = pd.to_numeric(out["ID"], errors="coerce").astype("Int64")
+    out["players_first"] = out["players_first"].fillna("").astype(str).str.strip()
+    out["players_last"] = out["players_last"].fillna("").astype(str).str.strip()
+    out["players_full"] = (out["players_first"] + " " + out["players_last"]).str.strip()
+    return out
 
 
 def load_season_war(root: Path, season: int, league_id: int) -> pd.DataFrame:
@@ -179,11 +206,16 @@ def load_season_war(root: Path, season: int, league_id: int) -> pd.DataFrame:
 
     stats["WAR_season"] = stats["WAR_bat"] + stats["WAR_pit"]
 
-    stats["team_abbr_stats"] = stats.get("team_abbr_bat", "")
-    mask = stats["team_abbr_stats"].isna() | (stats["team_abbr_stats"] == "")
-    stats.loc[mask, "team_abbr_stats"] = stats.get("team_abbr_pit", "")
+    if "team_abbr_bat" not in stats.columns:
+        stats["team_abbr_bat"] = ""
+    if "team_abbr_pit" not in stats.columns:
+        stats["team_abbr_pit"] = ""
 
-    return stats[["ID", "team_abbr_stats", "WAR_season"]]
+    stats["team_abbr_stats"] = stats["team_abbr_bat"].fillna("")
+    mask = stats["team_abbr_stats"].isna() | (stats["team_abbr_stats"] == "")
+    stats.loc[mask, "team_abbr_stats"] = stats.loc[mask, "team_abbr_pit"].fillna("")
+
+    return stats[["ID", "team_abbr_stats", "team_abbr_bat", "team_abbr_pit", "WAR_season"]]
 
 
 # ---------------------------------------------------------------------------
@@ -194,6 +226,8 @@ def resolve_team_abbr(row: pd.Series) -> str:
     """Choose first non-empty, non-free-agent team abbreviation."""
     candidates = [
         str(row.get("team_abbr_stats", "")),
+        str(row.get("team_abbr_bat", "")),
+        str(row.get("team_abbr_pit", "")),
         str(row.get("raw_team_abbr", "")),
         str(row.get("TM", "")),
         str(row.get("TM.1", "")),
@@ -210,20 +244,44 @@ def resolve_team_abbr(row: pd.Series) -> str:
     return ""
 
 
-def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, stats: pd.DataFrame) -> pd.DataFrame:
-    """Join hype with profiles and stats; enforce full_name/team completeness."""
+def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.DataFrame, stats: pd.DataFrame) -> pd.DataFrame:
+    """Join hype with profiles/players/stats; enforce full_name/team completeness."""
     merged = hype.merge(profiles, left_on="player_id", right_on="ID", how="left", suffixes=("", "_prof"))
-    logging.info("Hype rows matched to profiles: %d of %d", merged["First Name"].notna().sum(), len(merged))
+    logging.info("Hype rows matched to profiles: %d of %d", merged["full_name"].notna().sum(), len(merged))
+
+    if not players.empty:
+        merged = merged.merge(players, on="ID", how="left", suffixes=("", "_ply"))
 
     merged = merged.merge(stats, left_on="player_id", right_on="ID", how="left", suffixes=("", "_stat"))
     logging.info("Hype rows matched to season stats: %d of %d", merged["WAR_season"].notna().sum(), len(merged))
 
-    merged["full_name"] = merged.apply(lambda r: f"{r.get('First Name', '').strip()} {r.get('Last Name', '').strip()}".strip(), axis=1)
+    # Build safe full_name with fallbacks (First+Last, Name/Name.1, players.csv, raw_name trimmed)
+    merged["First Name"] = merged["First Name"].fillna("").astype(str).str.strip()
+    merged["Last Name"] = merged["Last Name"].fillna("").astype(str).str.strip()
+
+    def build_full_name(row: pd.Series) -> str:
+        fn = row.get("First Name", "")
+        ln = row.get("Last Name", "")
+        if isinstance(fn, str) and fn.strip() and isinstance(ln, str) and ln.strip():
+            return f"{fn.strip()} {ln.strip()}"
+        for alt in ["Name", "Name.1", "players_full"]:
+            if alt in row and isinstance(row[alt], str) and row[alt].strip():
+                return row[alt].strip()
+        raw = str(row.get("raw_name", "")).strip()
+        if "," in raw:
+            raw = raw.split(",", 1)[0].strip()
+        return raw
+
+    merged["full_name"] = merged.apply(build_full_name, axis=1)
     merged["team_abbr"] = merged.apply(resolve_team_abbr, axis=1)
     merged["war_value"] = pd.to_numeric(merged.get("WAR_season", 0), errors="coerce").fillna(0.0)
 
     bad_name = merged[merged["full_name"].isna() | (merged["full_name"].str.strip() == "")]
-    bad_team = merged[merged["team_abbr"].isna() | (merged["team_abbr"].str.strip() == "")]
+    bad_team = merged[
+        merged["team_abbr"].isna()
+        | (merged["team_abbr"].str.strip() == "")
+        | (merged["team_abbr"].str.lower().isin(["free agent", "fa", "nan"]))
+    ]
     if not bad_name.empty or not bad_team.empty:
         logging.error("Preseason hype mapping failed. Offending rows:")
         logging.error(pd.concat([bad_name, bad_team], ignore_index=True)[["player_id", "raw_name", "full_name", "team_abbr"]])
@@ -302,8 +360,9 @@ def build_preseason_hype_fragment(season: int, league_id: int, preseason_html: P
         raise RuntimeError("No hype players parsed from preseason HTML; aborting.")
 
     profiles = load_dim_player_profile(root)
+    players = load_players_csv(root)
     stats = load_season_war(root, season, league_id)
-    resolved = resolve_players(hype, profiles, stats)
+    resolved = resolve_players(hype, profiles, players, stats)
 
     md_text = render_markdown(resolved, season)
 

@@ -1,5 +1,5 @@
 # ABL 1980 Regular Season – EB Pack (League 200)
-Generated on: 2025-12-01 06:55:00 (local time)
+Generated on: 2025-12-01 08:30:06 (local time)
 ---
 # EB Flashback 1980 – Data Brief (DO NOT PUBLISH)
 
@@ -160,25 +160,25 @@ _Based on preseason predictions and 1980 season WAR among hyped players._
 **Under-delivered**
 - Tony Zacate (PHO) - WAR: -0.40
 - Pat Watters (MIA) - WAR: -0.30
-- L. Gonzalez - WAR: 0.00
-- M. Morales - WAR: 0.00
-- H. Jimenez - WAR: 0.00
+- L. Gonzalez (SD) - WAR: 0.00
+- M. Morales (CHI) - WAR: 0.00
+- H. Jimenez (CHI) - WAR: 0.00
 - Jose Cuba (LA) - WAR: 0.00
-- J. Cortez - WAR: 0.00
-- M. Dickens - WAR: 0.00
-- G. Aguilar - WAR: 0.00
+- J. Cortez (LA) - WAR: 0.00
+- M. Dickens (CHA) - WAR: 0.00
+- G. Aguilar (MIA) - WAR: 0.00
 - Gia-Long Mac (CHI) - WAR: 0.00
-- S. Grimes - WAR: 0.00
+- S. Grimes (PHO) - WAR: 0.00
 - Omar Garcia (MIA) - WAR: 0.00
 - Jeremy Campbell (POR) - WAR: 0.00
-- D. Olguin - WAR: 0.00
-- W. Ufena - WAR: 0.00
-- L. Sanchez - WAR: 0.00
-- A. Perez - WAR: 0.00
-- B. Rodriguez - WAR: 0.00
-- B. Lopez - WAR: 0.00
+- D. Olguin (SEA) - WAR: 0.00
+- W. Ufena (HOU) - WAR: 0.00
+- L. Sanchez (PIT) - WAR: 0.00
+- A. Perez (CIN) - WAR: 0.00
+- B. Rodriguez (LV) - WAR: 0.00
+- B. Lopez (STL) - WAR: 0.00
 - Chris Jorge (STL) - WAR: 0.00
-- J. Coronado - WAR: 0.00
+- J. Coronado (STL) - WAR: 0.00
 
 ---
 
