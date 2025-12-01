@@ -297,6 +297,16 @@ def load_html_war(root: Path, season: int, player_ids: List[int]) -> Dict[int, f
                             break
                         except Exception:
                             pass
+                    # final fallback: take the first non-null WAR in the table
+                    if not found:
+                        non_null = tbl[pd.notna(tbl["WAR"])]
+                        if not non_null.empty:
+                            try:
+                                wars[pid] = float(non_null["WAR"].iloc[0])
+                                found = True
+                                break
+                            except Exception:
+                                pass
                 else:
                     # No explicit WAR column; skip to avoid bogus values
                     continue
