@@ -302,46 +302,68 @@ def detect_postseason_blocks(df: pd.DataFrame) -> Tuple[Optional[date], List[Tup
 
 
 def detect_playoff_series(df: pd.DataFrame, postseason_start: Optional[date], post_blocks: List[Tuple[date, date]]) -> Dict[str, Tuple[Optional[date], Optional[date]]]:
-    """Detect DCS/CCS/GS ranges. Prefer contiguous blocks; fallback to team-count thresholds."""
+    """Detect DCS/CCS/GS using team-count thresholds (8->4->2 teams) with contiguous team-count blocks."""
     result = {"DCS": (None, None), "CCS": (None, None), "GS": (None, None)}
     if not postseason_start:
         return result
-
-    # Prefer contiguous blocks (first three blocks => DCS, CCS, GS)
-    if post_blocks:
-        labels = ["DCS", "CCS", "GS"]
-        for lbl, blk in zip(labels, post_blocks):
-            result[lbl] = (pd.to_datetime(blk[0]).date(), pd.to_datetime(blk[1]).date())
-        return result
-
-    # Fallback: thresholds
     daily = df[df["played"]].groupby("date")["team_raw"].nunique().reset_index(name="teams")
     daily = daily[daily["date"] >= postseason_start].sort_values("date")
     if daily.empty:
         return result
-    dcs_start = daily["date"].min()
-    ccs_start = daily.loc[daily["teams"] <= 4, "date"].min() if (daily["teams"] <= 4).any() else None
-    gs_start = daily.loc[daily["teams"] <= 2, "date"].min() if (daily["teams"] <= 2).any() else None
 
-    dcs_end = None
-    ccs_end = None
-    gs_end = None
-    if ccs_start:
-        dcs_end = ccs_start - pd.Timedelta(days=1)
-    else:
-        dcs_end = daily["date"].max()
-    if gs_start:
-        ccs_end = gs_start - pd.Timedelta(days=1)
-        gs_end = daily["date"].max()
-    elif ccs_start:
-        ccs_end = daily["date"].max()
+    # Build contiguous blocks with same team count, allowing 1-day gaps
+    blocks = []
+    cur_start = cur_end = None
+    cur_count = None
+    prev_date = None
+    for _, row in daily.iterrows():
+        d = row["date"]
+        c = row["teams"]
+        if cur_start is None:
+            cur_start = cur_end = d
+            cur_count = c
+            prev_date = d
+            continue
+        if (d - prev_date).days <= 1 and c == cur_count:
+            cur_end = d
+            prev_date = d
+        else:
+            blocks.append((cur_start, cur_end, cur_count))
+            cur_start = cur_end = d
+            cur_count = c
+            prev_date = d
+    if cur_start is not None:
+        blocks.append((cur_start, cur_end, cur_count))
 
-    result["DCS"] = (pd.to_datetime(dcs_start).date() if pd.notna(dcs_start) else None,
-                     pd.to_datetime(dcs_end).date() if pd.notna(dcs_end) else None)
-    result["CCS"] = (pd.to_datetime(ccs_start).date() if ccs_start is not None and pd.notna(ccs_start) else None,
-                     pd.to_datetime(ccs_end).date() if ccs_end is not None and pd.notna(ccs_end) else None)
-    result["GS"] = (pd.to_datetime(gs_start).date() if gs_start is not None and pd.notna(gs_start) else None,
-                    pd.to_datetime(gs_end).date() if gs_end is not None and pd.notna(gs_end) else None)
+    dcs_range = [None, None]
+    ccs_range = [None, None]
+    gs_range = [None, None]
+
+    stage = "DCS"
+    for blk_start, blk_end, count in blocks:
+        if stage == "DCS":
+            if count <= 8:
+                dcs_range[0] = blk_start if dcs_range[0] is None else dcs_range[0]
+                dcs_range[1] = blk_end
+            if count <= 4:
+                stage = "CCS"
+        elif stage == "CCS":
+            if count <= 4:
+                ccs_range[0] = blk_start if ccs_range[0] is None else ccs_range[0]
+                ccs_range[1] = blk_end
+            if count <= 2:
+                stage = "GS"
+        elif stage == "GS":
+            if count <= 2:
+                gs_range[0] = blk_start if gs_range[0] is None else gs_range[0]
+                gs_range[1] = blk_end
+
+    result["DCS"] = (pd.to_datetime(dcs_range[0]).date() if dcs_range[0] is not None else None,
+                     pd.to_datetime(dcs_range[1]).date() if dcs_range[1] is not None else None)
+    result["CCS"] = (pd.to_datetime(ccs_range[0]).date() if ccs_range[0] is not None else None,
+                     pd.to_datetime(ccs_range[1]).date() if ccs_range[1] is not None else None)
+    result["GS"] = (pd.to_datetime(gs_range[0]).date() if gs_range[0] is not None else None,
+                    pd.to_datetime(gs_range[1]).date() if gs_range[1] is not None else None)
     return result
 
 
