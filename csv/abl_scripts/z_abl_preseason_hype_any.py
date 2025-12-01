@@ -4,7 +4,7 @@
 This version:
 - Uses player_id parsed from the preseason HTML (via parse_preseason_predictions)
   and dim_player_profile to recover full player names.
-- Uses WAR as the primary performance metric when available.
+- Uses WAR as the primary performance metric when available and labels it clearly.
 """
 from __future__ import annotations
 
@@ -21,6 +21,10 @@ from z_abl_almanac_html_helpers import parse_preseason_predictions
 def log(msg: str) -> None:
     print(msg, flush=True)
 
+
+# ---------------------------------------------------------------------------
+# Name helpers
+# ---------------------------------------------------------------------------
 
 def _normalize_name(name: str) -> str:
     if not name:
@@ -45,6 +49,10 @@ def _attach_name_norms(df: pd.DataFrame, col: str) -> pd.DataFrame:
     df["player_initial"] = df[col].apply(_first_initial)
     return df
 
+
+# ---------------------------------------------------------------------------
+# Score: WAR-first
+# ---------------------------------------------------------------------------
 
 def _compute_score(row: pd.Series) -> float:
     """Return a numeric performance score for a player.
@@ -119,25 +127,40 @@ def _pick_team_fields(row: pd.Series) -> Dict[str, Optional[str]]:
     """Return a dict with printable team_name / team_abbr fields."""
     name = row.get("team_name")
     abbr = row.get("team_abbr")
+
     if pd.notna(name):
         name = canonicalize_team_city(str(name))
     if pd.isna(abbr):
         abbr = None
+
     return {
         "team_name": name if name else None,
         "team_abbr": abbr if abbr else None,
     }
 
 
-def _build_profile_lookup(repo_root: Path) -> Dict[int, Dict[str, str]]:
-    """Load dim_player_profile and build a lookup from player_id -> names.
+# ---------------------------------------------------------------------------
+# Player profile lookup (robust column handling)
+# ---------------------------------------------------------------------------
 
-    Expected columns in dim_player_profile.csv:
-      - ID (int)
-      - First Name
-      - Last Name
-      - Name (full display name)
-      - Name.1 (short 'J. Galvez' style name)
+def _build_profile_lookup(repo_root: Path) -> Dict[int, Dict[str, str]]:
+    """Load dim_player_profile and build a lookup: player_id -> names.
+
+    We try to be tolerant of different column names:
+
+      ID column candidates:
+        - "ID", "Id", "id", "Player ID", "player_id"
+
+      Name column candidates:
+        - First Name: "First Name", "First_Name", "first_name"
+        - Last Name:  "Last Name", "Last_Name", "last_name"
+        - Full/short display names: "Name", "Name.1"
+
+    The resulting mapping for each player_id is:
+      {
+        "full_name": "Miguel Morales",
+        "short_name": "M. Morales"
+      }
     """
     path = repo_root / "csv" / "out" / "star_schema" / "dim_player_profile.csv"
     if not path.exists():
@@ -145,39 +168,72 @@ def _build_profile_lookup(repo_root: Path) -> Dict[int, Dict[str, str]]:
         return {}
 
     df = pd.read_csv(path)
-    required = {"ID", "First Name", "Last Name"}
-    if not required.issubset(set(df.columns)):
-        log(
-            "[WARN] dim_player_profile missing expected columns %s; got %s",
-            sorted(required),
-            list(df.columns),
-        )
+    cols = list(df.columns)
+    log(f"[INFO] dim_player_profile columns: {cols}")
+
+    # Determine ID column
+    id_candidates = ["ID", "Id", "id", "Player ID", "player_id"]
+    id_col = next((c for c in id_candidates if c in df.columns), None)
+    if not id_col:
+        log("[WARN] No usable ID column found in dim_player_profile; cannot build profile lookup")
         return {}
 
+    # Determine name columns (may or may not exist)
+    first_candidates = ["First Name", "First_Name", "first_name"]
+    last_candidates = ["Last Name", "Last_Name", "last_name"]
+
+    first_col = next((c for c in first_candidates if c in df.columns), None)
+    last_col = next((c for c in last_candidates if c in df.columns), None)
+
+    full_col = "Name" if "Name" in df.columns else None
+    short_col = "Name.1" if "Name.1" in df.columns else None
+
     lookup: Dict[int, Dict[str, str]] = {}
+
     for _, row in df.iterrows():
         try:
-            pid = int(row["ID"])
+            pid = int(row[id_col])
         except Exception:
             continue
 
-        first = "" if pd.isna(row.get("First Name")) else str(row.get("First Name"))
-        last = "" if pd.isna(row.get("Last Name")) else str(row.get("Last Name"))
-        full_name = (first + " " + last).strip()
+        first = str(row[first_col]).strip() if first_col and pd.notna(row.get(first_col)) else ""
+        last = str(row[last_col]).strip() if last_col and pd.notna(row.get(last_col)) else ""
 
-        if not full_name:
-            # Fallback: Name column if first/last are missing
-            full_name = str(row.get("Name", "")).strip()
+        full_name_parts: List[str] = []
+        if first:
+            full_name_parts.append(first)
+        if last:
+            full_name_parts.append(last)
+        full_name = " ".join(full_name_parts).strip()
 
-        short_name = str(row.get("Name.1", "")).strip() or full_name
+        # Fallbacks for full_name if first/last aren't usable
+        if not full_name and full_col and pd.notna(row.get(full_col)):
+            full_name = str(row.get(full_col)).strip()
+        if not full_name and short_col and pd.notna(row.get(short_col)):
+            full_name = str(row.get(short_col)).strip()
+
+        # Short display name
+        short_name = ""
+        if short_col and pd.notna(row.get(short_col)):
+            short_name = str(row.get(short_col)).strip()
+        if not short_name:
+            short_name = full_name
+
+        if not full_name and not short_name:
+            continue
 
         lookup[pid] = {
             "full_name": full_name if full_name else short_name,
-            "short_name": short_name,
+            "short_name": short_name if short_name else full_name,
         }
 
+    log(f"[INFO] Built profile lookup for {len(lookup)} players from dim_player_profile")
     return lookup
 
+
+# ---------------------------------------------------------------------------
+# Matching hype entries to stats
+# ---------------------------------------------------------------------------
 
 def match_hype_entry(entry: Dict[str, Any], stats: pd.DataFrame) -> Optional[pd.Series]:
     """Match a preseason hype entry to a row in the combined stats dataframe."""
@@ -208,6 +264,10 @@ def match_hype_entry(entry: Dict[str, Any], stats: pd.DataFrame) -> Optional[pd.
         return None
     return pool.loc[best_idx]
 
+
+# ---------------------------------------------------------------------------
+# Bucketing + markdown
+# ---------------------------------------------------------------------------
 
 def bucketize(records: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
     """Split matched hype records into over/neutral/under buckets by WAR/score terciles."""
@@ -260,6 +320,10 @@ def build_md(buckets: Dict[str, List[Dict[str, Any]]], season: int) -> str:
     return normalize_eb_text("\n".join(lines).strip() + "\n")
 
 
+# ---------------------------------------------------------------------------
+# Main orchestration
+# ---------------------------------------------------------------------------
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build preseason hype vs performance brief.")
     parser.add_argument("--season", type=int, required=True, help="Season year, e.g. 1980")
@@ -281,30 +345,40 @@ def main() -> int:
     season = args.season
     league_id = args.league_id
 
-    # Parse preseason predictions HTML
+    # Parse preseason predictions HTML (includes player_id)
     hype_rows = parse_preseason_predictions(args.preseason_html)
     if not hype_rows:
         log(f"[WARN] No preseason predictions parsed from {args.preseason_html}")
         return 0
 
+    log(f"[INFO] Parsed {len(hype_rows)} preseason hype rows from HTML")
+
     # Enrich hype entries with full names via player_id + dim_player_profile
     profile_lookup = _build_profile_lookup(repo_root)
     if profile_lookup:
+        total_with_pid = 0
+        enriched_count = 0
         enriched: List[Dict[str, Any]] = []
         for entry in hype_rows:
             e = dict(entry)
-            pid = e.get("player_id")
+            pid_raw = e.get("player_id")
             try:
-                pid_int = int(pid) if pid is not None else None
+                pid_int = int(pid_raw) if pid_raw is not None else None
             except Exception:
                 pid_int = None
 
-            if pid_int is not None and pid_int in profile_lookup:
-                full_name = profile_lookup[pid_int]["full_name"]
-                if full_name:
-                    e["player_name"] = full_name
+            if pid_int is not None:
+                total_with_pid += 1
+                profile = profile_lookup.get(pid_int)
+                if profile and profile.get("full_name"):
+                    e["player_name"] = profile["full_name"]
+                    enriched_count += 1
             enriched.append(e)
         hype_rows = enriched
+        log(f"[INFO] Hype rows with player_id: {total_with_pid}")
+        log(f"[INFO] Hype rows whose names were enriched from dim_player_profile: {enriched_count}")
+    else:
+        log("[WARN] No profile lookup available; hype names will remain as in HTML")
 
     # Load season stats (batting + pitching)
     stats = _load_stats(season, league_id, repo_root)
@@ -332,6 +406,8 @@ def main() -> int:
             "score": matched.get("score"),
         }
         matched_records.append(rec)
+
+    log(f"[INFO] Matched {len(matched_records)} hype entries to season stats")
 
     if not matched_records:
         log("[WARN] No preseason hype entries matched to stats; nothing to write.")
