@@ -1,4 +1,5 @@
 # ABL 1973 Regular Season – EB Pack (League 200)
+Generated on: 2025-11-30 22:44:52 (local time)
 ---
 # EB Flashback 1973 – Data Brief (DO NOT PUBLISH)
 

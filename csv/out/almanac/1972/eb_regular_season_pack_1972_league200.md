@@ -1,4 +1,5 @@
 # ABL 1972 Regular Season – EB Pack (League 200)
+Generated on: 2025-11-30 22:44:44 (local time)
 ---
 # EB Flashback 1972 – Data Brief (DO NOT PUBLISH)
 

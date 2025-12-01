@@ -1,4 +1,5 @@
 # ABL 1979 Regular Season – EB Pack (League 200)
+Generated on: 2025-11-30 22:45:41 (local time)
 ---
 # EB Flashback 1979 – Data Brief (DO NOT PUBLISH)
 

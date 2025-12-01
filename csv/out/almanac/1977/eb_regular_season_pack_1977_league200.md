@@ -1,4 +1,5 @@
 # ABL 1977 Regular Season – EB Pack (League 200)
+Generated on: 2025-11-30 22:45:25 (local time)
 ---
 # EB Flashback 1977 – Data Brief (DO NOT PUBLISH)
 

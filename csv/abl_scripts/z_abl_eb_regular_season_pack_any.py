@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+from datetime import datetime
 from pathlib import Path
 from typing import Sequence
 
@@ -151,7 +152,8 @@ def main() -> int:
             body_parts.append("")
 
     header = f"# ABL {season} Regular Season – EB Pack (League {league_id})"
-    sections = [header, "", "---", ""]
+    generated_at = datetime.now().strftime("Generated on: %Y-%m-%d %H:%M:%S (local time)")
+    sections = [header, generated_at, "", "---", ""]
     sections.append("\n\n---\n\n".join(body_parts).strip())
 
     full_text = "\n".join([s for s in sections if s != ""])

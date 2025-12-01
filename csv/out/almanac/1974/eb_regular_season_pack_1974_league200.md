@@ -1,4 +1,5 @@
 # ABL 1974 Regular Season – EB Pack (League 200)
+Generated on: 2025-11-30 22:45:00 (local time)
 ---
 # EB Flashback 1974 – Data Brief (DO NOT PUBLISH)
 

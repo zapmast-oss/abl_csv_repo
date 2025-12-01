@@ -1,4 +1,5 @@
 # ABL 1976 Regular Season – EB Pack (League 200)
+Generated on: 2025-11-30 22:45:16 (local time)
 ---
 # EB Flashback 1976 – Data Brief (DO NOT PUBLISH)
 
