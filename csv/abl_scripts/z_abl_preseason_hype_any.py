@@ -2,18 +2,21 @@
 """
 Build EB preseason hype brief for a given ABL season.
 
-Rules:
-- Parse preseason prediction HTML directly to extract player IDs.
-- Map IDs to full names via dim_player_profile.
-- Get SEASON WAR and team abbreviation from star_schema/fact_player_batting.csv.
-- Rank hyped players by season WAR.
-- Split into three buckets (top / middle / bottom third):
-  Over-delivered, Delivered, Under-delivered.
-- Render markdown with one entry per player:
+Key rules:
+- Parse preseason prediction HTML directly, pull player_id from links like player_8025.html.
+- Map player_id to full name via dim_player_profile.
+- Pull SEASON WAR and team abbreviation (TM) from star_schema/fact_player_batting.csv
+  for the requested season only.
+- Rank hyped players by SEASON WAR (not career).
+- Split into three buckets by rank:
+    Over-delivered   = top third
+    Delivered        = middle third
+    Under-delivered  = bottom third
+- Render markdown like:
+    - Scott Reis (CIN) - WAR: 0.80
 
-  - Full Name (TM) - WAR: X.XX
-
-No "Free agent" text, no "(nan)" teams, one line per player.
+No "Free agent" labels, no "(nan)" team names, no team names spelled out.
+Only "Full Name (ABBR) - WAR: X.XX".
 """
 
 import argparse
@@ -55,8 +58,8 @@ def parse_preseason_html(html_path: Path) -> pd.DataFrame:
     """
     Extract unique player_ids from preseason prediction HTML.
 
-    We look for rows where the first <td> has a link to ../players/player_XXXX.html.
-    The XXXX part is the numeric player_id. We keep one row per player_id.
+    We scan <tr> rows where the first <td> contains a link to ../players/player_XXXX.html.
+    The XXXX portion is the numeric player_id. We keep one row per player_id.
     """
     text = html_path.read_text(encoding="utf-8", errors="ignore")
     soup = BeautifulSoup(text, "html.parser")
@@ -102,8 +105,9 @@ def load_dim_player_profile(repo_root: Path) -> pd.DataFrame:
 
     We rely on:
     - ID
-    - Name (if present)
-    - First Name / Last Name
+    - Name
+    - First Name
+    - Last Name
     """
     path = repo_root / "csv" / "out" / "star_schema" / "dim_player_profile.csv"
     df = pd.read_csv(path)
@@ -111,20 +115,37 @@ def load_dim_player_profile(repo_root: Path) -> pd.DataFrame:
     return df
 
 
-def load_fact_player_batting(repo_root: Path) -> pd.DataFrame:
+def load_fact_player_batting(repo_root: Path, season: int) -> pd.DataFrame:
     """
-    Load fact_player_batting as the SEASON stats table.
+    Load fact_player_batting for SEASON stats.
 
-    We rely on:
-    - ID
-    - TM  (team abbreviation for that season)
-    - WAR (season WAR; we coerce missing to 0.0)
+    Columns used:
+    - ID       (player id)
+    - season   (season year)
+    - TM       (team abbreviation)
+    - WAR      (season WAR)
+
+    We filter to the requested season and then collapse to one row per ID:
+    keep the row with the highest WAR for that season (in case of trades).
     """
     path = repo_root / "csv" / "out" / "star_schema" / "fact_player_batting.csv"
     df = pd.read_csv(path)
+
     df["ID"] = pd.to_numeric(df["ID"], errors="coerce").astype("Int64")
+    if "season" in df.columns:
+        df["season"] = pd.to_numeric(df["season"], errors="coerce").astype("Int64")
+        df = df[df["season"] == season].copy()
+
+    # Normalize WAR and TM
     df["WAR"] = pd.to_numeric(df.get("WAR"), errors="coerce").fillna(0.0)
     df["TM"] = df.get("TM", "").fillna("").astype(str).str.strip()
+
+    if df.empty:
+        return df
+
+    # For players with multiple rows in a season (trades), keep row with max WAR.
+    df = df.sort_values(["ID", "WAR"], ascending=[True, False])
+    df = df.drop_duplicates(subset=["ID"], keep="first").reset_index(drop=True)
     return df
 
 
@@ -135,7 +156,6 @@ def build_hype_table(
 ) -> pd.DataFrame:
     """
     Join hype players to dim + fact tables to get:
-
     - full_name
     - team_abbr
     - WAR (season)
@@ -151,7 +171,7 @@ def build_hype_table(
         how="left",
     )
 
-    # Merge to fact_player_batting for season WAR + team abbrev
+    # Merge -> fact_player_batting for season WAR + team abbreviation
     df = df.merge(
         fact_batting[["ID", "TM", "WAR"]],
         on="ID",
@@ -175,13 +195,13 @@ def build_hype_table(
 
     df["full_name"] = df.apply(pick_name, axis=1)
 
-    # Team abbreviation from fact table; if missing, leave as empty string.
+    # Team abbreviation from fact table (season-specific)
     df["team_abbr"] = df.get("TM", "").fillna("").astype(str).str.strip()
 
     # Ensure WAR is numeric and default 0.0
     df["WAR"] = pd.to_numeric(df.get("WAR"), errors="coerce").fillna(0.0)
 
-    # Drop rows where we never resolved a meaningful name
+    # Drop rows where name really could not be resolved
     df = df[~df["full_name"].eq("Unknown Player")].copy()
 
     # Sort by WAR desc, then name asc for stable ordering
@@ -243,7 +263,6 @@ def render_markdown(df: pd.DataFrame, season: int) -> str:
 
     **Over-delivered**
     - Scott Reis (CIN) - WAR: 0.80
-    ...
     """
     lines: List[str] = []
     lines.append("## Preseason hype - who delivered?")
@@ -301,7 +320,7 @@ def main() -> int:
         )
     else:
         dim_profile = load_dim_player_profile(repo_root)
-        fact_batting = load_fact_player_batting(repo_root)
+        fact_batting = load_fact_player_batting(repo_root, season)
         hype_table = build_hype_table(hype_df, dim_profile, fact_batting)
         hype_table = bucketize_by_war(hype_table)
         md_text = render_markdown(hype_table, season)
