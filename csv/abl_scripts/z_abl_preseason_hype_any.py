@@ -387,9 +387,9 @@ def bucket_war(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFra
 
     df = df.copy()
     df["bucket"] = df["war_value"].apply(assign)
-    over = df[df["bucket"] == "over"].sort_values("war_value", ascending=False)
-    delivered = df[df["bucket"] == "delivered"].sort_values("war_value", ascending=False)
-    under = df[df["bucket"] == "under"].sort_values("war_value", ascending=True)
+    over = df[df["bucket"] == "over"].sort_values(["war_value", "full_name"], ascending=[False, True])
+    delivered = df[df["bucket"] == "delivered"].sort_values(["war_value", "full_name"], ascending=[False, True])
+    under = df[df["bucket"] == "under"].sort_values(["war_value", "full_name"], ascending=[True, True])
     return over, delivered, under
 
 

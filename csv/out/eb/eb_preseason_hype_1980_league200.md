@@ -13,14 +13,14 @@ _Based on preseason predictions and 1980 season WAR among hyped players._
 - Alex Perez (P, CIN) - WAR: 5.90
 - Ethan Harrison (RF, CIN) - WAR: 5.90
 - Nate Smeltz (2B, PHO) - WAR: 5.70
-- Warren Ufena (LF, HOU) - WAR: 5.60
 - Brett Petrillo (LF, NAS) - WAR: 5.60
-- Tony Zacate (P, PHO) - WAR: 5.00
+- Warren Ufena (LF, HOU) - WAR: 5.60
 - Bert Lopez (P, STL) - WAR: 5.00
+- Tony Zacate (P, PHO) - WAR: 5.00
 
 **Delivered**
-- Preston Strate (1B, TB) - WAR: 4.70
 - Adam Strate (P, POR) - WAR: 4.70
+- Preston Strate (1B, TB) - WAR: 4.70
 - Tony Oubre (P, NY) - WAR: 4.50
 - Jeremy Campbell (1B, POR) - WAR: 4.40
 - Rick Satchell (P, CIN) - WAR: 4.00
@@ -39,10 +39,10 @@ _Based on preseason predictions and 1980 season WAR among hyped players._
 - Luis Sanchez (1B, PIT) - WAR: 2.40
 - Eddie Rodriguez (1B, LA) - WAR: 2.50
 - Jose Cuba (P, LA) - WAR: 2.50
-- Michael Dickens (RF, CHA) - WAR: 2.50
 - Juan Perez (LF, BOS) - WAR: 2.50
-- Arturo Gonzalez (P, SF) - WAR: 2.70
+- Michael Dickens (RF, CHA) - WAR: 2.50
 - Alex Lander (1B, MIA) - WAR: 2.70
+- Arturo Gonzalez (P, SF) - WAR: 2.70
+- Brent Keyser (1B, HOU) - WAR: 2.80
 - Heriberto Jimenez (P, CHI) - WAR: 2.80
 - Omar Garcia (P, MIA) - WAR: 2.80
-- Brent Keyser (1B, HOU) - WAR: 2.80
