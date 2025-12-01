@@ -278,35 +278,14 @@ def load_html_war(root: Path, season: int, player_ids: List[int]) -> Dict[int, f
                                     pass
                     if found:
                         break
-                    # fallback: first column may be year
-                    first_col = tbl.columns[0]
-                    sub = tbl[tbl[first_col].astype(str) == str(season)]
-                    if not sub.empty and pd.notna(sub["WAR"]).any():
+                    # fallback: if table has exactly one row, use its WAR
+                    if len(tbl) == 1 and pd.notna(tbl["WAR"]).any():
                         try:
-                            wars[pid] = float(sub["WAR"].iloc[0])
+                            wars[pid] = float(tbl["WAR"].iloc[0])
                             found = True
                             break
                         except Exception:
                             pass
-                    # if still not found, look for an Overall row
-                    overall = tbl[tbl.iloc[:, 0].astype(str).str.lower() == "overall"]
-                    if not overall.empty and pd.notna(overall["WAR"]).any():
-                        try:
-                            wars[pid] = float(overall["WAR"].iloc[0])
-                            found = True
-                            break
-                        except Exception:
-                            pass
-                    # final fallback: take the first non-null WAR in the table
-                    if not found:
-                        non_null = tbl[pd.notna(tbl["WAR"])]
-                        if not non_null.empty:
-                            try:
-                                wars[pid] = float(non_null["WAR"].iloc[0])
-                                found = True
-                                break
-                            except Exception:
-                                pass
                 else:
                     # No explicit WAR column; skip to avoid bogus values
                     continue
@@ -389,10 +368,13 @@ def resolve_players(hype: pd.DataFrame, profiles: pd.DataFrame, players: pd.Data
     def apply_html_war(row: pd.Series) -> float:
         val = float(row.get("war_value", 0.0))
         pid = row.get("player_id")
-        if (pd.isna(val) or val == 0.0) and isinstance(pid, (int, float)) and not pd.isna(pid):
+        if isinstance(pid, (int, float)) and not pd.isna(pid):
             pid_int = int(pid)
             if pid_int in html_war:
-                return float(html_war[pid_int])
+                html_val = float(html_war[pid_int])
+                # Prefer HTML WAR when stats WAR is missing, zero, or clearly off (<= 0)
+                if pd.isna(val) or val <= 0.0:
+                    return html_val
         return val
     merged["war_value"] = merged.apply(apply_html_war, axis=1)
 
