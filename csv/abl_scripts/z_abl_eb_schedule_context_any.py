@@ -85,27 +85,38 @@ def _build_team_lookup(dim_path: Path) -> Tuple[Dict[str, str], Dict[str, str]]:
 def _attach_team_metadata(df: pd.DataFrame, dim_path: Path) -> pd.DataFrame:
     """
     Attach canonical team_abbr / team_label columns using dim_team_park.
-    If lookup fails or dim is missing, fall back to team_raw.
+
+    Behavior change:
+    - If a header label (team_raw) cannot be mapped via dim_team_park,
+      we leave team_abbr and team_label as None instead of falling back
+      to the raw string. This allows us to filter out non-team entries
+      (e.g., page furniture, nav bars) cleanly in the Markdown builder.
     """
     abbr_map, label_map = _build_team_lookup(dim_path)
+    df = df.copy()
+
     if not abbr_map:
-        df = df.copy()
-        df["team_abbr"] = df["team_raw"]
-        df["team_label"] = df["team_raw"]
+        # No reliable dim; mark everything as unknown and let the Markdown
+        # generator decide how to handle missing team metadata.
+        df["team_abbr"] = pd.NA
+        df["team_label"] = pd.NA
         return df
 
-    abbrs = []
-    labels = []
+    team_abbrs: list[str | None] = []
+    team_labels: list[str | None] = []
+
     for raw in df["team_raw"].astype(str):
         key = _norm_key(raw)
-        abbr = abbr_map.get(key, raw)
-        label = label_map.get(key, raw)
-        abbrs.append(abbr)
-        labels.append(label)
+        if key in abbr_map:
+            team_abbrs.append(abbr_map[key])
+            team_labels.append(label_map.get(key, abbr_map[key]))
+        else:
+            # Unknown header value: do NOT treat it as a team; leave null.
+            team_abbrs.append(None)
+            team_labels.append(None)
 
-    df = df.copy()
-    df["team_abbr"] = abbrs
-    df["team_label"] = labels
+    df["team_abbr"] = team_abbrs
+    df["team_label"] = team_labels
     return df
 
 
@@ -128,6 +139,7 @@ def _build_schedule_context_markdown(df: pd.DataFrame) -> str:
     if df_played.empty:
         raise ValueError("No played games in schedule grid")
 
+    # League-wide date stats from all rows (even if team mapping fails)
     opening_date = df_played["date"].min()
     final_date = df_played["date"].max()
 
@@ -160,58 +172,112 @@ def _build_schedule_context_markdown(df: pd.DataFrame) -> str:
         if len(run) >= 3:
             derby_date, asg_date, extra_off_date = run[0], run[1], run[2]
 
-    teams = sorted(df["team_abbr"].unique() if "team_abbr" in df.columns else df["team_raw"].unique())
-    team_key = "team_abbr" if "team_abbr" in df.columns else "team_raw"
+    # Filter to rows with valid team mapping
+    df_teams = df[df["team_abbr"].notna()].copy()
 
-    # Team-level rest profile
-    records: list[dict[str, Any]] = []
-    for team in teams:
-        tdf = df[(df[team_key] == team) & (df["played"])]
-        dates_played = sorted({d for d in tdf["date"] if opening_date <= d <= final_date})
-        off_days = [d for d in all_dates if d not in dates_played]
-        records.append(
-            {
-                "team": team,
-                "games": len(dates_played),
-                "off_days": len(off_days),
-            }
-        )
+    def fmt_date(d) -> str:
+        return f"{d.strftime('%B')} {d.day}, {d.year}"
 
-    team_df = pd.DataFrame(records)
-    most_rest = team_df.sort_values("off_days", ascending=False).head(3)
-    least_rest = team_df.sort_values("off_days", ascending=True).head(3)
+    lines: list[str] = []
 
-    # Brutal stretches (see docstring for rule)
+    lines.append("#### Schedule Overview")
+    lines.append("")
+    lines.append(f"- Opening Day: {fmt_date(opening_date)}")
+    lines.append(f"- Final Day: {fmt_date(final_date)}")
+    lines.append(f"- League-wide game days: {league_game_days}")
+    lines.append(f"- League-wide full off-days (no games at all): {league_off_days}")
+    lines.append("")
+
+    lines.append("#### Rest Distribution")
+    lines.append("")
+
+    if df_teams.empty:
+        lines.append("(Team-level rest/brutal stretches unavailable: no team metadata matched the schedule grid.)")
+        lines.append("")
+    else:
+        teams = sorted(df_teams["team_abbr"].unique())
+        team_key = "team_abbr"
+
+        # Team-level rest profile
+        records: list[dict[str, Any]] = []
+        for team in teams:
+            tdf = df_teams[(df_teams[team_key] == team) & (df_teams["played"])]
+            dates_played = sorted({d for d in tdf["date"] if opening_date <= d <= final_date})
+            off_days = [d for d in all_dates if d not in dates_played]
+            records.append(
+                {
+                    "team": team,
+                    "games": len(dates_played),
+                    "off_days": len(off_days),
+                }
+            )
+
+        team_df = pd.DataFrame(records)
+        most_rest = team_df.sort_values("off_days", ascending=False).head(3)
+        least_rest = team_df.sort_values("off_days", ascending=True).head(3)
+
+        lines.append("Most rest (top 3 by off-days):")
+        for _, row in most_rest.iterrows():
+            lines.append(
+                f"- {row['team']}: {int(row['off_days'])} off-days, {int(row['games'])} games"
+            )
+        lines.append("")
+
+        lines.append("Least rest (bottom 3 by off-days):")
+        for _, row in least_rest.iterrows():
+            lines.append(
+                f"- {row['team']}: {int(row['off_days'])} off-days, {int(row['games'])} games"
+            )
+        lines.append("")
+
+    lines.append("#### All-Star Break")
+    lines.append("")
+    if derby_date and asg_date and extra_off_date:
+        lines.append(f"- HR Derby: {fmt_date(derby_date)}")
+        lines.append(f"- All-Star Game: {fmt_date(asg_date)}")
+        lines.append(f"- Extra off-day: {fmt_date(extra_off_date)}")
+    else:
+        lines.append("(All-Star break could not be detected from the schedule grid.)")
+    lines.append("")
+
+    lines.append("#### Brutal Stretches")
+    lines.append("")
+    if df_teams.empty:
+        lines.append("(Team-level brutal stretches unavailable: no team metadata matched the schedule grid.)")
+        return "\n".join(lines)
+
     WINDOW_DAYS = 15
     MIN_GAMES = 14
     brutal_rows: list[dict[str, Any]] = []
 
-    for team in teams:
-        tdf = df[df[team_key] == team]
+    team_key = "team_abbr"
+    all_dates_seq = list(all_dates)
+    n_dates = len(all_dates_seq)
+
+    for team in sorted(df_teams[team_key].unique()):
+        tdf = df_teams[df_teams[team_key] == team]
         played_map: dict[Any, bool] = {}
         for d, played in zip(tdf["date"], tdf["played"]):
             if opening_date <= d <= final_date:
                 played_map[d] = bool(played)
 
-        dates_seq = list(all_dates)
-        vals = [1 if played_map.get(d, False) else 0 for d in dates_seq]
-        n = len(dates_seq)
-        if n < WINDOW_DAYS:
+        vals = [1 if played_map.get(d, False) else 0 for d in all_dates_seq]
+        if n_dates < WINDOW_DAYS:
             continue
 
         window_sum = sum(vals[:WINDOW_DAYS])
         best_games = window_sum
         best_start_idx = 0
 
-        for start in range(1, n - WINDOW_DAYS + 1):
+        for start in range(1, n_dates - WINDOW_DAYS + 1):
             window_sum += vals[start + WINDOW_DAYS - 1] - vals[start - 1]
             if window_sum > best_games:
                 best_games = window_sum
                 best_start_idx = start
 
         if best_games >= MIN_GAMES:
-            start_date = dates_seq[best_start_idx]
-            end_date = dates_seq[best_start_idx + WINDOW_DAYS - 1]
+            start_date = all_dates_seq[best_start_idx]
+            end_date = all_dates_seq[best_start_idx + WINDOW_DAYS - 1]
             brutal_rows.append(
                 {
                     "team": team,
@@ -229,51 +295,6 @@ def _build_schedule_context_markdown(df: pd.DataFrame) -> str:
             ["games", "off_days", "start_date"], ascending=[False, True, True]
         ).head(8)
 
-    def fmt_date(d) -> str:
-        return f"{d.strftime('%B')} {d.day}, {d.year}"
-
-    lines: list[str] = []
-
-    lines.append("#### Schedule Overview")
-    lines.append("")
-    lines.append(f"- Opening Day: {fmt_date(opening_date)}")
-    lines.append(f"- Final Day: {fmt_date(final_date)}")
-    lines.append(f"- League-wide game days: {league_game_days}")
-    lines.append(f"- League-wide full off-days (no games at all): {league_off_days}")
-    lines.append("")
-
-    lines.append("#### Rest Distribution")
-    lines.append("")
-    if not team_df.empty:
-        lines.append("Most rest (top 3 by off-days):")
-        for _, row in most_rest.iterrows():
-            lines.append(
-                f"- {row['team']}: {int(row['off_days'])} off-days, {int(row['games'])} games"
-            )
-        lines.append("")
-
-        lines.append("Least rest (bottom 3 by off-days):")
-        for _, row in least_rest.iterrows():
-            lines.append(
-                f"- {row['team']}: {int(row['off_days'])} off-days, {int(row['games'])} games"
-            )
-        lines.append("")
-    else:
-        lines.append("(No team-level rest data available.)")
-        lines.append("")
-
-    lines.append("#### All-Star Break")
-    lines.append("")
-    if derby_date and asg_date and extra_off_date:
-        lines.append(f"- HR Derby: {fmt_date(derby_date)}")
-        lines.append(f"- All-Star Game: {fmt_date(asg_date)}")
-        lines.append(f"- Extra off-day: {fmt_date(extra_off_date)}")
-    else:
-        lines.append("(All-Star break could not be detected from the schedule grid.)")
-    lines.append("")
-
-    lines.append("#### Brutal Stretches")
-    lines.append("")
     if brutal_df is not None and not brutal_df.empty:
         lines.append(
             f"Defined as any {WINDOW_DAYS}-day window with at least {MIN_GAMES} games "

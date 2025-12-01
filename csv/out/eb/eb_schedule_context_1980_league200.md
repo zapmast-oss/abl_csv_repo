@@ -7,15 +7,7 @@
 
 #### Rest Distribution
 
-Most rest (top 3 by off-days):
-- ACTION BASEBALL LEAGUESCHEDULE GRID 12/31/198012/31/1980: 52 off-days, 192 games
-- ACTION BASEBALL LEAGUESCHEDULE GRID 12/31/198012/31/1980BNN Index|ABL|SCORES|STANDINGS|STATS|TEAMS|PLAYERS|TRANSACTIONS|HISTORY: 52 off-days, 192 games
-- BNN Index|ABL|SCORES|STANDINGS|STATS|TEAMS|PLAYERS|TRANSACTIONS|HISTORY: 52 off-days, 192 games
-
-Least rest (bottom 3 by off-days):
-- : 23 off-days, 221 games
-- ACTION BASEBALL LEAGUESCHEDULE GRID 12/31/198012/31/1980: 52 off-days, 192 games
-- ACTION BASEBALL LEAGUESCHEDULE GRID 12/31/198012/31/1980BNN Index|ABL|SCORES|STANDINGS|STATS|TEAMS|PLAYERS|TRANSACTIONS|HISTORY: 52 off-days, 192 games
+(Team-level rest/brutal stretches unavailable: no team metadata matched the schedule grid.)
 
 #### All-Star Break
 
@@ -25,9 +17,4 @@ Least rest (bottom 3 by off-days):
 
 #### Brutal Stretches
 
-Defined as any 15-day window with at least 14 games (no more than 1 off-day).
-
-- ACTION BASEBALL LEAGUESCHEDULE GRID 12/31/198012/31/1980: 15 games in 15 days (April 7, 1980–April 21, 1980, 0 off-days)
-- : 15 games in 15 days (May 9, 1980–May 23, 1980, 0 off-days)
-- ACTION BASEBALL LEAGUESCHEDULE GRID 12/31/198012/31/1980BNN Index|ABL|SCORES|STANDINGS|STATS|TEAMS|PLAYERS|TRANSACTIONS|HISTORY: 15 games in 15 days (May 9, 1980–May 23, 1980, 0 off-days)
-- BNN Index|ABL|SCORES|STANDINGS|STATS|TEAMS|PLAYERS|TRANSACTIONS|HISTORY: 15 games in 15 days (June 6, 1980–June 20, 1980, 0 off-days)
+(Team-level brutal stretches unavailable: no team metadata matched the schedule grid.)
