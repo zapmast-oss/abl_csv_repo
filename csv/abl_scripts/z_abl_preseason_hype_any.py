@@ -22,6 +22,7 @@ from typing import Dict, List, Tuple
 import pandas as pd
 from bs4 import BeautifulSoup
 import zipfile
+from io import StringIO
 
 logger = logging.getLogger(__name__)
 
@@ -230,7 +231,7 @@ def load_html_war_and_team(root: Path, season: int, player_ids: List[int], team_
             if html_text is None:
                 continue
             try:
-                tables = pd.read_html(html_text)
+                tables = pd.read_html(StringIO(html_text))
             except Exception:
                 continue
             # First, look for season rows in tables that have both Year/Team/League and WAR
