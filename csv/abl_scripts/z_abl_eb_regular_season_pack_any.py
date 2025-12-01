@@ -137,19 +137,19 @@ def main() -> int:
 
     body_parts.append(playoff_section(champions))
 
+    body_parts.append("## EB Schedule Context")
+    if schedule_fragment:
+        body_parts.append(schedule_fragment.rstrip())
+    else:
+        body_parts.append(
+            "[WARN] Schedule context fragment not found; run z_abl_eb_schedule_context_any.py first."
+        )
+    body_parts.append("")
+
     for label, path in components:
         content = read_md(path, label)
         if content:
             body_parts.append(content)
-        if label == "eb_player_spotlights":
-            body_parts.append("## EB Schedule Context")
-            if schedule_fragment:
-                body_parts.append(schedule_fragment.rstrip())
-            else:
-                body_parts.append(
-                    "[WARN] Schedule context fragment not found; run z_abl_eb_schedule_context_any.py first."
-                )
-            body_parts.append("")
 
     header = f"# ABL {season} Regular Season – EB Pack (League {league_id})"
     generated_at = datetime.now().strftime("Generated on: %Y-%m-%d %H:%M:%S (local time)")

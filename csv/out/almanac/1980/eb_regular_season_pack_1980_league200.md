@@ -1,5 +1,5 @@
 # ABL 1980 Regular Season – EB Pack (League 200)
-Generated on: 2025-12-01 13:09:23 (local time)
+Generated on: 2025-12-01 14:08:24 (local time)
 ---
 # EB Flashback 1980 – Data Brief (DO NOT PUBLISH)
 
@@ -102,6 +102,61 @@ Top winning percentage:
 - Central: Chicago Fire (CHI) — 87-75, run_diff=12
 - West: Phoenix Firebirds (PHO) — 107-55, run_diff=201
 - Wild Card: Detroit Dukes (DET) — 86-76, run_diff=58
+
+---
+
+## EB Schedule Context
+
+---
+
+#### Schedule Overview
+
+- Spring Training Opens: March 3, 1980
+- Opening Day: April 7, 1980
+- Final Day: October 5, 1980
+- League-wide game days: 179
+- League-wide full off-days (no games at all): 3
+
+#### All-Star Break
+
+- HR Derby: July 14, 1980
+- All-Star Game: July 15, 1980
+- Extra off-day: July 16, 1980
+
+#### Playoffs
+
+- DCS: October 8, 1980 - October 12, 1980
+- CCS: October 13, 1980 - October 20, 1980
+- GS: October 21, 1980 - November 1, 1980
+
+#### Rest Distribution
+
+Most rest (top 3 by off-days):
+- ATL: 20 off-days, 162 games
+- BOS: 20 off-days, 162 games
+- CHA: 20 off-days, 162 games
+
+Least rest (bottom 3 by off-days):
+- ATL: 20 off-days, 162 games
+- BOS: 20 off-days, 162 games
+- CHA: 20 off-days, 162 games
+
+#### Brutal Stretches
+
+Defined as any 15-day window with at least 14 games (no more than 1 off-day).
+
+- ATL: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
+- BOS: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
+- POR: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
+- SD: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
+- SEA: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
+- SF: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
+- DEN: 15 games in 15 days (May 6, 1980 - May 20, 1980, 0 off-days)
+- LA: 15 games in 15 days (May 6, 1980 - May 20, 1980, 0 off-days)
+
+---
+
+
 
 ---
 
@@ -236,56 +291,3 @@ Internal data brief for EB: player performance highlights for the season.
 - Atsumi Okinaka — Free agent — ERA: 2.760, IP: 182.1, SO: 71.0, SV: 0.0
 - Justin Bowen — San Diego Seraphs (SD) — ERA: 2.790, IP: 368.0, SO: 203.0, SV: 30.0
 - Mike Overmiller — Free agent — ERA: 2.800, IP: 225.1, SO: 171.0, SV: 37.0
-
----
-
-## EB Schedule Context
-
----
-
-#### Schedule Overview
-
-- Spring Training Opens: March 3, 1980
-- Opening Day: April 7, 1980
-- Final Day: October 5, 1980
-- League-wide game days: 179
-- League-wide full off-days (no games at all): 3
-
-#### All-Star Break
-
-- HR Derby: July 14, 1980
-- All-Star Game: July 15, 1980
-- Extra off-day: July 16, 1980
-
-#### Playoffs
-
-- DCS: October 8, 1980 - October 12, 1980
-- CCS: October 13, 1980 - October 20, 1980
-- GS: October 21, 1980 - November 1, 1980
-
-#### Rest Distribution
-
-Most rest (top 3 by off-days):
-- ATL: 20 off-days, 162 games
-- BOS: 20 off-days, 162 games
-- CHA: 20 off-days, 162 games
-
-Least rest (bottom 3 by off-days):
-- ATL: 20 off-days, 162 games
-- BOS: 20 off-days, 162 games
-- CHA: 20 off-days, 162 games
-
-#### Brutal Stretches
-
-Defined as any 15-day window with at least 14 games (no more than 1 off-day).
-
-- ATL: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
-- BOS: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
-- POR: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
-- SD: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
-- SEA: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
-- SF: 15 games in 15 days (April 7, 1980 - April 21, 1980, 0 off-days)
-- DEN: 15 games in 15 days (May 6, 1980 - May 20, 1980, 0 off-days)
-- LA: 15 games in 15 days (May 6, 1980 - May 20, 1980, 0 off-days)
-
----
