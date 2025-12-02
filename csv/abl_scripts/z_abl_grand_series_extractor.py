@@ -81,9 +81,10 @@ def parse_box(zip_path: Path, season: int, game_id: int) -> Dict[str, object]:
             except Exception:
                 date_iso = ""
 
-    # teams/scores from first linescore-style table
     home = away = ""
     home_r = away_r = None
+
+    # Try BeautifulSoup linescore-style table
     for tbl in soup.find_all("table"):
         header = [c.get_text(" ", strip=True) for c in tbl.find_all("th")]
         if "R" in header and "H" in header and len(tbl.find_all("tr")) >= 3:
@@ -99,6 +100,24 @@ def parse_box(zip_path: Path, season: int, game_id: int) -> Dict[str, object]:
                 except Exception:
                     pass
             break
+
+    # Fallback: use pandas to locate a table with an 'R' column
+    if home_r is None or away_r is None:
+        try:
+            tables = pd.read_html(StringIO(html))
+        except Exception:
+            tables = []
+        for df in tables:
+            cols = [str(c) for c in df.columns]
+            if "R" in cols and len(df) >= 2:
+                try:
+                    away = str(df.iloc[0, 0])
+                    home = str(df.iloc[1, 0])
+                    away_r = int(df.loc[0, "R"])
+                    home_r = int(df.loc[1, "R"])
+                    break
+                except Exception:
+                    continue
 
     return {
         "game_id": game_id,
@@ -150,7 +169,10 @@ def main() -> int:
             }
         )
 
-    # Print recap
+    # Print recap with generation timestamp
+    generated = datetime.now().strftime("Generated on: %Y-%m-%d %H:%M:%S (local time)")
+    print(generated)
+    print(f"Grand Series window: {args.start} to {args.end}")
     for idx, r in enumerate(recap, 1):
         tally_str = ", ".join(f"{team}:{wins}" for team, wins in r["series_tally"].items())
         print(f"Game {idx}: {r['date']}  {r['result']}  (tally: {tally_str})")
