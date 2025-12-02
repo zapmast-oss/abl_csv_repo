@@ -1,0 +1,10 @@
+# Grand Series 1975 Recap (League 200)
+Generated on: 2025-12-01 21:25:29 (local time)
+
+1. 1975-10-25 — Phoenix Firebirds 1 vs Pittsburgh Express 4 (winner: Pittsburgh Express; tally: Pittsburgh Express:1)
+2. 1975-10-26 — Phoenix Firebirds 7 vs Pittsburgh Express 6 (winner: Phoenix Firebirds; tally: Pittsburgh Express:1, Phoenix Firebirds:1)
+3. 1975-10-28 — Pittsburgh Express 4 vs Phoenix Firebirds 9 (winner: Phoenix Firebirds; tally: Pittsburgh Express:1, Phoenix Firebirds:2)
+4. 1975-10-29 — Pittsburgh Express 6 vs Phoenix Firebirds 0 (winner: Pittsburgh Express; tally: Pittsburgh Express:2, Phoenix Firebirds:2)
+5. 1975-10-30 — Pittsburgh Express 2 vs Phoenix Firebirds 3 (winner: Phoenix Firebirds; tally: Pittsburgh Express:2, Phoenix Firebirds:3)
+6. 1975-11-01 — Phoenix Firebirds 1 vs Pittsburgh Express 4 (winner: Pittsburgh Express; tally: Pittsburgh Express:3, Phoenix Firebirds:3)
+7. 1975-11-02 — Phoenix Firebirds 3 vs Pittsburgh Express 1 (winner: Phoenix Firebirds; tally: Pittsburgh Express:3, Phoenix Firebirds:4)
