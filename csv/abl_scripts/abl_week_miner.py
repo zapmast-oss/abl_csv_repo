@@ -1271,6 +1271,15 @@ def main():
     highlights[csv_cols].to_csv(csv_path, index=False)
 
     sections = []
+    header_lines = [
+        "ABL Week Miner",
+        "==============",
+        f"Generated on: {datetime.now():%Y-%m-%d %H:%M:%S}",
+        "",
+        "Weekly highlight scan of the last seven days of ABL action: walk-offs, slugfests, comebacks, sweeps, and standout performances.",
+        "Why it matters: fast recap material for storylines, broadcasts, and league comms without combing through every box score.",
+        "",
+    ]
     for title in [
         "WALK-OFFS",
         "STREAK WATCH",
@@ -1293,7 +1302,8 @@ def main():
     txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     txt_path = txt_dir / "z_ABL_Week_Miner.txt"
-    txt_path.write_text("\n\n".join(sections), encoding="utf-8")
+    txt_content = "\n".join(header_lines) + "\n\n".join(sections)
+    txt_path.write_text(txt_content, encoding="utf-8")
     print(f"Mined {len(highlights)} games; wrote {csv_path} and {txt_path}.")
 
 

@@ -1,5 +1,4 @@
 date,conference,game_id,away_name,home_name,final_away,final_home,innings,event_tags,player_tags,description,highlight_score
-1981-05-04,NBC,313,Tampa Bay Storm,Minneapolis Blizzard,5,4,9,ONE_RUN,,ONE-RUN -- Tampa Bay Storm 5-4 Minneapolis Blizzard (9 inn),6
 1981-05-05,NBC,322,Charlotte Colonels,Phoenix Firebirds,4,5,10,WALKOFF;EXTRA,,WALKOFF -- Charlotte Colonels 4-5 Phoenix Firebirds (10 inn),12
 1981-05-05,NBC,323,Chicago Fire,San Diego Seraphs,9,10,9,WALKOFF;SLUGFEST,,WALKOFF -- Chicago Fire 9-10 San Diego Seraphs (9 inn),12
 1981-05-05,NBC,324,Dallas Rustlers,San Francisco Warriors,7,8,13,WALKOFF;EXTRA,,WALKOFF -- Dallas Rustlers 7-8 San Francisco Warriors (13 inn),12
