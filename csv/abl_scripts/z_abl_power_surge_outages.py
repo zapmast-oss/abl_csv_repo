@@ -398,6 +398,12 @@ def render_report_text(
     windows: Optional[Tuple[Tuple[pd.Timestamp, pd.Timestamp], Tuple[pd.Timestamp, pd.Timestamp]]],
     limit: int,
 ) -> str:
+    header_lines = [
+        "ABL Power Surge & Outage Tracker",
+        "=================================",
+        "Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.",
+        "Why it matters: flags lineup or park-influenced power trends for storylines, broadcasts, and matchup prep.",
+    ]
     if windows:
         (curr_start, curr_end), (prev_start, prev_end) = windows
         header = (
@@ -406,6 +412,7 @@ def render_report_text(
         )
     else:
         header = "Window: No valid date range detected."
+    header_block = "\n".join(header_lines + [header])
     surges_section = text_table(
         surges.head(limit),
         TABLE_COLUMNS,
@@ -416,7 +423,7 @@ def render_report_text(
         ],
         [
             "HR/PA = home runs divided by plate appearances.",
-            "ΔHR/PA compares current seven-day window to the previous seven-day window.",
+            "HR/PA compares current seven-day window to the previous seven-day window.",
         ],
     )
     outages_section = text_table(
@@ -432,8 +439,7 @@ def render_report_text(
             "Prior metrics are included in the CSV for deeper dives.",
         ],
     )
-    return "\n\n".join([header, surges_section, outages_section])
-
+    return "\n\n".join([header_block, surges_section, outages_section])
 
 def write_report(
     base_dir: Path,
@@ -472,6 +478,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     if report_df.empty:
         text_payload = (
             "ABL Power Surge & Outage Tracker\n"
+            "Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.\n"
             "Data unavailable for the requested window; ensure batting logs are exported before running this report."
         )
         write_report(base_dir, args.out, report_df, text_payload)
