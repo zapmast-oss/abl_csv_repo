@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from bs4 import BeautifulSoup
 from abl_config import stamp_text_block
 
 TEAM_MIN, TEAM_MAX = 1, 24
@@ -147,6 +149,9 @@ def load_logs(base: Path, override_logs: Optional[Path], override_boxes: Optiona
     boxes = read_first(base, override_boxes, BOX_CANDIDATES)
     games = read_first(base, override_games, GAMES_CANDIDATES)
     if boxes is None or games is None:
+        html_data = load_html_boxes(base)
+        if html_data is not None and not html_data.empty:
+            return html_data
         raise FileNotFoundError("Unable to find suitable logs/boxes+games data.")
     team_col = pick_column(boxes, "team_id", "teamid")
     date_col = pick_column(boxes, "game_date", "date")
@@ -188,6 +193,107 @@ def load_logs(base: Path, override_logs: Optional[Path], override_boxes: Optiona
     merged = box_data.merge(game_info, on="game_id", how="left")
     merged["park_id"] = merged["park_id"].astype(str).fillna("")
     return merged[["team_id", "game_date", "park_id", "HR", "PA"]]
+
+
+def parse_html_box_file(path: Path) -> Optional[pd.DataFrame]:
+    """Parse a single HTML box score to extract team-level HR and PA."""
+    try:
+        text = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+
+    soup = BeautifulSoup(text, "html.parser")
+
+    # Game date from title
+    m_date = re.search(r",\s*([0-9]{2}/[0-9]{2}/[0-9]{4})", text)
+    game_date = pd.NaT
+    if m_date:
+        game_date = pd.to_datetime(m_date.group(1), errors="coerce")
+
+    # Team ids appear in team links near the top; first is away, second is home
+    team_ids = re.findall(r"teams/team_(\d+)\.html", text)
+    if len(team_ids) < 2:
+        return None
+    team_ids = [int(team_ids[0]), int(team_ids[1])]
+
+    # Totals rows for each batting table
+    total_rows = soup.find_all("tr", class_="hsx sortbottom")
+    if len(total_rows) < 2:
+        return None
+
+    def grab_totals(row):
+        cells = row.find_all("th", class_="dc")
+        vals = []
+        for cell in cells:
+            try:
+                vals.append(int(cell.get_text(strip=True).replace(",", "")))
+            except ValueError:
+                vals.append(0)
+        if len(vals) < 5:
+            return None
+        ab = vals[0]
+        bb = vals[4] if len(vals) >= 5 else 0
+        h = vals[2] if len(vals) >= 3 else 0
+        return ab, bb, h
+
+    def count_events(label: str, idx: int) -> int:
+        tags = [b for b in soup.find_all("b") if b.get_text(strip=True) == label]
+        if idx >= len(tags):
+            return 0
+        tag = tags[idx]
+        count = 0
+        for sib in tag.next_siblings:
+            if getattr(sib, "name", None) == "br":
+                break
+            if getattr(sib, "name", None) == "a":
+                count += 1
+        return count
+
+    records = []
+    for idx, row in enumerate(total_rows[:2]):
+        totals = grab_totals(row)
+        if not totals:
+            continue
+        ab, bb, _ = totals
+        hr = count_events("Home Runs:", idx)
+        hbp = count_events("Hit by Pitch:", idx)
+        sf = count_events("Sac Fly:", idx)
+        sh = count_events("Sac Bunt:", idx)
+        pa = ab + bb + hbp + sf + sh
+        records.append(
+            {
+                "team_id": team_ids[idx],
+                "game_date": game_date,
+                "park_id": "",
+                "HR": hr,
+                "PA": pa,
+            }
+        )
+    if not records:
+        return None
+    return pd.DataFrame(records)
+
+
+def load_html_boxes(base: Path) -> Optional[pd.DataFrame]:
+    box_dir = base / "data_raw" / "ootp_html" / "box_scores"
+    if not box_dir.exists():
+        return None
+    frames = []
+    for path in box_dir.glob("game_box_*.html"):
+        df = parse_html_box_file(path)
+        if df is not None:
+            frames.append(df)
+    if not frames:
+        return None
+    data = pd.concat(frames, ignore_index=True)
+    data = data.dropna(subset=["game_date", "team_id"])
+    data = data[
+        (data["team_id"] >= TEAM_MIN)
+        & (data["team_id"] <= TEAM_MAX)
+        & (data["HR"].notna())
+        & (data["PA"].notna())
+    ]
+    return data[["team_id", "game_date", "park_id", "HR", "PA"]]
 
 
 def determine_weeks(dates: pd.Series, week_end: Optional[str]) -> Tuple[pd.Timestamp, pd.Timestamp]:

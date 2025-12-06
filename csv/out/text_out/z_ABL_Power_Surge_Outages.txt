@@ -1,5 +1,55 @@
 ABL Power Surge & Outage Tracker
-Generated on: 2025-12-06 00:38:27
+=================================
+Generated on: 2025-12-06 01:25:48
 
 Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.
-Data unavailable for the requested window; ensure batting logs are exported before running this report.
+Why it matters: flags lineup or park-influenced power trends for storylines, broadcasts, and matchup prep.
+Window: 1981-05-04 to 1981-05-10 (compared to 1981-04-27 to 1981-05-03)
+
+Power Surges
+============
+Largest increases in HR per PA week-over-week
+
+Team                Games   HR     PA    HR/PA   ΔHR/PA
+-------------------------------------------------------
+Team 3                  6    6    239    0.025    0.025
+Team 4                  6    9    268    0.034    0.023
+Team 14                 6    6    247    0.024    0.020
+Team 23                 6    7    248    0.028    0.016
+Team 12                 6    9    238    0.038    0.015
+Team 17                 6    3    208    0.014    0.014
+Team 15                 6    8    220    0.036    0.014
+Team 8                  6    6    248    0.024    0.011
+Team 21                 6   10    260    0.038    0.009
+Team 6                  6    6    252    0.024    0.009
+
+Key:
+  Surge flag triggers when HR/PA jumps by >= 0.005 over the prior week.
+
+Definitions:
+  HR/PA = home runs divided by plate appearances.
+  HR/PA compares current seven-day window to the previous seven-day window.
+
+Power Outages
+=============
+Largest drops in HR per PA week-over-week
+
+Team                Games   HR     PA    HR/PA   ΔHR/PA
+-------------------------------------------------------
+Team 1                  6    4    231    0.017   -0.017
+Team 19                 6    0    209    0.000   -0.015
+Team 11                 6    3    208    0.014   -0.013
+Team 5                  6    3    258    0.012   -0.012
+Team 13                 6    2    214    0.009   -0.011
+Team 7                  6    1    224    0.004   -0.011
+Team 16                 6    2    210    0.009   -0.010
+Team 10                 6    6    254    0.024   -0.009
+Team 9                  6    2    237    0.008   -0.007
+Team 22                 6    5    208    0.024   -0.007
+
+Key:
+  Outage flag triggers when HR/PA falls by <= -0.005 over the prior week.
+
+Definitions:
+  Games/HR/PA columns reference the current seven-day window.
+  Prior metrics are included in the CSV for deeper dives.
