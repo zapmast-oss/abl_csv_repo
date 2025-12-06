@@ -74,6 +74,15 @@ def resolve_path(base: Path, value: Optional[str]) -> Optional[Path]:
 def load_team_names(base: Path, override: Optional[Path]) -> Dict[int, str]:
     df = read_first(base, override, TEAM_INFO_CANDIDATES)
     if df is None:
+        for candidate in [
+            base / "csv" / "teams.csv",
+            base / "csv" / "ootp_csv" / "teams.csv",
+            base / "ootp_csv" / "teams.csv",
+        ]:
+            if candidate.exists():
+                df = pd.read_csv(candidate)
+                break
+    if df is None:
         return {}
     team_col = pick_column(df, "team_id", "teamid", "TeamID")
     name_col = pick_column(df, "team_display", "team_name", "name", "abbr")
@@ -402,7 +411,7 @@ TABLE_COLUMNS: Sequence[Tuple[str, str, int, bool, str]] = [
     ("HR", "HR_current", 4, True, ".0f"),
     ("PA", "PA_current", 6, True, ".0f"),
     ("HR/PA", "HR_per_PA_current", 8, True, ".3f"),
-    ("ΔHR/PA", "delta_HR_per_PA", 8, True, ".3f"),
+    ("Delta HR/PA", "delta_HR_per_PA", 10, True, ".3f"),
 ]
 
 CSV_COLUMNS = [
