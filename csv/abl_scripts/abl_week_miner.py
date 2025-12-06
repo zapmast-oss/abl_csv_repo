@@ -24,6 +24,7 @@ GIANT_WIN_MAX = 0.45
 GIANT_LOSE_MIN = 0.60
 HIT_MILESTONES = [2000]
 HR_MILESTONES = [200, 300]
+SCORE_LINE_FILE = "games_score.csv"
 
 
 def pick(df: pd.DataFrame, *names: str) -> Optional[str]:
@@ -440,6 +441,27 @@ def load_career_batting_totals() -> Dict[int, Dict[str, int]]:
     return totals
 
 
+def load_score_lines(base_dir: Path) -> Dict[str, Tuple[List[int], List[int]]]:
+    score_lines: Dict[str, Tuple[List[int], List[int]]] = {}
+    path_candidates = [
+        base_dir / SCORE_LINE_FILE,
+        base_dir / "csv" / SCORE_LINE_FILE,
+        base_dir / "csv" / "ootp_csv" / SCORE_LINE_FILE,
+        base_dir / "ootp_csv" / SCORE_LINE_FILE,
+    ]
+    path = next((p for p in path_candidates if p.exists()), None)
+    if path is None:
+        return score_lines
+    df = pd.read_csv(path)
+    if not {"game_id", "team", "inning", "score"} <= set(df.columns):
+        return score_lines
+    for game_id, group in df.groupby("game_id"):
+        away = group[group["team"] == 0].sort_values("inning")["score"].tolist()
+        home = group[group["team"] == 1].sort_values("inning")["score"].tolist()
+        score_lines[str(game_id)] = (away, home)
+    return score_lines
+
+
 def update_team_state(
     team_records: Dict[int, Dict[str, int]],
     team_streak: Dict[int, Dict[str, Optional[str]]],
@@ -727,6 +749,7 @@ def main():
     games_df = games_week.copy()
     series_tags = build_series_tags(games_context, "game_identifier")
     line_helper = LineScoreHelper(games_week)
+    score_lines = load_score_lines(base_dir)
 
     all_games_sorted = games_all.sort_values(["date", "game_identifier"])
     team_records = {tid: {"w": 0, "l": 0} for tid in range(TEAM_MIN, TEAM_MAX + 1)}
@@ -856,13 +879,21 @@ def main():
                     apply_event("COMEBACK", 10)
                 if behind_flag:
                     apply_event("BEHIND", 8)
+        if line_data is None and score_lines:
+            line_data = score_lines.get(str(game.get("game_identifier")))
+            if not line_data:
+                # some game_identifiers are numeric strings of the original game_id
+                try:
+                    line_data = score_lines.get(str(int(game.get("game_identifier"))))
+                except Exception:
+                    line_data = None
 
         # True walk-offs: home team wins in final frame (9th or extras) by taking the lead in that inning.
         if home_win:
             if line_data:
-                target_len = max(len(away_line), len(home_line), int(math.ceil(innings)), 9)
-                away_seq = pad_scores(away_line, target_len)
-                home_seq = pad_scores(home_line, target_len)
+                target_len = max(len(line_data[0]), len(line_data[1]), int(math.ceil(innings)), 9)
+                away_seq = pad_scores(line_data[0], target_len)
+                home_seq = pad_scores(line_data[1], target_len)
                 home_before = sum(home_seq[: target_len - 1])
                 away_before = sum(away_seq[: target_len - 1])
                 home_final = sum(home_seq)

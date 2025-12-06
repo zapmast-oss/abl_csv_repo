@@ -23,6 +23,7 @@ date,conference,game_id,away_name,home_name,final_away,final_home,innings,event_
 1981-05-09,ABC,367,Pittsburgh Express,Nashville Blues,12,10,9,SLUGFEST,,SLUGFEST -- Pittsburgh Express 12-10 Nashville Blues (9 inn),7
 1981-05-09,ABC,368,Philadelphia Fury,St. Louis Stallions,4,3,9,ONE_RUN,,ONE-RUN -- Philadelphia Fury 4-3 St. Louis Stallions (9 inn),6
 1981-05-09,ABC,370,Boston Patriots,Las Vegas Gamblers,2,1,9,ONE_RUN,,ONE-RUN -- Boston Patriots 2-1 Las Vegas Gamblers (9 inn),6
+1981-05-10,NBC,377,Dallas Rustlers,San Diego Seraphs,1,3,9,WALKOFF,,WALKOFF -- Dallas Rustlers 1-3 San Diego Seraphs (9 inn),12
 1981-05-10,NBC,375,Charlotte Colonels,Los Angeles Cobras,1,3,9,AVOID_SWEEP,,AVOID-SWEEP -- Charlotte Colonels 1-3 Los Angeles Cobras (9 inn),6
 1981-05-10,NBC,376,Atlanta Kings,Phoenix Firebirds,4,2,9,AVOID_SWEEP,,AVOID-SWEEP -- Atlanta Kings 4-2 Phoenix Firebirds (9 inn),6
 1981-05-10,ABC,381,New York Aces,Denver Rocketeers,2,3,9,SWEEP;ONE_RUN,,SWEEP -- New York Aces 2-3 Denver Rocketeers (9 inn),6

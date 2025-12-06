@@ -1,6 +1,6 @@
 ABL Week Miner
 ==============
-Generated on: 2025-12-06 02:34:28
+Generated on: 2025-12-06 02:41:59
 
 Weekly highlight scan of the last seven days of ABL action: walk-offs, slugfests, comebacks, sweeps, and standout performances.
 Why it matters: fast recap material for storylines, broadcasts, and league comms without combing through every box score.
@@ -9,6 +9,7 @@ Why it matters: fast recap material for storylines, broadcasts, and league comms
 1981-05-05        NBC     322 Charlotte Colonels      Phoenix Firebirds           4           5       10 WALKOFF;EXTRA               WALKOFF -- Charlotte Colonels 4-5 Phoenix Firebirds (10 inn)               12 WALK-OFFS
 1981-05-05        NBC     324    Dallas Rustlers San Francisco Warriors           7           8       13 WALKOFF;EXTRA             WALKOFF -- Dallas Rustlers 7-8 San Francisco Warriors (13 inn)               12 WALK-OFFS
 1981-05-08        NBC     349    Tampa Bay Storm          Detroit Dukes           8           9       11 WALKOFF;EXTRA                      WALKOFF -- Tampa Bay Storm 8-9 Detroit Dukes (11 inn)               12 WALK-OFFS
+1981-05-10        NBC     377    Dallas Rustlers      San Diego Seraphs           1           3        9       WALKOFF                   WALKOFF -- Dallas Rustlers 1-3 San Diego Seraphs (9 inn)               12 WALK-OFFS
 
 === SLUGFESTS ===
       date conference game_id          away_name          home_name  final_away  final_home  innings       event_tags player_tags                                                    description  highlight_score  category
