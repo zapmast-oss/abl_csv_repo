@@ -1,0 +1,260 @@
+"""Mine weekly ABL games for highlight-worthy events."""
+
+from __future__ import annotations
+
+import argparse
+import math
+import re
+import sys
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import pandas as pd
+
+LEAGUE_ID = 200
+TEAM_MIN, TEAM_MAX = 1, 24
+DATA_DIR = Path.cwd()
+
+HERO_PITCH_THRESHOLD = 120
+RELIEF_LONG_IP = 3.0
+STREAK_THRESHOLD = 8
+SKID_THRESHOLD = 7
+GIANT_WIN_MAX = 0.45
+GIANT_LOSE_MIN = 0.60
+HIT_MILESTONES = [2000]
+HR_MILESTONES = [200, 300]
+
+
+def pick(df: pd.DataFrame, *names: str) -> Optional[str]:
+    lowered = {col.lower(): col for col in df.columns}
+    for name in names:
+        key = name.lower()
+        if key in lowered:
+            return lowered[key]
+    return None
+
+
+def read_csv_smart(*names: str) -> Optional[pd.DataFrame]:
+    variants = []
+    for n in names:
+        variants.extend(
+            [
+                n,
+                n.lower(),
+                n.upper(),
+                n.replace(" ", "_"),
+                n.replace("_", " "),
+                n.title(),
+                n.capitalize(),
+            ]
+        )
+    seen = set()
+    for candidate in variants:
+        candidate = candidate.strip()
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        path = DATA_DIR / candidate
+        if path.exists():
+            return pd.read_csv(path)
+    return None
+
+
+def safe_int(value) -> Optional[int]:
+    if pd.isna(value):
+        return None
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def safe_float(value) -> Optional[float]:
+    if pd.isna(value):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+class LineScoreHelper:
+    """Pull per-inning line scores when the export provides them."""
+
+    def __init__(self, df: pd.DataFrame):
+        columns = list(df.columns)
+        self.line_cols = [
+            col
+            for col in columns
+            if "line" in col.lower() and "score" in col.lower()
+        ]
+        self.away_inning_cols = self._collect_inning_cols(
+            columns, ["away", "visitor", "team0", "runs0", "score0"]
+        )
+        self.home_inning_cols = self._collect_inning_cols(
+            columns, ["home", "team1", "runs1", "score1"]
+        )
+        self.available = bool(
+            self.line_cols or self.away_inning_cols or self.home_inning_cols
+        )
+
+    @staticmethod
+    def _collect_inning_cols(columns: List[str], tokens: List[str]) -> List[str]:
+        candidates: List[Tuple[int, str]] = []
+        for col in columns:
+            lower = col.lower()
+            if "inn" not in lower:
+                continue
+            if not any(token in lower for token in tokens):
+                continue
+            match = re.search(r"(\d+)", lower)
+            if not match:
+                continue
+            candidates.append((int(match.group(1)), col))
+        candidates.sort(key=lambda item: item[0])
+        return [col for _, col in candidates]
+
+    @staticmethod
+    def _parse_line_score_sequences(value) -> List[List[int]]:
+        if pd.isna(value):
+            return []
+        if isinstance(value, (list, tuple)):
+            sequences: List[List[int]] = []
+            for part in value:
+                sequences.extend(LineScoreHelper._parse_line_score_sequences(part))
+            return sequences
+        text = str(value).strip()
+        if not text:
+            return []
+        parts = [part.strip() for part in text.split("|")] if "|" in text else [text]
+        sequences = []
+        for part in parts:
+            numbers = [int(chunk) for chunk in re.findall(r"-?\d+", part)]
+            if numbers:
+                sequences.append(numbers)
+        return sequences
+
+    def _values_from_cols(
+        self, row: pd.Series, cols: List[str], expected_total: Optional[int]
+    ) -> List[int]:
+        if not cols:
+            return []
+        values: List[int] = []
+        for col in cols:
+            num = safe_int(row.get(col))
+            values.append(num if num is not None else 0)
+        if expected_total is None or sum(values) == expected_total:
+            return values
+        return []
+
+    def _extract_from_line_strings(
+        self,
+        row: pd.Series,
+        away_total: int,
+        home_total: int,
+        away_seq: List[int],
+        home_seq: List[int],
+    ) -> Tuple[List[int], List[int]]:
+        if self.line_cols:
+            for col in self.line_cols:
+                sequences = self._parse_line_score_sequences(row.get(col))
+                for seq in sequences:
+                    total = sum(seq)
+                    if not away_seq and total == away_total:
+                        away_seq = seq
+                    elif not home_seq and total == home_total:
+                        home_seq = seq
+                if away_seq and home_seq:
+                    break
+        return away_seq, home_seq
+
+    def extract(
+        self, row: pd.Series, away_total: int, home_total: int
+    ) -> Optional[Tuple[List[int], List[int]]]:
+        if not self.available:
+            return None
+        away_seq = self._values_from_cols(row, self.away_inning_cols, away_total)
+        home_seq = self._values_from_cols(row, self.home_inning_cols, home_total)
+        if (not away_seq or not home_seq) and self.line_cols:
+            away_seq, home_seq = self._extract_from_line_strings(
+                row, away_total, home_total, away_seq, home_seq
+            )
+        if away_seq and home_seq:
+            return away_seq, home_seq
+        return None
+
+
+def pad_scores(values: List[int], length: int) -> List[int]:
+    padded = list(values)
+    if len(padded) < length:
+        padded.extend([0] * (length - len(padded)))
+    return padded[:length]
+
+
+def cumulative_runs(values: List[int]) -> List[int]:
+    totals: List[int] = []
+    running = 0
+    for val in values:
+        running += val
+        totals.append(running)
+    return totals
+
+
+def evaluate_line_events(
+    away_line: List[int],
+    home_line: List[int],
+    home_win: bool,
+    innings: float,
+) -> Tuple[bool, bool]:
+    if not away_line or not home_line:
+        return False, False
+    base_len = max(len(away_line), len(home_line))
+    innings_len = 9
+    if not pd.isna(innings):
+        innings_len = max(int(math.ceil(float(innings))), 9)
+    target_len = max(base_len, innings_len)
+    away_seq = pad_scores(away_line, target_len)
+    home_seq = pad_scores(home_line, target_len)
+    away_cum = cumulative_runs(away_seq)
+    home_cum = cumulative_runs(home_seq)
+    winner = home_cum if home_win else away_cum
+    loser = away_cum if home_win else home_cum
+    comeback = any((loser_val - winner_val) >= 3 for winner_val, loser_val in zip(winner, loser))
+    behind = any(
+        inning >= 6 and winner_val < loser_val
+        for inning, (winner_val, loser_val) in enumerate(zip(winner, loser), start=1)
+    )
+    return comeback, behind
+
+
+def filter_abl(df: pd.DataFrame) -> pd.DataFrame:
+    result = df
+    league_col = pick(df, "league_id", "league", "lg_id")
+    if league_col:
+        result = result[result[league_col] == LEAGUE_ID]
+    team_col = pick(df, "team_id", "teamid", "tid")
+    if team_col:
+        result = result[result[team_col].between(TEAM_MIN, TEAM_MAX)]
+    return result
+
+
+def infer_current_week(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timestamp, pd.Timestamp]]:
+    if games_df is None or games_df.empty:
+        return None
+    date_col = pick(games_df, "date", "game_date")
+    if not date_col:
+        return None
+    games_df["date"] = pd.to_datetime(games_df[date_col], errors="coerce")
+    played_col = pick(games_df, "played", "completed")
+    if played_col:
+        mask_played = games_df[played_col].astype(int) != 0
+    else:
+        score_pairs = [
+            ("runs0", "runs1"),
+            ("score0", "score1"),
+            ("away_score", "home_score"),
+            ("home_score", "away_score"),
+        ]
+        mask_played = pd.Series(False, index=games_df.index)
+        for a_col, b_col in score_pairs:

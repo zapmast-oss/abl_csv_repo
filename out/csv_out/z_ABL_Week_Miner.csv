@@ -1,0 +1,28 @@
+date,conference,game_id,away_name,home_name,final_away,final_home,innings,event_tags,player_tags,description,highlight_score
+1981-05-05,NBC,322,Charlotte Colonels,Phoenix Firebirds,4,5,10,WALKOFF;EXTRA,,WALKOFF -- Charlotte Colonels 4-5 Phoenix Firebirds (10 inn),12
+1981-05-05,NBC,323,Chicago Fire,San Diego Seraphs,9,10,9,WALKOFF;SLUGFEST,,WALKOFF -- Chicago Fire 9-10 San Diego Seraphs (9 inn),12
+1981-05-05,NBC,324,Dallas Rustlers,San Francisco Warriors,7,8,13,WALKOFF;EXTRA,,WALKOFF -- Dallas Rustlers 7-8 San Francisco Warriors (13 inn),12
+1981-05-05,NBC,321,Atlanta Kings,Los Angeles Cobras,12,7,9,SLUGFEST,,SLUGFEST -- Atlanta Kings 12-7 Los Angeles Cobras (9 inn),7
+1981-05-05,ABC,328,New York Aces,Las Vegas Gamblers,2,3,9,WALKOFF,,WALKOFF -- New York Aces 2-3 Las Vegas Gamblers (9 inn),12
+1981-05-05,ABC,327,Boston Patriots,Denver Rocketeers,6,5,9,ONE_RUN,,ONE-RUN -- Boston Patriots 6-5 Denver Rocketeers (9 inn),6
+1981-05-06,NBC,332,Tampa Bay Storm,Minneapolis Blizzard,3,4,9,WALKOFF;AVOID_SWEEP,,WALKOFF -- Tampa Bay Storm 3-4 Minneapolis Blizzard (9 inn),12
+1981-05-06,NBC,331,Miami Hurricanes,Detroit Dukes,1,0,12,ONE_RUN;EXTRA,,ONE-RUN -- Miami Hurricanes 1-0 Detroit Dukes (12 inn),6
+1981-05-06,ABC,341,Cincinnati Cougars,Portland Lumberjacks,2,3,9,WALKOFF,,WALKOFF -- Cincinnati Cougars 2-3 Portland Lumberjacks (9 inn),12
+1981-05-06,ABC,340,New York Aces,Las Vegas Gamblers,9,4,9,AVOID_SWEEP,,AVOID-SWEEP -- New York Aces 9-4 Las Vegas Gamblers (9 inn),6
+1981-05-07,NBC,343,Miami Hurricanes,Detroit Dukes,4,2,9,SWEEP,,SWEEP -- Miami Hurricanes 4-2 Detroit Dukes (9 inn),6
+1981-05-08,NBC,349,Tampa Bay Storm,Detroit Dukes,8,9,11,WALKOFF;EXTRA,,WALKOFF -- Tampa Bay Storm 8-9 Detroit Dukes (11 inn),12
+1981-05-08,NBC,352,Atlanta Kings,Phoenix Firebirds,0,1,9,WALKOFF,,WALKOFF -- Atlanta Kings 0-1 Phoenix Firebirds (9 inn),12
+1981-05-08,NBC,351,Charlotte Colonels,Los Angeles Cobras,3,2,10,ONE_RUN;EXTRA,,ONE-RUN -- Charlotte Colonels 3-2 Los Angeles Cobras (10 inn),6
+1981-05-08,ABC,356,Philadelphia Fury,St. Louis Stallions,4,5,9,WALKOFF,,WALKOFF -- Philadelphia Fury 4-5 St. Louis Stallions (9 inn),12
+1981-05-08,ABC,358,Boston Patriots,Las Vegas Gamblers,6,7,9,WALKOFF,,WALKOFF -- Boston Patriots 6-7 Las Vegas Gamblers (9 inn),12
+1981-05-08,ABC,359,Houston Mavericks,Portland Lumberjacks,3,4,9,WALKOFF,,WALKOFF -- Houston Mavericks 3-4 Portland Lumberjacks (9 inn),12
+1981-05-08,ABC,360,Cincinnati Cougars,Seattle Comets,8,7,11,ONE_RUN;EXTRA,,ONE-RUN -- Cincinnati Cougars 8-7 Seattle Comets (11 inn),8
+1981-05-09,NBC,364,Atlanta Kings,Phoenix Firebirds,2,3,9,WALKOFF,,WALKOFF -- Atlanta Kings 2-3 Phoenix Firebirds (9 inn),12
+1981-05-09,NBC,365,Dallas Rustlers,San Diego Seraphs,5,6,9,WALKOFF,,WALKOFF -- Dallas Rustlers 5-6 San Diego Seraphs (9 inn),12
+1981-05-09,NBC,363,Charlotte Colonels,Los Angeles Cobras,11,8,9,SLUGFEST,,SLUGFEST -- Charlotte Colonels 11-8 Los Angeles Cobras (9 inn),7
+1981-05-09,ABC,367,Pittsburgh Express,Nashville Blues,12,10,9,SLUGFEST,,SLUGFEST -- Pittsburgh Express 12-10 Nashville Blues (9 inn),7
+1981-05-09,ABC,368,Philadelphia Fury,St. Louis Stallions,4,3,9,ONE_RUN,,ONE-RUN -- Philadelphia Fury 4-3 St. Louis Stallions (9 inn),6
+1981-05-09,ABC,370,Boston Patriots,Las Vegas Gamblers,2,1,9,ONE_RUN,,ONE-RUN -- Boston Patriots 2-1 Las Vegas Gamblers (9 inn),6
+1981-05-10,NBC,375,Charlotte Colonels,Los Angeles Cobras,1,3,9,AVOID_SWEEP,,AVOID-SWEEP -- Charlotte Colonels 1-3 Los Angeles Cobras (9 inn),6
+1981-05-10,NBC,376,Atlanta Kings,Phoenix Firebirds,4,2,9,AVOID_SWEEP,,AVOID-SWEEP -- Atlanta Kings 4-2 Phoenix Firebirds (9 inn),6
+1981-05-10,ABC,381,New York Aces,Denver Rocketeers,2,3,9,WALKOFF;SWEEP,,WALKOFF -- New York Aces 2-3 Denver Rocketeers (9 inn),12

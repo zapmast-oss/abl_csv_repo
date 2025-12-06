@@ -50,14 +50,20 @@ def read_csv_smart(*names: str) -> Optional[pd.DataFrame]:
             ]
         )
     seen = set()
+    search_roots = [DATA_DIR]
+    for extra in (Path("csv"), Path("ootp_csv"), Path("csv") / "ootp_csv"):
+        root = DATA_DIR / extra
+        if root.exists():
+            search_roots.append(root)
     for candidate in variants:
         candidate = candidate.strip()
         if not candidate or candidate in seen:
             continue
         seen.add(candidate)
-        path = DATA_DIR / candidate
-        if path.exists():
-            return pd.read_csv(path)
+        for root in search_roots:
+            path = root / candidate
+            if path.exists():
+                return pd.read_csv(path)
     return None
 
 
@@ -269,7 +275,7 @@ def infer_current_week(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timestamp, p
     last_played = played_dates.max()
     if pd.isna(last_played):
         return None
-    start = last_played - pd.Timedelta(days=5)
+    start = last_played - pd.Timedelta(days=6)
     return start.normalize(), last_played.normalize()
 
 
@@ -296,7 +302,7 @@ def parse_dates(args, games_df: Optional[pd.DataFrame]) -> Tuple[pd.Timestamp, p
         return inferred
 
     end = pd.Timestamp(datetime.now().date()) - pd.Timedelta(days=1)
-    start = end - pd.Timedelta(days=5)
+    start = end - pd.Timedelta(days=6)
     return start.normalize(), end.normalize()
 
 
@@ -327,7 +333,7 @@ def infer_last_played_window(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timest
     last_played = played_dates.max()
     if pd.isna(last_played):
         return None
-    start = last_played - pd.Timedelta(days=5)
+    start = last_played - pd.Timedelta(days=6)
     return start.normalize(), last_played.normalize()
 
 
@@ -681,36 +687,24 @@ def main():
     innings_col = pick(games_all, "innings", "inn", "inning", "ipd")
     games_all["innings"] = pd.to_numeric(games_all[innings_col], errors="coerce").fillna(9)
 
+    context_start = start - pd.Timedelta(days=2)
     games_week = games_all[
         (games_all["date"] >= start) & (games_all["date"] <= end)
+    ].copy()
+    games_context = games_all[
+        (games_all["date"] >= context_start) & (games_all["date"] <= end)
     ].copy()
     weekday_cutoff = 5 if mode == "sim" else 6  # sim: Mon-Sat, weekly: Mon-Sun
     games_week = games_week[games_week["date"].dt.weekday <= weekday_cutoff]
     games_week = games_week[compute_played_mask(games_week)]
+    games_context = games_context[compute_played_mask(games_context)]
     if games_week.empty:
         print("No games in the selected window.")
         return
     games_week = games_week.sort_values(["date", "game_identifier"]).reset_index(drop=True)
 
-    score_cols_away = [
-        "away_runs",
-        "r_away",
-        "runs_away",
-        "score0",
-        "runs0",
-        "away_score",
-    ]
-    score_cols_home = [
-        "home_runs",
-        "r_home",
-        "runs_home",
-        "score1",
-        "runs1",
-        "home_score",
-    ]
-    away_score_col = pick(games_all, *score_cols_away)
-    home_score_col = pick(games_all, *score_cols_home)
     games_week = games_week.dropna(subset=["away_score", "home_score"])
+    games_context = games_context.dropna(subset=["away_score", "home_score"])
 
     home_name_col = pick(games_week, "home_team_name", "home_name")
     away_name_col = pick(games_week, "away_team_name", "away_name")
@@ -728,18 +722,11 @@ def main():
         axis=1,
     )
 
-    ootp_game_col = pick(games_df, "game_id", "gameid")
-    if ootp_game_col:
-        games_df["game_identifier"] = games_df[ootp_game_col].astype(str)
-    else:
-        games_df["game_identifier"] = games_df.apply(
-            lambda r: f"{r['date'].date()}_{int(r['away_id'])}@{int(r['home_id'])}",
-            axis=1,
-        )
-
-    series_tags = build_series_tags(games_week, "game_identifier")
+    games_df = games_week.copy()
+    series_tags = build_series_tags(games_context, "game_identifier")
     line_helper = LineScoreHelper(games_week)
 
+    all_games_sorted = games_all.sort_values(["date", "game_identifier"])
     team_records = {tid: {"w": 0, "l": 0} for tid in range(TEAM_MIN, TEAM_MAX + 1)}
     team_streak = {tid: {"type": None, "len": 0} for tid in range(TEAM_MIN, TEAM_MAX + 1)}
     pre_games = all_games_sorted[all_games_sorted["date"] < start]
