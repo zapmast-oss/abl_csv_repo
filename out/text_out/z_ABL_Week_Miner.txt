@@ -22,13 +22,14 @@
 1981-05-09        ABC     367 Pittsburgh Express    Nashville Blues          12          10        9   SLUGFEST               SLUGFEST -- Pittsburgh Express 12-10 Nashville Blues (9 inn)                7 SLUGFESTS
 
 === ONE-RUN GAMES ===
-      date conference game_id          away_name           home_name  final_away  final_home  innings    event_tags player_tags                                                   description  highlight_score      category
-1981-05-05        ABC     327    Boston Patriots   Denver Rocketeers           6           5        9       ONE_RUN                  ONE-RUN -- Boston Patriots 6-5 Denver Rocketeers (9 inn)                6 ONE-RUN GAMES
-1981-05-06        NBC     331   Miami Hurricanes       Detroit Dukes           1           0       12 ONE_RUN;EXTRA                    ONE-RUN -- Miami Hurricanes 1-0 Detroit Dukes (12 inn)                6 ONE-RUN GAMES
-1981-05-08        NBC     351 Charlotte Colonels  Los Angeles Cobras           3           2       10 ONE_RUN;EXTRA             ONE-RUN -- Charlotte Colonels 3-2 Los Angeles Cobras (10 inn)                6 ONE-RUN GAMES
-1981-05-08        ABC     360 Cincinnati Cougars      Seattle Comets           8           7       11 ONE_RUN;EXTRA                 ONE-RUN -- Cincinnati Cougars 8-7 Seattle Comets (11 inn)                8 ONE-RUN GAMES
-1981-05-09        ABC     368  Philadelphia Fury St. Louis Stallions           4           3        9       ONE_RUN              ONE-RUN -- Philadelphia Fury 4-3 St. Louis Stallions (9 inn)                6 ONE-RUN GAMES
-1981-05-09        ABC     370    Boston Patriots  Las Vegas Gamblers           2           1        9       ONE_RUN                 ONE-RUN -- Boston Patriots 2-1 Las Vegas Gamblers (9 inn)                6 ONE-RUN GAMES
+      date conference game_id          away_name            home_name  final_away  final_home  innings    event_tags player_tags                                                   description  highlight_score      category
+1981-05-04        NBC     313    Tampa Bay Storm Minneapolis Blizzard           5           4        9       ONE_RUN               ONE-RUN -- Tampa Bay Storm 5-4 Minneapolis Blizzard (9 inn)                6 ONE-RUN GAMES
+1981-05-05        ABC     327    Boston Patriots    Denver Rocketeers           6           5        9       ONE_RUN                  ONE-RUN -- Boston Patriots 6-5 Denver Rocketeers (9 inn)                6 ONE-RUN GAMES
+1981-05-06        NBC     331   Miami Hurricanes        Detroit Dukes           1           0       12 ONE_RUN;EXTRA                    ONE-RUN -- Miami Hurricanes 1-0 Detroit Dukes (12 inn)                6 ONE-RUN GAMES
+1981-05-08        NBC     351 Charlotte Colonels   Los Angeles Cobras           3           2       10 ONE_RUN;EXTRA             ONE-RUN -- Charlotte Colonels 3-2 Los Angeles Cobras (10 inn)                6 ONE-RUN GAMES
+1981-05-08        ABC     360 Cincinnati Cougars       Seattle Comets           8           7       11 ONE_RUN;EXTRA                 ONE-RUN -- Cincinnati Cougars 8-7 Seattle Comets (11 inn)                8 ONE-RUN GAMES
+1981-05-09        ABC     368  Philadelphia Fury  St. Louis Stallions           4           3        9       ONE_RUN              ONE-RUN -- Philadelphia Fury 4-3 St. Louis Stallions (9 inn)                6 ONE-RUN GAMES
+1981-05-09        ABC     370    Boston Patriots   Las Vegas Gamblers           2           1        9       ONE_RUN                 ONE-RUN -- Boston Patriots 2-1 Las Vegas Gamblers (9 inn)                6 ONE-RUN GAMES
 
 === SWEEPS / AVOID SWEEP ===
       date conference game_id          away_name          home_name  final_away  final_home  innings  event_tags player_tags                                                      description  highlight_score             category
