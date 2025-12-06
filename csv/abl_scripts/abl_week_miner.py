@@ -275,8 +275,9 @@ def infer_current_week(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timestamp, p
     last_played = played_dates.max()
     if pd.isna(last_played):
         return None
-    start = last_played - pd.Timedelta(days=6)
-    return start.normalize(), last_played.normalize()
+    end = last_played.normalize()
+    start = end - pd.Timedelta(days=end.weekday())  # always start on Monday
+    return start.normalize(), end
 
 
 def parse_dates(args, games_df: Optional[pd.DataFrame]) -> Tuple[pd.Timestamp, pd.Timestamp]:
@@ -302,7 +303,7 @@ def parse_dates(args, games_df: Optional[pd.DataFrame]) -> Tuple[pd.Timestamp, p
         return inferred
 
     end = pd.Timestamp(datetime.now().date()) - pd.Timedelta(days=1)
-    start = end - pd.Timedelta(days=6)
+    start = end - pd.Timedelta(days=end.weekday())  # Monday start
     return start.normalize(), end.normalize()
 
 
@@ -333,8 +334,9 @@ def infer_last_played_window(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timest
     last_played = played_dates.max()
     if pd.isna(last_played):
         return None
-    start = last_played - pd.Timedelta(days=6)
-    return start.normalize(), last_played.normalize()
+    end = last_played.normalize()
+    start = end - pd.Timedelta(days=end.weekday())  # Monday start
+    return start.normalize(), end
 
 
 def infer_sim_window(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timestamp, pd.Timestamp]]:
@@ -818,13 +820,14 @@ def main():
         def apply_event(tag: str, value: int):
             nonlocal base_points
             if tag not in event_tags:
-                event_tags.append(tag)
+                if tag == "WALKOFF":
+                    event_tags.insert(0, tag)
+                else:
+                    event_tags.append(tag)
             base_points = max(base_points, value)
 
-        if home_win and (innings > 9 or diff <= 1):
-            apply_event("WALKOFF", 12)
-        elif diff == 1:
-            apply_event("ONE_RUN", 6)
+        walkoff_flag = False
+        one_run_flag = diff == 1
 
         if innings > 9:
             apply_event("EXTRA", 6)
@@ -841,6 +844,7 @@ def main():
         elif tag == "AVOID_SWEEP":
             apply_event("AVOID_SWEEP", 6)
 
+        line_data = None
         if line_helper.available:
             line_data = line_helper.extract(game, away_score, home_score)
             if line_data:
@@ -852,6 +856,32 @@ def main():
                     apply_event("COMEBACK", 10)
                 if behind_flag:
                     apply_event("BEHIND", 8)
+
+        # True walk-offs: home team wins in final frame (9th or extras) by taking the lead in that inning.
+        if home_win:
+            if line_data:
+                target_len = max(len(away_line), len(home_line), int(math.ceil(innings)), 9)
+                away_seq = pad_scores(away_line, target_len)
+                home_seq = pad_scores(home_line, target_len)
+                home_before = sum(home_seq[: target_len - 1])
+                away_before = sum(away_seq[: target_len - 1])
+                home_final = sum(home_seq)
+                away_final = sum(away_seq)
+                if (
+                    home_final > away_final
+                    and home_seq[target_len - 1] > 0
+                    and home_before <= away_before
+                ):
+                    walkoff_flag = True
+            else:
+                # Fallback when line scores absent: only treat extra-inning home wins by one as walk-off.
+                if innings > 9 and one_run_flag:
+                    walkoff_flag = True
+
+        if walkoff_flag:
+            apply_event("WALKOFF", 12)
+        elif one_run_flag:
+            apply_event("ONE_RUN", 6)
 
         if (
             pitch_logs is not None
