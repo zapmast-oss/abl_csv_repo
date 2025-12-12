@@ -34,6 +34,17 @@ FORBIDDEN_TOKENS = [
     "watch)",
 ]
 
+SECTION_FALLBACKS = {
+    "around": "- No major movement at the top of the table this week.",
+    "one_run": "- No teams clearly separating in one-run results this week.",
+    "bullpen": "- No bullpens currently flagged at Critical or High levels.",
+    "sos": "- Schedule strength balanced across the league this week.",
+    "rookies": "- No rookies met the reporting threshold this week.",
+    "player_week": "- No consensus Player of the Week emerged.",
+    "managers": "- No notable managerial pattern shifts this week.",
+    "matchups": "- No featured matchups flagged this week.",
+}
+
 
 def warn(msg: str) -> None:
     print(f"WARNING: {msg}")
@@ -380,9 +391,10 @@ def render_forum_post(core12: dict) -> str:
         bullet = "- Cold spell: " + ", ".join(top_cold)
         if allowed_line(bullet, team_set):
             around_bullets.append(bullet)
-    if around_bullets:
-        lines.append("## Around the League")
-        lines.extend(around_bullets)
+    lines.append("## Around the League")
+    if not around_bullets:
+        around_bullets = [SECTION_FALLBACKS["around"]]
+    lines.extend(around_bullets)
 
     one_run = core12.get("one_run_records") or []
     clutch, cold_run = [], []
@@ -396,6 +408,8 @@ def render_forum_post(core12: dict) -> str:
             clutch.append({"team": team, "record": record})
         elif tag == "cold":
             cold_run.append({"team": team, "record": record})
+    clutch_sorted = clutch[:3]
+    cold_sorted = cold_run[:3]
 
     bullpen = core12.get("bullpen_stress") or []
     critical, high = [], []
@@ -427,9 +441,13 @@ def render_forum_post(core12: dict) -> str:
             )
             if allowed_line(bullet, team_set):
                 one_run_lines.append(bullet)
-        if one_run_lines:
-            close_lines.append("### One-Run Games")
-            close_lines.extend(one_run_lines)
+        if not one_run_lines:
+            one_run_lines = [SECTION_FALLBACKS["one_run"]]
+        close_lines.append("### One-Run Games")
+        close_lines.extend(one_run_lines)
+    else:
+        close_lines.append("### One-Run Games")
+        close_lines.append(SECTION_FALLBACKS["one_run"])
     if critical or high:
         bullpen_lines: List[str] = []
         if critical:
@@ -440,12 +458,15 @@ def render_forum_post(core12: dict) -> str:
             bullet = "- High alert: " + ", ".join(high)
             if allowed_line(bullet, team_set):
                 bullpen_lines.append(bullet)
-        if bullpen_lines:
-            close_lines.append("### Bullpen Stress")
-            close_lines.extend(bullpen_lines)
-    if close_lines:
-        lines += ["", "## Close Games & Bullpens"]
-        lines.extend(close_lines)
+        if not bullpen_lines:
+            bullpen_lines = [SECTION_FALLBACKS["bullpen"]]
+        close_lines.append("### Bullpen Stress")
+        close_lines.extend(bullpen_lines)
+    else:
+        close_lines.append("### Bullpen Stress")
+        close_lines.append(SECTION_FALLBACKS["bullpen"])
+    lines += ["", "## Close Games & Bullpens"]
+    lines.extend(close_lines)
 
     sos = core12.get("strength_of_schedule_last14") or []
     filtered_sos = [
@@ -458,23 +479,23 @@ def render_forum_post(core12: dict) -> str:
     ]
     gauntlet = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: -x["sos"])[:3]
     soft = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: x["sos"])[:3]
-    if gauntlet or soft:
-        sos_section: List[str] = []
-        if gauntlet:
-            bullet = "- Gauntlet: " + ", ".join(
-                [f"{normalize_team_name(g['team'])} ({g.get('record','').strip() or g.get('note','').strip()})" for g in gauntlet]
-            )
-            if allowed_line(bullet, team_set):
-                sos_section.append(bullet)
-        if soft:
-            bullet = "- Soft: " + ", ".join(
-                [f"{normalize_team_name(s['team'])} ({s.get('record','').strip() or s.get('note','').strip()})" for s in soft]
-            )
-            if allowed_line(bullet, team_set):
-                sos_section.append(bullet)
-        if sos_section:
-            lines += ["", "## Strength of Schedule"]
-            lines.extend(sos_section)
+    sos_section: List[str] = []
+    if gauntlet:
+        bullet = "- Gauntlet: " + ", ".join(
+            [f"{normalize_team_name(g['team'])} ({g.get('record','').strip() or g.get('note','').strip()})" for g in gauntlet]
+        )
+        if allowed_line(bullet, team_set):
+            sos_section.append(bullet)
+    if soft:
+        bullet = "- Soft: " + ", ".join(
+            [f"{normalize_team_name(s['team'])} ({s.get('record','').strip() or s.get('note','').strip()})" for s in soft]
+        )
+        if allowed_line(bullet, team_set):
+            sos_section.append(bullet)
+    lines += ["", "## Strength of Schedule"]
+    if not sos_section:
+        sos_section = [SECTION_FALLBACKS["sos"]]
+    lines.extend(sos_section)
 
     rookies = core12.get("rookie_watch") or []
 
@@ -502,17 +523,23 @@ def render_forum_post(core12: dict) -> str:
             rookie_lines.append(line)
         if len(rookie_lines) >= 4:
             break
-    if rookie_lines:
-        lines += ["", "## Rookie Watch"]
-        for rl in rookie_lines:
-            bullet = f"- {rl}"
-            if allowed_line(bullet, team_set):
-                lines.append(bullet)
+    lines += ["", "## Rookie Watch"]
+    if not rookie_lines:
+        rookie_lines = [SECTION_FALLBACKS["rookies"]]
+    for rl in rookie_lines:
+        bullet = rl if rl.startswith("-") else f"- {rl}"
+        if bullet in SECTION_FALLBACKS.values() or allowed_line(bullet, team_set):
+            lines.append(bullet)
 
     pow_entry = core12.get("player_of_the_week") or {}
     pow_blurb = (pow_entry.get("blurb") or "").strip()
+    lines += ["", "## Player of the Week"]
+    pow_lines: List[str] = []
     if pow_blurb and "week miner" not in pow_blurb.lower() and allowed_line(f"- {pow_blurb}", team_set):
-        lines += ["", "## Player of the Week", f"- {pow_blurb}"]
+        pow_lines.append(f"- {pow_blurb}")
+    if not pow_lines:
+        pow_lines = [SECTION_FALLBACKS["player_week"]]
+    lines.extend(pow_lines)
 
     managers = core12.get("manager_tendencies") or []
     mgr_lines = []
@@ -530,14 +557,14 @@ def render_forum_post(core12: dict) -> str:
                     name = name.split("(")[0].strip()
             summary = f"{team_clean}: {name}" if team_clean else name
             mgr_lines.append(summary)
-    if mgr_lines:
-        valid_mgrs = []
-        for ml in mgr_lines:
-            if contains_team_name(ml, team_set) and not any(tok in ml.lower() for tok in FORBIDDEN_TOKENS):
-                valid_mgrs.append(f"- {ml}")
-        if valid_mgrs:
-            lines += ["", "## Manager's Corner"]
-            lines.extend(valid_mgrs)
+    valid_mgrs = []
+    for ml in mgr_lines:
+        if contains_team_name(ml, team_set) and not any(tok in ml.lower() for tok in FORBIDDEN_TOKENS):
+            valid_mgrs.append(f"- {ml}")
+    lines += ["", "## Manager's Corner"]
+    if not valid_mgrs:
+        valid_mgrs = [SECTION_FALLBACKS["managers"]]
+    lines.extend(valid_mgrs)
 
     featured = core12.get("featured_matchups") or []
     sunday = core12.get("sunday_matchups") or []
@@ -560,13 +587,14 @@ def render_forum_post(core12: dict) -> str:
         bullet = "- Sunday set: " + "; ".join(sun_lines)
         if allowed_line(bullet, team_set):
             matchup_lines.append(bullet)
-    if matchup_lines:
-        lines += ["", "## On Deck - Featured & Sunday Matchups"]
-        lines.extend(matchup_lines)
+    lines += ["", "## On Deck - Featured & Sunday Matchups"]
+    if not matchup_lines:
+        matchup_lines = [SECTION_FALLBACKS["matchups"]]
+    lines.extend(matchup_lines)
 
     filtered_lines: List[str] = []
     for line in lines:
-        if line.startswith("-"):
+        if line.startswith("-") and line not in SECTION_FALLBACKS.values():
             if allowed_line(line, team_set):
                 filtered_lines.append(line)
         else:
@@ -611,12 +639,16 @@ def render_video_outline(core12: dict) -> str:
 
     lines += ["## Open", "- Quick vibe; standings and headlines."]
     lines += ["", "## Standings & Momentum"]
+    stand_bullets: List[str] = []
     if top_table:
-        lines.append("- Top of table: " + ", ".join(top_table))
+        stand_bullets.append("- Top of table: " + ", ".join(top_table))
     if top_hot:
-        lines.append("- Hot: " + ", ".join(top_hot))
+        stand_bullets.append("- Hot: " + ", ".join(top_hot))
     if top_cold:
-        lines.append("- Cold: " + ", ".join(top_cold))
+        stand_bullets.append("- Cold: " + ", ".join(top_cold))
+    if not stand_bullets:
+        stand_bullets = [SECTION_FALLBACKS["around"]]
+    lines.extend(stand_bullets)
 
     one_run = core12.get("one_run_records") or []
     clutch = []
@@ -648,30 +680,39 @@ def render_video_outline(core12: dict) -> str:
             bullet = "- Cold in one-run: " + ", ".join(cold_run[:3])
             if allowed_line(bullet, team_set):
                 close_lines.append(bullet)
+    if not close_lines:
+        close_lines = [SECTION_FALLBACKS["one_run"]]
+    stress_added = False
     if stress_notes:
         bullet = "- Bullpen stress: " + ", ".join(stress_notes[:6])
         if allowed_line(bullet, team_set):
             close_lines.append(bullet)
-    if close_lines:
-        lines += ["", "## Close Games & Bullpens"]
-        lines.extend(close_lines)
+            stress_added = True
+    if not stress_added and SECTION_FALLBACKS["bullpen"] not in close_lines:
+        close_lines.append(SECTION_FALLBACKS["bullpen"])
+    lines += ["", "## Close Games & Bullpens"]
+    lines.extend(close_lines)
 
     sos = core12.get("strength_of_schedule_last14") or []
     filtered_sos = [
         s
         for s in sos
         if s.get("team")
-        and contains_team_name(s.get("team", ""), team_set)
+        and contains_team_name(normalize_team_name(s.get("team", "")), team_set)
         and re.search(r"\d+-\d+", s.get("record", "") or "")
         and not any(tok in (s.get("note", "").lower()) for tok in ["neutral", "gauntlet (->", "soft (->"])
     ]
     gauntlet = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: -x["sos"])[:3]
     soft = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: x["sos"])[:3]
     lines += ["", "## Strength of Schedule"]
+    sos_lines = []
     if gauntlet:
-        lines.append("- Gauntlet: " + ", ".join([normalize_team_name(g["team"]) for g in gauntlet]))
+        sos_lines.append("- Gauntlet: " + ", ".join([normalize_team_name(g["team"]) for g in gauntlet]))
     if soft:
-        lines.append("- Soft: " + ", ".join([normalize_team_name(s["team"]) for s in soft]))
+        sos_lines.append("- Soft: " + ", ".join([normalize_team_name(s["team"]) for s in soft]))
+    if not sos_lines:
+        sos_lines = [SECTION_FALLBACKS["sos"]]
+    lines.extend(sos_lines)
 
     rookies = core12.get("rookie_watch") or []
     section_lines: List[str] = []
@@ -693,9 +734,10 @@ def render_video_outline(core12: dict) -> str:
     pow_blurb = (pow_entry.get("blurb") or "").strip()
     if pow_blurb and "week miner" not in pow_blurb.lower() and allowed_line(f"- {pow_blurb}", team_set):
         section_lines.append("- POW: " + pow_blurb)
-    if section_lines:
-        lines += ["", "## Rookie Watch & Player of the Week"]
-        lines.extend(section_lines)
+    if not section_lines:
+        section_lines = [SECTION_FALLBACKS["rookies"], SECTION_FALLBACKS["player_week"]]
+    lines += ["", "## Rookie Watch & Player of the Week"]
+    lines.extend(section_lines)
 
     featured = core12.get("featured_matchups") or []
     sunday = core12.get("sunday_matchups") or []
@@ -718,13 +760,14 @@ def render_video_outline(core12: dict) -> str:
         bullet = "- Sunday set: " + "; ".join(sun_lines)
         if allowed_line(bullet, team_set):
             matchup_lines.append(bullet)
-    if matchup_lines:
-        lines += ["", "## On Deck"]
-        lines.extend(matchup_lines)
+    if not matchup_lines:
+        matchup_lines = [SECTION_FALLBACKS["matchups"]]
+    lines += ["", "## On Deck"]
+    lines.extend(matchup_lines)
 
     filtered_lines: List[str] = []
     for line in lines:
-        if line.startswith("-"):
+        if line.startswith("-") and line not in SECTION_FALLBACKS.values():
             if allowed_line(line, team_set):
                 filtered_lines.append(line)
         else:
