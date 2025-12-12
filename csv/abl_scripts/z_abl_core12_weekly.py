@@ -56,6 +56,16 @@ def normalize_text(s: str) -> str:
         s = s.replace(bad, good)
     return s.strip()
 
+def normalize_team_name(team: str) -> str:
+    if not team:
+        return team
+    t = team.strip()
+    if t in {"St.", "St"}:
+        return "St. Louis"
+    if t.startswith("St.") and "Louis" not in t:
+        return "St. Louis"
+    return team
+
 
 def contains_team_name(s: str, teams: set[str]) -> bool:
     return any(team and team.lower() in s.lower() for team in teams)
@@ -316,16 +326,23 @@ def render_forum_post(core12: dict) -> str:
     standings = core12.get("standings") or []
     hot = core12.get("hot_teams") or []
     cold = core12.get("cold_teams") or []
-    team_set: set[str] = {e.get("team", "") for e in standings if e.get("team")}
+    team_set: set[str] = set()
+    for e in standings:
+        team = e.get("team", "")
+        if team:
+            team_set.add(team)
+            team_set.add(normalize_team_name(team))
 
     top_table = [
-        format_team_record(e)
+        format_team_record(e).replace(e.get("team", ""), normalize_team_name(e.get("team", "")))
         for e in standings
-        if e.get("team") and re.search(r"\d+-\d+", format_team_record(e)) and contains_team_name(format_team_record(e), team_set)
+        if e.get("team")
+        and re.search(r"\d+-\d+", format_team_record(e))
+        and contains_team_name(format_team_record(e), team_set)
     ][:3]
     top_hot = []
     for e in hot[:3]:
-        team = e.get("team", "")
+        team = normalize_team_name(e.get("team", ""))
         diff = e.get("diff")
         last10 = e.get("last10")
         if team:
@@ -338,7 +355,7 @@ def render_forum_post(core12: dict) -> str:
                 top_hot.append(label)
     top_cold = []
     for e in cold[:3]:
-        team = e.get("team", "")
+        team = normalize_team_name(e.get("team", ""))
         diff = e.get("diff")
         last10 = e.get("last10")
         if team:
@@ -370,26 +387,15 @@ def render_forum_post(core12: dict) -> str:
     one_run = core12.get("one_run_records") or []
     clutch, cold_run = [], []
     for r in one_run:
-        team = r.get("team", "")
+        team = normalize_team_name(r.get("team", ""))
         record = r.get("record", "")
         if "generated" in record.lower():
             continue
-        wins_losses = re.findall(r"(\d+)-(\d+)", record)
-        diff_val = None
-        if wins_losses:
-            try:
-                w_val, l_val = map(int, wins_losses[0])
-                diff_val = w_val - l_val
-            except Exception:
-                diff_val = None
         tag = (r.get("tag") or "").lower()
-        entry = {"team": team, "record": record, "diff": diff_val}
-        if (diff_val is not None and diff_val > 0) or tag == "clutch":
-            clutch.append(entry)
-        elif (diff_val is not None and diff_val < 0) or tag == "cold":
-            cold_run.append(entry)
-    clutch_sorted = sorted(clutch, key=lambda x: -(x.get("diff") or 0))[:3]
-    cold_sorted = sorted(cold_run, key=lambda x: (x.get("diff") or 0))[:3]
+        if tag == "clutch":
+            clutch.append({"team": team, "record": record})
+        elif tag == "cold":
+            cold_run.append({"team": team, "record": record})
 
     bullpen = core12.get("bullpen_stress") or []
     critical, high = [], []
@@ -398,7 +404,7 @@ def render_forum_post(core12: dict) -> str:
         if not entry:
             continue
         lower = entry.lower()
-        team_token = entry.split()[0]
+        team_token = normalize_team_name(entry.split()[0])
         if any(tok in lower for tok in ["meaning", "stress", "last-14"]):
             continue
         if "critical" in lower and contains_team_name(team_token, team_set):
@@ -446,7 +452,7 @@ def render_forum_post(core12: dict) -> str:
         s
         for s in sos
         if s.get("team")
-        and contains_team_name(s.get("team", ""), team_set)
+        and contains_team_name(normalize_team_name(s.get("team", "")), team_set)
         and re.search(r"\d+-\d+", s.get("record", "") or "")
         and not any(tok in (s.get("note", "").lower()) for tok in ["neutral", "gauntlet (->", "soft (->"])
     ]
@@ -456,13 +462,13 @@ def render_forum_post(core12: dict) -> str:
         sos_section: List[str] = []
         if gauntlet:
             bullet = "- Gauntlet: " + ", ".join(
-                [f"{g['team']} ({g.get('record','').strip() or g.get('note','').strip()})" for g in gauntlet]
+                [f"{normalize_team_name(g['team'])} ({g.get('record','').strip() or g.get('note','').strip()})" for g in gauntlet]
             )
             if allowed_line(bullet, team_set):
                 sos_section.append(bullet)
         if soft:
             bullet = "- Soft: " + ", ".join(
-                [f"{s['team']} ({s.get('record','').strip() or s.get('note','').strip()})" for s in soft]
+                [f"{normalize_team_name(s['team'])} ({s.get('record','').strip() or s.get('note','').strip()})" for s in soft]
             )
             if allowed_line(bullet, team_set):
                 sos_section.append(bullet)
@@ -474,7 +480,7 @@ def render_forum_post(core12: dict) -> str:
 
     def format_rookie(r: Dict[str, str]) -> str:
         name = r.get("player") or ""
-        team = r.get("team") or ""
+        team = normalize_team_name(r.get("team") or "")
         rating = r.get("rating") or ""
         stat = r.get("stat") or ""
         pieces = [name]
@@ -512,7 +518,7 @@ def render_forum_post(core12: dict) -> str:
     mgr_lines = []
     for m in managers[:7]:
         name = m.get("manager") or m.get("col1") or ""
-        team = m.get("team") or m.get("col2") or ""
+        team = normalize_team_name(m.get("team") or m.get("col2") or "")
         rating = ""
         if name:
             team_clean = team
@@ -535,8 +541,16 @@ def render_forum_post(core12: dict) -> str:
 
     featured = core12.get("featured_matchups") or []
     sunday = core12.get("sunday_matchups") or []
-    feat_lines = [f"{m.get('away','')} at {m.get('home','')}".strip() for m in featured if m.get("away") and m.get("home")]
-    sun_lines = [f"{m.get('away','')} at {m.get('home','')}".strip() for m in sunday if m.get("away") and m.get("home")]
+    feat_lines = [
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        for m in featured
+        if m.get("away") and m.get("home")
+    ]
+    sun_lines = [
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        for m in sunday
+        if m.get("away") and m.get("home")
+    ]
     matchup_lines: List[str] = []
     if feat_lines:
         bullet = "- Featured: " + "; ".join(feat_lines)
@@ -570,22 +584,29 @@ def render_video_outline(core12: dict) -> str:
     standings = core12.get("standings") or []
     hot = core12.get("hot_teams") or []
     cold = core12.get("cold_teams") or []
-    team_set: set[str] = {e.get("team", "") for e in standings if e.get("team")}
+    team_set: set[str] = set()
+    for e in standings:
+        team = e.get("team", "")
+        if team:
+            team_set.add(team)
+            team_set.add(normalize_team_name(team))
 
     top_table = [
-        e.get("team", "")
+        normalize_team_name(e.get("team", ""))
         for e in standings
-        if e.get("team") and contains_team_name(e.get("team", ""), team_set) and re.search(r"\d+-\d+", str(e.values()))
+        if e.get("team")
+        and contains_team_name(normalize_team_name(e.get("team", "")), team_set)
+        and re.search(r"\d+-\d+", str(e.values()))
     ][:3]
     top_hot = [
-        f"{e.get('team','')} ({e.get('last10') or e.get('diff','')})"
+        f"{normalize_team_name(e.get('team',''))} ({e.get('last10') or e.get('diff','')})"
         for e in hot[:3]
-        if e.get("team") and contains_team_name(e.get("team", ""), team_set)
+        if e.get("team") and contains_team_name(normalize_team_name(e.get("team", "")), team_set)
     ]
     top_cold = [
-        f"{e.get('team','')} ({e.get('last10') or e.get('diff','')})"
+        f"{normalize_team_name(e.get('team',''))} ({e.get('last10') or e.get('diff','')})"
         for e in cold[:3]
-        if e.get("team") and contains_team_name(e.get("team", ""), team_set)
+        if e.get("team") and contains_team_name(normalize_team_name(e.get("team", "")), team_set)
     ]
 
     lines += ["## Open", "- Quick vibe; standings and headlines."]
@@ -601,21 +622,14 @@ def render_video_outline(core12: dict) -> str:
     clutch = []
     cold_run = []
     for r in one_run:
-        team = r.get("team", "")
+        team = normalize_team_name(r.get("team", ""))
         record = r.get("record", "")
+        tag = (r.get("tag") or "").lower()
         if not contains_team_name(team, team_set):
             continue
-        wins_losses = re.findall(r"(\d+)-(\d+)", record)
-        diff_val = None
-        if wins_losses:
-            try:
-                w_val, l_val = map(int, wins_losses[0])
-                diff_val = w_val - l_val
-            except Exception:
-                diff_val = None
-        if diff_val is not None and diff_val > 0:
+        if tag == "clutch":
             clutch.append(f"{team} {record}")
-        elif diff_val is not None and diff_val < 0:
+        elif tag == "cold":
             cold_run.append(f"{team} {record}")
     bullpen = core12.get("bullpen_stress") or []
     stress_notes = []
@@ -655,16 +669,16 @@ def render_video_outline(core12: dict) -> str:
     soft = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: x["sos"])[:3]
     lines += ["", "## Strength of Schedule"]
     if gauntlet:
-        lines.append("- Gauntlet: " + ", ".join([g["team"] for g in gauntlet]))
+        lines.append("- Gauntlet: " + ", ".join([normalize_team_name(g["team"]) for g in gauntlet]))
     if soft:
-        lines.append("- Soft: " + ", ".join([s["team"] for s in soft]))
+        lines.append("- Soft: " + ", ".join([normalize_team_name(s["team"]) for s in soft]))
 
     rookies = core12.get("rookie_watch") or []
     section_lines: List[str] = []
     rookie_bullets = []
     for r in rookies:
         player = r.get("player", "")
-        team = r.get("team", "")
+        team = normalize_team_name(r.get("team", ""))
         stat = r.get("stat", "")
         if looks_like_player(player) and has_stat_token(stat or "") and team:
             text = f"{player} ({team}) {stat}".strip()
@@ -685,8 +699,16 @@ def render_video_outline(core12: dict) -> str:
 
     featured = core12.get("featured_matchups") or []
     sunday = core12.get("sunday_matchups") or []
-    feat_lines = [f"{m.get('away','')} at {m.get('home','')}".strip() for m in featured if m.get("away") and m.get("home")]
-    sun_lines = [f"{m.get('away','')} at {m.get('home','')}".strip() for m in sunday if m.get("away") and m.get("home")]
+    feat_lines = [
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        for m in featured
+        if m.get("away") and m.get("home")
+    ]
+    sun_lines = [
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        for m in sunday
+        if m.get("away") and m.get("home")
+    ]
     matchup_lines = []
     if feat_lines:
         bullet = "- Featured: " + "; ".join(feat_lines)
