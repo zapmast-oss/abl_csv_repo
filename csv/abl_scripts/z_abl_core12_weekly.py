@@ -34,6 +34,28 @@ FORBIDDEN_TOKENS = [
     "watch)",
 ]
 
+STRESS_FORBIDDEN = ["last-14", "last-14/7-day", "meaning", "stress index"]
+POW_FORBIDDEN = ["abl week miner", "generated", "report"]
+
+TEAM_DISPLAY_ABBR = {
+    "Los Angeles": "LA",
+    "Los": "LA",
+    "LA": "LA",
+    "Las Vegas": "LV",
+    "Las": "LV",
+    "LV": "LV",
+    "St. Louis": "STL",
+    "St.": "STL",
+    "St": "STL",
+    "STL": "STL",
+    "San Francisco": "SF",
+    "SF": "SF",
+    "Tampa Bay": "TB",
+    "TB": "TB",
+    "New York": "NY",
+    "NY": "NY",
+}
+
 
 def warn(msg: str) -> None:
     print(f"WARNING: {msg}")
@@ -63,6 +85,13 @@ def normalize_team_name(team: str) -> str:
     if t.startswith("St.") and "Louis" not in t:
         return "St. Louis"
     return team
+
+
+def display_team(team: str) -> str:
+    if not team:
+        return team
+    t = team.strip()
+    return TEAM_DISPLAY_ABBR.get(t, t)
 
 
 def contains_team_name(s: str, teams: set[str]) -> bool:
@@ -99,6 +128,7 @@ def looks_like_player_row(row: dict) -> bool:
         and isinstance(row["player"], str)
         and len(row["player"].split()) >= 2
         and "generated" not in row["player"].lower()
+        and not any(tok in row["player"].lower() for tok in POW_FORBIDDEN)
     )
 
 
@@ -277,13 +307,16 @@ def load_rookie_watch(hitters: str, pitchers: str) -> List[Dict[str, str]]:
     return parse_block(hitters or "", "hitter") + parse_block(pitchers or "", "pitcher")
 
 
-def load_player_of_week(text: str) -> Dict[str, str]:
-    lines = [ln for ln in text.splitlines() if ln.strip() and not ln.strip().startswith("===")]
-    for ln in lines:
-        if re.search(r"player of the week", ln, flags=re.I):
+def load_player_of_week(text: str) -> List[Dict[str, str]]:
+    rows: List[Dict[str, str]] = []
+    for ln in text.splitlines():
+        clean = ln.strip()
+        if not clean or clean.startswith("==="):
             continue
-        return {"blurb": ln.strip()}
-    return {}
+        tokens = clean.split()
+        if len(tokens) >= 2:
+            rows.append({"player": " ".join(tokens[:2]), "team": tokens[2] if len(tokens) >= 3 else "", "line": clean})
+    return rows
 
 
 def load_manager_tendencies(text: str) -> List[Dict[str, str]]:
@@ -338,15 +371,16 @@ def render_forum_post(core12: dict) -> str:
 
     def format_team_record(entry: Dict[str, str]) -> Tuple[str, float]:
         team = normalize_team_name(entry.get("team", ""))
+        team_disp = display_team(team)
         w = entry.get("w")
         l = entry.get("l")
         pct = 0.0
         if w and l and w.isdigit() and l.isdigit():
             w_i, l_i = int(w), int(l)
             pct = w_i / max(w_i + l_i, 1)
-            rec_str = f"{team} ({w}-{l})"
+            rec_str = f"{team_disp} ({w}-{l})"
         else:
-            rec_str = team
+            rec_str = team_disp
         return rec_str, pct
 
     standings_raw = core12.get("standings") or []
@@ -371,6 +405,7 @@ def render_forum_post(core12: dict) -> str:
     one_run_stats: List[Tuple[str, float, str]] = []
     for r in one_run:
         team = normalize_team_name(r.get("team", ""))
+        team_disp = display_team(team)
         record = r.get("record", "")
         m = re.match(r"(\d+)-(\d+)", record)
         if not m:
@@ -378,19 +413,19 @@ def render_forum_post(core12: dict) -> str:
         w_i, l_i = int(m.group(1)), int(m.group(2))
         total = w_i + l_i
         pct = w_i / total if total else 0.0
-        one_run_stats.append((team, pct, f"{team} ({record})"))
+        one_run_stats.append((team, pct, f"{team_disp} ({record})"))
     one_run_stats.sort(key=lambda x: -x[1])
     best_one_run = [entry[2] for entry in one_run_stats[:3]]
     worst_one_run = [entry[2] for entry in list(reversed(one_run_stats))[:3]]
 
     bullpen_raw = core12.get("bullpen_stress") or []
-    bullpen = [b for b in bullpen_raw if looks_like_team_row({"team": (b.get("team") or b.get("entry") or "").split()[0]})]
-    bullpen_list = []
-    for b in bullpen:
+    bullpen = []
+    for b in bullpen_raw:
         entry = b.get("entry", "") or b.get("team", "")
-        if entry:
-            bullpen_list.append(normalize_team_name(entry.split()[0]))
-    bullpen_top = bullpen_list[:5]
+        token = entry.split()[0] if entry else ""
+        if token and not any(tok in entry.lower() for tok in STRESS_FORBIDDEN) and looks_like_team_row({"team": token}):
+            bullpen.append(display_team(normalize_team_name(token)))
+    bullpen_top = bullpen[:5]
 
     close_lines: List[str] = ["", "## Close Games & Bullpens"]
     if best_one_run:
@@ -422,12 +457,12 @@ def render_forum_post(core12: dict) -> str:
     if gauntlet:
         lines.append(
             "- Toughest recent slate: "
-            + ", ".join([f"{normalize_team_name(g['team'])} ({g.get('sos'):.3f} SOS, {g.get('record','')})" for g in gauntlet])
+            + ", ".join([f"{display_team(normalize_team_name(g['team']))} ({g.get('sos'):.3f} SOS, {g.get('record','')})" for g in gauntlet])
         )
     if soft:
         lines.append(
             "- Easiest recent slate: "
-            + ", ".join([f"{normalize_team_name(s['team'])} ({s.get('sos'):.3f} SOS, {s.get('record','')})" for s in soft])
+            + ", ".join([f"{display_team(normalize_team_name(s['team']))} ({s.get('sos'):.3f} SOS, {s.get('record','')})" for s in soft])
         )
 
     rookies_raw = core12.get("rookie_watch") or []
@@ -444,7 +479,7 @@ def render_forum_post(core12: dict) -> str:
         lines += ["", "## Rookie Watch"]
         for r in rookies_sorted:
             name = r.get("player", "")
-            team = normalize_team_name(r.get("team", ""))
+            team = display_team(normalize_team_name(r.get("team", "")))
             rating = r.get("rating", "")
             stat = r.get("stat", "")
             parts = [name]
@@ -460,34 +495,58 @@ def render_forum_post(core12: dict) -> str:
                 line += " - " + ", ".join(desc)
             lines.append(f"- {line}")
 
-    pow_entry = core12.get("player_of_the_week") or {}
-    pow_blurb = (pow_entry.get("blurb") or "").strip()
-    if pow_blurb:
-        lines += ["", "## Player of the Week", f"- {pow_blurb}"]
+    pow_rows = load_player_of_week(read_text(TEXT_OUT_DIR / "z_ABL_Week_Miner.txt") or "")
+    pow_valid = [p for p in pow_rows if looks_like_player_row(p)]
+    if pow_valid:
+        top_pow = pow_valid[0]
+        player = top_pow.get("player", "")
+        team_raw = normalize_team_name(top_pow.get("team", ""))
+        team = display_team(team_raw)
+        stat_line = top_pow.get("line", "").replace(player, "").replace(team_raw, "").replace(team, "").strip()
+        pieces = [player]
+        if team:
+            pieces.append(f"({team})")
+        blurb = " ".join(pieces)
+        if stat_line:
+            blurb += f" - {stat_line}"
+        lines += ["", "## Player of the Week", f"- {blurb}"]
 
     managers_raw = core12.get("manager_tendencies") or []
     managers = [m for m in managers_raw if looks_like_manager_row({"manager": m.get("manager") or m.get("col1", "")})]
     mgr_lines = []
     for m in managers:
-        name = m.get("manager") or m.get("col1") or ""
-        team = normalize_team_name(m.get("team") or m.get("col2") or "")
-        if name and team:
-            mgr_lines.append(f"{team}: {name}")
+        manager_field = m.get("manager") or m.get("col1") or ""
+        rating = m.get("rating") or m.get("col3") or ""
+        idx = m.get("hook") or m.get("col4") or ""
+        name = manager_field.split("(")[0].strip()
+        team_code_match = re.search(r"\(([^)]+)\)", manager_field)
+        team_code = team_code_match.group(1) if team_code_match else ""
+        team = display_team(normalize_team_name(team_code))
+        parts = [f"{team}: {name}" if team else name]
+        rating_bits = []
+        if rating:
+            rating_bits.append(rating)
+        if idx:
+            rating_bits.append(str(idx))
+        if rating_bits:
+            parts.append(" - " + " ".join(rating_bits))
+        mgr_lines.append("".join(parts))
     if mgr_lines:
         lines += ["", "## Manager's Corner"]
-        lines.append("- Top tendencies: " + ", ".join(mgr_lines[:3]))
+        for mgr in mgr_lines:
+            lines.append(f"- {mgr}")
 
     featured_raw = core12.get("featured_matchups") or []
     featured = [m for m in featured_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
     sunday_raw = core12.get("sunday_matchups") or []
     sunday = [m for m in sunday_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
     feat_lines = [
-        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}"
+        f"{display_team(normalize_team_name(m.get('away','')))} at {display_team(normalize_team_name(m.get('home','')))}"
         for m in featured
         if m.get("away") and m.get("home")
     ][:3]
     sun_lines = [
-        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}"
+        f"{display_team(normalize_team_name(m.get('away','')))} at {display_team(normalize_team_name(m.get('home','')))}"
         for m in sunday
         if m.get("away") and m.get("home")
     ][:3]
@@ -549,20 +608,20 @@ def render_video_outline(core12: dict) -> str:
     worst_one_run = [entry[2] for entry in list(reversed(one_run_stats))[:3]]
 
     bullpen_raw = core12.get("bullpen_stress") or []
-    bullpen = [b for b in bullpen_raw if looks_like_team_row({"team": (b.get("team") or b.get("entry") or "").split()[0]})]
-    bullpen_list = []
-    for b in bullpen:
+    bullpen = []
+    for b in bullpen_raw:
         entry = b.get("entry", "") or b.get("team", "")
-        if entry:
-            bullpen_list.append(normalize_team_name(entry.split()[0]))
+        token = entry.split()[0] if entry else ""
+        if token and not any(tok in entry.lower() for tok in STRESS_FORBIDDEN) and looks_like_team_row({"team": token}):
+            bullpen.append(normalize_team_name(token))
 
     lines += ["", "## Close Games & Bullpens"]
     if best_one_run:
         lines.append("- Best 1-run: " + ", ".join(best_one_run))
     if worst_one_run:
         lines.append("- Cold 1-run: " + ", ".join(worst_one_run))
-    if bullpen_list:
-        lines.append("- Bullpen stress: " + ", ".join(bullpen_list[:5]))
+    if bullpen:
+        lines.append("- Bullpen stress: " + ", ".join(bullpen[:5]))
 
     sos_raw = core12.get("strength_of_schedule_last14") or []
     sos = [
@@ -596,22 +655,45 @@ def render_video_outline(core12: dict) -> str:
     lines += ["", "## Rookie Watch & Player of the Week"]
     if rookies_sorted:
         lines.append("- Rookies: " + ", ".join([r.get("player", "") for r in rookies_sorted]))
-    pow_entry = core12.get("player_of_the_week") or {}
-    pow_blurb = (pow_entry.get("blurb") or "").strip()
-    if pow_blurb:
-        lines.append("- POW: " + pow_blurb)
+    pow_rows = load_player_of_week(read_text(TEXT_OUT_DIR / "z_ABL_Week_Miner.txt") or "")
+    pow_valid = [p for p in pow_rows if looks_like_player_row(p)]
+    if pow_valid:
+        top_pow = pow_valid[0]
+        player = top_pow.get("player", "")
+        team = normalize_team_name(top_pow.get("team", ""))
+        stat_line = top_pow.get("line", "").replace(player, "").replace(team, "").strip()
+        pieces = [player]
+        if team:
+            pieces.append(f"({team})")
+        blurb = " ".join(pieces)
+        if stat_line:
+            blurb += f" - {stat_line}"
+        lines.append("- POW: " + blurb)
 
     managers_raw = core12.get("manager_tendencies") or []
     managers = [m for m in managers_raw if looks_like_manager_row({"manager": m.get("manager") or m.get("col1", "")})]
     mgrs = []
     for m in managers:
-        name = m.get("manager") or m.get("col1") or ""
-        team = normalize_team_name(m.get("team") or m.get("col2") or "")
-        if name and team:
-            mgrs.append(f"{team} {name}")
+        manager_field = m.get("manager") or m.get("col1") or ""
+        rating = m.get("rating") or m.get("col3") or ""
+        idx = m.get("hook") or m.get("col4") or ""
+        name = manager_field.split("(")[0].strip()
+        team_code_match = re.search(r"\(([^)]+)\)", manager_field)
+        team_code = team_code_match.group(1) if team_code_match else ""
+        team = normalize_team_name(team_code)
+        parts = [f"{team} {name}".strip()]
+        rating_bits = []
+        if rating:
+            rating_bits.append(rating)
+        if idx:
+            rating_bits.append(str(idx))
+        if rating_bits:
+            parts.append(" - " + " ".join(rating_bits))
+        mgrs.append("".join(parts))
     if mgrs:
         lines += ["", "## Manager's Corner"]
-        lines.append("- Tendencies: " + ", ".join(mgrs[:3]))
+        for mgr in mgrs:
+            lines.append(f"- {mgr}")
 
     featured_raw = core12.get("featured_matchups") or []
     featured = [m for m in featured_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
