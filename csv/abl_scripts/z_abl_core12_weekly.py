@@ -34,38 +34,25 @@ FORBIDDEN_TOKENS = [
     "watch)",
 ]
 
-SECTION_FALLBACKS = {
-    "around": "- No major movement at the top of the table this week.",
-    "one_run": "- No teams clearly separating in one-run results this week.",
-    "bullpen": "- No bullpens currently flagged at Critical or High levels.",
-    "sos": "- Schedule strength balanced across the league this week.",
-    "rookies": "- No rookies met the reporting threshold this week.",
-    "player_week": "- No consensus Player of the Week emerged.",
-    "managers": "- No notable managerial pattern shifts this week.",
-    "matchups": "- No featured matchups flagged this week.",
-}
-
 
 def warn(msg: str) -> None:
     print(f"WARNING: {msg}")
 
 
 def normalize_text(s: str) -> str:
-    """
-    Normalize common encoding artifacts and trim whitespace.
-    """
     if not isinstance(s, str):
         return s
     replacements = {
-        "\u00e2\u0080\u0094": "\u2014",  # utf-8 em dash bytes mis-decoded
-        "\u00e2\u0080\u0093": "\u2013",  # utf-8 en dash bytes mis-decoded
-        "\u00e2\u20ac\u2014": "\u2014",  # common mojibake for em dash
-        "\u00e2\u20ac\u201c": "\u2013",  # common mojibake for en dash
+        "\u00e2\u0080\u0094": "\u2014",
+        "\u00e2\u0080\u0093": "\u2013",
+        "\u00e2\u20ac\u2014": "\u2014",
+        "\u00e2\u20ac\u201c": "\u2013",
         "\u0394": "\u0394",
     }
     for bad, good in replacements.items():
         s = s.replace(bad, good)
     return s.strip()
+
 
 def normalize_team_name(team: str) -> str:
     if not team:
@@ -95,14 +82,41 @@ def looks_like_player(s: str) -> bool:
     return bool(re.search(r"\b[A-Z][a-z]+ [A-Z][a-z]+\b", s))
 
 
+def looks_like_team_row(row: dict) -> bool:
+    return (
+        isinstance(row, dict)
+        and "team" in row
+        and isinstance(row["team"], str)
+        and row["team"].strip() != ""
+        and not any(tok.lower() in row["team"].lower() for tok in ["team", "generated", "abl", "neutral", "soft", "gauntlet", "meaning"])
+    )
+
+
+def looks_like_player_row(row: dict) -> bool:
+    return (
+        isinstance(row, dict)
+        and "player" in row
+        and isinstance(row["player"], str)
+        and len(row["player"].split()) >= 2
+        and "generated" not in row["player"].lower()
+    )
+
+
+def looks_like_manager_row(row: dict) -> bool:
+    return (
+        isinstance(row, dict)
+        and "manager" in row
+        and "(" in row["manager"]
+        and ")" in row["manager"]
+        and "rating" not in row["manager"].lower()
+    )
+
+
 def allowed_line(line: str, teams: set[str]) -> bool:
     low = line.lower()
     if any(tok in low for tok in FORBIDDEN_TOKENS):
         return False
-    if has_stat_token(line) and (contains_team_name(line, teams) or looks_like_player(line)):
-        return True
-    # Allow manager-style lines that include both a team and a name
-    if contains_team_name(line, teams) and looks_like_player(line):
+    if contains_team_name(line, teams) or looks_like_player(line):
         return True
     return False
 
@@ -182,8 +196,8 @@ def load_show_notes(text: str) -> Tuple[List[Dict[str, str]], List[Dict[str, str
                         break
                 parsed.append({"team": team, "diff": diff, "last10": last10})
             parsed.sort(key=lambda r: (r["diff"] is None, -(r["diff"] or 0)))
-            hot = [r for r in parsed if r.get("diff") is not None and r["diff"] > 0][:5]
-            cold = [r for r in reversed(parsed) if r.get("diff") is not None and r["diff"] < 0][:5]
+            hot = parsed[:5]
+            cold = list(reversed(parsed))[:5]
     return standings, hot, cold
 
 
@@ -213,12 +227,7 @@ def load_one_run(text: str) -> List[Dict[str, str]]:
             continue
         team_part = m.group(1).strip()
         record = m.group(2).strip()
-        tag = ""
-        if re.search(r"clutch|hot|elite", clean, flags=re.I):
-            tag = "Clutch"
-        elif re.search(r"cold|ice|struggle|meltdown", clean, flags=re.I):
-            tag = "Cold"
-        rows.append({"team": team_part, "record": record, "tag": tag})
+        rows.append({"team": team_part, "record": record})
     return rows
 
 
@@ -327,280 +336,169 @@ def render_forum_post(core12: dict) -> str:
     week = core12.get("week")
     lines: List[str] = [f"# Action Baseball League - Week {week} {year} Core 12 Report", ""]
 
-    def format_team_record(entry: Dict[str, str]) -> str:
-        team = entry.get("team", "")
-        w, l = entry.get("w"), entry.get("l")
-        if w and l:
-            return f"{team} ({w}-{l})"
-        return team
+    def format_team_record(entry: Dict[str, str]) -> Tuple[str, float]:
+        team = normalize_team_name(entry.get("team", ""))
+        w = entry.get("w")
+        l = entry.get("l")
+        pct = 0.0
+        if w and l and w.isdigit() and l.isdigit():
+            w_i, l_i = int(w), int(l)
+            pct = w_i / max(w_i + l_i, 1)
+            rec_str = f"{team} ({w}-{l})"
+        else:
+            rec_str = team
+        return rec_str, pct
 
-    standings = core12.get("standings") or []
-    hot = core12.get("hot_teams") or []
-    cold = core12.get("cold_teams") or []
-    team_set: set[str] = set()
+    standings_raw = core12.get("standings") or []
+    standings = [s for s in standings_raw if looks_like_team_row(s)]
+    team_set: set[str] = {normalize_team_name(e.get("team", "")) for e in standings if e.get("team")}
+    ranked_standings = []
     for e in standings:
-        team = e.get("team", "")
-        if team:
-            team_set.add(team)
-            team_set.add(normalize_team_name(team))
+        rec, pct = format_team_record(e)
+        ranked_standings.append((rec, pct))
+    ranked_standings.sort(key=lambda x: -x[1])
+    top_table = [rec for rec, _ in ranked_standings[:3]]
+    bottom_table = [rec for rec, _ in list(reversed(ranked_standings))[:3]]
 
-    top_table = [
-        format_team_record(e).replace(e.get("team", ""), normalize_team_name(e.get("team", "")))
-        for e in standings
-        if e.get("team")
-        and re.search(r"\d+-\d+", format_team_record(e))
-        and contains_team_name(format_team_record(e), team_set)
-    ][:3]
-    top_hot = []
-    for e in hot[:3]:
-        team = normalize_team_name(e.get("team", ""))
-        diff = e.get("diff")
-        last10 = e.get("last10")
-        if team:
-            label = f"{team}"
-            if last10:
-                label += f" ({last10})"
-            elif diff is not None:
-                label += f" ({diff} in last 10)"
-            if contains_team_name(label, team_set) and has_stat_token(label):
-                top_hot.append(label)
-    top_cold = []
-    for e in cold[:3]:
-        team = normalize_team_name(e.get("team", ""))
-        diff = e.get("diff")
-        last10 = e.get("last10")
-        if team:
-            label = f"{team}"
-            if last10:
-                label += f" ({last10})"
-            elif diff is not None:
-                label += f" ({diff} in last 10)"
-            if contains_team_name(label, team_set) and has_stat_token(label):
-                top_cold.append(label)
-
-    around_bullets: List[str] = []
-    if top_table:
-        bullet = "- Top of the table: " + ", ".join(top_table)
-        if allowed_line(bullet, team_set):
-            around_bullets.append(bullet)
-    if top_hot:
-        bullet = "- Hottest clubs (last 10): " + ", ".join(top_hot)
-        if allowed_line(bullet, team_set):
-            around_bullets.append(bullet)
-    if top_cold:
-        bullet = "- Cold spell: " + ", ".join(top_cold)
-        if allowed_line(bullet, team_set):
-            around_bullets.append(bullet)
     lines.append("## Around the League")
-    if not around_bullets:
-        around_bullets = [SECTION_FALLBACKS["around"]]
-    lines.extend(around_bullets)
+    if top_table:
+        lines.append("- Top of the table: " + ", ".join(top_table))
+    if bottom_table:
+        lines.append("- Bottom of the table: " + ", ".join(bottom_table))
 
-    one_run = core12.get("one_run_records") or []
-    clutch, cold_run = [], []
+    one_run_raw = core12.get("one_run_records") or []
+    one_run = [r for r in one_run_raw if looks_like_team_row(r) and re.match(r"\d+-\d+", r.get("record", "")) and "generated" not in r.get("record", "").lower()]
+    one_run_stats: List[Tuple[str, float, str]] = []
     for r in one_run:
         team = normalize_team_name(r.get("team", ""))
         record = r.get("record", "")
-        if "generated" in record.lower():
+        m = re.match(r"(\d+)-(\d+)", record)
+        if not m:
             continue
-        tag = (r.get("tag") or "").lower()
-        if tag == "clutch":
-            clutch.append({"team": team, "record": record})
-        elif tag == "cold":
-            cold_run.append({"team": team, "record": record})
-    clutch_sorted = clutch[:3]
-    cold_sorted = cold_run[:3]
+        w_i, l_i = int(m.group(1)), int(m.group(2))
+        total = w_i + l_i
+        pct = w_i / total if total else 0.0
+        one_run_stats.append((team, pct, f"{team} ({record})"))
+    one_run_stats.sort(key=lambda x: -x[1])
+    best_one_run = [entry[2] for entry in one_run_stats[:3]]
+    worst_one_run = [entry[2] for entry in list(reversed(one_run_stats))[:3]]
 
-    bullpen = core12.get("bullpen_stress") or []
-    critical, high = [], []
+    bullpen_raw = core12.get("bullpen_stress") or []
+    bullpen = [b for b in bullpen_raw if looks_like_team_row({"team": (b.get("team") or b.get("entry") or "").split()[0]})]
+    bullpen_list = []
     for b in bullpen:
         entry = b.get("entry", "") or b.get("team", "")
-        if not entry:
-            continue
-        lower = entry.lower()
-        team_token = normalize_team_name(entry.split()[0])
-        if any(tok in lower for tok in ["meaning", "stress", "last-14"]):
-            continue
-        if "critical" in lower and contains_team_name(team_token, team_set):
-            critical.append(team_token)
-        elif "high" in lower and contains_team_name(team_token, team_set):
-            high.append(team_token)
+        if entry:
+            bullpen_list.append(normalize_team_name(entry.split()[0]))
+    bullpen_top = bullpen_list[:5]
 
-    close_lines: List[str] = []
-    if clutch_sorted or cold_sorted:
-        one_run_lines: List[str] = []
-        if clutch_sorted:
-            bullet = "- Clutch: " + ", ".join(
-                [f"{c['team']} ({c['record']})" for c in clutch_sorted if contains_team_name(c["team"], team_set)]
-            )
-            if allowed_line(bullet, team_set):
-                one_run_lines.append(bullet)
-        if cold_sorted:
-            bullet = "- Cold: " + ", ".join(
-                [f"{c['team']} ({c['record']})" for c in cold_sorted if contains_team_name(c["team"], team_set)]
-            )
-            if allowed_line(bullet, team_set):
-                one_run_lines.append(bullet)
-        if not one_run_lines:
-            one_run_lines = [SECTION_FALLBACKS["one_run"]]
+    close_lines: List[str] = ["", "## Close Games & Bullpens"]
+    if best_one_run:
         close_lines.append("### One-Run Games")
-        close_lines.extend(one_run_lines)
-    else:
-        close_lines.append("### One-Run Games")
-        close_lines.append(SECTION_FALLBACKS["one_run"])
-    if critical or high:
-        bullpen_lines: List[str] = []
-        if critical:
-            bullet = "- Critical workload: " + ", ".join(critical)
-            if allowed_line(bullet, team_set):
-                bullpen_lines.append(bullet)
-        if high:
-            bullet = "- High alert: " + ", ".join(high)
-            if allowed_line(bullet, team_set):
-                bullpen_lines.append(bullet)
-        if not bullpen_lines:
-            bullpen_lines = [SECTION_FALLBACKS["bullpen"]]
+        close_lines.append("- Best in one-run games: " + ", ".join(best_one_run))
+    if worst_one_run:
+        if "### One-Run Games" not in close_lines:
+            close_lines.append("### One-Run Games")
+        close_lines.append("- Struggling late: " + ", ".join(worst_one_run))
+    if bullpen_top:
         close_lines.append("### Bullpen Stress")
-        close_lines.extend(bullpen_lines)
-    else:
-        close_lines.append("### Bullpen Stress")
-        close_lines.append(SECTION_FALLBACKS["bullpen"])
-    lines += ["", "## Close Games & Bullpens"]
+        close_lines.append("- Heaviest workloads: " + ", ".join(bullpen_top))
     lines.extend(close_lines)
 
-    sos = core12.get("strength_of_schedule_last14") or []
-    filtered_sos = [
+    sos_raw = core12.get("strength_of_schedule_last14") or []
+    sos = [
         s
-        for s in sos
-        if s.get("team")
-        and contains_team_name(normalize_team_name(s.get("team", "")), team_set)
-        and re.search(r"\d+-\d+", s.get("record", "") or "")
-        and not any(tok in (s.get("note", "").lower()) for tok in ["neutral", "gauntlet (->", "soft (->"])
+        for s in sos_raw
+        if looks_like_team_row(s)
+        and s.get("sos") is not None
+        and isinstance(s.get("sos"), (int, float))
+        and re.match(r"\d+-\d+", s.get("record", "") or "")
+        and not any(t in s.get("team", "").lower() for t in ["neutral", "soft", "gauntlet"])
     ]
-    gauntlet = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: -x["sos"])[:3]
-    soft = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: x["sos"])[:3]
-    sos_section: List[str] = []
-    if gauntlet:
-        bullet = "- Gauntlet: " + ", ".join(
-            [f"{normalize_team_name(g['team'])} ({g.get('record','').strip() or g.get('note','').strip()})" for g in gauntlet]
-        )
-        if allowed_line(bullet, team_set):
-            sos_section.append(bullet)
-    if soft:
-        bullet = "- Soft: " + ", ".join(
-            [f"{normalize_team_name(s['team'])} ({s.get('record','').strip() or s.get('note','').strip()})" for s in soft]
-        )
-        if allowed_line(bullet, team_set):
-            sos_section.append(bullet)
+    sos.sort(key=lambda x: -x["sos"])
+    gauntlet = sos[:3]
+    soft = list(reversed(sos))[:3]
     lines += ["", "## Strength of Schedule"]
-    if not sos_section:
-        sos_section = [SECTION_FALLBACKS["sos"]]
-    lines.extend(sos_section)
+    if gauntlet:
+        lines.append(
+            "- Toughest recent slate: "
+            + ", ".join([f"{normalize_team_name(g['team'])} ({g.get('sos'):.3f} SOS, {g.get('record','')})" for g in gauntlet])
+        )
+    if soft:
+        lines.append(
+            "- Easiest recent slate: "
+            + ", ".join([f"{normalize_team_name(s['team'])} ({s.get('sos'):.3f} SOS, {s.get('record','')})" for s in soft])
+        )
 
-    rookies = core12.get("rookie_watch") or []
+    rookies_raw = core12.get("rookie_watch") or []
+    rookies = [r for r in rookies_raw if looks_like_player_row(r)]
 
-    def format_rookie(r: Dict[str, str]) -> str:
-        name = r.get("player") or ""
-        team = normalize_team_name(r.get("team") or "")
-        rating = r.get("rating") or ""
-        stat = r.get("stat") or ""
-        pieces = [name]
-        if team:
-            pieces.append(f"({team})")
-        desc_parts = []
-        if rating:
-            desc_parts.append(rating)
-        if stat:
-            desc_parts.append(stat)
-        if desc_parts:
-            pieces.append(" - " + ", ".join(desc_parts))
-        return "".join(pieces).strip()
+    def rookie_stat_val(r: Dict[str, str]) -> float:
+        try:
+            return float(r.get("stat") or 0)
+        except Exception:
+            return 0.0
 
-    rookie_lines = []
-    for r in rookies:
-        line = format_rookie(r)
-        if looks_like_player(line) and has_stat_token(line) and not any(tok in line.lower() for tok in FORBIDDEN_TOKENS):
-            rookie_lines.append(line)
-        if len(rookie_lines) >= 4:
-            break
-    lines += ["", "## Rookie Watch"]
-    if not rookie_lines:
-        rookie_lines = [SECTION_FALLBACKS["rookies"]]
-    for rl in rookie_lines:
-        bullet = rl if rl.startswith("-") else f"- {rl}"
-        if bullet in SECTION_FALLBACKS.values() or allowed_line(bullet, team_set):
-            lines.append(bullet)
+    rookies_sorted = sorted(rookies, key=rookie_stat_val, reverse=True)[:4]
+    if rookies_sorted:
+        lines += ["", "## Rookie Watch"]
+        for r in rookies_sorted:
+            name = r.get("player", "")
+            team = normalize_team_name(r.get("team", ""))
+            rating = r.get("rating", "")
+            stat = r.get("stat", "")
+            parts = [name]
+            if team:
+                parts.append(f"({team})")
+            desc = []
+            if rating:
+                desc.append(rating)
+            if stat:
+                desc.append(stat)
+            line = " ".join(parts)
+            if desc:
+                line += " - " + ", ".join(desc)
+            lines.append(f"- {line}")
 
     pow_entry = core12.get("player_of_the_week") or {}
     pow_blurb = (pow_entry.get("blurb") or "").strip()
-    lines += ["", "## Player of the Week"]
-    pow_lines: List[str] = []
-    if pow_blurb and "week miner" not in pow_blurb.lower() and allowed_line(f"- {pow_blurb}", team_set):
-        pow_lines.append(f"- {pow_blurb}")
-    if not pow_lines:
-        pow_lines = [SECTION_FALLBACKS["player_week"]]
-    lines.extend(pow_lines)
+    if pow_blurb:
+        lines += ["", "## Player of the Week", f"- {pow_blurb}"]
 
-    managers = core12.get("manager_tendencies") or []
+    managers_raw = core12.get("manager_tendencies") or []
+    managers = [m for m in managers_raw if looks_like_manager_row({"manager": m.get("manager") or m.get("col1", "")})]
     mgr_lines = []
-    for m in managers[:7]:
+    for m in managers:
         name = m.get("manager") or m.get("col1") or ""
         team = normalize_team_name(m.get("team") or m.get("col2") or "")
-        rating = ""
-        if name:
-            team_clean = team
-            if "(" in name and ")" in name and not team_clean:
-                # try to split "Name (TEAM)"
-                m_match = re.search(r"\(([^)]+)\)", name)
-                if m_match:
-                    team_clean = m_match.group(1)
-                    name = name.split("(")[0].strip()
-            summary = f"{team_clean}: {name}" if team_clean else name
-            mgr_lines.append(summary)
-    valid_mgrs = []
-    for ml in mgr_lines:
-        if contains_team_name(ml, team_set) and not any(tok in ml.lower() for tok in FORBIDDEN_TOKENS):
-            valid_mgrs.append(f"- {ml}")
-    lines += ["", "## Manager's Corner"]
-    if not valid_mgrs:
-        valid_mgrs = [SECTION_FALLBACKS["managers"]]
-    lines.extend(valid_mgrs)
+        if name and team:
+            mgr_lines.append(f"{team}: {name}")
+    if mgr_lines:
+        lines += ["", "## Manager's Corner"]
+        lines.append("- Top tendencies: " + ", ".join(mgr_lines[:3]))
 
-    featured = core12.get("featured_matchups") or []
-    sunday = core12.get("sunday_matchups") or []
+    featured_raw = core12.get("featured_matchups") or []
+    featured = [m for m in featured_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
+    sunday_raw = core12.get("sunday_matchups") or []
+    sunday = [m for m in sunday_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
     feat_lines = [
-        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}"
         for m in featured
         if m.get("away") and m.get("home")
-    ]
+    ][:3]
     sun_lines = [
-        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}"
         for m in sunday
         if m.get("away") and m.get("home")
-    ]
-    matchup_lines: List[str] = []
-    if feat_lines:
-        bullet = "- Featured: " + "; ".join(feat_lines)
-        if allowed_line(bullet, team_set):
-            matchup_lines.append(bullet)
-    if sun_lines:
-        bullet = "- Sunday set: " + "; ".join(sun_lines)
-        if allowed_line(bullet, team_set):
-            matchup_lines.append(bullet)
-    lines += ["", "## On Deck - Featured & Sunday Matchups"]
-    if not matchup_lines:
-        matchup_lines = [SECTION_FALLBACKS["matchups"]]
-    lines.extend(matchup_lines)
+    ][:3]
+    if feat_lines or sun_lines:
+        lines += ["", "## On Deck - Featured & Sunday Matchups"]
+        if feat_lines:
+            lines.append("- Featured: " + "; ".join(feat_lines))
+        if sun_lines:
+            lines.append("- Sunday set: " + "; ".join(sun_lines))
 
-    filtered_lines: List[str] = []
-    for line in lines:
-        if line.startswith("-") and line not in SECTION_FALLBACKS.values():
-            if allowed_line(line, team_set):
-                filtered_lines.append(line)
-        else:
-            filtered_lines.append(line)
-
-    md = "\n".join(normalize_text(line) for line in filtered_lines if line is not None).strip()
+    md = "\n".join(normalize_text(line) for line in lines if line is not None).strip()
     return md + "\n"
 
 
@@ -609,171 +507,134 @@ def render_video_outline(core12: dict) -> str:
     week = core12.get("week")
     lines: List[str] = [f"# It's Monday - ABL Week {week}, {year}", ""]
 
-    standings = core12.get("standings") or []
-    hot = core12.get("hot_teams") or []
-    cold = core12.get("cold_teams") or []
-    team_set: set[str] = set()
+    standings_raw = core12.get("standings") or []
+    standings = [s for s in standings_raw if looks_like_team_row(s)]
+    team_set: set[str] = {normalize_team_name(e.get("team", "")) for e in standings if e.get("team")}
+    ranked_standings = []
     for e in standings:
-        team = e.get("team", "")
-        if team:
-            team_set.add(team)
-            team_set.add(normalize_team_name(team))
-
-    top_table = [
-        normalize_team_name(e.get("team", ""))
-        for e in standings
-        if e.get("team")
-        and contains_team_name(normalize_team_name(e.get("team", "")), team_set)
-        and re.search(r"\d+-\d+", str(e.values()))
-    ][:3]
-    top_hot = [
-        f"{normalize_team_name(e.get('team',''))} ({e.get('last10') or e.get('diff','')})"
-        for e in hot[:3]
-        if e.get("team") and contains_team_name(normalize_team_name(e.get("team", "")), team_set)
-    ]
-    top_cold = [
-        f"{normalize_team_name(e.get('team',''))} ({e.get('last10') or e.get('diff','')})"
-        for e in cold[:3]
-        if e.get("team") and contains_team_name(normalize_team_name(e.get("team", "")), team_set)
-    ]
+        team = normalize_team_name(e.get("team", ""))
+        w = e.get("w")
+        l = e.get("l")
+        pct = 0.0
+        if w and l and w.isdigit() and l.isdigit():
+            w_i, l_i = int(w), int(l)
+            pct = w_i / max(w_i + l_i, 1)
+        ranked_standings.append((team, pct))
+    ranked_standings.sort(key=lambda x: -x[1])
+    top_table = [r[0] for r in ranked_standings[:3]]
+    bottom_table = [r[0] for r in list(reversed(ranked_standings))[:3]]
 
     lines += ["## Open", "- Quick vibe; standings and headlines."]
     lines += ["", "## Standings & Momentum"]
-    stand_bullets: List[str] = []
     if top_table:
-        stand_bullets.append("- Top of table: " + ", ".join(top_table))
-    if top_hot:
-        stand_bullets.append("- Hot: " + ", ".join(top_hot))
-    if top_cold:
-        stand_bullets.append("- Cold: " + ", ".join(top_cold))
-    if not stand_bullets:
-        stand_bullets = [SECTION_FALLBACKS["around"]]
-    lines.extend(stand_bullets)
+        lines.append("- Top: " + ", ".join(top_table))
+    if bottom_table:
+        lines.append("- Bottom: " + ", ".join(bottom_table))
 
-    one_run = core12.get("one_run_records") or []
-    clutch = []
-    cold_run = []
+    one_run_raw = core12.get("one_run_records") or []
+    one_run = [r for r in one_run_raw if looks_like_team_row(r) and re.match(r"\d+-\d+", r.get("record", "")) and "generated" not in r.get("record", "").lower()]
+    one_run_stats: List[Tuple[str, float, str]] = []
     for r in one_run:
         team = normalize_team_name(r.get("team", ""))
         record = r.get("record", "")
-        tag = (r.get("tag") or "").lower()
-        if not contains_team_name(team, team_set):
+        m = re.match(r"(\d+)-(\d+)", record)
+        if not m:
             continue
-        if tag == "clutch":
-            clutch.append(f"{team} {record}")
-        elif tag == "cold":
-            cold_run.append(f"{team} {record}")
-    bullpen = core12.get("bullpen_stress") or []
-    stress_notes = []
+        w_i, l_i = int(m.group(1)), int(m.group(2))
+        total = w_i + l_i
+        pct = w_i / total if total else 0.0
+        one_run_stats.append((team, pct, f"{team} {record}"))
+    one_run_stats.sort(key=lambda x: -x[1])
+    best_one_run = [entry[2] for entry in one_run_stats[:3]]
+    worst_one_run = [entry[2] for entry in list(reversed(one_run_stats))[:3]]
+
+    bullpen_raw = core12.get("bullpen_stress") or []
+    bullpen = [b for b in bullpen_raw if looks_like_team_row({"team": (b.get("team") or b.get("entry") or "").split()[0]})]
+    bullpen_list = []
     for b in bullpen:
         entry = b.get("entry", "") or b.get("team", "")
-        if entry and re.search(r"critical|high", entry, flags=re.I) and contains_team_name(entry, team_set):
-            stress_notes.append(entry.split()[0])
+        if entry:
+            bullpen_list.append(normalize_team_name(entry.split()[0]))
 
-    close_lines: List[str] = []
-    if clutch or cold_run:
-        if clutch:
-            bullet = "- Clutch one-run teams: " + ", ".join(clutch[:3])
-            if allowed_line(bullet, team_set):
-                close_lines.append(bullet)
-        if cold_run:
-            bullet = "- Cold in one-run: " + ", ".join(cold_run[:3])
-            if allowed_line(bullet, team_set):
-                close_lines.append(bullet)
-    if not close_lines:
-        close_lines = [SECTION_FALLBACKS["one_run"]]
-    stress_added = False
-    if stress_notes:
-        bullet = "- Bullpen stress: " + ", ".join(stress_notes[:6])
-        if allowed_line(bullet, team_set):
-            close_lines.append(bullet)
-            stress_added = True
-    if not stress_added and SECTION_FALLBACKS["bullpen"] not in close_lines:
-        close_lines.append(SECTION_FALLBACKS["bullpen"])
     lines += ["", "## Close Games & Bullpens"]
-    lines.extend(close_lines)
+    if best_one_run:
+        lines.append("- Best 1-run: " + ", ".join(best_one_run))
+    if worst_one_run:
+        lines.append("- Cold 1-run: " + ", ".join(worst_one_run))
+    if bullpen_list:
+        lines.append("- Bullpen stress: " + ", ".join(bullpen_list[:5]))
 
-    sos = core12.get("strength_of_schedule_last14") or []
-    filtered_sos = [
+    sos_raw = core12.get("strength_of_schedule_last14") or []
+    sos = [
         s
-        for s in sos
-        if s.get("team")
-        and contains_team_name(normalize_team_name(s.get("team", "")), team_set)
-        and re.search(r"\d+-\d+", s.get("record", "") or "")
-        and not any(tok in (s.get("note", "").lower()) for tok in ["neutral", "gauntlet (->", "soft (->"])
+        for s in sos_raw
+        if looks_like_team_row(s)
+        and s.get("sos") is not None
+        and isinstance(s.get("sos"), (int, float))
+        and re.match(r"\d+-\d+", s.get("record", "") or "")
+        and not any(t in s.get("team", "").lower() for t in ["neutral", "soft", "gauntlet"])
     ]
-    gauntlet = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: -x["sos"])[:3]
-    soft = sorted([s for s in filtered_sos if s.get("sos") is not None], key=lambda x: x["sos"])[:3]
+    sos.sort(key=lambda x: -x["sos"])
+    gauntlet = sos[:3]
+    soft = list(reversed(sos))[:3]
     lines += ["", "## Strength of Schedule"]
-    sos_lines = []
     if gauntlet:
-        sos_lines.append("- Gauntlet: " + ", ".join([normalize_team_name(g["team"]) for g in gauntlet]))
+        lines.append("- Tough: " + ", ".join([normalize_team_name(g["team"]) for g in gauntlet]))
     if soft:
-        sos_lines.append("- Soft: " + ", ".join([normalize_team_name(s["team"]) for s in soft]))
-    if not sos_lines:
-        sos_lines = [SECTION_FALLBACKS["sos"]]
-    lines.extend(sos_lines)
+        lines.append("- Soft: " + ", ".join([normalize_team_name(s["team"]) for s in soft]))
 
-    rookies = core12.get("rookie_watch") or []
-    section_lines: List[str] = []
-    rookie_bullets = []
-    for r in rookies:
-        player = r.get("player", "")
-        team = normalize_team_name(r.get("team", ""))
-        stat = r.get("stat", "")
-        if looks_like_player(player) and has_stat_token(stat or "") and team:
-            text = f"{player} ({team}) {stat}".strip()
-            rookie_bullets.append(text)
-        if len(rookie_bullets) >= 4:
-            break
-    if rookie_bullets:
-        bullet = "- Rookies: " + ", ".join(rookie_bullets)
-        if allowed_line(bullet, team_set):
-            section_lines.append(bullet)
+    rookies_raw = core12.get("rookie_watch") or []
+    rookies = [r for r in rookies_raw if looks_like_player_row(r)]
+
+    def rookie_val(r: Dict[str, str]) -> float:
+        try:
+            return float(r.get("stat") or 0)
+        except Exception:
+            return 0.0
+
+    rookies_sorted = sorted(rookies, key=rookie_val, reverse=True)[:4]
+    lines += ["", "## Rookie Watch & Player of the Week"]
+    if rookies_sorted:
+        lines.append("- Rookies: " + ", ".join([r.get("player", "") for r in rookies_sorted]))
     pow_entry = core12.get("player_of_the_week") or {}
     pow_blurb = (pow_entry.get("blurb") or "").strip()
-    if pow_blurb and "week miner" not in pow_blurb.lower() and allowed_line(f"- {pow_blurb}", team_set):
-        section_lines.append("- POW: " + pow_blurb)
-    if not section_lines:
-        section_lines = [SECTION_FALLBACKS["rookies"], SECTION_FALLBACKS["player_week"]]
-    lines += ["", "## Rookie Watch & Player of the Week"]
-    lines.extend(section_lines)
+    if pow_blurb:
+        lines.append("- POW: " + pow_blurb)
 
-    featured = core12.get("featured_matchups") or []
-    sunday = core12.get("sunday_matchups") or []
+    managers_raw = core12.get("manager_tendencies") or []
+    managers = [m for m in managers_raw if looks_like_manager_row({"manager": m.get("manager") or m.get("col1", "")})]
+    mgrs = []
+    for m in managers:
+        name = m.get("manager") or m.get("col1") or ""
+        team = normalize_team_name(m.get("team") or m.get("col2") or "")
+        if name and team:
+            mgrs.append(f"{team} {name}")
+    if mgrs:
+        lines += ["", "## Manager's Corner"]
+        lines.append("- Tendencies: " + ", ".join(mgrs[:3]))
+
+    featured_raw = core12.get("featured_matchups") or []
+    featured = [m for m in featured_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
+    sunday_raw = core12.get("sunday_matchups") or []
+    sunday = [m for m in sunday_raw if looks_like_team_row({"team": m.get("home", "")}) and looks_like_team_row({"team": m.get("away", "")})]
     feat_lines = [
-        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}"
         for m in featured
         if m.get("away") and m.get("home")
-    ]
+    ][:3]
     sun_lines = [
-        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}".strip()
+        f"{normalize_team_name(m.get('away',''))} at {normalize_team_name(m.get('home',''))}"
         for m in sunday
         if m.get("away") and m.get("home")
-    ]
-    matchup_lines = []
-    if feat_lines:
-        bullet = "- Featured: " + "; ".join(feat_lines)
-        if allowed_line(bullet, team_set):
-            matchup_lines.append(bullet)
-    if sun_lines:
-        bullet = "- Sunday set: " + "; ".join(sun_lines)
-        if allowed_line(bullet, team_set):
-            matchup_lines.append(bullet)
-    if not matchup_lines:
-        matchup_lines = [SECTION_FALLBACKS["matchups"]]
-    lines += ["", "## On Deck"]
-    lines.extend(matchup_lines)
+    ][:3]
+    if feat_lines or sun_lines:
+        lines += ["", "## On Deck"]
+        if feat_lines:
+            lines.append("- Featured: " + "; ".join(feat_lines))
+        if sun_lines:
+            lines.append("- Sunday: " + "; ".join(sun_lines))
 
-    filtered_lines: List[str] = []
-    for line in lines:
-        if line.startswith("-") and line not in SECTION_FALLBACKS.values():
-            if allowed_line(line, team_set):
-                filtered_lines.append(line)
-        else:
-            filtered_lines.append(line)
-
-    md = "\n".join(normalize_text(line) for line in filtered_lines if line is not None).strip()
+    md = "\n".join(normalize_text(line) for line in lines if line is not None).strip()
     return md + "\n"
 
 
@@ -786,7 +647,6 @@ def main(argv: Optional[List[str]] = None) -> None:
     year = args.year
     week = args.week
 
-    # Paths
     show_notes_path = TEXT_OUT_DIR / "ABL_Show_Notes.txt"
     eb_pack_path = TEXT_OUT_DIR / "eb_data_pack_1981_monday.txt"
     momentum_path = TEXT_OUT_DIR / "z_ABL_Momentum_Windows.txt"
@@ -820,7 +680,6 @@ def main(argv: Optional[List[str]] = None) -> None:
         "sunday_matchups": [],
     }
 
-    # Show notes
     show_text = read_text(show_notes_path)
     if show_text:
         standings, hot, cold = load_show_notes(show_text)
@@ -828,7 +687,6 @@ def main(argv: Optional[List[str]] = None) -> None:
         core12["hot_teams"] = hot
         core12["cold_teams"] = cold
 
-    # Other reports
     momentum_text = read_text(momentum_path)
     if momentum_text:
         core12["momentum_windows"] = load_simple_list(momentum_text)
@@ -870,7 +728,6 @@ def main(argv: Optional[List[str]] = None) -> None:
     if sunday_text:
         core12["sunday_matchups"] = load_matchups(sunday_text)
 
-    # Output paths
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     json_path = OUT_DIR / f"core12_{year}_w{week:02d}.json"
     forum_path = OUT_DIR / f"forum_abl_{year}_w{week:02d}.md"

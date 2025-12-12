@@ -180,7 +180,33 @@
       "last10": null
     }
   ],
-  "cold_teams": [],
+  "cold_teams": [
+    {
+      "team": "team_id",
+      "diff": null,
+      "last10": null
+    },
+    {
+      "team": "11",
+      "diff": 3,
+      "last10": null
+    },
+    {
+      "team": "9",
+      "diff": 3,
+      "last10": null
+    },
+    {
+      "team": "15",
+      "diff": 3,
+      "last10": null
+    },
+    {
+      "team": "5",
+      "diff": 3,
+      "last10": null
+    }
+  ],
   "run_differential": [],
   "momentum_windows": [
     {
@@ -518,62 +544,62 @@
     {
       "team": "Phoenix              N-W  Clutch",
       "record": "5-0",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Pittsburgh           A-E  Clutch",
       "record": "4-3",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Miami                N-E  Clutch",
       "record": "3-1",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "San Francisco        N-W  Clutch",
       "record": "3-1",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Houston              A-C  Clutch",
       "record": "6-5",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Portland             A-W  Clutch",
       "record": "3-4",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Detroit              N-C  Clutch",
       "record": "7-4",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Atlanta              N-E  Clutch",
       "record": "4-6",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Los Angeles          N-W  Clutch",
       "record": "4-3",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Boston               A-E  Clutch",
       "record": "6-4",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Seattle              A-W  Clutch",
       "record": "5-4",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Minneapolis          N-C  Clutch",
       "record": "4-6",
-      "tag": "Clutch"
+      "tag": ""
     },
     {
       "team": "Philadelphia         A-E  Even",
@@ -593,47 +619,47 @@
     {
       "team": "Cincinnati           A-C  Cold",
       "record": "4-5",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "Denver               A-W  Cold",
       "record": "7-7",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "Nashville            A-C  Cold",
       "record": "2-2",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "San Diego            N-W  Cold",
       "record": "3-5",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "St. Louis            A-C  Cold",
       "record": "3-5",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "Charlotte            N-E  Cold",
       "record": "5-5",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "Dallas               N-C  Cold",
       "record": "4-6",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "Tampa Bay            N-E  Cold",
       "record": "2-7",
-      "tag": "Cold"
+      "tag": ""
     },
     {
       "team": "New York             A-E  Cold",
       "record": "1-6",
-      "tag": "Cold"
+      "tag": ""
     }
   ],
   "strength_of_schedule_last14": [

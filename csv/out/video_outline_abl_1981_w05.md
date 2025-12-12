@@ -1,19 +1,24 @@
 # It's Monday - ABL Week 5, 1981
 
 ## Open
+- Quick vibe; standings and headlines.
 
 ## Standings & Momentum
-- No major movement at the top of the table this week.
+- Top: Team, Las, Charlotte
+- Bottom: Portland, Atlanta, Minneapolis
 
 ## Close Games & Bullpens
-- Clutch one-run teams: Phoenix              N-W  Clutch 5-0, Pittsburgh           A-E  Clutch 4-3, Miami                N-E  Clutch 3-1
-- Cold in one-run: Cincinnati           A-C  Cold 4-5, Denver               A-W  Cold 7-7, Nashville            A-C  Cold 2-2
-- No bullpens currently flagged at Critical or High levels.
+- Best 1-run: Phoenix              N-W  Clutch 5-0, Generated on: 2025-11, Miami                N-E  Clutch 3-1
+- Cold 1-run: New York             A-E  Cold 1-6, Tampa Bay            N-E  Cold 2-7, St. Louis            A-C  Cold 3-5
+- Bullpen stress: ABL, Generated, Last-14/7-day, Meaning:, Team
 
 ## Strength of Schedule
+- Tough: Portland, Phoenix, Seattle
+- Soft: Neutral, Soft, Gauntlet
 
 ## Rookie Watch & Player of the Week
-- Rookies: Nigel Hudson (Charlotte) 1.180, Jesus Vasquez (Houston) 0.817, Alex Lander (St. Louis) 0.894, Hirotoshi Nishimoto (Minneapolis) 0.887
+- Rookies: Nigel Hudson, Alex Lander, Hirotoshi Nishimoto, Eddie Rodriguez
+- POW: ABL Week Miner
 
-## On Deck
-- No featured matchups flagged this week.
+## Manager's Corner
+- Tendencies: Rating         Idx Manager / Team, Elite        1.756 William Ross (SEA A-W), Balanced     1.056 Jason Wainwright (CHA N-E)
