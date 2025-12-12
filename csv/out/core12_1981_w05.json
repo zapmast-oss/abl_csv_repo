@@ -1,0 +1,1626 @@
+{
+  "year": 1981,
+  "week": 5,
+  "standings": [
+    {
+      "team": "Team",
+      "w": "W",
+      "l": "L",
+      "pct": "PCT"
+    },
+    {
+      "team": "Las",
+      "w": "Vegas",
+      "l": "Gamblers",
+      "pct": "24"
+    },
+    {
+      "team": "Charlotte",
+      "w": "Colonels",
+      "l": "22",
+      "pct": "10"
+    },
+    {
+      "team": "Dallas",
+      "w": "Rustlers",
+      "l": "19",
+      "pct": "13"
+    },
+    {
+      "team": "Denver",
+      "w": "Rocketeers",
+      "l": "18",
+      "pct": "14"
+    },
+    {
+      "team": "Miami",
+      "w": "Hurricanes",
+      "l": "18",
+      "pct": "14"
+    },
+    {
+      "team": "Nashville",
+      "w": "Blues",
+      "l": "18",
+      "pct": "14"
+    },
+    {
+      "team": "San",
+      "w": "Francisco",
+      "l": "Warriors",
+      "pct": "18"
+    },
+    {
+      "team": "Boston",
+      "w": "Patriots",
+      "l": "17",
+      "pct": "15"
+    },
+    {
+      "team": "Chicago",
+      "w": "Fire",
+      "l": "17",
+      "pct": "15"
+    },
+    {
+      "team": "Detroit",
+      "w": "Dukes",
+      "l": "17",
+      "pct": "15"
+    },
+    {
+      "team": "St.",
+      "w": "Louis",
+      "l": "Stallions",
+      "pct": "17"
+    },
+    {
+      "team": "Cincinnati",
+      "w": "Cougars",
+      "l": "16",
+      "pct": "16"
+    },
+    {
+      "team": "Los",
+      "w": "Angeles",
+      "l": "Cobras",
+      "pct": "16"
+    },
+    {
+      "team": "New",
+      "w": "York",
+      "l": "Aces",
+      "pct": "16"
+    },
+    {
+      "team": "Phoenix",
+      "w": "Firebirds",
+      "l": "16",
+      "pct": "16"
+    },
+    {
+      "team": "Seattle",
+      "w": "Comets",
+      "l": "16",
+      "pct": "16"
+    },
+    {
+      "team": "Philadelphia",
+      "w": "Fury",
+      "l": "15",
+      "pct": "17"
+    },
+    {
+      "team": "San",
+      "w": "Diego",
+      "l": "Seraphs",
+      "pct": "14"
+    },
+    {
+      "team": "Tampa",
+      "w": "Bay",
+      "l": "Storm",
+      "pct": "14"
+    },
+    {
+      "team": "Houston",
+      "w": "Mavericks",
+      "l": "13",
+      "pct": "19"
+    },
+    {
+      "team": "Pittsburgh",
+      "w": "Express",
+      "l": "12",
+      "pct": "20"
+    },
+    {
+      "team": "Minneapolis",
+      "w": "Blizzard",
+      "l": "11",
+      "pct": "21"
+    },
+    {
+      "team": "Atlanta",
+      "w": "Kings",
+      "l": "10",
+      "pct": "22"
+    },
+    {
+      "team": "Portland",
+      "w": "Lumberjacks",
+      "l": "10",
+      "pct": "22"
+    }
+  ],
+  "hot_teams": [
+    {
+      "team": "Saved",
+      "diff": 10,
+      "last10": null
+    },
+    {
+      "team": "1",
+      "diff": 7,
+      "last10": null
+    },
+    {
+      "team": "2",
+      "diff": 7,
+      "last10": null
+    },
+    {
+      "team": "6",
+      "diff": 7,
+      "last10": null
+    },
+    {
+      "team": "16",
+      "diff": 7,
+      "last10": null
+    }
+  ],
+  "cold_teams": [],
+  "run_differential": [],
+  "momentum_windows": [
+    {
+      "entry": "ABL Momentum Windows"
+    },
+    {
+      "entry": "Generated on: 2025-11-25 02:08:18"
+    },
+    {
+      "entry": "Compares each team's last 10 games vs the previous 10 to show real momentum swings."
+    },
+    {
+      "entry": "Great for broadcast color: highlight surges, slides, and steady clubs at a glance."
+    },
+    {
+      "entry": "Team                         dWin%      Last      Prior   Streak  Note"
+    },
+    {
+      "entry": "Phoenix (N-W)               +0.300       7-3        4-6       L1  HOT: gained 0.300 (last10 7-3 vs prior10 4-6). Current streak L1."
+    },
+    {
+      "entry": "Nashville (A-C)             +0.300       7-3        4-6       W1  HOT: gained 0.300 (last10 7-3 vs prior10 4-6). Current streak W1."
+    },
+    {
+      "entry": "Miami (N-E)                 +0.200       7-3        5-5       W1  HOT: gained 0.200 (last10 7-3 vs prior10 5-5). Current streak W1."
+    },
+    {
+      "entry": "Dallas (N-C)                +0.200       6-4        4-6       L2  HOT: gained 0.200 (last10 6-4 vs prior10 4-6). Current streak L2."
+    },
+    {
+      "entry": "Portland (A-W)              +0.200       4-6        2-8       L2  HOT: gained 0.200 (last10 4-6 vs prior10 2-8). Current streak L2."
+    },
+    {
+      "entry": "San Diego (N-W)             +0.100       6-4        5-5       W2  OK: gained 0.100 (last10 6-4 vs prior10 5-5). Current streak W2."
+    },
+    {
+      "entry": "Denver (A-W)                +0.100       6-4        5-5       W5  OK: gained 0.100 (last10 6-4 vs prior10 5-5). Current streak W5."
+    },
+    {
+      "entry": "Tampa Bay (N-E)             +0.100       5-5        4-6       W2  OK: gained 0.100 (last10 5-5 vs prior10 4-6). Current streak W2."
+    },
+    {
+      "entry": "Pittsburgh (A-E)            +0.100       4-6        3-7       L1  OK: gained 0.100 (last10 4-6 vs prior10 3-7). Current streak L1."
+    },
+    {
+      "entry": "Charlotte (N-E)             +0.000       7-3        7-3       L1  OK: gained 0.000 (last10 7-3 vs prior10 7-3). Current streak L1."
+    },
+    {
+      "entry": "St. Louis (A-C)             +0.000       5-5        5-5       W1  OK: gained 0.000 (last10 5-5 vs prior10 5-5). Current streak W1."
+    },
+    {
+      "entry": "Philadelphia (A-E)          +0.000       5-5        5-5       L1  OK: gained 0.000 (last10 5-5 vs prior10 5-5). Current streak L1."
+    },
+    {
+      "entry": "Seattle (A-W)               +0.000       5-5        5-5       W2  OK: gained 0.000 (last10 5-5 vs prior10 5-5). Current streak W2."
+    },
+    {
+      "entry": "Atlanta (N-E)               +0.000       4-6        4-6       W1  OK: gained 0.000 (last10 4-6 vs prior10 4-6). Current streak W1."
+    },
+    {
+      "entry": "Las Vegas (A-W)             -0.100       7-3        8-2       L2  OK: lost 0.100 (last10 7-3 vs prior10 8-2). Current streak L2."
+    },
+    {
+      "entry": "San Francisco (N-W)         -0.100       5-5        6-4       W2  OK: lost 0.100 (last10 5-5 vs prior10 6-4). Current streak W2."
+    },
+    {
+      "entry": "Cincinnati (A-C)            -0.100       5-5        6-4       L2  OK: lost 0.100 (last10 5-5 vs prior10 6-4). Current streak L2."
+    },
+    {
+      "entry": "Boston (A-E)                -0.100       5-5        6-4       W2  OK: lost 0.100 (last10 5-5 vs prior10 6-4). Current streak W2."
+    },
+    {
+      "entry": "Houston (A-C)               -0.100       4-6        5-5       W2  OK: lost 0.100 (last10 4-6 vs prior10 5-5). Current streak W2."
+    },
+    {
+      "entry": "Minneapolis (N-C)           -0.100       3-7        4-6       L1  OK: lost 0.100 (last10 3-7 vs prior10 4-6). Current streak L1."
+    },
+    {
+      "entry": "Detroit (N-C)               -0.200       3-7        5-5       L2  COLD: lost 0.200 (last10 3-7 vs prior10 5-5). Current streak L2."
+    },
+    {
+      "entry": "Los Angeles (N-W)           -0.200       3-7        5-5       W1  COLD: lost 0.200 (last10 3-7 vs prior10 5-5). Current streak W1."
+    },
+    {
+      "entry": "Chicago (N-C)               -0.300       4-6        7-3       L2  COLD: lost 0.300 (last10 4-6 vs prior10 7-3). Current streak L2."
+    },
+    {
+      "entry": "New York (A-E)              -0.300       3-7        6-4       L3  COLD: lost 0.300 (last10 3-7 vs prior10 6-4). Current streak L3."
+    },
+    {
+      "entry": "HOT  -> delta_winpct >= +0.200 (surging)."
+    },
+    {
+      "entry": "COLD -> delta_winpct <= -0.200 (sliding)."
+    },
+    {
+      "entry": "OK   -> between those bands (steady)."
+    },
+    {
+      "entry": "Last10/Prior10: win/loss records for the latest vs previous window."
+    },
+    {
+      "entry": "delta_winpct: difference between those win percentages."
+    },
+    {
+      "entry": "Streak: active run of consecutive wins/losses (sign denotes W/L)."
+    },
+    {
+      "entry": "Conf-Div: conference/division combo (e.g., N-E)."
+    }
+  ],
+  "blowout_resilience": [
+    {
+      "entry": "ABL Blowout Resilience"
+    },
+    {
+      "entry": "Generated on: 2025-11-25 02:07:52"
+    },
+    {
+      "entry": "Regular-season only: shows how often each club thrives in 5+ run decisions and how big those wins typically are."
+    },
+    {
+      "entry": "Meaning: higher win% and positive margin in blowouts signal resiliency when games get lopsided."
+    },
+    {
+      "entry": "Team                   CD   Tag           Blowouts    Win%  AvgDiff   Share      Overall"
+    },
+    {
+      "entry": "Las Vegas              A-W  Dominant           7-2   0.778     4.00   0.281         24-8"
+    },
+    {
+      "entry": "San Francisco          N-W  Dominant           8-3   0.727     3.36   0.344        18-14"
+    },
+    {
+      "entry": "St. Louis              A-C  Tough              4-2   0.667     4.00   0.188        17-15"
+    },
+    {
+      "entry": "Denver                 A-W  Tough              4-2   0.667     2.17   0.188        18-14"
+    },
+    {
+      "entry": "Boston                 A-E  Tough              2-1   0.667     3.67   0.094        17-15"
+    },
+    {
+      "entry": "New York               A-E  Tough              7-4   0.636     0.73   0.344        16-16"
+    },
+    {
+      "entry": "Tampa Bay              N-E  Tough              7-4   0.636     0.09   0.344        14-18"
+    },
+    {
+      "entry": "Chicago                N-C  Tough              5-3   0.625     0.75   0.250        17-15"
+    },
+    {
+      "entry": "Charlotte              N-E  Tough              3-2   0.600     3.60   0.156        22-10"
+    },
+    {
+      "entry": "Dallas                 N-C  Tough              3-2   0.600     1.20   0.156        19-13"
+    },
+    {
+      "entry": "Nashville              A-C  Tough              6-6   0.500     1.00   0.375        18-14"
+    },
+    {
+      "entry": "Cincinnati             A-C  Tough              5-5   0.500     0.60   0.312        16-16"
+    },
+    {
+      "entry": "Philadelphia           A-E  Tough              4-4   0.500     1.00   0.250        15-17"
+    },
+    {
+      "entry": "Minneapolis            N-C  Tough              4-4   0.500     0.38   0.250        11-21"
+    },
+    {
+      "entry": "Detroit                N-C  Fragile            4-5   0.444     0.00   0.281        17-15"
+    },
+    {
+      "entry": "Los Angeles            N-W  Fragile            3-4   0.429    -1.14   0.219        16-16"
+    },
+    {
+      "entry": "Atlanta                N-E  Fragile            4-6   0.400    -0.10   0.312        10-22"
+    },
+    {
+      "entry": "Houston                A-C  Fragile            2-3   0.400    -2.60   0.156        13-19"
+    },
+    {
+      "entry": "San Diego              N-W  Fragile            3-5   0.375    -2.00   0.250        14-18"
+    },
+    {
+      "entry": "Phoenix                N-W  Fragile            4-7   0.364    -1.45   0.344        16-16"
+    },
+    {
+      "entry": "Miami                  N-E  Fragile            3-6   0.333    -3.33   0.281        18-14"
+    },
+    {
+      "entry": "Seattle                A-W  Fragile            2-4   0.333    -3.33   0.188        16-16"
+    },
+    {
+      "entry": "Portland               A-W  Fragile           4-10   0.286    -4.00   0.438        10-22"
+    },
+    {
+      "entry": "Pittsburgh             A-E  Fragile            2-6   0.250    -3.62   0.250        12-20"
+    },
+    {
+      "entry": "Dominant -> blowout win% >= 0.700"
+    },
+    {
+      "entry": "Tough    -> blowout win% between 0.500 and 0.699"
+    },
+    {
+      "entry": "Fragile  -> blowout win% < 0.500"
+    },
+    {
+      "entry": "Blowout game: decided by 5+ runs (abs(runs_for - runs_against) >= 5)."
+    },
+    {
+      "entry": "Share = blowout games / total games; AvgDiff = mean run differential in blowouts."
+    }
+  ],
+  "bullpen_stress": [
+    {
+      "entry": "ABL Bullpen Stress Index"
+    },
+    {
+      "entry": "Generated on: 2025-11-25 02:07:52"
+    },
+    {
+      "entry": "Last-14/7-day bullpen workload snapshot: innings per game, back-to-back usage, and high-leverage share."
+    },
+    {
+      "entry": "Meaning: higher stress scores flag pens carrying heavier loads and potential fatigue risk; inherited runner data adds season-long context."
+    },
+    {
+      "entry": "Team                   CD   Rating     Stress14  Stress7   IP/G14    B2B14  HiLev14    IR   IRS%"
+    },
+    {
+      "entry": "Miami                  N-E  High          2.928    3.111     2.38    0.217    0.870    NA     NA"
+    },
+    {
+      "entry": "Phoenix                N-W  Moderate      2.222    1.556     1.83    0.111    0.667    NA     NA"
+    },
+    {
+      "entry": "Atlanta                N-E  Moderate      2.432    1.979     2.00    0.182    0.682    NA     NA"
+    },
+    {
+      "entry": "Dallas                 N-C  Critical      3.137    2.944     2.62    0.174    0.870    NA     NA"
+    },
+    {
+      "entry": "Detroit                N-C  Critical      3.167    3.667     2.69    0.100    0.850    NA     NA"
+    },
+    {
+      "entry": "Charlotte              N-E  High          2.755    2.767     2.23    0.143    0.905    NA     NA"
+    },
+    {
+      "entry": "San Diego              N-W  High          2.627    3.212     2.08    0.200    0.900    NA     NA"
+    },
+    {
+      "entry": "Tampa Bay              N-E  Moderate      2.250    1.562     1.83    0.167    0.667    NA     NA"
+    },
+    {
+      "entry": "Los Angeles            N-W  High          2.740    3.500     2.31    0.045    0.818    NA     NA"
+    },
+    {
+      "entry": "San Francisco          N-W  Critical      3.011    4.417     2.64    0.100    0.650    NA     NA"
+    },
+    {
+      "entry": "Minneapolis            N-C  Moderate      2.118    2.104     1.75    0.158    0.579    NA     NA"
+    },
+    {
+      "entry": "Chicago                N-C  Moderate      2.333    2.617     1.90    0.200    0.667    NA     NA"
+    },
+    {
+      "entry": "Denver                 A-W  Critical      3.192    2.933     2.62    0.192    0.962    NA     NA"
+    },
+    {
+      "entry": "Cincinnati             A-C  Moderate      2.469    2.429     2.00    0.125    0.812    NA     NA"
+    },
+    {
+      "entry": "New York               A-E  High          2.816    2.200     2.45    0.111    0.611    NA     NA"
+    },
+    {
+      "entry": "Nashville              A-C  High          2.853    3.167     2.31    0.182    0.909    NA     NA"
+    },
+    {
+      "entry": "Las Vegas              A-W  High          2.773    2.375     2.27    0.188    0.812    NA     NA"
+    },
+    {
+      "entry": "Portland               A-W  Critical      3.044    2.900     2.62    0.048    0.810    NA     NA"
+    },
+    {
+      "entry": "St. Louis              A-C  Moderate      2.136    2.300     1.64    0.000    1.000    NA     NA"
+    },
+    {
+      "entry": "Boston                 A-E  Moderate      2.073    2.600     1.46    0.278    0.944    NA     NA"
+    },
+    {
+      "entry": "Pittsburgh             A-E  High          2.854    2.385     2.42    0.125    0.750    NA     NA"
+    },
+    {
+      "entry": "Philadelphia           A-E  Moderate      2.067    1.833     1.60    0.200    0.733    NA     NA"
+    },
+    {
+      "entry": "Houston                A-C  Manageable    1.650    1.333     1.25    0.133    0.667    NA     NA"
+    },
+    {
+      "entry": "Seattle                A-W  Critical      3.329    3.162     2.75    0.263    0.895    NA     NA"
+    },
+    {
+      "entry": "Critical >=3.0 | High 2.5-2.99 | Moderate 2.0-2.49 | Manageable <2.0 (Unknown if data gaps)."
+    },
+    {
+      "entry": "Stress14/7 = composite bullpen strain over last 14 / last 7 days."
+    },
+    {
+      "entry": "IP/G14 (IP/G7) = bullpen innings per team game across last 14 (7) days."
+    },
+    {
+      "entry": "B2B14 (B2B7) = share of relief appearances made on back-to-back days in last 14 (7) days."
+    },
+    {
+      "entry": "HiLev14 (HiLev7) = share of outings with leverage index >=1.5 or marked SV/HLD/GF/save-sit."
+    },
+    {
+      "entry": "IR/IRS% = season-long inherited runners and their scoring rate from the sortable pitching report."
+    },
+    {
+      "entry": "Stress Index = IP/G + 0.5*B2B Rate + 0.5*High-Leverage Share (higher = more strain)."
+    },
+    {
+      "entry": "Windows always reference the anchor_date-based last-14 and last-7 day periods."
+    }
+  ],
+  "one_run_records": [
+    {
+      "team": "Generated on:",
+      "record": "2025-11",
+      "tag": ""
+    },
+    {
+      "team": "Phoenix              N-W  Clutch",
+      "record": "5-0",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Pittsburgh           A-E  Clutch",
+      "record": "4-3",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Miami                N-E  Clutch",
+      "record": "3-1",
+      "tag": "Clutch"
+    },
+    {
+      "team": "San Francisco        N-W  Clutch",
+      "record": "3-1",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Houston              A-C  Clutch",
+      "record": "6-5",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Portland             A-W  Clutch",
+      "record": "3-4",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Detroit              N-C  Clutch",
+      "record": "7-4",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Atlanta              N-E  Clutch",
+      "record": "4-6",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Los Angeles          N-W  Clutch",
+      "record": "4-3",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Boston               A-E  Clutch",
+      "record": "6-4",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Seattle              A-W  Clutch",
+      "record": "5-4",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Minneapolis          N-C  Clutch",
+      "record": "4-6",
+      "tag": "Clutch"
+    },
+    {
+      "team": "Philadelphia         A-E  Even",
+      "record": "4-4",
+      "tag": ""
+    },
+    {
+      "team": "Las Vegas            A-W  Even",
+      "record": "6-2",
+      "tag": ""
+    },
+    {
+      "team": "Chicago              N-C  Even",
+      "record": "4-4",
+      "tag": ""
+    },
+    {
+      "team": "Cincinnati           A-C  Cold",
+      "record": "4-5",
+      "tag": "Cold"
+    },
+    {
+      "team": "Denver               A-W  Cold",
+      "record": "7-7",
+      "tag": "Cold"
+    },
+    {
+      "team": "Nashville            A-C  Cold",
+      "record": "2-2",
+      "tag": "Cold"
+    },
+    {
+      "team": "San Diego            N-W  Cold",
+      "record": "3-5",
+      "tag": "Cold"
+    },
+    {
+      "team": "St. Louis            A-C  Cold",
+      "record": "3-5",
+      "tag": "Cold"
+    },
+    {
+      "team": "Charlotte            N-E  Cold",
+      "record": "5-5",
+      "tag": "Cold"
+    },
+    {
+      "team": "Dallas               N-C  Cold",
+      "record": "4-6",
+      "tag": "Cold"
+    },
+    {
+      "team": "Tampa Bay            N-E  Cold",
+      "record": "2-7",
+      "tag": "Cold"
+    },
+    {
+      "team": "New York             A-E  Cold",
+      "record": "1-6",
+      "tag": "Cold"
+    }
+  ],
+  "strength_of_schedule_last14": [
+    {
+      "team": "ABL",
+      "note": "SOS Last 14",
+      "sos": null,
+      "record": ""
+    },
+    {
+      "team": "Generated",
+      "note": "on: 2025-11-25 02:08:31",
+      "sos": null,
+      "record": "2025-11"
+    },
+    {
+      "team": "Portland",
+      "note": "Gauntlet | SOS 0.574 | League 0.500 | \u00ce\u201d +0.074 | Record 4-9",
+      "sos": 0.574,
+      "record": "4-9"
+    },
+    {
+      "team": "Phoenix",
+      "note": "Gauntlet | SOS 0.562 | League 0.500 | \u00ce\u201d +0.062 | Record 8-5",
+      "sos": 0.562,
+      "record": "8-5"
+    },
+    {
+      "team": "Seattle",
+      "note": "Gauntlet | SOS 0.556 | League 0.500 | \u00ce\u201d +0.056 | Record 7-6",
+      "sos": 0.556,
+      "record": "7-6"
+    },
+    {
+      "team": "Detroit",
+      "note": "Gauntlet | SOS 0.556 | League 0.500 | \u00ce\u201d +0.056 | Record 5-8",
+      "sos": 0.556,
+      "record": "5-8"
+    },
+    {
+      "team": "Los",
+      "note": "Angeles          Gauntlet | SOS 0.556 | League 0.500 | \u00ce\u201d +0.056 | Record 4-9",
+      "sos": 0.556,
+      "record": "4-9"
+    },
+    {
+      "team": "Minneapolis",
+      "note": "Gauntlet | SOS 0.556 | League 0.500 | \u00ce\u201d +0.056 | Record 3-10",
+      "sos": 0.556,
+      "record": "3-10"
+    },
+    {
+      "team": "Pittsburgh",
+      "note": "Gauntlet | SOS 0.544 | League 0.500 | \u00ce\u201d +0.044 | Record 4-9",
+      "sos": 0.544,
+      "record": "4-9"
+    },
+    {
+      "team": "Charlotte",
+      "note": "Gauntlet | SOS 0.527 | League 0.500 | \u00ce\u201d +0.027 | Record 9-4",
+      "sos": 0.527,
+      "record": "9-4"
+    },
+    {
+      "team": "Philadelphia",
+      "note": "Gauntlet | SOS 0.527 | League 0.500 | \u00ce\u201d +0.027 | Record 6-7",
+      "sos": 0.527,
+      "record": "6-7"
+    },
+    {
+      "team": "Atlanta",
+      "note": "Gauntlet | SOS 0.521 | League 0.500 | \u00ce\u201d +0.021 | Record 5-8",
+      "sos": 0.521,
+      "record": "5-8"
+    },
+    {
+      "team": "New",
+      "note": "York             Neutral  | SOS 0.515 | League 0.500 | \u00ce\u201d +0.015 | Record 5-8",
+      "sos": 0.515,
+      "record": "5-8"
+    },
+    {
+      "team": "Houston",
+      "note": "Neutral  | SOS 0.515 | League 0.500 | \u00ce\u201d +0.015 | Record 5-8",
+      "sos": 0.515,
+      "record": "5-8"
+    },
+    {
+      "team": "San",
+      "note": "Diego            Neutral  | SOS 0.509 | League 0.500 | \u00ce\u201d +0.009 | Record 8-5",
+      "sos": 0.509,
+      "record": "8-5"
+    },
+    {
+      "team": "Boston",
+      "note": "Neutral  | SOS 0.503 | League 0.500 | \u00ce\u201d +0.003 | Record 8-5",
+      "sos": 0.503,
+      "record": "8-5"
+    },
+    {
+      "team": "Cincinnati",
+      "note": "Neutral  | SOS 0.497 | League 0.500 | \u00ce\u201d -0.003 | Record 7-6",
+      "sos": 0.497,
+      "record": "7-6"
+    },
+    {
+      "team": "San",
+      "note": "Francisco        Neutral  | SOS 0.485 | League 0.500 | \u00ce\u201d -0.015 | Record 7-6",
+      "sos": 0.485,
+      "record": "7-6"
+    },
+    {
+      "team": "Denver",
+      "note": "Soft     | SOS 0.467 | League 0.500 | \u00ce\u201d -0.033 | Record 7-6",
+      "sos": 0.467,
+      "record": "7-6"
+    },
+    {
+      "team": "Las",
+      "note": "Vegas            Soft     | SOS 0.450 | League 0.500 | \u00ce\u201d -0.050 | Record 10-3",
+      "sos": 0.45,
+      "record": "10-3"
+    },
+    {
+      "team": "Miami",
+      "note": "Soft     | SOS 0.444 | League 0.500 | \u00ce\u201d -0.056 | Record 8-5",
+      "sos": 0.444,
+      "record": "8-5"
+    },
+    {
+      "team": "Dallas",
+      "note": "Soft     | SOS 0.438 | League 0.500 | \u00ce\u201d -0.062 | Record 7-6",
+      "sos": 0.438,
+      "record": "7-6"
+    },
+    {
+      "team": "St.",
+      "note": "Louis            Soft     | SOS 0.432 | League 0.500 | \u00ce\u201d -0.068 | Record 6-7",
+      "sos": 0.432,
+      "record": "6-7"
+    },
+    {
+      "team": "Chicago",
+      "note": "Soft     | SOS 0.426 | League 0.500 | \u00ce\u201d -0.074 | Record 7-6",
+      "sos": 0.426,
+      "record": "7-6"
+    },
+    {
+      "team": "Nashville",
+      "note": "Soft     | SOS 0.420 | League 0.500 | \u00ce\u201d -0.080 | Record 9-4",
+      "sos": 0.42,
+      "record": "9-4"
+    },
+    {
+      "team": "Tampa",
+      "note": "Bay            Soft     | SOS 0.420 | League 0.500 | \u00ce\u201d -0.080 | Record 7-6",
+      "sos": 0.42,
+      "record": "7-6"
+    },
+    {
+      "team": "Key:",
+      "note": "",
+      "sos": null,
+      "record": ""
+    },
+    {
+      "team": "SOS",
+      "note": "= average opponent win% over same 14-day window.",
+      "sos": null,
+      "record": ""
+    },
+    {
+      "team": "Gauntlet",
+      "note": "-> facing tougher slate (\u00ce\u201d >= +0.020).",
+      "sos": 0.02,
+      "record": ""
+    },
+    {
+      "team": "Soft",
+      "note": "-> easier slate (\u00ce\u201d <= -0.020).",
+      "sos": 0.02,
+      "record": ""
+    },
+    {
+      "team": "Neutral",
+      "note": "-> within +/-0.019 of league average.",
+      "sos": 0.019,
+      "record": ""
+    }
+  ],
+  "rookie_watch": [
+    {
+      "player": "ABL Rookie",
+      "team": "Watch",
+      "rating": "",
+      "stat": "",
+      "raw": "ABL Rookie Watch (Hitters)",
+      "role": "hitter"
+    },
+    {
+      "player": "Generated on:",
+      "team": "2025-11-25",
+      "rating": "",
+      "stat": "",
+      "raw": "Generated on: 2025-11-25 02:08:23",
+      "role": "hitter"
+    },
+    {
+      "player": "Spotlights rookie-eligible",
+      "team": "bats",
+      "rating": "",
+      "stat": "",
+      "raw": "Spotlights rookie-eligible bats clearing the PA floor and ranks them by age-adjusted OPS pace.",
+      "role": "hitter"
+    },
+    {
+      "player": "Great for",
+      "team": "quickly",
+      "rating": "",
+      "stat": "",
+      "raw": "Great for quickly seeing which first-year hitters are already tilting lineups versus those still ramping up.",
+      "role": "hitter"
+    },
+    {
+      "player": "Player Team",
+      "team": "Rating",
+      "rating": "",
+      "stat": "",
+      "raw": "Player                   Team                 Rating           OPS   OPS+   Age+    Def  WAR162",
+      "role": "hitter"
+    },
+    {
+      "player": "-----------------------------------------------------------------------------------------------",
+      "team": "",
+      "rating": "",
+      "stat": "",
+      "raw": "-----------------------------------------------------------------------------------------------",
+      "role": "hitter"
+    },
+    {
+      "player": "Nigel Hudson",
+      "team": "Charlotte",
+      "rating": "Meteoric",
+      "stat": "1.180",
+      "raw": "Nigel Hudson             Charlotte (N-E)      Meteoric       1.180    164    156   -0.5     4.2",
+      "role": "hitter"
+    },
+    {
+      "player": "Jesus Vasquez",
+      "team": "Houston",
+      "rating": "Impact",
+      "stat": "0.817",
+      "raw": "Jesus Vasquez            Houston (A-C)        Impact         0.817    113    127   -2.0     1.9",
+      "role": "hitter"
+    },
+    {
+      "player": "Alex Lander",
+      "team": "St.",
+      "rating": "Impact",
+      "stat": "0.894",
+      "raw": "Alex Lander              St. Louis (A-C)      Impact         0.894    124    126   -0.0     3.8",
+      "role": "hitter"
+    },
+    {
+      "player": "Hirotoshi Nishimoto",
+      "team": "Minneapolis",
+      "rating": "Impact",
+      "stat": "0.887",
+      "raw": "Hirotoshi Nishimoto      Minneapolis (N-C)    Impact         0.887    123    125    0.0     1.6",
+      "role": "hitter"
+    },
+    {
+      "player": "Eddie Rodriguez",
+      "team": "Las",
+      "rating": "Impact",
+      "stat": "0.880",
+      "raw": "Eddie Rodriguez          Las Vegas (A-W)      Impact         0.880    122    124   -0.6     3.7",
+      "role": "hitter"
+    },
+    {
+      "player": "Luke Margalit",
+      "team": "San",
+      "rating": "Steady",
+      "stat": "0.839",
+      "raw": "Luke Margalit            San Francisco (N-W)  Steady         0.839    116    117   -2.1     2.3",
+      "role": "hitter"
+    },
+    {
+      "player": "Tony Bautista",
+      "team": "Denver",
+      "rating": "Steady",
+      "stat": "0.818",
+      "raw": "Tony Bautista            Denver (A-W)         Steady         0.818    113    115   -0.1     1.7",
+      "role": "hitter"
+    },
+    {
+      "player": "Rich Vela",
+      "team": "Dallas",
+      "rating": "Steady",
+      "stat": "0.802",
+      "raw": "Rich Vela                Dallas (N-C)         Steady         0.802    111    112   -0.1     3.1",
+      "role": "hitter"
+    },
+    {
+      "player": "David Avila",
+      "team": "Las",
+      "rating": "Steady",
+      "stat": "0.680",
+      "raw": "David Avila              Las Vegas (A-W)      Steady         0.680     94    106    0.7     2.5",
+      "role": "hitter"
+    },
+    {
+      "player": "Tim Wheeldon",
+      "team": "New",
+      "rating": "Steady",
+      "stat": "0.792",
+      "raw": "Tim Wheeldon             New York (A-E)       Steady         0.792    110    104    1.1     3.7",
+      "role": "hitter"
+    },
+    {
+      "player": "Mike Hargett",
+      "team": "Portland",
+      "rating": "Steady",
+      "stat": "0.731",
+      "raw": "Mike Hargett             Portland (A-W)       Steady         0.731    101    103    0.3     0.6",
+      "role": "hitter"
+    },
+    {
+      "player": "Bill Rambow",
+      "team": "Dallas",
+      "rating": "Steady",
+      "stat": "0.820",
+      "raw": "Bill Rambow              Dallas (N-C)         Steady         0.820    114    101   -3.7     3.5",
+      "role": "hitter"
+    },
+    {
+      "player": "Jordan Pedroza",
+      "team": "Cincinnati",
+      "rating": "Steady",
+      "stat": "0.749",
+      "raw": "Jordan Pedroza           Cincinnati (A-C)     Steady         0.749    104    101    0.5     3.6",
+      "role": "hitter"
+    },
+    {
+      "player": "Pete Rick",
+      "team": "Miami",
+      "rating": "Steady",
+      "stat": "0.650",
+      "raw": "Pete Rick                Miami (N-E)          Steady         0.650     90    101    3.3     1.5",
+      "role": "hitter"
+    },
+    {
+      "player": "Adam Wilson",
+      "team": "Seattle",
+      "rating": "Steady",
+      "stat": "0.681",
+      "raw": "Adam Wilson              Seattle (A-W)        Steady         0.681     94    101    0.5     1.4",
+      "role": "hitter"
+    },
+    {
+      "player": "Alejandro Rosado",
+      "team": "Dallas",
+      "rating": "",
+      "stat": "0.633",
+      "raw": "Alejandro Rosado         Dallas (N-C)         Learning       0.633     88     95    0.5     1.3",
+      "role": "hitter"
+    },
+    {
+      "player": "Renault Buso",
+      "team": "Portland",
+      "rating": "",
+      "stat": "0.669",
+      "raw": "Renault Buso             Portland (A-W)       Learning       0.669     93     94   -1.1    -0.5",
+      "role": "hitter"
+    },
+    {
+      "player": "Jon Dominguez",
+      "team": "Las",
+      "rating": "",
+      "stat": "0.710",
+      "raw": "Jon Dominguez            Las Vegas (A-W)      Learning       0.710     98     94   -0.0     4.3",
+      "role": "hitter"
+    },
+    {
+      "player": "Sam Ashworth",
+      "team": "Phoenix",
+      "rating": "",
+      "stat": "0.744",
+      "raw": "Sam Ashworth             Phoenix (N-W)        Learning       0.744    103     92   -0.3     1.8",
+      "role": "hitter"
+    },
+    {
+      "player": "Jose Barajas",
+      "team": "Miami",
+      "rating": "",
+      "stat": "0.639",
+      "raw": "Jose Barajas             Miami (N-E)          Learning       0.639     89     90    2.0     1.0",
+      "role": "hitter"
+    },
+    {
+      "player": "Chris Sullivan",
+      "team": "St.",
+      "rating": "",
+      "stat": "0.600",
+      "raw": "Chris Sullivan           St. Louis (A-C)      Learning       0.600     83     89    2.2     1.9",
+      "role": "hitter"
+    },
+    {
+      "player": "Chris Gillum",
+      "team": "St.",
+      "rating": "",
+      "stat": "0.602",
+      "raw": "Chris Gillum             St. Louis (A-C)      Learning       0.602     84     85    1.1    -1.1",
+      "role": "hitter"
+    },
+    {
+      "player": "Jake Simper",
+      "team": "Detroit",
+      "rating": "",
+      "stat": "0.560",
+      "raw": "Jake Simper              Detroit (N-C)        Learning       0.560     78     85   -0.5    -1.0",
+      "role": "hitter"
+    },
+    {
+      "player": "Jeff Smith",
+      "team": "Las",
+      "rating": "",
+      "stat": "0.682",
+      "raw": "Jeff Smith               Las Vegas (A-W)      Learning       0.682     95     84    0.3     0.8",
+      "role": "hitter"
+    },
+    {
+      "player": "Andy Ayala",
+      "team": "Boston",
+      "rating": "",
+      "stat": "0.550",
+      "raw": "Andy Ayala               Boston (A-E)         Learning       0.550     76     81    0.1    -1.4",
+      "role": "hitter"
+    },
+    {
+      "player": "Threshold: PA",
+      "team": ">=",
+      "rating": "",
+      "stat": "",
+      "raw": "Threshold: PA >= 50 (unless show_all).",
+      "role": "hitter"
+    },
+    {
+      "player": "Key:",
+      "team": "",
+      "rating": "",
+      "stat": "",
+      "raw": "Key:",
+      "role": "hitter"
+    },
+    {
+      "player": "Meteoric >=150",
+      "team": "AgeAdj",
+      "rating": "Meteoric",
+      "stat": "",
+      "raw": "Meteoric >=150 AgeAdj OPS+, Impact 120-149, Steady 100-119, Learning 80-99, Finding Feet <80.",
+      "role": "hitter"
+    },
+    {
+      "player": "Definitions:",
+      "team": "",
+      "rating": "",
+      "stat": "",
+      "raw": "Definitions:",
+      "role": "hitter"
+    },
+    {
+      "player": "OPS+ numbers",
+      "team": "adjust",
+      "rating": "",
+      "stat": "",
+      "raw": "OPS+ numbers adjust for park and league average (100 = league average).",
+      "role": "hitter"
+    },
+    {
+      "player": "AgeAdj OPS+",
+      "team": "compares",
+      "rating": "",
+      "stat": "",
+      "raw": "AgeAdj OPS+ compares to same-age peers when available.",
+      "role": "hitter"
+    },
+    {
+      "player": "WAR pace",
+      "team": "scaled",
+      "rating": "",
+      "stat": "",
+      "raw": "WAR pace scaled to 162 games using league-average games played.",
+      "role": "hitter"
+    },
+    {
+      "player": "ABL Rookie",
+      "team": "Watch",
+      "rating": "",
+      "stat": "",
+      "raw": "ABL Rookie Watch (Pitchers)",
+      "role": "pitcher"
+    },
+    {
+      "player": "Generated on:",
+      "team": "2025-11-25",
+      "rating": "",
+      "stat": "",
+      "raw": "Generated on: 2025-11-25 02:08:23",
+      "role": "pitcher"
+    },
+    {
+      "player": "Highlights rookie",
+      "team": "arms",
+      "rating": "",
+      "stat": "",
+      "raw": "Highlights rookie arms meeting the IP floor, layering WAR pace with run-prevention and strikeout/command signals.",
+      "role": "pitcher"
+    },
+    {
+      "player": "Helps flag",
+      "team": "which",
+      "rating": "",
+      "stat": "",
+      "raw": "Helps flag which first-year pitchers are rotation-ready contributors versus developmental depth.",
+      "role": "pitcher"
+    },
+    {
+      "player": "Player Team",
+      "team": "Rating",
+      "rating": "",
+      "stat": "",
+      "raw": "Player                   Team                 Rating             IP    ERA    FIP      K%     BB%  WAR162",
+      "role": "pitcher"
+    },
+    {
+      "player": "---------------------------------------------------------------------------------------------------------",
+      "team": "",
+      "rating": "",
+      "stat": "",
+      "raw": "---------------------------------------------------------------------------------------------------------",
+      "role": "pitcher"
+    },
+    {
+      "player": "Joel Valenty",
+      "team": "Los",
+      "rating": "",
+      "stat": "0.150",
+      "raw": "Joel Valenty             Los Angeles (N-W)    Ace Track        48.0   0.00   3.89   0.150   0.063     6.1",
+      "role": "pitcher"
+    },
+    {
+      "player": "Warren Holster",
+      "team": "Dallas",
+      "rating": "",
+      "stat": "0.151",
+      "raw": "Warren Holster           Dallas (N-C)         Ace Track        45.0   0.00   4.15   0.151   0.085     5.6",
+      "role": "pitcher"
+    },
+    {
+      "player": "Jose Contreras",
+      "team": "Phoenix",
+      "rating": "",
+      "stat": "0.134",
+      "raw": "Jose Contreras           Phoenix (N-W)        Ace Track        44.0   0.00   4.01   0.134   0.058     5.2",
+      "role": "pitcher"
+    },
+    {
+      "player": "John Jury",
+      "team": "Chicago",
+      "rating": "",
+      "stat": "0.142",
+      "raw": "John Jury                Chicago (N-C)        Ace Track        40.0   0.00   4.30   0.142   0.089     4.0",
+      "role": "pitcher"
+    },
+    {
+      "player": "Jose Flores",
+      "team": "Detroit",
+      "rating": "",
+      "stat": "0.097",
+      "raw": "Jose Flores              Detroit (N-C)        Rotation Ready   36.0   0.00   3.79   0.097   0.019     2.7",
+      "role": "pitcher"
+    },
+    {
+      "player": "Adam Jahn",
+      "team": "Los",
+      "rating": "",
+      "stat": "0.086",
+      "raw": "Adam Jahn                Los Angeles (N-W)    Rotation Ready   34.0   0.00   4.72   0.086   0.086     2.6",
+      "role": "pitcher"
+    },
+    {
+      "player": "Matt Adams",
+      "team": "Philadelphia",
+      "rating": "",
+      "stat": "0.156",
+      "raw": "Matt Adams               Philadelphia (A-E)   Contributor      37.0   0.00   4.26   0.156   0.096     2.3",
+      "role": "pitcher"
+    },
+    {
+      "player": "Antonio Hernandez",
+      "team": "Nashville",
+      "rating": "",
+      "stat": "0.146",
+      "raw": "Antonio Hernandez        Nashville (A-C)      Contributor      38.0   0.00   3.90   0.146   0.061     2.2",
+      "role": "pitcher"
+    },
+    {
+      "player": "Jon Moreno",
+      "team": "Detroit",
+      "rating": "",
+      "stat": "0.143",
+      "raw": "Jon Moreno               Detroit (N-C)        Contributor      16.0   0.00   3.75   0.143   0.036     1.9",
+      "role": "pitcher"
+    },
+    {
+      "player": "Arthur Blin",
+      "team": "Nashville",
+      "rating": "",
+      "stat": "0.157",
+      "raw": "Arthur Blin              Nashville (A-C)      Contributor      34.0   0.00   4.46   0.157   0.111     1.8",
+      "role": "pitcher"
+    },
+    {
+      "player": "John Wolfe",
+      "team": "Denver",
+      "rating": "",
+      "stat": "0.144",
+      "raw": "John Wolfe               Denver (A-W)         Contributor      25.0   0.00   4.17   0.144   0.081     1.8",
+      "role": "pitcher"
+    },
+    {
+      "player": "Jacob Sutherland",
+      "team": "Nashville",
+      "rating": "",
+      "stat": "0.121",
+      "raw": "Jacob Sutherland         Nashville (A-C)      Contributor      24.0   0.00   4.29   0.121   0.075     1.5",
+      "role": "pitcher"
+    },
+    {
+      "player": "Dave DiAngelo",
+      "team": "Denver",
+      "rating": "",
+      "stat": "0.106",
+      "raw": "Dave DiAngelo            Denver (A-W)         Contributor      48.0   0.00   4.64   0.106   0.092     1.4",
+      "role": "pitcher"
+    },
+    {
+      "player": "Antonio Romo",
+      "team": "Seattle",
+      "rating": "",
+      "stat": "0.096",
+      "raw": "Antonio Romo             Seattle (A-W)        Contributor      33.0   0.00   4.55   0.096   0.076     1.1",
+      "role": "pitcher"
+    },
+    {
+      "player": "Ryan Millich",
+      "team": "Dallas",
+      "rating": "",
+      "stat": "0.074",
+      "raw": "Ryan Millich             Dallas (N-C)         Apprentice       19.0   0.00   5.00   0.074   0.099     0.9",
+      "role": "pitcher"
+    },
+    {
+      "player": "Daniel Buckley",
+      "team": "St.",
+      "rating": "",
+      "stat": "0.057",
+      "raw": "Daniel Buckley           St. Louis (A-C)      Apprentice       15.0   0.00   5.04   0.057   0.086     0.7",
+      "role": "pitcher"
+    },
+    {
+      "player": "Miguel Mora",
+      "team": "Tampa",
+      "rating": "",
+      "stat": "0.167",
+      "raw": "Miguel Mora              Tampa Bay (N-E)      Apprentice       34.0   0.00   4.02   0.167   0.083     0.6",
+      "role": "pitcher"
+    },
+    {
+      "player": "David Wells",
+      "team": "Phoenix",
+      "rating": "",
+      "stat": "0.140",
+      "raw": "David Wells              Phoenix (N-W)        Apprentice       20.0   0.00   4.82   0.140   0.128     0.5",
+      "role": "pitcher"
+    },
+    {
+      "player": "Doug Farmer",
+      "team": "Pittsburgh",
+      "rating": "",
+      "stat": "0.136",
+      "raw": "Doug Farmer              Pittsburgh (A-E)     Apprentice       25.0   0.00   4.61   0.136   0.109     0.4",
+      "role": "pitcher"
+    },
+    {
+      "player": "Tony Espinal",
+      "team": "Chicago",
+      "rating": "",
+      "stat": "0.122",
+      "raw": "Tony Espinal             Chicago (N-C)        Apprentice       33.0   0.00   4.95   0.122   0.122     0.1",
+      "role": "pitcher"
+    },
+    {
+      "player": "Danny LaRocque",
+      "team": "San",
+      "rating": "",
+      "stat": "0.112",
+      "raw": "Danny LaRocque           San Diego (N-W)      Rebuild          16.0   0.00   5.12   0.112   0.125    -0.4",
+      "role": "pitcher"
+    },
+    {
+      "player": "Arthur Rizzo",
+      "team": "San",
+      "rating": "",
+      "stat": "0.081",
+      "raw": "Arthur Rizzo             San Diego (N-W)      Rebuild          36.0   0.00   4.87   0.081   0.094    -0.9",
+      "role": "pitcher"
+    },
+    {
+      "player": "Andrew Flugence",
+      "team": "Chicago",
+      "rating": "",
+      "stat": "0.100",
+      "raw": "Andrew Flugence          Chicago (N-C)        Rebuild          15.0   0.00   4.44   0.100   0.071    -1.2",
+      "role": "pitcher"
+    },
+    {
+      "player": "Matt Martinson",
+      "team": "New",
+      "rating": "",
+      "stat": "0.165",
+      "raw": "Matt Martinson           New York (A-E)       Rebuild          16.0   0.00   4.06   0.165   0.089    -1.4",
+      "role": "pitcher"
+    },
+    {
+      "player": "Ricky Bautista",
+      "team": "Pittsburgh",
+      "rating": "",
+      "stat": "0.106",
+      "raw": "Ricky Bautista           Pittsburgh (A-E)     Rebuild          24.0   0.00   5.08   0.106   0.125    -1.5",
+      "role": "pitcher"
+    },
+    {
+      "player": "Threshold: IP",
+      "team": ">=",
+      "rating": "",
+      "stat": "",
+      "raw": "Threshold: IP >= 15 (unless show_all).",
+      "role": "pitcher"
+    },
+    {
+      "player": "Key:",
+      "team": "",
+      "rating": "",
+      "stat": "",
+      "raw": "Key:",
+      "role": "pitcher"
+    },
+    {
+      "player": "Ace Track",
+      "team": "pace",
+      "rating": "",
+      "stat": "",
+      "raw": "Ace Track pace >=4.0 WAR, Rotation Ready 2.5-3.9, Contributor 1.0-2.4, Apprentice 0-0.9, Rebuild <0.",
+      "role": "pitcher"
+    },
+    {
+      "player": "Definitions:",
+      "team": "",
+      "rating": "",
+      "stat": "",
+      "raw": "Definitions:",
+      "role": "pitcher"
+    },
+    {
+      "player": "ERA uses",
+      "team": "provided",
+      "rating": "",
+      "stat": "",
+      "raw": "ERA uses provided figure or ER-based calc; FIP uses league constant when inputs exist.",
+      "role": "pitcher"
+    },
+    {
+      "player": "K%/BB% prefer",
+      "team": "BF",
+      "rating": "",
+      "stat": "",
+      "raw": "K%/BB% prefer BF when available, otherwise use plate-appearance approximations.",
+      "role": "pitcher"
+    },
+    {
+      "player": "WAR pace",
+      "team": "scaled",
+      "rating": "",
+      "stat": "",
+      "raw": "WAR pace scaled to 162 games using league-average schedule length.",
+      "role": "pitcher"
+    }
+  ],
+  "player_of_the_week": {
+    "blurb": "ABL Week Miner"
+  },
+  "manager_tendencies": [
+    {
+      "manager": "Manager / Team",
+      "team": "Rating         Idx",
+      "rating": "Small        Idx",
+      "hook": "Hook          Idx",
+      "platoon": "Platoon         Idx"
+    },
+    {
+      "manager": "William Ross (SEA A-W)",
+      "team": "Elite        1.756",
+      "rating": "Bunt & Run 1.714",
+      "hook": "Short Leash 1.098",
+      "platoon": "Heavy Platoon 2.455"
+    },
+    {
+      "manager": "Jason Wainwright (CHA N-E)",
+      "team": "Balanced     1.056",
+      "rating": "Bunt & Run 1.569",
+      "hook": "Short Leash 1.137",
+      "platoon": "Static        0.462"
+    },
+    {
+      "manager": "Matt Petrie (LV A-W)",
+      "team": "Elite        1.405",
+      "rating": "Bunt & Run 1.351",
+      "hook": "Standard    0.980",
+      "platoon": "Heavy Platoon 1.883"
+    },
+    {
+      "manager": "Dennis Salvino (NY A-E)",
+      "team": "Balanced     0.996",
+      "rating": "Pressure   1.167",
+      "hook": "Standard    0.863",
+      "platoon": "Balanced      0.958"
+    },
+    {
+      "manager": "T.J. Cameron (ATL N-E)",
+      "team": "Balanced     1.031",
+      "rating": "Pressure   1.147",
+      "hook": "Short Leash 1.098",
+      "platoon": "Static        0.848"
+    },
+    {
+      "manager": "Bill Hurff (BOS A-E)",
+      "team": "Aggressive   1.332",
+      "rating": "Pressure   1.116",
+      "hook": "Short Leash 1.020",
+      "platoon": "Heavy Platoon 1.861"
+    },
+    {
+      "manager": "Danny Sanchez (PHI A-E)",
+      "team": "Conservative 0.821",
+      "rating": "Balanced   1.091",
+      "hook": "Standard    0.941",
+      "platoon": "Static        0.429"
+    },
+    {
+      "manager": "Greg Asche (DEN A-W)",
+      "team": "Conservative 0.792",
+      "rating": "Balanced   1.076",
+      "hook": "Standard    0.902",
+      "platoon": "Static        0.396"
+    },
+    {
+      "manager": "Mark Averill (PIT A-E)",
+      "team": "Balanced     0.939",
+      "rating": "Balanced   1.010",
+      "hook": "Standard    0.980",
+      "platoon": "Static        0.826"
+    },
+    {
+      "manager": "Dave Walkling (LA N-W)",
+      "team": "Balanced     1.053",
+      "rating": "Balanced   0.974",
+      "hook": "Standard    0.941",
+      "platoon": "Targeted      1.244"
+    },
+    {
+      "manager": "Brian Parsley (DAL N-C)",
+      "team": "Balanced     1.063",
+      "rating": "Balanced   0.969",
+      "hook": "Short Leash 1.098",
+      "platoon": "Balanced      1.123"
+    },
+    {
+      "manager": "Seth Coe (MIA N-E)",
+      "team": "Conservative 0.881",
+      "rating": "Balanced   0.968",
+      "hook": "Standard    0.980",
+      "platoon": "Static        0.694"
+    },
+    {
+      "manager": "Mike Khoury (TB N-E)",
+      "team": "Balanced     1.021",
+      "rating": "Balanced   0.955",
+      "hook": "Standard    0.863",
+      "platoon": "Targeted      1.244"
+    },
+    {
+      "manager": "Tim Staheli (POR A-W)",
+      "team": "Aggressive   1.242",
+      "rating": "Balanced   0.929",
+      "hook": "Standard    0.902",
+      "platoon": "Heavy Platoon 1.894"
+    },
+    {
+      "manager": "Francisco Hernandez (NAS A-C)",
+      "team": "Conservative 0.895",
+      "rating": "Balanced   0.907",
+      "hook": "Standard    0.941",
+      "platoon": "Static        0.837"
+    },
+    {
+      "manager": "Chris Allison (CIN A-C)",
+      "team": "Balanced     0.971",
+      "rating": "Swing Away 0.892",
+      "hook": "Short Leash 1.098",
+      "platoon": "Balanced      0.925"
+    },
+    {
+      "manager": "Matt Mead (CHI N-C)",
+      "team": "Conservative 0.834",
+      "rating": "Swing Away 0.884",
+      "hook": "Standard    0.902",
+      "platoon": "Static        0.716"
+    },
+    {
+      "manager": "Tyler Trowbridge (SF N-W)",
+      "team": "Conservative 0.857",
+      "rating": "Swing Away 0.829",
+      "hook": "Short Leash 1.059",
+      "platoon": "Static        0.683"
+    },
+    {
+      "manager": "Jose Perez (DET N-C)",
+      "team": "Conservative 0.766",
+      "rating": "Swing Away 0.818",
+      "hook": "Standard    0.941",
+      "platoon": "Static        0.539"
+    },
+    {
+      "manager": "Bill Benisch (PHO N-W)",
+      "team": "Aggressive   1.230",
+      "rating": "Swing Away 0.809",
+      "hook": "Short Leash 1.020",
+      "platoon": "Heavy Platoon 1.861"
+    },
+    {
+      "manager": "Ryan Messmer (STL A-C)",
+      "team": "Conservative 0.755",
+      "rating": "Swing Away 0.786",
+      "hook": "Standard    0.941",
+      "platoon": "Static        0.539"
+    },
+    {
+      "manager": "Carlos Sanchez (HOU A-C)",
+      "team": "Passive      0.698",
+      "rating": "Swing Away 0.748",
+      "hook": "Short Leash 1.137",
+      "platoon": "Static        0.209"
+    },
+    {
+      "manager": "Jesse Wade (SD N-W)",
+      "team": "Conservative 0.758",
+      "rating": "Swing Away 0.723",
+      "hook": "Short Leash 1.098",
+      "platoon": "Static        0.451"
+    },
+    {
+      "manager": "Shawn Thompson (MIN N-C)",
+      "team": "Conservative 0.849",
+      "rating": "Swing Away 0.565",
+      "hook": "Short Leash 1.059",
+      "platoon": "Balanced      0.925"
+    },
+    {
+      "manager": "platoon_usage_rate =",
+      "team": "PA vs RHP - PA vs LHP",
+      "rating": "/ total PA (lineup-derived when splits absent).",
+      "hook": "",
+      "platoon": ""
+    }
+  ],
+  "featured_matchups": [],
+  "sunday_matchups": []
+}
