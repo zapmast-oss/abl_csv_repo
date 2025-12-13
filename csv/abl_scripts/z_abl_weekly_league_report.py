@@ -96,6 +96,17 @@ def best_match(patterns: List[str], search_dirs: List[Path]) -> Optional[Path]:
     return None
 
 
+def find_csv_root(start: Path) -> Path:
+    current = start
+    while True:
+        if any(current.glob("teams*.csv")):
+            return current
+        if current.parent == current:
+            break
+        current = current.parent
+    raise RuntimeError(f"Missing teams CSV when searching upward from {start}")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="ABL Weekly League Report")
     parser.add_argument("--year", type=int, required=True)
@@ -279,7 +290,10 @@ def compute_rd(tid: int, team_bat: Dict[int, dict], team_pit: Dict[int, dict], t
     pit = team_pit.get(tid)
     if bat and pit:
         rf = get_float(bat, ["r", "runs"])
-        ra = get_float(pit, ["ra", "runs_against", "runs_allowed", "r"])
+        ra = get_float(pit, ["ra", "runs_against", "runs_allowed"])
+        if ra is None:
+            # Some exports only provide 'r' for pitching; treat it as runs allowed when dedicated keys are absent.
+            ra = get_float(pit, ["r"])
         if rf is not None and ra is not None:
             return rf - ra
     rf = teams[tid].get("rf")
@@ -389,13 +403,18 @@ def pitching_snapshot(team_pit: Dict[int, dict], teams: Dict[int, dict]) -> List
         ip_val = get_float(row, ["ip"])
         if era is None:
             er = get_float(row, ["er"])
-            if er is not None and ip_val is not None and ip_val > 0:
-                era = (er / ip_val) * 9.0
+            outs = ip_to_outs(ip_val)
+            innings = outs / 3.0 if outs else 0.0
+            if er is not None and innings > 0:
+                era = (er / innings) * 9.0
         whip = get_float(row, ["whip"])
-        if whip is None and ip_val is not None and ip_val > 0:
-            bb = get_float(row, ["bb"]) or 0.0
-            h = get_float(row, ["ha", "h"]) or 0.0
-            whip = (bb + h) / ip_val
+        if whip is None:
+            outs = ip_to_outs(ip_val)
+            innings = outs / 3.0 if outs else 0.0
+            if innings > 0:
+                bb = get_float(row, ["bb"]) or 0.0
+                h = get_float(row, ["ha", "h"]) or 0.0
+                whip = (bb + h) / innings
         if era is None and whip is None:
             continue
         era_val = era if era is not None else math.inf
@@ -413,7 +432,24 @@ def pitching_snapshot(team_pit: Dict[int, dict], teams: Dict[int, dict]) -> List
 
 
 def aggregate_player_totals(stats: Dict[int, List[Dict[str, str]]], war_col: Optional[str]) -> Dict[int, dict]:
-    totals: Dict[int, dict] = defaultdict(lambda: {"war": 0.0, "pa": 0.0, "ab": 0.0, "h": 0.0, "hr": 0, "rbi": 0, "team_war": defaultdict(float), "team_pa": defaultdict(float), "team_ip_outs": defaultdict(float), "er": 0.0, "k": 0, "w": 0, "ip_outs": 0.0})
+    totals: Dict[int, dict] = defaultdict(
+        lambda: {
+            "war": 0.0,
+            "pa": 0.0,
+            "ab": 0.0,
+            "h": 0.0,
+            "hr": 0,
+            "rbi": 0,
+            "team_war": defaultdict(float),
+            "team_pa": defaultdict(float),
+            "team_ip_outs": defaultdict(float),
+            "er": 0.0,
+            "k": 0,
+            "w": 0,
+            "ip_outs": 0.0,
+            "name": "",
+        }
+    )
     for pid, rows in stats.items():
         for row in rows:
             war_val = get_float(row, [war_col]) if war_col else None
@@ -439,6 +475,9 @@ def aggregate_player_totals(stats: Dict[int, List[Dict[str, str]]], war_col: Opt
             totals[pid]["er"] += er
             totals[pid]["k"] += k
             totals[pid]["w"] += w
+            row_name = get_str(row, ["player_name", "name"])
+            if row_name:
+                totals[pid]["name"] = row_name
             if tid is not None:
                 totals[pid]["team_war"][tid] += war_val
                 totals[pid]["team_pa"][tid] += pa
@@ -465,7 +504,7 @@ def war_section(bat_totals: Dict[int, dict], pitch_totals: Dict[int, dict], play
         team_id = None
         if data["team_war"]:
             team_id = max(data["team_war"].items(), key=lambda x: x[1])[0]
-        name = players.get(pid, f"Player {pid}")
+        name = players.get(pid) or bat_totals.get(pid, {}).get("name") or pitch_totals.get(pid, {}).get("name") or f"Player {pid}"
         abbr = teams.get(team_id, {}).get("abbr", "N/A") if team_id else "N/A"
         player_lines.append((total_war, f"- {name} ({abbr}) - WAR {total_war:.1f}"))
         for tid, war in data["team_war"].items():
@@ -494,7 +533,7 @@ def batting_leaders_section(totals: Dict[int, dict], players: Dict[int, str], te
         avg = None
         if ab > 0:
             avg = h / ab
-        name = players.get(pid, f"Player {pid}")
+        name = players.get(pid) or totals[pid].get("name") or f"Player {pid}"
         abbr = "N/A"
         if data["team_pa"]:
             abbr = teams.get(max(data["team_pa"].items(), key=lambda x: x[1])[0], {}).get("abbr", "N/A")
@@ -519,7 +558,7 @@ def pitching_leaders_section(totals: Dict[int, dict], players: Dict[int, str], t
         era = (er / (outs / 3.0)) * 9.0 if outs > 0 else None
         k = data.get("k", 0)
         w = data.get("w", 0)
-        name = players.get(pid, f"Player {pid}")
+        name = players.get(pid) or totals[pid].get("name") or f"Player {pid}"
         abbr = "N/A"
         if data["team_ip_outs"]:
             abbr = teams.get(max(data["team_ip_outs"].items(), key=lambda x: x[1])[0], {}).get("abbr", "N/A")
@@ -705,7 +744,11 @@ def preflight(year: int, search_dirs: List[Path]) -> dict:
 def main() -> None:
     args = parse_args()
     script_path = Path(__file__).resolve()
-    csv_root = script_path.parents[1]
+    try:
+        csv_root = find_csv_root(script_path.parent)
+    except RuntimeError as exc:
+        print(f"FATAL: {exc}")
+        sys.exit(2)
     search_dirs = [csv_root]
     try:
         context = preflight(args.year, search_dirs)
