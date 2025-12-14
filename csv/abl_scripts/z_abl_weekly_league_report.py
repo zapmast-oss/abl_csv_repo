@@ -530,13 +530,25 @@ def war_section(bat_totals: Dict[int, dict], pitch_totals: Dict[int, dict], play
     return top_players, top_team, bottom_team
 
 
-def batting_leaders_section(totals: Dict[int, dict], players: Dict[int, str], teams: Dict[int, dict]) -> Dict[str, List[str]]:
+def batting_leaders_section(totals: Dict[int, dict], players: Dict[int, str], teams: Dict[int, dict], team_batting: Dict[int, dict]) -> Dict[str, List[str]]:
     leaders = {"AVG": [], "HR": [], "RBI": []}
+    pa_available = any(data.get("pa", 0.0) > 0 for data in totals.values())
+    ab_available = any(data.get("ab", 0.0) > 0 for data in totals.values())
     for pid, data in totals.items():
         pa = data.get("pa", 0.0)
-        if pa and pa < 25:
-            continue
         ab = data.get("ab", 0.0)
+        primary_team = None
+        if data["team_pa"]:
+            primary_team = max(data["team_pa"].items(), key=lambda x: x[1])[0]
+        games = None
+        if primary_team is not None and primary_team in team_batting:
+            games = get_float(team_batting[primary_team], ["g", "games"])
+        if games is not None:
+            required_pa = games * 3.1
+            if pa < required_pa:
+                continue
+        elif (pa_available and pa < 25) or (not pa_available and ab_available and ab < 25):
+            continue
         h = data.get("h", 0.0)
         hr = data.get("hr", 0)
         rbi = data.get("rbi", 0)
@@ -544,9 +556,7 @@ def batting_leaders_section(totals: Dict[int, dict], players: Dict[int, str], te
         if ab > 0:
             avg = h / ab
         name = players.get(pid) or totals[pid].get("name") or f"Player {pid}"
-        abbr = "N/A"
-        if data["team_pa"]:
-            abbr = teams.get(max(data["team_pa"].items(), key=lambda x: x[1])[0], {}).get("abbr", "N/A")
+        abbr = teams.get(primary_team, {}).get("abbr", "N/A") if primary_team is not None else "N/A"
         if avg is not None:
             leaders["AVG"].append((avg, f"- {name} ({abbr}) - {avg:.3f}"))
         leaders["HR"].append((hr, f"- {name} ({abbr}) - {hr} HR"))
@@ -649,7 +659,7 @@ def build_report(year: int, week: int, context: dict) -> str:
     lines.append("")
 
     lines.append("E) League Leaders")
-    bat_leaders = batting_leaders_section(bat_totals, players, teams)
+    bat_leaders = batting_leaders_section(bat_totals, players, teams, team_bat)
     if bat_leaders["AVG"]:
         lines.append("Batting AVG (Top 5):")
         lines.extend(bat_leaders["AVG"])

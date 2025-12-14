@@ -1,5 +1,5 @@
 # Action Baseball League - Weekly League Report
-Generated: 2025-12-13 16:30:03
+Generated: 2025-12-13 18:07:01
 Season: 1981 Week: 05
 
 A) Standings (by Conference then Division)
@@ -115,17 +115,17 @@ Team WAR (Bottom 5):
 
 E) League Leaders
 Batting AVG (Top 5):
-- Tyler Lett (TB) - 0.471
-- Luis Perez (MIN) - 0.455
-- Sergio Ornelas (DET) - 0.425
 - Andres Salas (NAS) - 0.416
 - Ricky Thompson (MIN) - 0.411
+- Boboy Nierva (DEN) - 0.385
+- Jonathan Greene (PIT) - 0.382
+- Orlando Greeley (LA) - 0.370
 Home Runs (Top 5):
 - Juan Perez (BOS) - 14 HR
-- Joe Turner (BOS) - 10 HR
 - Miguel Morales (CHI) - 10 HR
 - Jeremy Campbell (POR) - 9 HR
 - Orlando Greeley (LA) - 9 HR
+- Nate Smeltz (TB) - 7 HR
 RBI (Top 5):
 - Orlando Greeley (LA) - 31 RBI
 - Jose Castillo (DAL) - 30 RBI
