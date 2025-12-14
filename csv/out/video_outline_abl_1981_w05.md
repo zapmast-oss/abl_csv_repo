@@ -2,6 +2,22 @@
 
 ## Open
 - Quick vibe; standings and headlines.
+## Core Recap (3/2/3)
+
+### Division Races (3)
+- BOS leads NY in ABC E by 1.0 GB (Leader RD +11, Chaser RD +4)
+- NAS leads STL in ABC C by 1.0 GB (Leader RD +26, Chaser RD +29)
+- DAL leads DET in NBC C by 2.0 GB (Leader RD +28, Chaser RD +7)
+
+### Team Trends (2)
+- LV Las Vegas Gamblers: 24-8 (0.750) | RD +59 | Team WAR 11.9
+- POR Portland Lumberjacks: 10-22 (0.312) | RD -76 | Team WAR 1.1
+
+### Player Spotlights (3)
+- WAR: Bobby Rodriguez (LV) - 2.3
+- RBI: Orlando Greeley (LA) - 31
+- HR: Juan Perez (BOS) - 14
+
 
 ## Standings & Momentum
 - Top: LV, CHA, DAL

@@ -7,6 +7,7 @@ import csv
 import json
 import re
 import sys
+import subprocess
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -60,6 +61,17 @@ TEAM_DISPLAY_ABBR = {
 
 def warn(msg: str) -> None:
     print(f"WARNING: {msg}")
+
+
+def find_csv_root(start: Path) -> Path:
+    current = start
+    while True:
+        if any(current.rglob("teams*.csv")):
+            return current
+        if current.parent == current:
+            break
+        current = current.parent
+    raise RuntimeError("Missing teams CSV in csv/")
 
 
 def normalize_text(s: str) -> str:
@@ -474,6 +486,166 @@ def is_rookie(name: str, lookup: Dict[str, Dict[str, Optional[float]]]) -> bool:
     return False
 
 
+def ensure_weekly_report(year: int, week: int) -> Path:
+    path = OUT_DIR / f"league_report_abl_{year}_w{week:02d}.md"
+    if path.exists():
+        return path
+    script = CSV_DIR / "abl_scripts" / "z_abl_weekly_league_report.py"
+    cmd = [sys.executable, str(script), "--year", str(year), "--week", str(week)]
+    subprocess.run(cmd, check=True, cwd=CSV_DIR)
+    return path
+
+
+def parse_weekly_report(report_path: Path) -> Dict[str, object]:
+    data: Dict[str, object] = {
+        "divisions": [],
+        "teams": {},
+        "team_war": {},
+        "top_war_players": [],
+        "hr_leaders": [],
+        "rbi_leaders": [],
+    }
+    lines = report_path.read_text(encoding="utf-8").splitlines()
+    team_stats: Dict[str, dict] = {}
+    divisions = []
+    pattern = re.compile(r"^(\S+)\s+(.*?)\s+(\d+)-(\d+)\s+([0-9.]+)\s+([-0-9.]+)\s+([+\-]?\d+|NA)$")
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if "Division" in line and " - " in line:
+            div_name = line
+            i += 2
+            teams = []
+            while i < len(lines) and lines[i].strip():
+                m = pattern.match(lines[i].strip())
+                if m:
+                    abbr, name, w, l, pct, gb, rd_txt = m.groups()
+                    rd_val = None if rd_txt == "NA" else int(rd_txt)
+                    entry = {"abbr": abbr, "name": name, "w": int(w), "l": int(l), "pct": float(pct), "gb": float(gb), "rd": rd_val}
+                    teams.append(entry)
+                    team_stats[abbr] = entry
+                i += 1
+            if teams:
+                divisions.append({"name": div_name, "teams": teams})
+        else:
+            i += 1
+    data["divisions"] = divisions
+    data["teams"] = team_stats
+
+    def parse_list_after(anchor: str) -> List[str]:
+        entries: List[str] = []
+        for idx, ln in enumerate(lines):
+            if ln.strip().startswith(anchor):
+                j = idx + 1
+                while j < len(lines) and lines[j].strip().startswith("- "):
+                    entries.append(lines[j].strip()[2:])
+                    j += 1
+                break
+        return entries
+
+    top_players = parse_list_after("Top 10 players by WAR:")
+    for item in top_players:
+        m = re.match(r"(.+?) \((.+?)\) - WAR ([0-9.]+)", item)
+        if m:
+            data["top_war_players"].append({"name": m.group(1), "abbr": m.group(2), "war": m.group(3)})
+
+    def parse_leader(anchor: str, suffix: str) -> List[dict]:
+        results = []
+        lst = parse_list_after(anchor)
+        for ent in lst:
+            m = re.match(r"(.+?) \((.+?)\) - ([0-9.]+)", ent)
+            if m:
+                results.append({"name": m.group(1), "abbr": m.group(2), "val": m.group(3)})
+                continue
+            m = re.match(r"(.+?) \((.+?)\) - (\d+) " + suffix, ent)
+            if m:
+                results.append({"name": m.group(1), "abbr": m.group(2), "val": m.group(3)})
+        return results
+
+    data["hr_leaders"] = parse_leader("Home Runs (Top 5):", "HR")
+    data["rbi_leaders"] = parse_leader("RBI (Top 5):", "RBI")
+
+    for anchor in ["Team WAR (Top 5):", "Team WAR (Bottom 5):"]:
+        entries = parse_list_after(anchor)
+        for ent in entries:
+            m = re.match(r"(\S+) (.+?) - Team WAR ([0-9.]+)", ent)
+            if m:
+                data["team_war"][m.group(1)] = m.group(3)
+    return data
+
+
+def build_core_recap(parsed: Dict[str, object]) -> List[str]:
+    lines: List[str] = []
+    lines.append("## Core Recap (3/2/3)")
+    lines.append("")
+    lines.append("### Division Races (3)")
+    div_entries: List[Tuple[float, str]] = []
+    for div in parsed.get("divisions", []):
+        teams = div.get("teams", [])
+        if len(teams) < 2:
+            continue
+        leader, chaser = teams[0], teams[1]
+        gb = chaser.get("gb", 0.0)
+        conf_abbr = "NBC" if "National Baseball Conference" in div["name"] else ("ABC" if "American Baseball Conference" in div["name"] else "")
+        div_abbr = "E" if "Eastern" in div["name"] else ("C" if "Central" in div["name"] else ("W" if "Western" in div["name"] else ""))
+        rd1 = leader.get("rd")
+        rd2 = chaser.get("rd")
+        rd1_txt = f"{rd1:+d}" if isinstance(rd1, int) else "NA"
+        rd2_txt = f"{rd2:+d}" if isinstance(rd2, int) else "NA"
+        div_entries.append((gb, f"- {leader['abbr']} leads {chaser['abbr']} in {conf_abbr} {div_abbr} by {gb:.1f} GB (Leader RD {rd1_txt}, Chaser RD {rd2_txt})"))
+    div_entries.sort(key=lambda x: x[0])
+    for _, txt in div_entries[:3]:
+        lines.append(txt)
+    lines.append("")
+    lines.append("### Team Trends (2)")
+    teams: Dict[str, dict] = parsed.get("teams", {})
+    team_war: Dict[str, str] = parsed.get("team_war", {})
+
+    def sort_key(item):
+        abbr, info = item
+        pct = info.get("pct", 0.0)
+        rd = info.get("rd")
+        rd_val = rd if rd is not None else -9999
+        war_val = float(team_war.get(abbr)) if abbr in team_war else -9999.0
+        return (pct, rd_val, war_val)
+
+    if teams:
+        best_abbr, best_info = max(teams.items(), key=sort_key)
+        worst_abbr, worst_info = min(teams.items(), key=sort_key)
+
+        def fmt_team(abbr: str, info: dict) -> str:
+            rd_txt = f"{info['rd']:+d}" if info.get("rd") is not None else "NA"
+            war_txt = team_war.get(abbr, "NA")
+            return f"- {abbr} {info['name']}: {info['w']}-{info['l']} ({info['pct']:.3f}) | RD {rd_txt} | Team WAR {war_txt}"
+
+        lines.append(fmt_team(best_abbr, best_info))
+        lines.append(fmt_team(worst_abbr, worst_info))
+    lines.append("")
+    lines.append("### Player Spotlights (3)")
+    bullets: List[str] = []
+    used: set[str] = set()
+    top_war = parsed.get("top_war_players", [])
+    if top_war:
+        p = top_war[0]
+        bullets.append(f"- WAR: {p['name']} ({p['abbr']}) - {p['war']}")
+        used.add(p["name"])
+
+    def add_unique(entries: List[dict], label: str) -> None:
+        for ent in entries:
+            if ent["name"] not in used:
+                bullets.append(f"- {label}: {ent['name']} ({ent['abbr']}) - {ent['val']}")
+                used.add(ent["name"])
+                return
+
+    add_unique(parsed.get("rbi_leaders", []), "RBI")
+    add_unique(parsed.get("hr_leaders", []), "HR")
+    while len(bullets) < 3:
+        bullets.append("- HR: N/A")
+    lines.extend(bullets[:3])
+    lines.append("")
+    return lines
+
+
 def render_forum_post(core12: dict) -> str:
     year = core12.get("year")
     week = core12.get("week")
@@ -674,7 +846,7 @@ def render_forum_post(core12: dict) -> str:
     return md + "\n"
 
 
-def render_video_outline(core12: dict) -> str:
+def render_video_outline(core12: dict, recap_lines: List[str]) -> str:
     year = core12.get("year")
     week = core12.get("week")
     lines: List[str] = [f"# It's Monday - ABL Week {week}, {year}", ""]
@@ -703,6 +875,7 @@ def render_video_outline(core12: dict) -> str:
     bottom_table = [r[0] for r in list(reversed(ranked_standings))[:3]]
 
     lines += ["## Open", "- Quick vibe; standings and headlines."]
+    lines.extend(recap_lines)
     lines += ["", "## Standings & Momentum"]
     if top_table:
         lines.append("- Top: " + ", ".join(top_table))
@@ -850,6 +1023,12 @@ def main(argv: Optional[List[str]] = None) -> None:
     year = args.year
     week = args.week
 
+    global CSV_DIR, OUT_DIR, TEXT_OUT_DIR
+    csv_root = find_csv_root(SCRIPT_DIR)
+    CSV_DIR = csv_root
+    OUT_DIR = CSV_DIR / "out"
+    TEXT_OUT_DIR = OUT_DIR / "text_out"
+
     show_notes_path = TEXT_OUT_DIR / "ABL_Show_Notes.txt"
     eb_pack_path = TEXT_OUT_DIR / "eb_data_pack_1981_monday.txt"
     momentum_path = TEXT_OUT_DIR / "z_ABL_Momentum_Windows.txt"
@@ -863,6 +1042,12 @@ def main(argv: Optional[List[str]] = None) -> None:
     mgr_tend_path = TEXT_OUT_DIR / "z_ABL_Manager_Tendencies.txt"
     featured_path = TEXT_OUT_DIR / "z_ABL_Featured_Matchups_1981.txt"
     sunday_path = TEXT_OUT_DIR / "z_ABL_Sunday_Matchups.txt"
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    TEXT_OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    weekly_report_path = ensure_weekly_report(year, week)
+    weekly_parsed = parse_weekly_report(weekly_report_path)
 
     core12 = {
         "year": year,
@@ -938,11 +1123,10 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     json_path.write_text(json.dumps(core12, indent=2), encoding="utf-8")
     forum_path.write_text(render_forum_post(core12), encoding="utf-8")
-    video_path.write_text(render_video_outline(core12), encoding="utf-8")
+    recap_lines = build_core_recap(weekly_parsed)
+    video_path.write_text(render_video_outline(core12, recap_lines), encoding="utf-8")
 
-    print(f"Core12 JSON written to {json_path}")
-    print(f"Forum draft written to {forum_path}")
-    print(f"Video outline written to {video_path}")
+    print(f"Wrote: {video_path}")
 
 
 if __name__ == "__main__":
