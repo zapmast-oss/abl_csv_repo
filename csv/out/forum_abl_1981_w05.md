@@ -15,12 +15,6 @@
 - Toughest recent slate: Portland (0.574 SOS, 4-9), Phoenix (0.562 SOS, 8-5), Seattle (0.556 SOS, 7-6)
 - Easiest recent slate: Tampa (0.420 SOS, 7-6), Nashville (0.420 SOS, 9-4), Chicago (0.426 SOS, 7-6)
 
-## Rookie Watch
-- Jose Barajas (Miami) - 0.639
-- Antonio Hernandez (Nashville) - 0.146
-- ABL Rookie (Watch)
-- Spotlights rookie-eligible (bats)
-
 ## Player of the Week
 - ABL Week (Miner)
 

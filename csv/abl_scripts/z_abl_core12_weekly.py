@@ -390,7 +390,10 @@ def load_player_lookup(csv_dir: Path) -> Dict[str, Dict[str, Optional[float]]]:
                     exp_val = float(exp) if exp not in (None, "") else None
                 except ValueError:
                     exp_val = None
-                lookup[name_key] = {"age": age_val, "experience": exp_val}
+                current = lookup.get(name_key, {"age": None, "experience": None})
+                new_age = age_val if current["age"] is None else (max(current["age"], age_val) if age_val is not None else current["age"])
+                new_exp = exp_val if current["experience"] is None else (max(current["experience"], exp_val) if exp_val is not None else current["experience"])
+                lookup[name_key] = {"age": new_age, "experience": new_exp}
     except Exception:
         return {}
     return lookup
@@ -696,7 +699,7 @@ def render_video_outline(core12: dict) -> str:
     rookies_raw = core12.get("rookie_watch") or []
     rookies = [r for r in rookies_raw if looks_like_player_row(r)]
     if player_lookup:
-        rookies = [r for r in rookies if not is_veteran(r.get("player", ""), player_lookup)]
+        rookies = [r for r in rookies if r.get("player", "") and r.get("player", "").lower() in player_lookup and not is_veteran(r.get("player", ""), player_lookup)]
 
     def rookie_val(r: Dict[str, str]) -> float:
         try:
