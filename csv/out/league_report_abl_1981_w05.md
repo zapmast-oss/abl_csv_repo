@@ -1,5 +1,5 @@
 # Action Baseball League - Weekly League Report
-Generated: 2025-12-13 18:07:01
+Generated: 2025-12-13 18:19:15
 Season: 1981 Week: 05
 
 A) Standings (by Conference then Division)
@@ -133,11 +133,11 @@ RBI (Top 5):
 - Boboy Nierva (DEN) - 26 RBI
 - Alex Lander (STL) - 26 RBI
 ERA (Top 5):
-- Jose Varela (MIN) - 0.00 ERA
-- Jayden Gray (NAS) - 0.00 ERA
-- Chris Collette (CIN) - 0.38 ERA
-- Jon Moreno (DET) - 0.56 ERA
-- Omar Espinoza (PHO) - 0.64 ERA
+- Antonio Pineda (SF) - 1.38 ERA
+- Mike Randolph (BOS) - 1.54 ERA
+- Dabir Aly (CHA) - 1.54 ERA
+- Jose Contreras (PHO) - 1.84 ERA
+- Bert Lopez (STL) - 2.14 ERA
 Strikeouts (Top 5):
 - Jose Coronado (STL) - 59 SO
 - Bobby Rodriguez (LV) - 57 SO

@@ -568,11 +568,19 @@ def batting_leaders_section(totals: Dict[int, dict], players: Dict[int, str], te
     return result
 
 
-def pitching_leaders_section(totals: Dict[int, dict], players: Dict[int, str], teams: Dict[int, dict]) -> Dict[str, List[str]]:
+def pitching_leaders_section(totals: Dict[int, dict], players: Dict[int, str], teams: Dict[int, dict], team_pitching: Dict[int, dict]) -> Dict[str, List[str]]:
     leaders = {"ERA": [], "SO": [], "W": []}
     for pid, data in totals.items():
         outs = data.get("ip_outs", 0.0)
-        if outs and outs < 30.0:  # 10 innings = 30 outs
+        primary_team = None
+        if data["team_ip_outs"]:
+            primary_team = max(data["team_ip_outs"].items(), key=lambda x: x[1])[0]
+        required_outs = 30.0
+        if primary_team is not None and primary_team in team_pitching:
+            games = get_float(team_pitching[primary_team], ["g", "games"])
+            if games is not None:
+                required_outs = games * 3.0  # 1 IP per team game
+        if outs and outs < required_outs:
             continue
         er = data.get("er", 0.0)
         era = (er / (outs / 3.0)) * 9.0 if outs > 0 else None
@@ -580,8 +588,8 @@ def pitching_leaders_section(totals: Dict[int, dict], players: Dict[int, str], t
         w = data.get("w", 0)
         name = players.get(pid) or totals[pid].get("name") or f"Player {pid}"
         abbr = "N/A"
-        if data["team_ip_outs"]:
-            abbr = teams.get(max(data["team_ip_outs"].items(), key=lambda x: x[1])[0], {}).get("abbr", "N/A")
+        if primary_team is not None:
+            abbr = teams.get(primary_team, {}).get("abbr", "N/A")
         if era is not None:
             leaders["ERA"].append((era, f"- {name} ({abbr}) - {era:.2f} ERA"))
         leaders["SO"].append((k, f"- {name} ({abbr}) - {k} SO"))
@@ -670,7 +678,7 @@ def build_report(year: int, week: int, context: dict) -> str:
         lines.append("RBI (Top 5):")
         lines.extend(bat_leaders["RBI"])
 
-    pitch_leaders = pitching_leaders_section(pitch_totals, players, teams)
+    pitch_leaders = pitching_leaders_section(pitch_totals, players, teams, team_pit)
     if pitch_leaders["ERA"]:
         lines.append("ERA (Top 5):")
         lines.extend(pitch_leaders["ERA"])
