@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -364,10 +365,57 @@ def load_matchups(text: str) -> List[Dict[str, str]]:
     return rows
 
 
+def load_player_lookup(csv_dir: Path) -> Dict[str, Dict[str, Optional[float]]]:
+    candidates = [csv_dir / "ootp_csv" / "players.csv", csv_dir / "players.csv"]
+    path = next((p for p in candidates if p.exists()), None)
+    if not path:
+        return {}
+    lookup: Dict[str, Dict[str, Optional[float]]] = {}
+    try:
+        with path.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                first = (row.get("first_name") or "").strip()
+                last = (row.get("last_name") or "").strip()
+                if not first or not last:
+                    continue
+                name_key = f"{first} {last}".lower()
+                age = row.get("age")
+                exp = row.get("experience")
+                try:
+                    age_val = float(age) if age not in (None, "") else None
+                except ValueError:
+                    age_val = None
+                try:
+                    exp_val = float(exp) if exp not in (None, "") else None
+                except ValueError:
+                    exp_val = None
+                lookup[name_key] = {"age": age_val, "experience": exp_val}
+    except Exception:
+        return {}
+    return lookup
+
+
+def is_veteran(name: str, lookup: Dict[str, Dict[str, Optional[float]]]) -> bool:
+    if not name:
+        return False
+    info = lookup.get(name.lower())
+    if not info:
+        return False
+    age = info.get("age")
+    exp = info.get("experience")
+    if exp is not None and exp >= 2:
+        return True
+    if age is not None and age >= 28:
+        return True
+    return False
+
+
 def render_forum_post(core12: dict) -> str:
     year = core12.get("year")
     week = core12.get("week")
     lines: List[str] = [f"# Action Baseball League - Week {week} {year} Core 12 Report", ""]
+    player_lookup = load_player_lookup(CSV_DIR)
 
     def format_team_record(entry: Dict[str, str]) -> Tuple[str, float]:
         team = normalize_team_name(entry.get("team", ""))
@@ -467,6 +515,8 @@ def render_forum_post(core12: dict) -> str:
 
     rookies_raw = core12.get("rookie_watch") or []
     rookies = [r for r in rookies_raw if looks_like_player_row(r)]
+    if player_lookup:
+        rookies = [r for r in rookies if not is_veteran(r.get("player", ""), player_lookup)]
 
     def rookie_stat_val(r: Dict[str, str]) -> float:
         try:
@@ -565,6 +615,7 @@ def render_video_outline(core12: dict) -> str:
     year = core12.get("year")
     week = core12.get("week")
     lines: List[str] = [f"# It's Monday - ABL Week {week}, {year}", ""]
+    player_lookup = load_player_lookup(CSV_DIR)
 
     standings_raw = core12.get("standings") or []
     standings = [s for s in standings_raw if looks_like_team_row(s)]
@@ -644,6 +695,8 @@ def render_video_outline(core12: dict) -> str:
 
     rookies_raw = core12.get("rookie_watch") or []
     rookies = [r for r in rookies_raw if looks_like_player_row(r)]
+    if player_lookup:
+        rookies = [r for r in rookies if not is_veteran(r.get("player", ""), player_lookup)]
 
     def rookie_val(r: Dict[str, str]) -> float:
         try:

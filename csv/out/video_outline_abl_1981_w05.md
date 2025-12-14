@@ -17,7 +17,7 @@
 - Soft: Tampa, Nashville, Chicago
 
 ## Rookie Watch & Player of the Week
-- Rookies: Nigel Hudson, Alex Lander, Hirotoshi Nishimoto, Eddie Rodriguez
+- Rookies: Jose Barajas, Antonio Hernandez, ABL Rookie, Spotlights rookie-eligible
 - POW: ABL Week (Miner)
 
 ## Manager's Corner

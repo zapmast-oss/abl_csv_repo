@@ -16,10 +16,10 @@
 - Easiest recent slate: Tampa (0.420 SOS, 7-6), Nashville (0.420 SOS, 9-4), Chicago (0.426 SOS, 7-6)
 
 ## Rookie Watch
-- Nigel Hudson (Charlotte) - Meteoric, 1.180
-- Alex Lander (STL) - Impact, 0.894
-- Hirotoshi Nishimoto (Minneapolis) - Impact, 0.887
-- Eddie Rodriguez (LV) - Impact, 0.880
+- Jose Barajas (Miami) - 0.639
+- Antonio Hernandez (Nashville) - 0.146
+- ABL Rookie (Watch)
+- Spotlights rookie-eligible (bats)
 
 ## Player of the Week
 - ABL Week (Miner)
