@@ -600,23 +600,27 @@ def load_pitching(base: Path, override: Optional[Path]) -> pd.DataFrame:
     df["SF_raw"] = pd.to_numeric(df[sf_col], errors="coerce").fillna(0.0) if sf_col else 0.0
     df["ERA_direct"] = pd.to_numeric(df[era_col], errors="coerce") if era_col else np.nan
     df["WAR"] = pd.to_numeric(df[war_col], errors="coerce") if war_col else np.nan
-    grouped = (
-        df.groupby(["player_id", "team_id"], as_index=False)[
-            [
-                "IP_raw",
-                "ER_raw",
-                "SO_raw",
-                "BB_raw",
-                "HR_raw",
-                "BF_raw",
-                "AB_raw",
-                "HBP_raw",
-                "SF_raw",
-                "ERA_direct",
-                "WAR",
-            ]
-        ].sum()
-    )
+    base_group = df.groupby(["player_id", "team_id"], as_index=False)[
+        [
+            "IP_raw",
+            "ER_raw",
+            "SO_raw",
+            "BB_raw",
+            "HR_raw",
+            "BF_raw",
+            "AB_raw",
+            "HBP_raw",
+            "SF_raw",
+            "WAR",
+        ]
+    ].sum()
+    def weighted_era(group: pd.DataFrame) -> float:
+        ip_sum = group["IP_raw"].sum()
+        if ip_sum > 0:
+            return float((group["ERA_direct"] * group["IP_raw"]).sum() / ip_sum)
+        return np.nan
+    era_series = df.groupby(["player_id", "team_id"]).apply(weighted_era).reset_index(name="ERA_direct")
+    grouped = base_group.merge(era_series, on=["player_id", "team_id"], how="left")
     extra_war = load_extra_war_map(base, "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv")
     if extra_war:
         grouped["WAR"] = grouped["player_id"].map(extra_war).combine_first(grouped["WAR"])
@@ -919,7 +923,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     pitchers["conf_div"] = pitchers["team_id"].map(conf_map).fillna("")
     pitchers["team_abbr"] = pitchers["team_id"].map(abbr_map).fillna("")
     pitchers["ERA_calc"] = (pitchers["ER"] * 9.0) / pitchers["IP"]
-    pitchers["ERA_final"] = pitchers["ERA"].combine_first(pitchers["ERA_calc"])
+    era_clean = pitchers["ERA"].where(pitchers["ERA"] > 0)
+    pitchers["ERA_final"] = era_clean.combine_first(pitchers["ERA_calc"])
     if pd.notna(fip_const):
         pitchers["FIP"] = ((13 * pitchers["HR"] + 3 * pitchers["BB"] - 2 * pitchers["SO"]) / pitchers["IP"]) + fip_const
     else:
