@@ -1,6 +1,6 @@
 ABL Rookie Watch (Hitters)
 ==========================
-Generated on: 2025-12-13 21:51:48
+Generated on: 2025-12-13 21:56:38
 
 
 Spotlights rookie-eligible bats clearing the PA floor and ranks them by age-adjusted OPS pace.
@@ -8,15 +8,15 @@ Great for quickly seeing which first-year hitters are already tilting lineups ve
 
 Player                   Team                 Rating           OPS   OPS+   Age+    Def  WAR162
 -----------------------------------------------------------------------------------------------
-Hirotoshi Nishimoto      Minneapolis (N-C)    Impact         0.887    123    125    0.0      NA
-Eddie Castruita          New York (A-E)       Steady         0.880    122    112   -2.6      NA
-Carlos Merlos            Seattle (A-W)        Steady         0.792    110    105    0.5      NA
-Jon Ramos                St. Louis (A-C)      Learning       0.661     92     92   -0.5      NA
-Alex Moncayo             Miami (N-E)          Learning       0.715     99     86   -0.8      NA
-Luis Otero               Seattle (A-W)        Learning       0.663     92     84    0.5      NA
-Fernando Blancas         Minneapolis (N-C)    Learning       0.600     83     81    1.0      NA
-Ricky Ortiz              Minneapolis (N-C)    Finding Feet   0.524     73     67    0.1      NA
-Yonetoshi Hirao          New York (A-E)       Finding Feet   0.492     68     66   -0.2      NA
+Hirotoshi Nishimoto      Minneapolis (N-C)    Impact         0.887    123    125    0.0     0.3
+Eddie Castruita          New York (A-E)       Steady         0.880    122    112   -2.6     0.4
+Carlos Merlos            Seattle (A-W)        Steady         0.792    110    105    0.5     0.1
+Jon Ramos                St. Louis (A-C)      Learning       0.661     92     92   -0.5    -0.1
+Alex Moncayo             Miami (N-E)          Learning       0.715     99     86   -0.8     0.2
+Luis Otero               Seattle (A-W)        Learning       0.663     92     84    0.5     0.1
+Fernando Blancas         Minneapolis (N-C)    Learning       0.600     83     81    1.0    -0.0
+Ricky Ortiz              Minneapolis (N-C)    Finding Feet   0.524     73     67    0.1    -0.3
+Yonetoshi Hirao          New York (A-E)       Finding Feet   0.492     68     66   -0.2    -0.3
 
 Threshold: PA >= 50 (unless show_all).
 

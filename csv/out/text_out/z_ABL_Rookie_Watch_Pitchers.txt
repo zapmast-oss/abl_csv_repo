@@ -1,6 +1,6 @@
 ABL Rookie Watch (Pitchers)
 ===========================
-Generated on: 2025-12-13 21:51:48
+Generated on: 2025-12-13 21:56:38
 
 
 Highlights rookie arms meeting the IP floor, layering WAR pace with run-prevention and strikeout/command signals.
@@ -8,11 +8,11 @@ Helps flag which first-year pitchers are rotation-ready contributors versus deve
 
 Player                   Team                 Rating             IP    ERA    FIP      K%     BB%  WAR162
 ---------------------------------------------------------------------------------------------------------
-Luis Carrera             Tampa Bay (N-E)      Unknown          26.0   0.00   5.60   0.106   0.152      NA
-Sergio Duran             Atlanta (N-E)        Unknown          19.0   0.00   4.21   0.150   0.088      NA
-Danny LaRocque           San Diego (N-W)      Unknown          16.0   0.00   5.12   0.112   0.125      NA
-Barbu Nica               San Diego (N-W)      Unknown          16.0   0.00   5.25   0.145   0.158      NA
-Ivan Azocar              Pittsburgh (A-E)     Unknown          15.0   0.00   3.57   0.190   0.063      NA
+Ivan Azocar              Pittsburgh (A-E)     Apprentice       15.0   0.00   3.57   0.190   0.063     0.3
+Sergio Duran             Atlanta (N-E)        Apprentice       19.0   0.00   4.21   0.150   0.088     0.2
+Barbu Nica               San Diego (N-W)      Apprentice       16.0   0.00   5.25   0.145   0.158     0.1
+Danny LaRocque           San Diego (N-W)      Rebuild          16.0   0.00   5.12   0.112   0.125    -0.1
+Luis Carrera             Tampa Bay (N-E)      Rebuild          26.0   0.00   5.60   0.106   0.152    -0.2
 
 Threshold: IP >= 15 (unless show_all).
 

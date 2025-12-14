@@ -758,6 +758,25 @@ def rate_pitcher(pace: float) -> str:
     return "Rebuild"
 
 
+def rate_pitcher_row(row: pd.Series) -> str:
+    pace = row.get("WAR_pace_162")
+    if pd.notna(pace):
+        return rate_pitcher(pace)
+    # fallback to ERA if WAR pace is missing
+    era = row.get("ERA_final", row.get("ERA"))
+    if pd.notna(era):
+        if era <= 3.00:
+            return "Ace Track"
+        if era <= 3.60:
+            return "Rotation Ready"
+        if era <= 4.20:
+            return "Contributor"
+        if era <= 5.00:
+            return "Apprentice"
+        return "Rebuild"
+    return "Unknown"
+
+
 def build_text_table(
     df: pd.DataFrame,
     columns: Sequence[Tuple[str, str, int, bool]],
@@ -843,6 +862,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     fielding_df = load_fielding(base_dir, resolve_path(base_dir, args.fielding))
     pitching_df = load_pitching(base_dir, resolve_path(base_dir, args.pitching))
     team_map, abbr_map, conf_map, lg_team_games = load_teams(base_dir, resolve_path(base_dir, args.teams))
+    if not pd.notna(lg_team_games) or lg_team_games <= 0:
+        lg_team_games = 162.0
     enrich_team_maps_from_teams_file(base_dir, team_map, abbr_map, conf_map)
     park_map = load_parks(base_dir, resolve_path(base_dir, args.parks))
     anchor_date = load_anchor_date(base_dir)
@@ -905,11 +926,12 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         pitchers["FIP"] = np.nan
     pitchers["K_pct"] = pitchers.apply(calc_k_pct, axis=1)
     pitchers["BB_pct"] = pitchers.apply(calc_bb_pct, axis=1)
+    pitchers["WAR"] = pd.to_numeric(pitchers["WAR"], errors="coerce").fillna(0.0)
     if pd.notna(lg_team_games):
         pitchers["WAR_pace_162"] = pitchers["WAR"] * (162 / lg_team_games)
     else:
         pitchers["WAR_pace_162"] = np.nan
-    pitchers["rating"] = pitchers["WAR_pace_162"].apply(rate_pitcher)
+    pitchers["rating"] = pitchers.apply(rate_pitcher_row, axis=1)
     pitchers = pitchers[pitchers["is_rookie"]]
     pitchers = pitchers if args.show_all else pitchers[pitchers["IP"] >= args.min_ip]
     pitchers = pitchers.sort_values(
