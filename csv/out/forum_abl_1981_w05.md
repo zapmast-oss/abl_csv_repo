@@ -17,7 +17,9 @@
 
 ## Rookie Watch
 - Hirotoshi Nishimoto (Minneapolis) - Impact, 0.887
-- Danny LaRocque (San) - 0.112
+- Eddie Castruita (New) - Steady, 0.880
+- Carlos Merlos (Seattle) - Steady, 0.792
+- Alex Moncayo (Miami) - 0.715
 
 ## Player of the Week
 - ABL Week (Miner)

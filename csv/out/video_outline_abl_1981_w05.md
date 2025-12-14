@@ -4,8 +4,8 @@
 - Quick vibe; standings and headlines.
 
 ## Standings & Momentum
-- Top: Las, Charlotte, Dallas
-- Bottom: Portland, Atlanta, Minneapolis
+- Top: LV, CHA, DAL
+- Bottom: POR, ATL, MIN
 
 ## Close Games & Bullpens
 - Best 1-run: Phoenix              N-W  Clutch 5-0, Miami                N-E  Clutch 3-1, San Francisco        N-W  Clutch 3-1
@@ -17,7 +17,7 @@
 - Soft: Tampa, Nashville, Chicago
 
 ## Rookie Watch & Player of the Week
-- Rookies: Hirotoshi Nishimoto, Danny LaRocque
+- Rookies: Hirotoshi Nishimoto, Eddie Castruita, Carlos Merlos, Alex Moncayo
 - POW: ABL Week (Miner)
 
 ## Manager's Corner

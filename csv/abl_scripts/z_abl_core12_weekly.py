@@ -679,13 +679,18 @@ def render_video_outline(core12: dict) -> str:
     week = core12.get("week")
     lines: List[str] = [f"# It's Monday - ABL Week {week}, {year}", ""]
     player_lookup = load_player_lookup(CSV_DIR)
+    def short_team_label(team: str) -> str:
+        t = normalize_team_name(team)
+        if not t:
+            return t
+        return TEAM_DISPLAY_ABBR.get(t.strip(), t.strip()[:3].upper())
 
     standings_raw = core12.get("standings") or []
     standings = [s for s in standings_raw if looks_like_team_row(s)]
     team_set: set[str] = {normalize_team_name(e.get("team", "")) for e in standings if e.get("team")}
     ranked_standings = []
     for e in standings:
-        team = normalize_team_name(e.get("team", ""))
+        team = short_team_label(e.get("team", ""))
         w = e.get("w")
         l = e.get("l")
         pct = 0.0

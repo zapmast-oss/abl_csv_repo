@@ -827,203 +827,75 @@
   ],
   "rookie_watch": [
     {
-      "player": "Nigel Hudson",
-      "team": "Charlotte",
-      "rating": "Meteoric",
-      "stat": "1.180",
-      "raw": "Nigel Hudson             Charlotte (N-E)      Meteoric       1.180    164    156   -0.5     4.2",
-      "role": "hitter"
-    },
-    {
-      "player": "Jesus Vasquez",
-      "team": "Houston",
-      "rating": "Impact",
-      "stat": "0.817",
-      "raw": "Jesus Vasquez            Houston (A-C)        Impact         0.817    113    127   -2.0     1.9",
-      "role": "hitter"
-    },
-    {
-      "player": "Alex Lander",
-      "team": "St.",
-      "rating": "Impact",
-      "stat": "0.894",
-      "raw": "Alex Lander              St. Louis (A-C)      Impact         0.894    124    126   -0.0     3.8",
-      "role": "hitter"
-    },
-    {
       "player": "Hirotoshi Nishimoto",
       "team": "Minneapolis",
       "rating": "Impact",
       "stat": "0.887",
-      "raw": "Hirotoshi Nishimoto      Minneapolis (N-C)    Impact         0.887    123    125    0.0     1.6",
+      "raw": "Hirotoshi Nishimoto      Minneapolis (N-C)    Impact         0.887    123    125    0.0     0.3",
       "role": "hitter"
     },
     {
-      "player": "Eddie Rodriguez",
-      "team": "Las",
-      "rating": "Impact",
-      "stat": "0.880",
-      "raw": "Eddie Rodriguez          Las Vegas (A-W)      Impact         0.880    122    124   -0.6     3.7",
-      "role": "hitter"
-    },
-    {
-      "player": "Luke Margalit",
-      "team": "San",
-      "rating": "Steady",
-      "stat": "0.839",
-      "raw": "Luke Margalit            San Francisco (N-W)  Steady         0.839    116    117   -2.1     2.3",
-      "role": "hitter"
-    },
-    {
-      "player": "Tony Bautista",
-      "team": "Denver",
-      "rating": "Steady",
-      "stat": "0.818",
-      "raw": "Tony Bautista            Denver (A-W)         Steady         0.818    113    115   -0.1     1.7",
-      "role": "hitter"
-    },
-    {
-      "player": "Rich Vela",
-      "team": "Dallas",
-      "rating": "Steady",
-      "stat": "0.802",
-      "raw": "Rich Vela                Dallas (N-C)         Steady         0.802    111    112   -0.1     3.1",
-      "role": "hitter"
-    },
-    {
-      "player": "David Avila",
-      "team": "Las",
-      "rating": "Steady",
-      "stat": "0.680",
-      "raw": "David Avila              Las Vegas (A-W)      Steady         0.680     94    106    0.7     2.5",
-      "role": "hitter"
-    },
-    {
-      "player": "Tim Wheeldon",
+      "player": "Eddie Castruita",
       "team": "New",
       "rating": "Steady",
-      "stat": "0.792",
-      "raw": "Tim Wheeldon             New York (A-E)       Steady         0.792    110    104    1.1     3.7",
+      "stat": "0.880",
+      "raw": "Eddie Castruita          New York (A-E)       Steady         0.880    122    112   -2.6     0.4",
       "role": "hitter"
     },
     {
-      "player": "Mike Hargett",
-      "team": "Portland",
-      "rating": "Steady",
-      "stat": "0.731",
-      "raw": "Mike Hargett             Portland (A-W)       Steady         0.731    101    103    0.3     0.6",
-      "role": "hitter"
-    },
-    {
-      "player": "Bill Rambow",
-      "team": "Dallas",
-      "rating": "Steady",
-      "stat": "0.820",
-      "raw": "Bill Rambow              Dallas (N-C)         Steady         0.820    114    101   -3.7     3.5",
-      "role": "hitter"
-    },
-    {
-      "player": "Jordan Pedroza",
-      "team": "Cincinnati",
-      "rating": "Steady",
-      "stat": "0.749",
-      "raw": "Jordan Pedroza           Cincinnati (A-C)     Steady         0.749    104    101    0.5     3.6",
-      "role": "hitter"
-    },
-    {
-      "player": "Pete Rick",
-      "team": "Miami",
-      "rating": "Steady",
-      "stat": "0.650",
-      "raw": "Pete Rick                Miami (N-E)          Steady         0.650     90    101    3.3     1.5",
-      "role": "hitter"
-    },
-    {
-      "player": "Adam Wilson",
+      "player": "Carlos Merlos",
       "team": "Seattle",
       "rating": "Steady",
-      "stat": "0.681",
-      "raw": "Adam Wilson              Seattle (A-W)        Steady         0.681     94    101    0.5     1.4",
+      "stat": "0.792",
+      "raw": "Carlos Merlos            Seattle (A-W)        Steady         0.792    110    105    0.5     0.1",
       "role": "hitter"
     },
     {
-      "player": "Alejandro Rosado",
-      "team": "Dallas",
+      "player": "Jon Ramos",
+      "team": "St.",
       "rating": "",
-      "stat": "0.633",
-      "raw": "Alejandro Rosado         Dallas (N-C)         Learning       0.633     88     95    0.5     1.3",
+      "stat": "0.661",
+      "raw": "Jon Ramos                St. Louis (A-C)      Learning       0.661     92     92   -0.5    -0.1",
       "role": "hitter"
     },
     {
-      "player": "Renault Buso",
-      "team": "Portland",
-      "rating": "",
-      "stat": "0.669",
-      "raw": "Renault Buso             Portland (A-W)       Learning       0.669     93     94   -1.1    -0.5",
-      "role": "hitter"
-    },
-    {
-      "player": "Jon Dominguez",
-      "team": "Las",
-      "rating": "",
-      "stat": "0.710",
-      "raw": "Jon Dominguez            Las Vegas (A-W)      Learning       0.710     98     94   -0.0     4.3",
-      "role": "hitter"
-    },
-    {
-      "player": "Sam Ashworth",
-      "team": "Phoenix",
-      "rating": "",
-      "stat": "0.744",
-      "raw": "Sam Ashworth             Phoenix (N-W)        Learning       0.744    103     92   -0.3     1.8",
-      "role": "hitter"
-    },
-    {
-      "player": "Jose Barajas",
+      "player": "Alex Moncayo",
       "team": "Miami",
       "rating": "",
-      "stat": "0.639",
-      "raw": "Jose Barajas             Miami (N-E)          Learning       0.639     89     90    2.0     1.0",
+      "stat": "0.715",
+      "raw": "Alex Moncayo             Miami (N-E)          Learning       0.715     99     86   -0.8     0.2",
       "role": "hitter"
     },
     {
-      "player": "Chris Sullivan",
-      "team": "St.",
+      "player": "Luis Otero",
+      "team": "Seattle",
+      "rating": "",
+      "stat": "0.663",
+      "raw": "Luis Otero               Seattle (A-W)        Learning       0.663     92     84    0.5     0.1",
+      "role": "hitter"
+    },
+    {
+      "player": "Fernando Blancas",
+      "team": "Minneapolis",
       "rating": "",
       "stat": "0.600",
-      "raw": "Chris Sullivan           St. Louis (A-C)      Learning       0.600     83     89    2.2     1.9",
+      "raw": "Fernando Blancas         Minneapolis (N-C)    Learning       0.600     83     81    1.0    -0.0",
       "role": "hitter"
     },
     {
-      "player": "Chris Gillum",
-      "team": "St.",
+      "player": "Ricky Ortiz",
+      "team": "Minneapolis",
       "rating": "",
-      "stat": "0.602",
-      "raw": "Chris Gillum             St. Louis (A-C)      Learning       0.602     84     85    1.1    -1.1",
+      "stat": "0.524",
+      "raw": "Ricky Ortiz              Minneapolis (N-C)    Finding Feet   0.524     73     67    0.1    -0.3",
       "role": "hitter"
     },
     {
-      "player": "Jake Simper",
-      "team": "Detroit",
+      "player": "Yonetoshi Hirao",
+      "team": "New",
       "rating": "",
-      "stat": "0.560",
-      "raw": "Jake Simper              Detroit (N-C)        Learning       0.560     78     85   -0.5    -1.0",
-      "role": "hitter"
-    },
-    {
-      "player": "Jeff Smith",
-      "team": "Las",
-      "rating": "",
-      "stat": "0.682",
-      "raw": "Jeff Smith               Las Vegas (A-W)      Learning       0.682     95     84    0.3     0.8",
-      "role": "hitter"
-    },
-    {
-      "player": "Andy Ayala",
-      "team": "Boston",
-      "rating": "",
-      "stat": "0.550",
-      "raw": "Andy Ayala               Boston (A-E)         Learning       0.550     76     81    0.1    -1.4",
+      "stat": "0.492",
+      "raw": "Yonetoshi Hirao          New York (A-E)       Finding Feet   0.492     68     66   -0.2    -0.3",
       "role": "hitter"
     },
     {
@@ -1059,163 +931,27 @@
       "role": "pitcher"
     },
     {
-      "player": "Joel Valenty",
-      "team": "Los",
-      "rating": "",
-      "stat": "0.150",
-      "raw": "Joel Valenty             Los Angeles (N-W)    Ace Track        48.0   0.00   3.89   0.150   0.063     6.1",
-      "role": "pitcher"
-    },
-    {
-      "player": "Warren Holster",
-      "team": "Dallas",
-      "rating": "",
-      "stat": "0.151",
-      "raw": "Warren Holster           Dallas (N-C)         Ace Track        45.0   0.00   4.15   0.151   0.085     5.6",
-      "role": "pitcher"
-    },
-    {
-      "player": "Jose Contreras",
-      "team": "Phoenix",
-      "rating": "",
-      "stat": "0.134",
-      "raw": "Jose Contreras           Phoenix (N-W)        Ace Track        44.0   0.00   4.01   0.134   0.058     5.2",
-      "role": "pitcher"
-    },
-    {
-      "player": "John Jury",
-      "team": "Chicago",
-      "rating": "",
-      "stat": "0.142",
-      "raw": "John Jury                Chicago (N-C)        Ace Track        40.0   0.00   4.30   0.142   0.089     4.0",
-      "role": "pitcher"
-    },
-    {
-      "player": "Jose Flores",
-      "team": "Detroit",
-      "rating": "",
-      "stat": "0.097",
-      "raw": "Jose Flores              Detroit (N-C)        Rotation Ready   36.0   0.00   3.79   0.097   0.019     2.7",
-      "role": "pitcher"
-    },
-    {
-      "player": "Adam Jahn",
-      "team": "Los",
-      "rating": "",
-      "stat": "0.086",
-      "raw": "Adam Jahn                Los Angeles (N-W)    Rotation Ready   34.0   0.00   4.72   0.086   0.086     2.6",
-      "role": "pitcher"
-    },
-    {
-      "player": "Matt Adams",
-      "team": "Philadelphia",
-      "rating": "",
-      "stat": "0.156",
-      "raw": "Matt Adams               Philadelphia (A-E)   Contributor      37.0   0.00   4.26   0.156   0.096     2.3",
-      "role": "pitcher"
-    },
-    {
-      "player": "Antonio Hernandez",
-      "team": "Nashville",
-      "rating": "",
-      "stat": "0.146",
-      "raw": "Antonio Hernandez        Nashville (A-C)      Contributor      38.0   0.00   3.90   0.146   0.061     2.2",
-      "role": "pitcher"
-    },
-    {
-      "player": "Jon Moreno",
-      "team": "Detroit",
-      "rating": "",
-      "stat": "0.143",
-      "raw": "Jon Moreno               Detroit (N-C)        Contributor      16.0   0.00   3.75   0.143   0.036     1.9",
-      "role": "pitcher"
-    },
-    {
-      "player": "Arthur Blin",
-      "team": "Nashville",
-      "rating": "",
-      "stat": "0.157",
-      "raw": "Arthur Blin              Nashville (A-C)      Contributor      34.0   0.00   4.46   0.157   0.111     1.8",
-      "role": "pitcher"
-    },
-    {
-      "player": "John Wolfe",
-      "team": "Denver",
-      "rating": "",
-      "stat": "0.144",
-      "raw": "John Wolfe               Denver (A-W)         Contributor      25.0   0.00   4.17   0.144   0.081     1.8",
-      "role": "pitcher"
-    },
-    {
-      "player": "Jacob Sutherland",
-      "team": "Nashville",
-      "rating": "",
-      "stat": "0.121",
-      "raw": "Jacob Sutherland         Nashville (A-C)      Contributor      24.0   0.00   4.29   0.121   0.075     1.5",
-      "role": "pitcher"
-    },
-    {
-      "player": "Dave DiAngelo",
-      "team": "Denver",
-      "rating": "",
-      "stat": "0.106",
-      "raw": "Dave DiAngelo            Denver (A-W)         Contributor      48.0   0.00   4.64   0.106   0.092     1.4",
-      "role": "pitcher"
-    },
-    {
-      "player": "Antonio Romo",
-      "team": "Seattle",
-      "rating": "",
-      "stat": "0.096",
-      "raw": "Antonio Romo             Seattle (A-W)        Contributor      33.0   0.00   4.55   0.096   0.076     1.1",
-      "role": "pitcher"
-    },
-    {
-      "player": "Ryan Millich",
-      "team": "Dallas",
-      "rating": "",
-      "stat": "0.074",
-      "raw": "Ryan Millich             Dallas (N-C)         Apprentice       19.0   0.00   5.00   0.074   0.099     0.9",
-      "role": "pitcher"
-    },
-    {
-      "player": "Daniel Buckley",
-      "team": "St.",
-      "rating": "",
-      "stat": "0.057",
-      "raw": "Daniel Buckley           St. Louis (A-C)      Apprentice       15.0   0.00   5.04   0.057   0.086     0.7",
-      "role": "pitcher"
-    },
-    {
-      "player": "Miguel Mora",
-      "team": "Tampa",
-      "rating": "",
-      "stat": "0.167",
-      "raw": "Miguel Mora              Tampa Bay (N-E)      Apprentice       34.0   0.00   4.02   0.167   0.083     0.6",
-      "role": "pitcher"
-    },
-    {
-      "player": "David Wells",
-      "team": "Phoenix",
-      "rating": "",
-      "stat": "0.140",
-      "raw": "David Wells              Phoenix (N-W)        Apprentice       20.0   0.00   4.82   0.140   0.128     0.5",
-      "role": "pitcher"
-    },
-    {
-      "player": "Doug Farmer",
+      "player": "Ivan Azocar",
       "team": "Pittsburgh",
       "rating": "",
-      "stat": "0.136",
-      "raw": "Doug Farmer              Pittsburgh (A-E)     Apprentice       25.0   0.00   4.61   0.136   0.109     0.4",
+      "stat": "0.190",
+      "raw": "Ivan Azocar              Pittsburgh (A-E)     Apprentice       15.0   2.40   3.57   0.190   0.063     0.3",
       "role": "pitcher"
     },
     {
-      "player": "Tony Espinal",
-      "team": "Chicago",
+      "player": "Sergio Duran",
+      "team": "Atlanta",
       "rating": "",
-      "stat": "0.122",
-      "raw": "Tony Espinal             Chicago (N-C)        Apprentice       33.0   0.00   4.95   0.122   0.122     0.1",
+      "stat": "0.150",
+      "raw": "Sergio Duran             Atlanta (N-E)        Apprentice       19.0   2.84   4.21   0.150   0.088     0.2",
+      "role": "pitcher"
+    },
+    {
+      "player": "Barbu Nica",
+      "team": "San",
+      "rating": "",
+      "stat": "0.145",
+      "raw": "Barbu Nica               San Diego (N-W)      Apprentice       16.0   3.94   5.25   0.145   0.158     0.1",
       "role": "pitcher"
     },
     {
@@ -1223,39 +959,15 @@
       "team": "San",
       "rating": "",
       "stat": "0.112",
-      "raw": "Danny LaRocque           San Diego (N-W)      Rebuild          16.0   0.00   5.12   0.112   0.125    -0.4",
+      "raw": "Danny LaRocque           San Diego (N-W)      Rebuild          16.0   5.06   5.12   0.112   0.125    -0.1",
       "role": "pitcher"
     },
     {
-      "player": "Arthur Rizzo",
-      "team": "San",
-      "rating": "",
-      "stat": "0.081",
-      "raw": "Arthur Rizzo             San Diego (N-W)      Rebuild          36.0   0.00   4.87   0.081   0.094    -0.9",
-      "role": "pitcher"
-    },
-    {
-      "player": "Andrew Flugence",
-      "team": "Chicago",
-      "rating": "",
-      "stat": "0.100",
-      "raw": "Andrew Flugence          Chicago (N-C)        Rebuild          15.0   0.00   4.44   0.100   0.071    -1.2",
-      "role": "pitcher"
-    },
-    {
-      "player": "Matt Martinson",
-      "team": "New",
-      "rating": "",
-      "stat": "0.165",
-      "raw": "Matt Martinson           New York (A-E)       Rebuild          16.0   0.00   4.06   0.165   0.089    -1.4",
-      "role": "pitcher"
-    },
-    {
-      "player": "Ricky Bautista",
-      "team": "Pittsburgh",
+      "player": "Luis Carrera",
+      "team": "Tampa",
       "rating": "",
       "stat": "0.106",
-      "raw": "Ricky Bautista           Pittsburgh (A-E)     Rebuild          24.0   0.00   5.08   0.106   0.125    -1.5",
+      "raw": "Luis Carrera             Tampa Bay (N-E)      Rebuild          26.0   3.46   5.60   0.106   0.152    -0.2",
       "role": "pitcher"
     },
     {
