@@ -1,6 +1,6 @@
 ABL Rookie Watch (Hitters)
 ==========================
-Generated on: 2025-12-13 21:41:49
+Generated on: 2025-12-13 21:45:40
 
 
 Spotlights rookie-eligible bats clearing the PA floor and ranks them by age-adjusted OPS pace.
@@ -8,7 +8,15 @@ Great for quickly seeing which first-year hitters are already tilting lineups ve
 
 Player                   Team                 Rating           OPS   OPS+   Age+    Def  WAR162
 -----------------------------------------------------------------------------------------------
-(No rookies met the qualification thresholds.)
+Hirotoshi Nishimoto      T11                  Impact         0.887    123    125    0.0     1.6
+Eddie Castruita          T15                  Steady         0.880    122    112   -2.6     1.9
+Carlos Merlos            T24                  Steady         0.792    110    105    0.5     0.7
+Jon Ramos                T19                  Learning       0.661     92     92   -0.5    -0.4
+Alex Moncayo             T1                   Learning       0.715     99     86   -0.8     0.8
+Luis Otero               T24                  Learning       0.663     92     84    0.5     0.6
+Fernando Blancas         T11                  Learning       0.600     83     81    1.0    -0.1
+Ricky Ortiz              T11                  Finding Feet   0.524     73     67    0.1    -1.6
+Yonetoshi Hirao          T15                  Finding Feet   0.492     68     66   -0.2    -1.5
 
 Threshold: PA >= 50 (unless show_all).
 

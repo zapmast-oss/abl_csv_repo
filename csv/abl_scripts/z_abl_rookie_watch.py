@@ -112,10 +112,11 @@ def load_external_rookie_map(base: Path) -> Dict[int, float]:
     rook_map: Dict[int, float] = {}
     yes_tokens = {"YES", "Y", "TRUE", "1", "ROOK", "ROOKIE"}
     no_tokens = {"NO", "N", "FALSE", "0"}
-    preferred = base / "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv"
+    preferred = base / "abl_statistics" / "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv"
     if preferred.exists():
         rook_map.update(_read_rookie_flags(preferred, yes_tokens, no_tokens))
-    for path in base.glob("abl_statistics_player_statistics_-_*.csv"):
+    stats_dir = base / "abl_statistics"
+    for path in stats_dir.glob("abl_statistics_player_statistics_-_*.csv"):
         if preferred.exists() and path.resolve() == preferred.resolve():
             continue
         rookies = _read_rookie_flags(path, yes_tokens, no_tokens)
