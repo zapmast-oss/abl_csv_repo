@@ -36,9 +36,9 @@ PITCH_CANDIDATES = [
     "pitching_players.csv",
 ]
 TEAM_INFO_CANDIDATES = [
+    "teams.csv",
     "team_record.csv",
     "team_info.csv",
-    "teams.csv",
     "standings.csv",
 ]
 PARK_CANDIDATES = [
