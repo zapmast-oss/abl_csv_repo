@@ -135,7 +135,7 @@ def filter_row_common(row: Dict[str, str], year: int) -> bool:
     if level_id is not None and level_id != 1:
         return False
     split_id = get_int(row, ["split_id", "split"])
-    if split_id is not None and split_id != 1:
+    if split_id is not None and split_id not in (0, 1):
         return False
     return True
 
@@ -255,6 +255,11 @@ def load_team_stats(path: Optional[Path], year: int, team_ids: set) -> Dict[int,
         tid = get_int(row, ["team_id"])
         if tid is None or tid not in team_ids:
             continue
+        row_split = get_int(row, ["split_id", "split"])
+        if tid in data:
+            existing_split = get_int(data[tid], ["split_id", "split"])
+            if existing_split == 1 and row_split != 1:
+                continue
         data[tid] = to_lower_map(row)
     return data
 
@@ -295,9 +300,10 @@ def compute_rd(tid: int, team_bat: Dict[int, dict], team_pit: Dict[int, dict], t
     if bat and pit:
         rf = get_float(bat, ["r", "runs"])
         ra = get_float(pit, ["ra", "runs_against", "runs_allowed"])
-        if ra is None:
+        fallback_r = get_float(pit, ["r"])
+        if ra is None or (fallback_r is not None and ra is not None and ra < fallback_r * 0.5):
             # Some exports only provide 'r' for pitching; treat it as runs allowed when dedicated keys are absent.
-            ra = get_float(pit, ["r"])
+            ra = fallback_r
         if rf is not None and ra is not None:
             return rf - ra
     rf = teams[tid].get("rf")

@@ -1,49 +1,49 @@
 # Action Baseball League - Weekly League Report
-Generated: 2025-12-13 16:16:40
+Generated: 2025-12-13 16:30:03
 Season: 1981 Week: 05
 
 A) Standings (by Conference then Division)
 National Baseball Conference - Eastern Division
 ABBR Team W-L PCT GB RD
-CHA Charlotte Colonels 22-10 0.688 0.0 NA
-MIA Miami Hurricanes 18-14 0.562 4.0 NA
-TB Tampa Bay Storm 14-18 0.438 8.0 NA
-ATL Atlanta Kings 10-22 0.312 12.0 NA
+CHA Charlotte Colonels 22-10 0.688 0.0 +50
+MIA Miami Hurricanes 18-14 0.562 4.0 -13
+TB Tampa Bay Storm 14-18 0.438 8.0 -12
+ATL Atlanta Kings 10-22 0.312 12.0 -27
 
 National Baseball Conference - Central Division
 ABBR Team W-L PCT GB RD
-DAL Dallas Rustlers 19-13 0.594 0.0 NA
-DET Detroit Dukes 17-15 0.531 2.0 NA
-CHI Chicago Fire 17-15 0.531 2.0 NA
-MIN Minneapolis Blizzard 11-21 0.344 8.0 NA
+DAL Dallas Rustlers 19-13 0.594 0.0 +28
+DET Detroit Dukes 17-15 0.531 2.0 +7
+CHI Chicago Fire 17-15 0.531 2.0 +2
+MIN Minneapolis Blizzard 11-21 0.344 8.0 -24
 
 National Baseball Conference - Western Division
 ABBR Team W-L PCT GB RD
-SF San Francisco Warriors 18-14 0.562 0.0 NA
-PHO Phoenix Firebirds 16-16 0.500 2.0 NA
-LA Los Angeles Cobras 16-16 0.500 2.0 NA
-SD San Diego Seraphs 14-18 0.438 4.0 NA
+SF San Francisco Warriors 18-14 0.562 0.0 +29
+PHO Phoenix Firebirds 16-16 0.500 2.0 -17
+LA Los Angeles Cobras 16-16 0.500 2.0 -1
+SD San Diego Seraphs 14-18 0.438 4.0 -22
 
 American Baseball Conference - Eastern Division
 ABBR Team W-L PCT GB RD
-BOS Boston Patriots 17-15 0.531 0.0 NA
-NY New York Aces 16-16 0.500 1.0 NA
-PHI Philadelphia Fury 15-17 0.469 2.0 NA
-PIT Pittsburgh Express 12-20 0.375 5.0 NA
+BOS Boston Patriots 17-15 0.531 0.0 +11
+NY New York Aces 16-16 0.500 1.0 +4
+PHI Philadelphia Fury 15-17 0.469 2.0 +4
+PIT Pittsburgh Express 12-20 0.375 5.0 -42
 
 American Baseball Conference - Central Division
 ABBR Team W-L PCT GB RD
-NAS Nashville Blues 18-14 0.562 0.0 NA
-STL St. Louis Stallions 17-15 0.531 1.0 NA
-CIN Cincinnati Cougars 16-16 0.500 2.0 NA
-HOU Houston Mavericks 13-19 0.406 5.0 NA
+NAS Nashville Blues 18-14 0.562 0.0 +26
+STL St. Louis Stallions 17-15 0.531 1.0 +29
+CIN Cincinnati Cougars 16-16 0.500 2.0 +15
+HOU Houston Mavericks 13-19 0.406 5.0 -28
 
 American Baseball Conference - Western Division
 ABBR Team W-L PCT GB RD
-LV Las Vegas Gamblers 24-8 0.750 0.0 NA
-DEN Denver Rocketeers 18-14 0.562 6.0 NA
-SEA Seattle Comets 16-16 0.500 8.0 NA
-POR Portland Lumberjacks 10-22 0.312 14.0 NA
+LV Las Vegas Gamblers 24-8 0.750 0.0 +59
+DEN Denver Rocketeers 18-14 0.562 6.0 +16
+SEA Seattle Comets 16-16 0.500 8.0 -18
+POR Portland Lumberjacks 10-22 0.312 14.0 -76
 
 B) Pennant Races
 Tight divisions:
@@ -61,6 +61,32 @@ Biggest leads:
 - LV Las Vegas Gamblers (Lead 6.0)
 - CHA Charlotte Colonels (Lead 4.0)
 - DAL Dallas Rustlers (Lead 2.0)
+
+C) Team Fundamentals
+Run Differential (Top 5):
+- LV Las Vegas Gamblers - RD +59
+- CHA Charlotte Colonels - RD +50
+- SF San Francisco Warriors - RD +29
+- STL St. Louis Stallions - RD +29
+- DAL Dallas Rustlers - RD +28
+Run Differential (Bottom 5):
+- POR Portland Lumberjacks - RD -76
+- PIT Pittsburgh Express - RD -42
+- HOU Houston Mavericks - RD -28
+- ATL Atlanta Kings - RD -27
+- MIN Minneapolis Blizzard - RD -24
+Offense snapshot (Top 5):
+- DAL Dallas Rustlers - R/G 5.88, OPS 0.794
+- NAS Nashville Blues - R/G 5.28, OPS 0.795
+- DEN Denver Rocketeers - R/G 5.25, OPS 0.773
+- CHA Charlotte Colonels - R/G 5.12, OPS 0.772
+- NY New York Aces - R/G 5.00, OPS 0.740
+Pitching snapshot (Top 5):
+- LV Las Vegas Gamblers - ERA 2.57, WHIP 1.18
+- CHA Charlotte Colonels - ERA 3.18, WHIP 1.32
+- STL St. Louis Stallions - ERA 3.29, WHIP 1.32
+- SF San Francisco Warriors - ERA 3.56, WHIP 1.29
+- BOS Boston Patriots - ERA 3.77, WHIP 1.33
 
 D) WAR Report
 Top 10 players by WAR:
