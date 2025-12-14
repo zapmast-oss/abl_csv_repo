@@ -2,7 +2,7 @@
 Generated: 2025-12-13 22:45:30
 Root: C:\sbv_repo\abl_csv_repo\csv
 Out: C:\sbv_repo\abl_csv_repo\csv\out
-Count: 113
+Count: 109
 
 ## Files
 - out/almanac/1972/eb_combined_1972.md (modified: 2025-11-28 16:57:19, size: 41484 bytes)
@@ -111,10 +111,6 @@ Count: 113
 - out/eb/gs_1978_summary.md (modified: 2025-12-01 21:25:30, size: 1025 bytes)
 - out/eb/gs_1979_summary.md (modified: 2025-12-01 21:25:31, size: 764 bytes)
 - out/eb/gs_1980_summary.md (modified: 2025-12-01 21:24:50, size: 971 bytes)
-- out/forum_abl_1981_w05.md (modified: 2025-12-13 22:23:03, size: 2565 bytes)
-- out/league_report_abl_1981_w05.md (modified: 2025-12-13 18:19:15, size: 5014 bytes)
-- out/league_report_abl_1981_w06.md (modified: 2025-12-13 15:56:04, size: 4037 bytes)
-- out/md_inventory_all.md (modified: 2025-12-13 22:44:03, size: 11417 bytes)
-- out/md_inventory_core.md (modified: 2025-12-13 22:44:03, size: 11417 bytes)
+- out/md_inventory_all.md (modified: 2025-12-13 22:45:30, size: 11499 bytes)
+- out/md_inventory_core.md (modified: 2025-12-13 22:45:30, size: 491 bytes)
 - out/md_inventory_history.md (modified: 2025-12-13 22:44:03, size: 11077 bytes)
-- out/video_outline_abl_1981_w05.md (modified: 2025-12-13 22:23:03, size: 2757 bytes)

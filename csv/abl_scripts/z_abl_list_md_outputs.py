@@ -9,6 +9,7 @@ import sys
 
 
 EXCLUDE_SUBSTRINGS = ["big50", "big_50", "big-50", "47", "reports", "report_pack"]
+HISTORY_EXCLUDE_TOKEN = "1981"
 
 
 def find_csv_root(start: Path) -> Path:
@@ -58,16 +59,20 @@ def main() -> None:
 
     all_md = sorted(out_dir.rglob("*.md"))
     core_md: list[Path] = []
+    history_md: list[Path] = []
     for p in all_md:
         rel_str = p.relative_to(csv_root).as_posix().lower()
-        if any(tok in rel_str for tok in EXCLUDE_SUBSTRINGS):
-            continue
-        core_md.append(p)
+        if HISTORY_EXCLUDE_TOKEN not in rel_str:
+            history_md.append(p)
+        if HISTORY_EXCLUDE_TOKEN in rel_str and not any(tok in rel_str for tok in EXCLUDE_SUBSTRINGS):
+            core_md.append(p)
 
     inv_all = out_dir / "md_inventory_all.md"
     inv_core = out_dir / "md_inventory_core.md"
+    inv_history = out_dir / "md_inventory_history.md"
     write_inventory(inv_all, csv_root, out_dir, all_md)
     write_inventory(inv_core, csv_root, out_dir, core_md)
+    write_inventory(inv_history, csv_root, out_dir, history_md)
 
     print("ALL MD:")
     for p in all_md:
@@ -76,7 +81,11 @@ def main() -> None:
     print("CORE MD:")
     for p in core_md:
         print(p.relative_to(csv_root).as_posix())
-    print(f"Wrote: {inv_all} {inv_core}")
+    print("")
+    print("HISTORY MD:")
+    for p in history_md:
+        print(p.relative_to(csv_root).as_posix())
+    print(f"Wrote: {inv_all} {inv_core} {inv_history}")
 
 
 if __name__ == "__main__":
