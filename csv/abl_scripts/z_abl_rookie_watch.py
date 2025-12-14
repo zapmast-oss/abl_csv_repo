@@ -65,6 +65,9 @@ def read_first(base: Path, override: Optional[Path], candidates: Sequence[str]) 
         path = base / name
         if path.exists():
             return pd.read_csv(path)
+        alt = base / "ootp_csv" / name
+        if alt.exists():
+            return pd.read_csv(alt)
     return None
 
 
@@ -78,19 +81,26 @@ def resolve_path(base: Path, value: Optional[str]) -> Optional[Path]:
 
 
 def _read_rookie_flags(path: Path, yes_tokens: set[str], no_tokens: set[str]) -> Dict[int, float]:
-    try:
-        df = pd.read_csv(path, usecols=["ID", "ROOK"])
-    except (ValueError, FileNotFoundError):
-        return {}
     flags: Dict[int, float] = {}
-    for pid_raw, rook_raw in zip(df["ID"], df["ROOK"]):
+    try:
+        text = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return flags
+    for line in text.splitlines():
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split(",")
+        if len(parts) <= 1:
+            parts = line.split()
+        if not parts:
+            continue
+        pid_raw = parts[0].strip()
+        rook_raw = parts[-1].strip()
         try:
             pid = int(pid_raw)
         except (TypeError, ValueError):
             continue
-        token = str(rook_raw).strip().upper()
-        if not token:
-            continue
+        token = rook_raw.upper()
         if token in yes_tokens:
             flags[pid] = 1.0
         elif token in no_tokens:
@@ -346,7 +356,7 @@ def load_roster(base: Path, override: Optional[Path]) -> pd.DataFrame:
     ext_rookie_map = load_external_rookie_map(base)
     if ext_rookie_map:
         ext_series = roster["player_id"].map(ext_rookie_map)
-        roster["rookie_flag"] = ext_series.fillna(0.0)
+        roster["rookie_flag"] = ext_series.combine_first(roster["rookie_flag"])
 
     return roster
 
@@ -1098,4 +1108,3 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
 
 if __name__ == "__main__":
     main()
-

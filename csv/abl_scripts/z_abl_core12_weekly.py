@@ -133,6 +133,27 @@ def looks_like_player_row(row: dict) -> bool:
     )
 
 
+def is_real_player_name(name: str) -> bool:
+    if not name or not isinstance(name, str):
+        return False
+    name_clean = name.strip()
+    if "rookie" in name_clean.lower() or "player" in name_clean.lower():
+        return False
+    return bool(re.match(r"^[A-Za-z][A-Za-z.'-]* [A-Za-z][A-Za-z.'-]*$", name_clean))
+
+
+def is_valid_rookie_row(row: dict) -> bool:
+    if not looks_like_player_row(row):
+        return False
+    name = row.get("player", "")
+    if not is_real_player_name(name):
+        return False
+    rating = (row.get("rating") or "").strip()
+    stat = (row.get("stat") or "").strip()
+    has_stat_num = bool(re.search(r"\d", stat))
+    return bool(rating) or has_stat_num
+
+
 def looks_like_manager_row(row: dict) -> bool:
     return (
         isinstance(row, dict)
@@ -288,6 +309,24 @@ def load_rookie_watch(hitters: str, pitchers: str) -> List[Dict[str, str]]:
             clean = line.strip()
             if not clean or clean.startswith("==="):
                 continue
+            lower = clean.lower()
+            skip_prefixes = [
+                "abl rookie",
+                "generated on",
+                "spotlights rookie",
+                "great for",
+                "player ",
+                "----",
+                "threshold",
+                "key:",
+                "definitions",
+                "war pace",
+                "ace track",
+                "helps flag",
+                "era uses",
+            ]
+            if any(lower.startswith(pref) for pref in skip_prefixes):
+                continue
             tokens = clean.split()
             name = " ".join(tokens[:2]) if len(tokens) >= 2 else (tokens[0] if tokens else "")
             team = tokens[2] if len(tokens) >= 3 else ""
@@ -368,49 +407,70 @@ def load_matchups(text: str) -> List[Dict[str, str]]:
 def load_player_lookup(csv_dir: Path) -> Dict[str, Dict[str, Optional[float]]]:
     candidates = [csv_dir / "ootp_csv" / "players.csv", csv_dir / "players.csv"]
     path = next((p for p in candidates if p.exists()), None)
-    if not path:
-        return {}
     lookup: Dict[str, Dict[str, Optional[float]]] = {}
-    try:
-        with path.open(newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                first = (row.get("first_name") or "").strip()
-                last = (row.get("last_name") or "").strip()
-                if not first or not last:
-                    continue
-                name_key = f"{first} {last}".lower()
-                age = row.get("age")
-                exp = row.get("experience")
-                try:
-                    age_val = float(age) if age not in (None, "") else None
-                except ValueError:
-                    age_val = None
-                try:
-                    exp_val = float(exp) if exp not in (None, "") else None
-                except ValueError:
-                    exp_val = None
-                current = lookup.get(name_key, {"age": None, "experience": None})
-                new_age = age_val if current["age"] is None else (max(current["age"], age_val) if age_val is not None else current["age"])
-                new_exp = exp_val if current["experience"] is None else (max(current["experience"], exp_val) if exp_val is not None else current["experience"])
-                lookup[name_key] = {"age": new_age, "experience": new_exp}
-    except Exception:
-        return {}
+    if path:
+        try:
+            with path.open(newline="", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    first = (row.get("first_name") or "").strip()
+                    last = (row.get("last_name") or "").strip()
+                    if not first or not last:
+                        continue
+                    name_key = f"{first} {last}".lower()
+                    age = row.get("age")
+                    exp = row.get("experience")
+                    try:
+                        age_val = float(age) if age not in (None, "") else None
+                    except ValueError:
+                        age_val = None
+                    try:
+                        exp_val = float(exp) if exp not in (None, "") else None
+                    except ValueError:
+                        exp_val = None
+                    current = lookup.get(name_key, {"age": None, "experience": None, "rook": False})
+                    new_age = age_val if current["age"] is None else (max(current["age"], age_val) if age_val is not None else current["age"])
+                    new_exp = exp_val if current["experience"] is None else (max(current["experience"], exp_val) if exp_val is not None else current["experience"])
+                    lookup[name_key] = {"age": new_age, "experience": new_exp, "rook": current.get("rook", False)}
+        except Exception:
+            pass
+    misc_path = csv_dir / "abl_statistics" / "abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv"
+    if misc_path.exists():
+        try:
+            rows = [ln for ln in misc_path.read_text(encoding="utf-8").splitlines() if ln and not ln.startswith("#")]
+            if rows:
+                reader = csv.DictReader(rows)
+                for row in reader:
+                    name_field = (row.get("Name") or "").strip()
+                    if not name_field:
+                        continue
+                    rook_flag = (row.get("ROOK") or "").strip().lower()
+                    is_rook = rook_flag in {"yes", "true", "1", "rookie"}
+                    if not is_rook:
+                        continue
+                    name_key = name_field.lower()
+                    current = lookup.get(name_key, {"age": None, "experience": None, "rook": False})
+                    current["rook"] = True
+                    lookup[name_key] = current
+        except Exception:
+            pass
     return lookup
 
 
-def is_veteran(name: str, lookup: Dict[str, Dict[str, Optional[float]]]) -> bool:
+def is_rookie(name: str, lookup: Dict[str, Dict[str, Optional[float]]]) -> bool:
     if not name:
         return False
     info = lookup.get(name.lower())
     if not info:
         return False
+    if info.get("rook"):
+        return True
     age = info.get("age")
     exp = info.get("experience")
-    if exp is not None and exp >= 2:
-        return True
-    if age is not None and age >= 28:
-        return True
+    if exp is not None:
+        return exp <= 1
+    if age is not None:
+        return age <= 27
     return False
 
 
@@ -517,9 +577,9 @@ def render_forum_post(core12: dict) -> str:
         )
 
     rookies_raw = core12.get("rookie_watch") or []
-    rookies = [r for r in rookies_raw if looks_like_player_row(r)]
+    rookies = [r for r in rookies_raw if is_valid_rookie_row(r)]
     if player_lookup:
-        rookies = [r for r in rookies if not is_veteran(r.get("player", ""), player_lookup)]
+        rookies = [r for r in rookies if is_rookie(r.get("player", ""), player_lookup)]
 
     def rookie_stat_val(r: Dict[str, str]) -> float:
         try:
@@ -697,9 +757,9 @@ def render_video_outline(core12: dict) -> str:
         lines.append("- Soft: " + ", ".join([normalize_team_name(s["team"]) for s in soft]))
 
     rookies_raw = core12.get("rookie_watch") or []
-    rookies = [r for r in rookies_raw if looks_like_player_row(r)]
+    rookies = [r for r in rookies_raw if is_valid_rookie_row(r)]
     if player_lookup:
-        rookies = [r for r in rookies if r.get("player", "") and r.get("player", "").lower() in player_lookup and not is_veteran(r.get("player", ""), player_lookup)]
+        rookies = [r for r in rookies if is_rookie(r.get("player", ""), player_lookup)]
 
     def rookie_val(r: Dict[str, str]) -> float:
         try:

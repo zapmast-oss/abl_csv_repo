@@ -17,6 +17,7 @@
 - Soft: Tampa, Nashville, Chicago
 
 ## Rookie Watch & Player of the Week
+- Rookies: Hirotoshi Nishimoto, Danny LaRocque
 - POW: ABL Week (Miner)
 
 ## Manager's Corner

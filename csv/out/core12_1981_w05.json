@@ -827,54 +827,6 @@
   ],
   "rookie_watch": [
     {
-      "player": "ABL Rookie",
-      "team": "Watch",
-      "rating": "",
-      "stat": "",
-      "raw": "ABL Rookie Watch (Hitters)",
-      "role": "hitter"
-    },
-    {
-      "player": "Generated on:",
-      "team": "2025-11-25",
-      "rating": "",
-      "stat": "",
-      "raw": "Generated on: 2025-11-25 02:08:23",
-      "role": "hitter"
-    },
-    {
-      "player": "Spotlights rookie-eligible",
-      "team": "bats",
-      "rating": "",
-      "stat": "",
-      "raw": "Spotlights rookie-eligible bats clearing the PA floor and ranks them by age-adjusted OPS pace.",
-      "role": "hitter"
-    },
-    {
-      "player": "Great for",
-      "team": "quickly",
-      "rating": "",
-      "stat": "",
-      "raw": "Great for quickly seeing which first-year hitters are already tilting lineups versus those still ramping up.",
-      "role": "hitter"
-    },
-    {
-      "player": "Player Team",
-      "team": "Rating",
-      "rating": "",
-      "stat": "",
-      "raw": "Player                   Team                 Rating           OPS   OPS+   Age+    Def  WAR162",
-      "role": "hitter"
-    },
-    {
-      "player": "-----------------------------------------------------------------------------------------------",
-      "team": "",
-      "rating": "",
-      "stat": "",
-      "raw": "-----------------------------------------------------------------------------------------------",
-      "role": "hitter"
-    },
-    {
       "player": "Nigel Hudson",
       "team": "Charlotte",
       "rating": "Meteoric",
@@ -1075,35 +1027,11 @@
       "role": "hitter"
     },
     {
-      "player": "Threshold: PA",
-      "team": ">=",
-      "rating": "",
-      "stat": "",
-      "raw": "Threshold: PA >= 50 (unless show_all).",
-      "role": "hitter"
-    },
-    {
-      "player": "Key:",
-      "team": "",
-      "rating": "",
-      "stat": "",
-      "raw": "Key:",
-      "role": "hitter"
-    },
-    {
       "player": "Meteoric >=150",
       "team": "AgeAdj",
       "rating": "Meteoric",
       "stat": "",
       "raw": "Meteoric >=150 AgeAdj OPS+, Impact 120-149, Steady 100-119, Learning 80-99, Finding Feet <80.",
-      "role": "hitter"
-    },
-    {
-      "player": "Definitions:",
-      "team": "",
-      "rating": "",
-      "stat": "",
-      "raw": "Definitions:",
       "role": "hitter"
     },
     {
@@ -1123,59 +1051,11 @@
       "role": "hitter"
     },
     {
-      "player": "WAR pace",
-      "team": "scaled",
-      "rating": "",
-      "stat": "",
-      "raw": "WAR pace scaled to 162 games using league-average games played.",
-      "role": "hitter"
-    },
-    {
-      "player": "ABL Rookie",
-      "team": "Watch",
-      "rating": "",
-      "stat": "",
-      "raw": "ABL Rookie Watch (Pitchers)",
-      "role": "pitcher"
-    },
-    {
-      "player": "Generated on:",
-      "team": "2025-11-25",
-      "rating": "",
-      "stat": "",
-      "raw": "Generated on: 2025-11-25 02:08:23",
-      "role": "pitcher"
-    },
-    {
       "player": "Highlights rookie",
       "team": "arms",
       "rating": "",
       "stat": "",
       "raw": "Highlights rookie arms meeting the IP floor, layering WAR pace with run-prevention and strikeout/command signals.",
-      "role": "pitcher"
-    },
-    {
-      "player": "Helps flag",
-      "team": "which",
-      "rating": "",
-      "stat": "",
-      "raw": "Helps flag which first-year pitchers are rotation-ready contributors versus developmental depth.",
-      "role": "pitcher"
-    },
-    {
-      "player": "Player Team",
-      "team": "Rating",
-      "rating": "",
-      "stat": "",
-      "raw": "Player                   Team                 Rating             IP    ERA    FIP      K%     BB%  WAR162",
-      "role": "pitcher"
-    },
-    {
-      "player": "---------------------------------------------------------------------------------------------------------",
-      "team": "",
-      "rating": "",
-      "stat": "",
-      "raw": "---------------------------------------------------------------------------------------------------------",
       "role": "pitcher"
     },
     {
@@ -1379,59 +1259,11 @@
       "role": "pitcher"
     },
     {
-      "player": "Threshold: IP",
-      "team": ">=",
-      "rating": "",
-      "stat": "",
-      "raw": "Threshold: IP >= 15 (unless show_all).",
-      "role": "pitcher"
-    },
-    {
-      "player": "Key:",
-      "team": "",
-      "rating": "",
-      "stat": "",
-      "raw": "Key:",
-      "role": "pitcher"
-    },
-    {
-      "player": "Ace Track",
-      "team": "pace",
-      "rating": "",
-      "stat": "",
-      "raw": "Ace Track pace >=4.0 WAR, Rotation Ready 2.5-3.9, Contributor 1.0-2.4, Apprentice 0-0.9, Rebuild <0.",
-      "role": "pitcher"
-    },
-    {
-      "player": "Definitions:",
-      "team": "",
-      "rating": "",
-      "stat": "",
-      "raw": "Definitions:",
-      "role": "pitcher"
-    },
-    {
-      "player": "ERA uses",
-      "team": "provided",
-      "rating": "",
-      "stat": "",
-      "raw": "ERA uses provided figure or ER-based calc; FIP uses league constant when inputs exist.",
-      "role": "pitcher"
-    },
-    {
       "player": "K%/BB% prefer",
       "team": "BF",
       "rating": "",
       "stat": "",
       "raw": "K%/BB% prefer BF when available, otherwise use plate-appearance approximations.",
-      "role": "pitcher"
-    },
-    {
-      "player": "WAR pace",
-      "team": "scaled",
-      "rating": "",
-      "stat": "",
-      "raw": "WAR pace scaled to 162 games using league-average schedule length.",
       "role": "pitcher"
     }
   ],
