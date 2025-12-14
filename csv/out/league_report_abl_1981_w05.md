@@ -1,6 +1,6 @@
 # Action Baseball League - Weekly League Report
-Generated: 2025-12-13 15:56:04
-Season: 1981 Week: 06
+Generated: 2025-12-13 16:16:40
+Season: 1981 Week: 05
 
 A) Standings (by Conference then Division)
 National Baseball Conference - Eastern Division

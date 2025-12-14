@@ -18,8 +18,12 @@ WAR_KEYS = ["war", "war_total", "war_tot", "total_war"]
 
 def should_skip_row(row: Dict[str, str]) -> bool:
     for val in row.values():
-        if isinstance(val, str) and val.strip().lower() in SKIP_STRINGS:
-            return True
+        if isinstance(val, str):
+            text = val.strip()
+            if text == "":
+                continue
+            if text.lower() in SKIP_STRINGS:
+                return True
     return False
 
 
@@ -90,7 +94,7 @@ def normalize_headers(path: Path) -> List[str]:
 def best_match(patterns: List[str], search_dirs: List[Path]) -> Optional[Path]:
     for pattern in patterns:
         for base in search_dirs:
-            matches = sorted(base.glob(pattern))
+            matches = sorted(base.rglob(pattern))
             if matches:
                 return matches[0]
     return None
@@ -99,12 +103,12 @@ def best_match(patterns: List[str], search_dirs: List[Path]) -> Optional[Path]:
 def find_csv_root(start: Path) -> Path:
     current = start
     while True:
-        if any(current.glob("teams*.csv")):
+        if any(current.rglob("teams*.csv")):
             return current
         if current.parent == current:
             break
         current = current.parent
-    raise RuntimeError(f"Missing teams CSV when searching upward from {start}")
+    raise RuntimeError("Missing teams CSV in csv/")
 
 
 def parse_args() -> argparse.Namespace:
@@ -675,11 +679,11 @@ def preflight(year: int, search_dirs: List[Path]) -> dict:
     team_bat_path = best_match(["team_batting_stats.csv", "team_batting_stats*.csv"], search_dirs)
     team_pit_path = best_match(["team_pitching_stats.csv", "team_pitching_stats*.csv"], search_dirs)
     batting_path = best_match(
-        ["batting_stats.csv", "batting_stats*.csv", "players_batting_stats.csv", "players_batting_stats*.csv"],
+        ["batting_stats.csv", "batting_stats*.csv", "players_batting_stats.csv", "players_batting_stats*.csv", "players_career_batting_stats.csv", "players_career_batting_stats*.csv"],
         search_dirs,
     )
     pitching_path = best_match(
-        ["pitching_stats.csv", "pitching_stats*.csv", "players_pitching_stats.csv", "players_pitching_stats*.csv"],
+        ["pitching_stats.csv", "pitching_stats*.csv", "players_pitching_stats.csv", "players_pitching_stats*.csv", "players_career_pitching_stats.csv", "players_career_pitching_stats*.csv"],
         search_dirs,
     )
     players_path = best_match(["players.csv", "players*.csv"], search_dirs)
