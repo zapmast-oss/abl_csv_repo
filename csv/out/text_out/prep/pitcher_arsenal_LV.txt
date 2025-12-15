@@ -1,10 +1,18 @@
 Pitcher Arsenal Prep - LV
-Generated on: 2025-12-14 22:05:05
+Generated on: 2025-12-14 22:21:17
 
 
 TEAM LV - Active Pitchers
 SP:
-(none)
+Fernando Bennett (R) player_id=5101 [missing stats]
+
+Jaylen Taylor (R) player_id=5417 [missing stats]
+
+Rogelio Cole (R) player_id=6052 [missing stats]
+
+Bobby Rodriguez (R) player_id=8003 [missing stats]
+
+Oscar Herrera (R) player_id=8695 [missing stats]
 
 RP:
 Kyle Marks (R) STU 45 MOV 50 CON 70 STM 70 HLD 25 VELO 88-90 VT 88-90 | Pitches 2 | Best Slider 45
@@ -16,15 +24,14 @@ Arsenal: Sinker 55, Changeup 45, Splitter 35, Forkball 25
 Jonathan Patterson (R) STU 35 MOV 45 CON 75 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Splitter 55
 Arsenal: Splitter 55, Slider 40, Fastball 35
 
+Havard Jensen (R) player_id=5738 [missing stats]
+
+Miguel Fernandez (R) player_id=6192 [missing stats]
+
 CL:
-(none)
+Derrek Sanders (R) player_id=8713 [missing stats]
 
 MISSING STATS ROW (active but not found in abl_statistics):
-Fernando Bennett (R) player_id=5101
-Jaylen Taylor (R) player_id=5417
-Havard Jensen (R) player_id=5738
-Rogelio Cole (R) player_id=6052
-Miguel Fernandez (R) player_id=6192
-Bobby Rodriguez (R) player_id=8003
-Oscar Herrera (R) player_id=8695
-Derrek Sanders (R) player_id=8713
+Havard Jensen (R) player_id=5738 [missing stats]
+Miguel Fernandez (R) player_id=6192 [missing stats]
+Derrek Sanders (R) player_id=8713 [missing stats]

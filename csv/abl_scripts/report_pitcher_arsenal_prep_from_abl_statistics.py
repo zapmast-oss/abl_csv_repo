@@ -309,8 +309,12 @@ def build_team_section(
                 lines.append(format_missing_pitcher(pd.Series(row._asdict())))
                 lines.append("")
     if not missing.empty:
+        missing_block = missing[missing["role_label"] != "SP"]
+    else:
+        missing_block = missing
+    if not missing_block.empty:
         lines.append("MISSING STATS ROW (active but not found in abl_statistics):")
-        for row in missing.itertuples(index=False):
+        for row in missing_block.itertuples(index=False):
             lines.append(format_missing_pitcher(pd.Series(row._asdict())))
     return "\n".join(lines).rstrip()
 
