@@ -1,20 +1,31 @@
 Pitcher Arsenal Prep - LV
-Generated on: 2025-12-14 22:21:17
+Generated on: 2025-12-14 22:33:47
 
 
 TEAM LV - Active Pitchers
 SP:
-Fernando Bennett (R) player_id=5101 [missing stats]
+Bobby Rodriguez (R) STU 70 MOV 60 CON 55 STM 70 HLD 25 VELO 88-90 VT 88-90 | Pitches 4 | Best Circle Change 80
+Arsenal: Circle Change 80, Knuckle Curve 75, Sinker 55, Fastball 45
 
-Jaylen Taylor (R) player_id=5417 [missing stats]
+Oscar Herrera (R) STU 60 MOV 75 CON 35 STM 70 HLD 70 VELO 84-86 VT 84-86 | Pitches 3 | Best Knuckleball 85
+Arsenal: Knuckleball 85, Sinker 50, Changeup 30
 
-Rogelio Cole (R) player_id=6052 [missing stats]
+Rogelio Cole (R) STU 50 MOV 60 CON 40 STM 55 HLD 70 VELO 93-95 VT 93-95 | Pitches 3 | Best Splitter 75
+Arsenal: Splitter 75, Slider 70, Cutter 40
 
-Bobby Rodriguez (R) player_id=8003 [missing stats]
+Fernando Bennett (R) STU 45 MOV 50 CON 50 STM 55 HLD 50 VELO 91-93 VT 91-93 | Pitches 4 | Best Sinker 50
+Arsenal: Sinker 50, Slider 50, Forkball 35, Changeup 25
 
-Oscar Herrera (R) player_id=8695 [missing stats]
+Jaylen Taylor (R) STU 45 MOV 60 CON 45 STM 55 HLD 70 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 55
+Arsenal: Curveball 55, Changeup 50, Fastball 45
 
 RP:
+Miguel Fernandez (R) STU 55 MOV 50 CON 35 STM 55 HLD 60 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 70
+Arsenal: Curveball 70, Changeup 60, Fastball 50
+
+Havard Jensen (R) STU 55 MOV 50 CON 35 STM 50 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Curveball 65
+Arsenal: Curveball 65, Circle Change 65, Cutter 50, Sinker 45
+
 Kyle Marks (R) STU 45 MOV 50 CON 70 STM 70 HLD 25 VELO 88-90 VT 88-90 | Pitches 2 | Best Slider 45
 Arsenal: Slider 45, Fastball 40
 
@@ -24,14 +35,6 @@ Arsenal: Sinker 55, Changeup 45, Splitter 35, Forkball 25
 Jonathan Patterson (R) STU 35 MOV 45 CON 75 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Splitter 55
 Arsenal: Splitter 55, Slider 40, Fastball 35
 
-Havard Jensen (R) player_id=5738 [missing stats]
-
-Miguel Fernandez (R) player_id=6192 [missing stats]
-
 CL:
-Derrek Sanders (R) player_id=8713 [missing stats]
-
-MISSING STATS ROW (active but not found in abl_statistics):
-Havard Jensen (R) player_id=5738 [missing stats]
-Miguel Fernandez (R) player_id=6192 [missing stats]
-Derrek Sanders (R) player_id=8713 [missing stats]
+Derrek Sanders (R) STU 60 MOV 45 CON 50 STM 55 HLD 55 VELO 89-91 VT 89-91 | Pitches 3 | Best Curveball 75
+Arsenal: Curveball 75, Cutter 60, Changeup 30
