@@ -241,6 +241,12 @@ def format_pitcher_lines(row: pd.Series) -> List[str]:
     return [line_one, arsenal]
 
 
+def format_missing_pitcher(row: pd.Series) -> str:
+    name = sanitize_name(row.get("first_name", ""), row.get("last_name", ""))
+    hand = to_ascii(row.get("throws_hand", "")).upper() or "?"
+    return f"{name} ({hand}) player_id={int(row.player_id)} [missing stats]"
+
+
 def build_team_section(
     team_id: int,
     team_abbr: str,
@@ -249,7 +255,7 @@ def build_team_section(
     limit: int | None,
 ) -> str:
     team_rows = merged[merged["team_id"] == team_id].copy()
-    missing = team_rows[~team_rows["player_id"].isin(stats_ids)]
+    missing = team_rows[~team_rows["player_id"].isin(stats_ids)].copy()
     available = team_rows[team_rows["player_id"].isin(stats_ids)].copy()
     available["role_label"] = available["role"].apply(role_label)
     available["role_order"] = available["role_label"].apply(lambda r: ROLE_ORDER.get(r, 3))
@@ -264,32 +270,48 @@ def build_team_section(
     if limit and limit > 0:
         available = available.head(limit)
 
+    if not missing.empty:
+        missing["role_label"] = missing["role"].apply(role_label)
+
     lines: List[str] = [f"TEAM {team_abbr} - Active Pitchers"]
     grouped_roles = ["SP", "RP", "CL"]
     seen_roles = set(grouped_roles)
     for role in grouped_roles:
         lines.append(f"{role}:")
         role_df = available[available["role_label"] == role]
-        if role_df.empty:
+        role_missing = missing[missing["role_label"] == role] if not missing.empty else pd.DataFrame()
+        if role_df.empty and role_missing.empty:
             lines.append("(none)")
             lines.append("")
             continue
         for row in role_df.itertuples(index=False):
             lines.extend(format_pitcher_lines(pd.Series(row._asdict())))
             lines.append("")
+        for row in role_missing.itertuples(index=False):
+            lines.append(format_missing_pitcher(pd.Series(row._asdict())))
+            lines.append("")
     other_df = available[~available["role_label"].isin(seen_roles)]
+    other_missing = missing[~missing["role_label"].isin(seen_roles)] if not missing.empty else pd.DataFrame()
     if not other_df.empty:
         for role_value, grp in other_df.groupby("role_label", sort=True):
             lines.append(f"{role_value}:")
             for row in grp.itertuples(index=False):
                 lines.extend(format_pitcher_lines(pd.Series(row._asdict())))
                 lines.append("")
+            missing_group = other_missing[other_missing["role_label"] == role_value]
+            for row in missing_group.itertuples(index=False):
+                lines.append(format_missing_pitcher(pd.Series(row._asdict())))
+                lines.append("")
+    elif not other_missing.empty:
+        for role_value, grp in other_missing.groupby("role_label", sort=True):
+            lines.append(f"{role_value}:")
+            for row in grp.itertuples(index=False):
+                lines.append(format_missing_pitcher(pd.Series(row._asdict())))
+                lines.append("")
     if not missing.empty:
         lines.append("MISSING STATS ROW (active but not found in abl_statistics):")
         for row in missing.itertuples(index=False):
-            name = sanitize_name(row.first_name, row.last_name)
-            hand = to_ascii(getattr(row, "throws_hand", "")).upper() or "?"
-            lines.append(f"{name} ({hand}) player_id={int(row.player_id)}")
+            lines.append(format_missing_pitcher(pd.Series(row._asdict())))
     return "\n".join(lines).rstrip()
 
 
