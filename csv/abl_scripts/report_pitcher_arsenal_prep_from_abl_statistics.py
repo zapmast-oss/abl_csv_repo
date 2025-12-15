@@ -330,7 +330,11 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def resolve_selection(args: argparse.Namespace, abbr_to_id: Dict[str, int]) -> Tuple[List[int], List[str]]:
+def resolve_selection(
+    args: argparse.Namespace,
+    abbr_to_id: Dict[str, int],
+    team_city_map: Dict[int, str] | None = None,
+) -> Tuple[List[int], List[str]]:
     has_team = bool(args.team)
     has_matchup = bool(args.away or args.home)
     has_all = bool(args.all)
@@ -339,7 +343,12 @@ def resolve_selection(args: argparse.Namespace, abbr_to_id: Dict[str, int]) -> T
     if not (has_team or has_matchup or has_all):
         fail("Provide --team XYZ, --away XYZ --home ABC, or --all.")
     if has_all:
-        sorted_items = sorted(abbr_to_id.items(), key=lambda item: item[1])
+        def sort_key(item: tuple[str, int]) -> tuple[str, str]:
+            abbr, team_id = item
+            city = team_city_map.get(team_id, "") if team_city_map else ""
+            return (to_ascii(city).upper(), abbr)
+
+        sorted_items = sorted(abbr_to_id.items(), key=sort_key)
         ids = [tid for _, tid in sorted_items]
         abbrs = [abbr for abbr, _ in sorted_items]
         return ids, abbrs
@@ -367,8 +376,15 @@ def main() -> None:
     teams = load_teams()
     stats = load_stats()
 
+    team_city_map = {}
+    for row in teams.itertuples():
+        if pd.isna(row.team_id):
+            continue
+        city_val = getattr(row, "name", "")
+        team_city_map[int(row.team_id)] = to_ascii(city_val).strip()
+
     abbr_to_id, id_to_abbr = build_team_maps(teams)
-    team_ids, abbrs = resolve_selection(args, abbr_to_id)
+    team_ids, abbrs = resolve_selection(args, abbr_to_id, team_city_map)
 
     merged = roster.merge(players, on="player_id", how="left")
     merged = merged.merge(stats, on="player_id", how="left", suffixes=("", "_stats"))
