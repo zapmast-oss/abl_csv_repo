@@ -272,18 +272,34 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--team", help="Single team abbreviation (e.g., CHI)")
     parser.add_argument("--away", help="Away team abbreviation for matchup mode")
     parser.add_argument("--home", help="Home team abbreviation for matchup mode")
+    parser.add_argument("--all", action="store_true", help="Output league-wide master list of all active ABL batters")
     parser.add_argument("--limit", type=int, help="Limit batters per team")
     parser.add_argument("--out", dest="out_path", help="Override output path")
     return parser.parse_args()
 
 
-def resolve_selection(args: argparse.Namespace, abbr_to_id: Dict[str, int]) -> Tuple[List[int], List[str]]:
+def resolve_selection(
+    args: argparse.Namespace,
+    abbr_to_id: Dict[str, int],
+    team_city_map: Dict[int, str] | None = None,
+) -> Tuple[List[int], List[str]]:
     has_team = bool(args.team)
     has_matchup = bool(args.away or args.home)
-    if has_team and has_matchup:
-        fail("Use either --team or --away/--home, not both.")
-    if not has_team and not has_matchup:
-        fail("Provide --team XYZ or --away XYZ --home ABC.")
+    has_all = bool(args.all)
+    if sum([has_team, has_matchup, has_all]) > 1:
+        fail("Use only one selection mode: --team OR --away/--home OR --all.")
+    if not (has_team or has_matchup or has_all):
+        fail("Provide --team XYZ, --away XYZ --home ABC, or --all.")
+    if has_all:
+        def sort_key(item: tuple[str, int]) -> tuple[str, str]:
+            abbr, team_id = item
+            city = team_city_map.get(team_id, "") if team_city_map else ""
+            return (to_ascii(city).upper(), abbr)
+
+        sorted_items = sorted(abbr_to_id.items(), key=sort_key)
+        ids = [tid for _, tid in sorted_items]
+        abbrs = [abbr for abbr, _ in sorted_items]
+        return ids, abbrs
     if has_team:
         abbr = normalize_abbr(args.team)
         if abbr not in abbr_to_id:
@@ -308,8 +324,15 @@ def main() -> None:
     teams = load_teams()
     stats = load_bat_stats()
 
+    team_city_map: Dict[int, str] = {}
+    for row in teams.itertuples():
+        if pd.isna(row.team_id):
+            continue
+        city_val = getattr(row, "name", "")
+        team_city_map[int(row.team_id)] = to_ascii(city_val).strip()
+
     abbr_to_id, id_to_abbr = build_team_maps(teams)
-    team_ids, abbrs = resolve_selection(args, abbr_to_id)
+    team_ids, abbrs = resolve_selection(args, abbr_to_id, team_city_map)
 
     merged = roster.merge(players, on="player_id", how="left")
     merged = merged.merge(stats, on="player_id", how="left", suffixes=("", "_stats"))
@@ -325,7 +348,10 @@ def main() -> None:
             build_team_section(team_id, team_abbr, merged, stats_ids, args.limit, optional_cols_present)
         )
 
-    if len(team_ids) == 1:
+    if args.all:
+        title = "Batter Profile Prep - ALL TEAMS"
+        default_out = TXT_OUT_ROOT / "prep" / "batter_profile_all.txt"
+    elif len(team_ids) == 1:
         title = f"Batter Profile Prep - {abbrs[0]}"
         default_out = TXT_OUT_ROOT / "prep" / f"batter_profile_{abbrs[0]}.txt"
     else:
