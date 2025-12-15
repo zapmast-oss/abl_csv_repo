@@ -1,0 +1,30 @@
+Pitcher Arsenal Prep - LV
+Generated on: 2025-12-14 22:05:05
+
+
+TEAM LV - Active Pitchers
+SP:
+(none)
+
+RP:
+Kyle Marks (R) STU 45 MOV 50 CON 70 STM 70 HLD 25 VELO 88-90 VT 88-90 | Pitches 2 | Best Slider 45
+Arsenal: Slider 45, Fastball 40
+
+Fred O'Connell (R) STU 45 MOV 55 CON 50 STM 35 HLD 60 VELO 91-93 VT 91-93 | Pitches 4 | Best Sinker 55
+Arsenal: Sinker 55, Changeup 45, Splitter 35, Forkball 25
+
+Jonathan Patterson (R) STU 35 MOV 45 CON 75 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Splitter 55
+Arsenal: Splitter 55, Slider 40, Fastball 35
+
+CL:
+(none)
+
+MISSING STATS ROW (active but not found in abl_statistics):
+Fernando Bennett (R) player_id=5101
+Jaylen Taylor (R) player_id=5417
+Havard Jensen (R) player_id=5738
+Rogelio Cole (R) player_id=6052
+Miguel Fernandez (R) player_id=6192
+Bobby Rodriguez (R) player_id=8003
+Oscar Herrera (R) player_id=8695
+Derrek Sanders (R) player_id=8713

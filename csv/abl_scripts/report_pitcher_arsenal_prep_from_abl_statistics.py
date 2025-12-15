@@ -146,7 +146,9 @@ def load_players() -> pd.DataFrame:
     required = ["player_id", "first_name", "last_name", "throws"]
     require_columns(players, required, "players")
     players["player_id"] = pd.to_numeric(players["player_id"], errors="coerce").astype("Int64")
-    return players[["player_id", "first_name", "last_name", "throws"]]
+    throws_map = {1: "R", 2: "L", 3: "S"}
+    players["throws_hand"] = pd.to_numeric(players["throws"], errors="coerce").map(throws_map).fillna("")
+    return players[["player_id", "first_name", "last_name", "throws_hand"]]
 
 
 def load_teams() -> pd.DataFrame:
@@ -223,7 +225,7 @@ def sanitize_name(first: str, last: str) -> str:
 
 def format_pitcher_lines(row: pd.Series) -> List[str]:
     name = sanitize_name(row.get("first_name", ""), row.get("last_name", ""))
-    throws = to_ascii(row.get("throws", "")).upper() or "?"
+    throws = to_ascii(row.get("throws_hand", "")).upper() or "?"
     pitch_count, best_pitch, arsenal = format_pitch_block(row)
     line_one = (
         f"{name} ({throws}) "
@@ -286,7 +288,8 @@ def build_team_section(
         lines.append("MISSING STATS ROW (active but not found in abl_statistics):")
         for row in missing.itertuples(index=False):
             name = sanitize_name(row.first_name, row.last_name)
-            lines.append(f"{name} ({to_ascii(row.throws).upper() or '?'}) player_id={int(row.player_id)}")
+            hand = to_ascii(getattr(row, "throws_hand", "")).upper() or "?"
+            lines.append(f"{name} ({hand}) player_id={int(row.player_id)}")
     return "\n".join(lines).rstrip()
 
 
