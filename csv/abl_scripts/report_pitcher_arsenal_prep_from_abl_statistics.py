@@ -324,6 +324,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--team", help="Single team abbreviation (e.g., CHI)")
     parser.add_argument("--away", help="Away team abbreviation for matchup mode")
     parser.add_argument("--home", help="Home team abbreviation for matchup mode")
+    parser.add_argument("--all", action="store_true", help="Output league-wide master list of all active ABL pitchers")
     parser.add_argument("--limit", type=int, help="Limit pitchers per team")
     parser.add_argument("--out", dest="out_path", help="Override output path")
     return parser.parse_args()
@@ -332,10 +333,16 @@ def parse_args() -> argparse.Namespace:
 def resolve_selection(args: argparse.Namespace, abbr_to_id: Dict[str, int]) -> Tuple[List[int], List[str]]:
     has_team = bool(args.team)
     has_matchup = bool(args.away or args.home)
-    if has_team and has_matchup:
-        fail("Use either --team or --away/--home, not both.")
-    if not has_team and not has_matchup:
-        fail("Provide --team XYZ or --away XYZ --home ABC.")
+    has_all = bool(args.all)
+    if sum([has_team, has_matchup, has_all]) > 1:
+        fail("Use only one selection mode: --team OR --away/--home OR --all.")
+    if not (has_team or has_matchup or has_all):
+        fail("Provide --team XYZ, --away XYZ --home ABC, or --all.")
+    if has_all:
+        sorted_items = sorted(abbr_to_id.items(), key=lambda item: item[1])
+        ids = [tid for _, tid in sorted_items]
+        abbrs = [abbr for abbr, _ in sorted_items]
+        return ids, abbrs
     if has_team:
         abbr = normalize_abbr(args.team)
         if abbr not in abbr_to_id:
@@ -373,7 +380,10 @@ def main() -> None:
         team_abbr = id_to_abbr.get(team_id, f"TEAM_{team_id}")
         sections.append(build_team_section(team_id, team_abbr, merged, stats_ids, args.limit))
 
-    if len(team_ids) == 1:
+    if args.all:
+        title = "Pitcher Arsenal Prep - ALL TEAMS"
+        default_out = TXT_OUT_ROOT / "prep" / "pitcher_arsenal_all.txt"
+    elif len(team_ids) == 1:
         title = f"Pitcher Arsenal Prep - {abbrs[0]}"
         default_out = TXT_OUT_ROOT / "prep" / f"pitcher_arsenal_{abbrs[0]}.txt"
     else:
