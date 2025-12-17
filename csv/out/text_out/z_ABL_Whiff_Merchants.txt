@@ -1,8 +1,8 @@
 ABL Whiff Merchants
 ===================
-Generated on: 2025-11-25 02:08:40
+Generated on: 2025-12-17 10:24:54
 
-League K% 0.151, CSW% stable base NA
+Leaderboard of the ABL's top bat-missers (K%, CSW%, pitch-level whiff) and their go-to weapons. Why it matters: spot strikeout aces for matchups, broadcasts, and roster moves. League K% 0.151, CSW% baseline NA.
 
 Player                   Tm    Conf   Role   Rating            IP     K%    K/9   CSW%  Whiff+ Top Pitch 
 ---------------------------------------------------------------------------------------------------------
