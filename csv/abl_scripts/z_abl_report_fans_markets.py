@@ -9,17 +9,22 @@ from typing import List, Optional, Sequence, Tuple
 import pandas as pd
 
 from _abl_pregame_utils import (
+    coalesce_team_values,
     find_csv_files,
+    list_all_csv_paths,
+    load_best_csv,
+    load_team_keyed_frame,
     md_table,
     normalize_team_table,
     resolve_base,
     safe_get,
+    scan_csv_headers_for_columns,
     write_md,
-    load_best_csv,
 )
 
 TEAM_PATTERNS = ["dim_team", "teams", "team.csv", "team_list"]
 FAN_PATTERNS = ["market", "fan", "attendance", "ticket", "media"]
+FAN_NEEDLES = ["market", "fan", "interest", "loyalty", "attendance", "attend", "ticket", "media", "tv", "radio", "merch", "demand", "popul"]
 
 MARKET_COLS = ["market", "market_size", "market_value"]
 INTEREST_COLS = ["fan_interest", "interest", "fan_interest_current"]
@@ -27,6 +32,8 @@ LOYALTY_COLS = ["fan_loyalty", "loyalty"]
 ATTENDANCE_COLS = ["attendance", "att", "home_attendance", "attendance_total", "attendance_ytd"]
 TICKET_COLS = ["ticket_price", "avg_ticket_price", "ticket"]
 MEDIA_COLS = ["media_revenue", "tv_revenue", "radio_revenue", "local_media"]
+TEAM_KEY_CANDIDATES = ["team_id", "team_abbr", "team_name", "league_id"]
+VALUE_COLS = ["Market Size", "Fan Interest", "Fan Loyalty", "Attendance", "Ticket Price", "Media Revenue"]
 
 
 def merge_key(df: pd.DataFrame) -> pd.Series:
@@ -93,8 +100,10 @@ def main() -> None:
         used_paths.append(path)
 
     notes: List[str] = []
+    header_scan_files: List[Path] = []
+    scanned_count = 0
     if not fan_dfs:
-        notes.append("No fans/market CSVs found; all values set to N/A.")
+        notes.append("No fans/market CSVs found; attempting header scan fallback.")
 
     rows = []
     missing_cols: List[str] = []
@@ -119,6 +128,58 @@ def main() -> None:
         )
 
     output_df = pd.DataFrame(rows)
+    needs_fallback = output_df[VALUE_COLS].replace("N/A", pd.NA).isna().all(axis=None)
+    if needs_fallback:
+        all_csvs = list_all_csv_paths(base)
+        scanned_count = len(all_csvs)
+        hits = scan_csv_headers_for_columns(all_csvs, FAN_NEEDLES)
+        top_hits = hits[:10]
+        frames: List[tuple[pd.DataFrame, Path]] = []
+        for path, cols in top_hits:
+            keep_cols = TEAM_KEY_CANDIDATES + cols
+            frame, used = load_team_keyed_frame(path, TEAM_KEY_CANDIDATES, keep_cols)
+            if frame.empty:
+                continue
+            rename_map = {}
+            for col in frame.columns:
+                low = col.lower()
+                if low in [c.lower() for c in MARKET_COLS]:
+                    rename_map[col] = "Market Size"
+                elif low in [c.lower() for c in INTEREST_COLS]:
+                    rename_map[col] = "Fan Interest"
+                elif low in [c.lower() for c in LOYALTY_COLS]:
+                    rename_map[col] = "Fan Loyalty"
+                elif low in [c.lower() for c in ATTENDANCE_COLS]:
+                    rename_map[col] = "Attendance"
+                elif low in [c.lower() for c in TICKET_COLS]:
+                    rename_map[col] = "Ticket Price"
+                elif low in [c.lower() for c in MEDIA_COLS]:
+                    rename_map[col] = "Media Revenue"
+            frame = frame.rename(columns=rename_map)
+            frames.append((frame, path))
+        if frames:
+            coalesced, used_files = coalesce_team_values(teams, frames, VALUE_COLS)
+            header_scan_files.extend(used_files)
+            rows = []
+            for _, row in coalesced.iterrows():
+                entry = {
+                    "Team": row.get("team_abbr") or row.get("team_name") or "N/A",
+                    "Market Size": "N/A",
+                    "Fan Interest": "N/A",
+                    "Fan Loyalty": "N/A",
+                    "Attendance": "N/A",
+                    "Ticket Price": "N/A",
+                    "Media Revenue": "N/A",
+                }
+                for col in VALUE_COLS:
+                    val = row.get(col)
+                    if pd.isna(val):
+                        continue
+                    entry[col] = val
+                rows.append(entry)
+            output_df = pd.DataFrame(rows)
+        else:
+            notes.append("Header scan found no usable fans/markets columns.")
     md_lines = ["# ABL Fans & Markets", ""]
     md_lines.append(
         md_table(
@@ -131,9 +192,15 @@ def main() -> None:
     md_lines.append(f"- Teams: {team_path if team_path else 'None found'}")
     if used_paths:
         for path in used_paths:
-            md_lines.append(f"- Fans/Markets: {path}")
+            md_lines.append(f"- Fans/Markets (fast path): {path}")
     else:
-        md_lines.append("- Fans/Markets: None found")
+        md_lines.append("- Fans/Markets (fast path): None found")
+    if header_scan_files:
+        for path in header_scan_files:
+            md_lines.append(f"- Header scan: {path}")
+    elif scanned_count:
+        md_lines.append("- Header scan: none used")
+    md_lines.append(f"- Scanned {scanned_count} CSV headers for fans/markets fields")
     md_lines.append("")
     md_lines.append("## Notes")
     if notes:

@@ -195,13 +195,14 @@ def coalesce_team_values(team_df: pd.DataFrame, frames: List[tuple[pd.DataFrame,
         if "__merge_key" not in frame.columns:
             frame["__merge_key"] = _merge_key_from_columns(frame, ["team_id", "team_abbr", "team_name"])
         used_in_frame = False
+        frame_dedup = frame.drop_duplicates(subset="__merge_key", keep="first")
         for col in value_cols:
             if col not in frame.columns:
                 continue
             mask = result[col].isna()
             if not mask.any():
                 continue
-            matched = frame.set_index("__merge_key")
+            matched = frame_dedup.set_index("__merge_key")
             result.loc[mask, col] = result.loc[mask, "__merge_key"].map(matched[col])
             used_in_frame = True
         if used_in_frame:

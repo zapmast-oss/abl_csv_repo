@@ -1,6 +1,6 @@
 ABL Heat Check
 ===============
-Generated on: 2025-12-17 10:22:41
+Generated on: 2025-12-17 15:31:06
 
 Tracks the hottest 7-day OPS runs versus the previous week to spotlight true lineup infernos.
 Useful for identifying short-term matchup boosts or warning signs of regression before it hits the box score.

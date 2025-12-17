@@ -9,11 +9,15 @@ from typing import List, Optional
 import pandas as pd
 
 from _abl_pregame_utils import (
+    coalesce_team_values,
+    list_all_csv_paths,
     load_best_csv,
+    load_team_keyed_frame,
     md_table,
     normalize_team_table,
     resolve_base,
     safe_get,
+    scan_csv_headers_for_columns,
     write_md,
 )
 
@@ -25,6 +29,23 @@ PAYROLL_COLS = ["payroll", "team_payroll", "salary", "salary_total"]
 CASH_COLS = ["cash", "cash_on_hand", "balance"]
 REV_COLS = ["revenue", "total_revenue"]
 PROFIT_COLS = ["profit", "net", "net_income"]
+FIN_NEEDLES = [
+    "budget",
+    "payroll",
+    "revenue",
+    "profit",
+    "cash",
+    "income",
+    "expense",
+    "expenses",
+    "financial",
+    "financ",
+    "salary",
+    "salaries",
+    "balance",
+]
+TEAM_KEY_CANDIDATES = ["team_id", "team_abbr", "team_name", "league_id"]
+VALUE_COLS = ["Budget", "Payroll", "Cash", "Revenue", "Profit"]
 
 
 def pick_col(df: pd.DataFrame, candidates: List[str]) -> Optional[str]:
@@ -53,6 +74,8 @@ def main() -> None:
 
     fin_df, fin_path = load_best_csv(base, FIN_PATTERNS)
     notes: List[str] = []
+    header_scan_files: List[Path] = []
+    scanned_count = 0
 
     budget_col = pick_col(fin_df, BUDGET_COLS)
     payroll_col = pick_col(fin_df, PAYROLL_COLS)
@@ -73,6 +96,7 @@ def main() -> None:
     teams["__merge_key"] = merge_key(teams)
 
     merged = teams.copy()
+    fast_path_used = False
     if not fin_df.empty:
         fin_df = fin_df.copy()
         abbr_series = safe_get(fin_df, ["team_abbr", "abbr", "team_code", "team"])
@@ -80,6 +104,7 @@ def main() -> None:
             fin_df["team_abbr"] = abbr_series
         fin_df["__merge_key"] = merge_key(fin_df)
         merged = merged.merge(fin_df, on="__merge_key", how="left", suffixes=("", "_fin"))
+        fast_path_used = True
 
     rows = []
     for _, row in merged.iterrows():
@@ -110,6 +135,58 @@ def main() -> None:
 
     output_df = pd.DataFrame(rows)
 
+    needs_fallback = output_df[["Budget", "Payroll", "Cash", "Revenue", "Profit"]].replace("N/A", pd.NA).isna().all(axis=None)
+    if needs_fallback:
+        all_csvs = list_all_csv_paths(base)
+        scanned_count = len(all_csvs)
+        hits = scan_csv_headers_for_columns(all_csvs, FIN_NEEDLES)
+        top_hits = hits[:10]
+        frames: List[tuple[pd.DataFrame, Path]] = []
+        for path, cols in top_hits:
+            keep_cols = TEAM_KEY_CANDIDATES + cols
+            frame, used = load_team_keyed_frame(path, TEAM_KEY_CANDIDATES, keep_cols)
+            if frame.empty:
+                continue
+            # Map discovered cols to canonical names
+            rename_map = {}
+            for col in frame.columns:
+                low = col.lower()
+                if low in [c.lower() for c in BUDGET_COLS]:
+                    rename_map[col] = "Budget"
+                elif low in [c.lower() for c in PAYROLL_COLS]:
+                    rename_map[col] = "Payroll"
+                elif low in [c.lower() for c in CASH_COLS]:
+                    rename_map[col] = "Cash"
+                elif low in [c.lower() for c in REV_COLS]:
+                    rename_map[col] = "Revenue"
+                elif low in [c.lower() for c in PROFIT_COLS]:
+                    rename_map[col] = "Profit"
+            frame = frame.rename(columns=rename_map)
+            frames.append((frame, path))
+        if frames:
+            coalesced, used_files = coalesce_team_values(teams, frames, VALUE_COLS)
+            header_scan_files.extend(used_files)
+            rows = []
+            for _, row in coalesced.iterrows():
+                entry = {
+                    "Team": row.get("team_abbr") or row.get("team_name") or "N/A",
+                    "Budget": "N/A",
+                    "Payroll": "N/A",
+                    "Cash": "N/A",
+                    "Revenue": "N/A",
+                    "Profit": "N/A",
+                }
+                for col in VALUE_COLS:
+                    val = row.get(col)
+                    if pd.isna(val):
+                        continue
+                    num_val = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+                    entry[col] = f"{num_val:,.0f}" if pd.notna(num_val) else str(val)
+                rows.append(entry)
+            output_df = pd.DataFrame(rows)
+        else:
+            notes.append("Header scan found no usable finance columns.")
+
     budget_values = pd.to_numeric(output_df["Budget"].str.replace(",", "", regex=False), errors="coerce")
     output_df["__budget_val"] = budget_values
     budget_nonnull = output_df[budget_values.notna()]
@@ -135,7 +212,13 @@ def main() -> None:
 
     md_lines.append("## Data Sources")
     md_lines.append(f"- Teams: {team_path if team_path else 'None found'}")
-    md_lines.append(f"- Finances: {fin_path if fin_path else 'None found'}")
+    md_lines.append(f"- Finances (fast path): {fin_path if fast_path_used else 'None used'}")
+    if header_scan_files:
+        for f in header_scan_files:
+            md_lines.append(f"- Header scan: {f}")
+    elif scanned_count:
+        md_lines.append("- Header scan: none used")
+    md_lines.append(f"- Scanned {scanned_count} CSV headers for finance fields")
     md_lines.append("")
     md_lines.append("## Notes")
     if notes:
