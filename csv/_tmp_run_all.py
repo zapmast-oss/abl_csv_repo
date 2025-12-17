@@ -11,7 +11,6 @@ print("OUT_CSV:", OUT_CSV)
 
 import os
 import subprocess
-from subprocess import DEVNULL, STDOUT
 
 DEFAULT_DATA_ROOT = Path(
     r"C:\Users\earld\OneDrive\Documents\Out of the Park Developments\OOTP Baseball 26\saved_games\Action Baseball League.lg\import_export\csv"
@@ -40,20 +39,41 @@ def main() -> None:
     data_base = build_base_arg(data_root)
     scripts = sorted((SCRIPT_DIR / "abl_scripts").glob("z_abl_*.py"), key=lambda p: p.name)
     failures: list[str] = []
+    statuses: dict[str, str] = {}
     print(f"DATA_ROOT: {data_root}")
     print(f"--base passed to scripts: {data_base}")
     _start_cwd = os.getcwd()
     for script in scripts:
         print(f"Running {script.name}...")
-        proc = subprocess.run(
-            ["python", str(script), "--base", str(data_base)],
-            cwd=SCRIPT_DIR,
-            stdout=DEVNULL,
-            stderr=STDOUT,
-        )
+        cmd = ["python", str(script), "--base", str(data_base)]
+        proc = subprocess.run(cmd, cwd=SCRIPT_DIR, capture_output=True, text=True)
         assert os.getcwd() == _start_cwd, "A report script changed CWD; remove os.chdir() in that script."
-        if proc.returncode != 0:
-            failures.append(script.name)
+        combined = (proc.stdout or "") + (proc.stderr or "")
+        retry_needed = proc.returncode != 0 and "unrecognized arguments: --base" in combined.lower()
+        if retry_needed:
+            print(f"Retrying {script.name} without --base (argparse rejected --base)...")
+            retry_cmd = ["python", str(script)]
+            retry_proc = subprocess.run(retry_cmd, cwd=SCRIPT_DIR, capture_output=True, text=True)
+            assert os.getcwd() == _start_cwd, "A report script changed CWD; remove os.chdir() in that script."
+            if retry_proc.stdout:
+                print(retry_proc.stdout.strip())
+            if retry_proc.stderr:
+                print(retry_proc.stderr.strip())
+            if retry_proc.returncode == 0:
+                statuses[script.name] = "Succeeded on retry (no --base)"
+            else:
+                statuses[script.name] = "Failed after retry"
+                failures.append(script.name)
+        else:
+            if proc.stdout:
+                print(proc.stdout.strip())
+            if proc.stderr:
+                print(proc.stderr.strip())
+            if proc.returncode != 0:
+                failures.append(script.name)
+                statuses[script.name] = "Failed"
+            else:
+                statuses[script.name] = "Succeeded"
     print("Running manager parser...")
     parser_proc = subprocess.run(
         [
@@ -63,8 +83,8 @@ def main() -> None:
             "data_raw/ootp_html/history/league_200_all_managers_index.html",
         ],
         cwd=ROOT,
-        stdout=DEVNULL,
-        stderr=STDOUT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.STDOUT,
     )
     if parser_proc.returncode != 0:
         failures.append("parse_managers.py")
@@ -141,6 +161,10 @@ def main() -> None:
         print("MATCHUP_HOME and MATCHUP_AWAY must both be set; skipping matchup card.")
     else:
         print("No matchup env found; skipping manager matchup card.")
+    if statuses:
+        print("Run summary:")
+        for name, status in statuses.items():
+            print(f"- {name}: {status}")
     if failures:
         print("Scripts failed:", ", ".join(failures))
     else:
@@ -149,7 +173,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 
 
 
