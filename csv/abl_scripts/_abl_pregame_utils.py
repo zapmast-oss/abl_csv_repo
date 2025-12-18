@@ -11,6 +11,58 @@ import pandas as pd
 from pandas import DataFrame
 
 
+def safe_int(val):
+    return pd.to_numeric(pd.Series([val]), errors="coerce").astype("Int64").iloc[0]
+
+
+def safe_float(val):
+    return pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+
+
+def normalize_col(c: str) -> str:
+    """Lowercase and strip separators for header matching."""
+    return re.sub(r"[\\s_\\-]", "", str(c).lower())
+
+
+def format_int_commas(x) -> str:
+    num = pd.to_numeric(pd.Series([x]), errors="coerce").iloc[0]
+    if pd.isna(num):
+        return "N/A"
+    try:
+        return f"{int(num):,}"
+    except Exception:
+        return str(x)
+
+
+def format_money_short(x) -> str:
+    num = parse_money_to_float(x)
+    if pd.isna(num):
+        return "N/A"
+    absn = abs(num)
+    if absn >= 1_000_000:
+        return f"${num/1_000_000:.1f}m".rstrip("0").rstrip(".")
+    if absn >= 1_000:
+        return f"${num/1_000:.0f}k"
+    return f"${num:,.0f}"
+
+
+def parse_money_to_float(val):
+    """Parse money strings like $1,234 or 12.3m to float."""
+    if pd.isna(val):
+        return pd.NA
+    if isinstance(val, (int, float)):
+        return float(val)
+    txt = str(val).strip().lower().replace("$", "").replace(",", "")
+    mult = 1.0
+    if txt.endswith("m"):
+        mult = 1_000_000.0
+        txt = txt[:-1]
+    num = pd.to_numeric(pd.Series([txt]), errors="coerce").iloc[0]
+    if pd.isna(num):
+        return pd.NA
+    return float(num) * mult
+
+
 def resolve_base(args_base: str | None) -> Path:
     """Return the repo root; default to repo root if --base is omitted."""
     if args_base:
@@ -378,6 +430,167 @@ def load_team_financials(base: Path, league_id: int = 200, season: int | None = 
     coalesced, used_paths = coalesce_team_values(base_df, frames, ["budget", "payroll", "cash", "revenue", "profit"])
     sources_used = sources_used  # already ordered
     return coalesced, sources_used, notes
+
+
+def load_team_fans_markets(base: Path, league_id: int = 200, season: int | None = None) -> tuple[pd.DataFrame, List[str], List[str]]:
+    """Load fans/markets data from known finance-like sources."""
+    sources_used: List[str] = []
+    notes: List[str] = []
+    candidates = [
+        base / "csv" / "out" / "star_schema" / "fact_team_financials.csv",
+        base / "csv" / "ootp_csv" / "team_last_financials.csv",
+        base / "csv" / "ootp_csv" / "team_financials.csv",
+        base / "csv" / "ootp_csv" / "team_history_financials.csv",
+    ]
+    frames: List[pd.DataFrame] = []
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            df = pd.read_csv(path)
+        except Exception as exc:
+            notes.append(f"load error {path}: {exc}")
+            continue
+        norm_cols = {normalize_col(c): c for c in df.columns}
+        key_map = {
+            "team_id": next((v for k, v in norm_cols.items() if k in {"teamid", "id"}), None),
+            "team_abbr": next((v for k, v in norm_cols.items() if k in {"teamabbr", "abbr"}), None),
+            "team_name": next((v for k, v in norm_cols.items() if k in {"teamname", "team", "name"}), None),
+            "league_id": next((v for k, v in norm_cols.items() if k in {"leagueid", "lg", "league"}), None),
+            "season": next((v for k, v in norm_cols.items() if k in {"season", "year"}), None),
+        }
+
+        def find_field(matchers: List[str]) -> Optional[str]:
+            return next((v for k, v in norm_cols.items() if any(m in k for m in matchers)), None)
+
+        field_map = {
+            "market": find_field(["market"]),
+            "fan_interest": find_field(["faninterest", "interest"]),
+            "fan_loyalty": find_field(["fanloyalty", "loyalty"]),
+            "attendance_total": next((v for k, v in norm_cols.items() if k == "attendance" or "totalattendance" in k), None),
+            "attendance_avg": find_field(["avgattendance", "attendancepergame", "pergameattendance"]),
+            "ticket_price_avg": find_field(["avgticket", "ticketprice", "avgticketprice"]),
+            "gate_revenue": find_field(["ticketrevenue", "gatereceipts", "gaterevenue", "receipts"]),
+            "local_media": find_field(["localmedia", "mediarevenue", "tvrevenue", "radiorevenue"]),
+            "national_media": find_field(["nationalmedia"]),
+            "season_tickets": find_field(["seasontickets"]),
+        }
+
+        used_cols = [c for c in field_map.values() if c] + [v for v in key_map.values() if v]
+        df = df.loc[:, list(dict.fromkeys([c for c in used_cols if c]))].copy()
+        if key_map["league_id"]:
+            df = df[pd.to_numeric(df[key_map["league_id"]], errors="coerce") == league_id]
+        if key_map["season"]:
+            df = df.assign(_season=pd.to_numeric(df[key_map["season"]], errors="coerce"))
+            chosen = season if season is not None else df["_season"].max()
+            df = df[df["_season"] == chosen]
+            notes.append(f"{path.name} season chosen {chosen}")
+        if key_map["team_abbr"] and key_map["team_abbr"] in df.columns:
+            df["team_abbr"] = df[key_map["team_abbr"]].astype(str).str.strip().str.upper()
+        else:
+            df["team_abbr"] = pd.NA
+        if key_map["team_id"] and key_map["team_id"] in df.columns:
+            df["team_id"] = pd.to_numeric(df[key_map["team_id"]], errors="coerce").astype("Int64")
+        else:
+            df["team_id"] = pd.NA
+        out = pd.DataFrame()
+        out["team_abbr"] = df["team_abbr"]
+        out["team_id"] = df["team_id"]
+        for canon, col in field_map.items():
+            if col and col in df.columns:
+                out[canon] = df[col]
+            else:
+                out[canon] = pd.NA
+        frames.append(out)
+        sources_used.append(str(path))
+    if not frames:
+        return pd.DataFrame(columns=["team_abbr", "team_id", "market", "fan_interest", "fan_loyalty", "attendance_total", "attendance_avg", "ticket_price_avg", "gate_revenue", "local_media", "national_media", "season_tickets"]), sources_used, notes
+    # Coalesce
+    base_df = frames[0][["team_abbr", "team_id"]].copy()
+    for col in ["market", "fan_interest", "fan_loyalty", "attendance_total", "attendance_avg", "ticket_price_avg", "gate_revenue", "local_media", "national_media", "season_tickets"]:
+        base_df[col] = pd.NA
+    for frame in frames:
+        for col in ["market", "fan_interest", "fan_loyalty", "attendance_total", "attendance_avg", "ticket_price_avg", "gate_revenue", "local_media", "national_media", "season_tickets"]:
+            if col not in frame.columns:
+                continue
+            mask = base_df[col].isna() & frame[col].notna()
+            base_df.loc[mask, col] = frame.loc[mask, col]
+    return base_df, sources_used, notes
+
+
+def parse_batter_profile_all(base: Path, rel_path: str = "csv/out/text_out/prep/batter_profile_all.txt"):
+    """Parse batter_profile_all.txt into structured rows."""
+    path = base / rel_path
+    if not path.exists():
+        return pd.DataFrame(), [], ["batter profile not found"]
+    sources = [str(path)]
+    records = []
+    current_team = None
+    lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
+    for line in lines:
+        team_match = re.match(r"^TEAM\\s+(?P<abbr>\\w+)", line.strip(), re.IGNORECASE)
+        if team_match:
+            current_team = team_match.group("abbr").strip().upper()
+            continue
+        if not current_team or "|" not in line:
+            continue
+        parts = [p.strip() for p in line.split("|") if p.strip()]
+        if not parts:
+            continue
+        name_seg = parts[0]
+        tokens = name_seg.split()
+        player_name = " ".join(tokens[:2]) if len(tokens) >= 2 else name_seg
+        pos = next((t for t in tokens if len(t) <= 3 and t.isalpha()), "")
+        bats = next((t.replace("B:", "").replace("BATS:", "") for t in tokens if t.lower().startswith("b:")), "")
+        ratings = re.findall(r"(\\b[A-Z]{2,}\\b)\\s*(\\d+)", line)
+        best_tool = None
+        best_val = None
+        for tool, val in ratings:
+            val_num = safe_int(val)
+            if pd.isna(val_num):
+                continue
+            if best_val is None or val_num > best_val:
+                best_tool = tool
+                best_val = val_num
+        overall = best_val
+        records.append(
+            {
+                "team_abbr": current_team,
+                "player_name": player_name,
+                "pos": pos,
+                "bats": bats,
+                "overall_bat": overall,
+                "best_tool_name": best_tool,
+                "best_tool_value": best_val,
+                "raw": line.strip(),
+            }
+        )
+    df = pd.DataFrame(records)
+    return df, sources, []
+
+
+def load_manager_tendencies(base: Path, rel_path: str = "csv/out/csv_out/z_ABL_Manager_Tendencies.csv") -> tuple[pd.DataFrame, List[str], List[str]]:
+    sources: List[str] = []
+    notes: List[str] = []
+    path = base / rel_path
+    if not path.exists():
+        notes.append("No manager tendencies source found.")
+        return pd.DataFrame(), sources, notes
+    try:
+        df = pd.read_csv(path)
+    except Exception as exc:
+        notes.append(f"manager tendencies load error {path}: {exc}")
+        return pd.DataFrame(), sources, notes
+    sources.append(str(path))
+    return df, sources, notes
+
+
+def format_manager_tendencies(row: pd.Series) -> str:
+    parts = []
+    for col, label in [("smallball_rating", "Smallball"), ("hook_rating", "Hook"), ("platoon_rating", "Platoon")]:
+        if col in row and pd.notna(row[col]):
+            parts.append(f"{label}: {row[col]}")
+    return " | ".join(parts) if parts else "N/A"
 
 
 def find_pitcher_arsenal_sources(base: Path) -> List[Path]:

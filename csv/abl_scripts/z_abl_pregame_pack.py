@@ -9,17 +9,23 @@ from typing import Dict, List, Optional, Sequence, Tuple
 import pandas as pd
 
 from _abl_pregame_utils import (
+    format_int_commas,
+    format_money_short,
+    format_manager_tendencies,
     format_arsenal_display,
     find_best_pitch_for_pitcher,
     find_csv_files,
+    load_team_fans_markets,
     load_team_financials,
     load_pitcher_arsenals,
     load_best_csv,
+    parse_batter_profile_all,
     load_batter_profiles,
     load_players_lookup,
     load_projected_starters,
     load_team_reporting,
     load_manager_tendencies,
+    parse_money_to_float,
     md_table,
     normalize_team_table,
     resolve_base,
@@ -331,7 +337,8 @@ def describe_team_detail(
     team_id: Optional[int],
     team_key: str,
     park_map: Dict[str, dict],
-    fan_map: Dict[str, dict],
+    fan_by_abbr: Dict[str, pd.Series],
+    fan_by_id: Dict[int, pd.Series],
     fin_by_abbr: Dict[str, pd.Series],
     fin_by_id: Dict[int, pd.Series],
 ) -> List[str]:
@@ -373,17 +380,43 @@ def describe_team_detail(
             line += f" | Tier: {tier}"
         lines.append(line)
 
-    fan = fan_map.get(team_key, {})
-    market = fan.get("market")
-    interest = fan.get("interest")
-    attendance = fan.get("attendance")
-    fan_bits = [
-        f"Market {market}" if market not in (None, pd.NA) else None,
-        f"Interest {interest}" if interest not in (None, pd.NA) else None,
-        f"Attendance {attendance}" if attendance not in (None, pd.NA) else None,
-    ]
-    fan_bits = [b for b in fan_bits if b]
-    lines.append("Fans/Market: " + (", ".join(fan_bits) if fan_bits else "N/A"))
+    def lookup_fan_row() -> Optional[pd.Series]:
+        abbr_key = str(team_abbr).strip().upper() if team_abbr else None
+        if abbr_key and abbr_key in fan_by_abbr:
+            return fan_by_abbr[abbr_key]
+        if team_id is not None and pd.notna(team_id) and int(team_id) in fan_by_id:
+            return fan_by_id[int(team_id)]
+        return None
+
+    fan_row = lookup_fan_row()
+    if fan_row is None or fan_row.empty:
+        lines.append("Fans/Market: N/A")
+    else:
+        market = fan_row.get("market")
+        interest = fan_row.get("fan_interest")
+        loyalty = fan_row.get("fan_loyalty")
+        att_avg = fan_row.get("attendance_avg")
+        att_tot = fan_row.get("attendance_total")
+        ticket_price = fan_row.get("ticket_price_avg")
+        gate_rev = fan_row.get("gate_revenue")
+        bits = []
+        if pd.notna(market):
+            bits.append(f"Market {market}")
+        if pd.notna(interest):
+            bits.append(f"Interest {interest}")
+        if pd.notna(loyalty):
+            bits.append(f"Loyalty {loyalty}")
+        if pd.notna(att_avg):
+            bits.append(f"Att {format_int_commas(att_avg)}")
+        elif pd.notna(att_tot):
+            bits.append(f"Att {format_int_commas(att_tot)} (season)")
+        if pd.notna(ticket_price):
+            num = parse_money_to_float(ticket_price)
+            if pd.notna(num):
+                bits.append(f"Ticket ${num:,.2f}")
+        if pd.notna(gate_rev):
+            bits.append(f"Gate {format_money_short(gate_rev)}")
+        lines.append("Fans/Market: " + (" | ".join(bits) if bits else "N/A"))
     return lines
 
 
@@ -417,7 +450,7 @@ def main() -> None:
 
     park_map, park_path, park_notes = load_ballpark_info(base, teams)
     fin_df, fin_sources, fin_notes = load_team_financials(base, league_id=league_id, season=season)
-    fan_map, fan_paths, fan_notes = load_fan_info(base, teams)
+    fan_df, fan_sources, fan_notes = load_team_fans_markets(base, league_id=league_id, season=season)
     # Finance lookups and tiers
     fin_df = fin_df.copy()
     if "team_abbr" in fin_df.columns:
@@ -467,6 +500,25 @@ def main() -> None:
         if pd.notna(tid):
             fin_by_id[int(tid)] = row
 
+    fan_by_abbr: Dict[str, pd.Series] = {}
+    fan_by_id: Dict[int, pd.Series] = {}
+    if not fan_df.empty:
+        if "team_abbr" in fan_df.columns:
+            fan_df["__abbr"] = fan_df["team_abbr"].astype(str).str.strip().str.upper()
+        else:
+            fan_df["__abbr"] = pd.NA
+        if "team_id" in fan_df.columns:
+            fan_df["__team_id"] = pd.to_numeric(fan_df["team_id"], errors="coerce").astype("Int64")
+        else:
+            fan_df["__team_id"] = pd.Series(dtype="Int64")
+        for _, r in fan_df.iterrows():
+            abbr = r.get("__abbr")
+            tid = r.get("__team_id")
+            if pd.notna(abbr):
+                fan_by_abbr[str(abbr)] = r
+            if pd.notna(tid):
+                fan_by_id[int(tid)] = r
+
     arsenal_df, arsenal_sources, arsenal_notes = load_pitcher_arsenals(base)
     arsenal_by_id: Dict[int, pd.Series] = {}
     arsenal_by_name_team: Dict[tuple[str, str], pd.Series] = {}
@@ -495,7 +547,7 @@ def main() -> None:
             name = r.get("player_name")
             if pd.notna(pid):
                 player_name_map[int(pid)] = str(name)
-    batter_df, batter_sources, batter_notes = load_batter_profiles(base)
+    batter_df, batter_sources, batter_notes = parse_batter_profile_all(base)
     team_reporting_df, team_reporting_sources, team_reporting_notes = load_team_reporting(base, league_id=league_id)
     mgr_tend_df, mgr_tend_sources, mgr_tend_notes = load_manager_tendencies(base)
 
@@ -578,37 +630,12 @@ def main() -> None:
                 entry["name"] = f"Player {pid}"
         return away, home
 
-    def fan_tier_map() -> Dict[str, str]:
-        tier_map: Dict[str, str] = {}
-        vals = []
-        for key, data in fan_map.items():
-            val = data.get("market")
-            if val is None or val == "N/A":
-                val = data.get("attendance")
-            num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
-            vals.append((key, num))
-        nums = [v for _, v in vals if pd.notna(v)]
-        if len(nums) < 4:
-            return tier_map
-        q1 = pd.Series(nums).quantile(0.25)
-        q3 = pd.Series(nums).quantile(0.75)
-        for key, num in vals:
-            if pd.isna(num):
-                continue
-            if num >= q3:
-                tier_map[key] = "High"
-            elif num <= q1:
-                tier_map[key] = "Low"
-            else:
-                tier_map[key] = "Mid"
-        return tier_map
+    fan_tiers: Dict[str, str] = {}
 
-    fan_tiers = fan_tier_map()
-
-    batter_by_team: Dict[str, List[dict]] = {}
+    batter_by_team: Dict[str, pd.DataFrame] = {}
     if not batter_df.empty and "team_abbr" in batter_df.columns:
         for team, group in batter_df.groupby(batter_df["team_abbr"].str.upper()):
-            batter_by_team[team] = group.to_dict(orient="records")
+            batter_by_team[team] = group.copy()
 
     def ballpark_env(team_key: str) -> str:
         park = park_map.get(team_key, {})
@@ -617,7 +644,7 @@ def main() -> None:
         pf_hr = None
         for col, val in factors.items():
             low = str(col).lower()
-            if "pf avg" in low:
+            if "pf avg" in low or "pf_runs" in low or "pf runs" in low or low.strip() == "pf":
                 pf_avg = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
             if "pf hr" in low:
                 pf_hr = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
@@ -691,11 +718,9 @@ def main() -> None:
                         extras.append(f"{wins}-{losses}")
                 if pd.notna(titles):
                     extras.append(f"Titles {titles}")
-                tend_row = mgr_tend_df[mgr_tend_df["team_abbr"].astype(str).str.upper() == abbr]
+                tend_row = mgr_tend_df[mgr_tend_df["team_abbr"].astype(str).str.upper() == abbr] if not mgr_tend_df.empty else pd.DataFrame()
                 if not tend_row.empty:
-                    hook = tend_row.iloc[0].get("hook_rating") or tend_row.iloc[0].get("smallball_rating") or tend_row.iloc[0].get("platoon_rating")
-                    if hook is not None:
-                        extras.append(f"Tendencies: {hook}")
+                    extras.append("Tendencies: " + format_manager_tendencies(tend_row.iloc[0]))
                 else:
                     extras.append("Tendencies: N/A")
                 return base + (" | " + " | ".join(extras) if extras else "")
@@ -705,18 +730,38 @@ def main() -> None:
             # Finances/Fans
             away_tid = abbr_to_id.get(away_abbr)
             home_tid = abbr_to_id.get(home_abbr)
-            for line in describe_team_detail(away_abbr, away_tid, away_key, park_map, fan_map, fin_by_abbr, fin_by_id):
+            for line in describe_team_detail(away_abbr, away_tid, away_key, park_map, fan_by_abbr, fan_by_id, fin_by_abbr, fin_by_id):
                 md_lines.append(f"{away_abbr} {line}")
-            for line in describe_team_detail(home_abbr, home_tid, home_key, park_map, fan_map, fin_by_abbr, fin_by_id):
+            for line in describe_team_detail(home_abbr, home_tid, home_key, park_map, fan_by_abbr, fan_by_id, fin_by_abbr, fin_by_id):
                 md_lines.append(f"{home_abbr} {line}")
 
             # Key Bats
             md_lines.append("### Key Bats")
             def bats_for(team_abbr: str) -> List[str]:
-                entries = batter_by_team.get(team_abbr.upper(), [])
+                df_team = batter_by_team.get(team_abbr.upper())
+                if df_team is None or df_team.empty:
+                    return []
+                df_team = df_team.copy()
+                if "overall_bat" in df_team.columns:
+                    df_team["__overall"] = pd.to_numeric(df_team["overall_bat"], errors="coerce")
+                    df_team = df_team.sort_values("__overall", ascending=False)
                 lines = []
-                for rec in entries[:bats_top]:
-                    lines.append(f"{rec.get('player_name','N/A')} ? {rec.get('hook','')}".strip())
+                for _, rec in df_team.head(bats_top).iterrows():
+                    name = rec.get("player_name", "N/A")
+                    pos = rec.get("pos", "")
+                    bats_hand = rec.get("bats", "")
+                    best_tool = rec.get("best_tool_name")
+                    best_val = rec.get("best_tool_value")
+                    hook = f"Best: {best_tool} {best_val}" if pd.notna(best_tool) and pd.notna(best_val) else ""
+                    overall = rec.get("overall_bat")
+                    parts = [f"{name} ({pos})" if pos else name]
+                    if pd.notna(overall):
+                        parts.append(f"Bat {overall}")
+                    if hook:
+                        parts.append(hook)
+                    if bats_hand:
+                        parts.append(f"Bats: {bats_hand}")
+                    lines.append(" — ".join(parts))
                 return lines
             away_bats = bats_for(away_abbr)
             home_bats = bats_for(home_abbr)
@@ -762,7 +807,7 @@ def main() -> None:
         if path:
             data_sources.append(str(path))
     data_sources.extend(fin_sources)
-    data_sources.extend(str(p) for p in fan_paths)
+    data_sources.extend(str(p) for p in fan_sources)
     data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")
     if data_sources:
