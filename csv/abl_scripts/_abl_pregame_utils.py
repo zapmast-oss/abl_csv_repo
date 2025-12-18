@@ -537,6 +537,173 @@ def format_arsenal_display(row: pd.Series, top_k: int = 3) -> str:
         return "Arsenal: N/A (format error)"
 
 
+def normalize_person_name(s: str) -> str:
+    if not s:
+        return ""
+    txt = str(s).strip()
+    if "," in txt:
+        parts = [p.strip() for p in txt.split(",", 1)]
+        if len(parts) == 2:
+            txt = f"{parts[1]} {parts[0]}"
+    return re.sub(r"[^a-z0-9]", "", txt.lower())
+
+
+def find_best_pitch_for_pitcher(ars_df: pd.DataFrame, team_abbr: str, pitcher_name: str) -> tuple[Optional[str], Optional[str]]:
+    if ars_df is None or ars_df.empty or not pitcher_name:
+        return None, "no arsenal data"
+    name_key = normalize_person_name(pitcher_name)
+    team_key = (team_abbr or "").strip().upper()
+    matches = []
+    for _, row in ars_df.iterrows():
+        raw_name = row.get("player_name")
+        norm = normalize_person_name(raw_name)
+        if norm != name_key:
+            continue
+        row_team = str(row.get("team_abbr") or "").strip().upper()
+        if team_key and row_team and row_team != team_key:
+            continue
+        matches.append(row)
+    if not matches:
+        return None, "arsenal not found for starter"
+    row = matches[0]
+    best = row.get("best_pitch")
+    best_val = row.get("best_pitch_value")
+    if pd.notna(best) and (pd.isna(best_val) or best_val == ""):
+        return str(best), None
+    if pd.notna(best) and pd.notna(best_val):
+        try:
+            num = float(best_val)
+            fmt = f"{num:.0f}" if num.is_integer() else f"{num}"
+        except Exception:
+            fmt = str(best_val)
+        return f"{best} {fmt}", None
+    pitches = row.get("pitches") or []
+    if pitches:
+        numeric = []
+        for name, val in pitches:
+            num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+            if pd.notna(num):
+                numeric.append((name, num))
+        if numeric:
+            numeric.sort(key=lambda x: x[1], reverse=True)
+            top = numeric[0]
+            return f"{top[0]} {top[1]:.0f}" if float(top[1]).is_integer() else f"{top[0]} {top[1]}", None
+    return None, "arsenal present but best pitch unavailable"
+
+
+def load_players_lookup(base: Path) -> tuple[pd.DataFrame, List[str], List[str]]:
+    sources: List[str] = []
+    notes: List[str] = []
+    candidates = [base / "csv" / "ootp_csv" / "players.csv"]
+    candidates.extend((base / "csv" / "ootp_csv").glob("players*.csv"))
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            df = pd.read_csv(path)
+        except Exception as exc:
+            notes.append(f"players load error {path}: {exc}")
+            continue
+        pid_col = next((c for c in df.columns if str(c).lower() in {"player_id", "id"}), None)
+        first = next((c for c in df.columns if "first_name" == str(c).lower()), None)
+        last = next((c for c in df.columns if "last_name" == str(c).lower()), None)
+        name_col = next((c for c in df.columns if str(c).lower() in {"name", "player_name"}), None)
+        if not pid_col:
+            notes.append(f"players file missing player_id: {path}")
+            continue
+        df = df.copy()
+        df["player_id"] = pd.to_numeric(df[pid_col], errors="coerce").astype("Int64")
+        if first and last:
+            df["player_name"] = df[first].fillna("").astype(str) + " " + df[last].fillna("").astype(str)
+        elif name_col:
+            df["player_name"] = df[name_col].astype(str)
+        else:
+            df["player_name"] = df["player_id"].apply(lambda x: f"#{int(x)}" if pd.notna(x) else "Unknown")
+            notes.append("players file lacked name columns; using player_id display")
+        sources.append(str(path))
+        return df[["player_id", "player_name"]], sources, notes
+    return pd.DataFrame(columns=["player_id", "player_name"]), sources, notes
+
+
+def load_projected_starters(base: Path, league_id: int = 200) -> tuple[pd.DataFrame, List[str], List[str]]:
+    """Load projected starters from projected_starting_pitchers.csv or similar."""
+    sources: List[str] = []
+    notes: List[str] = []
+    root = base / "csv" / "ootp_csv"
+    primary = root / "projected_starting_pitchers.csv"
+    candidates = []
+    if primary.exists():
+        candidates.append(primary)
+    else:
+        for path in root.rglob("*.csv"):
+            name = path.name.lower()
+            if all(tok in name for tok in ["projected", "starting", "pitch"]):
+                candidates.append(path)
+    if not candidates:
+        notes.append("No projected starters file found.")
+        return pd.DataFrame(), sources, notes
+    path = candidates[0]
+    sources.append(str(path))
+    try:
+        df = pd.read_csv(path)
+    except Exception as exc:
+        notes.append(f"Projected starters load error: {exc}")
+        return pd.DataFrame(), sources, notes
+
+    team_cols = [c for c in df.columns if any(tok in str(c).lower() for tok in ["team_id", "team", "abbr", "team abbr", "team name"])]
+    team_col = team_cols[0] if team_cols else None
+    pid_cols = [c for c in df.columns if "player" in str(c).lower() and "id" in str(c).lower()] or [c for c in df.columns if str(c).lower() == "id"]
+    slot_cols = [c for c in df.columns if re.match(r"(starter|sp)_?\\d+", str(c).lower())]
+    order_col = next((c for c in df.columns if any(tok in str(c).lower() for tok in ["rotation", "order", "slot", "sequence"])), None)
+
+    if not team_col:
+        notes.append("Projected starters missing team column.")
+        return pd.DataFrame(), sources, notes
+
+    records = []
+    if slot_cols:
+        for _, row in df.iterrows():
+            tid = row.get(team_col)
+            pid_val = None
+            for col in slot_cols:
+                val = row.get(col)
+                val_num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+                if pd.notna(val_num) and val_num > 0:
+                    pid_val = int(val_num)
+                    break
+            if pid_val is None:
+                continue
+            records.append({"team_raw": tid, "player_id": pid_val, "source_file": str(path)})
+    elif order_col and pid_cols:
+        pid_col = pid_cols[0]
+        df = df.copy()
+        df["__order"] = pd.to_numeric(df[order_col], errors="coerce")
+        df = df.sort_values("__order")
+        seen = set()
+        for _, row in df.iterrows():
+            tid = row.get(team_col)
+            if tid in seen:
+                continue
+            pid_val = pd.to_numeric(pd.Series([row.get(pid_col)]), errors="coerce").iloc[0]
+            if pd.notna(pid_val) and pid_val > 0:
+                records.append({"team_raw": tid, "player_id": int(pid_val), "source_file": str(path)})
+                seen.add(tid)
+    else:
+        notes.append("Projected starters file structure not understood.")
+        return pd.DataFrame(), sources, notes
+
+    proj_df = pd.DataFrame(records)
+    if proj_df.empty:
+        notes.append("Projected starters empty after parsing.")
+        return proj_df, sources, notes
+
+    if "team_id" in df.columns:
+        proj_df["team_id"] = pd.to_numeric(proj_df["team_raw"], errors="coerce").astype("Int64")
+    if "abbr" in [c.lower() for c in df.columns]:
+        proj_df["team_abbr"] = proj_df["team_raw"].astype(str).str.upper()
+    return proj_df, sources, notes
+
+
 def md_table(df: pd.DataFrame, columns: Sequence[str], header_map: Optional[dict[str, str]] = None) -> str:
     """Render a Markdown table from df with the requested columns."""
     header_map = header_map or {}

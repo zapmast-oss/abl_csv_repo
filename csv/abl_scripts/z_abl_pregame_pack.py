@@ -10,9 +10,12 @@ import pandas as pd
 
 from _abl_pregame_utils import (
     format_arsenal_display,
+    find_best_pitch_for_pitcher,
     find_csv_files,
     load_pitcher_arsenals,
     load_best_csv,
+    load_players_lookup,
+    load_projected_starters,
     md_table,
     normalize_team_table,
     resolve_base,
@@ -372,6 +375,16 @@ def main() -> None:
         if name_key:
             arsenal_by_name_team[(name_key, team_key)] = row
 
+    proj_df, proj_sources, proj_notes = load_projected_starters(base, league_id=league_id)
+    players_df, player_sources, player_notes = load_players_lookup(base)
+    player_name_map = {}
+    if not players_df.empty:
+        for _, r in players_df.iterrows():
+            pid = r.get("player_id")
+            name = r.get("player_name")
+            if pd.notna(pid):
+                player_name_map[int(pid)] = str(name)
+
     matchups, featured_df, featured_path = discover_featured_matchups(base)
     explicit = parse_matchups_arg(args.matchups)
     if explicit:
@@ -380,6 +393,76 @@ def main() -> None:
     prob_df, prob_path = choose_probables_source(base, featured_df, featured_path)
     pitch_df, pitch_path = load_best_csv(base, PITCH_RATINGS_PATTERNS)
     bat_df, bat_path = load_best_csv(base, BAT_RATINGS_PATTERNS)
+    games_path = base / "csv" / "ootp_csv" / "games.csv"
+    games_df = None
+    if games_path.exists():
+        try:
+            games_df = pd.read_csv(games_path)
+        except Exception:
+            games_df = None
+
+    abbr_to_id = {}
+    if "team_abbr" in teams.columns and "team_id" in teams.columns:
+        for _, row in teams.iterrows():
+            abbr = row.get("team_abbr")
+            tid = row.get("team_id")
+            if pd.notna(abbr) and pd.notna(tid):
+                abbr_to_id[str(abbr).upper()] = int(tid)
+
+    proj_by_teamid = {}
+    proj_by_abbr = {}
+    if not proj_df.empty:
+        for _, row in proj_df.iterrows():
+            tid = row.get("team_id")
+            pid = row.get("player_id")
+            tabbr = row.get("team_abbr")
+            if pd.notna(tid):
+                proj_by_teamid[int(tid)] = pid
+            if pd.notna(tabbr):
+                proj_by_abbr[str(tabbr).upper()] = pid
+
+    def resolve_starter(away_abbr: str, home_abbr: str) -> tuple[dict, dict]:
+        away = {"id": None, "name": None, "source": None}
+        home = {"id": None, "name": None, "source": None}
+        away_tid = abbr_to_id.get(away_abbr)
+        home_tid = abbr_to_id.get(home_abbr)
+        if games_df is not None and away_tid and home_tid:
+            match_rows = games_df[(games_df["away_team"] == away_tid) & (games_df["home_team"] == home_tid)]
+            if not match_rows.empty:
+                row = match_rows.iloc[-1]
+                a_id = pd.to_numeric(pd.Series([row.get("starter0")]), errors="coerce").iloc[0]
+                h_id = pd.to_numeric(pd.Series([row.get("starter1")]), errors="coerce").iloc[0]
+                if pd.notna(a_id) and a_id > 0:
+                    away["id"] = int(a_id)
+                    away["source"] = "games.csv"
+                if pd.notna(h_id) and h_id > 0:
+                    home["id"] = int(h_id)
+                    home["source"] = "games.csv"
+        if away["id"] is None:
+            pid = None
+            if away_tid and away_tid in proj_by_teamid:
+                pid = proj_by_teamid.get(away_tid)
+            elif away_abbr in proj_by_abbr:
+                pid = proj_by_abbr.get(away_abbr)
+            if pid:
+                away["id"] = pid
+                away["source"] = "projected"
+        if home["id"] is None:
+            pid = None
+            if home_tid and home_tid in proj_by_teamid:
+                pid = proj_by_teamid.get(home_tid)
+            elif home_abbr in proj_by_abbr:
+                pid = proj_by_abbr.get(home_abbr)
+            if pid:
+                home["id"] = pid
+                home["source"] = "projected"
+        for entry in (away, home):
+            pid = entry.get("id")
+            if pid is not None and pid in player_name_map:
+                entry["name"] = player_name_map[pid]
+            elif pid is not None:
+                entry["name"] = f"Player {pid}"
+        return away, home
 
     season_label = season if season is not None else "N/A"
     week_label = f"{week:02d}" if isinstance(week, int) else ("N/A" if week is None else str(week))
@@ -390,18 +473,12 @@ def main() -> None:
     else:
         for away_abbr, home_abbr in matchups:
             md_lines.append(f"## {away_abbr} at {home_abbr}")
-            away_prob, home_prob = describe_probables(prob_df, away_abbr, home_abbr)
-            if away_prob or home_prob:
-                away_name = away_prob.get("name") if away_prob else None
-                home_name = home_prob.get("name") if home_prob else None
-                away_txt = away_name if away_name else "N/A"
-                home_txt = home_name if home_name else "N/A"
-                md_lines.append(f"Probable Starters: {away_abbr} {away_txt} vs {home_abbr} {home_txt}")
-            else:
-                md_lines.append("Probable Starters: TBD")
-
-            md_lines.append(describe_arsenal(pitch_df, away_prob) if away_prob else "Arsenal: N/A")
-            md_lines.append(describe_arsenal(pitch_df, home_prob) if home_prob else "Arsenal: N/A")
+            away_prob, home_prob = resolve_starter(away_abbr, home_abbr)
+            away_name = away_prob.get("name") or "TBD"
+            home_name = home_prob.get("name") or "TBD"
+            away_src = away_prob.get("source") or "unknown"
+            home_src = home_prob.get("source") or "unknown"
+            md_lines.append(f"Probable Starters: {away_abbr} {away_name} ({away_src}) vs {home_abbr} {home_name} ({home_src})")
 
             md_lines.append(describe_key_bats(bat_df, away_abbr))
             md_lines.append(describe_key_bats(bat_df, home_abbr))
@@ -431,16 +508,17 @@ def main() -> None:
                     return "Arsenal: N/A (no repertoire source found)"
                 return format_arsenal_display(row, top_k=arsenal_top)
 
-            away_ars = arsenal_line(away_prob, away_abbr)
-            home_ars = arsenal_line(home_prob, home_abbr)
-            md_lines.append(f"{away_abbr} starter: {away_ars}")
-            md_lines.append(f"{home_abbr} starter: {home_ars}")
+            away_best, away_note = find_best_pitch_for_pitcher(arsenal_df, away_abbr, away_name)
+            home_best, home_note = find_best_pitch_for_pitcher(arsenal_df, home_abbr, home_name)
+            md_lines.append(f"{away_abbr} starter: {away_name}")
+            md_lines.append(f"Best pitch: {away_best if away_best else 'N/A'}" + (f" ({away_note})" if away_note else ""))
+            md_lines.append(f"{home_abbr} starter: {home_name}")
+            md_lines.append(f"Best pitch: {home_best if home_best else 'N/A'}" + (f" ({home_note})" if home_note else ""))
             if arsenal_sources:
                 md_lines.append("Arsenal sources: " + "; ".join(arsenal_sources))
             else:
                 md_lines.append("Arsenal sources: none found")
-            if arsenal_notes:
-                md_lines.append("Arsenal notes: " + "; ".join(arsenal_notes))
+            md_lines.append("Starter source: games.csv starters where present; otherwise projected_starting_pitchers.csv")
             md_lines.append("")
 
     data_sources: List[str] = []
