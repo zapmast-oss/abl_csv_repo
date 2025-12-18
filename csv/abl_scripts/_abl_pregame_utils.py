@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Iterable, List, Optional, Sequence, Tuple
 
 import pandas as pd
+from pandas import DataFrame
 
 
 def resolve_base(args_base: str | None) -> Path:
@@ -210,6 +211,172 @@ def coalesce_team_values(team_df: pd.DataFrame, frames: List[tuple[pd.DataFrame,
         if used_in_frame:
             used_paths.append(path)
     return result, used_paths
+
+
+def load_team_financials(base: Path, league_id: int = 200, season: int | None = None) -> tuple[pd.DataFrame, List[str], List[str]]:
+    """Load team financials from known sources in priority order."""
+    sources_used: List[str] = []
+    notes: List[str] = []
+
+    def detect_cols(df: DataFrame, wanted: dict[str, list[str]]) -> dict[str, Optional[str]]:
+        found: dict[str, Optional[str]] = {k: None for k in wanted}
+        headers = list(df.columns)
+        lower_map = {h.lower(): h for h in headers}
+
+        for canon, synonyms in wanted.items():
+            # exact match
+            for syn in synonyms:
+                col = lower_map.get(syn.lower())
+                if col:
+                    found[canon] = col
+                    break
+            if found[canon]:
+                continue
+            # substring contains
+            for h in headers:
+                low = h.lower()
+                if any(syn.lower() in low for syn in synonyms):
+                    found[canon] = h
+                    break
+            if found[canon]:
+                continue
+            # word boundary
+            for h in headers:
+                low = h.lower()
+                if any(f" {syn.lower()} " in f" {low} " for syn in synonyms):
+                    found[canon] = h
+                    break
+        return found
+
+    team_key_candidates = ["team_id", "ID", "team_abbr", "Abbr", "team_name", "Team Name"]
+    season_keys = ["season", "year"]
+    league_keys = ["league_id", "LG", "league"]
+    synonym_map = {
+        "budget": ["Bgt", "budget", "team_budget", "player_budget", "budget_total", "budget (", "budget$", "BgtSpc"],
+        "payroll": ["Pay", "payroll", "player_payroll", "team_payroll", "salary", "salaries", "total_salary", "player_payroll", "player_payroll"],
+        "cash": ["cash", "cash_on_hand", "balance", "bank", "cash balance", "cash_owner", "cash_trades"],
+        "revenue": ["Revenue", "revenue", "total_revenue", "income", "total_income"],
+        "profit": ["profit", "net", "net_income", "operating_profit", "net profit", "financial_balance"],
+    }
+
+    def normalize_keys(df: DataFrame) -> DataFrame:
+        df = df.copy()
+        if "team_abbr" in df.columns:
+            df["team_abbr"] = df["team_abbr"].astype(str).str.strip().str.upper()
+        if "team_name" in df.columns:
+            df["team_name"] = df["team_name"].astype(str).str.strip()
+        return df
+
+    def apply_filters(df: DataFrame, key_map: dict[str, Optional[str]]) -> DataFrame:
+        filt = df
+        if key_map.get("league_id"):
+            filt = filt[pd.to_numeric(filt[key_map["league_id"]], errors="coerce") == league_id]
+        season_col = next((c for c in season_keys if key_map.get(c)), None)
+        if season_col:
+            season_vals = pd.to_numeric(filt[key_map[season_col]], errors="coerce")
+            filt = filt.assign(_season=season_vals)
+            chosen = season if season is not None else season_vals.max()
+            filt = filt[filt["_season"] == chosen]
+            notes.append(f"Selected season: {int(chosen) if pd.notna(chosen) else 'N/A'} from {season_col}")
+        return filt
+
+    def pick_keys(df: DataFrame) -> dict[str, Optional[str]]:
+        key_map: dict[str, Optional[str]] = {"team_id": None, "team_abbr": None, "team_name": None, "league_id": None, "season": None}
+        lower_map = {c.lower(): c for c in df.columns}
+        for cand in ["team_id", "id"]:
+            if cand in lower_map:
+                key_map["team_id"] = lower_map[cand]
+                break
+        for cand in ["team_abbr", "abbr"]:
+            if cand in lower_map:
+                key_map["team_abbr"] = lower_map[cand]
+                break
+        for cand in ["team_name", "team", "name"]:
+            if cand in lower_map:
+                key_map["team_name"] = lower_map[cand]
+                break
+        for cand in ["league_id", "lg", "league"]:
+            if cand in lower_map:
+                key_map["league_id"] = lower_map[cand]
+                break
+        for cand in season_keys:
+            if cand in lower_map:
+                key_map["season"] = lower_map[cand]
+                break
+        return key_map
+
+    def load_source(path: Path) -> tuple[DataFrame, dict[str, Optional[str]], dict[str, Optional[str]]]:
+        df = pd.read_csv(path)
+        key_map = pick_keys(df)
+        col_map = detect_cols(df, synonym_map)
+        used_cols = [c for c in col_map.values() if c] + [v for v in key_map.values() if v]
+        df = df.loc[:, [c for c in used_cols if c in df.columns]].copy()
+        df = df.rename(columns={col_map[k]: k for k in col_map if col_map[k]})
+        df = df.rename(columns={key_map.get("team_id", ""): "team_id", key_map.get("team_abbr", ""): "team_abbr", key_map.get("team_name", ""): "team_name"})
+        if key_map.get("league_id"):
+            df = df.rename(columns={key_map["league_id"]: "league_id"})
+        if key_map.get("season"):
+            df = df.rename(columns={key_map["season"]: "season"})
+        df = apply_filters(df, key_map)
+        df = normalize_keys(df)
+        return df, key_map, col_map
+
+    frames: list[tuple[DataFrame, Path]] = []
+
+    # Priority 1: fact_team_financials
+    fact_path = base / "csv" / "out" / "star_schema" / "fact_team_financials.csv"
+    if fact_path.exists():
+        try:
+            df, key_map, col_map = load_source(fact_path)
+            if not df.empty:
+                frames.append((df, fact_path))
+                sources_used.append(str(fact_path))
+                notes.append(f"fact_team_financials columns: {col_map}")
+        except Exception as exc:
+            notes.append(f"fact_team_financials load error: {exc}")
+
+    # Priority 2: team_last_financials, team_financials
+    for name in ["team_last_financials.csv", "team_financials.csv"]:
+        path = base / "csv" / "ootp_csv" / name
+        if not path.exists():
+            continue
+        try:
+            df, key_map, col_map = load_source(path)
+            if not df.empty:
+                frames.append((df, path))
+                sources_used.append(str(path))
+                notes.append(f"{name} columns: {col_map}")
+                break
+        except Exception as exc:
+            notes.append(f"{name} load error: {exc}")
+
+    # Priority 3: team_history_financials
+    history_path = base / "csv" / "ootp_csv" / "team_history_financials.csv"
+    if history_path.exists():
+        try:
+            df, key_map, col_map = load_source(history_path)
+            if not df.empty:
+                frames.append((df, history_path))
+                sources_used.append(str(history_path))
+                notes.append(f"team_history_financials columns: {col_map}")
+        except Exception as exc:
+            notes.append(f"team_history_financials load error: {exc}")
+
+    if not frames:
+        result = pd.DataFrame(columns=["team_id", "team_abbr", "team_name", "budget", "payroll", "cash", "revenue", "profit"])
+        return result, sources_used, notes
+
+    # Start with an empty scaffold of teams from the first frame
+    # Build base scaffold with whatever team keys are present
+    scaffold_cols = [c for c in ["team_id", "team_abbr", "team_name"] if c in frames[0][0].columns]
+    base_df = frames[0][0][scaffold_cols].copy()
+    for col in ["team_id", "team_abbr", "team_name"]:
+        if col not in base_df.columns:
+            base_df[col] = pd.NA
+    base_df["__merge_key"] = _merge_key_from_columns(base_df, ["team_id", "team_abbr", "team_name"])
+    coalesced, used_paths = coalesce_team_values(base_df, frames, ["budget", "payroll", "cash", "revenue", "profit"])
+    sources_used = sources_used  # already ordered
+    return coalesced, sources_used, notes
 
 
 def md_table(df: pd.DataFrame, columns: Sequence[str], header_map: Optional[dict[str, str]] = None) -> str:
