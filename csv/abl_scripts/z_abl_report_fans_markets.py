@@ -32,7 +32,7 @@ LOYALTY_COLS = ["fan_loyalty", "loyalty"]
 ATTENDANCE_COLS = ["attendance", "att", "home_attendance", "attendance_total", "attendance_ytd"]
 TICKET_COLS = ["ticket_price", "avg_ticket_price", "ticket"]
 MEDIA_COLS = ["media_revenue", "tv_revenue", "radio_revenue", "local_media"]
-TEAM_KEY_CANDIDATES = ["team_id", "team_abbr", "team_name", "league_id"]
+TEAM_KEY_CANDIDATES = ["team_id", "team_abbr", "team_name", "league_id", "ID", "Abbr"]
 VALUE_COLS = ["Market Size", "Fan Interest", "Fan Loyalty", "Attendance", "Ticket Price", "Media Revenue"]
 
 
@@ -101,6 +101,7 @@ def main() -> None:
 
     notes: List[str] = []
     header_scan_files: List[Path] = []
+    scan_errors: List[Path] = []
     scanned_count = 0
     if not fan_dfs:
         notes.append("No fans/market CSVs found; attempting header scan fallback.")
@@ -132,12 +133,15 @@ def main() -> None:
     if needs_fallback:
         all_csvs = list_all_csv_paths(base)
         scanned_count = len(all_csvs)
-        hits = scan_csv_headers_for_columns(all_csvs, FAN_NEEDLES)
+        hits, scan_errors = scan_csv_headers_for_columns(all_csvs, FAN_NEEDLES)
         top_hits = hits[:10]
         frames: List[tuple[pd.DataFrame, Path]] = []
         for path, cols in top_hits:
             keep_cols = TEAM_KEY_CANDIDATES + cols
-            frame, used = load_team_keyed_frame(path, TEAM_KEY_CANDIDATES, keep_cols)
+            try:
+                frame, used = load_team_keyed_frame(path, TEAM_KEY_CANDIDATES, keep_cols)
+            except Exception:
+                continue
             if frame.empty:
                 continue
             rename_map = {}
@@ -180,6 +184,8 @@ def main() -> None:
             output_df = pd.DataFrame(rows)
         else:
             notes.append("Header scan found no usable fans/markets columns.")
+            if scanned_count:
+                notes.append(f"No usable sources found (scanned {scanned_count} CSV headers).")
     md_lines = ["# ABL Fans & Markets", ""]
     md_lines.append(
         md_table(
@@ -201,6 +207,8 @@ def main() -> None:
     elif scanned_count:
         md_lines.append("- Header scan: none used")
     md_lines.append(f"- Scanned {scanned_count} CSV headers for fans/markets fields")
+    if scan_errors:
+        md_lines.append(f"- Header scan errors on {len(scan_errors)} file(s)")
     md_lines.append("")
     md_lines.append("## Notes")
     if notes:

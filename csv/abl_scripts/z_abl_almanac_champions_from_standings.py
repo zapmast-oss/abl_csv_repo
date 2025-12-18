@@ -105,7 +105,10 @@ def _dedupe_by_team(df: pd.DataFrame) -> pd.DataFrame:
                 return group[clinched].iloc[0]
         return group.iloc[0]
 
-    return df.groupby("team_name", group_keys=False).apply(pick).reset_index(drop=True)
+    try:
+        return df.groupby("team_name", group_keys=False).apply(pick, include_groups=False).reset_index(drop=True)
+    except TypeError:
+        return df.groupby("team_name", group_keys=False).apply(pick).reset_index(drop=True)
 
 
 def _attach_dim(

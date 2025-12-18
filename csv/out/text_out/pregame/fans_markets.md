@@ -30,6 +30,7 @@
 ## Data Sources
 - Teams: C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_team_park.csv
 - Fans/Markets (fast path): None found
+- Header scan: C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_player_profile.csv
 - Header scan: C:\sbv_repo\abl_csv_repo\csv\ootp_csv\games.csv
 - Header scan: C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_financials.csv
 - Scanned 473 CSV headers for fans/markets fields

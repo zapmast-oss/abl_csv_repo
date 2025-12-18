@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -77,7 +77,7 @@ def main():
 
     manifest = {
         "season": 1981,
-        "created_at": datetime.utcnow().isoformat() + "Z",
+        "created_at": datetime.now(timezone.utc).isoformat(),
         "archive_dir": str(SEASON_ARCHIVE),
         "files": archived,
     }

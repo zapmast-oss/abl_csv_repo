@@ -30,6 +30,7 @@
 ## Data Sources
 - Teams: C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_team_park.csv
 - Finances (fast path): C:\sbv_repo\abl_csv_repo\csv\out\star_schema\fact_team_financials.csv
+- Header scan: C:\sbv_repo\abl_csv_repo\csv\out\star_schema\fact_team_financials.csv
 - Header scan: C:\sbv_repo\abl_csv_repo\csv\out\almanac\1972\player_financials_1972_league200.csv
 - Header scan: C:\sbv_repo\abl_csv_repo\csv\out\almanac\1973\player_financials_1973_league200.csv
 - Header scan: C:\sbv_repo\abl_csv_repo\csv\out\almanac\1974\player_financials_1974_league200.csv

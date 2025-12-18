@@ -40,8 +40,12 @@ OVERALL_BAT_COLS = ["overall", "overall_bat", "overallbat", "rating_overall", "w
 def merge_key(df: pd.DataFrame) -> pd.Series:
     if "team_id" in df.columns:
         return df["team_id"].apply(lambda v: f"id:{int(v)}" if pd.notna(v) else "")
+    if "ID" in df.columns:
+        return pd.to_numeric(df["ID"], errors="coerce").apply(lambda v: f"id:{int(v)}" if pd.notna(v) else "")
     if "team_abbr" in df.columns:
         return df["team_abbr"].fillna("").astype(str).str.upper()
+    if "Abbr" in df.columns:
+        return df["Abbr"].fillna("").astype(str).str.upper()
     if "team_name" in df.columns:
         return df["team_name"].fillna("").astype(str).str.lower()
     return pd.Series([""] * len(df))
@@ -60,9 +64,13 @@ def load_ballpark_info(base: Path, teams: pd.DataFrame) -> tuple[Dict[str, dict]
         notes.append("No ballpark data found.")
         return park_map, parks_path, notes
 
-    park_name_col = pick_col(parks_df, ["park_name", "ballpark", "stadium", "park"])
+    park_name_col = pick_col(parks_df, ["park_name", "ballpark", "stadium", "park", "Park"])
     capacity_col = pick_col(parks_df, ["capacity", "cap"])
-    factor_cols = [c for c in parks_df.columns if any(tok in c.lower() for tok in ["pf_", "park_", "factor", "hr", "runs"])]
+    factor_cols = [
+        c
+        for c in parks_df.columns
+        if any(tok in c.lower() for tok in ["pf_", "pf ", "pf", "park_", "factor", "hr", "runs", "avg l", "avg r", "avg d"])
+    ]
 
     parks_df = parks_df.copy()
     parks_df["__merge_key"] = merge_key(parks_df)
@@ -315,8 +323,8 @@ def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate ABL pregame pack.")
     parser.add_argument("--base", help="Repo root (optional).")
-    parser.add_argument("--season", type=int, required=True)
-    parser.add_argument("--week", type=int, required=True)
+    parser.add_argument("--season", type=int, required=False)
+    parser.add_argument("--week", type=int, required=False)
     parser.add_argument("--league_id", type=int, default=200)
     parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
     args = parser.parse_args()
@@ -347,7 +355,9 @@ def main() -> None:
     pitch_df, pitch_path = load_best_csv(base, PITCH_RATINGS_PATTERNS)
     bat_df, bat_path = load_best_csv(base, BAT_RATINGS_PATTERNS)
 
-    md_lines = [f"# ABL Pregame Pack - Season {season} Week {week:02d}", ""]
+    season_label = season if season is not None else "N/A"
+    week_label = f"{week:02d}" if isinstance(week, int) else ("N/A" if week is None else str(week))
+    md_lines = [f"# ABL Pregame Pack - Season {season_label} Week {week_label}", ""]
 
     if not matchups:
         md_lines.append("No featured matchups artifact found; use --matchups to provide pairs like CHI@MIA.")

@@ -97,9 +97,12 @@ def clean_numeric(df: pd.DataFrame) -> pd.DataFrame:
         if df[col].dtype == object:
             df[col] = df[col].astype(str).str.replace(",", "", regex=False).str.replace("%", "", regex=False)
             try:
-                df[col] = pd.to_numeric(df[col], errors="ignore")
+                orig = df[col]
+                conv = pd.to_numeric(orig, errors="coerce")
+                if conv.notna().sum() > 0:
+                    df[col] = conv.where(conv.notna(), orig)
             except Exception:
-                pass
+                df[col] = orig
     return df
 
 

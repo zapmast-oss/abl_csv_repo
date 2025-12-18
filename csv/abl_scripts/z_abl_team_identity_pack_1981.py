@@ -43,7 +43,7 @@ def load_team_abbrs() -> pd.DataFrame:
         raise SystemExit("dim_team_park.csv missing required ID/Abbr rows for team identity pack.")
 
     filtered = filtered.rename(columns={id_col: "team_id", abbr_col: "team_abbr"})
-    filtered["team_abbr"] = filtered["team_abbr"].astype(str).strip()
+    filtered["team_abbr"] = filtered["team_abbr"].astype(str).str.strip()
     return filtered[["team_id", "team_abbr"]]
 
 

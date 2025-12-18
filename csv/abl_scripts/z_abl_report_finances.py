@@ -44,7 +44,7 @@ FIN_NEEDLES = [
     "salaries",
     "balance",
 ]
-TEAM_KEY_CANDIDATES = ["team_id", "team_abbr", "team_name", "league_id"]
+TEAM_KEY_CANDIDATES = ["team_id", "team_abbr", "team_name", "league_id", "ID", "Abbr"]
 VALUE_COLS = ["Budget", "Payroll", "Cash", "Revenue", "Profit"]
 
 
@@ -75,6 +75,7 @@ def main() -> None:
     fin_df, fin_path = load_best_csv(base, FIN_PATTERNS)
     notes: List[str] = []
     header_scan_files: List[Path] = []
+    scan_errors: List[Path] = []
     scanned_count = 0
 
     budget_col = pick_col(fin_df, BUDGET_COLS)
@@ -139,15 +140,17 @@ def main() -> None:
     if needs_fallback:
         all_csvs = list_all_csv_paths(base)
         scanned_count = len(all_csvs)
-        hits = scan_csv_headers_for_columns(all_csvs, FIN_NEEDLES)
+        hits, scan_errors = scan_csv_headers_for_columns(all_csvs, FIN_NEEDLES)
         top_hits = hits[:10]
         frames: List[tuple[pd.DataFrame, Path]] = []
         for path, cols in top_hits:
             keep_cols = TEAM_KEY_CANDIDATES + cols
-            frame, used = load_team_keyed_frame(path, TEAM_KEY_CANDIDATES, keep_cols)
+            try:
+                frame, used = load_team_keyed_frame(path, TEAM_KEY_CANDIDATES, keep_cols)
+            except Exception:
+                continue
             if frame.empty:
                 continue
-            # Map discovered cols to canonical names
             rename_map = {}
             for col in frame.columns:
                 low = col.lower()
@@ -186,6 +189,8 @@ def main() -> None:
             output_df = pd.DataFrame(rows)
         else:
             notes.append("Header scan found no usable finance columns.")
+            if scanned_count:
+                notes.append(f"No usable sources found (scanned {scanned_count} CSV headers).")
 
     budget_values = pd.to_numeric(output_df["Budget"].str.replace(",", "", regex=False), errors="coerce")
     output_df["__budget_val"] = budget_values
@@ -219,6 +224,8 @@ def main() -> None:
     elif scanned_count:
         md_lines.append("- Header scan: none used")
     md_lines.append(f"- Scanned {scanned_count} CSV headers for finance fields")
+    if scan_errors:
+        md_lines.append(f"- Header scan errors on {len(scan_errors)} file(s)")
     md_lines.append("")
     md_lines.append("## Notes")
     if notes:

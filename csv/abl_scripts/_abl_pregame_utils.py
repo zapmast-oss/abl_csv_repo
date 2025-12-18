@@ -61,20 +61,22 @@ def list_all_csv_paths(base: Path) -> List[Path]:
     return paths
 
 
-def scan_csv_headers_for_columns(csv_paths: Sequence[Path], needle_substrings: Sequence[str]) -> List[tuple[Path, List[str]]]:
-    """Scan headers only; return paths with columns containing any needle substrings."""
+def scan_csv_headers_for_columns(csv_paths: Sequence[Path], needle_substrings: Sequence[str]) -> tuple[List[tuple[Path, List[str]]], List[Path]]:
+    """Scan headers only; return (hits, scan_errors)."""
     needles = [n.lower() for n in needle_substrings]
     hits: List[tuple[Path, List[str]]] = []
+    errors: List[Path] = []
     for path in csv_paths:
         try:
             header_df = pd.read_csv(path, nrows=0)
         except Exception:
+            errors.append(path)
             continue
         cols = list(header_df.columns)
         matches = [c for c in cols if any(n in c.lower() for n in needles)]
         if matches:
             hits.append((path, matches))
-    return hits
+    return hits, errors
 
 
 def load_best_csv(

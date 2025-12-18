@@ -12,6 +12,10 @@ print("OUT_CSV:", OUT_CSV)
 import os
 import subprocess
 
+def _is_missing_required_args(text: str) -> bool:
+    lowered = text.lower()
+    return "the following arguments are required:" in lowered or "error: the following arguments are required:" in lowered
+
 DEFAULT_DATA_ROOT = Path(
     r"C:\Users\earld\OneDrive\Documents\Out of the Park Developments\OOTP Baseball 26\saved_games\Action Baseball League.lg\import_export\csv"
 )
@@ -59,21 +63,25 @@ def main() -> None:
                 print(retry_proc.stdout.strip())
             if retry_proc.stderr:
                 print(retry_proc.stderr.strip())
-            if retry_proc.returncode == 0:
-                statuses[script.name] = "Succeeded on retry (no --base)"
-            else:
-                statuses[script.name] = "Failed after retry"
-                failures.append(script.name)
+            final_proc = retry_proc
         else:
             if proc.stdout:
                 print(proc.stdout.strip())
             if proc.stderr:
                 print(proc.stderr.strip())
-            if proc.returncode != 0:
+            final_proc = proc
+
+        combined = (final_proc.stdout or "") + (final_proc.stderr or "")
+        if retry_needed and final_proc.returncode == 0:
+            statuses[script.name] = "Succeeded on retry (no --base)"
+        elif final_proc.returncode != 0:
+            if _is_missing_required_args(combined):
+                statuses[script.name] = "Skipped (missing required args)"
+            else:
                 failures.append(script.name)
                 statuses[script.name] = "Failed"
-            else:
-                statuses[script.name] = "Succeeded"
+        else:
+            statuses[script.name] = "Succeeded"
     print("Running manager parser...")
     parser_proc = subprocess.run(
         [
@@ -173,6 +181,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 
 

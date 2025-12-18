@@ -44,7 +44,7 @@ def collect_factor_columns(df: pd.DataFrame) -> List[str]:
     targets = []
     for col in df.columns:
         low = col.lower()
-        if any(tok in low for tok in ["factor", "pf_", "park_", "hr", "runs", "1b", "2b", "3b", "bb", "so", "l", "r"]):
+        if any(tok in low for tok in ["factor", "pf_", "pf ", "park_", "pf", "hr", "runs", "1b", "2b", "3b", "bb", "so", "l", "r", "avg d", "avg l", "avg r"]):
             targets.append(col)
     # Deduplicate while preserving order
     seen = set()
