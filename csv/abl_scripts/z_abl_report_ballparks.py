@@ -106,14 +106,14 @@ def main() -> None:
             val = row.get(col)
             entry[col] = "N/A" if pd.isna(val) else val
         env = "N/A"
-        if pf_avg_col or pf_hr_col:
-            pf_avg = pd.to_numeric(pd.Series([row.get(pf_avg_col)]) if pf_avg_col else pd.Series([pd.NA]), errors="coerce").iloc[0]
-            pf_hr = pd.to_numeric(pd.Series([row.get(pf_hr_col)]) if pf_hr_col else pd.Series([pd.NA]), errors="coerce").iloc[0]
-            if pd.notna(pf_avg) and pf_avg >= 1.05 or (pd.notna(pf_hr) and pf_hr >= 1.05):
+        pf_avg = pd.to_numeric(pd.Series([row.get(pf_avg_col)]) if pf_avg_col else pd.Series([pd.NA]), errors="coerce").iloc[0]
+        pf_hr = pd.to_numeric(pd.Series([row.get(pf_hr_col)]) if pf_hr_col else pd.Series([pd.NA]), errors="coerce").iloc[0]
+        if pd.notna(pf_avg) and pd.notna(pf_hr):
+            if pf_avg >= 1.05 or pf_hr >= 1.05:
                 env = "Hitter-friendly"
-            elif pd.notna(pf_avg) and pf_avg <= 0.95 and pd.notna(pf_hr) and pf_hr <= 0.95:
+            elif pf_avg <= 0.95 and pf_hr <= 0.95:
                 env = "Pitcher-friendly"
-            elif pd.notna(pf_avg) or pd.notna(pf_hr):
+            else:
                 env = "Neutral"
         entry["Park Env"] = env
         rows.append(entry)

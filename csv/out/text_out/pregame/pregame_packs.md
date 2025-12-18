@@ -11,10 +11,10 @@ Probable Starters: CHI John Jury (games.csv) vs MIA Bill Borden (games.csv)
 CHI: Matt Mead | 761-697 (0.522) | Titles 0 | Tendencies: Standard
 MIA: Seth Coe | 794-664 (0.545) | Titles 2 | Tendencies: Standard
 CHI Park: Chicago Grounds (Cap: 18,500)
-CHI Finances: N/A
+CHI Finances: Budget $10,700,000 | Payroll $8,400,000 | Cash $-920,321 | Revenue $7,500,000 | Balance $3,026,890 | Tier: Mid
 CHI Fans/Market: N/A
 MIA Park: Hurricanes Park (Cap: 25,800)
-MIA Finances: N/A
+MIA Finances: Budget $9,500,000 | Payroll $7,700,000 | Cash $-27,654 | Revenue $10,200,000 | Balance $5,426,671 | Tier: Mid
 MIA Fans/Market: N/A
 ### Key Bats
 CHI: N/A (no batter profile source found)
@@ -37,10 +37,10 @@ Probable Starters: DEN Damian Serano (games.csv) vs NAS Matt Adams (games.csv)
 DEN: Adam Phillips | 280-368 (0.432) | Titles 0 | Tendencies: Standard
 NAS: Francisco Hernandez | 437-535 (0.450) | Titles 0 | Tendencies: Standard
 DEN Park: Rocketeers Field (Cap: 28,100)
-DEN Finances: N/A
+DEN Finances: Budget $8,200,000 | Payroll $7,600,000 | Cash $-116,395 | Revenue $8,900,000 | Balance $1,313,638 | Tier: Mid
 DEN Fans/Market: N/A
 NAS Park: Blues Stadium (Cap: 21,200)
-NAS Finances: N/A
+NAS Finances: Budget $13,400,000 | Payroll $8,200,000 | Cash $0 | Revenue $10,400,000 | Balance $2,557,426 | Tier: Mid
 NAS Fans/Market: N/A
 ### Key Bats
 DEN: N/A (no batter profile source found)
@@ -58,11 +58,15 @@ Starter source: games.csv starters where present; otherwise projected_starting_p
 ## Data Sources
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_team_park.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\csv_out\z_ABL_DIM_Ballparks.csv
-- C:\sbv_repo\abl_csv_repo\csv\out\star_schema\fact_team_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\csv_out\z_ABL_Matchup_History.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_player_pitching_ratings.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_player_batting_ratings.csv
+- C:\sbv_repo\abl_csv_repo\csv\out\star_schema\fact_team_financials.csv
+- C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_last_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 
 ## Notes
+- fact_team_financials columns: {'budget': 'Bgt', 'payroll': 'Pay', 'cash': None, 'revenue': 'Revenue', 'profit': None}
+- team_last_financials.csv columns: {'budget': 'budget', 'payroll': None, 'cash': 'cash', 'revenue': 'total_revenue', 'profit': 'financial_balance'}
+- team_history_financials load error: 'year'
 - No fans/markets data found.

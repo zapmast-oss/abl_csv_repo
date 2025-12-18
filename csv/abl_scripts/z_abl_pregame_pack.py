@@ -12,6 +12,7 @@ from _abl_pregame_utils import (
     format_arsenal_display,
     find_best_pitch_for_pitcher,
     find_csv_files,
+    load_team_financials,
     load_pitcher_arsenals,
     load_best_csv,
     load_batter_profiles,
@@ -43,6 +44,32 @@ AWAY_PITCHER_ID_COLS = ["away_pitcher_id", "away_player_id", "away_sp_id"]
 HOME_PITCHER_ID_COLS = ["home_pitcher_id", "home_player_id", "home_sp_id"]
 
 OVERALL_BAT_COLS = ["overall", "overall_bat", "overallbat", "rating_overall", "war", "ops", "wrc_plus", "wrc+"]
+
+
+def format_money(val) -> str:
+    if pd.isna(val):
+        return "N/A"
+    num = parse_numeric(val).iloc[0]
+    if pd.notna(num):
+        return f"${num:,.0f}"
+    return str(val)
+
+
+def parse_numeric(val) -> pd.Series:
+    """Best-effort numeric parser that handles trailing m (millions)."""
+    if pd.isna(val):
+        return pd.Series([pd.NA])
+    if isinstance(val, str):
+        txt = val.strip().lower()
+        txt = txt.replace("$", "").replace(",", "")
+        multiplier = 1
+        if txt.endswith("m"):
+            multiplier = 1_000_000
+            txt = txt[:-1]
+        num = pd.to_numeric(pd.Series([txt]), errors="coerce")
+        if num.notna().iloc[0]:
+            return num * multiplier
+    return pd.to_numeric(pd.Series([val]), errors="coerce")
 
 
 def merge_key(df: pd.DataFrame) -> pd.Series:
@@ -299,7 +326,15 @@ def describe_key_bats(bat_df: pd.DataFrame, team_abbr: str) -> str:
     return "Key Bats: " + ", ".join(bats)
 
 
-def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict[str, dict], fan_map: Dict[str, dict], tier_map: Dict[str, str]) -> List[str]:
+def describe_team_detail(
+    team_abbr: Optional[str],
+    team_id: Optional[int],
+    team_key: str,
+    park_map: Dict[str, dict],
+    fan_map: Dict[str, dict],
+    fin_by_abbr: Dict[str, pd.Series],
+    fin_by_id: Dict[int, pd.Series],
+) -> List[str]:
     lines = []
     park = park_map.get(team_key, {})
     park_name = park.get("name") or "N/A"
@@ -307,17 +342,36 @@ def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict
     cap_txt = f"{int(pd.to_numeric(capacity, errors='coerce')):,}" if capacity is not None and pd.notna(capacity) else "N/A"
     lines.append(f"Park: {park_name} (Cap: {cap_txt})")
 
-    fin = fin_map.get(team_key, {})
-    budget = fin.get("budget")
-    payroll = fin.get("payroll")
-    cash = fin.get("cash")
-    budget_txt = f"{float(budget):,.0f}" if budget is not None and pd.notna(budget) else "N/A"
-    payroll_txt = f"{float(payroll):,.0f}" if payroll is not None and pd.notna(payroll) else "N/A"
-    cash_txt = f"{float(cash):,.0f}" if cash is not None and pd.notna(cash) else "N/A"
-    parts = [f"Budget ${budget_txt}" if budget_txt != "N/A" else None, f"Payroll ${payroll_txt}" if payroll_txt != "N/A" else None, f"Cash ${cash_txt}" if cash_txt != "N/A" else None, f"Balance {fin.get('profit')}" if fin.get("profit") is not None else None]
-    parts = [p for p in parts if p]
-    tier = tier_map.get(team_key, "N/A")
-    lines.append("Finances: " + (" | ".join(parts) if parts else "N/A") + (f" | Tier {tier}" if tier != "N/A" else ""))
+    def lookup_fin_row() -> Optional[pd.Series]:
+        abbr_key = str(team_abbr).strip().upper() if team_abbr else None
+        if abbr_key and abbr_key in fin_by_abbr:
+            return fin_by_abbr[abbr_key]
+        if team_id is not None and pd.notna(team_id) and int(team_id) in fin_by_id:
+            return fin_by_id[int(team_id)]
+        return None
+
+    fin_row = lookup_fin_row()
+    if fin_row is None or fin_row.empty:
+        lines.append("Finances: N/A (no finance row matched team_abbr/team_id)")
+    else:
+        budget = fin_row.get("budget")
+        payroll = fin_row.get("payroll")
+        cash = fin_row.get("cash")
+        revenue = fin_row.get("revenue")
+        balance = fin_row.get("profit")
+        parts = [
+            f"Budget {format_money(budget)}" if not pd.isna(budget) else None,
+            f"Payroll {format_money(payroll)}" if not pd.isna(payroll) else None,
+            f"Cash {format_money(cash)}" if not pd.isna(cash) else None,
+            f"Revenue {format_money(revenue)}" if not pd.isna(revenue) else None,
+            f"Balance {format_money(balance)}" if not pd.isna(balance) else None,
+        ]
+        parts = [p for p in parts if p]
+        tier = fin_row.get("__tier", "N/A")
+        line = "Finances: " + (" | ".join(parts) if parts else "N/A")
+        if pd.notna(tier) and tier != "N/A":
+            line += f" | Tier: {tier}"
+        lines.append(line)
 
     fan = fan_map.get(team_key, {})
     market = fan.get("market")
@@ -362,8 +416,57 @@ def main() -> None:
     abbr_to_key = {row["team_abbr"]: row["__merge_key"] for _, row in teams.iterrows() if pd.notna(row.get("team_abbr"))}
 
     park_map, park_path, park_notes = load_ballpark_info(base, teams)
-    fin_map, fin_path, fin_notes = load_finance_info(base, teams)
+    fin_df, fin_sources, fin_notes = load_team_financials(base, league_id=league_id, season=season)
     fan_map, fan_paths, fan_notes = load_fan_info(base, teams)
+    # Finance lookups and tiers
+    fin_df = fin_df.copy()
+    if "team_abbr" in fin_df.columns:
+        fin_df["__abbr"] = fin_df["team_abbr"].astype(str).str.strip().str.upper()
+    else:
+        fin_df["__abbr"] = pd.NA
+    if "team_id" in fin_df.columns:
+        fin_df["__team_id"] = pd.to_numeric(fin_df["team_id"], errors="coerce").astype("Int64")
+    else:
+        fin_df["__team_id"] = pd.Series(dtype="Int64")
+    def to_numeric_series(series: pd.Series | None) -> pd.Series:
+        if series is None:
+            return pd.Series(dtype=float)
+        return series.apply(lambda v: parse_numeric(v).iloc[0])
+
+    payroll_raw = to_numeric_series(fin_df.get("payroll") if "payroll" in fin_df.columns else None)
+    budget_raw = to_numeric_series(fin_df.get("budget") if "budget" in fin_df.columns else None)
+    payroll_count = int(payroll_raw.notna().sum()) if isinstance(payroll_raw, pd.Series) else 0
+    metric_raw = payroll_raw if payroll_count > 0 else budget_raw
+
+    def assign_fin_tier(series: pd.Series) -> pd.Series:
+        series = pd.to_numeric(series, errors="coerce")
+        if series.notna().sum() < 8:
+            return pd.Series(["N/A"] * len(series), index=series.index)
+        q1 = series.quantile(0.25)
+        q3 = series.quantile(0.75)
+        tiers = []
+        for val in series:
+            if pd.isna(val):
+                tiers.append("N/A")
+            elif val >= q3:
+                tiers.append("High")
+            elif val <= q1:
+                tiers.append("Low")
+            else:
+                tiers.append("Mid")
+        return pd.Series(tiers, index=series.index)
+
+    fin_df["__tier"] = assign_fin_tier(metric_raw) if not fin_df.empty else pd.Series(dtype=object)
+    fin_by_abbr: Dict[str, pd.Series] = {}
+    fin_by_id: Dict[int, pd.Series] = {}
+    for _, row in fin_df.iterrows():
+        abbr = row.get("__abbr")
+        tid = row.get("__team_id")
+        if pd.notna(abbr):
+            fin_by_abbr[str(abbr)] = row
+        if pd.notna(tid):
+            fin_by_id[int(tid)] = row
+
     arsenal_df, arsenal_sources, arsenal_notes = load_pitcher_arsenals(base)
     arsenal_by_id: Dict[int, pd.Series] = {}
     arsenal_by_name_team: Dict[tuple[str, str], pd.Series] = {}
@@ -475,31 +578,6 @@ def main() -> None:
                 entry["name"] = f"Player {pid}"
         return away, home
 
-    def finance_tier_map() -> Dict[str, str]:
-        tier_map: Dict[str, str] = {}
-        vals = []
-        for key, data in fin_map.items():
-            val = data.get("payroll") if data.get("payroll") is not None else data.get("budget")
-            num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
-            vals.append((key, num))
-        nums = [v for _, v in vals if pd.notna(v)]
-        if len(nums) < 4:
-            return tier_map
-        q1 = pd.Series(nums).quantile(0.25)
-        q3 = pd.Series(nums).quantile(0.75)
-        for key, num in vals:
-            if pd.isna(num):
-                continue
-            if num >= q3:
-                tier_map[key] = "High"
-            elif num <= q1:
-                tier_map[key] = "Low"
-            else:
-                tier_map[key] = "Mid"
-        return tier_map
-
-    fin_tiers = finance_tier_map()
-
     def fan_tier_map() -> Dict[str, str]:
         tier_map: Dict[str, str] = {}
         vals = []
@@ -543,13 +621,13 @@ def main() -> None:
                 pf_avg = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
             if "pf hr" in low:
                 pf_hr = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
-        if pf_avg is None and pf_hr is None:
+        if pf_avg is None or pf_hr is None or pd.isna(pf_avg) or pd.isna(pf_hr):
             return "N/A"
-        if (pf_avg is not None and pf_avg >= 1.05) or (pf_hr is not None and pf_hr >= 1.05):
-            return f"Hitter (AVG {pf_avg if pf_avg is not None else 'N/A'}, HR {pf_hr if pf_hr is not None else 'N/A'})"
-        if (pf_avg is not None and pf_avg <= 0.95) and (pf_hr is not None and pf_hr <= 0.95):
-            return f"Pitcher (AVG {pf_avg if pf_avg is not None else 'N/A'}, HR {pf_hr if pf_hr is not None else 'N/A'})"
-        return f"Neutral (AVG {pf_avg if pf_avg is not None else 'N/A'}, HR {pf_hr if pf_hr is not None else 'N/A'})"
+        if pf_avg >= 1.05 or pf_hr >= 1.05:
+            return f"Hitter (AVG {pf_avg}, HR {pf_hr})"
+        if pf_avg <= 0.95 and pf_hr <= 0.95:
+            return f"Pitcher (AVG {pf_avg}, HR {pf_hr})"
+        return f"Neutral (AVG {pf_avg}, HR {pf_hr})"
 
     def lookup_team_reporting(abbr: str) -> dict:
         if team_reporting_df is None or team_reporting_df.empty:
@@ -569,7 +647,7 @@ def main() -> None:
         # League dash
         md_lines.insert(0, "")
         md_lines.insert(0, f"Arsenal top: {arsenal_top}, Bats top: {bats_top}")
-        if fin_map:
+        if not fin_df.empty:
             md_lines.insert(0, "League Pregame Dash (see boards below)")
         for away_abbr, home_abbr in matchups:
             md_lines.append(f"## {away_abbr} at {home_abbr}")
@@ -625,9 +703,11 @@ def main() -> None:
             md_lines.append(f"{home_abbr}: {manager_line(home_rep, home_abbr)}")
 
             # Finances/Fans
-            for line in describe_team_detail(away_key, park_map, fin_map, fan_map, fin_tiers):
+            away_tid = abbr_to_id.get(away_abbr)
+            home_tid = abbr_to_id.get(home_abbr)
+            for line in describe_team_detail(away_abbr, away_tid, away_key, park_map, fan_map, fin_by_abbr, fin_by_id):
                 md_lines.append(f"{away_abbr} {line}")
-            for line in describe_team_detail(home_key, park_map, fin_map, fan_map, fin_tiers):
+            for line in describe_team_detail(home_abbr, home_tid, home_key, park_map, fan_map, fin_by_abbr, fin_by_id):
                 md_lines.append(f"{home_abbr} {line}")
 
             # Key Bats
@@ -636,7 +716,7 @@ def main() -> None:
                 entries = batter_by_team.get(team_abbr.upper(), [])
                 lines = []
                 for rec in entries[:bats_top]:
-                    lines.append(f"{rec.get('player_name','N/A')} — {rec.get('hook','')}".strip())
+                    lines.append(f"{rec.get('player_name','N/A')} ? {rec.get('hook','')}".strip())
                 return lines
             away_bats = bats_for(away_abbr)
             home_bats = bats_for(home_abbr)
@@ -678,9 +758,10 @@ def main() -> None:
             md_lines.append("")
 
     data_sources: List[str] = []
-    for path in [team_path, park_path, fin_path, featured_path, prob_path, pitch_path, bat_path]:
+    for path in [team_path, park_path, featured_path, prob_path, pitch_path, bat_path]:
         if path:
             data_sources.append(str(path))
+    data_sources.extend(fin_sources)
     data_sources.extend(str(p) for p in fan_paths)
     data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")

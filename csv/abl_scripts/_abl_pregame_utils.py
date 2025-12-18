@@ -754,9 +754,14 @@ def load_batter_profiles(base: Path) -> tuple[pd.DataFrame, List[str], List[str]
     """Load batter profile hooks from batter_profile_all.txt (or similar)."""
     sources: List[str] = []
     notes: List[str] = []
-    candidates = list((base).rglob("batter_profile_all.txt"))
-    if not candidates:
-        candidates = [p for p in base.rglob("*batter_profile*all*.txt")]
+    candidates = [
+        base / "csv" / "out" / "text_out" / "prep" / "batter_profile_all.txt",
+        base / "csv" / "out" / "text_out" / "prep" / "batter_profiles_all.txt",
+    ]
+    existing = [p for p in candidates if p.exists()]
+    if not existing:
+        existing = [p for p in (base / "csv" / "out" / "text_out" / "prep").rglob("*.txt") if "batter" in p.name.lower() and "profile" in p.name.lower()]
+    candidates = existing if existing else list((base).rglob("batter_profile_all.txt")) or [p for p in base.rglob("*batter_profile*all*.txt")]
     if not candidates:
         notes.append("No batter profile source found.")
         return pd.DataFrame(columns=["team_abbr", "player_name", "hook"]), sources, notes
