@@ -9,7 +9,9 @@ from typing import Dict, List, Optional, Sequence, Tuple
 import pandas as pd
 
 from _abl_pregame_utils import (
+    format_arsenal_display,
     find_csv_files,
+    load_pitcher_arsenals,
     load_best_csv,
     md_table,
     normalize_team_table,
@@ -331,12 +333,14 @@ def main() -> None:
     parser.add_argument("--week", type=int, required=False)
     parser.add_argument("--league_id", type=int, default=200)
     parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
+    parser.add_argument("--arsenal-top", type=int, default=3, help="Top N pitches to display for arsenal")
     args = parser.parse_args()
 
     base = resolve_base(args.base)
     season = args.season
     week = args.week
     league_id = args.league_id
+    arsenal_top = max(1, args.arsenal_top if args.arsenal_top else 3)
 
     teams_raw, team_path = load_best_csv(base, TEAM_PATTERNS)
     teams = normalize_team_table(teams_raw)
@@ -349,6 +353,24 @@ def main() -> None:
     park_map, park_path, park_notes = load_ballpark_info(base, teams)
     fin_map, fin_path, fin_notes = load_finance_info(base, teams)
     fan_map, fan_paths, fan_notes = load_fan_info(base, teams)
+    arsenal_df, arsenal_sources, arsenal_notes = load_pitcher_arsenals(base)
+    arsenal_by_id: Dict[int, pd.Series] = {}
+    arsenal_by_name_team: Dict[tuple[str, str], pd.Series] = {}
+    for _, row in arsenal_df.iterrows():
+        pid = row.get("player_id")
+        try:
+            pid_int = int(pid)
+            arsenal_by_id[pid_int] = row
+        except Exception:
+            pass
+        raw_name = row.get("player_name")
+        name_key = str(raw_name) if pd.notna(raw_name) else ""
+        name_key = name_key.strip().upper()
+        team_raw = row.get("team_abbr")
+        team_key = str(team_raw) if pd.notna(team_raw) else ""
+        team_key = team_key.strip().upper()
+        if name_key:
+            arsenal_by_name_team[(name_key, team_key)] = row
 
     matchups, featured_df, featured_path = discover_featured_matchups(base)
     explicit = parse_matchups_arg(args.matchups)
@@ -390,6 +412,35 @@ def main() -> None:
                 md_lines.append(f"{away_abbr} {line}")
             for line in describe_team_detail(home_key, park_map, fin_map, fan_map):
                 md_lines.append(f"{home_abbr} {line}")
+            md_lines.append("### Pitching Snapshot")
+            # helpers for arsenal lookup
+            def arsenal_line(pitcher: Optional[dict], team_abbr: str) -> str:
+                if not pitcher or pitcher.get("name") in (None, "", pd.NA):
+                    return "TBD"
+                pid = pitcher.get("player_id")
+                row = None
+                try:
+                    if pid is not None and not pd.isna(pid):
+                        row = arsenal_by_id.get(int(pid))
+                except Exception:
+                    row = None
+                if row is None:
+                    name_key = str(pitcher.get("name") or "").strip().upper()
+                    row = arsenal_by_name_team.get((name_key, team_abbr.upper()), None)
+                if row is None:
+                    return "Arsenal: N/A (no repertoire source found)"
+                return format_arsenal_display(row, top_k=arsenal_top)
+
+            away_ars = arsenal_line(away_prob, away_abbr)
+            home_ars = arsenal_line(home_prob, home_abbr)
+            md_lines.append(f"{away_abbr} starter: {away_ars}")
+            md_lines.append(f"{home_abbr} starter: {home_ars}")
+            if arsenal_sources:
+                md_lines.append("Arsenal sources: " + "; ".join(arsenal_sources))
+            else:
+                md_lines.append("Arsenal sources: none found")
+            if arsenal_notes:
+                md_lines.append("Arsenal notes: " + "; ".join(arsenal_notes))
             md_lines.append("")
 
     data_sources: List[str] = []
@@ -397,6 +448,7 @@ def main() -> None:
         if path:
             data_sources.append(str(path))
     data_sources.extend(str(p) for p in fan_paths)
+    data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")
     if data_sources:
         for src in data_sources:

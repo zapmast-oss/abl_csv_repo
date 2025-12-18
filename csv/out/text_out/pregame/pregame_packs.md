@@ -12,6 +12,10 @@ CHI Fans/Market: N/A
 MIA Park: Hurricanes Park (Cap: 25,800)
 MIA Finances: N/A
 MIA Fans/Market: N/A
+### Pitching Snapshot
+CHI starter: TBD
+MIA starter: TBD
+Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 
 ## Data Sources
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_team_park.csv
@@ -20,6 +24,7 @@ MIA Fans/Market: N/A
 - C:\sbv_repo\abl_csv_repo\csv\out\csv_out\z_ABL_Matchup_History.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_player_pitching_ratings.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_player_batting_ratings.csv
+- C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 
 ## Notes
 - No fans/markets data found.
