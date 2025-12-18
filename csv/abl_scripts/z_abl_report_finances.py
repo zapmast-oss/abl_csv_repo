@@ -51,11 +51,11 @@ def main() -> None:
             "Payroll": format_money(row.get("payroll")),
             "Cash": format_money(row.get("cash")),
             "Revenue": format_money(row.get("revenue")),
-            "Profit": format_money(row.get("profit")),
+            "Balance": format_money(row.get("profit")),
         }
         rows.append(entry)
 
-    output_df = pd.DataFrame(rows, columns=["Team", "Budget", "Payroll", "Cash", "Revenue", "Profit"])
+    output_df = pd.DataFrame(rows, columns=["Team", "Budget", "Payroll", "Cash", "Revenue", "Balance"])
 
     budget_values = pd.to_numeric(output_df["Budget"].str.replace(r"[,$]", "", regex=True), errors="coerce")
     output_df["__budget_val"] = budget_values
@@ -64,7 +64,7 @@ def main() -> None:
     low_budget = budget_nonnull.sort_values("__budget_val", ascending=True).head(5)
 
     md_lines = ["# ABL Team Finances", ""]
-    md_lines.append(md_table(output_df.drop(columns="__budget_val"), ["Team", "Budget", "Payroll", "Cash", "Revenue", "Profit"]))
+    md_lines.append(md_table(output_df.drop(columns="__budget_val"), ["Team", "Budget", "Payroll", "Cash", "Revenue", "Balance"]))
 
     if not big_budget.empty:
         md_lines.append("## Big Budget Teams")
@@ -84,9 +84,11 @@ def main() -> None:
     md_lines.append("")
     md_lines.append("## Notes")
     if notes:
-        md_lines.extend(f"- {n}" for n in notes)
+        md_lines.extend(f"- {n}".replace("profit", "balance") for n in notes)
+        md_lines.append("- Balance is sourced from financial_balance (OOTP export field name).")
     else:
         md_lines.append("- None")
+        md_lines.append("- Balance is sourced from financial_balance (OOTP export field name).")
 
     out_path = base / "csv" / "out" / "text_out" / "pregame" / "finances.md"
     write_md(out_path, "\n".join(md_lines).rstrip() + "\n")

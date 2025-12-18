@@ -7,10 +7,10 @@ Arsenal: N/A
 Key Bats: N/A
 Key Bats: N/A
 CHI Park: Chicago Grounds (Cap: 18,500)
-CHI Finances: Budget N/A, Payroll N/A
+CHI Finances: N/A
 CHI Fans/Market: N/A
 MIA Park: Hurricanes Park (Cap: 25,800)
-MIA Finances: Budget N/A, Payroll N/A
+MIA Finances: N/A
 MIA Fans/Market: N/A
 
 ## Data Sources

@@ -302,9 +302,13 @@ def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict
     fin = fin_map.get(team_key, {})
     budget = fin.get("budget")
     payroll = fin.get("payroll")
+    cash = fin.get("cash")
     budget_txt = f"{float(budget):,.0f}" if budget is not None and pd.notna(budget) else "N/A"
     payroll_txt = f"{float(payroll):,.0f}" if payroll is not None and pd.notna(payroll) else "N/A"
-    lines.append(f"Finances: Budget {budget_txt}, Payroll {payroll_txt}")
+    cash_txt = f"{float(cash):,.0f}" if cash is not None and pd.notna(cash) else "N/A"
+    parts = [f"Budget ${budget_txt}" if budget_txt != "N/A" else None, f"Payroll ${payroll_txt}" if payroll_txt != "N/A" else None, f"Cash ${cash_txt}" if cash_txt != "N/A" else None, f"Balance {fin.get('profit')}" if fin.get("profit") is not None else None]
+    parts = [p for p in parts if p]
+    lines.append("Finances: " + (" | ".join(parts) if parts else "N/A"))
 
     fan = fan_map.get(team_key, {})
     market = fan.get("market")

@@ -1,6 +1,6 @@
 # ABL Team Finances
 
-| Team | Budget | Payroll | Cash | Revenue | Profit |
+| Team | Budget | Payroll | Cash | Revenue | Balance |
 | --- | --- | --- | --- | --- | --- |
 | ATL | $13.0m | $8.6m | $0 | $8.5m | $4,777,472 |
 | LV | $6.5m | $5.5m | $0 | $5.8m | $1,001,756 |
@@ -32,6 +32,6 @@
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_last_financials.csv
 
 ## Notes
-- fact_team_financials columns: {'budget': 'Bgt', 'payroll': 'Pay', 'cash': None, 'revenue': 'Revenue', 'profit': None}
-- team_last_financials.csv columns: {'budget': 'budget', 'payroll': None, 'cash': 'cash', 'revenue': 'total_revenue', 'profit': 'financial_balance'}
+- fact_team_financials columns: {'budget': 'Bgt', 'payroll': 'Pay', 'cash': None, 'revenue': 'Revenue', 'balance': None}
+- team_last_financials.csv columns: {'budget': 'budget', 'payroll': None, 'cash': 'cash', 'revenue': 'total_revenue', 'balance': 'financial_balance'}
 - team_history_financials load error: 'year'
