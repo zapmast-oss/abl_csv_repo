@@ -14,8 +14,11 @@ from _abl_pregame_utils import (
     find_csv_files,
     load_pitcher_arsenals,
     load_best_csv,
+    load_batter_profiles,
     load_players_lookup,
     load_projected_starters,
+    load_team_reporting,
+    load_manager_tendencies,
     md_table,
     normalize_team_table,
     resolve_base,
@@ -296,7 +299,7 @@ def describe_key_bats(bat_df: pd.DataFrame, team_abbr: str) -> str:
     return "Key Bats: " + ", ".join(bats)
 
 
-def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict[str, dict], fan_map: Dict[str, dict]) -> List[str]:
+def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict[str, dict], fan_map: Dict[str, dict], tier_map: Dict[str, str]) -> List[str]:
     lines = []
     park = park_map.get(team_key, {})
     park_name = park.get("name") or "N/A"
@@ -313,7 +316,8 @@ def describe_team_detail(team_key: str, park_map: Dict[str, dict], fin_map: Dict
     cash_txt = f"{float(cash):,.0f}" if cash is not None and pd.notna(cash) else "N/A"
     parts = [f"Budget ${budget_txt}" if budget_txt != "N/A" else None, f"Payroll ${payroll_txt}" if payroll_txt != "N/A" else None, f"Cash ${cash_txt}" if cash_txt != "N/A" else None, f"Balance {fin.get('profit')}" if fin.get("profit") is not None else None]
     parts = [p for p in parts if p]
-    lines.append("Finances: " + (" | ".join(parts) if parts else "N/A"))
+    tier = tier_map.get(team_key, "N/A")
+    lines.append("Finances: " + (" | ".join(parts) if parts else "N/A") + (f" | Tier {tier}" if tier != "N/A" else ""))
 
     fan = fan_map.get(team_key, {})
     market = fan.get("market")
@@ -337,6 +341,8 @@ def main() -> None:
     parser.add_argument("--league_id", type=int, default=200)
     parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
     parser.add_argument("--arsenal-top", type=int, default=3, help="Top N pitches to display for arsenal")
+    parser.add_argument("--show-arsenal-count", action="store_true", default=True, help="Show pitch count when available")
+    parser.add_argument("--bats-top", type=int, default=2, help="Top N key bats per team")
     args = parser.parse_args()
 
     base = resolve_base(args.base)
@@ -344,6 +350,8 @@ def main() -> None:
     week = args.week
     league_id = args.league_id
     arsenal_top = max(1, args.arsenal_top if args.arsenal_top else 3)
+    show_ars_count = bool(args.show_arsenal_count)
+    bats_top = max(1, args.bats_top if args.bats_top else 2)
 
     teams_raw, team_path = load_best_csv(base, TEAM_PATTERNS)
     teams = normalize_team_table(teams_raw)
@@ -384,6 +392,9 @@ def main() -> None:
             name = r.get("player_name")
             if pd.notna(pid):
                 player_name_map[int(pid)] = str(name)
+    batter_df, batter_sources, batter_notes = load_batter_profiles(base)
+    team_reporting_df, team_reporting_sources, team_reporting_notes = load_team_reporting(base, league_id=league_id)
+    mgr_tend_df, mgr_tend_sources, mgr_tend_notes = load_manager_tendencies(base)
 
     matchups, featured_df, featured_path = discover_featured_matchups(base)
     explicit = parse_matchups_arg(args.matchups)
@@ -464,6 +475,90 @@ def main() -> None:
                 entry["name"] = f"Player {pid}"
         return away, home
 
+    def finance_tier_map() -> Dict[str, str]:
+        tier_map: Dict[str, str] = {}
+        vals = []
+        for key, data in fin_map.items():
+            val = data.get("payroll") if data.get("payroll") is not None else data.get("budget")
+            num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+            vals.append((key, num))
+        nums = [v for _, v in vals if pd.notna(v)]
+        if len(nums) < 4:
+            return tier_map
+        q1 = pd.Series(nums).quantile(0.25)
+        q3 = pd.Series(nums).quantile(0.75)
+        for key, num in vals:
+            if pd.isna(num):
+                continue
+            if num >= q3:
+                tier_map[key] = "High"
+            elif num <= q1:
+                tier_map[key] = "Low"
+            else:
+                tier_map[key] = "Mid"
+        return tier_map
+
+    fin_tiers = finance_tier_map()
+
+    def fan_tier_map() -> Dict[str, str]:
+        tier_map: Dict[str, str] = {}
+        vals = []
+        for key, data in fan_map.items():
+            val = data.get("market")
+            if val is None or val == "N/A":
+                val = data.get("attendance")
+            num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+            vals.append((key, num))
+        nums = [v for _, v in vals if pd.notna(v)]
+        if len(nums) < 4:
+            return tier_map
+        q1 = pd.Series(nums).quantile(0.25)
+        q3 = pd.Series(nums).quantile(0.75)
+        for key, num in vals:
+            if pd.isna(num):
+                continue
+            if num >= q3:
+                tier_map[key] = "High"
+            elif num <= q1:
+                tier_map[key] = "Low"
+            else:
+                tier_map[key] = "Mid"
+        return tier_map
+
+    fan_tiers = fan_tier_map()
+
+    batter_by_team: Dict[str, List[dict]] = {}
+    if not batter_df.empty and "team_abbr" in batter_df.columns:
+        for team, group in batter_df.groupby(batter_df["team_abbr"].str.upper()):
+            batter_by_team[team] = group.to_dict(orient="records")
+
+    def ballpark_env(team_key: str) -> str:
+        park = park_map.get(team_key, {})
+        factors = park.get("factors", {})
+        pf_avg = None
+        pf_hr = None
+        for col, val in factors.items():
+            low = str(col).lower()
+            if "pf avg" in low:
+                pf_avg = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+            if "pf hr" in low:
+                pf_hr = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+        if pf_avg is None and pf_hr is None:
+            return "N/A"
+        if (pf_avg is not None and pf_avg >= 1.05) or (pf_hr is not None and pf_hr >= 1.05):
+            return f"Hitter (AVG {pf_avg if pf_avg is not None else 'N/A'}, HR {pf_hr if pf_hr is not None else 'N/A'})"
+        if (pf_avg is not None and pf_avg <= 0.95) and (pf_hr is not None and pf_hr <= 0.95):
+            return f"Pitcher (AVG {pf_avg if pf_avg is not None else 'N/A'}, HR {pf_hr if pf_hr is not None else 'N/A'})"
+        return f"Neutral (AVG {pf_avg if pf_avg is not None else 'N/A'}, HR {pf_hr if pf_hr is not None else 'N/A'})"
+
+    def lookup_team_reporting(abbr: str) -> dict:
+        if team_reporting_df is None or team_reporting_df.empty:
+            return {}
+        row = team_reporting_df[team_reporting_df["team_abbr"].str.upper() == abbr]
+        if row.empty:
+            return {}
+        return row.iloc[0].to_dict()
+
     season_label = season if season is not None else "N/A"
     week_label = f"{week:02d}" if isinstance(week, int) else ("N/A" if week is None else str(week))
     md_lines = [f"# ABL Pregame Pack - Season {season_label} Week {week_label}", ""]
@@ -471,8 +566,29 @@ def main() -> None:
     if not matchups:
         md_lines.append("No featured matchups artifact found; use --matchups to provide pairs like CHI@MIA.")
     else:
+        # League dash
+        md_lines.insert(0, "")
+        md_lines.insert(0, f"Arsenal top: {arsenal_top}, Bats top: {bats_top}")
+        if fin_map:
+            md_lines.insert(0, "League Pregame Dash (see boards below)")
         for away_abbr, home_abbr in matchups:
             md_lines.append(f"## {away_abbr} at {home_abbr}")
+            away_rep = lookup_team_reporting(away_abbr)
+            home_rep = lookup_team_reporting(home_abbr)
+            def banner(rep: dict) -> str:
+                if not rep:
+                    return "N/A"
+                rec = f"{int(rep.get('wins',0))}-{int(rep.get('losses',0))}"
+                rank = rep.get("division_rank", "N/A")
+                gb = rep.get("games_back", "N/A")
+                return f"{rep.get('team_abbr','TEAM')} ({rec}, rank {rank}, GB {gb})"
+            md_lines.append(f"{banner(away_rep)} @ {banner(home_rep)}")
+            away_key = abbr_to_key.get(away_abbr, "")
+            home_key = abbr_to_key.get(home_abbr, "")
+            park_env = ballpark_env(home_key or away_key)
+            park_name = park_map.get(home_key, {}).get("name") or park_map.get(away_key, {}).get("name") or "N/A"
+            md_lines.append(f"Ballpark: {park_name} | Park Env: {park_env}")
+
             away_prob, home_prob = resolve_starter(away_abbr, home_abbr)
             away_name = away_prob.get("name") or "TBD"
             home_name = home_prob.get("name") or "TBD"
@@ -480,40 +596,80 @@ def main() -> None:
             home_src = home_prob.get("source") or "unknown"
             md_lines.append(f"Probable Starters: {away_abbr} {away_name} ({away_src}) vs {home_abbr} {home_name} ({home_src})")
 
-            md_lines.append(describe_key_bats(bat_df, away_abbr))
-            md_lines.append(describe_key_bats(bat_df, home_abbr))
+            # Managers
+            md_lines.append("### Managers")
+            def manager_line(rep: dict, abbr: str) -> str:
+                name = rep.get("manager_name") if rep else None
+                wins = rep.get("manager_career_wins") if rep else None
+                losses = rep.get("manager_career_losses") if rep else None
+                titles = rep.get("manager_titles") if rep else None
+                base = name or "N/A"
+                extras = []
+                if pd.notna(wins) and pd.notna(losses):
+                    try:
+                        pct = float(wins) / max(float(wins) + float(losses), 1)
+                        extras.append(f"{int(wins)}-{int(losses)} ({pct:.3f})")
+                    except Exception:
+                        extras.append(f"{wins}-{losses}")
+                if pd.notna(titles):
+                    extras.append(f"Titles {titles}")
+                tend_row = mgr_tend_df[mgr_tend_df["team_abbr"].astype(str).str.upper() == abbr]
+                if not tend_row.empty:
+                    hook = tend_row.iloc[0].get("hook_rating") or tend_row.iloc[0].get("smallball_rating") or tend_row.iloc[0].get("platoon_rating")
+                    if hook is not None:
+                        extras.append(f"Tendencies: {hook}")
+                else:
+                    extras.append("Tendencies: N/A")
+                return base + (" | " + " | ".join(extras) if extras else "")
+            md_lines.append(f"{away_abbr}: {manager_line(away_rep, away_abbr)}")
+            md_lines.append(f"{home_abbr}: {manager_line(home_rep, home_abbr)}")
 
-            away_key = abbr_to_key.get(away_abbr, "")
-            home_key = abbr_to_key.get(home_abbr, "")
-            for line in describe_team_detail(away_key, park_map, fin_map, fan_map):
+            # Finances/Fans
+            for line in describe_team_detail(away_key, park_map, fin_map, fan_map, fin_tiers):
                 md_lines.append(f"{away_abbr} {line}")
-            for line in describe_team_detail(home_key, park_map, fin_map, fan_map):
+            for line in describe_team_detail(home_key, park_map, fin_map, fan_map, fin_tiers):
                 md_lines.append(f"{home_abbr} {line}")
+
+            # Key Bats
+            md_lines.append("### Key Bats")
+            def bats_for(team_abbr: str) -> List[str]:
+                entries = batter_by_team.get(team_abbr.upper(), [])
+                lines = []
+                for rec in entries[:bats_top]:
+                    lines.append(f"{rec.get('player_name','N/A')} — {rec.get('hook','')}".strip())
+                return lines
+            away_bats = bats_for(away_abbr)
+            home_bats = bats_for(home_abbr)
+            md_lines.append(f"{away_abbr}: " + ("; ".join(away_bats) if away_bats else "N/A (no batter profile source found)"))
+            md_lines.append(f"{home_abbr}: " + ("; ".join(home_bats) if home_bats else "N/A (no batter profile source found)"))
+
+            # Pitching snapshot
             md_lines.append("### Pitching Snapshot")
-            # helpers for arsenal lookup
-            def arsenal_line(pitcher: Optional[dict], team_abbr: str) -> str:
-                if not pitcher or pitcher.get("name") in (None, "", pd.NA):
-                    return "TBD"
-                pid = pitcher.get("player_id")
+            def arsenal_line(row: Optional[pd.Series]) -> str:
+                if row is None:
+                    return "Arsenal: N/A (no repertoire source found)"
+                return format_arsenal_display(row, top_k=arsenal_top, show_count=show_ars_count)
+            def arsenal_row_for(pid, name, abbr):
                 row = None
                 try:
-                    if pid is not None and not pd.isna(pid):
+                    if pid is not None and pid in arsenal_by_id:
                         row = arsenal_by_id.get(int(pid))
                 except Exception:
                     row = None
-                if row is None:
-                    name_key = str(pitcher.get("name") or "").strip().upper()
-                    row = arsenal_by_name_team.get((name_key, team_abbr.upper()), None)
-                if row is None:
-                    return "Arsenal: N/A (no repertoire source found)"
-                return format_arsenal_display(row, top_k=arsenal_top)
-
-            away_best, away_note = find_best_pitch_for_pitcher(arsenal_df, away_abbr, away_name)
-            home_best, home_note = find_best_pitch_for_pitcher(arsenal_df, home_abbr, home_name)
+                if row is None and name:
+                    key = str(name).strip().upper()
+                    row = arsenal_by_name_team.get((key, abbr.upper()), None)
+                return row
+            away_row = arsenal_row_for(away_prob.get("id"), away_name, away_abbr)
+            home_row = arsenal_row_for(home_prob.get("id"), home_name, home_abbr)
             md_lines.append(f"{away_abbr} starter: {away_name}")
-            md_lines.append(f"Best pitch: {away_best if away_best else 'N/A'}" + (f" ({away_note})" if away_note else ""))
+            md_lines.append(arsenal_line(away_row))
+            best, note = find_best_pitch_for_pitcher(arsenal_df, away_abbr, away_name)
+            md_lines.append(f"Best pitch: {best if best else 'N/A'}" + (f" ({note})" if note else ""))
             md_lines.append(f"{home_abbr} starter: {home_name}")
-            md_lines.append(f"Best pitch: {home_best if home_best else 'N/A'}" + (f" ({home_note})" if home_note else ""))
+            md_lines.append(arsenal_line(home_row))
+            best, note = find_best_pitch_for_pitcher(arsenal_df, home_abbr, home_name)
+            md_lines.append(f"Best pitch: {best if best else 'N/A'}" + (f" ({note})" if note else ""))
             if arsenal_sources:
                 md_lines.append("Arsenal sources: " + "; ".join(arsenal_sources))
             else:

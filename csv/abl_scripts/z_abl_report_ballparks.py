@@ -79,6 +79,8 @@ def main() -> None:
     park_name_col = pick_column(parks_df, ["park_name", "ballpark", "stadium", "park"])
     capacity_col = pick_column(parks_df, ["capacity", "cap"])
     factor_cols = collect_factor_columns(parks_df) if not parks_df.empty else []
+    pf_avg_col = next((c for c in parks_df.columns if c.lower().startswith("pf avg") or c.lower() == "pf avg"), None) if not parks_df.empty else None
+    pf_hr_col = next((c for c in parks_df.columns if c.lower().startswith("pf hr") or c.lower() == "pf hr"), None) if not parks_df.empty else None
 
     team_key = build_merge_key(teams_norm)
     teams_norm = teams_norm.copy()
@@ -103,6 +105,17 @@ def main() -> None:
         for col in factor_cols:
             val = row.get(col)
             entry[col] = "N/A" if pd.isna(val) else val
+        env = "N/A"
+        if pf_avg_col or pf_hr_col:
+            pf_avg = pd.to_numeric(pd.Series([row.get(pf_avg_col)]) if pf_avg_col else pd.Series([pd.NA]), errors="coerce").iloc[0]
+            pf_hr = pd.to_numeric(pd.Series([row.get(pf_hr_col)]) if pf_hr_col else pd.Series([pd.NA]), errors="coerce").iloc[0]
+            if pd.notna(pf_avg) and pf_avg >= 1.05 or (pd.notna(pf_hr) and pf_hr >= 1.05):
+                env = "Hitter-friendly"
+            elif pd.notna(pf_avg) and pf_avg <= 0.95 and pd.notna(pf_hr) and pf_hr <= 0.95:
+                env = "Pitcher-friendly"
+            elif pd.notna(pf_avg) or pd.notna(pf_hr):
+                env = "Neutral"
+        entry["Park Env"] = env
         rows.append(entry)
 
     output_df = pd.DataFrame(rows)

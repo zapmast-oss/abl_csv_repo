@@ -431,7 +431,7 @@ def _parse_arsenal_text(path: Path) -> tuple[pd.DataFrame, List[str]]:
     return pd.DataFrame(records), notes
 
 
-def _format_arsenal_line(row: pd.Series, top_k: int = 3) -> str:
+def _format_arsenal_line(row: pd.Series, top_k: int = 3, show_count: bool = True) -> str:
     count = row.get("pitch_count")
     count_txt = f"{int(count)}" if pd.notna(count) else "N/A"
     pitches = row.get("pitches") or []
@@ -451,7 +451,8 @@ def _format_arsenal_line(row: pd.Series, top_k: int = 3) -> str:
         rendered = [f"{best_pitch} {best_val if best_val is not None else ''} (best)".strip()]
     if not rendered:
         return "Arsenal: N/A (no repertoire source found)"
-    return f"Arsenal ({count_txt}): " + ", ".join(rendered)
+    prefix = f"Arsenal ({count_txt}): " if show_count and count_txt != "N/A" else "Arsenal: "
+    return prefix + ", ".join(rendered)
 
 
 def load_pitcher_arsenals(base: Path) -> tuple[pd.DataFrame, List[str], List[str]]:
@@ -530,9 +531,9 @@ def load_pitcher_arsenals(base: Path) -> tuple[pd.DataFrame, List[str], List[str
     return pd.DataFrame(columns=["player_id", "player_name", "team_abbr", "pitch_count", "best_pitch", "best_pitch_value", "pitches"]), sources, notes
 
 
-def format_arsenal_display(row: pd.Series, top_k: int = 3) -> str:
+def format_arsenal_display(row: pd.Series, top_k: int = 3, show_count: bool = True) -> str:
     try:
-        return _format_arsenal_line(row, top_k)
+        return _format_arsenal_line(row, top_k, show_count=show_count)
     except Exception:
         return "Arsenal: N/A (format error)"
 
@@ -702,6 +703,85 @@ def load_projected_starters(base: Path, league_id: int = 200) -> tuple[pd.DataFr
     if "abbr" in [c.lower() for c in df.columns]:
         proj_df["team_abbr"] = proj_df["team_raw"].astype(str).str.upper()
     return proj_df, sources, notes
+
+
+def load_team_reporting(base: Path, league_id: int = 200) -> tuple[pd.DataFrame, List[str], List[str]]:
+    """Load team reporting snapshot for banner info."""
+    sources: List[str] = []
+    notes: List[str] = []
+    candidates = [
+        base / "csv" / "out" / "star_schema" / "fact_team_reporting_1981_current.csv",
+        base / "csv" / "out" / "star_schema" / "fact_team_reporting_view.csv",
+    ]
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            df = pd.read_csv(path)
+        except Exception as exc:
+            notes.append(f"team reporting load error {path}: {exc}")
+            continue
+        sources.append(str(path))
+        if "league_id" in df.columns:
+            df = df[df["league_id"] == league_id]
+        return df, sources, notes
+    notes.append("No team reporting snapshot found.")
+    return pd.DataFrame(), sources, notes
+
+
+def load_manager_tendencies(base: Path) -> tuple[pd.DataFrame, List[str], List[str]]:
+    sources: List[str] = []
+    notes: List[str] = []
+    candidates = [
+        base / "csv" / "out" / "csv_out" / "z_ABL_Manager_Tendencies.csv",
+        base / "csv" / "ootp_csv" / "out" / "csv_out" / "z_ABL_Manager_Tendencies.csv",
+    ]
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            df = pd.read_csv(path)
+        except Exception as exc:
+            notes.append(f"manager tendencies load error {path}: {exc}")
+            continue
+        sources.append(str(path))
+        return df, sources, notes
+    notes.append("No manager tendencies source found.")
+    return pd.DataFrame(), sources, notes
+
+
+def load_batter_profiles(base: Path) -> tuple[pd.DataFrame, List[str], List[str]]:
+    """Load batter profile hooks from batter_profile_all.txt (or similar)."""
+    sources: List[str] = []
+    notes: List[str] = []
+    candidates = list((base).rglob("batter_profile_all.txt"))
+    if not candidates:
+        candidates = [p for p in base.rglob("*batter_profile*all*.txt")]
+    if not candidates:
+        notes.append("No batter profile source found.")
+        return pd.DataFrame(columns=["team_abbr", "player_name", "hook"]), sources, notes
+    path = sorted(candidates, key=lambda p: p.stat().st_mtime, reverse=True)[0]
+    sources.append(str(path))
+    records = []
+    current_team = None
+    for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        team_match = re.match(r"^TEAM\\s+(?P<abbr>\\w+)", line.strip())
+        if team_match:
+            current_team = team_match.group("abbr").strip().upper()
+            continue
+        # line like: Name (...) ... | Best X ... ; take pre-pipe segment for hook clue
+        if "|" in line and current_team:
+            name_part = line.split("|", 1)[0].strip()
+            if not name_part:
+                continue
+            # first token is name (maybe with hand)
+            name_tokens = name_part.split()
+            player_name = " ".join(name_tokens[:2]) if len(name_tokens) >= 2 else name_tokens[0]
+            hook = line.strip()
+            records.append({"team_abbr": current_team, "player_name": player_name, "hook": hook})
+    if not records:
+        notes.append("Batter profile parsing produced no rows.")
+    return pd.DataFrame(records), sources, notes
 
 
 def md_table(df: pd.DataFrame, columns: Sequence[str], header_map: Optional[dict[str, str]] = None) -> str:

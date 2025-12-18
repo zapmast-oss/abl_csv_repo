@@ -129,6 +129,27 @@ def main() -> None:
         )
 
     output_df = pd.DataFrame(rows)
+    def assign_tier(series: pd.Series) -> pd.Series:
+        if series.notna().sum() < 4:
+            return pd.Series(["N/A"] * len(series))
+        q1 = series.quantile(0.25)
+        q3 = series.quantile(0.75)
+        out = []
+        for val in series:
+            if pd.isna(val):
+                out.append("N/A")
+            elif val >= q3:
+                out.append("High")
+            elif val <= q1:
+                out.append("Low")
+            else:
+                out.append("Mid")
+        return pd.Series(out)
+
+    market_numeric = pd.to_numeric(output_df["Market Size"], errors="coerce")
+    attendance_numeric = pd.to_numeric(output_df["Attendance"], errors="coerce")
+    tier_basis = market_numeric if market_numeric.notna().any() else attendance_numeric
+    output_df["Tier"] = assign_tier(tier_basis)
     needs_fallback = output_df[VALUE_COLS].replace("N/A", pd.NA).isna().all(axis=None)
     if needs_fallback:
         all_csvs = list_all_csv_paths(base)
@@ -190,9 +211,22 @@ def main() -> None:
     md_lines.append(
         md_table(
             output_df,
-            ["Team", "Market Size", "Fan Interest", "Fan Loyalty", "Attendance", "Ticket Price", "Media Revenue"],
+            ["Team", "Market Size", "Fan Interest", "Fan Loyalty", "Attendance", "Ticket Price", "Media Revenue", "Tier"],
         )
     )
+
+    if tier_basis.notna().any():
+        basis_label = "Market Size" if market_numeric.notna().any() else "Attendance"
+        sorted_df = output_df.copy()
+        sorted_df["__val"] = tier_basis
+        top = sorted_df[sorted_df["__val"].notna()].sort_values("__val", ascending=False).head(5)
+        bottom = sorted_df[sorted_df["__val"].notna()].sort_values("__val", ascending=True).head(5)
+        if not top.empty and not bottom.empty:
+            md_lines.append(f"## Market Board ({basis_label})")
+            md_lines.append("### Top 5")
+            md_lines.append(md_table(top[["Team", basis_label]], ["Team", basis_label]))
+            md_lines.append("### Bottom 5")
+            md_lines.append(md_table(bottom[["Team", basis_label]], ["Team", basis_label]))
 
     md_lines.append("## Data Sources")
     md_lines.append(f"- Teams: {team_path if team_path else 'None found'}")

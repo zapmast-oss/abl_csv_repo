@@ -57,21 +57,46 @@ def main() -> None:
 
     output_df = pd.DataFrame(rows, columns=["Team", "Budget", "Payroll", "Cash", "Revenue", "Balance"])
 
-    budget_values = pd.to_numeric(output_df["Budget"].str.replace(r"[,$]", "", regex=True), errors="coerce")
-    output_df["__budget_val"] = budget_values
-    budget_nonnull = output_df[budget_values.notna()]
-    big_budget = budget_nonnull.sort_values("__budget_val", ascending=False).head(5)
-    low_budget = budget_nonnull.sort_values("__budget_val", ascending=True).head(5)
+    payroll_vals = pd.to_numeric(output_df["Payroll"].str.replace(r"[,$]", "", regex=True), errors="coerce")
+    budget_vals = pd.to_numeric(output_df["Budget"].str.replace(r"[,$]", "", regex=True), errors="coerce")
+    metric = payroll_vals if payroll_vals.notna().any() else budget_vals
+    output_df["__metric"] = metric
+
+    def assign_tier(series: pd.Series) -> pd.Series:
+        if series.notna().sum() < 4:
+            return pd.Series(["N/A"] * len(series))
+        q1 = series.quantile(0.25)
+        q3 = series.quantile(0.75)
+        tiers = []
+        for val in series:
+            if pd.isna(val):
+                tiers.append("N/A")
+            elif val >= q3:
+                tiers.append("High")
+            elif val <= q1:
+                tiers.append("Low")
+            else:
+                tiers.append("Mid")
+        return pd.Series(tiers)
+
+    output_df["Tier"] = assign_tier(metric)
+
+    budget_nonnull = output_df[metric.notna()]
+    top_field = "Payroll" if payroll_vals.notna().any() else "Budget"
+    big_budget = budget_nonnull.sort_values("__metric", ascending=False).head(5)
+    low_budget = budget_nonnull.sort_values("__metric", ascending=True).head(5)
 
     md_lines = ["# ABL Team Finances", ""]
-    md_lines.append(md_table(output_df.drop(columns="__budget_val"), ["Team", "Budget", "Payroll", "Cash", "Revenue", "Balance"]))
+    if not big_budget.empty and not low_budget.empty:
+        md_lines.append(f"## {top_field} Board")
+        md_lines.append("### Top 5")
+        md_lines.append(md_table(big_budget[["Team", top_field]], ["Team", top_field]))
+        md_lines.append("### Bottom 5")
+        md_lines.append(md_table(low_budget[["Team", top_field]], ["Team", top_field]))
+    else:
+        notes.append("Budget Board omitted (insufficient numeric payroll/budget).")
 
-    if not big_budget.empty:
-        md_lines.append("## Big Budget Teams")
-        md_lines.append(md_table(big_budget[["Team", "Budget"]], ["Team", "Budget"]))
-    if not low_budget.empty:
-        md_lines.append("## Low Budget Teams")
-        md_lines.append(md_table(low_budget[["Team", "Budget"]], ["Team", "Budget"]))
+    md_lines.append(md_table(output_df.drop(columns="__metric"), ["Team", "Budget", "Payroll", "Cash", "Revenue", "Balance", "Tier"]))
 
     md_lines.append("## Data Sources")
     if sources_used:
