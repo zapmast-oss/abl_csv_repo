@@ -999,15 +999,27 @@ def run_with_args(args: argparse.Namespace) -> None:
                 name = rep.get("manager_name") if rep else None
                 wins = rep.get("manager_career_wins") if rep else None
                 losses = rep.get("manager_career_losses") if rep else None
+                season_wins = rep.get("wins") if rep else None
+                season_losses = rep.get("losses") if rep else None
                 titles = rep.get("manager_titles") if rep else None
                 base = name or "N/A"
                 extras = []
+                adj_wins = wins
+                adj_losses = losses
                 if pd.notna(wins) and pd.notna(losses):
+                    if pd.notna(season_wins):
+                        adj_wins = wins + season_wins
+                    if pd.notna(season_losses):
+                        adj_losses = losses + season_losses
+                elif pd.notna(season_wins) and pd.notna(season_losses):
+                    adj_wins = season_wins
+                    adj_losses = season_losses
+                if pd.notna(adj_wins) and pd.notna(adj_losses):
                     try:
-                        pct = float(wins) / max(float(wins) + float(losses), 1)
-                        extras.append(f"{int(wins)}-{int(losses)} ({pct:.3f})")
+                        pct = float(adj_wins) / max(float(adj_wins) + float(adj_losses), 1)
+                        extras.append(f"{int(adj_wins)}-{int(adj_losses)} ({pct:.3f})")
                     except Exception:
-                        extras.append(f"{wins}-{losses}")
+                        extras.append(f"{adj_wins}-{adj_losses}")
                 if pd.notna(titles):
                     extras.append(f"Titles {titles}")
                 tend_row = mgr_tend_df[mgr_tend_df["team_abbr"].astype(str).str.upper() == abbr] if not mgr_tend_df.empty else pd.DataFrame()
