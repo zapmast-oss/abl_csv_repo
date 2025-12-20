@@ -623,11 +623,7 @@ def main() -> None:
             target_date = None
         if target_date:
             week_start = None
-            if games_df is not None and not games_df.empty and "date" in games_df.columns:
-                dates = pd.to_datetime(games_df["date"], errors="coerce").dropna()
-                if not dates.empty:
-                    week_start = dates.min().date()
-            if week_start is None and lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
+            if lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
                 try:
                     week_start = pd.Timestamp(
                         year=target_date.year,
@@ -636,6 +632,15 @@ def main() -> None:
                     ).date()
                 except Exception:
                     week_start = None
+            if week_start is None and games_df is not None and not games_df.empty and "date" in games_df.columns:
+                dates = pd.to_datetime(games_df["date"], errors="coerce")
+                if season:
+                    dates = dates[dates.dt.year == season]
+                else:
+                    dates = dates[dates.dt.year == target_date.year]
+                dates = dates.dropna()
+                if not dates.empty:
+                    week_start = dates.min().date()
             if week_start and target_date >= week_start:
                 week = 1 + ((target_date - week_start).days // 7)
 

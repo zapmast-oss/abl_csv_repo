@@ -1,12 +1,12 @@
 League Pregame Dash (see boards below)
 Arsenal top: 3, Bats top: 2
 
-# ABL Pregame Pack - Season 1981 Week 05
+# ABL Pregame Pack - Season 1981 Week 06
 
 ## CHI at MIA
 CHI (17-15, rank 2, GB 2) @ MIA (18-14, rank 2, GB 4)
 Ballpark: Hurricanes Park | Park Env: Hitter (AVG 0.9758, HR 1.109)
-Schedule: NOT FOUND in z_ABL_Matchup_History.csv
+Schedule: NOT FOUND in C:\sbv_repo\abl_csv_repo\data_raw\ootp_html\ILN_BGN_G162_SL1D1T4D2T4D3T4SL2D1T4D2T4D3T4_C_T24-D66-N96.lsdl
 Probable Starters: CHI John Jury (games.csv) vs MIA Bill Borden (games.csv)
 ### Managers
 CHI: Matt Mead | 761-697 (0.522) | Titles 0 | Tendencies: Smallball: Swing Away | Hook: Standard | Platoon: Static
@@ -33,7 +33,7 @@ Starter source: games.csv starters where present; otherwise projected_starting_p
 ## DEN at NAS
 DEN (18-14, rank 2, GB 6) @ NAS (18-14, rank 1, GB -)
 Ballpark: Blues Stadium | Park Env: Neutral (AVG 1.0202, HR 0.9254)
-Schedule: NOT FOUND in z_ABL_Matchup_History.csv
+Schedule: NOT FOUND in C:\sbv_repo\abl_csv_repo\data_raw\ootp_html\ILN_BGN_G162_SL1D1T4D2T4D3T4SL2D1T4D2T4D3T4_C_T24-D66-N96.lsdl
 Probable Starters: DEN Damian Serano (games.csv) vs NAS Matt Adams (games.csv)
 ### Managers
 DEN: Adam Phillips | 280-368 (0.432) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -69,6 +69,8 @@ Starter source: games.csv starters where present; otherwise projected_starting_p
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_last_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_history_financials.csv
+- C:\sbv_repo\abl_csv_repo\data_raw\ootp_html\ILN_BGN_G162_SL1D1T4D2T4D3T4SL2D1T4D2T4D3T4_C_T24-D66-N96.lsdl
+- C:\sbv_repo\abl_csv_repo\csv\ootp_csv\games.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\batter_profile_all.txt
 - C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 
