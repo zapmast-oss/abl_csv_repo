@@ -1,11 +1,12 @@
 League Pregame Dash (see boards below)
 Arsenal top: 3, Bats top: 2
 
-# ABL Pregame Pack - Season 1981 Week 06
+# ABL Pregame Pack - Season 1981 Week 05
 
 ## CHI at MIA
 CHI (17-15, rank 2, GB 2) @ MIA (18-14, rank 2, GB 4)
 Ballpark: Hurricanes Park | Park Env: Hitter (AVG 0.9758, HR 1.109)
+Schedule: NOT FOUND in z_ABL_Matchup_History.csv
 Probable Starters: CHI John Jury (games.csv) vs MIA Bill Borden (games.csv)
 ### Managers
 CHI: Matt Mead | 761-697 (0.522) | Titles 0 | Tendencies: Smallball: Swing Away | Hook: Standard | Platoon: Static
@@ -17,8 +18,8 @@ MIA Park: Hurricanes Park (Cap: 25,800)
 MIA Finances: Budget $9,500,000 | Payroll $7,700,000 | Cash $-27,654 | Revenue $10,200,000 | Balance $5,426,671 | Tier: Mid
 MIA Fans/Market: Market 7 | Loyalty 6 | Att 1,499,048 (season) | Ticket $4.69 | Gate $3.6m
 ### Key Bats
-CHI: N/A (no batter profile or ratings source found)
-MIA: N/A (no batter profile or ratings source found)
+CHI: Miguel Morales (LF) — Bat 58.8 — Best: EYE 65 — Bats: S; Sal Gamez (1B) — Bat 55.0 — Best: POW 65 — Bats: L
+MIA: Pat Watters (1B) — Bat 58.8 — Best: CON 70 — Bats: R; Oscar Romero (1B) — Bat 56.2 — Best: EYE 60 — Bats: L
 ### Pitching Snapshot
 CHI starter: John Jury
 Arsenal (4): Curveball (best) 50, Changeup 50, Fastball 40
@@ -32,6 +33,7 @@ Starter source: games.csv starters where present; otherwise projected_starting_p
 ## DEN at NAS
 DEN (18-14, rank 2, GB 6) @ NAS (18-14, rank 1, GB -)
 Ballpark: Blues Stadium | Park Env: Neutral (AVG 1.0202, HR 0.9254)
+Schedule: NOT FOUND in z_ABL_Matchup_History.csv
 Probable Starters: DEN Damian Serano (games.csv) vs NAS Matt Adams (games.csv)
 ### Managers
 DEN: Adam Phillips | 280-368 (0.432) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -43,8 +45,8 @@ NAS Park: Blues Stadium (Cap: 21,200)
 NAS Finances: Budget $13,400,000 | Payroll $8,200,000 | Cash $0 | Revenue $10,400,000 | Balance $2,557,426 | Tier: Mid
 NAS Fans/Market: Market 5 | Loyalty 7 | Att 1,489,447 (season) | Ticket $4.58 | Gate $3.6m
 ### Key Bats
-DEN: N/A (no batter profile or ratings source found)
-NAS: N/A (no batter profile or ratings source found)
+DEN: Jonathan Stevens (1B) — Bat 56.2 — Best: GAP 65 — Bats: S; Boboy Nierva (LF) — Bat 55.0 — Best: CON 65 — Bats: L
+NAS: Brett Petrillo (LF) — Bat 61.2 — Best: SPE 75 — Bats: L; Jose Orozco (3B) — Bat 60.0 — Best: GAP 65 — Bats: S
 ### Pitching Snapshot
 DEN starter: Damian Serano
 Arsenal (3): Curveball (best) 65, Splitter 65, Fastball 45

@@ -48,8 +48,10 @@ AWAY_COLS = ["away", "away_abbr", "away_team", "away_team_abbr"]
 HOME_COLS = ["home", "home_abbr", "home_team", "home_team_abbr"]
 AWAY_PITCHER_COLS = ["away_probable", "probable_away", "away_pitcher", "away_sp", "away_starter"]
 HOME_PITCHER_COLS = ["home_probable", "probable_home", "home_pitcher", "home_sp", "home_starter"]
-AWAY_PITCHER_ID_COLS = ["away_pitcher_id", "away_player_id", "away_sp_id"]
-HOME_PITCHER_ID_COLS = ["home_pitcher_id", "home_player_id", "home_sp_id"]
+AWAY_PITCHER_ID_COLS = ["away_pitcher_id", "away_player_id", "away_sp_id", "starter0", "away_starter_id"]
+HOME_PITCHER_ID_COLS = ["home_pitcher_id", "home_player_id", "home_sp_id", "starter1", "home_starter_id"]
+AWAY_TEAM_ID_COLS = ["away_team", "away_team_id", "away_id"]
+HOME_TEAM_ID_COLS = ["home_team", "home_team_id", "home_id"]
 
 OVERALL_BAT_COLS = ["overall", "overall_bat", "overallbat", "rating_overall", "war", "ops", "wrc_plus", "wrc+"]
 
@@ -251,17 +253,56 @@ def lookup_probable(row: pd.Series, away_abbr: str, home_abbr: str) -> tuple[Opt
     return away, home
 
 
-def describe_probables(prob_df: pd.DataFrame, away_abbr: str, home_abbr: str) -> tuple[Optional[dict], Optional[dict]]:
+def describe_probables(
+    prob_df: pd.DataFrame,
+    away_abbr: str,
+    home_abbr: str,
+    abbr_to_id: dict[str, int],
+) -> tuple[Optional[dict], Optional[dict]]:
     if prob_df is None or prob_df.empty:
         return None, None
     away_col = pick_col(prob_df, AWAY_COLS)
     home_col = pick_col(prob_df, HOME_COLS)
+    away_id_col = pick_col(prob_df, AWAY_TEAM_ID_COLS)
+    home_id_col = pick_col(prob_df, HOME_TEAM_ID_COLS)
+    away_id = abbr_to_id.get(away_abbr)
+    home_id = abbr_to_id.get(home_abbr)
     for _, row in prob_df.iterrows():
         a_val = str(row.get(away_col, "")).strip().upper() if away_col else ""
         h_val = str(row.get(home_col, "")).strip().upper() if home_col else ""
-        if a_val == away_abbr and h_val == home_abbr:
+        if away_col and home_col and a_val == away_abbr and h_val == home_abbr:
             return lookup_probable(row, away_abbr, home_abbr)
+        if away_id_col and home_id_col and away_id and home_id:
+            a_id = pd.to_numeric(pd.Series([row.get(away_id_col)]), errors="coerce").iloc[0]
+            h_id = pd.to_numeric(pd.Series([row.get(home_id_col)]), errors="coerce").iloc[0]
+            if pd.notna(a_id) and pd.notna(h_id) and int(a_id) == away_id and int(h_id) == home_id:
+                return lookup_probable(row, away_abbr, home_abbr)
     return None, None
+
+
+def matchup_in_schedule(
+    prob_df: pd.DataFrame,
+    away_abbr: str,
+    home_abbr: str,
+    abbr_to_id: dict[str, int],
+) -> bool:
+    if prob_df is None or prob_df.empty:
+        return False
+    away_col = pick_col(prob_df, AWAY_COLS)
+    home_col = pick_col(prob_df, HOME_COLS)
+    if away_col and home_col:
+        a_vals = prob_df[away_col].astype(str).str.strip().str.upper()
+        h_vals = prob_df[home_col].astype(str).str.strip().str.upper()
+        return bool(((a_vals == away_abbr) & (h_vals == home_abbr)).any())
+    away_id_col = pick_col(prob_df, AWAY_TEAM_ID_COLS)
+    home_id_col = pick_col(prob_df, HOME_TEAM_ID_COLS)
+    away_id = abbr_to_id.get(away_abbr)
+    home_id = abbr_to_id.get(home_abbr)
+    if away_id_col and home_id_col and away_id and home_id:
+        a_vals = pd.to_numeric(prob_df[away_id_col], errors="coerce")
+        h_vals = pd.to_numeric(prob_df[home_id_col], errors="coerce")
+        return bool(((a_vals == away_id) & (h_vals == home_id)).any())
+    return False
 
 
 def describe_arsenal(pitch_df: pd.DataFrame, pitcher: dict) -> str:
@@ -559,6 +600,7 @@ def main() -> None:
         matchups = explicit
 
     prob_df, prob_path = choose_probables_source(base, featured_df, featured_path)
+    prob_label = prob_path.name if prob_path else "schedule"
     pitch_df, pitch_path = load_best_csv(base, PITCH_RATINGS_PATTERNS)
     bat_df, bat_path = load_best_csv(base, BAT_RATINGS_PATTERNS)
     games_path = base / "csv" / "ootp_csv" / "games.csv"
@@ -594,18 +636,35 @@ def main() -> None:
         home = {"id": None, "name": None, "source": None}
         away_tid = abbr_to_id.get(away_abbr)
         home_tid = abbr_to_id.get(home_abbr)
+        if prob_df is not None and not prob_df.empty:
+            sched_away, sched_home = describe_probables(prob_df, away_abbr, home_abbr, abbr_to_id)
+            for entry, sched in ((away, sched_away), (home, sched_home)):
+                if not sched:
+                    continue
+                pid = sched.get("player_id")
+                name = sched.get("name")
+                if pd.notna(pid):
+                    try:
+                        entry["id"] = int(pid)
+                    except Exception:
+                        entry["id"] = pid
+                if name:
+                    entry["name"] = str(name).strip()
+                entry["source"] = prob_label
         if games_df is not None and away_tid and home_tid:
             match_rows = games_df[(games_df["away_team"] == away_tid) & (games_df["home_team"] == home_tid)]
             if not match_rows.empty:
                 row = match_rows.iloc[-1]
                 a_id = pd.to_numeric(pd.Series([row.get("starter0")]), errors="coerce").iloc[0]
                 h_id = pd.to_numeric(pd.Series([row.get("starter1")]), errors="coerce").iloc[0]
-                if pd.notna(a_id) and a_id > 0:
+                if away["id"] is None and pd.notna(a_id) and a_id > 0:
                     away["id"] = int(a_id)
-                    away["source"] = "games.csv"
-                if pd.notna(h_id) and h_id > 0:
+                    if not away["source"]:
+                        away["source"] = "games.csv"
+                if home["id"] is None and pd.notna(h_id) and h_id > 0:
                     home["id"] = int(h_id)
-                    home["source"] = "games.csv"
+                    if not home["source"]:
+                        home["source"] = "games.csv"
         if away["id"] is None:
             pid = None
             if away_tid and away_tid in proj_by_teamid:
@@ -703,6 +762,9 @@ def main() -> None:
             park_env = ballpark_env(home_key or away_key)
             park_name = park_map.get(home_key, {}).get("name") or park_map.get(away_key, {}).get("name") or "N/A"
             md_lines.append(f"Ballpark: {park_name} | Park Env: {park_env}")
+            if prob_df is not None and not prob_df.empty:
+                if not matchup_in_schedule(prob_df, away_abbr, home_abbr, abbr_to_id):
+                    md_lines.append(f"Schedule: NOT FOUND in {prob_label}")
 
             away_prob, home_prob = resolve_starter(away_abbr, home_abbr)
             away_name = away_prob.get("name") or "TBD"

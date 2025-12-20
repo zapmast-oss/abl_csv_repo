@@ -528,7 +528,7 @@ def parse_batter_profile_all(base: Path, rel_path: str = "csv/out/text_out/prep/
     current_team = None
     lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
     for line in lines:
-        team_match = re.match(r"^TEAM\\s+(?P<abbr>\\w+)", line.strip(), re.IGNORECASE)
+        team_match = re.match(r"^TEAM\s+(?P<abbr>\w+)", line.strip(), re.IGNORECASE)
         if team_match:
             current_team = team_match.group("abbr").strip().upper()
             continue
@@ -540,19 +540,30 @@ def parse_batter_profile_all(base: Path, rel_path: str = "csv/out/text_out/prep/
         name_seg = parts[0]
         tokens = name_seg.split()
         player_name = " ".join(tokens[:2]) if len(tokens) >= 2 else name_seg
-        pos = next((t for t in tokens if len(t) <= 3 and t.isalpha()), "")
-        bats = next((t.replace("B:", "").replace("BATS:", "") for t in tokens if t.lower().startswith("b:")), "")
-        ratings = re.findall(r"(\\b[A-Z]{2,}\\b)\\s*(\\d+)", line)
-        best_tool = None
-        best_val = None
-        for tool, val in ratings:
-            val_num = safe_int(val)
-            if pd.isna(val_num):
-                continue
-            if best_val is None or val_num > best_val:
-                best_tool = tool
-                best_val = val_num
-        overall = best_val
+        pos_match = re.search(r"\bPOS\s+(?P<pos>[A-Z0-9]{1,3})\b", name_seg, re.IGNORECASE)
+        pos = pos_match.group("pos").upper() if pos_match else next((t for t in tokens if len(t) <= 3 and t.isalpha()), "")
+        bats = ""
+        bats_paren = re.search(r"\((?P<bats>[LRBS])\)", name_seg, re.IGNORECASE)
+        if bats_paren:
+            bats = bats_paren.group("bats").upper()
+        else:
+            bats = next((t.replace("B:", "").replace("BATS:", "") for t in tokens if t.lower().startswith(("b:", "bats:"))), "")
+            bats = bats.upper() if bats else ""
+        overall_match = re.search(r"overallbat\s*([0-9]+(?:\.[0-9]+)?)", line, re.IGNORECASE)
+        overall_val = pd.to_numeric(pd.Series([overall_match.group(1)]), errors="coerce").iloc[0] if overall_match else pd.NA
+        best_match = re.search(r"\bBest\s+([A-Z]{2,})\s+(\d+)\b", line, re.IGNORECASE)
+        best_tool = best_match.group(1).upper() if best_match else None
+        best_val = safe_int(best_match.group(2)) if best_match else None
+        if best_val is None or pd.isna(best_val):
+            ratings = re.findall(r"(\b[A-Z]{2,}\b)\s*(\d+)", line)
+            for tool, val in ratings:
+                val_num = safe_int(val)
+                if pd.isna(val_num):
+                    continue
+                if best_val is None or val_num > best_val:
+                    best_tool = tool
+                    best_val = val_num
+        overall = overall_val if pd.notna(overall_val) else best_val
         records.append(
             {
                 "team_abbr": current_team,
