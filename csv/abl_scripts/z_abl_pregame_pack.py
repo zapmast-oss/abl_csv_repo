@@ -306,6 +306,32 @@ def matchup_in_schedule(
     return False
 
 
+def matchup_on_date_games(
+    games_df: pd.DataFrame,
+    date_str: str,
+    away_abbr: str,
+    home_abbr: str,
+    abbr_to_id: dict[str, int],
+) -> bool:
+    if games_df is None or games_df.empty or "date" not in games_df.columns:
+        return False
+    try:
+        target = pd.to_datetime(date_str, errors="coerce").date()
+    except Exception:
+        return False
+    if target is None:
+        return False
+    dates = pd.to_datetime(games_df["date"], errors="coerce").dt.date
+    rows = games_df[dates == target]
+    if rows.empty:
+        return False
+    away_id = abbr_to_id.get(away_abbr)
+    home_id = abbr_to_id.get(home_abbr)
+    if away_id and home_id:
+        return bool(((rows["away_team"] == away_id) & (rows["home_team"] == home_id)).any())
+    return False
+
+
 def describe_arsenal(pitch_df: pd.DataFrame, pitcher: dict) -> str:
     if pitch_df is None or pitch_df.empty or not pitcher:
         return "Arsenal: N/A"
@@ -616,6 +642,19 @@ def main() -> None:
         except Exception:
             games_df = None
 
+    games_df_reg = None
+    if games_df is not None and not games_df.empty:
+        if "game_type" in games_df.columns:
+            game_type = pd.to_numeric(games_df["game_type"], errors="coerce")
+            games_df_reg = games_df[game_type == 0].copy()
+        else:
+            games_df_reg = games_df.copy()
+        if "league_id" in games_df_reg.columns:
+            games_df_reg = games_df_reg[pd.to_numeric(games_df_reg["league_id"], errors="coerce") == league_id]
+    if games_df_reg is not None and not games_df_reg.empty:
+        schedule_df = games_df_reg
+        schedule_label = "games.csv (regular season)"
+
     if args.date:
         try:
             target_date = pd.to_datetime(args.date, errors="coerce").date()
@@ -623,7 +662,16 @@ def main() -> None:
             target_date = None
         if target_date:
             week_start = None
-            if lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
+            if games_df_reg is not None and not games_df_reg.empty and "date" in games_df_reg.columns:
+                dates = pd.to_datetime(games_df_reg["date"], errors="coerce")
+                if season:
+                    dates = dates[dates.dt.year == season]
+                else:
+                    dates = dates[dates.dt.year == target_date.year]
+                dates = dates.dropna()
+                if not dates.empty:
+                    week_start = dates.min().date()
+            if week_start is None and lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
                 try:
                     week_start = pd.Timestamp(
                         year=target_date.year,
@@ -632,15 +680,6 @@ def main() -> None:
                     ).date()
                 except Exception:
                     week_start = None
-            if week_start is None and games_df is not None and not games_df.empty and "date" in games_df.columns:
-                dates = pd.to_datetime(games_df["date"], errors="coerce")
-                if season:
-                    dates = dates[dates.dt.year == season]
-                else:
-                    dates = dates[dates.dt.year == target_date.year]
-                dates = dates.dropna()
-                if not dates.empty:
-                    week_start = dates.min().date()
             if week_start and target_date >= week_start:
                 week = 1 + ((target_date - week_start).days // 7)
 
@@ -688,8 +727,8 @@ def main() -> None:
                 if name:
                     entry["name"] = str(name).strip()
                 entry["source"] = prob_label
-        if games_df is not None and away_tid and home_tid:
-            match_rows = games_df[(games_df["away_team"] == away_tid) & (games_df["home_team"] == home_tid)]
+        if games_df_reg is not None and away_tid and home_tid:
+            match_rows = games_df_reg[(games_df_reg["away_team"] == away_tid) & (games_df_reg["home_team"] == home_tid)]
             if not match_rows.empty:
                 row = match_rows.iloc[-1]
                 a_id = pd.to_numeric(pd.Series([row.get("starter0")]), errors="coerce").iloc[0]
@@ -778,15 +817,15 @@ def main() -> None:
         from datetime import datetime, timedelta
 
         results: List[Tuple[str, str]] = []
-        if games_df is not None and not games_df.empty:
-            if "date" in games_df.columns:
+        if games_df_reg is not None and not games_df_reg.empty:
+            if "date" in games_df_reg.columns:
                 try:
                     target = pd.to_datetime(date_str, errors="coerce").date()
                 except Exception:
                     target = None
                 if target:
-                    dates = pd.to_datetime(games_df["date"], errors="coerce").dt.date
-                    rows = games_df[dates == target]
+                    dates = pd.to_datetime(games_df_reg["date"], errors="coerce").dt.date
+                    rows = games_df_reg[dates == target]
                     for _, row in rows.iterrows():
                         away_id = row.get("away_team")
                         home_id = row.get("home_team")
@@ -862,8 +901,12 @@ def main() -> None:
             park_name = park_map.get(home_key, {}).get("name") or park_map.get(away_key, {}).get("name") or "N/A"
             md_lines.append(f"Ballpark: {park_name} | Park Env: {park_env}")
             if schedule_df is not None and not schedule_df.empty:
-                if not matchup_in_schedule(schedule_df, away_abbr, home_abbr, abbr_to_id):
-                    md_lines.append(f"Schedule: NOT FOUND in {schedule_label}")
+                if args.date and games_df_reg is not None and not games_df_reg.empty:
+                    if not matchup_on_date_games(games_df_reg, args.date, away_abbr, home_abbr, abbr_to_id):
+                        md_lines.append(f"Schedule: NOT FOUND in {schedule_label} for {args.date}")
+                else:
+                    if not matchup_in_schedule(schedule_df, away_abbr, home_abbr, abbr_to_id):
+                        md_lines.append(f"Schedule: NOT FOUND in {schedule_label}")
 
             away_prob, home_prob = resolve_starter(away_abbr, home_abbr)
             away_name = away_prob.get("name") or "TBD"

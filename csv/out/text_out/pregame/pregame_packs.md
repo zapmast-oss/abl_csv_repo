@@ -6,8 +6,7 @@ Arsenal top: 3, Bats top: 2
 ## CHI at MIA
 CHI (17-15, rank 2, GB 2) @ MIA (18-14, rank 2, GB 4)
 Ballpark: Hurricanes Park | Park Env: Hitter (AVG 0.9758, HR 1.109)
-Schedule: NOT FOUND in C:\sbv_repo\abl_csv_repo\data_raw\ootp_html\ILN_BGN_G162_SL1D1T4D2T4D3T4SL2D1T4D2T4D3T4_C_T24-D66-N96.lsdl
-Probable Starters: CHI John Jury (games.csv) vs MIA Bill Borden (games.csv)
+Probable Starters: CHI TBD (unknown) vs MIA TBD (unknown)
 ### Managers
 CHI: Matt Mead | 761-697 (0.522) | Titles 0 | Tendencies: Smallball: Swing Away | Hook: Standard | Platoon: Static
 MIA: Seth Coe | 794-664 (0.545) | Titles 2 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -21,20 +20,19 @@ MIA Fans/Market: Market 7 | Loyalty 6 | Att 1,499,048 (season) | Ticket $4.69 | 
 CHI: Miguel Morales (LF) — Bat 58.8 — Best: EYE 65 — Bats: S; Sal Gamez (1B) — Bat 55.0 — Best: POW 65 — Bats: L
 MIA: Pat Watters (1B) — Bat 58.8 — Best: CON 70 — Bats: R; Oscar Romero (1B) — Bat 56.2 — Best: EYE 60 — Bats: L
 ### Pitching Snapshot
-CHI starter: John Jury
-Arsenal (4): Curveball (best) 50, Changeup 50, Fastball 40
-Best pitch: Curveball 50
-MIA starter: Bill Borden
-Arsenal (3): Changeup (best) 60, Slider 55, Fastball 50
-Best pitch: Changeup 60
+CHI starter: TBD
+Arsenal: N/A (no repertoire source found)
+Best pitch: N/A (arsenal not found for starter)
+MIA starter: TBD
+Arsenal: N/A (no repertoire source found)
+Best pitch: N/A (arsenal not found for starter)
 Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 Starter source: games.csv starters where present; otherwise projected_starting_pitchers.csv
 
 ## DEN at NAS
 DEN (18-14, rank 2, GB 6) @ NAS (18-14, rank 1, GB -)
 Ballpark: Blues Stadium | Park Env: Neutral (AVG 1.0202, HR 0.9254)
-Schedule: NOT FOUND in C:\sbv_repo\abl_csv_repo\data_raw\ootp_html\ILN_BGN_G162_SL1D1T4D2T4D3T4SL2D1T4D2T4D3T4_C_T24-D66-N96.lsdl
-Probable Starters: DEN Damian Serano (games.csv) vs NAS Matt Adams (games.csv)
+Probable Starters: DEN TBD (unknown) vs NAS TBD (unknown)
 ### Managers
 DEN: Adam Phillips | 280-368 (0.432) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
 NAS: Francisco Hernandez | 437-535 (0.450) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -48,10 +46,10 @@ NAS Fans/Market: Market 5 | Loyalty 7 | Att 1,489,447 (season) | Ticket $4.58 | 
 DEN: Jonathan Stevens (1B) — Bat 56.2 — Best: GAP 65 — Bats: S; Boboy Nierva (LF) — Bat 55.0 — Best: CON 65 — Bats: L
 NAS: Brett Petrillo (LF) — Bat 61.2 — Best: SPE 75 — Bats: L; Jose Orozco (3B) — Bat 60.0 — Best: GAP 65 — Bats: S
 ### Pitching Snapshot
-DEN starter: Damian Serano
-Arsenal (3): Curveball (best) 65, Splitter 65, Fastball 45
-Best pitch: Curveball 65
-NAS starter: Matt Adams
+DEN starter: TBD
+Arsenal: N/A (no repertoire source found)
+Best pitch: N/A (arsenal not found for starter)
+NAS starter: TBD
 Arsenal: N/A (no repertoire source found)
 Best pitch: N/A (arsenal not found for starter)
 Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
