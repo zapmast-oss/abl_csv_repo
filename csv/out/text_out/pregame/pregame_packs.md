@@ -6,7 +6,7 @@ Arsenal top: 3, Bats top: 2
 ## CHI at MIA
 CHI (17-15, rank 2, GB 2) @ MIA (18-14, rank 2, GB 4)
 Ballpark: Hurricanes Park | Park Env: Hitter (AVG 0.9758, HR 1.109)
-Probable Starters: CHI TBD (unknown) vs MIA TBD (unknown)
+Probable Starters: CHI Heriberto Jimenez (rotation) vs MIA Gil Aguilar (rotation)
 ### Managers
 CHI: Matt Mead | 761-697 (0.522) | Titles 0 | Tendencies: Smallball: Swing Away | Hook: Standard | Platoon: Static
 MIA: Seth Coe | 794-664 (0.545) | Titles 2 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -20,19 +20,19 @@ MIA Fans/Market: Market 7 | Loyalty 6 | Att 1,499,048 (season) | Ticket $4.69 | 
 CHI: Miguel Morales (LF) — Bat 58.8 — Best: EYE 65 — Bats: S; Sal Gamez (1B) — Bat 55.0 — Best: POW 65 — Bats: L
 MIA: Pat Watters (1B) — Bat 58.8 — Best: CON 70 — Bats: R; Oscar Romero (1B) — Bat 56.2 — Best: EYE 60 — Bats: L
 ### Pitching Snapshot
-CHI starter: TBD
-Arsenal: N/A (no repertoire source found)
-Best pitch: N/A (arsenal not found for starter)
-MIA starter: TBD
-Arsenal: N/A (no repertoire source found)
-Best pitch: N/A (arsenal not found for starter)
+CHI starter: Heriberto Jimenez
+Arsenal (3): Changeup (best) 80, Slider 55, Fastball 50
+Best pitch: Changeup 80
+MIA starter: Gil Aguilar
+Arsenal (3): Changeup (best) 80, Slider 50, Fastball 45
+Best pitch: Changeup 80
 Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
-Starter source: games.csv starters where present; otherwise projected_starting_pitchers.csv
+Starter source: games.csv starters where present; otherwise rotation/projected starters
 
 ## DEN at NAS
 DEN (18-14, rank 2, GB 6) @ NAS (18-14, rank 1, GB -)
 Ballpark: Blues Stadium | Park Env: Neutral (AVG 1.0202, HR 0.9254)
-Probable Starters: DEN TBD (unknown) vs NAS TBD (unknown)
+Probable Starters: DEN Damian Serano (rotation) vs NAS Edgar Montiel (rotation)
 ### Managers
 DEN: Adam Phillips | 280-368 (0.432) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
 NAS: Francisco Hernandez | 437-535 (0.450) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -46,14 +46,14 @@ NAS Fans/Market: Market 5 | Loyalty 7 | Att 1,489,447 (season) | Ticket $4.58 | 
 DEN: Jonathan Stevens (1B) — Bat 56.2 — Best: GAP 65 — Bats: S; Boboy Nierva (LF) — Bat 55.0 — Best: CON 65 — Bats: L
 NAS: Brett Petrillo (LF) — Bat 61.2 — Best: SPE 75 — Bats: L; Jose Orozco (3B) — Bat 60.0 — Best: GAP 65 — Bats: S
 ### Pitching Snapshot
-DEN starter: TBD
-Arsenal: N/A (no repertoire source found)
-Best pitch: N/A (arsenal not found for starter)
-NAS starter: TBD
-Arsenal: N/A (no repertoire source found)
-Best pitch: N/A (arsenal not found for starter)
+DEN starter: Damian Serano
+Arsenal (3): Curveball (best) 65, Splitter 65, Fastball 45
+Best pitch: Curveball 65
+NAS starter: Edgar Montiel
+Arsenal (3): Curveball (best) 55, Changeup 45, Fastball 40
+Best pitch: Curveball 55
 Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
-Starter source: games.csv starters where present; otherwise projected_starting_pitchers.csv
+Starter source: games.csv starters where present; otherwise rotation/projected starters
 
 ## Data Sources
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\dim_team_park.csv
@@ -67,8 +67,8 @@ Starter source: games.csv starters where present; otherwise projected_starting_p
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_last_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_history_financials.csv
-- C:\sbv_repo\abl_csv_repo\data_raw\ootp_html\ILN_BGN_G162_SL1D1T4D2T4D3T4SL2D1T4D2T4D3T4_C_T24-D66-N96.lsdl
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\games.csv
+- C:\sbv_repo\abl_csv_repo\csv\ootp_csv\projected_starting_pitchers.csv
 - C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\batter_profile_all.txt
 - C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 

@@ -27,7 +27,6 @@ from _abl_pregame_utils import (
     load_projected_starters,
     load_team_reporting,
     load_manager_tendencies,
-    load_lsdl_schedule_meta,
     parse_money_to_float,
     md_table,
     normalize_team_table,
@@ -629,9 +628,8 @@ def main() -> None:
 
     prob_df, prob_path = choose_probables_source(base, featured_df, featured_path)
     prob_label = prob_path.name if prob_path else "schedule"
-    lsdl_df, lsdl_sources, lsdl_notes, lsdl_meta = load_lsdl_schedule_meta(base)
-    schedule_df = lsdl_df if lsdl_df is not None and not lsdl_df.empty else prob_df
-    schedule_label = lsdl_sources[0] if lsdl_sources else prob_label
+    schedule_df = prob_df
+    schedule_label = prob_label
     pitch_df, pitch_path = load_best_csv(base, PITCH_RATINGS_PATTERNS)
     bat_df, bat_path = load_best_csv(base, BAT_RATINGS_PATTERNS)
     games_path = base / "csv" / "ootp_csv" / "games.csv"
@@ -641,6 +639,13 @@ def main() -> None:
             games_df = pd.read_csv(games_path)
         except Exception:
             games_df = None
+
+    target_date = None
+    if args.date:
+        try:
+            target_date = pd.to_datetime(args.date, errors="coerce").date()
+        except Exception:
+            target_date = None
 
     games_df_reg = None
     if games_df is not None and not games_df.empty:
@@ -656,10 +661,6 @@ def main() -> None:
         schedule_label = "games.csv (regular season)"
 
     if args.date:
-        try:
-            target_date = pd.to_datetime(args.date, errors="coerce").date()
-        except Exception:
-            target_date = None
         if target_date:
             week_start = None
             if games_df_reg is not None and not games_df_reg.empty and "date" in games_df_reg.columns:
@@ -671,15 +672,6 @@ def main() -> None:
                 dates = dates.dropna()
                 if not dates.empty:
                     week_start = dates.min().date()
-            if week_start is None and lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
-                try:
-                    week_start = pd.Timestamp(
-                        year=target_date.year,
-                        month=int(lsdl_meta["start_month"]),
-                        day=int(lsdl_meta["start_day"]),
-                    ).date()
-                except Exception:
-                    week_start = None
             if week_start and target_date >= week_start:
                 week = 1 + ((target_date - week_start).days // 7)
 
@@ -706,6 +698,61 @@ def main() -> None:
                 proj_by_teamid[int(tid)] = pid
             if pd.notna(tabbr):
                 proj_by_abbr[str(tabbr).upper()] = pid
+
+    rotation_map: Dict[int, List[int]] = {}
+    proj_path = base / "csv" / "ootp_csv" / "projected_starting_pitchers.csv"
+    if proj_path.exists():
+        try:
+            proj_raw = pd.read_csv(proj_path)
+        except Exception:
+            proj_raw = pd.DataFrame()
+        if not proj_raw.empty and "team_id" in proj_raw.columns:
+            slot_cols = [c for c in proj_raw.columns if pd.Series([c]).str.contains(r"(?:starter|sp)_?\d+", regex=True, case=False).iloc[0]]
+            def slot_num(col: str) -> int:
+                digits = "".join(ch for ch in str(col) if ch.isdigit())
+                return int(digits) if digits else 0
+            slot_cols = sorted(slot_cols, key=slot_num)
+            for _, row in proj_raw.iterrows():
+                tid = pd.to_numeric(pd.Series([row.get("team_id")]), errors="coerce").iloc[0]
+                if pd.isna(tid):
+                    continue
+                tid_int = int(tid)
+                rotation = []
+                for col in slot_cols:
+                    pid = pd.to_numeric(pd.Series([row.get(col)]), errors="coerce").iloc[0]
+                    if pd.notna(pid) and pid > 0:
+                        rotation.append(int(pid))
+                if rotation:
+                    rotation_map[tid_int] = rotation
+
+    last_starter_by_team: Dict[int, int] = {}
+    if target_date and games_df_reg is not None and not games_df_reg.empty and "date" in games_df_reg.columns:
+        past = games_df_reg.copy()
+        past["__date"] = pd.to_datetime(past["date"], errors="coerce")
+        past = past[past["__date"].dt.date < target_date]
+        if not past.empty:
+            if "game_id" in past.columns:
+                past = past.sort_values(["__date", "game_id"], kind="mergesort")
+            else:
+                past = past.sort_values(["__date"], kind="mergesort")
+            away_rows = past[pd.to_numeric(past["starter0"], errors="coerce") > 0][
+                ["away_team", "starter0", "__date", "game_id"] if "game_id" in past.columns else ["away_team", "starter0", "__date"]
+            ].copy()
+            away_rows = away_rows.rename(columns={"away_team": "team_id", "starter0": "starter_id"})
+            home_rows = past[pd.to_numeric(past["starter1"], errors="coerce") > 0][
+                ["home_team", "starter1", "__date", "game_id"] if "game_id" in past.columns else ["home_team", "starter1", "__date"]
+            ].copy()
+            home_rows = home_rows.rename(columns={"home_team": "team_id", "starter1": "starter_id"})
+            combined = pd.concat([away_rows, home_rows], ignore_index=True)
+            if not combined.empty:
+                sort_cols = ["__date", "game_id"] if "game_id" in combined.columns else ["__date"]
+                combined = combined.sort_values(sort_cols, kind="mergesort")
+                last = combined.groupby("team_id")["starter_id"].last()
+                for tid, pid in last.items():
+                    try:
+                        last_starter_by_team[int(tid)] = int(pid)
+                    except Exception:
+                        continue
 
     def resolve_starter(away_abbr: str, home_abbr: str) -> tuple[dict, dict]:
         away = {"id": None, "name": None, "source": None}
@@ -741,6 +788,27 @@ def main() -> None:
                     home["id"] = int(h_id)
                     if not home["source"]:
                         home["source"] = "games.csv"
+        if target_date and rotation_map:
+            if away["id"] is None and away_tid in rotation_map:
+                rotation = rotation_map.get(away_tid, [])
+                last_pid = last_starter_by_team.get(away_tid)
+                if rotation:
+                    if last_pid in rotation:
+                        idx = rotation.index(last_pid)
+                        away["id"] = rotation[(idx + 1) % len(rotation)]
+                    else:
+                        away["id"] = rotation[0]
+                    away["source"] = "rotation"
+            if home["id"] is None and home_tid in rotation_map:
+                rotation = rotation_map.get(home_tid, [])
+                last_pid = last_starter_by_team.get(home_tid)
+                if rotation:
+                    if last_pid in rotation:
+                        idx = rotation.index(last_pid)
+                        home["id"] = rotation[(idx + 1) % len(rotation)]
+                    else:
+                        home["id"] = rotation[0]
+                    home["source"] = "rotation"
         if away["id"] is None:
             pid = None
             if away_tid and away_tid in proj_by_teamid:
@@ -838,35 +906,6 @@ def main() -> None:
                         home_abbr = id_to_abbr.get(home_id)
                         if away_abbr and home_abbr:
                             results.append((away_abbr, home_abbr))
-        if results:
-            return results
-        if lsdl_df is not None and not lsdl_df.empty and lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
-            try:
-                target_date = datetime.strptime(date_str, "%Y-%m-%d").date()
-            except Exception:
-                return []
-            try:
-                start_month = int(lsdl_meta["start_month"])
-                start_day = int(lsdl_meta["start_day"])
-                start_date = datetime(target_date.year, start_month, start_day).date()
-            except Exception:
-                return []
-            day_num = (target_date - start_date).days + 1
-            if day_num <= 0:
-                return []
-            rows = lsdl_df[pd.to_numeric(lsdl_df["day"], errors="coerce") == day_num]
-            for _, row in rows.iterrows():
-                away_id = row.get("away_team")
-                home_id = row.get("home_team")
-                try:
-                    away_id = int(away_id)
-                    home_id = int(home_id)
-                except Exception:
-                    continue
-                away_abbr = id_to_abbr.get(away_id)
-                home_abbr = id_to_abbr.get(home_id)
-                if away_abbr and home_abbr:
-                    results.append((away_abbr, home_abbr))
         return results
 
     if not matchups and args.date:
@@ -1021,7 +1060,7 @@ def main() -> None:
                 md_lines.append("Arsenal sources: " + "; ".join(arsenal_sources))
             else:
                 md_lines.append("Arsenal sources: none found")
-            md_lines.append("Starter source: games.csv starters where present; otherwise projected_starting_pitchers.csv")
+            md_lines.append("Starter source: games.csv starters where present; otherwise rotation/projected starters")
             md_lines.append("")
 
     data_sources: List[str] = []
@@ -1030,9 +1069,11 @@ def main() -> None:
             data_sources.append(str(path))
     data_sources.extend(fin_sources)
     data_sources.extend(str(p) for p in fan_sources)
-    data_sources.extend(lsdl_sources)
+    # Keep lsdl out of scheduling sources; it's a template example.
     if games_df is not None:
         data_sources.append(str(games_path))
+    if proj_path.exists():
+        data_sources.append(str(proj_path))
     data_sources.extend(batter_sources)
     data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")
@@ -1043,7 +1084,7 @@ def main() -> None:
         md_lines.append("- None found")
     md_lines.append("")
     md_lines.append("## Notes")
-    notes = park_notes + fin_notes + fan_notes + lsdl_notes + batter_notes
+    notes = park_notes + fin_notes + fan_notes + batter_notes
     if not matchups:
         notes.append("No matchups provided or discovered.")
     if notes:
