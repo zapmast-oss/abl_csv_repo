@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+
+
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import pandas as pd
@@ -643,11 +645,19 @@ def main() -> None:
         pf_avg = None
         pf_hr = None
         for col, val in factors.items():
-            low = str(col).lower()
-            if "pf avg" in low or "pf_runs" in low or "pf runs" in low or low.strip() == "pf":
-                pf_avg = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
-            if "pf hr" in low:
-                pf_hr = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+            low = str(col).lower().strip()
+            norm = low.replace("_", " ")
+            num = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
+            if pd.isna(num):
+                continue
+            if pf_avg is None and (
+                "pf avg" in norm or "pf runs" in norm or norm == "pf" or norm == "avg"
+            ):
+                pf_avg = num
+            if pf_hr is None and (
+                "pf hr" in norm or norm == "hr"
+            ):
+                pf_hr = num
         if pf_avg is None or pf_hr is None or pd.isna(pf_avg) or pd.isna(pf_hr):
             return "N/A"
         if pf_avg >= 1.05 or pf_hr >= 1.05:
@@ -763,10 +773,18 @@ def main() -> None:
                         parts.append(f"Bats: {bats_hand}")
                     lines.append(" — ".join(parts))
                 return lines
+            def fallback_bats(team_abbr: str) -> str:
+                fallback = describe_key_bats(bat_df, team_abbr)
+                if fallback == "Key Bats: N/A":
+                    return ""
+                return fallback.replace("Key Bats: ", "")
+
             away_bats = bats_for(away_abbr)
             home_bats = bats_for(home_abbr)
-            md_lines.append(f"{away_abbr}: " + ("; ".join(away_bats) if away_bats else "N/A (no batter profile source found)"))
-            md_lines.append(f"{home_abbr}: " + ("; ".join(home_bats) if home_bats else "N/A (no batter profile source found)"))
+            away_line = "; ".join(away_bats) if away_bats else fallback_bats(away_abbr)
+            home_line = "; ".join(home_bats) if home_bats else fallback_bats(home_abbr)
+            md_lines.append(f"{away_abbr}: " + (away_line if away_line else "N/A (no batter profile or ratings source found)"))
+            md_lines.append(f"{home_abbr}: " + (home_line if home_line else "N/A (no batter profile or ratings source found)"))
 
             # Pitching snapshot
             md_lines.append("### Pitching Snapshot")
@@ -808,6 +826,7 @@ def main() -> None:
             data_sources.append(str(path))
     data_sources.extend(fin_sources)
     data_sources.extend(str(p) for p in fan_sources)
+    data_sources.extend(batter_sources)
     data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")
     if data_sources:
@@ -817,7 +836,7 @@ def main() -> None:
         md_lines.append("- None found")
     md_lines.append("")
     md_lines.append("## Notes")
-    notes = park_notes + fin_notes + fan_notes
+    notes = park_notes + fin_notes + fan_notes + batter_notes
     if not matchups:
         notes.append("No matchups provided or discovered.")
     if notes:
