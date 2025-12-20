@@ -27,7 +27,7 @@ from _abl_pregame_utils import (
     load_projected_starters,
     load_team_reporting,
     load_manager_tendencies,
-    load_lsdl_schedule,
+    load_lsdl_schedule_meta,
     parse_money_to_float,
     md_table,
     normalize_team_table,
@@ -471,6 +471,7 @@ def main() -> None:
     parser.add_argument("--week", type=int, required=False)
     parser.add_argument("--league_id", type=int, default=200)
     parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
+    parser.add_argument("--date", help="Game date (YYYY-MM-DD) to derive matchups from schedule/games")
     parser.add_argument("--arsenal-top", type=int, default=3, help="Top N pitches to display for arsenal")
     parser.add_argument("--show-arsenal-count", action="store_true", default=True, help="Show pitch count when available")
     parser.add_argument("--bats-top", type=int, default=2, help="Top N key bats per team")
@@ -602,7 +603,7 @@ def main() -> None:
 
     prob_df, prob_path = choose_probables_source(base, featured_df, featured_path)
     prob_label = prob_path.name if prob_path else "schedule"
-    lsdl_df, lsdl_sources, lsdl_notes = load_lsdl_schedule(base)
+    lsdl_df, lsdl_sources, lsdl_notes, lsdl_meta = load_lsdl_schedule_meta(base)
     schedule_df = lsdl_df if lsdl_df is not None and not lsdl_df.empty else prob_df
     schedule_label = lsdl_sources[0] if lsdl_sources else prob_label
     pitch_df, pitch_path = load_best_csv(base, PITCH_RATINGS_PATTERNS)
@@ -615,13 +616,40 @@ def main() -> None:
         except Exception:
             games_df = None
 
+    if args.date:
+        try:
+            target_date = pd.to_datetime(args.date, errors="coerce").date()
+        except Exception:
+            target_date = None
+        if target_date:
+            week_start = None
+            if games_df is not None and not games_df.empty and "date" in games_df.columns:
+                dates = pd.to_datetime(games_df["date"], errors="coerce").dropna()
+                if not dates.empty:
+                    week_start = dates.min().date()
+            if week_start is None and lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
+                try:
+                    week_start = pd.Timestamp(
+                        year=target_date.year,
+                        month=int(lsdl_meta["start_month"]),
+                        day=int(lsdl_meta["start_day"]),
+                    ).date()
+                except Exception:
+                    week_start = None
+            if week_start and target_date >= week_start:
+                week = 1 + ((target_date - week_start).days // 7)
+
     abbr_to_id = {}
+    id_to_abbr = {}
     if "team_abbr" in teams.columns and "team_id" in teams.columns:
         for _, row in teams.iterrows():
             abbr = row.get("team_abbr")
             tid = row.get("team_id")
             if pd.notna(abbr) and pd.notna(tid):
-                abbr_to_id[str(abbr).upper()] = int(tid)
+                abbr_up = str(abbr).upper()
+                tid_int = int(tid)
+                abbr_to_id[abbr_up] = tid_int
+                id_to_abbr[tid_int] = abbr_up
 
     proj_by_teamid = {}
     proj_by_abbr = {}
@@ -741,8 +769,70 @@ def main() -> None:
     week_label = f"{week:02d}" if isinstance(week, int) else ("N/A" if week is None else str(week))
     md_lines = [f"# ABL Pregame Pack - Season {season_label} Week {week_label}", ""]
 
+    def matchups_from_date(date_str: str) -> List[Tuple[str, str]]:
+        from datetime import datetime, timedelta
+
+        results: List[Tuple[str, str]] = []
+        if games_df is not None and not games_df.empty:
+            if "date" in games_df.columns:
+                try:
+                    target = pd.to_datetime(date_str, errors="coerce").date()
+                except Exception:
+                    target = None
+                if target:
+                    dates = pd.to_datetime(games_df["date"], errors="coerce").dt.date
+                    rows = games_df[dates == target]
+                    for _, row in rows.iterrows():
+                        away_id = row.get("away_team")
+                        home_id = row.get("home_team")
+                        try:
+                            away_id = int(away_id)
+                            home_id = int(home_id)
+                        except Exception:
+                            continue
+                        away_abbr = id_to_abbr.get(away_id)
+                        home_abbr = id_to_abbr.get(home_id)
+                        if away_abbr and home_abbr:
+                            results.append((away_abbr, home_abbr))
+        if results:
+            return results
+        if lsdl_df is not None and not lsdl_df.empty and lsdl_meta.get("start_month") and lsdl_meta.get("start_day"):
+            try:
+                target_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+            except Exception:
+                return []
+            try:
+                start_month = int(lsdl_meta["start_month"])
+                start_day = int(lsdl_meta["start_day"])
+                start_date = datetime(target_date.year, start_month, start_day).date()
+            except Exception:
+                return []
+            day_num = (target_date - start_date).days + 1
+            if day_num <= 0:
+                return []
+            rows = lsdl_df[pd.to_numeric(lsdl_df["day"], errors="coerce") == day_num]
+            for _, row in rows.iterrows():
+                away_id = row.get("away_team")
+                home_id = row.get("home_team")
+                try:
+                    away_id = int(away_id)
+                    home_id = int(home_id)
+                except Exception:
+                    continue
+                away_abbr = id_to_abbr.get(away_id)
+                home_abbr = id_to_abbr.get(home_id)
+                if away_abbr and home_abbr:
+                    results.append((away_abbr, home_abbr))
+        return results
+
+    if not matchups and args.date:
+        matchups = matchups_from_date(args.date)
+
     if not matchups:
-        md_lines.append("No featured matchups artifact found; use --matchups to provide pairs like CHI@MIA.")
+        msg = "No featured matchups artifact found; use --matchups to provide pairs like CHI@MIA."
+        if args.date:
+            msg = f"No matchups found for {args.date}; use --matchups to provide pairs like CHI@MIA."
+        md_lines.append(msg)
     else:
         # League dash
         md_lines.insert(0, "")
@@ -893,6 +983,8 @@ def main() -> None:
     data_sources.extend(fin_sources)
     data_sources.extend(str(p) for p in fan_sources)
     data_sources.extend(lsdl_sources)
+    if games_df is not None:
+        data_sources.append(str(games_path))
     data_sources.extend(batter_sources)
     data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")

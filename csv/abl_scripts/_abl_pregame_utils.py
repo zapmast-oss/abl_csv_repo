@@ -599,29 +599,41 @@ def load_manager_tendencies(base: Path, rel_path: str = "csv/out/csv_out/z_ABL_M
 
 def load_lsdl_schedule(base: Path, rel_path: str = "data_raw/ootp_html") -> tuple[pd.DataFrame, List[str], List[str]]:
     """Load OOTP .lsdl schedule file into a DataFrame."""
+    df, sources, notes, _meta = load_lsdl_schedule_meta(base, rel_path=rel_path)
+    return df, sources, notes
+
+
+def load_lsdl_schedule_meta(
+    base: Path, rel_path: str = "data_raw/ootp_html"
+) -> tuple[pd.DataFrame, List[str], List[str], dict]:
+    """Load OOTP .lsdl schedule file into a DataFrame with metadata."""
     sources: List[str] = []
     notes: List[str] = []
+    meta: dict = {}
     root = base / rel_path
     if not root.exists():
         notes.append("No lsdl schedule folder found.")
-        return pd.DataFrame(), sources, notes
+        return pd.DataFrame(), sources, notes, meta
     candidates = sorted(root.rglob("*.lsdl"), key=lambda p: p.stat().st_mtime, reverse=True)
     if not candidates:
         notes.append("No lsdl schedule file found.")
-        return pd.DataFrame(), sources, notes
+        return pd.DataFrame(), sources, notes, meta
     path = candidates[0]
     sources.append(str(path))
     try:
         tree = ET.parse(path)
     except Exception as exc:
         notes.append(f"lsdl parse error {path}: {exc}")
-        return pd.DataFrame(), sources, notes
+        return pd.DataFrame(), sources, notes, meta
     root_el = tree.getroot()
     schedule_el = root_el if root_el.tag.upper() == "SCHEDULE" else root_el.find("SCHEDULE")
+    if schedule_el is not None:
+        meta["start_month"] = schedule_el.attrib.get("start_month")
+        meta["start_day"] = schedule_el.attrib.get("start_day")
     games_el = root_el.find("GAMES") if root_el.tag.upper() == "SCHEDULE" else schedule_el.find("GAMES") if schedule_el is not None else None
     if games_el is None:
         notes.append("lsdl schedule missing GAMES section.")
-        return pd.DataFrame(), sources, notes
+        return pd.DataFrame(), sources, notes, meta
     records = []
     for game in games_el.findall("GAME"):
         day = game.attrib.get("day")
@@ -637,7 +649,7 @@ def load_lsdl_schedule(base: Path, rel_path: str = "data_raw/ootp_html") -> tupl
             }
         )
     df = pd.DataFrame(records)
-    return df, sources, notes
+    return df, sources, notes, meta
 
 
 def format_manager_tendencies(row: pd.Series) -> str:
