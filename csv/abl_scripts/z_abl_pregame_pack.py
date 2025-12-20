@@ -497,6 +497,12 @@ def main() -> None:
     parser.add_argument("--league_id", type=int, default=200)
     parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
     parser.add_argument("--date", help="Game date (YYYY-MM-DD) to derive matchups from schedule/games")
+    parser.add_argument(
+        "--starter",
+        action="append",
+        default=[],
+        help="Manual starter override(s), e.g., CHI=8125 or MIA=Bill Borden; can repeat or use commas",
+    )
     parser.add_argument("--arsenal-top", type=int, default=3, help="Top N pitches to display for arsenal")
     parser.add_argument("--show-arsenal-count", action="store_true", default=True, help="Show pitch count when available")
     parser.add_argument("--bats-top", type=int, default=2, help="Top N key bats per team")
@@ -617,6 +623,13 @@ def main() -> None:
             name = r.get("player_name")
             if pd.notna(pid):
                 player_name_map[int(pid)] = str(name)
+    player_name_to_id: Dict[str, int] = {}
+    if not players_df.empty and "player_name" in players_df.columns and "player_id" in players_df.columns:
+        for _, r in players_df.iterrows():
+            name = r.get("player_name")
+            pid = r.get("player_id")
+            if pd.notna(name) and pd.notna(pid):
+                player_name_to_id[str(name).strip().lower()] = int(pid)
     batter_df, batter_sources, batter_notes = parse_batter_profile_all(base)
     team_reporting_df, team_reporting_sources, team_reporting_notes = load_team_reporting(base, league_id=league_id)
     mgr_tend_df, mgr_tend_sources, mgr_tend_notes = load_manager_tendencies(base)
@@ -674,6 +687,37 @@ def main() -> None:
                     week_start = dates.min().date()
             if week_start and target_date >= week_start:
                 week = 1 + ((target_date - week_start).days // 7)
+
+    manual_starters: Dict[str, dict] = {}
+    manual_notes: List[str] = []
+    if args.starter:
+        raw_items: List[str] = []
+        for chunk in args.starter:
+            if not chunk:
+                continue
+            raw_items.extend([c.strip() for c in chunk.split(",") if c.strip()])
+        for item in raw_items:
+            if "=" not in item:
+                continue
+            team_raw, value_raw = item.split("=", 1)
+            team = team_raw.strip().upper()
+            value = value_raw.strip()
+            if not team or not value:
+                continue
+            pid = None
+            name = None
+            pid_val = pd.to_numeric(pd.Series([value]), errors="coerce").iloc[0]
+            if pd.notna(pid_val):
+                pid = int(pid_val)
+                name = player_name_map.get(pid, None)
+            else:
+                name = value
+                pid = player_name_to_id.get(value.lower())
+            if pid is None and name is None:
+                continue
+            manual_starters[team] = {"id": pid, "name": name}
+        if manual_starters:
+            manual_notes.append("Manual starters: " + ", ".join(f"{k}={v.get('name') or v.get('id')}" for k, v in sorted(manual_starters.items())))
 
     abbr_to_id = {}
     id_to_abbr = {}
@@ -757,11 +801,23 @@ def main() -> None:
     def resolve_starter(away_abbr: str, home_abbr: str) -> tuple[dict, dict]:
         away = {"id": None, "name": None, "source": None}
         home = {"id": None, "name": None, "source": None}
+        if away_abbr in manual_starters:
+            entry = manual_starters[away_abbr]
+            away["id"] = entry.get("id")
+            away["name"] = entry.get("name")
+            away["source"] = "manual"
+        if home_abbr in manual_starters:
+            entry = manual_starters[home_abbr]
+            home["id"] = entry.get("id")
+            home["name"] = entry.get("name")
+            home["source"] = "manual"
         away_tid = abbr_to_id.get(away_abbr)
         home_tid = abbr_to_id.get(home_abbr)
         if prob_df is not None and not prob_df.empty:
             sched_away, sched_home = describe_probables(prob_df, away_abbr, home_abbr, abbr_to_id)
             for entry, sched in ((away, sched_away), (home, sched_home)):
+                if entry.get("id") is not None:
+                    continue
                 if not sched:
                     continue
                 pid = sched.get("player_id")
@@ -1084,7 +1140,7 @@ def main() -> None:
         md_lines.append("- None found")
     md_lines.append("")
     md_lines.append("## Notes")
-    notes = park_notes + fin_notes + fan_notes + batter_notes
+    notes = park_notes + fin_notes + fan_notes + batter_notes + manual_notes
     if not matchups:
         notes.append("No matchups provided or discovered.")
     if notes:
