@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import fnmatch
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Iterable, List, Optional, Sequence, Tuple
 
@@ -593,6 +594,49 @@ def load_manager_tendencies(base: Path, rel_path: str = "csv/out/csv_out/z_ABL_M
         notes.append(f"manager tendencies load error {path}: {exc}")
         return pd.DataFrame(), sources, notes
     sources.append(str(path))
+    return df, sources, notes
+
+
+def load_lsdl_schedule(base: Path, rel_path: str = "data_raw/ootp_html") -> tuple[pd.DataFrame, List[str], List[str]]:
+    """Load OOTP .lsdl schedule file into a DataFrame."""
+    sources: List[str] = []
+    notes: List[str] = []
+    root = base / rel_path
+    if not root.exists():
+        notes.append("No lsdl schedule folder found.")
+        return pd.DataFrame(), sources, notes
+    candidates = sorted(root.rglob("*.lsdl"), key=lambda p: p.stat().st_mtime, reverse=True)
+    if not candidates:
+        notes.append("No lsdl schedule file found.")
+        return pd.DataFrame(), sources, notes
+    path = candidates[0]
+    sources.append(str(path))
+    try:
+        tree = ET.parse(path)
+    except Exception as exc:
+        notes.append(f"lsdl parse error {path}: {exc}")
+        return pd.DataFrame(), sources, notes
+    root_el = tree.getroot()
+    schedule_el = root_el if root_el.tag.upper() == "SCHEDULE" else root_el.find("SCHEDULE")
+    games_el = root_el.find("GAMES") if root_el.tag.upper() == "SCHEDULE" else schedule_el.find("GAMES") if schedule_el is not None else None
+    if games_el is None:
+        notes.append("lsdl schedule missing GAMES section.")
+        return pd.DataFrame(), sources, notes
+    records = []
+    for game in games_el.findall("GAME"):
+        day = game.attrib.get("day")
+        time = game.attrib.get("time")
+        away = game.attrib.get("away")
+        home = game.attrib.get("home")
+        records.append(
+            {
+                "day": pd.to_numeric(pd.Series([day]), errors="coerce").iloc[0],
+                "time": time,
+                "away_team": pd.to_numeric(pd.Series([away]), errors="coerce").iloc[0],
+                "home_team": pd.to_numeric(pd.Series([home]), errors="coerce").iloc[0],
+            }
+        )
+    df = pd.DataFrame(records)
     return df, sources, notes
 
 

@@ -27,6 +27,7 @@ from _abl_pregame_utils import (
     load_projected_starters,
     load_team_reporting,
     load_manager_tendencies,
+    load_lsdl_schedule,
     parse_money_to_float,
     md_table,
     normalize_team_table,
@@ -601,6 +602,9 @@ def main() -> None:
 
     prob_df, prob_path = choose_probables_source(base, featured_df, featured_path)
     prob_label = prob_path.name if prob_path else "schedule"
+    lsdl_df, lsdl_sources, lsdl_notes = load_lsdl_schedule(base)
+    schedule_df = lsdl_df if lsdl_df is not None and not lsdl_df.empty else prob_df
+    schedule_label = lsdl_sources[0] if lsdl_sources else prob_label
     pitch_df, pitch_path = load_best_csv(base, PITCH_RATINGS_PATTERNS)
     bat_df, bat_path = load_best_csv(base, BAT_RATINGS_PATTERNS)
     games_path = base / "csv" / "ootp_csv" / "games.csv"
@@ -762,9 +766,9 @@ def main() -> None:
             park_env = ballpark_env(home_key or away_key)
             park_name = park_map.get(home_key, {}).get("name") or park_map.get(away_key, {}).get("name") or "N/A"
             md_lines.append(f"Ballpark: {park_name} | Park Env: {park_env}")
-            if prob_df is not None and not prob_df.empty:
-                if not matchup_in_schedule(prob_df, away_abbr, home_abbr, abbr_to_id):
-                    md_lines.append(f"Schedule: NOT FOUND in {prob_label}")
+            if schedule_df is not None and not schedule_df.empty:
+                if not matchup_in_schedule(schedule_df, away_abbr, home_abbr, abbr_to_id):
+                    md_lines.append(f"Schedule: NOT FOUND in {schedule_label}")
 
             away_prob, home_prob = resolve_starter(away_abbr, home_abbr)
             away_name = away_prob.get("name") or "TBD"
@@ -888,6 +892,7 @@ def main() -> None:
             data_sources.append(str(path))
     data_sources.extend(fin_sources)
     data_sources.extend(str(p) for p in fan_sources)
+    data_sources.extend(lsdl_sources)
     data_sources.extend(batter_sources)
     data_sources.extend(arsenal_sources)
     md_lines.append("## Data Sources")
@@ -898,7 +903,7 @@ def main() -> None:
         md_lines.append("- None found")
     md_lines.append("")
     md_lines.append("## Notes")
-    notes = park_notes + fin_notes + fan_notes + batter_notes
+    notes = park_notes + fin_notes + fan_notes + lsdl_notes + batter_notes
     if not matchups:
         notes.append("No matchups provided or discovered.")
     if notes:
