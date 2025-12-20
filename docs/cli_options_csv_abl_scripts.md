@@ -551,7 +551,7 @@ options:
                         'required': False, 'help': 'Minimum SB+CS for CS%
                         stability.', 'metavar': None, 'container':
                         <argparse._ArgumentGroup object at
-                        0x0000022F69DE28A0>, 'prog':
+                        0x000001E42E3B5D90>, 'prog':
                         'z_abl_catcher_battery_value.py'}tability.
 ```
 
@@ -1240,7 +1240,7 @@ options:
 usage: z_abl_pregame_pack.py [-h] [--base BASE] [--season SEASON]
                              [--week WEEK] [--league_id LEAGUE_ID]
                              [--matchups MATCHUPS] [--date DATE]
-                             [--arsenal-top ARSENAL_TOP]
+                             [--starter STARTER] [--arsenal-top ARSENAL_TOP]
                              [--show-arsenal-count] [--bats-top BATS_TOP]
 
 Generate ABL pregame pack.
@@ -1254,6 +1254,8 @@ options:
   --matchups MATCHUPS   Explicit matchups list, e.g., CHI@MIA,DEN@NAS
   --date DATE           Game date (YYYY-MM-DD) to derive matchups from
                         schedule/games
+  --starter STARTER     Manual starter override(s), e.g., CHI=8125 or MIA=Bill
+                        Borden; can repeat or use commas
   --arsenal-top ARSENAL_TOP
                         Top N pitches to display for arsenal
   --show-arsenal-count  Show pitch count when available
