@@ -21,10 +21,10 @@ CHI: Miguel Morales (LF) — Bat 58.8 — Best: EYE 65 — Bats: S; Sal Gamez (1
 MIA: Pat Watters (1B) — Bat 58.8 — Best: CON 70 — Bats: R; Oscar Romero (1B) — Bat 56.2 — Best: EYE 60 — Bats: L
 ### Pitching Snapshot
 CHI starter: Heriberto Jimenez
-Arsenal (3): Changeup (best) 80, Slider 55, Fastball 50
+Arsenal: Changeup (best) 80, Slider 55, Fastball 50
 Best pitch: Changeup 80
 MIA starter: Gil Aguilar
-Arsenal (3): Changeup (best) 80, Slider 50, Fastball 45
+Arsenal: Changeup (best) 80, Slider 50, Fastball 45
 Best pitch: Changeup 80
 Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 Starter source: games.csv starters where present; otherwise rotation/projected starters
@@ -32,7 +32,7 @@ Starter source: games.csv starters where present; otherwise rotation/projected s
 ## DEN at NAS
 DEN (18-14, rank 2, GB 6) @ NAS (18-14, rank 1, GB -)
 Ballpark: Blues Stadium | Park Env: Neutral (AVG 1.0202, HR 0.9254)
-Probable Starters: DEN Damian Serano (rotation) vs NAS Edgar Montiel (rotation)
+Probable Starters: DEN Damian Serano (rotation) vs NAS Antonio Hernandez (manual)
 ### Managers
 DEN: Adam Phillips | 280-368 (0.432) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
 NAS: Francisco Hernandez | 437-535 (0.450) | Titles 0 | Tendencies: Smallball: Balanced | Hook: Standard | Platoon: Static
@@ -47,11 +47,11 @@ DEN: Jonathan Stevens (1B) — Bat 56.2 — Best: GAP 65 — Bats: S; Boboy Nier
 NAS: Brett Petrillo (LF) — Bat 61.2 — Best: SPE 75 — Bats: L; Jose Orozco (3B) — Bat 60.0 — Best: GAP 65 — Bats: S
 ### Pitching Snapshot
 DEN starter: Damian Serano
-Arsenal (3): Curveball (best) 65, Splitter 65, Fastball 45
+Arsenal: Curveball (best) 65, Splitter 65, Fastball 45
 Best pitch: Curveball 65
-NAS starter: Edgar Montiel
-Arsenal (3): Curveball (best) 55, Changeup 45, Fastball 40
-Best pitch: Curveball 55
+NAS starter: Antonio Hernandez
+Arsenal: Curveball (best) 60, Cutter 50, Slider 50
+Best pitch: Curveball 60
 Arsenal sources: C:\sbv_repo\abl_csv_repo\csv\out\text_out\prep\pitcher_arsenal_all.txt
 Starter source: games.csv starters where present; otherwise rotation/projected starters
 
@@ -77,3 +77,4 @@ Starter source: games.csv starters where present; otherwise rotation/projected s
 - team_last_financials.csv columns: {'budget': 'budget', 'payroll': None, 'cash': 'cash', 'revenue': 'total_revenue', 'profit': 'financial_balance'}
 - team_history_financials load error: 'year'
 - team_history_financials.csv season chosen 1981
+- Manual starters: NAS=Antonio Hernandez

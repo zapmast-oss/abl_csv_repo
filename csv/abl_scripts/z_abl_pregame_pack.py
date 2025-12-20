@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 
 
 from typing import Dict, List, Optional, Sequence, Tuple
@@ -489,25 +490,7 @@ def describe_team_detail(
     return lines
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate ABL pregame pack.")
-    parser.add_argument("--base", help="Repo root (optional).")
-    parser.add_argument("--season", type=int, required=False)
-    parser.add_argument("--week", type=int, required=False)
-    parser.add_argument("--league_id", type=int, default=200)
-    parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
-    parser.add_argument("--date", help="Game date (YYYY-MM-DD) to derive matchups from schedule/games")
-    parser.add_argument(
-        "--starter",
-        action="append",
-        default=[],
-        help="Manual starter override(s), e.g., CHI=8125 or MIA=Bill Borden; can repeat or use commas",
-    )
-    parser.add_argument("--arsenal-top", type=int, default=3, help="Top N pitches to display for arsenal")
-    parser.add_argument("--show-arsenal-count", action="store_true", default=True, help="Show pitch count when available")
-    parser.add_argument("--bats-top", type=int, default=2, help="Top N key bats per team")
-    args = parser.parse_args()
-
+def run_with_args(args: argparse.Namespace) -> None:
     base = resolve_base(args.base)
     season = args.season
     week = args.week
@@ -1150,6 +1133,95 @@ def main() -> None:
 
     out_path = base / "csv" / "out" / "text_out" / "pregame" / "pregame_packs.md"
     write_md(out_path, "\n".join(md_lines).rstrip() + "\n")
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Generate ABL pregame pack.")
+    parser.add_argument("--base", help="Repo root (optional).")
+    parser.add_argument("--season", type=int, required=False)
+    parser.add_argument("--week", type=int, required=False)
+    parser.add_argument("--league_id", type=int, default=200)
+    parser.add_argument("--matchups", help="Explicit matchups list, e.g., CHI@MIA,DEN@NAS")
+    parser.add_argument("--date", help="Game date (YYYY-MM-DD) to derive matchups from schedule/games")
+    parser.add_argument(
+        "--starter",
+        action="append",
+        default=[],
+        help="Manual starter override(s), e.g., CHI=8125 or MIA=Bill Borden; can repeat or use commas",
+    )
+    parser.add_argument("--arsenal-top", type=int, default=3, help="Top N pitches to display for arsenal")
+    parser.add_argument("--show-arsenal-count", action="store_true", default=True, help="Show pitch count when available")
+    parser.add_argument("--bats-top", type=int, default=2, help="Top N key bats per team")
+    return parser
+
+
+def interactive_loop(parser: argparse.ArgumentParser) -> None:
+    def prompt_text(label: str, default: Optional[str] = None) -> str:
+        suffix = f" [{default}]" if default else ""
+        return input(f"{label}{suffix}: ").strip() or (default or "")
+
+    last = {
+        "date": "",
+        "matchups": "",
+        "matchups_mode": "1",
+        "starter": "",
+    }
+    print("Pregame pack interactive mode. Type 'q' to quit.")
+    while True:
+        date_val = prompt_text("Date (YYYY-MM-DD)", last["date"])
+        if date_val.lower() in {"q", "quit", "exit"}:
+            return
+        matchups_mode = prompt_text("Matchups: 1=auto from date, 2=manual, 3=none", last["matchups_mode"])
+        if matchups_mode.lower() in {"q", "quit", "exit"}:
+            return
+        matchups = ""
+        if matchups_mode == "2":
+            matchups = prompt_text("Matchups (e.g., CHI@MIA,DEN@NAS)", last["matchups"])
+            if matchups.lower() in {"q", "quit", "exit"}:
+                return
+        starter = prompt_text("Manual starters (optional; e.g., CHI=8125,MIA=Bill Borden)", last["starter"])
+        if starter.lower() in {"q", "quit", "exit"}:
+            return
+
+        last.update(
+            {
+                "date": date_val,
+                "matchups": matchups,
+                "matchups_mode": matchups_mode,
+                "starter": starter,
+            }
+        )
+
+        season_val = None
+        date_parsed = pd.to_datetime(date_val, errors="coerce")
+        if pd.notna(date_parsed):
+            season_val = int(date_parsed.year)
+        args = argparse.Namespace(
+            base=None,
+            season=season_val,
+            week=None,
+            league_id=200,
+            matchups=matchups if matchups_mode == "2" and matchups else None,
+            date=date_val or None,
+            starter=[starter] if starter else [],
+            arsenal_top=3,
+            show_arsenal_count=True,
+            bats_top=2,
+        )
+        run_with_args(args)
+
+        again = prompt_text("Run again? (y/n)", "y").lower()
+        if again not in {"y", "yes", ""}:
+            return
+
+
+def main() -> None:
+    parser = build_parser()
+    if len(sys.argv) == 1:
+        interactive_loop(parser)
+        return
+    args = parser.parse_args()
+    run_with_args(args)
     print(f"Wrote {out_path}")
 
 
