@@ -1234,7 +1234,6 @@ def main() -> None:
         return
     args = parser.parse_args()
     run_with_args(args)
-    print(f"Wrote {out_path}")
 
 
 if __name__ == "__main__":
