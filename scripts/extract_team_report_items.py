@@ -14,6 +14,10 @@ def _norm(txt: str) -> str:
     return re.sub(r"\s+", " ", str(txt or "").strip().lower())
 
 
+def _norm_key(txt: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(txt or "").strip().lower())
+
+
 def _safe_int(val: str) -> Optional[int]:
     try:
         num = int(str(val).strip())
@@ -33,6 +37,9 @@ def find_team_info(base: Path, team_abbr: str, team_name_override: Optional[str]
     abbr = team_abbr.strip().upper()
     name_norm = _norm(team_name_override) if team_name_override else ""
 
+    def _row_lower_map(row: dict) -> dict:
+        return {_norm_key(k): v for k, v in row.items()}
+
     for path in candidates:
         if not path.exists():
             continue
@@ -40,10 +47,11 @@ def find_team_info(base: Path, team_abbr: str, team_name_override: Optional[str]
             with path.open("r", encoding="utf-8", errors="ignore", newline="") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    row_abbr = (row.get("team_abbr") or row.get("abbr") or "").strip().upper()
-                    row_name = (row.get("team_name") or row.get("name") or row.get("team") or "").strip()
-                    row_city = (row.get("city") or "").strip()
-                    row_nick = (row.get("nickname") or "").strip()
+                    row_l = _row_lower_map(row)
+                    row_abbr = (row_l.get("teamabbr") or row_l.get("abbr") or "").strip().upper()
+                    row_name = (row_l.get("teamname") or row_l.get("team_name") or row_l.get("name") or row_l.get("team") or "").strip()
+                    row_city = (row_l.get("city") or "").strip()
+                    row_nick = (row_l.get("nickname") or row_l.get("name") or "").strip()
                     row_full = f"{row_city} {row_nick}".strip()
                     matches = False
                     if abbr and row_abbr == abbr:
@@ -55,7 +63,9 @@ def find_team_info(base: Path, team_abbr: str, team_name_override: Optional[str]
                     if not matches:
                         continue
 
-                    team_id = _safe_int(row.get("team_id") or row.get("id") or "")
+                    team_id = _safe_int(row_l.get("teamid") or row_l.get("team_id") or row_l.get("id") or "")
+                    if not row_nick and row_name and " " in row_name:
+                        row_nick = row_name.split()[-1]
                     return {
                         "team_abbr": row_abbr or abbr,
                         "team_name": team_name_override or row_name or row_full or "",
