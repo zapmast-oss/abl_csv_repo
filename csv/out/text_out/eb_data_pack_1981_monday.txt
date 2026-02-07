@@ -29,6 +29,128 @@ Fallers (top 3 by negative change):
 - NY (change=-7.7%, record=16-16)
 - LV (change=-5.8%, record=24-8)
 
+Team Identity – 1981 Snapshot
+-----------------------------
+ATL – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+BOS – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+CHA – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+CHI – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+CIN – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+DAL – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+DEN – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+DET – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+HOU – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+LA – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+LV – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+MIA – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+MIN – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+NAS – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+NY – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+PHI – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+PHO – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+PIT – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+POR – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+SD – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+SEA – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+SF – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+STL – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
+TB – 
+  One-run: n/a
+  BABIP luck: bat=n/a, pitch=n/a, rating=n/a
+  System: n/a
+
 WAR Leaders – ABC
 -----------------
 Batters:
