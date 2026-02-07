@@ -37,7 +37,7 @@ _Based on preseason predictions and 1972 season WAR among hyped players._
 - Garrett Hamby (P, SD) - WAR: 0.70
 - Kevin Pender (LF, HOU) - WAR: 0.90
 - Tyler Townsley (RF, MIA) - WAR: 0.90
-- Barry Wilson (1B, SF) - WAR: 1.00
+- Barry Wilson (RF, SF) - WAR: 1.00
 - Mario Najera (1B, SEA) - WAR: 1.30
 - Isaiah Simmons (P, SD) - WAR: 1.60
 - Jahiem Bryant (P, DAL) - WAR: 1.60
@@ -45,4 +45,4 @@ _Based on preseason predictions and 1972 season WAR among hyped players._
 - Maximino Calo (P, MIN) - WAR: 1.90
 - Kevin Bell (1B, NAS) - WAR: 2.00
 - Emilio Meraz (P, POR) - WAR: 2.20
-- Juan Perez (LF, SF) - WAR: 2.20
+- Juan Perez (1B, SF) - WAR: 2.20
