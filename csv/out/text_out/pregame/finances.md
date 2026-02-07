@@ -49,7 +49,6 @@
 ## Data Sources
 - C:\sbv_repo\abl_csv_repo\csv\out\star_schema\fact_team_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_last_financials.csv
-- Selected season: 1981
 
 ## Notes
 - fact_team_financials columns: {'budget': 'Bgt', 'payroll': 'Pay', 'cash': None, 'revenue': 'Revenue', 'balance': None}

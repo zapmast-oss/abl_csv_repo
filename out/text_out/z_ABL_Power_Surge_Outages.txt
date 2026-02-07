@@ -1,6 +1,6 @@
 ABL Power Surge & Outage Tracker
 =================================
-Generated on: 2025-12-06 01:29:33
+Generated on: 2026-02-07 01:26:04
 
 Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.
 Why it matters: flags lineup or park-influenced power trends for storylines, broadcasts, and matchup prep.

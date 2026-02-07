@@ -70,7 +70,6 @@
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_last_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_financials.csv
 - C:\sbv_repo\abl_csv_repo\csv\ootp_csv\team_history_financials.csv
-- Selected season: 1981
 
 ## Notes
-- team_history_financials.csv season chosen 1981
+- team_history_financials.csv season chosen 1980
