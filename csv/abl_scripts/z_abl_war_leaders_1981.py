@@ -45,6 +45,15 @@ def find_header_line(path: Path) -> int:
     raise SystemExit(f"Could not locate header row in {path}")
 
 
+def normalize_sub_league(raw: object) -> str:
+    s = str(raw or "").strip().upper()
+    if s == "ABC" or "AMERICAN BASEBALL CONFERENCE" in s:
+        return "ABC"
+    if s == "NBC" or "NATIONAL BASEBALL CONFERENCE" in s:
+        return "NBC"
+    return s
+
+
 def load_dim_team() -> Dict[str, Tuple[str, str, int]]:
     if not DIM_TEAM_PARK_PATH.exists():
         raise SystemExit(f"dim_team_park.csv missing at {DIM_TEAM_PARK_PATH}")
@@ -83,7 +92,7 @@ def load_dim_team() -> Dict[str, Tuple[str, str, int]]:
         columns={id_col: "team_id", abbr_col: "team_abbr", name_col: "team_name", sl_col: "sub_league"}
     )
     dim["team_abbr"] = dim["team_abbr"].astype(str).str.strip()
-    dim["sub_league"] = dim["sub_league"].astype(str).str.strip().str.upper()
+    dim["sub_league"] = dim["sub_league"].map(normalize_sub_league)
     return {
         row["team_abbr"]: (row["team_name"], row["sub_league"], int(row["team_id"]))
         for _, row in dim.iterrows()
