@@ -1,18 +1,18 @@
 # Markdown Inventory
-Generated: 2026-02-07 01:25:36
+Generated: 2026-05-14 23:59:58
 Root: C:\sbv_repo\abl_csv_repo\csv
 Out: C:\sbv_repo\abl_csv_repo\csv\out
 Count: 115
 
 ## Files
 - out/almanac/1972/eb_combined_1972.md (modified: 2025-11-28 16:57:19, size: 41484 bytes)
-- out/almanac/1972/eb_flashback_brief_1972_league200.md (modified: 2026-02-07 01:21:52, size: 4475 bytes)
+- out/almanac/1972/eb_flashback_brief_1972_league200.md (modified: 2026-02-07 01:26:12, size: 4475 bytes)
 - out/almanac/1972/eb_monthly_timeline_1972_league200.md (modified: 2026-02-07 01:25:25, size: 21156 bytes)
-- out/almanac/1972/eb_player_context_1972_league200.md (modified: 2026-02-07 01:25:26, size: 850 bytes)
-- out/almanac/1972/eb_player_leaders_1972_league200.md (modified: 2026-02-07 01:25:27, size: 560 bytes)
-- out/almanac/1972/eb_player_spotlights_1972_league200.md (modified: 2026-02-07 01:25:27, size: 3208 bytes)
+- out/almanac/1972/eb_player_context_1972_league200.md (modified: 2026-02-07 01:26:16, size: 850 bytes)
+- out/almanac/1972/eb_player_leaders_1972_league200.md (modified: 2026-02-07 01:26:16, size: 560 bytes)
+- out/almanac/1972/eb_player_spotlights_1972_league200.md (modified: 2026-02-07 01:26:14, size: 3208 bytes)
 - out/almanac/1972/eb_regular_season_pack_1972_league200.md (modified: 2025-12-17 15:31:35, size: 37801 bytes)
-- out/almanac/1972/eb_schedule_context_1972_league200.md (modified: 2026-02-07 01:25:28, size: 391 bytes)
+- out/almanac/1972/eb_schedule_context_1972_league200.md (modified: 2026-02-07 01:26:15, size: 391 bytes)
 - out/almanac/1972/eb_series_spotlights_1972_league200.md (modified: 2026-02-07 01:25:29, size: 3566 bytes)
 - out/almanac/1972/flashback_story_menu_1972_league200.md (modified: 2025-11-28 09:07:33, size: 8998 bytes)
 - out/almanac/1973/eb_flashback_brief_1973_league200.md (modified: 2025-12-17 15:31:37, size: 4493 bytes)
@@ -64,7 +64,7 @@ Count: 115
 - out/almanac/1980/eb_regular_season_pack_1980_league200.md (modified: 2025-12-17 15:32:55, size: 13112 bytes)
 - out/almanac/1980/eb_schedule_context_1980_league200.md (modified: 2025-12-17 15:32:50, size: 394 bytes)
 - out/eb/abl_league_overview.md (modified: 2025-12-01 12:28:41, size: 3923 bytes)
-- out/eb/eb_month_glory_misery_1972_league200.md (modified: 2026-02-07 01:21:50, size: 1772 bytes)
+- out/eb/eb_month_glory_misery_1972_league200.md (modified: 2026-02-07 01:26:10, size: 1772 bytes)
 - out/eb/eb_month_glory_misery_1973_league200.md (modified: 2025-12-17 15:31:35, size: 1735 bytes)
 - out/eb/eb_month_glory_misery_1974_league200.md (modified: 2025-12-17 15:31:45, size: 1752 bytes)
 - out/eb/eb_month_glory_misery_1975_league200.md (modified: 2025-12-17 15:31:55, size: 1705 bytes)
@@ -73,7 +73,7 @@ Count: 115
 - out/eb/eb_month_glory_misery_1978_league200.md (modified: 2025-12-17 15:32:25, size: 1769 bytes)
 - out/eb/eb_month_glory_misery_1979_league200.md (modified: 2025-12-17 15:32:35, size: 1751 bytes)
 - out/eb/eb_month_glory_misery_1980_league200.md (modified: 2025-12-17 15:32:45, size: 1750 bytes)
-- out/eb/eb_preseason_hype_1972_league200.md (modified: 2026-02-07 01:21:58, size: 1680 bytes)
+- out/eb/eb_preseason_hype_1972_league200.md (modified: 2026-02-07 01:26:18, size: 1680 bytes)
 - out/eb/eb_preseason_hype_1973_league200.md (modified: 2025-12-17 15:31:43, size: 1669 bytes)
 - out/eb/eb_preseason_hype_1974_league200.md (modified: 2025-12-17 15:31:53, size: 1673 bytes)
 - out/eb/eb_preseason_hype_1975_league200.md (modified: 2025-12-17 15:32:03, size: 1703 bytes)
@@ -111,12 +111,12 @@ Count: 115
 - out/eb/gs_1978_summary.md (modified: 2025-12-01 21:25:30, size: 1025 bytes)
 - out/eb/gs_1979_summary.md (modified: 2025-12-01 21:25:31, size: 764 bytes)
 - out/eb/gs_1980_summary.md (modified: 2025-12-01 21:24:50, size: 971 bytes)
-- out/md_inventory_all.md (modified: 2026-02-07 01:25:36, size: 12026 bytes)
-- out/md_inventory_core.md (modified: 2026-02-07 01:25:36, size: 491 bytes)
-- out/md_inventory_history.md (modified: 2026-02-07 01:21:35, size: 11686 bytes)
-- out/text_out/pregame/ballparks.md (modified: 2025-12-17 17:27:40, size: 3253 bytes)
-- out/text_out/pregame/fans_markets.md (modified: 2025-12-17 21:48:24, size: 3198 bytes)
-- out/text_out/pregame/finances.md (modified: 2025-12-17 19:03:25, size: 2913 bytes)
+- out/md_inventory_all.md (modified: 2026-05-14 23:59:58, size: 12026 bytes)
+- out/md_inventory_core.md (modified: 2026-05-14 23:59:58, size: 491 bytes)
+- out/md_inventory_history.md (modified: 2026-02-07 01:25:36, size: 11686 bytes)
+- out/text_out/pregame/ballparks.md (modified: 2026-02-07 01:26:06, size: 3253 bytes)
+- out/text_out/pregame/fans_markets.md (modified: 2026-02-07 01:26:07, size: 3173 bytes)
+- out/text_out/pregame/finances.md (modified: 2026-02-07 01:26:07, size: 2888 bytes)
 - out/text_out/pregame/pregame_packs.md (modified: 2025-12-20 14:31:31, size: 4916 bytes)
 - out/text_out/team_matches_CHI.md (modified: 2025-12-29 20:40:06, size: 44856 bytes)
 - out/text_out/team_matches_MIA.md (modified: 2025-12-30 00:40:10, size: 104605 bytes)
