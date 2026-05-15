@@ -308,9 +308,9 @@ def division_notes(division_records: list[Record]) -> str:
     leader = ordered[0]
     challengers = [record for record in ordered[1:] if record.division_gb <= 6]
     if not challengers:
-        return f"- {leader.team.name} has separation in the {leader.team.conference_abbr} {leader.team.division}."
+        return f"- The {leader.team.name} have separation in the {leader.team.conference_abbr} {leader.team.division}."
     names = ", ".join(f"{record.team.abbr} {fmt_gb(record.division_gb)} GB" for record in challengers[:3])
-    return f"- {leader.team.name} leads the {leader.team.conference_abbr} {leader.team.division}; chase group: {names}."
+    return f"- The {leader.team.name} lead the {leader.team.conference_abbr} {leader.team.division}; chase group: {names}."
 
 
 def wildcard_notes(conference_records: list[Record]) -> str:
@@ -318,8 +318,13 @@ def wildcard_notes(conference_records: list[Record]) -> str:
     ordered = sorted(pool, key=lambda record: (record.wildcard_rank or 999, standings_sort(record)))
     if not ordered:
         return "- TODO_DERIVE wildcard picture."
-    top = ", ".join(f"{record.team.abbr} ({record.record})" for record in ordered[:4])
-    return f"- Wildcard line starts with {top}; TODO_VERIFY playoff berth count."
+    top = ", ".join(record.team.abbr for record in ordered[:4])
+    conference_abbr = conference_records[0].team.conference_abbr
+    if conference_abbr == "NBC":
+        return f"- The NBC wildcard field is crowded behind the division leaders, led by {top}."
+    if conference_abbr == "ABC":
+        return f"- The ABC wildcard field is led by {top} entering the second half."
+    return f"- The {conference_abbr} wildcard field is led by {top} entering the second half."
 
 
 def write_league_report(records: dict[str, Record], latest_date: datetime) -> None:
@@ -351,6 +356,7 @@ def write_league_report(records: dict[str, Record], latest_date: datetime) -> No
                     "",
                     f"#### {div_name}",
                     "ABBR | Team | W-L | PCT | GB | RD | L10 | STRK | Home | Road",
+                    "--- | --- | --- | --- | --- | --- | --- | --- | --- | ---",
                 ]
             )
             for record in sorted(division_records, key=standings_sort):
@@ -359,7 +365,14 @@ def write_league_report(records: dict[str, Record], latest_date: datetime) -> No
     lines.extend(["", "## Wildcard Standings"])
     for conf_id in sorted(by_conf):
         conf_name = by_conf[conf_id][0].team.conference
-        lines.extend(["", f"### {conf_name}", "WC | ABBR | Team | W-L | PCT | GB | RD | L10 | STRK"])
+        lines.extend(
+            [
+                "",
+                f"### {conf_name}",
+                "WC | ABBR | Team | W-L | PCT | GB | RD | L10 | STRK",
+                "--- | --- | --- | --- | --- | --- | --- | --- | ---",
+            ]
+        )
         pool = [record for record in by_conf[conf_id] if record.wildcard_rank is not None]
         for record in sorted(pool, key=lambda item: item.wildcard_rank or 999):
             lines.append(
