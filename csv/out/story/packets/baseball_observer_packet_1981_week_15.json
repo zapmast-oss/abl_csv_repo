@@ -5,6 +5,14 @@
   "as_of_date": "1981-07-12",
   "editorial_principle": "Do not invent drama. Notice pressure. Name stakes. Let the game prove the story.",
   "candidate_count": 12,
+  "source_state": {
+    "as_of_date": "1981-07-12",
+    "coverage_label": "1981_week_15",
+    "games_per_team": 89,
+    "current_source": "raw date-filterable OOTP exports",
+    "excluded": "older Week 5 derivative snapshots",
+    "disabled": "manager signals until compatible 89-game manager data exists"
+  },
   "sections": [
     {
       "hierarchy_level": "tournament",
@@ -13,8 +21,10 @@
           "candidate_id": "1981_week_15__historical_champion_echo__6",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "tournament",
           "signal_type": "historical_champion_echo",
           "subject_type": "historical_link",
@@ -37,7 +47,10 @@
               "comparison": "1980 NBC East",
               "source_file": "csv/out/almanac/1980/league_champions_1980_league200.csv",
               "source_row_key": "team_id=6",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Prior-season context, not a forecast."
             },
             {
@@ -48,7 +61,10 @@
               "comparison": "National Baseball Conference Eastern Division",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "team_id=6;through=1981-07-12",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Recomputed current record."
             }
           ],
@@ -63,8 +79,10 @@
           "candidate_id": "1981_week_15__division_race__national-baseball-conference-central-division",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "standings",
           "signal_type": "division_race",
           "subject_type": "division",
@@ -87,7 +105,10 @@
               "comparison": "second=48-41",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "through=1981-07-12;team_id=4",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Recomputed from completed league-200 regular-season games."
             },
             {
@@ -98,7 +119,10 @@
               "comparison": "top two clubs",
               "source_file": "csv/ootp_csv/teams.csv",
               "source_row_key": "team_id=4|5",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Division IDs resolved through divisions.csv."
             }
           ],
@@ -108,8 +132,10 @@
           "candidate_id": "1981_week_15__division_race__national-baseball-conference-western-division",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "standings",
           "signal_type": "division_race",
           "subject_type": "division",
@@ -132,7 +158,10 @@
               "comparison": "second=46-43",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "through=1981-07-12;team_id=10",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Recomputed from completed league-200 regular-season games."
             },
             {
@@ -143,7 +172,10 @@
               "comparison": "top two clubs",
               "source_file": "csv/ootp_csv/teams.csv",
               "source_row_key": "team_id=10|2",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Division IDs resolved through divisions.csv."
             }
           ],
@@ -153,8 +185,10 @@
           "candidate_id": "1981_week_15__division_race__american-baseball-conference-western-division",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "standings",
           "signal_type": "division_race",
           "subject_type": "division",
@@ -177,7 +211,10 @@
               "comparison": "second=49-40",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "through=1981-07-12;team_id=17",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Recomputed from completed league-200 regular-season games."
             },
             {
@@ -188,7 +225,10 @@
               "comparison": "top two clubs",
               "source_file": "csv/ootp_csv/teams.csv",
               "source_row_key": "team_id=17|24",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Division IDs resolved through divisions.csv."
             }
           ],
@@ -198,8 +238,10 @@
           "candidate_id": "1981_week_15__division_race__american-baseball-conference-eastern-division",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "standings",
           "signal_type": "division_race",
           "subject_type": "division",
@@ -222,7 +264,10 @@
               "comparison": "second=42-47",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "through=1981-07-12;team_id=20",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Recomputed from completed league-200 regular-season games."
             },
             {
@@ -233,7 +278,10 @@
               "comparison": "top two clubs",
               "source_file": "csv/ootp_csv/teams.csv",
               "source_row_key": "team_id=20|22",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Division IDs resolved through divisions.csv."
             }
           ],
@@ -248,8 +296,10 @@
           "candidate_id": "1981_week_15__weekly_rise__1",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "race",
           "signal_type": "weekly_rise",
           "subject_type": "team",
@@ -272,7 +322,10 @@
               "comparison": "season=46-43",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "team_id=1;1981-07-06..1981-07-12",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Calendar-window record recomputed from completed games."
             }
           ],
@@ -282,8 +335,10 @@
           "candidate_id": "1981_week_15__weekly_fall__22",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "race",
           "signal_type": "weekly_fall",
           "subject_type": "team",
@@ -306,7 +361,10 @@
               "comparison": "season=42-47",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "team_id=22;1981-07-06..1981-07-12",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Calendar-window record recomputed from completed games."
             }
           ],
@@ -321,8 +379,10 @@
           "candidate_id": "1981_week_15__ace_performance__5832",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "players",
           "signal_type": "ace_performance",
           "subject_type": "player",
@@ -345,7 +405,10 @@
               "comparison": "highest among league-200 pitchers with >=10 GS and >=80 IP",
               "source_file": "csv/ootp_csv/players_career_pitching_stats.csv",
               "source_row_key": "player_id=5832;year=1981;split_id=1",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Current raw season total."
             }
           ],
@@ -355,8 +418,10 @@
           "candidate_id": "1981_week_15__player_value_leader__5463",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "players",
           "signal_type": "player_value_leader",
           "subject_type": "player",
@@ -379,7 +444,10 @@
               "comparison": "highest league-200 total among hitters with >=150 PA",
               "source_file": "csv/ootp_csv/players_career_batting_stats.csv",
               "source_row_key": "player_id=5463;year=1981;split_id=1",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Current raw season total."
             }
           ],
@@ -394,8 +462,10 @@
           "candidate_id": "1981_week_15__pythag_under_record__3",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "team",
           "signal_type": "pythag_under_record",
           "subject_type": "team",
@@ -418,7 +488,10 @@
               "comparison": "actual_wins=37;expected_wins=42.2",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "team_id=3;through=1981-07-12",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Expected winning percentage uses RS^2/(RS^2+RA^2); it is not a forecast."
             }
           ],
@@ -428,8 +501,10 @@
           "candidate_id": "1981_week_15__pythag_over_record__9",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "team",
           "signal_type": "pythag_over_record",
           "subject_type": "team",
@@ -452,7 +527,10 @@
               "comparison": "actual_wins=45;expected_wins=40.5",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "team_id=9;through=1981-07-12",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Expected winning percentage uses RS^2/(RS^2+RA^2); it is not a forecast."
             }
           ],
@@ -467,8 +545,10 @@
           "candidate_id": "1981_week_15__matchup_stakes__1079",
           "run_id": "sprint1_1981_week_15",
           "week_label": "1981_week_15",
+          "coverage_label": "1981_week_15",
           "as_of_date": "1981-07-12",
           "season": "1981",
+          "expected_games_per_team": "89",
           "hierarchy_level": "game",
           "signal_type": "matchup_stakes",
           "subject_type": "matchup",
@@ -491,7 +571,10 @@
               "comparison": "49-40 vs 52-37",
               "source_file": "csv/ootp_csv/games.csv",
               "source_row_key": "game_id=1079",
+              "season": "1981",
+              "coverage_label": "1981_week_15",
               "as_of_date": "1981-07-12",
+              "expected_games_per_team": "89",
               "notes": "Unplayed regular-season game within seven days after the cutoff."
             }
           ],

@@ -4,6 +4,12 @@
 
 Sprint 1 implements a narrow, reproducible path from the latest date-filterable 1981 data to structured story candidates, ranked menu, evidence table, and Baseball Observer packet. The authoritative catalog at `csv/out/docs/abl_data_catalog.csv` is read-only and is used to validate every selected source path. The current cutoff is July 12, 1981: 89 completed regular-season games per ABL team, treated operationally as Week 15.
 
+## Week 15 correction and mixed snapshots
+
+The first Sprint 1 pass targeted a preserved Week 5 state. Repository validation then established that the active raw export is later: all 24 ABL teams have completed 89 regular-season games through July 12, 1981. The repository intentionally retains earlier products, including 32-game story/standings/player artifacts and 62-game manager/division/rotation reports. These mixed snapshots are not interchangeable.
+
+The active run is now fixed to season `1981`, coverage `1981_week_15`, cutoff `1981-07-12`, and `89` expected games per team. The compatibility rules in `docs/ABL_AS_OF_COMPATIBILITY_RULES.md` require current signals to use cutoff-compatible raw data. Preserved Week 5 outputs are recorded as excluded, not read as evidence. Manager signals are disabled because available manager data does not reach the 89-game cutoff.
+
 ## Catalog-selected source map
 
 | Need | Best existing CSV | Sprint 1 use |
@@ -32,6 +38,9 @@ The runner stops on any child failure. The signal generator verifies all selecte
 - `csv/out/story/menus/story_menu_1981_week_15.csv`
 - `csv/out/story/packets/baseball_observer_packet_1981_week_15.json`
 - `csv/out/story/packets/baseball_observer_packet_1981_week_15.md`
+- `csv/out/story/manifests/story_engine_source_manifest_1981_week_15.csv`
+- `csv/out/story/manifests/story_engine_source_manifest_1981_week_15.md`
+- `csv/out/story/manifests/story_engine_source_manifest_1981_week_15.json`
 
 ## Detector behavior
 
@@ -45,9 +54,9 @@ The runner stops on any child failure. The signal generator verifies all selecte
 
 ## Known limits and next work
 
-- “Week 15” is an operational label supplied by the project; the data-grounded facts are the July 12 cutoff and 89 games per team.
+- Week 15 is an operational label supplied by the project; the data-grounded facts are the July 12 cutoff and 89 games per team.
 - Wild-card and tournament arithmetic are not emitted because no verified 1981 qualification-rules table was found.
 - Manager signals remain disabled until tendencies can be rebuilt through the current cutoff.
-- The Sunday matchup composite is accepted as existing evidence but is not yet decomposed into independently validated components.
+- Matchup selection currently prioritizes same-division games and comparable current records; probable starters are not yet part of the compatible source set.
 - Team name joins across current and almanac files work for the tested data; stable franchise/team IDs should replace name linkage.
-- Sprint 2 should add as-of manifests, run-specific output directories, team profile adapters, series state, candidate deduplication, and editorial selection state.
+- Sprint 2 should add run-specific output directories, team profile adapters, series state, candidate deduplication, and editorial selection state.

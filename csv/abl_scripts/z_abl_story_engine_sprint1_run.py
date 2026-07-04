@@ -7,12 +7,18 @@ from pathlib import Path
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+ACTIVE_SEASON = 1981
+ACTIVE_AS_OF_DATE = "1981-07-12"
+ACTIVE_COVERAGE_LABEL = "1981_week_15"
+EXPECTED_GAMES_PER_TEAM = 89
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run Sprint 1 weekly Story Signal to Baseball Observer pipeline.")
-    parser.add_argument("--week-label", default="1981_week_15")
-    parser.add_argument("--as-of", default="1981-07-12")
+    parser.add_argument("--season", type=int, default=ACTIVE_SEASON)
+    parser.add_argument("--week-label", default=ACTIVE_COVERAGE_LABEL)
+    parser.add_argument("--as-of", default=ACTIVE_AS_OF_DATE)
+    parser.add_argument("--expected-games-per-team", type=int, default=EXPECTED_GAMES_PER_TEAM)
     parser.add_argument("--run-id", default="sprint1_1981_week_15")
     return parser.parse_args()
 
@@ -26,7 +32,10 @@ def run(script: str, args: list[str]) -> None:
 def main() -> int:
     args = parse_args()
     common = ["--week-label", args.week_label, "--run-id", args.run_id]
-    run("z_abl_story_signal_weekly_1981.py", [*common, "--as-of", args.as_of])
+    run("z_abl_story_signal_weekly_1981.py", [
+        *common, "--season", str(args.season), "--as-of", args.as_of,
+        "--expected-games-per-team", str(args.expected_games_per_team),
+    ])
     run("z_abl_baseball_observer_packet_weekly_1981.py", common)
     print(f"[OK] Sprint 1 pipeline complete for {args.week_label} as of {args.as_of}")
     return 0

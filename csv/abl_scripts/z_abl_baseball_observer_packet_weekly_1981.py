@@ -8,6 +8,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+ACTIVE_SEASON = 1981
+ACTIVE_AS_OF_DATE = "1981-07-12"
+ACTIVE_COVERAGE_LABEL = "1981_week_15"
+EXPECTED_GAMES_PER_TEAM = 89
 HIERARCHY = ["tournament", "standings", "race", "fans", "management", "players", "team", "game"]
 
 
@@ -18,7 +22,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Render a weekly Baseball Observer packet from story candidates.")
-    parser.add_argument("--week-label", default="1981_week_15")
+    parser.add_argument("--week-label", default=ACTIVE_COVERAGE_LABEL)
     parser.add_argument("--run-id", default="sprint1_1981_week_15")
     return parser.parse_args()
 
@@ -27,8 +31,10 @@ def main() -> int:
     args = parse_args()
     candidate_path = ROOT / "csv" / "out" / "story" / "candidates" / f"story_candidates_{args.week_label}.csv"
     evidence_path = ROOT / "csv" / "out" / "story" / "candidates" / f"story_evidence_{args.week_label}.csv"
+    manifest_path = ROOT / "csv" / "out" / "story" / "manifests" / f"story_engine_source_manifest_{args.week_label}.json"
     candidates = read_csv(candidate_path)
     evidence = read_csv(evidence_path)
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     by_candidate: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in evidence:
         by_candidate[row["candidate_id"]].append(row)
@@ -43,6 +49,14 @@ def main() -> int:
         "week_label": args.week_label, "as_of_date": candidates[0]["as_of_date"],
         "editorial_principle": "Do not invent drama. Notice pressure. Name stakes. Let the game prove the story.",
         "candidate_count": len(candidates),
+        "source_state": {
+            "as_of_date": manifest["as_of_date"],
+            "coverage_label": manifest["coverage_label"],
+            "games_per_team": manifest["expected_games_per_team"],
+            "current_source": "raw date-filterable OOTP exports",
+            "excluded": "older Week 5 derivative snapshots",
+            "disabled": "manager signals until compatible 89-game manager data exists",
+        },
         "sections": [],
     }
     lines = [
@@ -51,6 +65,12 @@ def main() -> int:
         f"Run: `{args.run_id}`", "",
         "> Do not invent drama. Notice pressure. Name stakes. Let the game prove the story.", "",
         "This packet names verified pressure and open questions. It does not predict what the next game will prove.", "",
+        "## Source State", "",
+        "- As of: July 12, 1981",
+        "- Coverage: 89 games per team",
+        "- Current source: raw date-filterable OOTP exports",
+        "- Excluded: older Week 5 derivative snapshots",
+        "- Disabled: manager signals until compatible 89-game manager data exists", "",
     ]
     for level in HIERARCHY:
         section_candidates = [row for row in candidates if row["hierarchy_level"] == level]

@@ -7,6 +7,14 @@ Run: `sprint1_1981_week_15`
 
 This packet names verified pressure and open questions. It does not predict what the next game will prove.
 
+## Source State
+
+- As of: July 12, 1981
+- Coverage: 89 games per team
+- Current source: raw date-filterable OOTP exports
+- Excluded: older Week 5 derivative snapshots
+- Disabled: manager signals until compatible 89-game manager data exists
+
 ## Tournament
 
 ### 1980 qualifier Charlotte Colonels remains relevant in the 1981 race

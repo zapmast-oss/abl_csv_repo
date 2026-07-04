@@ -11,15 +11,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "csv" / "out" / "docs" / "abl_data_catalog.csv"
+ACTIVE_SEASON = 1981
+ACTIVE_AS_OF_DATE = "1981-07-12"
+ACTIVE_COVERAGE_LABEL = "1981_week_15"
+EXPECTED_GAMES_PER_TEAM = 89
 CANDIDATE_COLUMNS = [
-    "candidate_id", "run_id", "week_label", "as_of_date", "season",
+    "candidate_id", "run_id", "week_label", "coverage_label", "as_of_date",
+    "season", "expected_games_per_team",
     "hierarchy_level", "signal_type", "subject_type", "subject_id",
     "subject_name", "related_subjects", "headline_factual", "stakes",
     "evidence_summary", "source_files", "signal_score", "confidence", "status",
 ]
 EVIDENCE_COLUMNS = [
     "evidence_id", "candidate_id", "metric", "value", "comparison",
-    "source_file", "source_row_key", "as_of_date", "notes",
+    "source_file", "source_row_key", "season", "coverage_label", "as_of_date",
+    "expected_games_per_team", "notes",
+]
+MANIFEST_COLUMNS = [
+    "source_file", "used_by_engine", "row_count", "min_date", "max_date",
+    "detected_games_per_team", "source_status", "reason",
 ]
 HIERARCHY_ORDER = {
     "tournament": 0, "standings": 1, "race": 2, "fans": 3,
@@ -34,6 +44,26 @@ SOURCES = {
     "career_pitching": "csv/ootp_csv/players_career_pitching_stats.csv",
     "champions": "csv/out/almanac/1980/league_champions_1980_league200.csv",
 }
+SOURCE_POLICIES = [
+    (SOURCES["games"], "used", "active_current", "Authoritative date-filterable game source; completed ABL games are filtered through the active cutoff."),
+    (SOURCES["teams"], "used", "compatible_static", "Team identity and league/division keys are dimensions, not performance snapshots."),
+    (SOURCES["divisions"], "used", "compatible_static", "Division names and keys are static structural dimensions."),
+    (SOURCES["players"], "used", "compatible_static", "Player names and team identifiers support current raw statistical rows."),
+    (SOURCES["career_batting"], "used", "active_current", "Raw 1981 cumulative batting totals belong to the coordinated current OOTP export."),
+    (SOURCES["career_pitching"], "used", "active_current", "Raw 1981 cumulative pitching totals belong to the coordinated current OOTP export."),
+    (SOURCES["champions"], "used", "compatible_historical", "1980 context is intentionally historical and cannot replace current-season evidence."),
+    ("csv/out/star_schema/monday_1981_standings_by_division.csv", "excluded", "excluded_wrong_games_count", "Preserved standings snapshot contains 32 games per team, not the active 89-game state."),
+    ("csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv", "excluded", "excluded_wrong_games_count", "Preserved weekly-change rows end at 32 games, not the active 89-game state."),
+    ("csv/out/star_schema/fact_player_batting.csv", "excluded", "excluded_stale_snapshot", "Preserved early-season player fact is not used for active Week 15 leaders."),
+    ("csv/out/star_schema/fact_player_pitching.csv", "excluded", "excluded_stale_snapshot", "Preserved early-season player fact is not used for active Week 15 leaders."),
+    ("csv/story_candidates_1981_week_05.csv", "excluded", "excluded_stale_snapshot", "Preserved Week 5 story candidates are historical artifacts, not active inputs."),
+    ("csv/story_menu_1981_week_05.csv", "excluded", "excluded_stale_snapshot", "Preserved Week 5 story menu is not an active input."),
+    ("csv/story_menu_1981_week_07.csv", "excluded", "excluded_stale_snapshot", "Preserved early-season story menu is not an active input."),
+    ("csv/out/star_schema/fact_manager_scorecard_1981_current.csv", "disabled", "disabled_incompatible", "Manager scorecard is tied to a 32-game standings snapshot; management signals are disabled."),
+    ("csv/out/csv_out/z_ABL_Manager_Tendencies.csv", "disabled", "disabled_incompatible", "Manager tendencies stop at 62 games; management signals require the 89-game cutoff."),
+    ("csv/out/csv_out/z_ABL_Division_Leverage.csv", "disabled", "disabled_incompatible", "Division leverage stops at 62 games and cannot support active race signals."),
+    ("csv/out/csv_out/z_ABL_Rotation_Stability.csv", "disabled", "disabled_incompatible", "Rotation stability stops at 62 games and cannot support active pitcher/team signals."),
+]
 
 
 def number(value: object, default: float = 0.0) -> float:
@@ -71,10 +101,13 @@ def safe_id(value: str) -> str:
 
 
 class SignalBuilder:
-    def __init__(self, week_label: str, as_of: str, run_id: str, catalog_paths: set[str]):
+    def __init__(self, season: int, week_label: str, as_of: str, run_id: str,
+                 expected_games_per_team: int, catalog_paths: set[str]):
+        self.season = season
         self.week_label = week_label
         self.as_of = as_of
         self.run_id = run_id
+        self.expected_games_per_team = expected_games_per_team
         self.catalog_paths = catalog_paths
         self.candidates: list[dict[str, object]] = []
         self.evidence: list[dict[str, object]] = []
@@ -89,7 +122,9 @@ class SignalBuilder:
         candidate_id = f"{self.week_label}__{signal}__{safe_id(subject_id)}"
         self.candidates.append({
             "candidate_id": candidate_id, "run_id": self.run_id,
-            "week_label": self.week_label, "as_of_date": self.as_of, "season": 1981,
+            "week_label": self.week_label, "coverage_label": self.week_label,
+            "as_of_date": self.as_of, "season": self.season,
+            "expected_games_per_team": self.expected_games_per_team,
             "hierarchy_level": hierarchy, "signal_type": signal,
             "subject_type": subject_type, "subject_id": subject_id,
             "subject_name": subject_name, "related_subjects": "|".join(related),
@@ -104,7 +139,9 @@ class SignalBuilder:
                 raise ValueError(f"Evidence source {source} not declared by {candidate_id}")
             self.evidence.append({
                 "evidence_id": f"{candidate_id}__e{index:02d}",
-                "candidate_id": candidate_id, "as_of_date": self.as_of, **item,
+                "candidate_id": candidate_id, "season": self.season,
+                "coverage_label": self.week_label, "as_of_date": self.as_of,
+                "expected_games_per_team": self.expected_games_per_team, **item,
             })
 
 
@@ -113,6 +150,124 @@ def load_catalog_paths() -> set[str]:
         raise FileNotFoundError(f"Authoritative catalog not found: {CATALOG}")
     with CATALOG.open("r", encoding="utf-8-sig", newline="") as handle:
         return {row["file_path"] for row in csv.DictReader(handle)}
+
+
+def detect_date_range(rows: list[dict[str, str]], source_file: str,
+                      as_of: date) -> tuple[str, str]:
+    values: list[date] = []
+    date_columns = ("date", "game_date", "start_date", "end_date", "transaction_date")
+    for row in rows:
+        if source_file == SOURCES["games"]:
+            if row.get("league_id") != "200" or row.get("game_type") != "0" or row.get("played") != "1":
+                continue
+        for column in date_columns:
+            raw = row.get(column, "").strip()
+            if not raw:
+                continue
+            try:
+                parsed = parse_date(raw)
+            except ValueError:
+                continue
+            if source_file != SOURCES["games"] or parsed <= as_of:
+                values.append(parsed)
+    if not values:
+        return "", ""
+    return min(values).isoformat(), max(values).isoformat()
+
+
+def detect_games_per_team(source_file: str, rows: list[dict[str, str]],
+                          as_of: date) -> str:
+    values: set[int] = set()
+    if source_file == SOURCES["games"]:
+        counts: dict[str, int] = defaultdict(int)
+        for row in rows:
+            if (row.get("league_id") == "200" and row.get("game_type") == "0"
+                    and row.get("played") == "1" and parse_date(row["date"]) <= as_of):
+                counts[row["home_team"]] += 1
+                counts[row["away_team"]] += 1
+        values = set(counts.values())
+    elif source_file.endswith("monday_1981_standings_by_division.csv"):
+        values = {int(number(row.get("games"))) for row in rows}
+    elif source_file.endswith("fact_team_reporting_1981_weekly_change.csv"):
+        values = {int(number(row.get("wins_curr")) + number(row.get("losses_curr"))) for row in rows}
+    elif source_file.endswith("fact_manager_scorecard_1981_current.csv"):
+        values = {int(number(row.get("wins")) + number(row.get("losses"))) for row in rows}
+    elif source_file.endswith("z_ABL_Manager_Tendencies.csv"):
+        values = {int(number(row.get("g_est"))) for row in rows}
+    elif source_file.endswith("z_ABL_Division_Leverage.csv"):
+        values = {int(number(row.get("overall_g"))) for row in rows}
+    elif source_file.endswith("z_ABL_Rotation_Stability.csv"):
+        values = {int(number(row.get("total_starts"))) for row in rows}
+    elif source_file.endswith("fact_player_batting.csv"):
+        values = {int(max((number(row.get("G")) for row in rows), default=0))}
+    if not values:
+        return ""
+    if len(values) == 1:
+        return str(next(iter(values)))
+    return f"{min(values)}-{max(values)}"
+
+
+def build_source_manifest(season: int, as_of_text: str, coverage_label: str,
+                          expected_games: int) -> list[dict[str, object]]:
+    as_of = date.fromisoformat(as_of_text)
+    manifest: list[dict[str, object]] = []
+    for source_file, use, status, reason in SOURCE_POLICIES:
+        path = ROOT / source_file
+        if not path.exists():
+            manifest.append({
+                "source_file": source_file, "used_by_engine": "no", "row_count": "",
+                "min_date": "", "max_date": "", "detected_games_per_team": "",
+                "source_status": "disabled_incompatible",
+                "reason": f"Declared source is missing. {reason}",
+            })
+            continue
+        rows = read_csv(source_file)
+        min_date, max_date = detect_date_range(rows, source_file, as_of)
+        detected = detect_games_per_team(source_file, rows, as_of)
+        manifest.append({
+            "source_file": source_file, "used_by_engine": "yes" if use == "used" else "no",
+            "row_count": len(rows), "min_date": min_date, "max_date": max_date,
+            "detected_games_per_team": detected, "source_status": status, "reason": reason,
+        })
+    games_row = next(row for row in manifest if row["source_file"] == SOURCES["games"])
+    if games_row["detected_games_per_team"] != str(expected_games):
+        raise ValueError(
+            f"Active games source detected {games_row['detected_games_per_team']} games per team; "
+            f"expected {expected_games}. Refusing to generate signals."
+        )
+    return manifest
+
+
+def write_source_manifest(rows: list[dict[str, object]], season: int,
+                          as_of_text: str, coverage_label: str,
+                          expected_games: int) -> dict[str, str]:
+    out_dir = ROOT / "csv" / "out" / "story" / "manifests"
+    stem = f"story_engine_source_manifest_{coverage_label}"
+    csv_path = out_dir / f"{stem}.csv"
+    json_path = out_dir / f"{stem}.json"
+    md_path = out_dir / f"{stem}.md"
+    write_csv(csv_path, MANIFEST_COLUMNS, rows)
+    payload = {
+        "season": season, "as_of_date": as_of_text, "coverage_label": coverage_label,
+        "expected_games_per_team": expected_games,
+        "sources": rows,
+    }
+    json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    lines = [
+        f"# Story Engine Source Manifest — {coverage_label}", "",
+        f"- Season: {season}", f"- As of: {as_of_text}",
+        f"- Expected coverage: {expected_games} games per team", "",
+        "| Used | Status | Source | Rows | Date range | Games/team | Reason |",
+        "|---|---|---|---:|---|---:|---|",
+    ]
+    for row in rows:
+        date_range = f"{row['min_date']} to {row['max_date']}" if row["min_date"] else "n/a"
+        lines.append(
+            f"| {row['used_by_engine']} | `{row['source_status']}` | `{row['source_file']}` | "
+            f"{row['row_count'] or 'n/a'} | {date_range} | {row['detected_games_per_team'] or 'n/a'} | {row['reason']} |"
+        )
+    md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {"csv": str(csv_path), "json": str(json_path), "markdown": str(md_path)}
 
 
 def build_latest_signals(builder: SignalBuilder) -> None:
@@ -346,8 +501,10 @@ def write_menu(path: Path, candidates: list[dict[str, object]]) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate evidence-backed weekly 1981 story signals.")
-    parser.add_argument("--week-label", default="1981_week_15")
-    parser.add_argument("--as-of", default="1981-07-12")
+    parser.add_argument("--season", type=int, default=ACTIVE_SEASON)
+    parser.add_argument("--week-label", default=ACTIVE_COVERAGE_LABEL)
+    parser.add_argument("--as-of", default=ACTIVE_AS_OF_DATE)
+    parser.add_argument("--expected-games-per-team", type=int, default=EXPECTED_GAMES_PER_TEAM)
     parser.add_argument("--run-id", default="sprint1_1981_week_15")
     return parser.parse_args()
 
@@ -362,7 +519,16 @@ def main() -> int:
         if not (ROOT / source).exists():
             raise FileNotFoundError(ROOT / source)
 
-    builder = SignalBuilder(args.week_label, args.as_of, args.run_id, catalog_paths)
+    manifest = build_source_manifest(
+        args.season, args.as_of, args.week_label, args.expected_games_per_team
+    )
+    manifest_paths = write_source_manifest(
+        manifest, args.season, args.as_of, args.week_label, args.expected_games_per_team
+    )
+    builder = SignalBuilder(
+        args.season, args.week_label, args.as_of, args.run_id,
+        args.expected_games_per_team, catalog_paths,
+    )
     build_latest_signals(builder)
     candidate_dir = ROOT / "csv" / "out" / "story" / "candidates"
     menu_dir = ROOT / "csv" / "out" / "story" / "menus"
@@ -375,7 +541,7 @@ def main() -> int:
     print(json.dumps({
         "candidate_path": str(candidate_path), "evidence_path": str(evidence_path),
         "menu_path": str(menu_path), "candidate_count": len(builder.candidates),
-        "evidence_count": len(builder.evidence),
+        "evidence_count": len(builder.evidence), "manifest_paths": manifest_paths,
     }, indent=2))
     return 0
 

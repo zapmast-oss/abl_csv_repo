@@ -15,7 +15,10 @@ Evidence is stored separately from candidates so detectors can emit different me
 | `comparison` | string | Baseline, rank, opponent, prior value, or threshold context |
 | `source_file` | path | Repository-relative CSV path listed in the catalog |
 | `source_row_key` | string | Reproducible key such as `team_abbr=LV` |
+| `season` | integer | Active season; `1981` |
+| `coverage_label` | string | Active coverage contract; `1981_week_15` |
 | `as_of_date` | ISO date | Evidence cutoff |
+| `expected_games_per_team` | integer | Active coverage check; `89` |
 | `notes` | string | Interpretation limits or calculation description |
 
 ## Invariants
