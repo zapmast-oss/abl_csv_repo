@@ -38,3 +38,22 @@ Common validation: file/schema/row-count checks; reject mixed capture dates; joi
 - **Context only:** personality, park, financial, indicative, and misc fields when they do not represent game results.
 - **Quarantine:** files with missing/shifted headers, unexpected universe counts, mixed exports, or game counts that disagree with the raw batch.
 
+## Accepted Schema Drift — July 19, 1981 Capture
+
+Two team-report schemas changed in the current OOTP capture and are accepted as the forward capture standard:
+
+| Source | Previous schema | Accepted schema | Removed fields |
+|---|---:|---:|---|
+| `abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv` | 23 columns | 13 columns | `GM_ID`, `MA_ID`, `BN_ID`, `PC_ID`, `HC_ID`, `SC_ID`, `TT_ID`, `OWN_ID`, `1BC_ID`, `3BC_ID` |
+| `abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv` | 20 columns | 13 columns | `CS`, `SB%`, `WAR`, `BatR`, `wSB`, `UBR`, `BsR` |
+
+The current 13-column schemas are accepted going forward unless data-entry policy changes. Missing columns do not block promotion and must not be fabricated in the official source files.
+
+Any downstream consumer requiring removed columns must do one of the following:
+
+- stop requiring the field;
+- expose a null/default-unavailable value with provenance and availability metadata;
+- source the field from another registered, batch-compatible source;
+- disable only the enrichment or signal that depends on the unavailable field.
+
+Staff IDs should be resolved in a generated compatibility/curated view from the raw coach/staff source. Team batting `WAR` can be sourced from the governed batting-extra report. Baserunning fields without a validated replacement remain unavailable, and dependent enrichment must be limited or disabled.
