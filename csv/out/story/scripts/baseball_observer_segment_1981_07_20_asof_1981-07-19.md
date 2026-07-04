@@ -2,7 +2,7 @@
 
 **Newsroom date:** July 20, 1981  
 **Data cutoff:** Games completed through July 19, 1981  
-**Estimated read:** 7–8 minutes
+**Estimated read:** About 8 minutes
 
 ## Opening
 
@@ -93,7 +93,7 @@ Data points where to look; the game proves the story. Notice it. Name it. Connec
 ## Production Notes
 
 - **Suggested segment title:** Baseball Observer: The Races Take Shape
-- **Estimated read length:** 7–8 minutes at a measured delivery
+- **Estimated read length:** About 8 minutes at a measured delivery
 - **Suggested YouTube chapters:**
   - 00:00 — The ABL Race Board
   - 00:45 — Dallas–Detroit Leads
