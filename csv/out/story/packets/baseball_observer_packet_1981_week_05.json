@@ -1,0 +1,525 @@
+{
+  "schema_version": "1.0-sprint1",
+  "run_id": "sprint1_1981_week_05",
+  "week_label": "1981_week_05",
+  "as_of_date": "1981-05-11",
+  "editorial_principle": "Do not invent drama. Notice pressure. Name stakes. Let the game prove the story.",
+  "candidate_count": 12,
+  "sections": [
+    {
+      "hierarchy_level": "tournament",
+      "stories": [
+        {
+          "candidate_id": "1981_week_05__historical_champion_echo__17",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "tournament",
+          "signal_type": "historical_champion_echo",
+          "subject_type": "historical_link",
+          "subject_id": "17",
+          "subject_name": "Las Vegas Gamblers",
+          "related_subjects": "ABC Western Division",
+          "headline_factual": "Defending qualifier Las Vegas Gamblers is again setting an early division pace",
+          "stakes": "The 1980 result supplies historical weight, while the 1981 standings must establish the new season on their own.",
+          "evidence_summary": "1980 champion-table record 89-73; 1981 Week 5 record 24-8 in ABC Western Division.",
+          "source_files": "csv/out/almanac/1980/league_champions_1980_league200.csv|csv/out/star_schema/monday_1981_standings_by_division.csv",
+          "signal_score": "82",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__historical_champion_echo__17__e01",
+              "candidate_id": "1981_week_05__historical_champion_echo__17",
+              "metric": "prior_season_champion_record",
+              "value": "89-73",
+              "comparison": "1980 ABC West",
+              "source_file": "csv/out/almanac/1980/league_champions_1980_league200.csv",
+              "source_row_key": "team_id=17",
+              "as_of_date": "1981-05-11",
+              "notes": "Historical qualifier/champion-table context."
+            },
+            {
+              "evidence_id": "1981_week_05__historical_champion_echo__17__e02",
+              "candidate_id": "1981_week_05__historical_champion_echo__17",
+              "metric": "current_record",
+              "value": "24-8",
+              "comparison": "ABC Western Division",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "team_abbr=LV",
+              "as_of_date": "1981-05-11",
+              "notes": "Current Week 5 standing."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        }
+      ]
+    },
+    {
+      "hierarchy_level": "standings",
+      "stories": [
+        {
+          "candidate_id": "1981_week_05__division_race__abc-central-division",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "ABC Central Division",
+          "subject_name": "ABC Central Division",
+          "related_subjects": "Nashville Blues|St. Louis Stallions",
+          "headline_factual": "ABC Central Division: Nashville Blues holds a narrow lead over St. Louis Stallions",
+          "stakes": "The next week can change who sets the pace in the division; the standings, not a forecast, define the pressure.",
+          "evidence_summary": "Nashville Blues leads St. Louis Stallions by 1 win(s); both have played 32 games.",
+          "source_files": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+          "signal_score": "86.0",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__division_race__abc-central-division__e01",
+              "candidate_id": "1981_week_05__division_race__abc-central-division",
+              "metric": "division_leader_record",
+              "value": "18-14",
+              "comparison": "second=17-15",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "team_abbr=NAS",
+              "as_of_date": "1981-05-11",
+              "notes": "Rows share the same Week 5 game count."
+            },
+            {
+              "evidence_id": "1981_week_05__division_race__abc-central-division__e02",
+              "candidate_id": "1981_week_05__division_race__abc-central-division",
+              "metric": "lead_in_wins",
+              "value": "1",
+              "comparison": "close-race threshold <=2",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "division=ABC Central Division",
+              "as_of_date": "1981-05-11",
+              "notes": "Win difference is used because the two leading rows have equal games played."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        },
+        {
+          "candidate_id": "1981_week_05__division_race__abc-eastern-division",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "ABC Eastern Division",
+          "subject_name": "ABC Eastern Division",
+          "related_subjects": "Boston Patriots|New York Aces",
+          "headline_factual": "ABC Eastern Division: Boston Patriots holds a narrow lead over New York Aces",
+          "stakes": "The next week can change who sets the pace in the division; the standings, not a forecast, define the pressure.",
+          "evidence_summary": "Boston Patriots leads New York Aces by 1 win(s); both have played 32 games.",
+          "source_files": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+          "signal_score": "86.0",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__division_race__abc-eastern-division__e01",
+              "candidate_id": "1981_week_05__division_race__abc-eastern-division",
+              "metric": "division_leader_record",
+              "value": "17-15",
+              "comparison": "second=16-16",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "team_abbr=BOS",
+              "as_of_date": "1981-05-11",
+              "notes": "Rows share the same Week 5 game count."
+            },
+            {
+              "evidence_id": "1981_week_05__division_race__abc-eastern-division__e02",
+              "candidate_id": "1981_week_05__division_race__abc-eastern-division",
+              "metric": "lead_in_wins",
+              "value": "1",
+              "comparison": "close-race threshold <=2",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "division=ABC Eastern Division",
+              "as_of_date": "1981-05-11",
+              "notes": "Win difference is used because the two leading rows have equal games played."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        },
+        {
+          "candidate_id": "1981_week_05__division_race__nbc-central-division",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "NBC Central Division",
+          "subject_name": "NBC Central Division",
+          "related_subjects": "Dallas Rustlers|Chicago Fire",
+          "headline_factual": "NBC Central Division: Dallas Rustlers holds a narrow lead over Chicago Fire",
+          "stakes": "The next week can change who sets the pace in the division; the standings, not a forecast, define the pressure.",
+          "evidence_summary": "Dallas Rustlers leads Chicago Fire by 2 win(s); both have played 32 games.",
+          "source_files": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+          "signal_score": "82.0",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__division_race__nbc-central-division__e01",
+              "candidate_id": "1981_week_05__division_race__nbc-central-division",
+              "metric": "division_leader_record",
+              "value": "19-13",
+              "comparison": "second=17-15",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "team_abbr=DAL",
+              "as_of_date": "1981-05-11",
+              "notes": "Rows share the same Week 5 game count."
+            },
+            {
+              "evidence_id": "1981_week_05__division_race__nbc-central-division__e02",
+              "candidate_id": "1981_week_05__division_race__nbc-central-division",
+              "metric": "lead_in_wins",
+              "value": "2",
+              "comparison": "close-race threshold <=2",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "division=NBC Central Division",
+              "as_of_date": "1981-05-11",
+              "notes": "Win difference is used because the two leading rows have equal games played."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        },
+        {
+          "candidate_id": "1981_week_05__division_race__nbc-western-division",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "NBC Western Division",
+          "subject_name": "NBC Western Division",
+          "related_subjects": "San Francisco Warriors|Los Angeles Cobras",
+          "headline_factual": "NBC Western Division: San Francisco Warriors holds a narrow lead over Los Angeles Cobras",
+          "stakes": "The next week can change who sets the pace in the division; the standings, not a forecast, define the pressure.",
+          "evidence_summary": "San Francisco Warriors leads Los Angeles Cobras by 2 win(s); both have played 32 games.",
+          "source_files": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+          "signal_score": "82.0",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__division_race__nbc-western-division__e01",
+              "candidate_id": "1981_week_05__division_race__nbc-western-division",
+              "metric": "division_leader_record",
+              "value": "18-14",
+              "comparison": "second=16-16",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "team_abbr=SF",
+              "as_of_date": "1981-05-11",
+              "notes": "Rows share the same Week 5 game count."
+            },
+            {
+              "evidence_id": "1981_week_05__division_race__nbc-western-division__e02",
+              "candidate_id": "1981_week_05__division_race__nbc-western-division",
+              "metric": "lead_in_wins",
+              "value": "2",
+              "comparison": "close-race threshold <=2",
+              "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+              "source_row_key": "division=NBC Western Division",
+              "as_of_date": "1981-05-11",
+              "notes": "Win difference is used because the two leading rows have equal games played."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        }
+      ]
+    },
+    {
+      "hierarchy_level": "race",
+      "stories": [
+        {
+          "candidate_id": "1981_week_05__weekly_fall__det",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "race",
+          "signal_type": "weekly_fall",
+          "subject_type": "team",
+          "subject_id": "DET",
+          "subject_name": "Detroit Dukes",
+          "related_subjects": "",
+          "headline_factual": "Detroit Dukes posted the week's sharpest fall",
+          "stakes": "One week has changed the club's position, but the next games must show whether the movement holds.",
+          "evidence_summary": "A 1-5 week moved winning percentage by -0.084.",
+          "source_files": "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+          "signal_score": "80.2",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__weekly_fall__det__e01",
+              "candidate_id": "1981_week_05__weekly_fall__det",
+              "metric": "weekly_record",
+              "value": "1-5",
+              "comparison": "delta_win_pct=-0.084",
+              "source_file": "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+              "source_row_key": "team_abbr=DET",
+              "as_of_date": "1981-05-11",
+              "notes": "Derived from current minus previous comparable snapshots."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        },
+        {
+          "candidate_id": "1981_week_05__weekly_rise__den",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "race",
+          "signal_type": "weekly_rise",
+          "subject_type": "team",
+          "subject_id": "DEN",
+          "subject_name": "Denver Rocketeers",
+          "related_subjects": "",
+          "headline_factual": "Denver Rocketeers posted the week's sharpest rise",
+          "stakes": "One week has changed the club's position, but the next games must show whether the movement holds.",
+          "evidence_summary": "A 5-1 week moved winning percentage by +0.063.",
+          "source_files": "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+          "signal_score": "79.1",
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__weekly_rise__den__e01",
+              "candidate_id": "1981_week_05__weekly_rise__den",
+              "metric": "weekly_record",
+              "value": "5-1",
+              "comparison": "delta_win_pct=+0.063",
+              "source_file": "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+              "source_row_key": "team_abbr=DEN",
+              "as_of_date": "1981-05-11",
+              "notes": "Derived from current minus previous comparable snapshots."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        }
+      ]
+    },
+    {
+      "hierarchy_level": "players",
+      "stories": [
+        {
+          "candidate_id": "1981_week_05__ace_performance__949",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "players",
+          "signal_type": "ace_performance",
+          "subject_type": "player",
+          "subject_id": "949",
+          "subject_name": "Tony Oubre",
+          "related_subjects": "NY",
+          "headline_factual": "Tony Oubre carries the strongest workload-qualified starter value",
+          "stakes": "Another start can strengthen or challenge the early ace case; the label remains earned on the mound.",
+          "evidence_summary": "1.2 WAR, 3.83 ERA and 56.1 innings across 7 starts.",
+          "source_files": "csv/out/star_schema/fact_player_pitching.csv",
+          "signal_score": "77",
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__ace_performance__949__e01",
+              "candidate_id": "1981_week_05__ace_performance__949",
+              "metric": "starter_war",
+              "value": "1.2",
+              "comparison": "highest among pitchers with >=4 starts and >=25 IP",
+              "source_file": "csv/out/star_schema/fact_player_pitching.csv",
+              "source_row_key": "ID=949",
+              "as_of_date": "1981-05-11",
+              "notes": "Workload-qualified ranking."
+            },
+            {
+              "evidence_id": "1981_week_05__ace_performance__949__e02",
+              "candidate_id": "1981_week_05__ace_performance__949",
+              "metric": "starter_era",
+              "value": "3.83",
+              "comparison": "IP=56.1; GS=7",
+              "source_file": "csv/out/star_schema/fact_player_pitching.csv",
+              "source_row_key": "ID=949",
+              "as_of_date": "1981-05-11",
+              "notes": "ERA is descriptive, not a forecast."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        },
+        {
+          "candidate_id": "1981_week_05__player_value_leader__564",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "players",
+          "signal_type": "player_value_leader",
+          "subject_type": "player",
+          "subject_id": "564",
+          "subject_name": "Jonathan Mestas",
+          "related_subjects": "NY",
+          "headline_factual": "Jonathan Mestas has built the strongest early position-player value case",
+          "stakes": "The next week tests whether that broad contribution remains a leading part of the league picture.",
+          "evidence_summary": "1.8 WAR in 142 plate appearances with a 0.894 OPS.",
+          "source_files": "csv/out/star_schema/fact_player_batting.csv",
+          "signal_score": "75",
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__player_value_leader__564__e01",
+              "candidate_id": "1981_week_05__player_value_leader__564",
+              "metric": "position_player_war",
+              "value": "1.8",
+              "comparison": "highest among players with at least 50 PA",
+              "source_file": "csv/out/star_schema/fact_player_batting.csv",
+              "source_row_key": "ID=564",
+              "as_of_date": "1981-05-11",
+              "notes": "Minimum playing-time filter reduces tiny-sample leaders."
+            },
+            {
+              "evidence_id": "1981_week_05__player_value_leader__564__e02",
+              "candidate_id": "1981_week_05__player_value_leader__564",
+              "metric": "ops",
+              "value": "0.894",
+              "comparison": "PA=142",
+              "source_file": "csv/out/star_schema/fact_player_batting.csv",
+              "source_row_key": "ID=564",
+              "as_of_date": "1981-05-11",
+              "notes": "OPS supplies offensive context; WAR is the ranking metric."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        }
+      ]
+    },
+    {
+      "hierarchy_level": "team",
+      "stories": [
+        {
+          "candidate_id": "1981_week_05__pythag_over_record__17",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "team",
+          "signal_type": "pythag_over_record",
+          "subject_type": "team",
+          "subject_id": "17",
+          "subject_name": "Las Vegas",
+          "related_subjects": "",
+          "headline_factual": "Las Vegas's record and run profile are pulling apart",
+          "stakes": "The gap creates a testable question for the coming week: will results and run balance move closer together?",
+          "evidence_summary": "Actual record 24-8; Pythagorean expectation 17.2 wins; difference +6.8 wins.",
+          "source_files": "csv/out/csv_out/z_ABL_Pythag_Over_Under.csv",
+          "signal_score": "74.8",
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__pythag_over_record__17__e01",
+              "candidate_id": "1981_week_05__pythag_over_record__17",
+              "metric": "pythag_diff_wins",
+              "value": "+6.8",
+              "comparison": "actual=24-8; expected_wins=17.2",
+              "source_file": "csv/out/csv_out/z_ABL_Pythag_Over_Under.csv",
+              "source_row_key": "team_id=17",
+              "as_of_date": "1981-05-11",
+              "notes": "Pythagorean record is context, not proof of luck or future regression."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        },
+        {
+          "candidate_id": "1981_week_05__pythag_under_record__3",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "team",
+          "signal_type": "pythag_under_record",
+          "subject_type": "team",
+          "subject_id": "3",
+          "subject_name": "Atlanta",
+          "related_subjects": "",
+          "headline_factual": "Atlanta's record and run profile are pulling apart",
+          "stakes": "The gap creates a testable question for the coming week: will results and run balance move closer together?",
+          "evidence_summary": "Actual record 10-22; Pythagorean expectation 13.6 wins; difference -3.6 wins.",
+          "source_files": "csv/out/csv_out/z_ABL_Pythag_Over_Under.csv",
+          "signal_score": "71.6",
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__pythag_under_record__3__e01",
+              "candidate_id": "1981_week_05__pythag_under_record__3",
+              "metric": "pythag_diff_wins",
+              "value": "-3.6",
+              "comparison": "actual=10-22; expected_wins=13.6",
+              "source_file": "csv/out/csv_out/z_ABL_Pythag_Over_Under.csv",
+              "source_row_key": "team_id=3",
+              "as_of_date": "1981-05-11",
+              "notes": "Pythagorean record is context, not proof of luck or future regression."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        }
+      ]
+    },
+    {
+      "hierarchy_level": "game",
+      "stories": [
+        {
+          "candidate_id": "1981_week_05__matchup_stakes__1981-05-17-19-13",
+          "run_id": "sprint1_1981_week_05",
+          "week_label": "1981_week_05",
+          "as_of_date": "1981-05-11",
+          "season": "1981",
+          "hierarchy_level": "game",
+          "signal_type": "matchup_stakes",
+          "subject_type": "matchup",
+          "subject_id": "1981-05-17-19-13",
+          "subject_name": "St. Louis vs Denver",
+          "related_subjects": "St. Louis|Denver",
+          "headline_factual": "St. Louis and Denver bring comparable records into a scheduled test",
+          "stakes": "The matchup puts two current records on the same field; its result supplies the next evidence rather than confirming a prewritten angle.",
+          "evidence_summary": "Scheduled 1981-05-17; winning percentages 0.531 and 0.562; matchup score 78.6.",
+          "source_files": "csv/abl_csv/abl_sunday_matchups.csv",
+          "signal_score": "72.9",
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_week_05__matchup_stakes__1981-05-17-19-13__e01",
+              "candidate_id": "1981_week_05__matchup_stakes__1981-05-17-19-13",
+              "metric": "scheduled_matchup_score",
+              "value": "78.6",
+              "comparison": "date=1981-05-17",
+              "source_file": "csv/abl_csv/abl_sunday_matchups.csv",
+              "source_row_key": "team_id_A=19;team_id_B=13",
+              "as_of_date": "1981-05-11",
+              "notes": "Future scheduled game; score is an existing composite, not an outcome probability."
+            }
+          ],
+          "proving_question": "What does the next game or week add to this evidence?"
+        }
+      ]
+    }
+  ]
+}
