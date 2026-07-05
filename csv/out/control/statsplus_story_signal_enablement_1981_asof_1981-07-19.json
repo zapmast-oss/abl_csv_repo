@@ -1,0 +1,105 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-19",
+  "engine_changes_authorized": false,
+  "signals": [
+    {
+      "signal": "playoff odds pressure",
+      "source_tables": "7|8",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Model probability; never standings proof."
+    },
+    {
+      "signal": "ELO/team strength",
+      "source_tables": "10",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Labeled StatsPlus model value."
+    },
+    {
+      "signal": "BaseRuns over/under-performance",
+      "source_tables": "9",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Expected-performance model, not observed result."
+    },
+    {
+      "signal": "team WAR",
+      "source_tables": "11",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Labeled StatsPlus team value."
+    },
+    {
+      "signal": "injury context",
+      "source_tables": "12",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Team summary; avoid unsupported player causation."
+    },
+    {
+      "signal": "fan interest",
+      "source_tables": "4|5",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Do not infer emotion beyond measured fields."
+    },
+    {
+      "signal": "financial pressure",
+      "source_tables": "3",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Resource/results context; no blame or motive."
+    },
+    {
+      "signal": "owner/front-office/personnel context",
+      "source_tables": "1|2",
+      "review_status": "READY_WITH_LIMITED_SIGNALS",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Table 1 goals/mood absent; staff IDs remain unavailable."
+    },
+    {
+      "signal": "team age/context",
+      "source_tables": "24",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Adds lower-level age detail."
+    },
+    {
+      "signal": "best batting game",
+      "source_tables": "25",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "StatsPlus ranking; raw game proof remains authority."
+    },
+    {
+      "signal": "best pitching game",
+      "source_tables": "26",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "StatsPlus ranking; raw game proof remains authority."
+    },
+    {
+      "signal": "team/player baserunning",
+      "source_tables": "19|22",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Label StatsPlus definitions."
+    },
+    {
+      "signal": "UBR",
+      "source_tables": "19",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Usable as StatsPlus-specific team UBR; no silent substitution."
+    },
+    {
+      "signal": "rWAR",
+      "source_tables": "21",
+      "review_status": "READY_AFTER_PROMOTION",
+      "engine_enabled_now": "no",
+      "authority_boundary": "Usable as StatsPlus-specific rWAR; does not override WAR."
+    }
+  ]
+}
