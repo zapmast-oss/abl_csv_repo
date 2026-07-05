@@ -1,6 +1,6 @@
 # ABL StatsPlus Fresh-Capture Runbook
 
-## Before capture
+## How to stage a fresh capture
 
 1. Choose the intended season and as-of date.
 2. Confirm raw OOTP current-state preflight has passed for that cutoff.
