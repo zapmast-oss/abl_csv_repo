@@ -98,3 +98,40 @@ Define and test:
 - regression tests proving existing candidates are not displaced silently.
 
 New-candidate creation requires separate authorization. It must never infer games, standings, motives, collapse, or destiny from Feed 3.
+
+## Parameterized future-date use
+
+Run the wrapper with an explicit newsroom date and completed-data cutoff:
+
+```powershell
+python csv/abl_scripts/z_abl_story_engine_with_feed3_preview_runner.py `
+  --newsroom-date 1981-07-27 `
+  --as-of-date 1981-07-26
+```
+
+An optional configuration can be supplied with `--feature-flags-path`. If the standard date-specific configuration does not exist, the wrapper creates it from `csv/out/control/story_engine_feature_flags_template.json` using preview-safe defaults.
+
+The adapter can also be invoked directly:
+
+```powershell
+python csv/abl_scripts/z_abl_statsplus_feed3_evidence_adapter.py `
+  --newsroom-date 1981-07-27 `
+  --as-of-date 1981-07-26 `
+  --feature-flags-path csv/out/control/story_engine_feature_flags_1981_07_27_asof_1981-07-26.json
+```
+
+Optional adapter overrides are available for candidates, evidence, overlay, Feed 3 current folder, and enrichment output folder. Without overrides, the adapter uses the standard naming convention.
+
+### Files that must exist first
+
+- date-specific official candidates and evidence;
+- story menu, editorial board, story slate, production package, and segment script;
+- promoted `csv/statsplus/current/` sources;
+- date-specific StatsPlus signal dictionary;
+- team and player enrichment views;
+- candidate StatsPlus overlay;
+- story integration recommendation.
+
+If source capture, preflight, Feed 3 promotion, story candidate generation, or enrichment-overlay preparation has not completed, the wrapper or adapter exits with a list of missing prerequisites. It does not create partial official story artifacts or fall back to an older date.
+
+For every future run, confirm that ranking and new-candidate flags remain false, run the wrapper, inspect the date-specific parameterized validation report, verify all protected hashes are unchanged, and review typed evidence before editorial use.

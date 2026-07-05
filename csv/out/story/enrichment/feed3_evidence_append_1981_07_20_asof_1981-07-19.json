@@ -1,4 +1,6 @@
 {
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
   "feature_flags": {
     "enable_feed3_evidence": true,
     "enable_feed3_rank_adjustment": false,

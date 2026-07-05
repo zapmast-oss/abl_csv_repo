@@ -1,0 +1,12 @@
+{
+  "enable_feed3_evidence_preview": true,
+  "enable_feed3_rank_adjustment": false,
+  "enable_feed3_new_candidates": false,
+  "enable_owner_front_office_signals": false,
+  "enable_best_game_discovery_signals": false,
+  "enable_historical_fan_interpretation": false,
+  "doctrine": [
+    "StatsPlus enhances. It does not replace.",
+    "StatsPlus annotates before it ranks."
+  ]
+}
