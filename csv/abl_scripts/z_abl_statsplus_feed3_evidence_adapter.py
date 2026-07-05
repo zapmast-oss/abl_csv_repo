@@ -67,6 +67,41 @@ def evidence_plan(cid):
  if 'prior_qualifier_echo' in cid:return ['statsplus_playoff_odds','statsplus_elo','statsplus_team_war'],'context','Charlotte'
  raise ValueError(f'No Feed 3 plan for {cid}')
 
+def team_codes(cid):
+ if 'national-baseball-conference-central-division' in cid:return ['DAL','DET']
+ if 'national-baseball-conference-western-division' in cid:return ['SF','PHO']
+ if 'american-baseball-conference-western-division' in cid:return ['LV','SEA']
+ if 'american-baseball-conference-eastern-division' in cid:return ['BOS','NY']
+ if 'american-baseball-conference-central-division' in cid:return ['HOU','CIN']
+ if 'scheduled_matchup_stakes' in cid:return ['LV','DEN']
+ if 'position_player_value_leader' in cid or 'prior_qualifier_echo' in cid:return ['CHA']
+ if 'weekly_rise' in cid or 'pythag_record_gap__3' in cid:return ['ATL']
+ if 'weekly_fall' in cid:return ['PHI']
+ if 'pythag_record_gap__24' in cid:return ['SEA']
+ if 'payroll_record_pressure' in cid:return ['TB']
+ if 'attendance_interest' in cid:return ['DET']
+ return []
+
+def exact_metric_value(etype,cid,team_view,player_view):
+ codes=team_codes(cid);rows=[team_view[x] for x in codes]
+ fields={
+  'statsplus_playoff_odds':[('Div%', 'division_odds_pct'),('PO%', 'playoff_odds_pct'),('AvgW','average_projected_wins'),('rSoS','remaining_sos')],
+  'statsplus_elo':[('ELO','elo'),('seasonΔ','elo_season_change'),('30dΔ','elo_30day_change'),('7dΔ','elo_7day_change')],
+  'statsplus_baseruns':[('pWΔ','baseruns_pythag_win_delta'),('xWΔ','baseruns_expected_win_delta'),('xW','baseruns_xwins'),('RD','run_differential'),('xRD','expected_run_differential')],
+  'statsplus_team_war':[('BatterWAR','batter_war'),('PitcherWAR','pitcher_war'),('TotalWAR','total_war')],
+  'statsplus_injury_context':[('injuries','injury_count'),('DL days','dl_days'),('$ on DL','salary_on_dl')],
+  'statsplus_fan_interest_context':[('interest','fan_interest'),('30dΔ','fan_interest_30day_change'),('avg attendance','average_attendance'),('% full','capacity_pct_full')],
+  'statsplus_financial_context':[('payroll','payroll'),('budget','budget'),('revenue','total_revenue'),('cash','cash_for_trades')],
+  'statsplus_team_age_context':[('ML age','ml_age'),('P age','ml_pitcher_age'),('B age','ml_batter_age')],
+  'statsplus_team_baserunning':[('SB','team_sb'),('CS','team_cs'),('wSB','team_wsb')],
+  'statsplus_ubr':[('UBR','team_ubr')],
+ }
+ if etype=='statsplus_pitcher_rwar':
+  p=player_view[('Jose Coronado','STL')]
+  return f"Jose Coronado/STL: rWAR={p['rwar']}, WAR={p['pitching_war']}, ERA={p['era']}, FIP={p['fip']}, xFIP={p['xfip']}"
+ selected=fields[etype]
+ return '; '.join(f"{r['team_abbr']}: "+', '.join(f"{label}={r[key]}" for label,key in selected) for r in rows)
+
 def main():
  a=parse_args();flags={'enable_feed3_evidence':not a.disable_feed3_evidence,'enable_feed3_rank_adjustment':a.enable_feed3_rank_adjustment,
   'enable_feed3_new_candidates':a.enable_feed3_new_candidates,'enable_owner_front_office_signals':a.enable_owner_front_office_signals,
@@ -75,6 +110,8 @@ def main():
  if flags['enable_feed3_rank_adjustment'] or flags['enable_feed3_new_candidates']:raise SystemExit('This append-only adapter does not implement ranking or candidate creation.')
  if any(flags[k] for k in ('enable_owner_front_office_signals','enable_best_game_discovery_signals','enable_historical_fan_interpretation')):raise SystemExit('A reference-only signal flag was enabled; this adapter intentionally holds those signals back.')
  before={str(p):sha(p) for p in OFFICIAL};cands=rr(CAND);official=rr(EVID);overlay=rr(OVER);dictionary=rr(DICT);recommendation=RECOMMEND.read_text(encoding='utf-8')
+ team_view={r['team_abbr']:r for r in rr(ENRICH/f'statsplus_team_enrichment_{SLUG}.csv')}
+ player_view={(r['player_name'],r['team_abbr']):r for r in rr(ENRICH/f'statsplus_player_enrichment_{SLUG}.csv')}
  if len(list(SP.glob('*.csv')))!=25 or len(cands)!=15 or len(overlay)!=15 or not recommendation:raise SystemExit('Input gate failed.')
  dict_types={r['signal_name'] for r in dictionary};required={'playoff_odds','elo_team_strength','baseruns_context','team_war','injury_context','fan_interest','financial_context','team_age','team_baserunning','player_baserunning','ubr','rwar'}
  if not required<=dict_types:raise SystemExit('Signal dictionary is missing an allowed signal definition.')
@@ -86,8 +123,8 @@ def main():
    eid=f"{c['candidate_id']}__feed3__{etype}__{seq:02d}"
    records.append({'evidence_id':eid,'candidate_id':c['candidate_id'],'candidate_title':c['headline_factual'],'evidence_type':etype,
     'source_feed':'Feed 3 / StatsPlus','source_table':tables,'source_file':'|'.join('csv/statsplus/current/'+x for x in files.split('|')),
-    'entity_type':entity_type or default_entity,'entity_name':entity,'metric_name':metric,'metric_value':ov['statsplus_evidence_summary'],
-    'interpretation':ov['suggests_new_angle'],'allowed_use':allowed,'disallowed_use':disallowed,
+    'entity_type':entity_type or default_entity,'entity_name':entity,'metric_name':metric,'metric_value':exact_metric_value(etype,c['candidate_id'],team_view,player_view),
+    'interpretation':allowed+' Candidate-level angle: '+ov['suggests_new_angle'],'allowed_use':allowed,'disallowed_use':disallowed,
     'authority_caution':'StatsPlus does not prove games, scores, standings, or official current state. '+caution,
     'ranking_effect':'none','confidence':c['confidence'],'notes':f"Feature-flagged append only; priority preview={ov['priority_effect_later']}; official candidate unchanged."})
  astem=ENRICH/f'feed3_evidence_append_{SLUG}';dumpcsv(astem.with_suffix('.csv'),records);dumpjson(astem.with_suffix('.json'),{'feature_flags':flags,'record_count':len(records),'candidate_count':len({r['candidate_id'] for r in records}),'records':records})
