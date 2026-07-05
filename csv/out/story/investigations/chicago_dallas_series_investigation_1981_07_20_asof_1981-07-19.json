@@ -15,33 +15,140 @@
     "best_supported_angle": "Chicago returns from a four-game road split to host first-place Dallas in a four-game series that can move Chicago from four games back to tied, or as far as eight games back."
   },
   "detroit_series": [
-    {"date": "1981-07-16", "game_id": 1072, "away": "Chicago", "home": "Detroit", "score": "Detroit 4, Chicago 2", "chicago_result": "L"},
-    {"date": "1981-07-17", "game_id": 1084, "away": "Chicago", "home": "Detroit", "score": "Detroit 10, Chicago 0", "chicago_result": "L"},
-    {"date": "1981-07-18", "game_id": 1096, "away": "Chicago", "home": "Detroit", "score": "Chicago 4, Detroit 2", "chicago_result": "W"},
-    {"date": "1981-07-19", "game_id": 1108, "away": "Chicago", "home": "Detroit", "score": "Chicago 4, Detroit 1", "chicago_result": "W"}
+    {
+      "date": "1981-07-16",
+      "game_id": 1072,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Detroit 4, Chicago 2",
+      "chicago_result": "L"
+    },
+    {
+      "date": "1981-07-17",
+      "game_id": 1084,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Detroit 10, Chicago 0",
+      "chicago_result": "L"
+    },
+    {
+      "date": "1981-07-18",
+      "game_id": 1096,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Chicago 4, Detroit 2",
+      "chicago_result": "W"
+    },
+    {
+      "date": "1981-07-19",
+      "game_id": 1108,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Chicago 4, Detroit 1",
+      "chicago_result": "W"
+    }
   ],
   "standings": [
-    {"place": 1, "team": "Dallas Rustlers", "record": "52-41", "games_back": 0},
-    {"place": 2, "team": "Detroit Dukes", "record": "50-43", "games_back": 2},
-    {"place": 3, "team": "Chicago Fire", "record": "48-45", "games_back": 4},
-    {"place": 4, "team": "Minneapolis Blizzard", "record": "40-53", "games_back": 12}
+    {
+      "place": 1,
+      "team": "Dallas Rustlers",
+      "record": "52-41",
+      "games_back": 0
+    },
+    {
+      "place": 2,
+      "team": "Detroit Dukes",
+      "record": "50-43",
+      "games_back": 2
+    },
+    {
+      "place": 3,
+      "team": "Chicago Fire",
+      "record": "48-45",
+      "games_back": 4
+    },
+    {
+      "place": 4,
+      "team": "Minneapolis Blizzard",
+      "record": "40-53",
+      "games_back": 12
+    }
   ],
   "dallas_series": [
-    {"date": "1981-07-20", "game_id": 1119, "away": "Dallas", "home": "Chicago", "status": "unplayed", "scheduled_starters": null},
-    {"date": "1981-07-21", "game_id": 1131, "away": "Dallas", "home": "Chicago", "status": "unplayed", "scheduled_starters": null},
-    {"date": "1981-07-22", "game_id": 1143, "away": "Dallas", "home": "Chicago", "status": "unplayed", "scheduled_starters": null},
-    {"date": "1981-07-23", "game_id": 1155, "away": "Dallas", "home": "Chicago", "status": "unplayed", "scheduled_starters": null}
+    {
+      "date": "1981-07-20",
+      "game_id": 1119,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    },
+    {
+      "date": "1981-07-21",
+      "game_id": 1131,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    },
+    {
+      "date": "1981-07-22",
+      "game_id": 1143,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    },
+    {
+      "date": "1981-07-23",
+      "game_id": 1155,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    }
   ],
   "conditional_series_math": [
-    {"chicago_series_record": "4-0", "chicago_after": "52-45", "dallas_after": "52-45", "chicago_games_back_after": 0},
-    {"chicago_series_record": "3-1", "chicago_after": "51-46", "dallas_after": "53-44", "chicago_games_back_after": 2},
-    {"chicago_series_record": "2-2", "chicago_after": "50-47", "dallas_after": "54-43", "chicago_games_back_after": 4},
-    {"chicago_series_record": "1-3", "chicago_after": "49-48", "dallas_after": "55-42", "chicago_games_back_after": 6},
-    {"chicago_series_record": "0-4", "chicago_after": "48-49", "dallas_after": "56-41", "chicago_games_back_after": 8}
+    {
+      "chicago_series_record": "4-0",
+      "chicago_after": "52-45",
+      "dallas_after": "52-45",
+      "chicago_games_back_after": 0
+    },
+    {
+      "chicago_series_record": "3-1",
+      "chicago_after": "51-46",
+      "dallas_after": "53-44",
+      "chicago_games_back_after": 2
+    },
+    {
+      "chicago_series_record": "2-2",
+      "chicago_after": "50-47",
+      "dallas_after": "54-43",
+      "chicago_games_back_after": 4
+    },
+    {
+      "chicago_series_record": "1-3",
+      "chicago_after": "49-48",
+      "dallas_after": "55-42",
+      "chicago_games_back_after": 6
+    },
+    {
+      "chicago_series_record": "0-4",
+      "chicago_after": "48-49",
+      "dallas_after": "56-41",
+      "chicago_games_back_after": 8
+    }
   ],
   "franchise_history": {
     "playoff_appearances_1972_1980": 5,
-    "playoff_years": [1972, 1973, 1977, 1979, 1980],
+    "playoff_years": [
+      1972,
+      1973,
+      1977,
+      1979,
+      1980
+    ],
     "championships": 0,
     "grand_series_appearances": 1,
     "best_finish": "Lost 1973 Grand Series to Denver, 4-3",
@@ -49,13 +156,33 @@
   },
   "player_context": {
     "chicago": {
-      "hitters": ["Alex O' Donell: 2.8 WAR", "Sal Gamez: 2.4 WAR, 15 HR, 67 RBI", "Miguel Morales: 2.3 WAR, 15 HR"],
-      "pitchers": ["Heriberto Jimenez: 3.2 WAR, 12-8, 3.86 ERA", "John Jury: 2.3 WAR, 9-6, 2.44 ERA", "Edgar Gonzalez: 10-4, 3.21 ERA"],
-      "july_19": ["Sal Gamez: two home runs, two RBI", "Miguel Morales: home run", "Victor Hernandez: home run", "Tony Suarez: winning pitcher", "Matt Hyman: save"]
+      "hitters": [
+        "Alex O' Donell: 2.8 WAR",
+        "Sal Gamez: 2.4 WAR, 15 HR, 67 RBI",
+        "Miguel Morales: 2.3 WAR, 15 HR"
+      ],
+      "pitchers": [
+        "Heriberto Jimenez: 3.2 WAR, 12-8, 3.86 ERA",
+        "John Jury: 2.3 WAR, 9-6, 2.44 ERA",
+        "Edgar Gonzalez: 10-4, 3.21 ERA"
+      ],
+      "july_19": [
+        "Sal Gamez: two home runs, two RBI",
+        "Miguel Morales: home run",
+        "Victor Hernandez: home run",
+        "Tony Suarez: winning pitcher",
+        "Matt Hyman: save"
+      ]
     },
     "dallas": {
-      "hitters": ["Devon Barlow: 2.9 WAR, .301/.368/.519", "Rich Vela: 2.1 WAR"],
-      "pitchers": ["Anton Garay: 2.9 WAR, 11-2, 3.30 ERA", "Mark Marmon: 1.9 WAR, 2.80 ERA"]
+      "hitters": [
+        "Devon Barlow: 2.9 WAR, .301/.368/.519",
+        "Rich Vela: 2.1 WAR"
+      ],
+      "pitchers": [
+        "Anton Garay: 2.9 WAR, 11-2, 3.30 ERA",
+        "Mark Marmon: 1.9 WAR, 2.80 ERA"
+      ]
     }
   },
   "setting": {
@@ -104,6 +231,125 @@
     "csv/out/almanac/1973/games_1973_league200.csv",
     "csv/out/almanac/1977/games_1977_league200.csv",
     "csv/out/almanac/1979/games_1979_league200.csv",
-    "csv/out/almanac/1980/games_1980_league200.csv"
-  ]
+    "csv/out/almanac/1980/games_1980_league200.csv",
+    "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json"
+  ],
+  "feed3_enrichment": {
+    "authority": "enrichment_only",
+    "strongest_enhancement": "Dallas holds a large playoff-odds advantage (60.0% division and 79.7% playoff versus Chicago's 15.0% and 35.9%), while ELO is close at 1516.8 to 1513.4.",
+    "chicago": {
+      "team_abbr": "CHI",
+      "team_name": "Chicago Fire",
+      "feed3_record_crosscheck": "48-45",
+      "division_odds_pct": "15.0",
+      "playoff_odds_pct": "35.9",
+      "average_projected_wins": "83.6",
+      "remaining_sos": "0.497",
+      "elo": "1513.4",
+      "elo_season_change": "7.1",
+      "elo_30day_change": "-1.5",
+      "elo_7day_change": "-0.2",
+      "baseruns_pythag_win_delta": "0",
+      "baseruns_expected_win_delta": "-1",
+      "baseruns_xwins": "49",
+      "run_differential": "10",
+      "expected_run_differential": "19",
+      "batter_war": "12.72",
+      "pitcher_war": "9.07",
+      "total_war": "21.79",
+      "injury_count": "3",
+      "dl_days": "90",
+      "salary_on_dl": "$193k",
+      "fan_interest": "82",
+      "fan_interest_30day_change": "-2",
+      "average_attendance": "18249",
+      "capacity_pct_full": "98.64324324324325",
+      "historical_fan_interest_1980": "82",
+      "historical_fan_interest_1981": "82",
+      "payroll": "8535570",
+      "budget": "10700000",
+      "total_revenue": "9540438",
+      "cash_for_trades": "3302243",
+      "owner_name": "Willie Roy",
+      "owner_type": "Personable",
+      "owner_patience": "Demanding",
+      "owner_spending": "Controlling",
+      "owner_involvement": "Hands-off",
+      "owner_priority": "Winning",
+      "ml_age": "29.3",
+      "ml_pitcher_age": "30.3",
+      "ml_batter_age": "28.6",
+      "team_wsb": "0.27",
+      "team_ubr": "-11.50",
+      "team_sb": "53",
+      "team_cs": "44",
+      "best_batting_game_notes": "Miguel Morales vs MIN April 29, 1981 GS=77 | Miguel Morales vs DET May 3, 1981 GS=77",
+      "best_pitching_game_notes": "Edgar Gonzalez vs MIN June 22, 1981 GS=96 | Heriberto Jimenez vs LA June 5, 1981 GS=95 | Edgar Gonzalez vs PHO April 19, 1981 GS=91",
+      "authority_caution": "Feed 3 model/context only; raw OOTP governs games, records, scores, and standings."
+    },
+    "dallas": {
+      "team_abbr": "DAL",
+      "team_name": "Dallas Rustlers",
+      "feed3_record_crosscheck": "52-41",
+      "division_odds_pct": "60.0",
+      "playoff_odds_pct": "79.7",
+      "average_projected_wins": "88.3",
+      "remaining_sos": "0.495",
+      "elo": "1516.8",
+      "elo_season_change": "36.4",
+      "elo_30day_change": "6.0",
+      "elo_7day_change": "3.1",
+      "baseruns_pythag_win_delta": "-1",
+      "baseruns_expected_win_delta": "1",
+      "baseruns_xwins": "51",
+      "run_differential": "67",
+      "expected_run_differential": "45",
+      "batter_war": "14.38",
+      "pitcher_war": "10.74",
+      "total_war": "25.12",
+      "injury_count": "5",
+      "dl_days": "255",
+      "salary_on_dl": "$233k",
+      "fan_interest": "71",
+      "fan_interest_30day_change": "-2",
+      "average_attendance": "22539",
+      "capacity_pct_full": "96.32051282051282",
+      "historical_fan_interest_1980": "68",
+      "historical_fan_interest_1981": "71",
+      "payroll": "6592350",
+      "budget": "7800000",
+      "total_revenue": "9866640",
+      "cash_for_trades": "3044889",
+      "owner_name": "Tommy Mauldin",
+      "owner_type": "Normal",
+      "owner_patience": "Tolerant",
+      "owner_spending": "Controlling",
+      "owner_involvement": "Hands-off",
+      "owner_priority": "Balanced",
+      "ml_age": "30.1",
+      "ml_pitcher_age": "29.5",
+      "ml_batter_age": "30.5",
+      "team_wsb": "1.45",
+      "team_ubr": "-6.00",
+      "team_sb": "78",
+      "team_cs": "56",
+      "best_batting_game_notes": "",
+      "best_pitching_game_notes": "Warren Holster vs CHI June 26, 1981 GS=91",
+      "authority_caution": "Feed 3 model/context only; raw OOTP governs games, records, scores, and standings."
+    },
+    "interpretation": "Feed 3 strengthens the series setup. Dallas has the large odds/WAR advantage, while ELO is close and BaseRuns is nearly neutral. Chicago remains a plausible direct challenger, not a model favorite.",
+    "reference_only": [
+      "owner/front-office traits",
+      "best-game discovery",
+      "historical fan interpretation"
+    ]
+  },
+  "editorial_decision": {
+    "classification": "PROMOTE_SERIES_SETUP",
+    "add_to_july_20_slate": true,
+    "replace_existing_story": false,
+    "annotation_only": true,
+    "save_for_ballpark_feed": true,
+    "placement": "Add as a concise Chicago-Dallas series annotation beneath the Dallas-Detroit lead; do not replace the existing lead or secondary slate."
+  }
 }
