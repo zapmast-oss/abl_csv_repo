@@ -1,0 +1,34 @@
+{
+  "safe_to_enable_later": [
+    "playoff odds with model label",
+    "ELO/team strength with model label",
+    "BaseRuns expected-performance context",
+    "team WAR with StatsPlus label",
+    "aggregate injury burden",
+    "fan-interest measures",
+    "financial context",
+    "team age",
+    "team/player baserunning including UBR",
+    "pitcher rWAR as a distinct metric"
+  ],
+  "manual_editorial_reference_only": [
+    "owner/front-office/personnel traits",
+    "best batting/pitching game discovery",
+    "historical fan-interest interpretation",
+    "tables 7/8 dual sort views"
+  ],
+  "remain_disabled": [
+    "StatsPlus standings authority",
+    "manager tendencies or motives",
+    "owner mood/season objective/specific goals",
+    "causal injury claims",
+    "automatic collapse/regression claims",
+    "unverified best-game facts"
+  ],
+  "enable_now": false,
+  "candidate_ranking_recommendation": "Do not automatically rerank. Add evidence notes; allow editorial review to elevate model-gap investigations.",
+  "evidence_note_recommendation": "Feed 3 should initially append typed evidence notes with source/authority labels.",
+  "july_20_slate_recommendation": "Do not rewrite the slate. Annotate Dallas–Detroit, LV–Seattle, SF–Phoenix, LV–Denver, Coronado, Flores, Atlanta, Detroit and Tampa Bay; consider SF–Phoenix model gap as a stronger secondary discussion.",
+  "chicago_dallas_full_investigation": "Yes. The raw-proof investigation packet already exists; this Feed 3 note should be attached as enrichment.",
+  "recommended_next_task": "Design a feature-flagged Feed 3 adapter and evidence schema mapping, then test on a future run without changing ranking by default."
+}

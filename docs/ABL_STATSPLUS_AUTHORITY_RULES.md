@@ -1,5 +1,9 @@
 # ABL StatsPlus Authority Rules
 
+> **StatsPlus enhances. It does not replace.**
+
+Feed 3 is an expandable supplemental layer. It adds context, probability, pressure, and texture while preserving raw OOTP and promoted sortable authority. Future sources—such as advanced batting, advanced pitching, standardized metrics, and matchup matrices—may enter Feed 3 only through staged intake, profiling, authority classification, and a separate explicitly authorized promotion.
+
 ## Authority order
 
 Authority is field-specific. It is not a blanket ranking that allows one feed to replace every value from another.

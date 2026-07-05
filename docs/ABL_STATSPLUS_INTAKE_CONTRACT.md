@@ -1,8 +1,12 @@
 # ABL StatsPlus Intake Contract
 
+> **StatsPlus enhances. It does not replace.**
+
 ## Purpose
 
 StatsPlus is ABL Feed 3. It supplies enrichment, projections, model outputs, fan and financial context, and Deep Dive texture. It does not replace raw OOTP proof or promoted sortable-stat enrichment.
+
+Feed 3 is intentionally expandable. Advanced batting, advanced pitching, standardized metrics, matchup matrices, or other supplemental tables may be added later, but every new family must pass staged intake, profiling, classification, conflict review, and separate promotion. Existing Feed 3 authority never transfers automatically to a newly added table or field.
 
 Every StatsPlus capture enters staging, is profiled and reconciled, and receives an explicit promotion decision before it can become a current source.
 
