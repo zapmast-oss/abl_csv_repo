@@ -8,7 +8,7 @@ The repo documents daily, series, weekly Monday, milestone, and historical caden
 | 2 | Captured files | Register authority, role, volatility, joins, checksums | Registry and batch manifest | Review anomalies | `csv/out/control/abl_source_registry.*`, `abl_batch_manifest_current.*` |
 | 3 | Games, scores, logs, teams | Run current-state preflight for season/as-of | Ready/not-ready verdict | Stop on non-ready verdict | `current_state_preflight_*` and preflight scripts |
 | 4 | Validated completed games | Recompute standings, recent window, run balance | Current standings/race evidence | Choose relevant margins | OOTP drivers; story evidence |
-| 5 | Verified qualification rules, if available | Check wild card / “if season ended today” | Qualification picture | Required | **No verified 1981 rules found; keep disabled/UNKNOWN** |
+| 5 | Versioned postseason rules | Check wild card / “if season ended today” | Qualification picture and protected DCS matchup projection | Required | `docs/ABL_POSTSEASON_RULES.md`; clinch/elimination claims still require standings arithmetic |
 | 6 | Divisions/conferences and schedule | Review division margins, direct games, unplayed matchups | Race and matchup candidates | Select news value | `divisions.csv`, `sub_leagues.csv`, `games.csv` |
 | 7 | Team/player totals and historical context | Detect rise/fall, value cases, pressure, historical echoes | Candidate/evidence/menu set | Apply hierarchy and restraint | `csv/out/story/candidates/`, `menus/`, almanac sources |
 | 8 | Official candidates/evidence | Build editorial board/slate; mark lead, secondary, watch, hold | Editorial plan | Yes: final selection | `csv/out/story/editorial/` |
@@ -31,4 +31,3 @@ The repo documents daily, series, weekly Monday, milestone, and historical caden
 - **Historical:** regenerate season-parameterized almanac/flashback material only when source or code changes.
 
 For the current July 20 package, steps 1–10 are evidenced. Step 11 is partly evidenced by `SAFE FOR EB USE` statuses but final human approval is not recorded. Steps 12–16 are not proven complete.
-

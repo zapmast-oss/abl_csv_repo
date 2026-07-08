@@ -44,7 +44,7 @@ The latest commit removed only an obsolete Microsoft Word temporary lock file. I
 
 **Ready:** preflight is ready; official run summary says safe for EB/Baseball Observer editorial use; baseline production package says `SAFE FOR EB USE`; Feed 3 parameterized validation passes and leaves official artifacts untouched.
 
-**Unfinished or gated:** final human editorial selection, factual spot-check, narration/performance, video/post assembly, publishing, and promotion are not evidenced as completed. StatsPlus ranking effects, new-candidate creation, owner signals, best-game automation, and historical-fan automation remain disabled. Wild-card/tournament arithmetic remains unavailable without verified rules.
+**Unfinished or gated:** final human editorial selection, factual spot-check, narration/performance, video/post assembly, publishing, and promotion are not evidenced as completed. StatsPlus ranking effects, new-candidate creation, owner signals, best-game automation, and historical-fan automation remain disabled. Wild-card/tournament arithmetic may now use `docs/ABL_POSTSEASON_RULES.md`: qualification is three division winners plus one wild card per conference, while the 1981 change affects DCS seeding/matchups only. Clinch, elimination, and official-field claims still require cutoff-compatible standings arithmetic.
 
 ## What is not current
 
@@ -57,4 +57,3 @@ The latest commit removed only an obsolete Microsoft Word temporary lock file. I
 ## Next likely step
 
 Human-review the stakes-first Observer segment and Chicago–Dallas intro against their evidence/caution notes, choose the final read, prepare narration and video/post assets, then publish and archive the July 20 checkpoint. If new game exports arrive, create a new dated preflight rather than silently updating this package.
-

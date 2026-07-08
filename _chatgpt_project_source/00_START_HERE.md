@@ -28,7 +28,7 @@ Sim Baseball Vision (SBV) turns Action Baseball League (ABL) simulation data int
 
 - Do not flatten this into generic “sim baseball.” It is the ABL world presented through Sim Baseball Vision.
 - Do not use July 20 results in a July 20 pregame package.
-- Do not declare races settled, awards decided, playoff qualification, regression, luck, injury causation, owner intent, or manager tendencies without explicit evidence.
+- Do not declare races settled, awards decided, clinches, eliminations, official playoff fields, regression, luck, injury causation, owner intent, or manager tendencies without explicit evidence.
 - Do not treat model odds as standings or predictions of individual games.
 - Do not upload raw 313 MB OOTP exports, caches, binaries, logs, temporary files, archives, or broad generated dumps to a ChatGPT Project.
 - Do not use the deleted temporary Word lock file `csv/out/story/production/~$ly20_stakes_first_framing_notes_1981_07_20_asof_1981-07-19.md`.
@@ -49,8 +49,7 @@ Sim Baseball Vision (SBV) turns Action Baseball League (ABL) simulation data int
 
 ## 6. Open questions / unknowns
 
-- **UNKNOWN:** verified 1981 tournament/wild-card qualification rules. No authoritative rules table was found in the inspected story-engine documentation; do not calculate “if the season ended today” beyond supported division standings and explicitly labeled model odds.
+- **KNOWN WITH RULES FILE:** postseason qualification is known by legacy ABL continuity: three division winners plus one wild card per conference. The 1981 change affects DCS seeding/matchups only: same-division clubs cannot meet in the DCS; if `#1` and `#4` are division rivals, `#4` plays `#2` and `#1` plays `#3`. Use `docs/ABL_POSTSEASON_RULES.md`; do not infer clinches, eliminations, or an official field without standings arithmetic.
 - **UNKNOWN:** scheduled starters for the July 20 Chicago–Dallas setup in the approved evidence.
 - **UNKNOWN:** whether the stakes-first script has completed final human voice/performance review.
 - README branch language is stale (`refactor-output-audit`); git reports `add-star-schema`.
-

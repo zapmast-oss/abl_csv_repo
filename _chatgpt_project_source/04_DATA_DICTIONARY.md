@@ -46,7 +46,7 @@
 | GB / games behind | Difference in standings position; recompute from authoritative standings data where needed |
 | Division / conference | ABL structure from OOTP `divisions.csv` and `sub_leagues.csv`; ABC and NBC appear in current output |
 | Race | Current separation between leading and pursuing clubs; not a qualification claim |
-| Wild card / “if season ended today” | **UNKNOWN without verified 1981 qualification rules**; ask for the rules/source |
+| Wild card / “if season ended today” | Qualification is known by `docs/ABL_POSTSEASON_RULES.md`: three division winners plus one wild card per conference; apply 1981 DCS same-division protection before projecting matchups |
 | Trend / rise / fall | Movement over a declared window; current weekly window was July 13–19 |
 | Streak | Consecutive result sequence; use only a cutoff-compatible source |
 | Last 10 | Record over ten most recent completed games; verify cutoff before use |
@@ -59,4 +59,3 @@
 | `as_of_date` / cutoff | Latest completed game allowed in claims |
 | team/player IDs | Stable OOTP identifiers where available | Prefer IDs over names; StatsPlus name joins may be ambiguous |
 | status: active/current | Compatible with declared cutoff | Must be supported by validation, not filename alone |
-

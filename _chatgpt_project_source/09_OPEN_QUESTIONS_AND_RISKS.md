@@ -4,7 +4,7 @@
 
 | Issue | Why it matters | Evidence | Recommended action |
 |---|---|---|---|
-| 1981 wild-card/tournament rules are UNKNOWN | “If season ended today,” qualification, clinch, and elimination claims may be wrong | Story-engine Sprint 1 notes say no verified rules table was found | Obtain authoritative 1981 rules and add a versioned rules source before calculating |
+| Postseason rules source must be applied narrowly | Qualification is known, but matchup protection and clinch/elimination arithmetic can still be misapplied | `docs/ABL_POSTSEASON_RULES.md`; raw OOTP `league_playoffs.csv` supports one wild card and DCS/CCS/Grand Series structure | Use three division winners plus one wild card per conference; apply 1981 same-division DCS protection; do not infer clinches, eliminations, or official fields without standings arithmetic |
 | July 20 results excluded | A result would contaminate a pregame/as-of-July-19 package | Preflight and every current script declare cutoff | Keep language pregame; create a new dated run after games complete |
 | Week 5 and Week 15 artifacts coexist | Easy to mistake historical snapshots for current state | Week 5 files and July 12 Week 15 docs remain in repo | Use `1981_07_20_asof_1981-07-19` artifacts for current work |
 | README branch is stale | Can misstate development context | README says `refactor-output-audit`; git says `add-star-schema` | Trust git; update README separately only if requested |
@@ -24,5 +24,4 @@
 
 ## What ChatGPT should request when data is missing
 
-Ask for the intended newsroom date and cutoff, a fresh preflight, the relevant current evidence/production file, verified tournament rules for qualification questions, a focused raw export/query for unsupported game facts, or a current probable-starters/transactions/injury source. Never request the entire repository when a narrow extract will answer the question.
-
+Ask for the intended newsroom date and cutoff, a fresh preflight, the relevant current evidence/production file, the postseason rules file for qualification or DCS matchup questions, a focused raw export/query for unsupported game facts, or a current probable-starters/transactions/injury source. Never request the entire repository when a narrow extract will answer the question.

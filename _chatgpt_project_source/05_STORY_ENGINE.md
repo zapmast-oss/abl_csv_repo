@@ -15,7 +15,7 @@ Turn simulated fictional baseball data into coverage that feels native to a livi
 7. Team identity
 8. Today’s game or series
 
-The hierarchy orders attention, but evidence quality can suppress a higher-ranked idea. Tournament implications require verified rules; fan emotion, management intent, and clubhouse meaning require evidence beyond numerical proxies.
+The hierarchy orders attention, but evidence quality can suppress a higher-ranked idea. Tournament implications use `docs/ABL_POSTSEASON_RULES.md`: qualification is known by ABL continuity, while the 1981 change affects DCS seeding/matchup protection only. Fan emotion, management intent, and clubhouse meaning require evidence beyond numerical proxies.
 
 ## From data to story
 
@@ -23,7 +23,7 @@ The hierarchy orders attention, but evidence quality can suppress a higher-ranke
 2. Run current-state validation. Stop if the raw drivers are incomplete or inconsistent.
 3. Rebuild standings and recent results from cutoff-compatible OOTP data.
 4. Find compressed division races, direct head-to-head opportunities, movement, run-balance gaps, player value, and historical echoes.
-5. State the arithmetic and consequence: what ground can be gained or lost, what the remaining schedule can answer, and what cannot yet be known.
+5. State the arithmetic and consequence: what ground can be gained or lost, current wild-card/field implications when the rules file and standings support them, what the remaining schedule can answer, and what cannot yet be known.
 6. Attach exact evidence and authority labels to every candidate.
 7. Rank using the editorial hierarchy; separate lead, secondary, quick mention, watch, and held items.
 8. Add StatsPlus/sortable context only after official facts are fixed. Keep model signals labeled.
@@ -68,4 +68,3 @@ The current stakes-first script uses “Baseball matters because the stakes are 
 ## Current example
 
 The July 20 package leads with Dallas–Detroit as a two-game NBC Central race, then gives Chicago–Dallas a direct-opportunity frame: Chicago begins four games behind Dallas; a sweep can produce a tie, while being swept can make the gap eight. This is valid because the records, schedule, and arithmetic are explicit. It must not become “Chicago can take sole possession” or a predicted result.
-

@@ -20,8 +20,9 @@ Lengths are approximate and were measured before this manifest was added.
 | `06_STYLE_AND_VOICE_GUIDE.md` | Naming, EB voice, formats, factual restraint, examples | 69 lines / 712 words | Yes | Preserve **Real. Fictional. ⚾.** exactly |
 | `07_PRODUCTION_RHYTHM.md` | End-to-end production workflow and cadence | 35 lines / 639 words | Yes | Publication steps are not proven complete |
 | `08_ACTIVE_FILES_TO_UPLOAD.md` | Minimum/full upload lists and exclusions | 43 lines / 529 words | Yes | Do not upload raw/binary/bulk artifacts |
-| `09_OPEN_QUESTIONS_AND_RISKS.md` | Unknowns, contradictions, stale-data and inference risks | 29 lines / 641 words | Yes | Do not resolve UNKNOWN items by guessing |
+| `09_OPEN_QUESTIONS_AND_RISKS.md` | Unknowns, contradictions, stale-data and inference risks | 29 lines / 641 words | Yes | Postseason rules are narrowed; clinch/field claims still need arithmetic |
 | `10_PROJECT_SOURCE_MANIFEST.md` | Inventory, provenance, and usage instructions | About 55 lines | Yes | Regenerate after material repo/current-state changes |
+| `docs/ABL_POSTSEASON_RULES.md` | Versioned ABL postseason qualification and DCS seeding authority | New rules authority | Yes for tournament claims | Qualification known; 1981 change is matchup protection only |
 
 ## How to use this source pack
 
@@ -44,5 +45,5 @@ The pack was produced after inspecting top-level structure, README and documenta
 - Current means **as of games completed July 19, 1981**, not the host date and not July 20 results.
 - Week 5 and the July 12 Week 15 snapshot are historical/superseded for current work.
 - Raw OOTP is authoritative for completed games and standings; StatsPlus preview does not change official ranking.
-- Verified 1981 wild-card/tournament rules were not found.
+- Postseason qualification is known by legacy ABL continuity: three division winners plus one wild card per conference. The 1981 change affects DCS seeding/matchups only; use `docs/ABL_POSTSEASON_RULES.md` and do not infer clinches, eliminations, or official fields without standings arithmetic.
 - Secrets were not copied. `.env.example`, raw bulk data, binary data, caches, logs, temporary files, and account information are excluded.
