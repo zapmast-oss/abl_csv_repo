@@ -17,14 +17,16 @@
 - PASS: no duplicate `game_id` values.
 - PASS: all rows use `league_id = 200`.
 - PASS: all rows use `played = 1`.
+- PASS: all rows use `game_type = 3`, confirmed by Dave from StatsPlus for playoff games.
 - PASS: all home/away team IDs exist in `teams.csv`.
 - PASS: all populated pitcher/starter IDs exist in `players.csv`.
 - PASS: Grand Series scores match the provided summary.
 - PASS: Miami defeats Houston in the Grand Series, 4 games to 3.
 
-## Inferred Fields
+## Confirmed And Inferred Fields
 
-- `game_type=1`, `dh=0`, and `cup=0` are populated in the repair CSV but listed in the unresolved-fields CSV because the exact local StatsPlus `/gamehistory` export with those columns was not available.
+- `game_type=3` is confirmed by Dave from StatsPlus for playoff games.
+- `dh=0` and `cup=0` remain inferred and are listed in the unresolved-fields CSV because they were not otherwise confirmed.
 
 ## Grand Series Cross-Check
 
