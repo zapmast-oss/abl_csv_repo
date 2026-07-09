@@ -4,6 +4,7 @@
 - Unresolved-fields CSV: `csv/out/statsplus_repair/statsplus_gamehistory_1978_postseason_unresolved_fields.csv`
 - Primary source: `data_raw/ootp_html/almanac_1978.zip` targeted `box_scores/game_box_<id>.html` pages; no bulk extraction performed.
 - Mapping sources: `csv/ootp_csv/teams.csv`, `csv/ootp_csv/players.csv`.
+- DH setting cross-check: `csv/ootp_csv/sub_leagues.csv` has `designated_hitter=1` for league 200 subleagues, and all 41 targeted 1978 postseason box scores contain DH lineup entries for both teams.
 
 ## Row Counts
 
@@ -18,15 +19,28 @@
 - PASS: all rows use `league_id = 200`.
 - PASS: all rows use `played = 1`.
 - PASS: all rows use `game_type = 3`, confirmed by Dave from StatsPlus for playoff games.
+- PASS: all rows use `cup = 0`, confirmed by Dave from StatsPlus.
+- PASS: all rows use `dh = 1`, verified from 1978 ABL postseason box-score lineups with DH entries for both teams in every game.
 - PASS: all home/away team IDs exist in `teams.csv`.
 - PASS: all populated pitcher/starter IDs exist in `players.csv`.
 - PASS: Grand Series scores match the provided summary.
 - PASS: Miami defeats Houston in the Grand Series, 4 games to 3.
 
-## Confirmed And Inferred Fields
+## Confirmed Fields
 
-- `game_type=3` is confirmed by Dave from StatsPlus for playoff games.
-- `dh=0` and `cup=0` remain inferred and are listed in the unresolved-fields CSV because they were not otherwise confirmed.
+- `game_type=3`: confirmed by Dave from StatsPlus for playoff games.
+- `cup=0`: confirmed by Dave from StatsPlus.
+- `dh=1`: verified from OOTP sources. `csv/ootp_csv/sub_leagues.csv` has `designated_hitter=1` for league 200 subleagues, and every targeted 1978 postseason OOTP box score in `data_raw/ootp_html/almanac_1978.zip` includes a DH lineup row for both teams.
+
+## DH Verification Examples
+
+| StatsPlus game_id | Date | Away batting DH row | Home batting DH row |
+|---:|---|---|---|
+| 1978009280 | 1978-10-03 | B. Rambow DH | E. Griffith DH |
+| 1978009336 | 1978-10-03 | R. Thompson DH | A. Rosado DH |
+| 1978009307 | 1978-10-04 | B. Rambow DH | E. Griffith DH |
+| 1978009337 | 1978-10-04 | R. Thompson DH | A. Rosado DH |
+| 1978009343 | 1978-10-04 | R. Chacon DH | B. Rose DH |
 
 ## Grand Series Cross-Check
 
