@@ -29,9 +29,101 @@
     "Cincinnati": 4,
     "completed_games": 13
   },
-  "projected_rotation_slot": {
+  "current_series": {
+    "Houston": 1,
+    "Cincinnati": 2,
+    "completed_games": 3
+  },
+  "confirmed_starters": {
     "23": "Valentin Geffroy",
     "14": "Chris Collette"
+  },
+  "starter_confirmation_source": "User confirmation; raw game 1161 has not yet populated starter IDs.",
+  "starter_profiles": {
+    "23": {
+      "player_id": "6776",
+      "name": "Valentin Geffroy",
+      "age": 27,
+      "experience_years": 7,
+      "throws": "L",
+      "games": 5,
+      "starts": 0,
+      "wins": 1,
+      "losses": 0,
+      "saves": 2,
+      "innings": "7.1",
+      "era": 1.23,
+      "whip": 0.95,
+      "strikeouts": 5,
+      "walks": 2,
+      "home_runs": 0,
+      "quality_starts": 0,
+      "arsenal": [
+        {
+          "pitch": "fastball",
+          "rating": 40
+        },
+        {
+          "pitch": "curveball",
+          "rating": 55
+        },
+        {
+          "pitch": "forkball",
+          "rating": 50
+        },
+        {
+          "pitch": "changeup",
+          "rating": 35
+        }
+      ],
+      "stuff": 45,
+      "movement": 35,
+      "control": 50,
+      "stamina": 65,
+      "hold": 80,
+      "velocity_code": 6,
+      "injured": false
+    },
+    "14": {
+      "player_id": "5420",
+      "name": "Chris Collette",
+      "age": 23,
+      "experience_years": 9,
+      "throws": "R",
+      "games": 12,
+      "starts": 9,
+      "wins": 8,
+      "losses": 2,
+      "saves": 0,
+      "innings": "62.2",
+      "era": 1.72,
+      "whip": 1.24,
+      "strikeouts": 40,
+      "walks": 29,
+      "home_runs": 3,
+      "quality_starts": 7,
+      "arsenal": [
+        {
+          "pitch": "fastball",
+          "rating": 50
+        },
+        {
+          "pitch": "curveball",
+          "rating": 70
+        },
+        {
+          "pitch": "changeup",
+          "rating": 80
+        }
+      ],
+      "stuff": 55,
+      "movement": 55,
+      "control": 45,
+      "stamina": 35,
+      "hold": 65,
+      "velocity_code": 9,
+      "injured": false
+    }
   },
   "verified_staff": {
     "23": {
