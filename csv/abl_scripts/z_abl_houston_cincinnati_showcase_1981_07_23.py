@@ -24,6 +24,8 @@ def main():
     games = rows("games.csv")
     teams = {r["team_id"]: r for r in rows("teams.csv")}
     people = {r["player_id"]: f'{r["first_name"]} {r["last_name"]}' for r in rows("players.csv")}
+    coaches = {r["coach_id"]: r for r in rows("coaches.csv")}
+    staff_ids = {r["team_id"]: r for r in rows("team_roster_staff.csv") if r["team_id"] in (HOU, CIN)}
     completed = [r for r in games if r["league_id"] == "200" and r["game_type"] == "0" and r["played"] == "1" and date(r["date"]) <= CUTOFF]
     completed_ids = {r["game_id"] for r in completed}
     target = next(r for r in games if r["game_id"] == GAME_ID)
@@ -60,6 +62,14 @@ def main():
 
     projections = {r["team_id"]: r for r in rows("projected_starting_pitchers.csv") if r["team_id"] in (HOU, CIN)}
     projected = {tid: people.get(projections[tid]["starter_0"], projections[tid]["starter_0"]) for tid in (HOU, CIN)}
+    staff_roles = ("manager", "general_manager", "bench_coach", "pitching_coach", "hitting_coach")
+    staff = {
+        tid: {
+            role: f'{coaches[staff_ids[tid][role]]["first_name"]} {coaches[staff_ids[tid][role]]["last_name"]}'
+            for role in staff_roles
+        }
+        for tid in (HOU, CIN)
+    }
     park = next(r for r in rows("parks.csv") if r["park_id"] == teams[CIN]["park_id"])
     h2h_hou = sum((g["home_team"] == HOU and int(g["runs1"]) > int(g["runs0"])) or (g["away_team"] == HOU and int(g["runs0"]) > int(g["runs1"])) for g in h2h)
 
@@ -70,6 +80,7 @@ def main():
         "records": {tid: {"w": wl[tid]["w"], "l": wl[tid]["l"], "runs_for": runs[tid]["for"], "runs_against": runs[tid]["against"], "last_10": f"{recent[tid]}-{10-recent[tid]}"} for tid in (HOU, CIN)},
         "season_series": {"Houston": h2h_hou, "Cincinnati": len(h2h)-h2h_hou, "completed_games": len(h2h)},
         "projected_rotation_slot": projected,
+        "verified_staff": staff,
         "park": park["name"], "top_hitters": top,
         "authority": {"official": "raw OOTP CSV", "enrichment": "StatsPlus not required for any score, record, standing, or schedule claim"},
         "guardrail": "Do not include or assume the result of game 1161. It is played=0 in games.csv."
@@ -84,7 +95,7 @@ def main():
              '**Showcase status:** Unplayed (`games.csv` game 1161, `played=0`)  ',
              f'**Site:** {park["name"]}, Cincinnati', '',
              '## Editorial spine', '',
-             f'First-place Houston ({rec(HOU)}) enters Cincinnati with the Cougars at {rec(CIN)}. The direct stakes are clean: Cincinnati can take another game out of the ABC Central margin; Houston can answer after Cincinnati won Wednesday’s opener 7–1.', '',
+             f'First-place Houston ({rec(HOU)}) enters Cincinnati with the Cougars at {rec(CIN)}. The direct stakes are clean: Cincinnati can take another game out of the ABC Central margin; Houston can answer after Cincinnati won Wednesday’s game 7–1.', '',
              'The game is the story. Treat every number below as pregame context and never as evidence of a Thursday result.', '',
              '## Stakes board', '',
              '| Club | Record | Runs | Run diff. | Last 10 |', '|---|---:|---:|---:|---:|']
@@ -96,6 +107,13 @@ def main():
               '## Probable-pitcher handling', '',
               f'- Houston projected rotation slot: **{projected[HOU]}**.', f'- Cincinnati projected rotation slot: **{projected[CIN]}**.',
               '- These names come from `projected_starting_pitchers.csv`; label them projected, not confirmed, because game 1161 has starter IDs set to 0.', '',
+              '## Managers and field staff', '',
+              '| Club | Manager | Bench coach | Pitching coach | Hitting coach | General manager |',
+              '|---|---|---|---|---|---|']
+    for tid in (HOU, CIN):
+        lines.append(f'| {teams[tid]["name"]} {teams[tid]["nickname"]} | {staff[tid]["manager"]} | {staff[tid]["bench_coach"]} | {staff[tid]["pitching_coach"]} | {staff[tid]["hitting_coach"]} | {staff[tid]["general_manager"]} |')
+    lines += ['',
+              'Manager and staff IDs come directly from `team_roster_staff.csv` and resolve through `coaches.csv`. No managerial tendencies are inferred.', '',
               '## Bats to frame', '']
     for tid in (HOU, CIN):
         lines += [f'### {teams[tid]["name"]} {teams[tid]["nickname"]}', '', '| Player | AVG | HR | RBI | PA |', '|---|---:|---:|---:|---:|']
@@ -118,6 +136,7 @@ def main():
               '- `games_score.csv` and `game_logs.csv`: complete cross-coverage for all completed games in preflight.',
               '- `players_game_batting.csv` and `players.csv`: player lines and names.',
               '- `projected_starting_pitchers.csv`: projected rotation slot only.',
+              '- `team_roster_staff.csv` and `coaches.csv`: current manager and staff assignments.',
               '- `teams.csv` and `parks.csv`: identities and venue.', '',
               '**Packet status: SAFE FOR PREGAME PRODUCTION — SHOWCASE RESULT EXCLUDED**', '']
     stem.with_suffix(".md").write_text("\n".join(lines), encoding="utf-8")

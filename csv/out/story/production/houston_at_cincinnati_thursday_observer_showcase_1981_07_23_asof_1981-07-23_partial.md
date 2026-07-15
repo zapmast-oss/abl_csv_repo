@@ -7,7 +7,7 @@
 
 ## Editorial spine
 
-First-place Houston (54-41) enters Cincinnati with the Cougars at 50-46. The direct stakes are clean: Cincinnati can take another game out of the ABC Central margin; Houston can answer after Cincinnati won Wednesday’s opener 7–1.
+First-place Houston (54-41) enters Cincinnati with the Cougars at 50-46. The direct stakes are clean: Cincinnati can take another game out of the ABC Central margin; Houston can answer after Cincinnati won Wednesday’s game 7–1.
 
 The game is the story. Treat every number below as pregame context and never as evidence of a Thursday result.
 
@@ -27,6 +27,15 @@ The game is the story. Treat every number below as pregame context and never as 
 - Houston projected rotation slot: **Valentin Geffroy**.
 - Cincinnati projected rotation slot: **Chris Collette**.
 - These names come from `projected_starting_pitchers.csv`; label them projected, not confirmed, because game 1161 has starter IDs set to 0.
+
+## Managers and field staff
+
+| Club | Manager | Bench coach | Pitching coach | Hitting coach | General manager |
+|---|---|---|---|---|---|
+| Houston Mavericks | Carlos Sanchez | Sam Downs | Rodolfo Luna | Ray Gallo | Larry Bell |
+| Cincinnati Cougars | Chris Allison | Scott Willett | Jon Baugher | Jared Teitelbaum | Phil Trammel |
+
+Manager and staff IDs come directly from `team_roster_staff.csv` and resolve through `coaches.csv`. No managerial tendencies are inferred.
 
 ## Bats to frame
 
@@ -71,6 +80,7 @@ Baseball matters because the stakes are incredibly high. Houston brings a 54-41 
 - `games_score.csv` and `game_logs.csv`: complete cross-coverage for all completed games in preflight.
 - `players_game_batting.csv` and `players.csv`: player lines and names.
 - `projected_starting_pitchers.csv`: projected rotation slot only.
+- `team_roster_staff.csv` and `coaches.csv`: current manager and staff assignments.
 - `teams.csv` and `parks.csv`: identities and venue.
 
 **Packet status: SAFE FOR PREGAME PRODUCTION — SHOWCASE RESULT EXCLUDED**

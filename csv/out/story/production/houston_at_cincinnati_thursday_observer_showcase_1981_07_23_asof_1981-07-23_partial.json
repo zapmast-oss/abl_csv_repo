@@ -33,6 +33,22 @@
     "23": "Valentin Geffroy",
     "14": "Chris Collette"
   },
+  "verified_staff": {
+    "23": {
+      "manager": "Carlos Sanchez",
+      "general_manager": "Larry Bell",
+      "bench_coach": "Sam Downs",
+      "pitching_coach": "Rodolfo Luna",
+      "hitting_coach": "Ray Gallo"
+    },
+    "14": {
+      "manager": "Chris Allison",
+      "general_manager": "Phil Trammel",
+      "bench_coach": "Scott Willett",
+      "pitching_coach": "Jon Baugher",
+      "hitting_coach": "Jared Teitelbaum"
+    }
+  },
   "park": "Cougars Park",
   "top_hitters": {
     "23": [

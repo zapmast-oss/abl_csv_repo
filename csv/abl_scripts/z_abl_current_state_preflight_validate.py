@@ -65,14 +65,31 @@ def main() -> int:
                 for row in csv.DictReader(handle)
                 if row["league_id"] == "200" and row["level"] == "1" and row.get("allstar_team") == "0"
             }
+        with (RAW / "team_record.csv").open("r", encoding="utf-8-sig", newline="") as handle:
+            official_records = {
+                row["team_id"]: (int(row["g"]), int(row["w"]), int(row["l"]))
+                for row in csv.DictReader(handle) if row["team_id"] in teams
+            }
+        computed_wl: dict[str, Counter[str]] = {team_id: Counter() for team_id in teams}
+        for row in completed:
+            home, away = row["home_team"], row["away_team"]
+            home_runs, away_runs = int(row["runs1"]), int(row["runs0"])
+            winner, loser = (home, away) if home_runs > away_runs else (away, home)
+            computed_wl[winner]["w"] += 1
+            computed_wl[loser]["l"] += 1
+        record_reconciliation = all(
+            official_records.get(team_id) == (counts[team_id], computed_wl[team_id]["w"], computed_wl[team_id]["l"])
+            for team_id in teams
+        )
         add(checks, "driver_files", "|".join(DRIVERS), "PASS", "All approved drivers found and readable.")
         add(checks, "games_score_completed_game_coverage", score_coverage, "PASS" if score_coverage else "FAIL", f"Covered {len(completed_ids & score_ids)} of {len(completed_ids)} completed ABL game IDs.")
         add(checks, "game_logs_completed_game_coverage", log_coverage, "PASS" if log_coverage else "FAIL", f"Covered {len(completed_ids & log_ids)} of {len(completed_ids)} completed ABL game IDs.")
+        add(checks, "team_record_reconciliation", record_reconciliation, "PASS" if record_reconciliation else "FAIL", "Computed G-W-L from games.csv matches raw OOTP team_record.csv for all 24 clubs.")
         if not dates:
             verdict = "NOT_READY_NO_DATE_DETECTED"
         elif latest < TARGET:
             verdict = "NOT_READY_MISSING_TARGET_DATE"
-        elif set(counts) != set(teams) or len(counts) != 24 or max(counts.values()) - min(counts.values()) > 2 or not score_coverage or not log_coverage:
+        elif set(counts) != set(teams) or len(counts) != 24 or max(counts.values()) - min(counts.values()) > 2 or not score_coverage or not log_coverage or not record_reconciliation:
             verdict = "NOT_READY_INCONSISTENT_GAME_COUNTS"
         else:
             verdict = "READY_FOR_CURRENT_RUN"
@@ -120,7 +137,7 @@ def main() -> int:
         "checks": checks,
     }
     OUT_STEM.with_suffix(".json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    lines = ["# ABL Current-State Preflight — Target 1981-07-19", "",
+    lines = [f"# ABL Current-State Preflight — Target {TARGET.isoformat()}", "",
              f"- Newsroom date: `{NEWSROOM}`", f"- Target as-of date: `{TARGET.isoformat()}`",
              f"- Earliest completed game: `{earliest.isoformat() if earliest else 'not detected'}`",
              f"- Latest completed game: `{latest.isoformat() if latest else 'not detected'}`",
@@ -129,7 +146,7 @@ def main() -> int:
              f"- All 24 teams represented: **{'YES' if all_teams else 'NO'}**",
              f"- Verdict: **{verdict}**",
              f"- Story work safe to resume: **{'YES' if verdict == 'READY_FOR_CURRENT_RUN' else 'NO'}**", "",
-             "July 20 is the newsroom date. July 19 is the completed-game cutoff; missing July 20 games are not an error.", "",
+             f"The cutoff is partial-day {TARGET.isoformat()}: only games marked completed count. Scheduled or unplayed games on that date do not advance team records.", "",
              "## Current-state drivers used", ""]
     lines += [f"- `csv/ootp_csv/{name}`" for name in DRIVERS if (RAW / name).exists()]
     lines += ["", "## Games per team", "", "| Team ID | Team | Games |", "|---:|---|---:|"]
@@ -144,7 +161,7 @@ def main() -> int:
               "## Stale derivatives excluded from current-state proof", ""]
     lines += [f"- `{item}`" for item in STALE_FILES]
     lines += ["", "## Final verdict", "", f"**{verdict}**", "",
-              "The raw driver set reaches July 19, represents all teams, has a normal one-game schedule spread, and reconciles completed game IDs across score and log files." if verdict == "READY_FOR_CURRENT_RUN" else "Current story generation must remain blocked until the failed checks are corrected.", ""]
+              f"The raw driver set reaches {TARGET.isoformat()}, represents all teams, reconciles computed G-W-L to team_record.csv, and reconciles completed game IDs across score and log files." if verdict == "READY_FOR_CURRENT_RUN" else "Current story generation must remain blocked until the failed checks are corrected.", ""]
     OUT_STEM.with_suffix(".md").write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps({
         "earliest_game_date": earliest.isoformat() if earliest else None,

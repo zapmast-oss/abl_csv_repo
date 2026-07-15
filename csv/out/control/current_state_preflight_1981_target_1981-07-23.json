@@ -201,6 +201,12 @@
       "details": "Covered 1152 of 1152 completed ABL game IDs."
     },
     {
+      "check_name": "team_record_reconciliation",
+      "value": "True",
+      "status": "PASS",
+      "details": "Computed G-W-L from games.csv matches raw OOTP team_record.csv for all 24 clubs."
+    },
+    {
       "check_name": "earliest_completed_game_date",
       "value": "1981-04-06",
       "status": "PASS",

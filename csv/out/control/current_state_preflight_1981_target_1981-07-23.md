@@ -1,4 +1,4 @@
-# ABL Current-State Preflight — Target 1981-07-19
+# ABL Current-State Preflight — Target 1981-07-23
 
 - Newsroom date: `1981-07-23`
 - Target as-of date: `1981-07-23`
@@ -10,7 +10,7 @@
 - Verdict: **READY_FOR_CURRENT_RUN**
 - Story work safe to resume: **YES**
 
-July 20 is the newsroom date. July 19 is the completed-game cutoff; missing July 20 games are not an error.
+The cutoff is partial-day 1981-07-23: only games marked completed count. Scheduled or unplayed games on that date do not advance team records.
 
 ## Current-state drivers used
 
@@ -76,4 +76,4 @@ All **20** promoted sortable CSVs are available as supplemental support. They do
 
 **READY_FOR_CURRENT_RUN**
 
-The raw driver set reaches July 19, represents all teams, has a normal one-game schedule spread, and reconciles completed game IDs across score and log files.
+The raw driver set reaches 1981-07-23, represents all teams, reconciles computed G-W-L to team_record.csv, and reconciles completed game IDs across score and log files.
