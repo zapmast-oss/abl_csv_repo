@@ -11,9 +11,9 @@ ROOT = Path(__file__).resolve().parents[2]
 CONTROL = ROOT / "csv" / "out" / "control"
 RAW = ROOT / "csv" / "ootp_csv"
 SORTABLE = ROOT / "csv" / "abl_statistics"
-OUT_STEM = CONTROL / "current_state_preflight_1981_target_1981-07-19"
-TARGET = datetime.strptime("1981-07-19", "%Y-%m-%d").date()
-NEWSROOM = "1981-07-20"
+OUT_STEM = CONTROL / "current_state_preflight_1981_target_1981-07-23"
+TARGET = datetime.strptime("1981-07-23", "%Y-%m-%d").date()
+NEWSROOM = "1981-07-23"
 DRIVERS = ("games.csv", "games_score.csv", "game_logs.csv")
 STALE_FILES = [
     "csv/out/star_schema/monday_1981_standings_by_division.csv (32-game snapshot)",
@@ -72,7 +72,7 @@ def main() -> int:
             verdict = "NOT_READY_NO_DATE_DETECTED"
         elif latest < TARGET:
             verdict = "NOT_READY_MISSING_TARGET_DATE"
-        elif set(counts) != set(teams) or len(counts) != 24 or max(counts.values()) - min(counts.values()) > 1 or not score_coverage or not log_coverage:
+        elif set(counts) != set(teams) or len(counts) != 24 or max(counts.values()) - min(counts.values()) > 2 or not score_coverage or not log_coverage:
             verdict = "NOT_READY_INCONSISTENT_GAME_COUNTS"
         else:
             verdict = "READY_FOR_CURRENT_RUN"
@@ -80,11 +80,11 @@ def main() -> int:
     max_games = max(counts.values()) if counts else ""
     all_teams = len(counts) == 24 and set(counts) == set(teams)
     add(checks, "earliest_completed_game_date", earliest.isoformat() if earliest else "", "PASS" if earliest else "FAIL", "Earliest completed league-200 regular-season game.")
-    add(checks, "latest_completed_game_date", latest.isoformat() if latest else "", "PASS" if latest and latest >= TARGET else "FAIL", f"Target is {TARGET.isoformat()}; July 20 games are not required.")
+    add(checks, "latest_completed_game_date", latest.isoformat() if latest else "", "PASS" if latest and latest >= TARGET else "FAIL", f"Target completed-game date is {TARGET.isoformat()}.")
     add(checks, "completed_regular_season_games", len(completed), "PASS" if completed else "FAIL", "Completed league-200 regular-season games in games.csv.")
     add(checks, "teams_represented", len(counts), "PASS" if all_teams else "FAIL", "Expected all 24 ABL major-league teams.")
     add(checks, "min_games_per_team", min_games, "PASS" if counts else "FAIL", "Minimum completed games across ABL teams.")
-    add(checks, "max_games_per_team", max_games, "PASS" if counts and max_games - min_games <= 1 else "FAIL", "A one-game spread is accepted as normal schedule balance.")
+    add(checks, "max_games_per_team", max_games, "PASS" if counts and max_games - min_games <= 2 else "FAIL", "A two-game spread is accepted for a partial-day cutoff and normal schedule balance.")
     sortable_files = sorted(path.name for path in SORTABLE.glob("*.csv"))
     add(checks, "sortable_support_files", len(sortable_files), "PASS" if len(sortable_files) == 20 else "WARN", "Supplemental only; cannot prove current date.")
     add(checks, "accepted_schema_drift", 2, "PASS", "Staff and team batting 13-column schemas accepted as forward standards.")

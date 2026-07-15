@@ -1,0 +1,264 @@
+{
+  "season": 1981,
+  "newsroom_date": "1981-07-23",
+  "target_as_of_date": "1981-07-23",
+  "earliest_completed_game_date": "1981-04-06",
+  "latest_completed_game_date": "1981-07-23",
+  "completed_regular_season_games": 1152,
+  "min_games_per_team": 95,
+  "max_games_per_team": 97,
+  "all_24_teams_represented": true,
+  "current_state_driver_files_used": [
+    "csv/ootp_csv/games.csv",
+    "csv/ootp_csv/games_score.csv",
+    "csv/ootp_csv/game_logs.csv"
+  ],
+  "driver_cross_checks": {
+    "games_score_complete": true,
+    "game_logs_complete": true
+  },
+  "games_by_team": [
+    {
+      "team_id": "1",
+      "team_name": "Miami Hurricanes",
+      "games_played": 96
+    },
+    {
+      "team_id": "2",
+      "team_name": "Phoenix Firebirds",
+      "games_played": 96
+    },
+    {
+      "team_id": "3",
+      "team_name": "Atlanta Kings",
+      "games_played": 96
+    },
+    {
+      "team_id": "4",
+      "team_name": "Dallas Rustlers",
+      "games_played": 97
+    },
+    {
+      "team_id": "5",
+      "team_name": "Detroit Dukes",
+      "games_played": 96
+    },
+    {
+      "team_id": "6",
+      "team_name": "Charlotte Colonels",
+      "games_played": 96
+    },
+    {
+      "team_id": "7",
+      "team_name": "San Diego Seraphs",
+      "games_played": 96
+    },
+    {
+      "team_id": "8",
+      "team_name": "Tampa Bay Storm",
+      "games_played": 96
+    },
+    {
+      "team_id": "9",
+      "team_name": "Los Angeles Cobras",
+      "games_played": 96
+    },
+    {
+      "team_id": "10",
+      "team_name": "San Francisco Warriors",
+      "games_played": 96
+    },
+    {
+      "team_id": "11",
+      "team_name": "Minneapolis Blizzard",
+      "games_played": 96
+    },
+    {
+      "team_id": "12",
+      "team_name": "Chicago Fire",
+      "games_played": 97
+    },
+    {
+      "team_id": "13",
+      "team_name": "Denver Rocketeers",
+      "games_played": 96
+    },
+    {
+      "team_id": "14",
+      "team_name": "Cincinnati Cougars",
+      "games_played": 96
+    },
+    {
+      "team_id": "15",
+      "team_name": "New York Aces",
+      "games_played": 96
+    },
+    {
+      "team_id": "16",
+      "team_name": "Nashville Blues",
+      "games_played": 96
+    },
+    {
+      "team_id": "17",
+      "team_name": "Las Vegas Gamblers",
+      "games_played": 96
+    },
+    {
+      "team_id": "18",
+      "team_name": "Portland Lumberjacks",
+      "games_played": 96
+    },
+    {
+      "team_id": "19",
+      "team_name": "St. Louis Stallions",
+      "games_played": 95
+    },
+    {
+      "team_id": "20",
+      "team_name": "Boston Patriots",
+      "games_played": 96
+    },
+    {
+      "team_id": "21",
+      "team_name": "Pittsburgh Express",
+      "games_played": 96
+    },
+    {
+      "team_id": "22",
+      "team_name": "Philadelphia Fury",
+      "games_played": 96
+    },
+    {
+      "team_id": "23",
+      "team_name": "Houston Mavericks",
+      "games_played": 95
+    },
+    {
+      "team_id": "24",
+      "team_name": "Seattle Comets",
+      "games_played": 96
+    }
+  ],
+  "sortable_support_files_available": [
+    "abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+    "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv"
+  ],
+  "accepted_schema_drift": [
+    "abl_staff.csv: accepted 13-column schema; staff IDs resolved downstream",
+    "batting_stats.csv: accepted 13-column schema; removed baserunning fields unavailable or sourced elsewhere"
+  ],
+  "limited_or_disabled_enrichments": [
+    "Unresolved staff-name-to-ID matches remain null.",
+    "CS and SB% require another validated source.",
+    "BatR, wSB, UBR, and BsR are unavailable; dependent enrichments remain disabled."
+  ],
+  "stale_derivative_files_excluded": [
+    "csv/out/star_schema/monday_1981_standings_by_division.csv (32-game snapshot)",
+    "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv (32-game snapshot)",
+    "csv/out/star_schema/fact_player_batting.csv (preserved early snapshot)",
+    "csv/out/star_schema/fact_player_pitching.csv (preserved early snapshot)",
+    "csv/out/csv_out/z_ABL_Manager_Tendencies.csv (62-game snapshot)",
+    "csv/out/csv_out/z_ABL_Division_Leverage.csv (62-game snapshot)",
+    "csv/out/csv_out/z_ABL_Rotation_Stability.csv (62-game snapshot)"
+  ],
+  "verdict": "READY_FOR_CURRENT_RUN",
+  "story_work_safe_to_resume": true,
+  "checks": [
+    {
+      "check_name": "driver_files",
+      "value": "games.csv|games_score.csv|game_logs.csv",
+      "status": "PASS",
+      "details": "All approved drivers found and readable."
+    },
+    {
+      "check_name": "games_score_completed_game_coverage",
+      "value": "True",
+      "status": "PASS",
+      "details": "Covered 1152 of 1152 completed ABL game IDs."
+    },
+    {
+      "check_name": "game_logs_completed_game_coverage",
+      "value": "True",
+      "status": "PASS",
+      "details": "Covered 1152 of 1152 completed ABL game IDs."
+    },
+    {
+      "check_name": "earliest_completed_game_date",
+      "value": "1981-04-06",
+      "status": "PASS",
+      "details": "Earliest completed league-200 regular-season game."
+    },
+    {
+      "check_name": "latest_completed_game_date",
+      "value": "1981-07-23",
+      "status": "PASS",
+      "details": "Target completed-game date is 1981-07-23."
+    },
+    {
+      "check_name": "completed_regular_season_games",
+      "value": "1152",
+      "status": "PASS",
+      "details": "Completed league-200 regular-season games in games.csv."
+    },
+    {
+      "check_name": "teams_represented",
+      "value": "24",
+      "status": "PASS",
+      "details": "Expected all 24 ABL major-league teams."
+    },
+    {
+      "check_name": "min_games_per_team",
+      "value": "95",
+      "status": "PASS",
+      "details": "Minimum completed games across ABL teams."
+    },
+    {
+      "check_name": "max_games_per_team",
+      "value": "97",
+      "status": "PASS",
+      "details": "A two-game spread is accepted for a partial-day cutoff and normal schedule balance."
+    },
+    {
+      "check_name": "sortable_support_files",
+      "value": "20",
+      "status": "PASS",
+      "details": "Supplemental only; cannot prove current date."
+    },
+    {
+      "check_name": "accepted_schema_drift",
+      "value": "2",
+      "status": "PASS",
+      "details": "Staff and team batting 13-column schemas accepted as forward standards."
+    },
+    {
+      "check_name": "stale_derivatives_excluded",
+      "value": "7",
+      "status": "PASS",
+      "details": "Excluded from current-state proof."
+    },
+    {
+      "check_name": "final_verdict",
+      "value": "READY_FOR_CURRENT_RUN",
+      "status": "PASS",
+      "details": "Story work is safe to resume only on READY_FOR_CURRENT_RUN."
+    }
+  ]
+}
