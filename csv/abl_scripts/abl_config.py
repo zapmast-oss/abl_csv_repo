@@ -4,12 +4,15 @@ import os
 from datetime import datetime
 from pathlib import Path
 
+from abl_path_policy import validate_output_path
+
 LEAGUE_ID = 200
 TEAM_IDS = list(range(1, 25))
 
 # Project layout helpers -----------------------------------------------------
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parent
+REPO_ROOT = ROOT_DIR.parent
 
 # Raw OOTP exports live under ootp_csv/. Allow overrides via env vars.
 DEFAULT_OOTP_ROOT = ROOT_DIR / "ootp_csv"
@@ -20,8 +23,12 @@ DEFAULT_ANALYTICS_ROOT = ROOT_DIR / "abl_csv"
 ANALYTICS_CSV_ROOT = Path(os.environ.get("ABL_ANALYTICS_ROOT", DEFAULT_ANALYTICS_ROOT)).resolve()
 
 # Output directories for generated CSV/TXT artifacts.
-CSV_OUT_ROOT = Path(os.environ.get("ABL_CSV_OUT", ROOT_DIR / "out" / "csv_out")).resolve()
-TXT_OUT_ROOT = Path(os.environ.get("ABL_TXT_OUT", ROOT_DIR / "out" / "text_out")).resolve()
+CSV_OUT_ROOT = validate_output_path(
+    Path(os.environ.get("ABL_CSV_OUT", ROOT_DIR / "out" / "csv_out")), REPO_ROOT
+)
+TXT_OUT_ROOT = validate_output_path(
+    Path(os.environ.get("ABL_TXT_OUT", ROOT_DIR / "out" / "text_out")), REPO_ROOT
+)
 
 # Backwards-compatible alias used by older scripts.
 CSV_ROOT = RAW_CSV_ROOT

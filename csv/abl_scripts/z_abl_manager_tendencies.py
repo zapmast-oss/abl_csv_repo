@@ -10,6 +10,9 @@ from typing import Dict, List, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 from abl_config import stamp_text_block
+from abl_path_policy import validate_output_paths
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -534,8 +537,8 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/csv_out/z_ABL_Manager_Tendencies.csv",
-        help="Output CSV path (default inside out/csv_out).",
+        default="csv/out/csv_out/z_ABL_Manager_Tendencies.csv",
+        help="Output CSV path (default inside csv/out/csv_out).",
     )
     return parser.parse_args(argv)
 
@@ -653,17 +656,20 @@ def main(argv: Optional[List[str]] = None) -> None:
         na_position="last",
     )
 
-    out_path = (base_dir / args.out).resolve()
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    report.to_csv(out_path, index=False)
+    out_path = Path(args.out)
+    if not out_path.is_absolute():
+        out_path = REPO_ROOT / out_path
 
     text_filename = out_path.with_suffix(".txt").name
     if out_path.parent.name.lower() in {'csv_out'}:
         text_dir = out_path.parent.parent / "text_out"
     else:
         text_dir = out_path.parent
-    text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / text_filename
+    validate_output_paths((out_path, text_path), REPO_ROOT)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    report.to_csv(out_path, index=False)
+    text_dir.mkdir(parents=True, exist_ok=True)
     text_path.write_text(stamp_text_block(build_text_report(report)), encoding="utf-8")
 
     preview = report.head(12)

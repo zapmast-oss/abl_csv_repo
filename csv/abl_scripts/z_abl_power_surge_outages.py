@@ -12,6 +12,9 @@ import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup
 from abl_config import stamp_text_block
+from abl_path_policy import validate_output_paths
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -447,8 +450,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/csv_out/z_ABL_Power_Surge_Outages.csv",
-        help="Output CSV path (defaults to out/csv_out/...).",
+        default="csv/out/csv_out/z_ABL_Power_Surge_Outages.csv",
+        help="Output CSV path (defaults to csv/out/csv_out/...).",
     )
     return parser.parse_args(list(argv) if argv is not None else None)
 
@@ -562,17 +565,21 @@ def write_report(
     report_df: pd.DataFrame,
     text_payload: str,
 ) -> None:
-    out_path = (base_dir / csv_path_value).resolve()
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    csv_df = report_df.reindex(columns=CSV_COLUMNS)
-    csv_df.to_csv(out_path, index=False)
+    out_path = Path(csv_path_value)
+    if not out_path.is_absolute():
+        out_path = REPO_ROOT / out_path
     text_filename = out_path.with_suffix(".txt").name
     if out_path.parent.name.lower() == "csv_out":
         text_dir = out_path.parent.parent / "text_out"
     else:
         text_dir = out_path.parent
+    text_path = text_dir / text_filename
+    validate_output_paths((out_path, text_path), REPO_ROOT)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    csv_df = report_df.reindex(columns=CSV_COLUMNS)
+    csv_df.to_csv(out_path, index=False)
     text_dir.mkdir(parents=True, exist_ok=True)
-    (text_dir / text_filename).write_text(stamp_text_block(text_payload), encoding="utf-8")
+    text_path.write_text(stamp_text_block(text_payload), encoding="utf-8")
 
 
 def main(argv: Optional[Sequence[str]] = None) -> None:

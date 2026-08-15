@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import pandas as pd
 from pathlib import Path
-import io
+
+from abl_path_policy import validate_output_path
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -30,23 +31,6 @@ STAFF_ROLE_COLUMNS = [
     "OWN",
     "1BC",
     "3BC",
-]
-
-STAFF_COMMENT_BLOCK = [
-    "# Column Documentation: csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
-    "# ID: Team ID",
-    "# Team Name: Franchise name",
-    "# Abbr: Team abbreviation",
-    "# GM: General manager",
-    "# MA: Manager (dugout skipper)",
-    "# BN: Bench coach",
-    "# PC: Pitching coach",
-    "# HC: Hitting coach",
-    "# SC: Scouting director",
-    "# TT: Team trainer",
-    "# OWN: Owner",
-    "# 1BC: First-base coach",
-    "# 3BC: Third-base coach",
 ]
 
 COACH_LOOKUP: pd.DataFrame | None = None
@@ -125,8 +109,8 @@ def attach_coach_ids(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_output(df: pd.DataFrame, filename: str, summary: list[str]) -> None:
+    output_path = validate_output_path(OUT_DIR / filename, ROOT)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = OUT_DIR / filename
     df.to_csv(output_path, index=False)
     summary.append(f"Created {filename} with {len(df)} rows")
 
@@ -176,11 +160,6 @@ def build_dim_team_staff(summary: list[str]) -> None:
     staff = read_csv(TEAM_STAFF_PATH)
     staff_with_ids = attach_coach_ids(staff.copy())
     write_output(staff_with_ids, "dim_team_staff.csv", summary)
-
-    buffer = io.StringIO()
-    staff_with_ids.to_csv(buffer, index=False)
-    comment_text = "\n".join(STAFF_COMMENT_BLOCK) + "\n"
-    TEAM_STAFF_PATH.write_text(comment_text + buffer.getvalue(), encoding="utf-8")
 
 
 def build_fact_team_batting(summary: list[str]) -> None:

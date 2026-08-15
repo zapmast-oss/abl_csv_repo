@@ -1,8 +1,1 @@
-﻿[
-  {
-    "key": "ctrl+alt+r",
-    "command": "workbench.action.tasks.runTask",
-    "args": "Run ABL Prep + Matchup",
-    "when": "editorTextFocus"
-  }
-]
+﻿[]

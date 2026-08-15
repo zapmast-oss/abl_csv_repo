@@ -1,12 +1,17 @@
 from __future__ import annotations
 
-import argparse
 import csv
 import hashlib
 import json
 import re
 from collections import Counter
 from pathlib import Path
+
+from abl_path_policy import (
+    is_authoritative_ootp_csv,
+    is_immediate_sortable_csv,
+    validate_output_paths,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -28,10 +33,16 @@ def truth(value: bool) -> str:
 
 def source_family(path: str) -> str:
     lower = path.lower()
-    if lower.startswith("csv/ootp_csv/"):
+    if is_authoritative_ootp_csv(path):
         return "ootp_csv"
-    if lower.startswith("csv/abl_statistics/"):
+    if lower.startswith("csv/ootp_csv/"):
+        return "generated_pollution"
+    if is_immediate_sortable_csv(path):
         return "sortable_stats"
+    if lower.startswith("csv/abl_statistics/") and lower.endswith(".md"):
+        return "documentation"
+    if lower.startswith("csv/abl_statistics/") and not lower.endswith(".md"):
+        return "generated_pollution"
     if lower.startswith("csv/out/almanac/"):
         return "historical_almanac"
     if lower.startswith("csv/out/") or lower.startswith("out/") or lower.startswith("csv/abl_csv/"):
@@ -49,6 +60,7 @@ def authority(family: str) -> str:
         "ootp_csv": "system_of_record_extract",
         "sortable_stats": "supplemental_report_extract",
         "generated_output": "derived_output",
+        "generated_pollution": "derived_output",
         "historical_almanac": "historical_context",
         "editorial_config": "editorial_config",
         "documentation": "documentation",
@@ -85,7 +97,7 @@ def volatility(path: str, family: str) -> str:
         return "static"
     if family in {"editorial_config", "documentation"}:
         return "slow-changing"
-    if family == "generated_output":
+    if family in {"generated_output", "generated_pollution"}:
         return "changes every export"
     if family == "sortable_stats":
         if any(token in name for token in ("_stats", "pitching_", "batting_", "fielding_", "cur_rec", "finan")) and "ratings" not in name:
@@ -117,7 +129,7 @@ def current_permissions(path: str, family: str) -> tuple[bool, bool, str]:
         return False, True, "Tie file checksum to a sortable-stats capture batch; compare team/player coverage to the validated raw batch."
     if family == "historical_almanac":
         return False, False, "Detect season/league from path and columns; historical only."
-    if family == "generated_output":
+    if family in {"generated_output", "generated_pollution"}:
         return False, False, "Read producer manifest and source lineage; never use this output to prove current state."
     if family in {"editorial_config", "documentation"}:
         return False, False, "Version-controlled editorial/documentation file; no baseball as-of authority."
@@ -162,7 +174,7 @@ def validations(path: str, family: str, area: str) -> str:
             checks += ["played-date monotonicity", "games-per-team reconciliation", "score/result completeness"]
     elif family == "sortable_stats":
         checks += ["capture-batch checksum", "24-team or player-universe coverage as applicable", "join names/IDs to raw dimensions", "reject mixed capture dates"]
-    elif family == "generated_output":
+    elif family in {"generated_output", "generated_pollution"}:
         checks += ["producer manifest present", "lineage and as-of metadata present", "rebuildability check"]
     elif family == "historical_almanac":
         checks += ["season/league path-column agreement", "historical row uniqueness"]
@@ -170,7 +182,7 @@ def validations(path: str, family: str, area: str) -> str:
 
 
 def curated_target(area: str, family: str) -> str:
-    if family in {"generated_output", "editorial_config", "documentation"}:
+    if family in {"generated_output", "generated_pollution", "editorial_config", "documentation"}:
         return "none_direct"
     mapping = {
         "games_and_schedule": "curated_current_games or curated_current_schedule",
@@ -197,7 +209,10 @@ def make_row(path: str, catalog_row: dict[str, str] | None = None) -> dict[str, 
     drive, support, detection = current_permissions(path, family)
     primary, join = keys(path, catalog_row.get("key_columns", ""), area)
     sid = f"{family}_{hashlib.sha1(path.encode('utf-8')).hexdigest()[:12]}"
-    note = "Catalog-derived CSV registration." if catalog_row else "Repository-inspected documentation registration."
+    if family == "generated_pollution":
+        note = "Nested content beneath a protected input root; never authoritative."
+    else:
+        note = "Catalog-derived CSV registration." if catalog_row else "Repository-inspected documentation registration."
     return {
         "source_id": sid, "source_name": Path(path).stem, "source_family": family,
         "file_path": path, "row_count": catalog_row.get("row_count", ""),
@@ -215,10 +230,11 @@ def make_row(path: str, catalog_row: dict[str, str] | None = None) -> dict[str, 
 
 
 def write_outputs(rows: list[dict[str, str]]) -> None:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = OUT_DIR / "abl_source_registry.csv"
     json_path = OUT_DIR / "abl_source_registry.json"
     md_path = OUT_DIR / "abl_source_registry.md"
+    validate_output_paths((csv_path, json_path, md_path), ROOT)
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     with csv_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS)
         writer.writeheader(); writer.writerows(rows)
@@ -263,4 +279,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

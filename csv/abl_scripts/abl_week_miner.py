@@ -12,9 +12,12 @@ from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 
+from abl_path_policy import validate_output_paths
+
 LEAGUE_ID = 200
 TEAM_MIN, TEAM_MAX = 1, 24
-DATA_DIR = Path.cwd()
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = REPO_ROOT
 
 HERO_PITCH_THRESHOLD = 120
 RELIEF_LONG_IP = 3.0
@@ -1326,10 +1329,8 @@ def main():
         "description",
         "highlight_score",
     ]
-    csv_dir = base_dir / "out" / "csv_out"
-    csv_dir.mkdir(parents=True, exist_ok=True)
+    csv_dir = REPO_ROOT / "csv" / "out" / "csv_out"
     csv_path = csv_dir / "z_ABL_Week_Miner.csv"
-    highlights[csv_cols].to_csv(csv_path, index=False)
 
     sections = []
     header_lines = [
@@ -1360,9 +1361,12 @@ def main():
         text = summarize_category(section_rows, title)
         if text:
             sections.append(text)
-    txt_dir = base_dir / "out" / "text_out"
-    txt_dir.mkdir(parents=True, exist_ok=True)
+    txt_dir = REPO_ROOT / "csv" / "out" / "text_out"
     txt_path = txt_dir / "z_ABL_Week_Miner.txt"
+    validate_output_paths((csv_path, txt_path), REPO_ROOT)
+    csv_dir.mkdir(parents=True, exist_ok=True)
+    highlights[csv_cols].to_csv(csv_path, index=False)
+    txt_dir.mkdir(parents=True, exist_ok=True)
     txt_content = "\n".join(header_lines) + "\n\n".join(sections)
     txt_path.write_text(txt_content, encoding="utf-8")
     print(f"Mined {len(highlights)} games; wrote {csv_path} and {txt_path}.")

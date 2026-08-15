@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from abl_team_helper import allowed_team_ids
+from abl_path_policy import validate_output_paths
 
 CSV_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = CSV_ROOT.parent
@@ -174,8 +175,9 @@ def edge_titles(home_titles: Optional[int], away_titles: Optional[int]) -> Tuple
     return ("HOME" if delta > 0 else "AWAY"), f"{delta:+d}"
 
 def atomic_write(path: Path, content: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
+    validate_output_paths((path, tmp), REPO_ROOT)
+    path.parent.mkdir(parents=True, exist_ok=True)
     tmp.write_text(content, encoding="utf-8")
     tmp.replace(path)
 
