@@ -3,8 +3,11 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+from abl_path_policy import validate_output_path
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parent
+REPO_ROOT = ROOT_DIR.parent
 
 SCRIPTS = [
     ("Standings & run differential", "abl_standings.py"),
@@ -89,9 +92,10 @@ def main() -> None:
 
     full_text = "\n".join(parts)
     full_text = add_broadcast_line_spacing(full_text)
-    out_dir = Path("out") / "txt_out"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "ABL_Show_Notes.txt"
+    out_path = validate_output_path(
+        ROOT_DIR / "out" / "text_out" / "ABL_Show_Notes.txt", REPO_ROOT
+    )
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(full_text, encoding="utf-8")
     print(f"Show notes written to {out_path}")
 

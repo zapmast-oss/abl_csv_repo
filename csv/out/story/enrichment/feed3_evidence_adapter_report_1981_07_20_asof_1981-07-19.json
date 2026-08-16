@@ -1,0 +1,48 @@
+{
+  "feature_flags": {
+    "enable_feed3_evidence": true,
+    "enable_feed3_rank_adjustment": false,
+    "enable_feed3_new_candidates": false,
+    "enable_owner_front_office_signals": false,
+    "enable_best_game_discovery_signals": false,
+    "enable_historical_fan_interpretation": false
+  },
+  "candidates_enriched": 15,
+  "feed3_evidence_records_created": 53,
+  "evidence_types_used": [
+    "statsplus_baseruns",
+    "statsplus_elo",
+    "statsplus_fan_interest_context",
+    "statsplus_financial_context",
+    "statsplus_injury_context",
+    "statsplus_pitcher_rwar",
+    "statsplus_playoff_odds",
+    "statsplus_team_baserunning",
+    "statsplus_team_war",
+    "statsplus_ubr"
+  ],
+  "evidence_types_held_back": [
+    "statsplus_player_baserunning",
+    "statsplus_team_age_context"
+  ],
+  "reference_only_signals": [
+    "owner/front-office traits",
+    "best-game discovery tables",
+    "historical fan interpretation",
+    "dual playoff-odds views as separate ranking signals"
+  ],
+  "ranking_changed": false,
+  "new_candidates_created": false,
+  "official_story_files_modified": false,
+  "official_story_artifacts_untouched": true,
+  "recommended_next_task": "Add this adapter behind an explicit preview flag in the master runner, validate on a later newsroom date, and retain ranking adjustment/new-candidate flags as false.",
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "resolved_paths": {
+    "candidates": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\candidates\\story_candidates_1981_07_20_asof_1981-07-19.csv",
+    "evidence": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\candidates\\story_evidence_1981_07_20_asof_1981-07-19.csv",
+    "overlay": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\enrichment\\story_candidates_statsplus_overlay_1981_07_20_asof_1981-07-19.csv",
+    "statsplus_current": "C:\\sbv_repo\\abl_csv_repo\\csv\\statsplus\\current",
+    "output_folder": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\enrichment"
+  }
+}

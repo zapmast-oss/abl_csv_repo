@@ -527,7 +527,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Distance splits available in CSV when park coordinates exist.",
         ],
     )
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     text_path = txt_dir / out_summary.with_suffix(".txt").name
     text_path.write_text(stamp_text_block(text_output), encoding="utf-8")

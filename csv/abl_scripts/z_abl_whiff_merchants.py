@@ -545,7 +545,9 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         display_df,
         text_columns,
         "ABL Whiff Merchants",
-        f"League K% {lg_k_pct_str}, CSW% stable base {lg_csw_str}",
+        "Leaderboard of the ABL's top bat-missers (K%, CSW%, pitch-level whiff) and their go-to weapons. "
+        f"Why it matters: spot strikeout aces for matchups, broadcasts, and roster moves. League K% {lg_k_pct_str}, "
+        f"CSW% baseline {lg_csw_str}.",
         [
             "Ratings: Whiff Wizard (>=1.30), K Maestro (1.15-1.29), Miss Maker (1.00-1.14), Steady (0.85-0.99), Needs Bite (<0.85).",
             "perf_flag: ELITE (>=1.15), IMPACT (1.00-1.14), STEADY (0.85-0.99).",
@@ -557,7 +559,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             f"Top pitch requires >= {args.min_pitches_type} pitches; usage/CSW/whiff derived per type.",
         ],
     )
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     text_path = txt_dir / out_path.with_suffix(".txt").name
     text_path.write_text(stamp_text_block(text_output), encoding="utf-8")

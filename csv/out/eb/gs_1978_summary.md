@@ -1,0 +1,10 @@
+# Grand Series 1978 Recap (League 200)
+Generated on: 2025-12-01 21:25:30 (local time)
+
+1. 1978-10-23 — Miami Hurricanes 6 vs Houston Mavericks 7 (winner: Houston Mavericks; tally: Houston Mavericks:1)
+2. 1978-10-24 — Miami Hurricanes 5 vs Houston Mavericks 2 (winner: Miami Hurricanes; tally: Houston Mavericks:1, Miami Hurricanes:1)
+3. 1978-10-26 — Houston Mavericks 7 vs Miami Hurricanes 4 (winner: Houston Mavericks; tally: Houston Mavericks:2, Miami Hurricanes:1)
+4. 1978-10-27 — Houston Mavericks 4 vs Miami Hurricanes 3 (winner: Houston Mavericks; tally: Houston Mavericks:3, Miami Hurricanes:1)
+5. 1978-10-28 — Houston Mavericks 3 vs Miami Hurricanes 4 (winner: Miami Hurricanes; tally: Houston Mavericks:3, Miami Hurricanes:2)
+6. 1978-10-30 — Miami Hurricanes 2 vs Houston Mavericks 1 (winner: Miami Hurricanes; tally: Houston Mavericks:3, Miami Hurricanes:3)
+7. 1978-10-31 — Miami Hurricanes 6 vs Houston Mavericks 4 (winner: Miami Hurricanes; tally: Houston Mavericks:3, Miami Hurricanes:4)

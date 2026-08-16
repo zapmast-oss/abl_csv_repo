@@ -1,0 +1,32 @@
+{
+  "as_of_date": "1981-07-19",
+  "source_policy": "Do not add fake columns to official source CSVs.",
+  "compatibility_view_location": "csv/out/control initially; csv/out/curated after curated-layer implementation",
+  "affected_consumers": [
+    {
+      "script": "csv/abl_scripts/build_star_schema.py",
+      "source": "abl_staff.csv",
+      "expected_removed_columns": "GM_ID, MA_ID, BN_ID, PC_ID, HC_ID, SC_ID, TT_ID, OWN_ID, 1BC_ID, 3BC_ID",
+      "change": "Use attach_coach_ids against raw coaches data; write IDs only to dim_team_staff/compatibility output; remove source-file rewrite.",
+      "limited_signal": "Disable ID-dependent staff linkage only for unmatched coach names."
+    },
+    {
+      "script": "csv/abl_scripts/build_star_schema.py",
+      "source": "batting_stats.csv",
+      "expected_removed_columns": "CS, SB%, WAR, BatR, wSB, UBR, BsR",
+      "change": "Allow narrower base table; take WAR from batting_xtra; source other fields from validated raw/curated tables or expose null.",
+      "limited_signal": "Baserunning value and caught-stealing enrichment limited until replacement source is curated."
+    },
+    {
+      "script": "csv/abl_scripts/z_abl_basepath_pressure.py",
+      "source": "batting_stats.csv fallback",
+      "expected_removed_columns": "CS, UBR",
+      "change": "Prefer abl_team_bat_baserunning.csv or a curated raw aggregation; fail/disable the UBR component when unavailable instead of inventing zero.",
+      "limited_signal": "Disable UBR/BsR-based basepath pressure component when no compatible source exists."
+    }
+  ],
+  "compatibility_views": [
+    "team_staff_compat: retain 13 captured fields and left-join coach IDs from raw coaches; null unmatched IDs.",
+    "team_batting_compat: retain 13 captured fields, join WAR from batting_xtra, join validated CS/SB% if available, and set BatR/wSB/UBR/BsR null with availability flags."
+  ]
+}

@@ -1,0 +1,55 @@
+ABL Power Surge & Outage Tracker
+=================================
+Generated on: 2026-02-07 01:26:04
+
+Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.
+Why it matters: flags lineup or park-influenced power trends for storylines, broadcasts, and matchup prep.
+Window: 1981-05-04 to 1981-05-10 (compared to 1981-04-27 to 1981-05-03)
+
+Power Surges
+============
+Largest increases in HR per PA week-over-week
+
+Team                Games   HR     PA    HR/PA Delta HR/PA
+----------------------------------------------------------
+Atlanta                 6    6    239    0.025      0.025
+Dallas                  6    9    268    0.034      0.023
+Cincinnati              6    6    247    0.024      0.020
+Houston                 6    7    248    0.028      0.016
+Chicago                 6    9    238    0.038      0.015
+Las Vegas               6    3    208    0.014      0.014
+New York                6    8    220    0.036      0.014
+Tampa Bay               6    6    248    0.024      0.011
+Pittsburgh              6   10    260    0.038      0.009
+Charlotte               6    6    252    0.024      0.009
+
+Key:
+  Surge flag triggers when HR/PA jumps by >= 0.005 over the prior week.
+
+Definitions:
+  HR/PA = home runs divided by plate appearances.
+  HR/PA compares current seven-day window to the previous seven-day window.
+
+Power Outages
+=============
+Largest drops in HR per PA week-over-week
+
+Team                Games   HR     PA    HR/PA Delta HR/PA
+----------------------------------------------------------
+Miami                   6    4    231    0.017     -0.017
+St. Louis               6    0    209    0.000     -0.015
+Minneapolis             6    3    208    0.014     -0.013
+Detroit                 6    3    258    0.012     -0.012
+Denver                  6    2    214    0.009     -0.011
+San Diego               6    1    224    0.004     -0.011
+Nashville               6    2    210    0.009     -0.010
+San Francisco           6    6    254    0.024     -0.009
+Los Angeles             6    2    237    0.008     -0.007
+Philadelphia            6    5    208    0.024     -0.007
+
+Key:
+  Outage flag triggers when HR/PA falls by <= -0.005 over the prior week.
+
+Definitions:
+  Games/HR/PA columns reference the current seven-day window.
+  Prior metrics are included in the CSV for deeper dives.

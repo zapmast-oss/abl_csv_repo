@@ -1,0 +1,72 @@
+{
+  "run_id": "current_1981_07_20_asof_1981-07-19",
+  "candidate_count": 15,
+  "evidence_count": 15,
+  "menu_item_count": 15,
+  "source_manifest_entries": 25,
+  "source_files_used": [
+    "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+    "csv/ootp_csv/divisions.csv",
+    "csv/ootp_csv/game_logs.csv",
+    "csv/ootp_csv/games.csv",
+    "csv/ootp_csv/games_score.csv",
+    "csv/ootp_csv/players.csv",
+    "csv/ootp_csv/players_career_batting_stats.csv",
+    "csv/ootp_csv/players_career_pitching_stats.csv",
+    "csv/ootp_csv/sub_leagues.csv",
+    "csv/ootp_csv/teams.csv",
+    "csv/out/almanac/1980/league_champions_1980_league200.csv"
+  ],
+  "source_files_excluded": [
+    "csv/out/star_schema/monday_1981_standings_by_division.csv",
+    "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+    "csv/out/star_schema/fact_player_batting.csv",
+    "csv/out/star_schema/fact_player_pitching.csv",
+    "csv/out/csv_out/z_ABL_Manager_Tendencies.csv",
+    "csv/out/csv_out/z_ABL_Division_Leverage.csv",
+    "csv/out/csv_out/z_ABL_Rotation_Stability.csv"
+  ],
+  "disabled_signals": [
+    {
+      "signal": "manager_tendency",
+      "reason": "Staff names available, but no cutoff-compatible tactical tendency source."
+    },
+    {
+      "signal": "staff_id_complete_linkage",
+      "reason": "Removed staff ID fields; unresolved coach-name matches must remain null."
+    },
+    {
+      "signal": "caught_stealing_rate",
+      "reason": "CS and SB% unavailable in accepted team batting schema without another validated source."
+    },
+    {
+      "signal": "BatR",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "wSB",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "UBR",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "BsR",
+      "reason": "Removed and unavailable."
+    }
+  ],
+  "top_candidate_themes": [
+    "San Francisco Warriors leads Phoenix Firebirds by 2 game(s) in National Baseball Conference Western Division",
+    "Dallas Rustlers leads Detroit Dukes by 2 game(s) in National Baseball Conference Central Division",
+    "Jose Coronado has built the strongest current starter value case",
+    "Las Vegas Gamblers leads Seattle Comets by 3 game(s) in American Baseball Conference Western Division",
+    "Manny Flores owns the strongest current position-player value line",
+    "Boston Patriots leads New York Aces by 4 game(s) in American Baseball Conference Eastern Division",
+    "Atlanta Kings posted the week's sharpest rise",
+    "Philadelphia Fury posted the week's sharpest fall",
+    "1980 qualifier Charlotte Colonels remains central to the 1981 race",
+    "Houston Mavericks leads Cincinnati Cougars by 5 game(s) in American Baseball Conference Central Division"
+  ],
+  "safe_for_baseball_observer_editorial_use": true
+}

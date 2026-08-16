@@ -1,0 +1,78 @@
+Pitcher Arsenal Prep - CHI at MIA
+Generated on: 2025-12-14 22:40:38
+
+
+TEAM CHI - Active Pitchers
+SP:
+Heriberto Jimenez (L) STU 70 MOV 50 CON 50 STM 75 HLD 70 VELO 90-92 VT 90-92 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 55, Fastball 50
+
+Edgar Gonzalez (L) STU 70 MOV 50 CON 35 STM 75 HLD 50 VELO 83-85 VT 83-85 | Pitches 3 | Best Changeup 85
+Arsenal: Changeup 85, Curveball 75, Fastball 40
+
+Oscar Roa (R) STU 45 MOV 55 CON 50 STM 70 HLD 55 VELO 90-92 VT 90-92 | Pitches 3 | Best Sinker 55
+Arsenal: Sinker 55, Curveball 50, Changeup 35
+
+Manny de Jesus (R) STU 45 MOV 50 CON 50 STM 70 HLD 55 VELO 87-89 VT 87-89 | Pitches 5 | Best Forkball 55
+Arsenal: Forkball 55, Cutter 50, Changeup 45, Fastball 45, Sinker 40
+
+John Jury (R) STU 40 MOV 45 CON 60 STM 70 HLD 40 VELO 88-90 VT 88-90 | Pitches 4 | Best Curveball 50
+Arsenal: Curveball 50, Changeup 50, Fastball 40, Slider 40
+
+RP:
+Willie Leyba (L) STU 55 MOV 50 CON 40 STM 35 HLD 80 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Cutter 50, Slider 50
+
+Tony Suarez (R) STU 50 MOV 50 CON 45 STM 65 HLD 45 VELO 92-94 VT 92-94 | Pitches 2 | Best Circle Change 55
+Arsenal: Circle Change 55, Fastball 55
+
+Tony Espinal (R) STU 45 MOV 55 CON 50 STM 45 HLD 35 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 50, Cutter 50, Slider 45
+
+Andrew Flugence (R) STU 45 MOV 50 CON 50 STM 55 HLD 55 VELO 92-94 VT 92-94 | Pitches 2 | Best Sinker 50
+Arsenal: Sinker 50, Slider 50
+
+Gia-Long Mac (R) STU 40 MOV 60 CON 50 STM 50 HLD 50 VELO 89-91 VT 89-91 | Pitches 4 | Best Sinker 45
+Arsenal: Sinker 45, Changeup 40, Splitter 40, Curveball 20
+
+CL:
+Matt Hyman (R) STU 50 MOV 50 CON 55 STM 70 HLD 60 VELO 84-86 VT 84-86 | Pitches 3 | Best Sinker 55
+Arsenal: Sinker 55, Fastball 40, Splitter 20
+
+
+TEAM MIA - Active Pitchers
+SP:
+Gil Aguilar (R) STU 75 MOV 55 CON 45 STM 50 HLD 55 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 50, Fastball 45
+
+Joe Good (R) STU 60 MOV 45 CON 45 STM 55 HLD 40 VELO 89-91 VT 89-91 | Pitches 5 | Best Changeup 65
+Arsenal: Changeup 65, Forkball 50, Slider 50, Fastball 45, Knuckle Curve 45
+
+David Victorero (L) STU 55 MOV 50 CON 40 STM 55 HLD 80 VELO 87-89 VT 87-89 | Pitches 3 | Best Curveball 75
+Arsenal: Curveball 75, Changeup 75, Fastball 45
+
+Bill Borden (R) STU 45 MOV 50 CON 60 STM 65 HLD 55 VELO 91-93 VT 91-93 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Slider 55, Fastball 50
+
+Chris Stella (R) STU 45 MOV 45 CON 60 STM 75 HLD 40 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Cutter 50, Slider 45
+
+RP:
+Luis Prieto (R) STU 70 MOV 45 CON 45 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 2 | Best Curveball 80
+Arsenal: Curveball 80, Fastball 40
+
+Luis Maya (L) STU 65 MOV 45 CON 35 STM 50 HLD 60 VELO 88-90 VT 88-90 | Pitches 3 | Best Cutter 65
+Arsenal: Cutter 65, Sinker 55, Changeup 35
+
+Vicente Gutierrez (L) STU 50 MOV 45 CON 55 STM 25 HLD 60 VELO 90-92 VT 90-92 | Pitches 3 | Best Cutter 55
+Arsenal: Cutter 55, Slider 50, Circle Change 25
+
+Ricky Velez (L) STU 45 MOV 45 CON 45 STM 60 HLD 75 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Fastball 45, Slider 45
+
+Anthony Jackson (L) STU 40 MOV 45 CON 50 STM 50 HLD 40 VELO 91-93 VT 91-93 | Pitches 2 | Best Curveball 45
+Arsenal: Curveball 45, Fastball 45
+
+CL:
+Eric Behan (L) STU 55 MOV 50 CON 55 STM 60 HLD 70 VELO 89-91 VT 89-91 | Pitches 2 | Best Changeup 65
+Arsenal: Changeup 65, Fastball 45

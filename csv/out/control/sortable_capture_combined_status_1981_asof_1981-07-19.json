@@ -1,0 +1,197 @@
+{
+  "as_of_date": "1981-07-19",
+  "summary": {
+    "official_existing_sources": 20,
+    "safe_replacements_found": 18,
+    "existing_sources_still_missing": 2,
+    "proposed_player_new_sources_before_column_review": 6,
+    "approved_new_source_candidates_after_review": 0,
+    "duplicates_or_overlaps": 24,
+    "unknown_manual_review_files": 2,
+    "staff_manager_reports_still_missing": true,
+    "promotion_safe": false,
+    "next_required_capture": "Re-export full 23-column abl_staff.csv and full 20-column batting_stats.csv into team staging."
+  },
+  "sources": [
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "player_staging_file": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "team_staging_file": "",
+      "safe_replacement_found": "yes",
+      "replacement_source": "player_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "player_staging_file": "",
+      "team_staging_file": "",
+      "safe_replacement_found": "no",
+      "replacement_source": "",
+      "replacement_match_type": "UNRESOLVED",
+      "promotion_recommendation": "HOLD_UNKNOWN_REVIEW"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "player_staging_file": "",
+      "team_staging_file": "",
+      "safe_replacement_found": "no",
+      "replacement_source": "",
+      "replacement_match_type": "UNRESOLVED",
+      "promotion_recommendation": "HOLD_UNKNOWN_REVIEW"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "existing_file": "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "player_staging_file": "",
+      "team_staging_file": "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "safe_replacement_found": "yes",
+      "replacement_source": "team_statistics",
+      "replacement_match_type": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    }
+  ]
+}
