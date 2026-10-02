@@ -1,6 +1,6 @@
 # ABL Source Registry
 
-Registered sources: **509**
+Registered sources: **520**
 
 Generated from the authoritative CSV catalog plus repository documentation inspection. This registry classifies authority; it does not promote any source to current state.
 
@@ -8,23 +8,24 @@ Generated from the authoritative CSV catalog plus repository documentation inspe
 
 | Source family | Count |
 |---|---:|
-| `documentation` | 26 |
+| `documentation` | 37 |
 | `editorial_config` | 5 |
 | `generated_output` | 103 |
+| `generated_pollution` | 1 |
 | `historical_almanac` | 282 |
-| `ootp_csv` | 73 |
+| `ootp_csv` | 72 |
 | `sortable_stats` | 20 |
 
 ## Counts by authority
 
 | Authority | Count |
 |---|---:|
-| `derived_output` | 103 |
-| `documentation` | 26 |
+| `derived_output` | 104 |
+| `documentation` | 37 |
 | `editorial_config` | 5 |
 | `historical_context` | 282 |
 | `supplemental_report_extract` | 20 |
-| `system_of_record_extract` | 73 |
+| `system_of_record_extract` | 72 |
 
 ## Registry
 
@@ -91,7 +92,7 @@ Generated from the authoritative CSV catalog plus repository documentation inspe
 | `ootp_csv_4c10df13dcae` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/leagues.csv` |
 | `ootp_csv_864109f939e1` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/messages.csv` |
 | `ootp_csv_499496fbba23` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/nations.csv` |
-| `ootp_csv_08ac6547d898` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/out/csv_out/z_ABL_Manager_Tendencies.csv` |
+| `generated_pollution_08ac6547d898` | `generated_pollution` | `derived_output` | no | no | `csv/ootp_csv/out/csv_out/z_ABL_Manager_Tendencies.csv` |
 | `ootp_csv_fb3ac6bf0524` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/parks.csv` |
 | `ootp_csv_a8864a2dd320` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/players.csv` |
 | `ootp_csv_b73ef9ff3b39` | `ootp_csv` | `system_of_record_extract` | no | yes | `csv/ootp_csv/players_at_bat_batting_stats.csv` |
@@ -518,15 +519,24 @@ Generated from the authoritative CSV catalog plus repository documentation inspe
 | `editorial_config_cb068f2b4c41` | `editorial_config` | `editorial_config` | no | no | `csv/story_menu_1981_week_05.csv` |
 | `editorial_config_390e3f89b14b` | `editorial_config` | `editorial_config` | no | no | `csv/story_menu_1981_week_07.csv` |
 | `documentation_2932ba7799e1` | `documentation` | `documentation` | no | no | `docs/ABL_AS_OF_COMPATIBILITY_RULES.md` |
+| `documentation_72db63c360c2` | `documentation` | `documentation` | no | no | `docs/ABL_BATCH_MANIFEST_AND_PREFLIGHT_RUNBOOK.md` |
 | `documentation_4b39e86601d5` | `documentation` | `documentation` | no | no | `docs/ABL_BATCH_MANIFEST_DESIGN.md` |
 | `documentation_f01e5196ee56` | `documentation` | `documentation` | no | no | `docs/ABL_CURATED_CURRENT_LAYER_DESIGN.md` |
 | `documentation_96de4be74d09` | `documentation` | `documentation` | no | no | `docs/ABL_CURRENT_STATE_PREFLIGHT.md` |
 | `documentation_844b82260a28` | `documentation` | `documentation` | no | no | `docs/ABL_DATA_CATALOG.md` |
 | `documentation_3c30a998cc6b` | `documentation` | `documentation` | no | no | `docs/ABL_DATA_SOURCE_GOVERNANCE.md` |
 | `documentation_41ab44c7e87e` | `documentation` | `documentation` | no | no | `docs/ABL_EXISTING_ENGINE_INVENTORY.md` |
+| `documentation_130f3a52ad8f` | `documentation` | `documentation` | no | no | `docs/ABL_FEED3_EVIDENCE_PREVIEW_RUNBOOK.md` |
+| `documentation_4de81aed1a43` | `documentation` | `documentation` | no | no | `docs/ABL_OPEN_LOOPS_BACKLOG.md` |
+| `documentation_850c4342715f` | `documentation` | `documentation` | no | no | `docs/ABL_POSTSEASON_RULES.md` |
 | `documentation_d3ceac97db1f` | `documentation` | `documentation` | no | no | `docs/ABL_REPO_MAP.md` |
 | `documentation_5527c07ed1ce` | `documentation` | `documentation` | no | no | `docs/ABL_SORTABLE_STATS_INTAKE_CONTRACT.md` |
+| `documentation_8a23136328ed` | `documentation` | `documentation` | no | no | `docs/ABL_SORTABLE_STATS_RECONCILIATION_RUNBOOK.md` |
 | `documentation_d27f80db7b92` | `documentation` | `documentation` | no | no | `docs/ABL_SOURCE_AUTHORITY_RULES.md` |
+| `documentation_07b8cf7cc4b7` | `documentation` | `documentation` | no | no | `docs/ABL_STATSPLUS_AUTHORITY_RULES.md` |
+| `documentation_b91a14628576` | `documentation` | `documentation` | no | no | `docs/ABL_STATSPLUS_FRESH_CAPTURE_RUNBOOK.md` |
+| `documentation_b75d0c870f5d` | `documentation` | `documentation` | no | no | `docs/ABL_STATSPLUS_INTAKE_CONTRACT.md` |
+| `documentation_5da35a419275` | `documentation` | `documentation` | no | no | `docs/ABL_STATSPLUS_LEGACY_BASELINE_NOTES.md` |
 | `documentation_5239a82fd1c1` | `documentation` | `documentation` | no | no | `docs/ABL_STORY_CANDIDATE_SCHEMA.md` |
 | `documentation_233d0158f2df` | `documentation` | `documentation` | no | no | `docs/ABL_STORY_ENGINE_PLAN.md` |
 | `documentation_348494c4b8f6` | `documentation` | `documentation` | no | no | `docs/ABL_STORY_ENGINE_SPRINT1_NOTES.md` |
@@ -536,6 +546,8 @@ Generated from the authoritative CSV catalog plus repository documentation inspe
 | `documentation_d9f851ff9ef6` | `documentation` | `documentation` | no | no | `docs/cli_options_index.md` |
 | `documentation_7c17d7a7269a` | `documentation` | `documentation` | no | no | `docs/cli_options_scripts.md` |
 | `documentation_03fd896c7893` | `documentation` | `documentation` | no | no | `docs/pregame_pack_cli_options.md` |
+| `documentation_355810ae9a3f` | `documentation` | `documentation` | no | no | `docs/repo_cleanup_audit_2026_08.md` |
+| `documentation_c5e890bcfabb` | `documentation` | `documentation` | no | no | `docs/repo_cleanup_stage0_baseline_2026_08_14.md` |
 | `generated_output_fbe7d51247d2` | `generated_output` | `derived_output` | no | no | `out/csv_out/z_ABL_Platoon_Assassins.csv` |
 | `generated_output_9daec8b6673c` | `generated_output` | `derived_output` | no | no | `out/csv_out/z_ABL_Power_Surge_Outages.csv` |
 | `generated_output_d501d86d1f9a` | `generated_output` | `derived_output` | no | no | `out/csv_out/z_ABL_Week_Miner.csv` |
