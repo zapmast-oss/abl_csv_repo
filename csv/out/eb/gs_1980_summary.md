@@ -1,0 +1,10 @@
+# Grand Series 1980 Recap (League 200)
+Generated on: 2025-12-01 21:24:50 (local time)
+
+1. 1980-10-24 — Detroit Dukes 7 vs Houston Mavericks 6 (winner: Detroit Dukes; tally: Detroit Dukes:1)
+2. 1980-10-25 — Detroit Dukes 3 vs Houston Mavericks 8 (winner: Houston Mavericks; tally: Detroit Dukes:1, Houston Mavericks:1)
+3. 1980-10-27 — Houston Mavericks 1 vs Detroit Dukes 6 (winner: Detroit Dukes; tally: Detroit Dukes:2, Houston Mavericks:1)
+4. 1980-10-28 — Houston Mavericks 0 vs Detroit Dukes 2 (winner: Detroit Dukes; tally: Detroit Dukes:3, Houston Mavericks:1)
+5. 1980-10-29 — Houston Mavericks 10 vs Detroit Dukes 1 (winner: Houston Mavericks; tally: Detroit Dukes:3, Houston Mavericks:2)
+6. 1980-10-31 — Detroit Dukes 0 vs Houston Mavericks 1 (winner: Houston Mavericks; tally: Detroit Dukes:3, Houston Mavericks:3)
+7. 1980-11-01 — Detroit Dukes 8 vs Houston Mavericks 3 (winner: Detroit Dukes; tally: Detroit Dukes:4, Houston Mavericks:3)

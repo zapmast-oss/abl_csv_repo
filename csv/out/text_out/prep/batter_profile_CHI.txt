@@ -1,0 +1,37 @@
+Batter Profile Prep - CHI
+Generated on: 2025-12-14 23:40:06
+
+
+TEAM CHI - Active Batters
+1B:
+Miguel Martinez (R) POS 1B CON 75 GAP 50 POW 40 EYE 30 SPE 40 OverallBat 48.8 | Best CON 75 | Second GAP 50 | BA vL - BA vR - | STE 35 RUN 35 BUN 55
+
+2B:
+Melvin Delgado (R) POS 2B CON 50 GAP 45 POW 30 EYE 40 SPE 50 OverallBat 41.2 | Best CON 50 | Second SPE 50 | BA vL - BA vR - | STE 60 RUN 45 BUN 55
+
+3B:
+Shane Cobb (S) POS 3B CON 55 GAP 45 POW 55 EYE 45 SPE 60 OverallBat 50 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 70 BUN 30
+Mario Carbonell (R) POS 3B CON 50 GAP 40 POW 45 EYE 25 SPE 25 OverallBat 40 | Best CON 50 | Second POW 45 | BA vL - BA vR - | STE 25 RUN 20 BUN 40
+
+C:
+Jose Martinez (S) POS C CON 40 GAP 45 POW 50 EYE 55 SPE 20 OverallBat 47.5 | Best EYE 55 | Second POW 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+Dave Martinez (R) POS C CON 35 GAP 40 POW 45 EYE 45 SPE 20 OverallBat 41.2 | Best EYE 45 | Second POW 45 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+
+CF:
+Alex O' Donell (R) POS CF CON 55 GAP 50 POW 55 EYE 40 SPE 55 OverallBat 50 | Best CON 55 | Second POW 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 65
+
+LF:
+Julio Ramirez (L) POS LF CON 55 GAP 40 POW 50 EYE 35 SPE 40 OverallBat 45 | Best CON 55 | Second POW 50 | BA vL - BA vR - | STE 35 RUN 45 BUN 30
+
+RF:
+Xavier Granville (L) POS RF CON 65 GAP 50 POW 30 EYE 30 SPE 75 OverallBat 43.8 | Best SPE 75 | Second CON 65 | BA vL - BA vR - | STE 70 RUN 80 BUN 65
+
+SS:
+David Villarreal (R) POS SS CON 50 GAP 50 POW 40 EYE 50 SPE 55 OverallBat 47.5 | Best SPE 55 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 65 BUN 35
+
+MISSING STATS ROW (active but not found in abl_statistics):
+Alvaro Espinoza player_id=5044
+Victor Hernandez player_id=6732
+Mel Montelongo player_id=6749
+Miguel Morales player_id=8025
+Sal Gamez player_id=9377

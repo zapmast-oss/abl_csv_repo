@@ -457,7 +457,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     report_df.to_csv(output_path, index=False)
     text_filename = output_path.with_suffix(".txt").name
     if output_path.parent.name.lower() in {'csv_out'}:
-        text_dir = output_path.parent.parent / "txt_out"
+        text_dir = output_path.parent.parent / "text_out"
     else:
         text_dir = output_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)

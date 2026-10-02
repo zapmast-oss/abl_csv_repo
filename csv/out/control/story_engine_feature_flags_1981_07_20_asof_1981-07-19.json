@@ -1,0 +1,20 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "enable_feed3_evidence_preview": true,
+  "enable_feed3_rank_adjustment": false,
+  "enable_feed3_new_candidates": false,
+  "enable_owner_front_office_signals": false,
+  "enable_best_game_discovery_signals": false,
+  "enable_historical_fan_interpretation": false,
+  "doctrine": [
+    "StatsPlus enhances. It does not replace.",
+    "StatsPlus annotates before it ranks."
+  ],
+  "behavior": {
+    "feed3_evidence_preview": "Append typed evidence into preview-only outputs.",
+    "rank_adjustment": "Disabled; official candidate scores and order are unchanged.",
+    "new_candidates": "Disabled; the preview cannot create candidates.",
+    "reference_only_signals": "Owner/front-office traits, best-game discovery, and historical fan interpretation remain manual reference only."
+  }
+}

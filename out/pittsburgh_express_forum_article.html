@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Express That Came One Win Short</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1800px; height: 2400px; overflow: hidden; }
+  body {
+    background: #e9e2d4;
+    color: #151412;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .page {
+    width: 1800px;
+    height: 2400px;
+    padding: 64px 76px 58px;
+    background:
+      linear-gradient(rgba(255,255,255,.18), rgba(255,255,255,.18)),
+      repeating-linear-gradient(0deg, rgba(70,50,25,.025) 0, rgba(70,50,25,.025) 1px, transparent 1px, transparent 4px),
+      #e9e2d4;
+    position: relative;
+  }
+  .topline {
+    border-top: 15px solid #b51f24;
+    border-bottom: 2px solid #25221d;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    letter-spacing: .16em;
+    font-size: 25px;
+  }
+  .section { color: #b51f24; }
+  h1 {
+    margin: 26px 0 8px;
+    max-width: 1580px;
+    font-family: Impact, "Arial Narrow", Arial, sans-serif;
+    font-size: 112px;
+    line-height: .88;
+    letter-spacing: -.025em;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  .deck {
+    width: 1460px;
+    margin: 18px 0 16px;
+    font-size: 34px;
+    line-height: 1.22;
+    font-style: italic;
+    color: #39342c;
+  }
+  .byline {
+    margin: 0 0 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .hero {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center 48%;
+    display: block;
+    border-top: 7px solid #151412;
+    border-bottom: 7px solid #151412;
+    filter: saturate(.88) contrast(1.04);
+  }
+  .caption {
+    margin: 8px 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #5d5549;
+  }
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 430px;
+    column-gap: 42px;
+    align-items: start;
+  }
+  .col {
+    font-size: 25px;
+    line-height: 1.3;
+    text-align: left;
+    hyphens: auto;
+  }
+  .col p { margin: 0 0 15px; }
+  .dropcap:first-letter {
+    float: left;
+    font-family: Impact, "Arial Narrow", Arial, sans-serif;
+    font-size: 94px;
+    line-height: .78;
+    margin: 10px 12px 0 0;
+    color: #b51f24;
+  }
+  .subhead {
+    margin: 3px 0 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #b51f24;
+  }
+  .sidebar {
+    border-left: 2px solid #8e8473;
+    padding-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .sidebar h2 {
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 8px solid #b51f24;
+    font-size: 38px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .bigstat {
+    padding: 10px 0 12px;
+    border-bottom: 1px solid #9a907f;
+  }
+  .bigstat strong {
+    display: block;
+    font-family: Impact, "Arial Narrow", Arial, sans-serif;
+    font-size: 54px;
+    line-height: 1;
+    letter-spacing: .02em;
+  }
+  .bigstat span {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .ledger { margin-top: 18px; }
+  .ledger h3 {
+    margin: 0 0 10px;
+    font-size: 23px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .season {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px solid #9a907f;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .season b { color: #b51f24; font-size: 24px; }
+  .quote {
+    margin-top: 18px;
+    padding: 14px 0 14px 18px;
+    border-left: 10px solid #d19b25;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    line-height: 1.17;
+    font-weight: 700;
+    font-style: italic;
+  }
+  .footer {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    bottom: 28px;
+    border-top: 2px solid #25221d;
+    padding-top: 9px;
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #625a4e;
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topline">
+    <span>ABL Review</span>
+    <span class="section">Franchise History</span>
+    <span>Pittsburgh Express</span>
+  </header>
+
+  <h1>The Express That Came<br>One Win Short</h1>
+  <p class="deck">Twice Pittsburgh reached the Grand Series. Twice it carried the championship to Game 7. The Express built nearly everything required for a dynasty—except the crown.</p>
+  <p class="byline">By ABL Historical Desk</p>
+
+  <img class="hero" src="pittsburgh_express_article_photo_v2.png" alt="A Pittsburgh Express player watches from the dugout during an October game">
+  <p class="caption">The Pittsburgh Express became an October fixture at their peak, compiling a 25–20 postseason record through 1980. <em>Editorial illustration.</em></p>
+
+  <section class="content">
+    <div class="col">
+      <p class="dropcap">There is a particular kind of heartbreak reserved for teams that never get close. Pittsburgh’s was different. The Express got close enough to see the trophy, close enough to force a deciding game with everything at stake—and close enough to make the losses last forever.</p>
+
+      <p>Across nine completed seasons from 1972 through 1980, Pittsburgh went 747–711, won four division titles and reached the playoffs four times. The franchise’s defining run came under manager Alex Flores in 1974 and ’75, when a former 68-win club transformed into a championship threat.</p>
+
+      <h2 class="subhead">The First Heartbreak</h2>
+      <p>The 1974 Express won 91 games, then dispatched St. Louis and Denver in five games apiece. Pittsburgh had won 11 of its first 17 postseason games when it reached the Grand Series against Miami.</p>
+
+      <p>After losing the first two, the Express swept three games at home and moved within one victory of the title. Miami answered twice. Game 7 ended Hurricanes 7, Express 2.</p>
+    </div>
+
+    <div class="col">
+      <h2 class="subhead">The Greatest Express</h2>
+      <p>Pittsburgh returned stronger in 1975. The Express finished 103–59 with a +163 run differential—the finest season in franchise history through 1980. Adan Reid Jr. led the offense, Daniel Mejia fronted the staff and Pittsburgh entered October carrying both confidence and unfinished business.</p>
+
+      <p>The Express erased a two-game deficit against New York, then swept Houston to reach a second consecutive Grand Series. Against Phoenix, they again forced a seventh game. Again, the ending belonged to someone else. Phoenix won 3–1 in Pittsburgh.</p>
+
+      <p>Those two clubs won 194 regular-season games, captured four playoff series and came within one win of a championship twice. Antonio Serrano remained the franchise’s enduring star, later helping Pittsburgh return to October under manager Mark Averill.</p>
+
+      <h2 class="subhead">Game 7, Again</h2>
+      <p>The Express won the East in 1979 but lost a third winner-take-all game, 4–3 at Seattle. A 90-win club returned in 1980, only to fall to Las Vegas in five.</p>
+
+      <p>Pittsburgh was not a failure. Failure does not reach consecutive Grand Series or produce a winning playoff record. The Express were excellent—and that is precisely why the empty space in the trophy case still feels so large.</p>
+    </div>
+
+    <aside class="sidebar">
+      <h2>October Ledger</h2>
+
+      <div class="bigstat">
+        <strong>25–20</strong>
+        <span>All-time playoff record through 1980</span>
+      </div>
+      <div class="bigstat">
+        <strong>4</strong>
+        <span>Division championships</span>
+      </div>
+      <div class="bigstat">
+        <strong>2</strong>
+        <span>Grand Series appearances</span>
+      </div>
+      <div class="bigstat">
+        <strong>0</strong>
+        <span>Championships</span>
+      </div>
+
+      <div class="ledger">
+        <h3>Playoff finishes</h3>
+        <div class="season"><b>1974</b><span>11–6<br>Lost Grand Series, 4–3</span></div>
+        <div class="season"><b>1975</b><span>10–6<br>Lost Grand Series, 4–3</span></div>
+        <div class="season"><b>1979</b><span>3–4<br>Lost to Seattle, 4–3</span></div>
+        <div class="season"><b>1980</b><span>1–4<br>Lost to Las Vegas, 4–1</span></div>
+      </div>
+
+      <div class="quote">“A powerhouse without a crown—and a train that reached the final station twice.”</div>
+    </aside>
+  </section>
+
+  <footer class="footer">
+    <span>Source: ABL repository historical records and season game ledgers</span>
+    <span>Completed seasons, 1972–1980</span>
+  </footer>
+</main>
+</body>
+</html>

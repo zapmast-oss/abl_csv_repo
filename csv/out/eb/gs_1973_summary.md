@@ -1,0 +1,10 @@
+# Grand Series 1973 Recap (League 200)
+Generated on: 2025-12-01 21:25:28 (local time)
+
+1. 1973-10-21 — Denver Rocketeers 9 vs Chicago Fire 8 (winner: Denver Rocketeers; tally: Denver Rocketeers:1)
+2. 1973-10-22 — Denver Rocketeers 4 vs Chicago Fire 5 (winner: Chicago Fire; tally: Denver Rocketeers:1, Chicago Fire:1)
+3. 1973-10-24 — Chicago Fire 5 vs Denver Rocketeers 10 (winner: Denver Rocketeers; tally: Denver Rocketeers:2, Chicago Fire:1)
+4. 1973-10-25 — Chicago Fire 4 vs Denver Rocketeers 7 (winner: Denver Rocketeers; tally: Denver Rocketeers:3, Chicago Fire:1)
+5. 1973-10-26 — Chicago Fire 4 vs Denver Rocketeers 2 (winner: Chicago Fire; tally: Denver Rocketeers:3, Chicago Fire:2)
+6. 1973-10-28 — Denver Rocketeers 3 vs Chicago Fire 4 (winner: Chicago Fire; tally: Denver Rocketeers:3, Chicago Fire:3)
+7. 1973-10-29 — Denver Rocketeers 5 vs Chicago Fire 2 (winner: Denver Rocketeers; tally: Denver Rocketeers:4, Chicago Fire:3)

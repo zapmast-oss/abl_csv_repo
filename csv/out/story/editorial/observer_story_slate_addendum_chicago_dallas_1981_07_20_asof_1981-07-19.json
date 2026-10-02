@@ -1,0 +1,40 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "story": "Chicago hosts Dallas for four games after splitting four at Detroit",
+  "classification": "PROMOTE_SERIES_SETUP",
+  "additive_only": true,
+  "candidate_ranking_changed": false,
+  "replace_dallas_detroit_lead": false,
+  "why_on_board": "Chicago is four games behind first-place Dallas and has four immediate head-to-head games that can change the direct margin from tied to eight games back.",
+  "why_not_lead": "Dallas-Detroit remains the two-game top-of-division race; Chicago is third and four games back.",
+  "recommended_uses": [
+    "Ballpark Feed setup",
+    "Baseball Observer annotation",
+    "Daily 411 mention if time allows"
+  ],
+  "proven_facts": {
+    "detroit_series_result": "Chicago split four road games, 2-2",
+    "july_19_result": "Chicago 4, Detroit 1",
+    "chicago_record": "48-45",
+    "dallas_record": "52-41",
+    "chicago_games_back": 4,
+    "upcoming_series": "Dallas at Chicago, July 20-23, four games",
+    "chicago_sweep_effect": "Tie Dallas at 52-45",
+    "dallas_sweep_effect": "Chicago falls eight games back",
+    "chicago_playoff_appearances_1972_1980": 5,
+    "chicago_championships_1972_1980": 0
+  },
+  "feed3_enrichment": {
+    "authority": "enrichment_only",
+    "dallas_division_odds_pct": 60.0,
+    "chicago_division_odds_pct": 15.0
+  },
+  "caution_flags": [
+    "No July 20 result may be used or implied.",
+    "A Chicago sweep creates a tie, not sole possession of first.",
+    "StatsPlus odds are model context, not official standings or destiny.",
+    "Franchise history does not prove current player emotion or motivation.",
+    "Do not infer fan emotion, manager intent, or clubhouse drama."
+  ]
+}

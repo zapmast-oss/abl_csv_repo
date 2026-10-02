@@ -12,9 +12,12 @@ from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 
+from abl_path_policy import validate_output_paths
+
 LEAGUE_ID = 200
 TEAM_MIN, TEAM_MAX = 1, 24
-DATA_DIR = Path.cwd()
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = REPO_ROOT
 
 HERO_PITCH_THRESHOLD = 120
 RELIEF_LONG_IP = 3.0
@@ -24,6 +27,7 @@ GIANT_WIN_MAX = 0.45
 GIANT_LOSE_MIN = 0.60
 HIT_MILESTONES = [2000]
 HR_MILESTONES = [200, 300]
+SCORE_LINE_FILE = "games_score.csv"
 
 
 def pick(df: pd.DataFrame, *names: str) -> Optional[str]:
@@ -50,14 +54,20 @@ def read_csv_smart(*names: str) -> Optional[pd.DataFrame]:
             ]
         )
     seen = set()
+    search_roots = [DATA_DIR]
+    for extra in (Path("csv"), Path("ootp_csv"), Path("csv") / "ootp_csv"):
+        root = DATA_DIR / extra
+        if root.exists():
+            search_roots.append(root)
     for candidate in variants:
         candidate = candidate.strip()
         if not candidate or candidate in seen:
             continue
         seen.add(candidate)
-        path = DATA_DIR / candidate
-        if path.exists():
-            return pd.read_csv(path)
+        for root in search_roots:
+            path = root / candidate
+            if path.exists():
+                return pd.read_csv(path)
     return None
 
 
@@ -269,8 +279,9 @@ def infer_current_week(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timestamp, p
     last_played = played_dates.max()
     if pd.isna(last_played):
         return None
-    start = last_played - pd.Timedelta(days=5)
-    return start.normalize(), last_played.normalize()
+    end = last_played.normalize()
+    start = end - pd.Timedelta(days=end.weekday())  # always start on Monday
+    return start.normalize(), end
 
 
 def parse_dates(args, games_df: Optional[pd.DataFrame]) -> Tuple[pd.Timestamp, pd.Timestamp]:
@@ -296,7 +307,7 @@ def parse_dates(args, games_df: Optional[pd.DataFrame]) -> Tuple[pd.Timestamp, p
         return inferred
 
     end = pd.Timestamp(datetime.now().date()) - pd.Timedelta(days=1)
-    start = end - pd.Timedelta(days=5)
+    start = end - pd.Timedelta(days=end.weekday())  # Monday start
     return start.normalize(), end.normalize()
 
 
@@ -327,8 +338,9 @@ def infer_last_played_window(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timest
     last_played = played_dates.max()
     if pd.isna(last_played):
         return None
-    start = last_played - pd.Timedelta(days=5)
-    return start.normalize(), last_played.normalize()
+    end = last_played.normalize()
+    start = end - pd.Timedelta(days=end.weekday())  # Monday start
+    return start.normalize(), end
 
 
 def infer_sim_window(games_df: pd.DataFrame) -> Optional[Tuple[pd.Timestamp, pd.Timestamp]]:
@@ -430,6 +442,27 @@ def load_career_batting_totals() -> Dict[int, Dict[str, int]]:
             "hr": int(row.hr) if not pd.isna(row.hr) else 0,
         }
     return totals
+
+
+def load_score_lines(base_dir: Path) -> Dict[str, Tuple[List[int], List[int]]]:
+    score_lines: Dict[str, Tuple[List[int], List[int]]] = {}
+    path_candidates = [
+        base_dir / SCORE_LINE_FILE,
+        base_dir / "csv" / SCORE_LINE_FILE,
+        base_dir / "csv" / "ootp_csv" / SCORE_LINE_FILE,
+        base_dir / "ootp_csv" / SCORE_LINE_FILE,
+    ]
+    path = next((p for p in path_candidates if p.exists()), None)
+    if path is None:
+        return score_lines
+    df = pd.read_csv(path)
+    if not {"game_id", "team", "inning", "score"} <= set(df.columns):
+        return score_lines
+    for game_id, group in df.groupby("game_id"):
+        away = group[group["team"] == 0].sort_values("inning")["score"].tolist()
+        home = group[group["team"] == 1].sort_values("inning")["score"].tolist()
+        score_lines[str(game_id)] = (away, home)
+    return score_lines
 
 
 def update_team_state(
@@ -681,36 +714,24 @@ def main():
     innings_col = pick(games_all, "innings", "inn", "inning", "ipd")
     games_all["innings"] = pd.to_numeric(games_all[innings_col], errors="coerce").fillna(9)
 
+    context_start = start - pd.Timedelta(days=2)
     games_week = games_all[
         (games_all["date"] >= start) & (games_all["date"] <= end)
+    ].copy()
+    games_context = games_all[
+        (games_all["date"] >= context_start) & (games_all["date"] <= end)
     ].copy()
     weekday_cutoff = 5 if mode == "sim" else 6  # sim: Mon-Sat, weekly: Mon-Sun
     games_week = games_week[games_week["date"].dt.weekday <= weekday_cutoff]
     games_week = games_week[compute_played_mask(games_week)]
+    games_context = games_context[compute_played_mask(games_context)]
     if games_week.empty:
         print("No games in the selected window.")
         return
     games_week = games_week.sort_values(["date", "game_identifier"]).reset_index(drop=True)
 
-    score_cols_away = [
-        "away_runs",
-        "r_away",
-        "runs_away",
-        "score0",
-        "runs0",
-        "away_score",
-    ]
-    score_cols_home = [
-        "home_runs",
-        "r_home",
-        "runs_home",
-        "score1",
-        "runs1",
-        "home_score",
-    ]
-    away_score_col = pick(games_all, *score_cols_away)
-    home_score_col = pick(games_all, *score_cols_home)
     games_week = games_week.dropna(subset=["away_score", "home_score"])
+    games_context = games_context.dropna(subset=["away_score", "home_score"])
 
     home_name_col = pick(games_week, "home_team_name", "home_name")
     away_name_col = pick(games_week, "away_team_name", "away_name")
@@ -728,18 +749,12 @@ def main():
         axis=1,
     )
 
-    ootp_game_col = pick(games_df, "game_id", "gameid")
-    if ootp_game_col:
-        games_df["game_identifier"] = games_df[ootp_game_col].astype(str)
-    else:
-        games_df["game_identifier"] = games_df.apply(
-            lambda r: f"{r['date'].date()}_{int(r['away_id'])}@{int(r['home_id'])}",
-            axis=1,
-        )
-
-    series_tags = build_series_tags(games_week, "game_identifier")
+    games_df = games_week.copy()
+    series_tags = build_series_tags(games_context, "game_identifier")
     line_helper = LineScoreHelper(games_week)
+    score_lines = load_score_lines(base_dir)
 
+    all_games_sorted = games_all.sort_values(["date", "game_identifier"])
     team_records = {tid: {"w": 0, "l": 0} for tid in range(TEAM_MIN, TEAM_MAX + 1)}
     team_streak = {tid: {"type": None, "len": 0} for tid in range(TEAM_MIN, TEAM_MAX + 1)}
     pre_games = all_games_sorted[all_games_sorted["date"] < start]
@@ -831,13 +846,14 @@ def main():
         def apply_event(tag: str, value: int):
             nonlocal base_points
             if tag not in event_tags:
-                event_tags.append(tag)
+                if tag == "WALKOFF":
+                    event_tags.insert(0, tag)
+                else:
+                    event_tags.append(tag)
             base_points = max(base_points, value)
 
-        if home_win and (innings > 9 or diff <= 1):
-            apply_event("WALKOFF", 12)
-        elif diff == 1:
-            apply_event("ONE_RUN", 6)
+        walkoff_flag = False
+        one_run_flag = diff == 1
 
         if innings > 9:
             apply_event("EXTRA", 6)
@@ -854,6 +870,7 @@ def main():
         elif tag == "AVOID_SWEEP":
             apply_event("AVOID_SWEEP", 6)
 
+        line_data = None
         if line_helper.available:
             line_data = line_helper.extract(game, away_score, home_score)
             if line_data:
@@ -865,6 +882,40 @@ def main():
                     apply_event("COMEBACK", 10)
                 if behind_flag:
                     apply_event("BEHIND", 8)
+        if line_data is None and score_lines:
+            line_data = score_lines.get(str(game.get("game_identifier")))
+            if not line_data:
+                # some game_identifiers are numeric strings of the original game_id
+                try:
+                    line_data = score_lines.get(str(int(game.get("game_identifier"))))
+                except Exception:
+                    line_data = None
+
+        # True walk-offs: home team wins in final frame (9th or extras) by taking the lead in that inning.
+        if home_win:
+            if line_data:
+                target_len = max(len(line_data[0]), len(line_data[1]), int(math.ceil(innings)), 9)
+                away_seq = pad_scores(line_data[0], target_len)
+                home_seq = pad_scores(line_data[1], target_len)
+                home_before = sum(home_seq[: target_len - 1])
+                away_before = sum(away_seq[: target_len - 1])
+                home_final = sum(home_seq)
+                away_final = sum(away_seq)
+                if (
+                    home_final > away_final
+                    and home_seq[target_len - 1] > 0
+                    and home_before <= away_before
+                ):
+                    walkoff_flag = True
+            else:
+                # Fallback when line scores absent: only treat extra-inning home wins by one as walk-off.
+                if innings > 9 and one_run_flag:
+                    walkoff_flag = True
+
+        if walkoff_flag:
+            apply_event("WALKOFF", 12)
+        elif one_run_flag:
+            apply_event("ONE_RUN", 6)
 
         if (
             pitch_logs is not None
@@ -1278,12 +1329,19 @@ def main():
         "description",
         "highlight_score",
     ]
-    csv_dir = base_dir / "out" / "csv_out"
-    csv_dir.mkdir(parents=True, exist_ok=True)
+    csv_dir = REPO_ROOT / "csv" / "out" / "csv_out"
     csv_path = csv_dir / "z_ABL_Week_Miner.csv"
-    highlights[csv_cols].to_csv(csv_path, index=False)
 
     sections = []
+    header_lines = [
+        "ABL Week Miner",
+        "==============",
+        f"Generated on: {datetime.now():%Y-%m-%d %H:%M:%S}",
+        "",
+        "Weekly highlight scan of the last seven days of ABL action: walk-offs, slugfests, comebacks, sweeps, and standout performances.",
+        "Why it matters: fast recap material for storylines, broadcasts, and league comms without combing through every box score.",
+        "",
+    ]
     for title in [
         "WALK-OFFS",
         "STREAK WATCH",
@@ -1303,10 +1361,14 @@ def main():
         text = summarize_category(section_rows, title)
         if text:
             sections.append(text)
-    txt_dir = base_dir / "out" / "txt_out"
-    txt_dir.mkdir(parents=True, exist_ok=True)
+    txt_dir = REPO_ROOT / "csv" / "out" / "text_out"
     txt_path = txt_dir / "z_ABL_Week_Miner.txt"
-    txt_path.write_text("\n\n".join(sections), encoding="utf-8")
+    validate_output_paths((csv_path, txt_path), REPO_ROOT)
+    csv_dir.mkdir(parents=True, exist_ok=True)
+    highlights[csv_cols].to_csv(csv_path, index=False)
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    txt_content = "\n".join(header_lines) + "\n\n".join(sections)
+    txt_path.write_text(txt_content, encoding="utf-8")
     print(f"Mined {len(highlights)} games; wrote {csv_path} and {txt_path}.")
 
 

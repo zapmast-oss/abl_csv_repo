@@ -321,7 +321,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_path, index=False)
 
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     text_path = (txt_dir / out_path.stem).with_suffix(".txt")
     text_df = df.copy()

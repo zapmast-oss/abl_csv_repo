@@ -1,0 +1,1184 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-19",
+  "authority_rules": "C:\\sbv_repo\\abl_csv_repo\\docs\\ABL_STATSPLUS_AUTHORITY_RULES.md",
+  "authority_counts": {
+    "STATSPLUS_SPECIFIC_AFTER_PROMOTION": 15,
+    "CROSSCHECK_ONLY": 10
+  },
+  "crosscheck_tables": [
+    {
+      "file": "02_abl_transactions_personnel_-_all_coaches.csv",
+      "family": "front office/coaches",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\league_events.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "13_statsplus_Team_Batting_Div.csv",
+      "family": "team batting by division",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_batting_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "14_statsplus_Team_Batting_League.csv",
+      "family": "team batting by league",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_batting_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "15_statsplus_Team_Pitching_Div.csv",
+      "family": "team pitching by division",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_starting_pitching_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "16_statsplus_Team_Pitching_league.csv",
+      "family": "team pitching by league",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_starting_pitching_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "17_statsplus_Team_Fielding_Div.csv",
+      "family": "team fielding by division",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_fielding_stats_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "18_statsplus_Team_Fielding_League.csv",
+      "family": "team fielding by league",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_fielding_stats_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "20_statsplus_Player_Batting.csv",
+      "family": "player batting",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_batting_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "21_statsplus_Player_Pitching.csv",
+      "family": "player pitching",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_record.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    },
+    {
+      "file": "23_statsplus_Player_Fielding.csv",
+      "family": "player fielding",
+      "authority_outcome": "CROSSCHECK_ONLY",
+      "raw_overlap": "csv\\ootp_csv\\team_fielding_stats_stats.csv",
+      "sortable_overlap": "csv\\abl_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "rule": "Raw OOTP or promoted sortable stats govern overlapping observed fields."
+    }
+  ],
+  "current_record_crosscheck_counts": {
+    "CROSSCHECK_AGREES": 120
+  },
+  "current_record_crosschecks": [
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "CHA",
+      "resolved_team_key": "cha",
+      "feed3_record": "57-36",
+      "raw_record": "57-36",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "MIA",
+      "resolved_team_key": "mia",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "TB",
+      "resolved_team_key": "tb",
+      "feed3_record": "42-51",
+      "raw_record": "42-51",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "ATL",
+      "resolved_team_key": "atl",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "DAL",
+      "resolved_team_key": "dal",
+      "feed3_record": "52-41",
+      "raw_record": "52-41",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "DET",
+      "resolved_team_key": "det",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "CHI",
+      "resolved_team_key": "chi",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "MIN",
+      "resolved_team_key": "min",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "SF",
+      "resolved_team_key": "sf",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "LA",
+      "resolved_team_key": "la",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "PHO",
+      "resolved_team_key": "pho",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "SD",
+      "resolved_team_key": "sd",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "BOS",
+      "resolved_team_key": "bos",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "PHI",
+      "resolved_team_key": "phi",
+      "feed3_record": "43-50",
+      "raw_record": "43-50",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "NY",
+      "resolved_team_key": "ny",
+      "feed3_record": "44-49",
+      "raw_record": "44-49",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "PIT",
+      "resolved_team_key": "pit",
+      "feed3_record": "38-55",
+      "raw_record": "38-55",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "HOU",
+      "resolved_team_key": "hou",
+      "feed3_record": "53-39",
+      "raw_record": "53-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "CIN",
+      "resolved_team_key": "cin",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "NAS",
+      "resolved_team_key": "nas",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "STL",
+      "resolved_team_key": "stl",
+      "feed3_record": "45-47",
+      "raw_record": "45-47",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "LV",
+      "resolved_team_key": "lv",
+      "feed3_record": "54-39",
+      "raw_record": "54-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "SEA",
+      "resolved_team_key": "sea",
+      "feed3_record": "51-42",
+      "raw_record": "51-42",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "DEN",
+      "resolved_team_key": "den",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "team_value": "POR",
+      "resolved_team_key": "por",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "CHA",
+      "resolved_team_key": "cha",
+      "feed3_record": "57-36",
+      "raw_record": "57-36",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "HOU",
+      "resolved_team_key": "hou",
+      "feed3_record": "53-39",
+      "raw_record": "53-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "LV",
+      "resolved_team_key": "lv",
+      "feed3_record": "54-39",
+      "raw_record": "54-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "DAL",
+      "resolved_team_key": "dal",
+      "feed3_record": "52-41",
+      "raw_record": "52-41",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "SF",
+      "resolved_team_key": "sf",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "SEA",
+      "resolved_team_key": "sea",
+      "feed3_record": "51-42",
+      "raw_record": "51-42",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "DET",
+      "resolved_team_key": "det",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "BOS",
+      "resolved_team_key": "bos",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "CIN",
+      "resolved_team_key": "cin",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "DEN",
+      "resolved_team_key": "den",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "CHI",
+      "resolved_team_key": "chi",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "LA",
+      "resolved_team_key": "la",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "NAS",
+      "resolved_team_key": "nas",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "MIA",
+      "resolved_team_key": "mia",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "STL",
+      "resolved_team_key": "stl",
+      "feed3_record": "45-47",
+      "raw_record": "45-47",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "PHO",
+      "resolved_team_key": "pho",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "PHI",
+      "resolved_team_key": "phi",
+      "feed3_record": "43-50",
+      "raw_record": "43-50",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "TB",
+      "resolved_team_key": "tb",
+      "feed3_record": "42-51",
+      "raw_record": "42-51",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "NY",
+      "resolved_team_key": "ny",
+      "feed3_record": "44-49",
+      "raw_record": "44-49",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "ATL",
+      "resolved_team_key": "atl",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "MIN",
+      "resolved_team_key": "min",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "PIT",
+      "resolved_team_key": "pit",
+      "feed3_record": "38-55",
+      "raw_record": "38-55",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "SD",
+      "resolved_team_key": "sd",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "team_value": "POR",
+      "resolved_team_key": "por",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "HOU",
+      "resolved_team_key": "hou",
+      "feed3_record": "53-39",
+      "raw_record": "53-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "DAL",
+      "resolved_team_key": "dal",
+      "feed3_record": "52-41",
+      "raw_record": "52-41",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "CHA",
+      "resolved_team_key": "cha",
+      "feed3_record": "57-36",
+      "raw_record": "57-36",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "BOS",
+      "resolved_team_key": "bos",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "SF",
+      "resolved_team_key": "sf",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "LV",
+      "resolved_team_key": "lv",
+      "feed3_record": "54-39",
+      "raw_record": "54-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "SEA",
+      "resolved_team_key": "sea",
+      "feed3_record": "51-42",
+      "raw_record": "51-42",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "DET",
+      "resolved_team_key": "det",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "LA",
+      "resolved_team_key": "la",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "MIA",
+      "resolved_team_key": "mia",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "CIN",
+      "resolved_team_key": "cin",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "NY",
+      "resolved_team_key": "ny",
+      "feed3_record": "44-49",
+      "raw_record": "44-49",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "DEN",
+      "resolved_team_key": "den",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "PHI",
+      "resolved_team_key": "phi",
+      "feed3_record": "43-50",
+      "raw_record": "43-50",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "NAS",
+      "resolved_team_key": "nas",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "CHI",
+      "resolved_team_key": "chi",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "TB",
+      "resolved_team_key": "tb",
+      "feed3_record": "42-51",
+      "raw_record": "42-51",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "PHO",
+      "resolved_team_key": "pho",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "MIN",
+      "resolved_team_key": "min",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "POR",
+      "resolved_team_key": "por",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "STL",
+      "resolved_team_key": "stl",
+      "feed3_record": "45-47",
+      "raw_record": "45-47",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "PIT",
+      "resolved_team_key": "pit",
+      "feed3_record": "38-55",
+      "raw_record": "38-55",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "SD",
+      "resolved_team_key": "sd",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "team_value": "ATL",
+      "resolved_team_key": "atl",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "CHA",
+      "resolved_team_key": "cha",
+      "feed3_record": "57-36",
+      "raw_record": "57-36",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "HOU",
+      "resolved_team_key": "hou",
+      "feed3_record": "53-39",
+      "raw_record": "53-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "LV",
+      "resolved_team_key": "lv",
+      "feed3_record": "54-39",
+      "raw_record": "54-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "CIN",
+      "resolved_team_key": "cin",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "DET",
+      "resolved_team_key": "det",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "PHO",
+      "resolved_team_key": "pho",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "DAL",
+      "resolved_team_key": "dal",
+      "feed3_record": "52-41",
+      "raw_record": "52-41",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "CHI",
+      "resolved_team_key": "chi",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "SEA",
+      "resolved_team_key": "sea",
+      "feed3_record": "51-42",
+      "raw_record": "51-42",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "SF",
+      "resolved_team_key": "sf",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "DEN",
+      "resolved_team_key": "den",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "BOS",
+      "resolved_team_key": "bos",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "ATL",
+      "resolved_team_key": "atl",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "NAS",
+      "resolved_team_key": "nas",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "NY",
+      "resolved_team_key": "ny",
+      "feed3_record": "44-49",
+      "raw_record": "44-49",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "LA",
+      "resolved_team_key": "la",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "MIA",
+      "resolved_team_key": "mia",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "TB",
+      "resolved_team_key": "tb",
+      "feed3_record": "42-51",
+      "raw_record": "42-51",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "STL",
+      "resolved_team_key": "stl",
+      "feed3_record": "45-47",
+      "raw_record": "45-47",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "MIN",
+      "resolved_team_key": "min",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "PIT",
+      "resolved_team_key": "pit",
+      "feed3_record": "38-55",
+      "raw_record": "38-55",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "PHI",
+      "resolved_team_key": "phi",
+      "feed3_record": "43-50",
+      "raw_record": "43-50",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "POR",
+      "resolved_team_key": "por",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "team_value": "SD",
+      "resolved_team_key": "sd",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "St. LouisSTL",
+      "resolved_team_key": "stl",
+      "feed3_record": "45-47",
+      "raw_record": "45-47",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "Las VegasLV",
+      "resolved_team_key": "lv",
+      "feed3_record": "54-39",
+      "raw_record": "54-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "MiamiMIA",
+      "resolved_team_key": "mia",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "CharlotteCHA",
+      "resolved_team_key": "cha",
+      "feed3_record": "57-36",
+      "raw_record": "57-36",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "CincinnatiCIN",
+      "resolved_team_key": "cin",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "DetroitDET",
+      "resolved_team_key": "det",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "PhoenixPHO",
+      "resolved_team_key": "pho",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "DallasDAL",
+      "resolved_team_key": "dal",
+      "feed3_record": "52-41",
+      "raw_record": "52-41",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "NashvilleNAS",
+      "resolved_team_key": "nas",
+      "feed3_record": "47-46",
+      "raw_record": "47-46",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "HoustonHOU",
+      "resolved_team_key": "hou",
+      "feed3_record": "53-39",
+      "raw_record": "53-39",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "AtlantaATL",
+      "resolved_team_key": "atl",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "SeattleSEA",
+      "resolved_team_key": "sea",
+      "feed3_record": "51-42",
+      "raw_record": "51-42",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "Tampa BayTB",
+      "resolved_team_key": "tb",
+      "feed3_record": "42-51",
+      "raw_record": "42-51",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "PhiladelphiaPHI",
+      "resolved_team_key": "phi",
+      "feed3_record": "43-50",
+      "raw_record": "43-50",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "ChicagoCHI",
+      "resolved_team_key": "chi",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "San FranciscoSF",
+      "resolved_team_key": "sf",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "PortlandPOR",
+      "resolved_team_key": "por",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "BostonBOS",
+      "resolved_team_key": "bos",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "MinneapolisMIN",
+      "resolved_team_key": "min",
+      "feed3_record": "40-53",
+      "raw_record": "40-53",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "Los AngelesLA",
+      "resolved_team_key": "la",
+      "feed3_record": "48-45",
+      "raw_record": "48-45",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "New YorkNY",
+      "resolved_team_key": "ny",
+      "feed3_record": "44-49",
+      "raw_record": "44-49",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "DenverDEN",
+      "resolved_team_key": "den",
+      "feed3_record": "50-43",
+      "raw_record": "50-43",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "San DiegoSD",
+      "resolved_team_key": "sd",
+      "feed3_record": "36-57",
+      "raw_record": "36-57",
+      "outcome": "CROSSCHECK_AGREES"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "team_value": "PittsburghPIT",
+      "resolved_team_key": "pit",
+      "feed3_record": "38-55",
+      "raw_record": "38-55",
+      "outcome": "CROSSCHECK_AGREES"
+    }
+  ],
+  "rules": {
+    "raw_ootp": "completed games, scores, logs, schedule state, and current proof",
+    "sortable": "governed current player/team enrichment",
+    "statsplus": "StatsPlus-specific fields after validation and promotion",
+    "conflicts": "report both values; never silently resolve"
+  },
+  "promotion_safe": false,
+  "ready_for_separate_dry_run_promotion_task": true
+}

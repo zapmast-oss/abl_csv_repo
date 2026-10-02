@@ -1,0 +1,104 @@
+# CLI Options Index
+
+- csv/abl_scripts/_run_almanac_time_slices_any.py :: usage: _run_almanac_time_slices_any.py [-h] --season SEASON
+- csv/abl_scripts/_run_eb_md_only_any.py :: usage: _run_eb_md_only_any.py [-h] --season SEASON [--league-id LEAGUE_ID]
+- csv/abl_scripts/_run_eb_regular_season_any.py :: usage: _run_eb_regular_season_any.py [-h] --season SEASON
+- csv/abl_scripts/_run_eb_regular_season_range.py :: usage: _run_eb_regular_season_range.py [-h] --start-season START_SEASON
+- csv/abl_scripts/abl_week_miner.py :: usage: abl_week_miner.py [-h] [--start START] [--end END]
+- csv/abl_scripts/load_managers_star.py :: usage: load_managers_star.py [-h] [--db DB] [--src SRC]
+- csv/abl_scripts/parse_managers.py :: usage: parse_managers.py [-h] [--index INDEX] [--leaders LEADERS]
+- csv/abl_scripts/report_batter_profile_prep_from_abl_statistics.py :: usage: report_batter_profile_prep_from_abl_statistics.py [-h] [--team TEAM]
+- csv/abl_scripts/report_broadcast_prep.py :: usage: report_broadcast_prep.py [-h] [--db DB] [--csv CSV] [--out OUT]
+- csv/abl_scripts/report_manager_matchup.py :: usage: report_manager_matchup.py [-h] [--home HOME] [--away AWAY] [--db DB]
+- csv/abl_scripts/report_pitcher_arsenal_prep_from_abl_statistics.py :: usage: report_pitcher_arsenal_prep_from_abl_statistics.py [-h] [--team TEAM]
+- csv/abl_scripts/validate_managers.py :: usage: validate_managers.py [-h] [--src SRC]
+- csv/abl_scripts/z_abl_30for30_1981_pythag.py :: usage: z_abl_30for30_1981_pythag.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_almanac_champions_from_standings.py :: usage: z_abl_almanac_champions_from_standings.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_almanac_flashback_story_menu.py :: usage: z_abl_almanac_flashback_story_menu.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_flashback_story_pack.py :: usage: z_abl_almanac_flashback_story_pack.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_almanac_league200_extract_core.py :: usage: z_abl_almanac_league200_extract_core.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_almanac_league200_manifest.py :: usage: z_abl_almanac_league200_manifest.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_league_4k_summary.py :: usage: z_abl_almanac_league_4k_summary.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_league_season_summary.py :: usage: z_abl_almanac_league_season_summary.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_momentum_3k_summary.py :: usage: z_abl_almanac_momentum_3k_summary.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_player_context_extract.py :: usage: z_abl_almanac_player_context_extract.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_almanac_player_leaderboards.py :: usage: z_abl_almanac_player_leaderboards.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_player_stats_extract.py :: usage: z_abl_almanac_player_stats_extract.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_schedule_extract.py :: usage: z_abl_almanac_schedule_extract.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_almanac_scores_pipeline.py :: usage: z_abl_almanac_scores_pipeline.py [-h] --almanac-zip ALMANAC_ZIP
+- csv/abl_scripts/z_abl_almanac_standings_pipeline.py :: [DEBUG] z_abl_almanac_standings_pipeline.py starting up
+- csv/abl_scripts/z_abl_almanac_time_slices_enriched.py :: usage: z_abl_almanac_time_slices_enriched.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_attach_managers_to_standings.py :: usage: z_abl_attach_managers_to_standings.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_basepath_pressure.py :: usage: z_abl_basepath_pressure.py [-h] [--base BASE] [--batting BATTING]
+- csv/abl_scripts/z_abl_blowout_resilience.py :: usage: z_abl_blowout_resilience.py [-h] [--base BASE] [--logs LOGS]
+- csv/abl_scripts/z_abl_bullpen_stress_index.py :: usage: z_abl_bullpen_stress_index.py [-h] [--base BASE] [--apps APPS]
+- csv/abl_scripts/z_abl_catcher_battery_value.py :: usage: z_abl_catcher_battery_value.py [-h] [--base BASE] [--fielding FIELDING]
+- csv/abl_scripts/z_abl_core12_weekly.py :: usage: z_abl_core12_weekly.py [-h] --year YEAR --week WEEK
+- csv/abl_scripts/z_abl_current_team_snapshot.py :: usage: z_abl_current_team_snapshot.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_damage_with_risp.py :: usage: z_abl_damage_with_risp.py [-h] [--base BASE] [--totals TOTALS]
+- csv/abl_scripts/z_abl_division_leverage.py :: usage: z_abl_division_leverage.py [-h] [--base BASE] [--logs LOGS]
+- csv/abl_scripts/z_abl_eb_all_star_brief_any.py :: usage: z_abl_eb_all_star_brief_any.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_eb_flashback_brief_1972.py :: usage: z_abl_eb_flashback_brief_1972.py [-h] --season SEASON --league-id
+- csv/abl_scripts/z_abl_eb_player_context_1972.py :: usage: z_abl_eb_player_context_1972.py [-h] [--season SEASON]
+- csv/abl_scripts/z_abl_eb_player_leaders_1972.py :: usage: z_abl_eb_player_leaders_1972.py [-h] [--season SEASON]
+- csv/abl_scripts/z_abl_eb_player_spotlights_1972.py :: usage: z_abl_eb_player_spotlights_1972.py [-h] [--season SEASON]
+- csv/abl_scripts/z_abl_eb_regular_season_pack_any.py :: usage: z_abl_eb_regular_season_pack_any.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_eb_schedule_context_1972.py :: usage: z_abl_eb_schedule_context_1972.py [-h] [--season SEASON]
+- csv/abl_scripts/z_abl_eb_schedule_context_any.py :: usage: z_abl_eb_schedule_context_any.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_enrich_almanac_standings.py :: usage: z_abl_enrich_almanac_standings.py [-h] [--season SEASON]
+- csv/abl_scripts/z_abl_extract_abl_power_rankings.py :: usage: z_abl_extract_abl_power_rankings.py [-h] --input-html INPUT_HTML
+- csv/abl_scripts/z_abl_extract_league200_minimal.py :: usage: z_abl_extract_league200_minimal.py [-h] --root-dir ROOT_DIR
+- csv/abl_scripts/z_abl_fip_vs_era_gap.py :: usage: z_abl_fip_vs_era_gap.py [-h] [--base BASE] [--pitching PITCHING]
+- csv/abl_scripts/z_abl_firestarter_table.py :: usage: z_abl_firestarter_table.py [-h] [--base BASE] [--spot SPOT]
+- csv/abl_scripts/z_abl_grand_series_extractor.py :: usage: z_abl_grand_series_extractor.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_grand_series_summarize.py :: usage: z_abl_grand_series_summarize.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_grit_index.py :: usage: z_abl_grit_index.py [-h] [--base BASE] [--linescore LINESCORE]
+- csv/abl_scripts/z_abl_ground_ball_savants.py :: Traceback (most recent call last):
+- csv/abl_scripts/z_abl_heat_check.py :: usage: z_abl_heat_check.py [-h] [--base BASE] [--gamelogs GAMELOGS]
+- csv/abl_scripts/z_abl_high_leverage_relievers.py :: usage: z_abl_high_leverage_relievers.py [-h] [--base BASE]
+- csv/abl_scripts/z_abl_home_road_splits.py :: usage: z_abl_home_road_splits.py [-h] [--base BASE] [--season SEASON]
+- csv/abl_scripts/z_abl_late_inning_clutch.py :: usage: z_abl_late_inning_clutch.py [-h] [--base BASE] [--linescore LINESCORE]
+- csv/abl_scripts/z_abl_list_md_outputs.py :: usage: z_abl_list_md_outputs.py [-h] [--year YEAR] [--week WEEK]
+- csv/abl_scripts/z_abl_manager_scorecard_1981.py :: usage: z_abl_manager_scorecard_1981.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_manager_tendencies.py :: usage: z_abl_manager_tendencies.py [-h] [--base BASE] [--batting BATTING]
+- csv/abl_scripts/z_abl_matchup_history.py :: usage: z_abl_matchup_history.py [-h] [--min-date MIN_DATE]
+- csv/abl_scripts/z_abl_milestones_on_the_horizon.py :: usage: z_abl_milestones_on_the_horizon.py [-h] [--base BASE] [--within WITHIN]
+- csv/abl_scripts/z_abl_momentum_windows.py :: usage: z_abl_momentum_windows.py [-h] [--base BASE] [--logs LOGS]
+- csv/abl_scripts/z_abl_monday_packet_1981.py :: usage: z_abl_monday_packet_1981.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_monday_show_notes_1981.py :: usage: z_abl_monday_show_notes_1981.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_month_glory_misery_any.py :: usage: z_abl_month_glory_misery_any.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_one_run_record.py :: usage: z_abl_one_run_record.py [-h] [--base BASE] [--logs LOGS] [--out OUT]
+- csv/abl_scripts/z_abl_outfield_arms.py :: usage: z_abl_outfield_arms.py [-h] [--base BASE] [--fielding FIELDING]
+- csv/abl_scripts/z_abl_platoon_assassins.py :: usage: z_abl_platoon_assassins.py [-h] [--base BASE] [--splits SPLITS]
+- csv/abl_scripts/z_abl_power_surge_outages.py :: usage: z_abl_power_surge_outages.py [-h] [--base BASE] [--logs LOGS]
+- csv/abl_scripts/z_abl_pregame_pack.py :: usage: z_abl_pregame_pack.py [-h] [--base BASE] [--season SEASON]
+- csv/abl_scripts/z_abl_prep_card_1981.py :: usage: z_abl_prep_card_1981.py [-h] --away AWAY --home HOME [--dry-run]
+- csv/abl_scripts/z_abl_preseason_hype_any.py :: usage: z_abl_preseason_hype_any.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_pythag_over_under.py :: usage: z_abl_pythag_over_under.py [-h] [--base BASE] [--in INPUT_PATH]
+- csv/abl_scripts/z_abl_report_ballparks.py :: usage: z_abl_report_ballparks.py [-h] [--base BASE] [--league_id LEAGUE_ID]
+- csv/abl_scripts/z_abl_report_fans_markets.py :: usage: z_abl_report_fans_markets.py [-h] [--base BASE] [--league_id LEAGUE_ID]
+- csv/abl_scripts/z_abl_report_finances.py :: usage: z_abl_report_finances.py [-h] [--base BASE] [--league_id LEAGUE_ID]
+- csv/abl_scripts/z_abl_rookie_watch.py :: usage: z_abl_rookie_watch.py [-h] [--base BASE] [--roster ROSTER]
+- csv/abl_scripts/z_abl_rotation_stability.py :: usage: z_abl_rotation_stability.py [-h] [--base BASE] [--apps APPS]
+- csv/abl_scripts/z_abl_run_creation_profile.py :: usage: z_abl_run_creation_profile.py [-h] [--base BASE] [--record RECORD]
+- csv/abl_scripts/z_abl_run_prevention_dna.py :: usage: z_abl_run_prevention_dna.py [-h] [--base BASE] [--fielding FIELDING]
+- csv/abl_scripts/z_abl_runways_streak_builders.py :: usage: z_abl_runways_streak_builders.py [-h] [--base BASE]
+- csv/abl_scripts/z_abl_season_backbone.py :: usage: z_abl_season_backbone.py [-h] --season SEASON [--dry-run]
+- csv/abl_scripts/z_abl_seed_prev_from_games_1981.py :: usage: z_abl_seed_prev_from_games_1981.py [-h] [--asof ASOF]
+- csv/abl_scripts/z_abl_series_miner.py :: usage: z_abl_series_miner.py [-h] --start-date START_DATE --end-date END_DATE
+- csv/abl_scripts/z_abl_sos_last14.py :: usage: z_abl_sos_last14.py [-h] [--base BASE] [--logs LOGS]
+- csv/abl_scripts/z_abl_system_crash_slumps.py :: usage: z_abl_system_crash_slumps.py [-h] [--base BASE] [--gamelogs GAMELOGS]
+- csv/abl_scripts/z_abl_table_setter_clearer.py :: usage: z_abl_table_setter_clearer.py [-h] [--base BASE] [--totals TOTALS]
+- csv/abl_scripts/z_abl_team_babip_luck.py :: usage: z_abl_team_babip_luck.py [-h] [--base BASE] [--batting BATTING]
+- csv/abl_scripts/z_abl_team_reporting_view.py :: usage: z_abl_team_reporting_view.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_team_season_backbone_1981.py :: usage: z_abl_team_season_backbone_1981.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_travel_fatigue.py :: usage: z_abl_travel_fatigue.py [-h] [--base BASE] [--gamelogs GAMELOGS]
+- csv/abl_scripts/z_abl_validate_eb_pack_any.py :: usage: z_abl_validate_eb_pack_any.py [-h] --season SEASON
+- csv/abl_scripts/z_abl_viz_export_1981.py :: usage: z_abl_viz_export_1981.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_week_miner.py :: usage: z_abl_week_miner.py [-h] --start-date START_DATE [--end-date END_DATE]
+- csv/abl_scripts/z_abl_weekly_change_1981.py :: usage: z_abl_weekly_change_1981.py [-h] [--dry-run]
+- csv/abl_scripts/z_abl_weekly_league_report.py :: usage: z_abl_weekly_league_report.py [-h] --year YEAR --week WEEK
+- csv/abl_scripts/z_abl_whiff_merchants.py :: usage: z_abl_whiff_merchants.py [-h] [--base BASE] [--pitching PITCHING]
+- csv/abl_scripts/z_abl_zone_rating_spotlight.py :: usage: z_abl_zone_rating_spotlight.py [-h] [--base BASE] [--fielding FIELDING]
+- scripts/build_story_menu_for_week.py :: usage: build_story_menu_for_week.py [-h] [--min-priority {A,B,C}] week_label
+- scripts/eval_story_triggers_for_week.py :: usage: eval_story_triggers_for_week.py [-h] [--min-priority {A,B,C}]

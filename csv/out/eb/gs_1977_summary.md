@@ -1,0 +1,10 @@
+# Grand Series 1977 Recap (League 200)
+Generated on: 2025-12-01 21:25:30 (local time)
+
+1. 1977-10-22 — Houston Mavericks 5 vs Dallas Rustlers 0 (winner: Houston Mavericks; tally: Houston Mavericks:1)
+2. 1977-10-23 — Houston Mavericks 8 vs Dallas Rustlers 4 (winner: Houston Mavericks; tally: Houston Mavericks:2)
+3. 1977-10-25 — Dallas Rustlers 5 vs Houston Mavericks 4 (winner: Dallas Rustlers; tally: Houston Mavericks:2, Dallas Rustlers:1)
+4. 1977-10-26 — Dallas Rustlers 6 vs Houston Mavericks 4 (winner: Dallas Rustlers; tally: Houston Mavericks:2, Dallas Rustlers:2)
+5. 1977-10-27 — Dallas Rustlers 7 vs Houston Mavericks 3 (winner: Dallas Rustlers; tally: Houston Mavericks:2, Dallas Rustlers:3)
+6. 1977-10-29 — Houston Mavericks 3 vs Dallas Rustlers 1 (winner: Houston Mavericks; tally: Houston Mavericks:3, Dallas Rustlers:3)
+7. 1977-10-30 — Houston Mavericks 0 vs Dallas Rustlers 1 (winner: Dallas Rustlers; tally: Houston Mavericks:3, Dallas Rustlers:4)

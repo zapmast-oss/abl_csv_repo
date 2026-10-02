@@ -1,0 +1,178 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "master_runner_found": false,
+  "existing_self_contained_current_generator": "csv/abl_scripts/z_abl_story_engine_current_1981.py",
+  "wrapper_runner": "csv\\abl_scripts\\z_abl_story_engine_with_feed3_preview_runner.py",
+  "feature_flags": {
+    "newsroom_date": "1981-07-20",
+    "as_of_date": "1981-07-19",
+    "enable_feed3_evidence_preview": true,
+    "enable_feed3_rank_adjustment": false,
+    "enable_feed3_new_candidates": false,
+    "enable_owner_front_office_signals": false,
+    "enable_best_game_discovery_signals": false,
+    "enable_historical_fan_interpretation": false,
+    "doctrine": [
+      "StatsPlus enhances. It does not replace.",
+      "StatsPlus annotates before it ranks."
+    ],
+    "behavior": {
+      "feed3_evidence_preview": "Append typed evidence into preview-only outputs.",
+      "rank_adjustment": "Disabled; official candidate scores and order are unchanged.",
+      "new_candidates": "Disabled; the preview cannot create candidates.",
+      "reference_only_signals": "Owner/front-office traits, best-game discovery, and historical fan interpretation remain manual reference only."
+    }
+  },
+  "adapter_invoked": true,
+  "adapter_returncode": 0,
+  "adapter_stdout": "{\n  \"adapter_created\": true,\n  \"feed3_evidence_records_created\": 53,\n  \"candidates_enriched\": 15,\n  \"rankings_changed\": false,\n  \"new_candidates_created\": false,\n  \"official_story_artifacts_untouched\": true,\n  \"evidence_types_used\": [\n    \"statsplus_baseruns\",\n    \"statsplus_elo\",\n    \"statsplus_fan_interest_context\",\n    \"statsplus_financial_context\",\n    \"statsplus_injury_context\",\n    \"statsplus_pitcher_rwar\",\n    \"statsplus_playoff_odds\",\n    \"statsplus_team_baserunning\",\n    \"statsplus_team_war\",\n    \"statsplus_ubr\"\n  ],\n  \"held_types\": [\n    \"statsplus_player_baserunning\",\n    \"statsplus_team_age_context\"\n  ]\n}",
+  "adapter_stderr": "",
+  "validation_passed": true,
+  "official_story_artifacts_untouched": true,
+  "rankings_changed": false,
+  "new_candidates_created": false,
+  "reference_only_signals_stayed_reference_only": true,
+  "checks": [
+    {
+      "check_name": "feature_flags_loaded",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Date-specific feature configuration loaded."
+    },
+    {
+      "check_name": "feed3_preview_enabled",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Append-only adapter gate."
+    },
+    {
+      "check_name": "rank_adjustment_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Official ranking must remain unchanged."
+    },
+    {
+      "check_name": "new_candidates_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Candidate creation must remain disabled."
+    },
+    {
+      "check_name": "owner_front_office_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Reference-only signal."
+    },
+    {
+      "check_name": "best_game_discovery_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Reference-only signal."
+    },
+    {
+      "check_name": "historical_fan_interpretation_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Reference-only signal."
+    },
+    {
+      "check_name": "adapter_invoked",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Adapter runs only when preview is enabled."
+    },
+    {
+      "check_name": "adapter_exit_success",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "details": "Adapter process exit code."
+    },
+    {
+      "check_name": "evidence_append_exists",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Preview-only append outputs."
+    },
+    {
+      "check_name": "combined_preview_exists",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Official evidence is not replaced."
+    },
+    {
+      "check_name": "feed3_evidence_records",
+      "status": "PASS",
+      "expected": "53",
+      "actual": "53",
+      "details": "Typed Feed 3 append records."
+    },
+    {
+      "check_name": "candidates_enriched",
+      "status": "PASS",
+      "expected": "15",
+      "actual": "15",
+      "details": "All frozen candidates covered."
+    },
+    {
+      "check_name": "combined_preview_records",
+      "status": "PASS",
+      "expected": "68",
+      "actual": "68",
+      "details": "15 official plus 53 Feed 3 records."
+    },
+    {
+      "check_name": "ranking_effects_none",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Every appended record is ranking-neutral."
+    },
+    {
+      "check_name": "ranking_changed",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Adapter self-report."
+    },
+    {
+      "check_name": "new_candidates_created",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Adapter self-report."
+    },
+    {
+      "check_name": "reference_only_signals_automated",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "All reference-only automation flags remain false."
+    },
+    {
+      "check_name": "official_story_artifacts_untouched",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "SHA-256 before/after comparison across seven protected files."
+    },
+    {
+      "check_name": "adapter_report_untouched",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Adapter internal protected-file check."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "as_of_date": "1981-07-19",
+  "reviewed_count": 6,
+  "sources": [
+    {
+      "staging_file_name": "abl_statistics_player_statistics_-_sortable_stats_batting_potential.csv",
+      "row_count": 856,
+      "column_count": 18,
+      "column_headers": "POS|#|Name|Inf|Age|B|T|POT|CON P|GAP P|POW P|EYE P|K P|SPE|STE|RUN|DEF|SctAcc",
+      "inferred_subject_area": "player_batting",
+      "inferred_grain": "player capture",
+      "overlap_with_existing_sources": "abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv; 11 normalized shared columns: |conp|eyep|gapp|kp|name|pos|powp|run|spe|ste",
+      "unique_columns_not_found_in_existing_sources": "",
+      "story_engine_value": "Player offensive ceiling and development context; not current performance evidence. Column review found no fields absent from the existing governed source set.",
+      "recommendation": "hold_as_duplicate",
+      "confidence_score": 95
+    },
+    {
+      "staging_file_name": "abl_statistics_player_statistics_-_sortable_stats_financial_info.csv",
+      "row_count": 856,
+      "column_count": 16,
+      "column_headers": "POS|#|Name|Mor|Age|SLR|YL|CV|TY|ECV|ETY|MLY|SECY|OPT|OY|ON40",
+      "inferred_subject_area": "player_financial_context",
+      "inferred_grain": "player capture",
+      "overlap_with_existing_sources": "abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv; 14 normalized shared columns: |cv|ecv|ety|mly|name|on40|opt|oy|pos|secy|slr|ty|yl",
+      "unique_columns_not_found_in_existing_sources": "",
+      "story_engine_value": "Player salary, contract, and option context for roster/organization reporting. Column review found no fields absent from the existing governed source set.",
+      "recommendation": "hold_as_duplicate",
+      "confidence_score": 95
+    },
+    {
+      "staging_file_name": "abl_statistics_player_statistics_-_sortable_stats_individual_pitch_potential.csv",
+      "row_count": 856,
+      "column_count": 23,
+      "column_headers": "POS|#|Name|Inf|Age|T|FBP|CHP|CBP|SLP|SIP|SPP|CTP|FOP|CCP|SCP|KCP|KNP|PIT|VELO|Slot|STM|SctAcc",
+      "inferred_subject_area": "player_pitching",
+      "inferred_grain": "player capture",
+      "overlap_with_existing_sources": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv; 19 normalized shared columns: |cbp|ccp|chp|ctp|fbp|fop|kcp|knp|name|pit|pos|scp|sip|slot|slp|spp|stm|velo",
+      "unique_columns_not_found_in_existing_sources": "",
+      "story_engine_value": "Pitch-by-pitch arsenal potential distinct from current pitch ratings. Column review found no fields absent from the existing governed source set.",
+      "recommendation": "hold_as_duplicate",
+      "confidence_score": 95
+    },
+    {
+      "staging_file_name": "abl_statistics_player_statistics_-_sortable_stats_personality___morale.csv",
+      "row_count": 856,
+      "column_count": 17,
+      "column_headers": "POS|#|Name|Inf|Txn|Tm|Perf|Role|Chem|Mor|Age|LEA|LOY|FIN|WE|INT|Type",
+      "inferred_subject_area": "player_personality_and_morale",
+      "inferred_grain": "player capture",
+      "overlap_with_existing_sources": "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv; 14 normalized shared columns: |chem|fin|int|lea|loy|name|perf|pos|role|tm|txn|type|we",
+      "unique_columns_not_found_in_existing_sources": "",
+      "story_engine_value": "Structured personality and morale context with strict guardrails against invented motives. Column review found no fields absent from the existing governed source set.",
+      "recommendation": "hold_as_duplicate",
+      "confidence_score": 95
+    },
+    {
+      "staging_file_name": "abl_statistics_player_statistics_-_sortable_stats_pitching_potential.csv",
+      "row_count": 856,
+      "column_count": 16,
+      "column_headers": "POS|#|Name|Inf|Age|B|T|POT|STU P|MOV P|CON P|VELO|STM|G/F|HLD|SctAcc",
+      "inferred_subject_area": "player_pitching",
+      "inferred_grain": "player capture",
+      "overlap_with_existing_sources": "abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv; 10 normalized shared columns: |conp|gf|hld|movp|name|pos|stm|stup|velo",
+      "unique_columns_not_found_in_existing_sources": "",
+      "story_engine_value": "Overall pitcher ceiling and development context distinct from current ratings. Column review found no fields absent from the existing governed source set.",
+      "recommendation": "hold_as_duplicate",
+      "confidence_score": 95
+    },
+    {
+      "staging_file_name": "abl_statistics_player_statistics_-_sortable_stats_popularity_info.csv",
+      "row_count": 856,
+      "column_count": 9,
+      "column_headers": "POS|#|Name|Age|Nat. Pop.|Loc. Pop.|OVR|POT|SctAcc",
+      "inferred_subject_area": "player_popularity",
+      "inferred_grain": "player capture",
+      "overlap_with_existing_sources": "abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv; 9 normalized shared columns: |age|locpop|name|natpop|ovr|pos|pot|sctacc",
+      "unique_columns_not_found_in_existing_sources": "",
+      "story_engine_value": "Local/national popularity context for fan-interest reporting. Column review found no fields absent from the existing governed source set.",
+      "recommendation": "hold_as_duplicate",
+      "confidence_score": 95
+    }
+  ]
+}
