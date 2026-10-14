@@ -389,7 +389,7 @@ The largest highlighted pitcher post-date sample is Oubre's seven starts. The la
 | LEAD | San Diego's two prominent pitchers leave for division leaders | Murdock moved to Detroit, Victor Hernandez #504 to San Francisco; San Diego was 39-65. | Club explanation, later usage, and return-prospect value over time. | Do not call it a rebuild or say the moves caused San Diego's record. |
 | SECONDARY | Oubre gives Denver a rotation arm in the wild-card chase | Seven starts after June 18: 53.1 IP, 3.21 ERA; Denver was two games behind the ABC wild-card lead. | More starts, workload, opponents, and later outcomes. | Do not attribute the June 18 game to post-trade performance. |
 | WATCH | Lee Byron's early return for Cincinnati | 103 later-date PA at .259/.388/.341 after July 2. | Continued playing time and later-date results. | Do not extrapolate 103 PA to full-season value. |
-| WATCH | Houston's high trade volume and Jenkins addition | 12 overall trades; 10 in July; Jenkins had a 9-6, 3.48 ERA line over 98.1 IP. | Houston's post-deadline rotation role and full prospect evaluation. | Do not equate trade count with improvement or intent. |
+| WATCH | Houston's high trade volume and Jenkins addition | 12 overall trades; 6 in July; Jenkins had a 9-6, 3.48 ERA line over 98.1 IP. | Houston's post-deadline rotation role and full prospect evaluation. | Do not equate trade count with improvement or intent. |
 | HOLD | A current traded-player Top 100 | No valid source found; the 1981 WAR leaders file is stale and only lists a few leaders. | A dated, reproducible cross-position ranking with defined value inputs. | Do not call the two relief-screen names Top 100 players. |
 
 ## Data Limits
@@ -444,11 +444,12 @@ PASS 3 — Current Rosters: PASS. All 179 unique players join to current player/
 PASS 4 — Player Statistics / Value: PASS. Game-level stats are cutoff-filtered; ABL player-game runs and hits reconcile to all completed games; OOTP value fields are labeled as internal role screens.
 PASS 5 — Top 100 / Ranking Method: PASS. No valid current Top 100 is claimed; alternate role screens are explicit and reproducible.
 PASS 6 — Standings / Contender Context: PASS. All 24 team records reproduce from game results; division and provisional wild-card context use the July 31 cutoff.
-PASS 7 — Baseball / Editorial Audit: PASS. Player IDs disambiguate shared names; trade direction and positions use dated source details; same-day stats and unsupported intent/value claims are qualified.
+PASS 7 — Baseball / Editorial Audit: PASS. Reconciled report-wide totals, all 24 team boards, July activity, transaction dates/packages, and repeated conclusions; Houston's six July trades are distinguished from its ten player rows dealt.
 
 **Corrections made during verification:**
 
 - Corrected the July 31 control-table scheduled-game denominator to 12.
+- Corrected Houston's Story / Discovery Board July transaction count from 10 to 6. The 10 was Houston's July player-transfer rows dealt, not separate trade transactions.
 - Corrected the remembered name to Kennie Murdock #4963.
 - Corrected Willie Vega #7820's at-trade position to minor-league 2B; the current roster position is different.
 - Corrected the at-trade positions for Victor Hernandez #6732 (1B) and Miguel Martinez #4347 (2B). Current players.csv positions list RF and SS respectively.
