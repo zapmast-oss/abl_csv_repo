@@ -1,0 +1,195 @@
+{
+  "as_of_date": "1981-07-19",
+  "capture_scope": "team_statistics",
+  "staging_folder": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics",
+  "file_count": 17,
+  "files": [
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "file_size_bytes": 3793,
+      "modified_timestamp": "2026-07-04T12:27:03.508325+00:00",
+      "row_count": 24,
+      "column_count": 13,
+      "sha256": "19d7ec71cbac4e3bb4f6b5893806793449f27156fe364b143fc55ca0656bf0bb",
+      "reconciliation_status": "EXACT_FILENAME_SCHEMA_CHANGED",
+      "promotion_recommendation": "HOLD_UNKNOWN_REVIEW"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "file_size_bytes": 1646,
+      "modified_timestamp": "2026-07-04T12:25:18.992368+00:00",
+      "row_count": 24,
+      "column_count": 13,
+      "sha256": "c3e085a466584a79fdc730d45168d72ce4ebe9d384238fc1ee3bff33a2828afc",
+      "reconciliation_status": "EXACT_FILENAME_SCHEMA_CHANGED",
+      "promotion_recommendation": "HOLD_UNKNOWN_REVIEW"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "file_size_bytes": 4549,
+      "modified_timestamp": "2026-07-04T12:26:12.698588+00:00",
+      "row_count": 24,
+      "column_count": 31,
+      "sha256": "c39281d262533d4f194d497c1b60dff3a3150f01da0c3f34f4e95f01d151b6f5",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "file_size_bytes": 3744,
+      "modified_timestamp": "2026-07-04T12:25:55.164820+00:00",
+      "row_count": 24,
+      "column_count": 25,
+      "sha256": "c3319a9ca07b25d07af8bd201a2cdde78f4f31744894b692b01b9ad9e194ccce",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "file_size_bytes": 3893,
+      "modified_timestamp": "2026-07-04T12:26:04.454876+00:00",
+      "row_count": 24,
+      "column_count": 24,
+      "sha256": "a4efbaed4a90592cedd99e3f0549aea945fe8311caeeb80ee96b215ee97565f5",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_default.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_default.csv",
+      "file_size_bytes": 3209,
+      "modified_timestamp": "2026-07-04T12:24:29.166844+00:00",
+      "row_count": 24,
+      "column_count": 17,
+      "sha256": "7098592bc490b761aa82118973f7b18a1a775033db37019595a090f9aeaa4952",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_fielding_stats.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_fielding_stats.csv",
+      "file_size_bytes": 1319,
+      "modified_timestamp": "2026-07-04T12:25:35.766927+00:00",
+      "row_count": 24,
+      "column_count": 9,
+      "sha256": "ff0a36b682740af320a08bf52cb9428091602fbc7c39d5e25532383fe33a3058",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_financials.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_financials.csv",
+      "file_size_bytes": 3152,
+      "modified_timestamp": "2026-07-04T12:25:10.345242+00:00",
+      "row_count": 24,
+      "column_count": 18,
+      "sha256": "67d9f0299b764b15c59ff5bb9aea9cf3d1575b3a2d08f8e119c5cc68540c33c7",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_history.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_history.csv",
+      "file_size_bytes": 3115,
+      "modified_timestamp": "2026-07-04T12:24:54.295576+00:00",
+      "row_count": 24,
+      "column_count": 16,
+      "sha256": "5a758cb4007cc531b9e27098c5c057550aac50740395b6e097b6ec41dc8e8c4c",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_park_info.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_park_info.csv",
+      "file_size_bytes": 2074,
+      "modified_timestamp": "2026-07-04T12:25:45.949339+00:00",
+      "row_count": 24,
+      "column_count": 11,
+      "sha256": "2d087439f3d03bd742d3d35503e3735397c2b0b5fcf719094f9f2843f3354294",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "file_size_bytes": 4300,
+      "modified_timestamp": "2026-07-04T12:26:21.549952+00:00",
+      "row_count": 24,
+      "column_count": 30,
+      "sha256": "89856e4b559dd3f30527310d14d1768c9620b2e1dddbaf40b0c872f6a5576166",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "file_size_bytes": 4644,
+      "modified_timestamp": "2026-07-04T12:26:30.267510+00:00",
+      "row_count": 24,
+      "column_count": 47,
+      "sha256": "700c6ee747764da0a66d61d9f4af971317cf0d62075ae50b68fdbc911cad70df",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_stats.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_pitching_stats.csv",
+      "file_size_bytes": 1656,
+      "modified_timestamp": "2026-07-04T12:25:26.837648+00:00",
+      "row_count": 24,
+      "column_count": 13,
+      "sha256": "2e4de995fad7e0e922713eb6571e26708b3adf2df07aa5943704f1e7255c68bb",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_staff.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_staff.csv",
+      "file_size_bytes": 3698,
+      "modified_timestamp": "2026-07-04T12:25:01.878974+00:00",
+      "row_count": 24,
+      "column_count": 12,
+      "sha256": "9f93020f97ec919cc6b41ca6da8ef8b40bd20b1d8f1997b514978a1c11bd9cd4",
+      "reconciliation_status": "OVERLAPPING_VIEW",
+      "promotion_recommendation": "HOLD_DUPLICATE_OR_OVERLAP"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "file_size_bytes": 2855,
+      "modified_timestamp": "2026-07-04T12:26:39.134830+00:00",
+      "row_count": 24,
+      "column_count": 25,
+      "sha256": "201ea53ffe25485d9291a94e57fdf2bd71382bd393b41b2d93008a0bc19b1a74",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "file_size_bytes": 5062,
+      "modified_timestamp": "2026-07-04T12:26:47.145033+00:00",
+      "row_count": 24,
+      "column_count": 28,
+      "sha256": "2f0c0a3767c023c7091f561c07b6642ab6f41ca378903cfe5cc98eee45e42906",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    },
+    {
+      "file_name": "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "full_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "file_size_bytes": 6986,
+      "modified_timestamp": "2026-07-04T12:26:55.325179+00:00",
+      "row_count": 24,
+      "column_count": 32,
+      "sha256": "a1b5e6eca2f8e2834b6ccf636d10be37ab456f0c6ac89af6340dee73ad287423",
+      "reconciliation_status": "EXACT_FILENAME_AND_SCHEMA",
+      "promotion_recommendation": "PROMOTE_REPLACE_EXISTING"
+    }
+  ]
+}

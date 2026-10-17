@@ -1,0 +1,85 @@
+{
+  "expected": 6,
+  "found": 6,
+  "can_resolve_staff_ids": false,
+  "files": [
+    {
+      "file_name": "ABC_Central.csv",
+      "relative_path": "Front_Office_and_Coaches_by_Div\\ABC_Central.csv",
+      "division_conference": "ABC Central",
+      "row_count": 40,
+      "column_count": 17,
+      "staff_coach_columns": "Pos|Job|Name|Age|EXP|Rep|Type|POS|NEG|Style|Hit|Pit|Rel",
+      "team_linkage_columns": "TM|LG|Lev",
+      "resolves_staff_id_name_limitation": "no; no stable staff ID",
+      "overlap_with_promoted_sortable_staff": "names/jobs/teams overlap; legacy adds age, experience, reputation and style",
+      "recommended_use": "crosscheck and legacy staff context; hold current use pending fresh capture",
+      "warnings": "The six division files together exactly reconstruct the 240-row master; stale and ID-less."
+    },
+    {
+      "file_name": "ABC_East.csv",
+      "relative_path": "Front_Office_and_Coaches_by_Div\\ABC_East.csv",
+      "division_conference": "ABC East",
+      "row_count": 40,
+      "column_count": 17,
+      "staff_coach_columns": "Pos|Job|Name|Age|EXP|Rep|Type|POS|NEG|Style|Hit|Pit|Rel",
+      "team_linkage_columns": "TM|LG|Lev",
+      "resolves_staff_id_name_limitation": "no; no stable staff ID",
+      "overlap_with_promoted_sortable_staff": "names/jobs/teams overlap; legacy adds age, experience, reputation and style",
+      "recommended_use": "crosscheck and legacy staff context; hold current use pending fresh capture",
+      "warnings": "The six division files together exactly reconstruct the 240-row master; stale and ID-less."
+    },
+    {
+      "file_name": "ABC_West.csv",
+      "relative_path": "Front_Office_and_Coaches_by_Div\\ABC_West.csv",
+      "division_conference": "ABC West",
+      "row_count": 40,
+      "column_count": 17,
+      "staff_coach_columns": "Pos|Job|Name|Age|EXP|Rep|Type|POS|NEG|Style|Hit|Pit|Rel",
+      "team_linkage_columns": "TM|LG|Lev",
+      "resolves_staff_id_name_limitation": "no; no stable staff ID",
+      "overlap_with_promoted_sortable_staff": "names/jobs/teams overlap; legacy adds age, experience, reputation and style",
+      "recommended_use": "crosscheck and legacy staff context; hold current use pending fresh capture",
+      "warnings": "The six division files together exactly reconstruct the 240-row master; stale and ID-less."
+    },
+    {
+      "file_name": "NBC_Central.csv",
+      "relative_path": "Front_Office_and_Coaches_by_Div\\NBC_Central.csv",
+      "division_conference": "NBC Central",
+      "row_count": 40,
+      "column_count": 17,
+      "staff_coach_columns": "Pos|Job|Name|Age|EXP|Rep|Type|POS|NEG|Style|Hit|Pit|Rel",
+      "team_linkage_columns": "TM|LG|Lev",
+      "resolves_staff_id_name_limitation": "no; no stable staff ID",
+      "overlap_with_promoted_sortable_staff": "names/jobs/teams overlap; legacy adds age, experience, reputation and style",
+      "recommended_use": "crosscheck and legacy staff context; hold current use pending fresh capture",
+      "warnings": "The six division files together exactly reconstruct the 240-row master; stale and ID-less."
+    },
+    {
+      "file_name": "NBC_East.csv",
+      "relative_path": "Front_Office_and_Coaches_by_Div\\NBC_East.csv",
+      "division_conference": "NBC East",
+      "row_count": 40,
+      "column_count": 17,
+      "staff_coach_columns": "Pos|Job|Name|Age|EXP|Rep|Type|POS|NEG|Style|Hit|Pit|Rel",
+      "team_linkage_columns": "TM|LG|Lev",
+      "resolves_staff_id_name_limitation": "no; no stable staff ID",
+      "overlap_with_promoted_sortable_staff": "names/jobs/teams overlap; legacy adds age, experience, reputation and style",
+      "recommended_use": "crosscheck and legacy staff context; hold current use pending fresh capture",
+      "warnings": "The six division files together exactly reconstruct the 240-row master; stale and ID-less."
+    },
+    {
+      "file_name": "NBC_West.csv",
+      "relative_path": "Front_Office_and_Coaches_by_Div\\NBC_West.csv",
+      "division_conference": "NBC West",
+      "row_count": 40,
+      "column_count": 17,
+      "staff_coach_columns": "Pos|Job|Name|Age|EXP|Rep|Type|POS|NEG|Style|Hit|Pit|Rel",
+      "team_linkage_columns": "TM|LG|Lev",
+      "resolves_staff_id_name_limitation": "no; no stable staff ID",
+      "overlap_with_promoted_sortable_staff": "names/jobs/teams overlap; legacy adds age, experience, reputation and style",
+      "recommended_use": "crosscheck and legacy staff context; hold current use pending fresh capture",
+      "warnings": "The six division files together exactly reconstruct the 240-row master; stale and ID-less."
+    }
+  ]
+}

@@ -1,0 +1,914 @@
+Pitcher Arsenal Prep - ALL TEAMS
+Generated on: 2025-12-14 22:47:25
+
+
+TEAM ATL - Active Pitchers
+SP:
+Bill Ybanez (R) STU 60 MOV 55 CON 55 STM 50 HLD 70 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 50, Fastball 45
+
+Ivan Juarez (R) STU 55 MOV 55 CON 45 STM 75 HLD 55 VELO 92-94 VT 92-94 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Slider 65, Sinker 50
+
+Tony Resendiz (L) STU 55 MOV 40 CON 45 STM 60 HLD 70 VELO 85-87 VT 85-87 | Pitches 3 | Best Changeup 70
+Arsenal: Changeup 70, Curveball 65, Fastball 40
+
+Melvin Zamora (L) STU 50 MOV 50 CON 40 STM 60 HLD 60 VELO 85-87 VT 85-87 | Pitches 3 | Best Curveball 65
+Arsenal: Curveball 65, Changeup 65, Fastball 40
+
+Mike Hawkins (R) STU 45 MOV 50 CON 60 STM 40 HLD 45 VELO 92-94 VT 92-94 | Pitches 4 | Best Changeup 50
+Arsenal: Changeup 50, Sinker 50, Slider 50, Curveball 25
+
+RP:
+Ricky Torres (R) STU 65 MOV 40 CON 50 STM 55 HLD 40 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Knuckle Curve 55, Slider 50, Fastball 45
+
+Mason Chaisson (R) STU 55 MOV 45 CON 45 STM 25 HLD 60 VELO 92-94 VT 92-94 | Pitches 3 | Best Splitter 75
+Arsenal: Splitter 75, Cutter 60, Slider 60
+
+Steve Farber (R) STU 50 MOV 45 CON 60 STM 40 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Splitter 65
+Arsenal: Splitter 65, Changeup 60, Cutter 25, Forkball 25
+
+Andy Brink (R) STU 50 MOV 45 CON 40 STM 40 HLD 50 VELO 92-94 VT 92-94 | Pitches 4 | Best Curveball 55
+Arsenal: Curveball 55, Slider 55, Sinker 50, Changeup 25
+
+Mike McQuaid (R) STU 40 MOV 65 CON 75 STM 25 HLD 25 VELO 83-85 VT 83-85 | Pitches 3 | Best Slider 45
+Arsenal: Slider 45, Changeup 40, Fastball 35
+
+CL:
+Sergio Duran (R) STU 45 MOV 65 CON 55 STM 80 HLD 35 VELO 85-87 VT 85-87 | Pitches 2 | Best Sinker 50
+Arsenal: Sinker 50, Slider 45
+
+
+TEAM BOS - Active Pitchers
+SP:
+Victor Martinez (R) STU 55 MOV 50 CON 50 STM 50 HLD 35 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 70
+Arsenal: Changeup 70, Knuckle Curve 65, Fastball 45
+
+Jalen Ruffin (R) STU 55 MOV 45 CON 50 STM 40 HLD 55 VELO 92-94 VT 92-94 | Pitches 6 | Best Curveball 70
+Arsenal: Curveball 70, Knuckle Curve 70, Forkball 60, Fastball 55, Changeup 30, Splitter 25
+
+Miguel Velasquez (R) STU 50 MOV 50 CON 55 STM 55 HLD 55 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Sinker 55, Slider 35
+
+Jorge Galvez (R) STU 45 MOV 50 CON 60 STM 55 HLD 20 VELO 87-89 VT 87-89 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 55, Slider 45, Fastball 40
+
+Mike Randolph (L) STU 45 MOV 45 CON 60 STM 70 HLD 75 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 50, Slider 40, Fastball 35
+
+RP:
+Pedro Martinez (R) STU 80 MOV 35 CON 40 STM 60 HLD 70 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Slider 50, Fastball 45
+
+Freddy Zuniga (R) STU 80 MOV 45 CON 40 STM 55 HLD 30 VELO 84-86 VT 84-86 | Pitches 4 | Best Slider 50
+Arsenal: Slider 50, Sinker 45, Changeup 40, Fastball 40
+
+Adam Smith (L) STU 55 MOV 50 CON 50 STM 35 HLD 85 VELO 88-90 VT 88-90 | Pitches 3 | Best Slider 50
+Arsenal: Slider 50, Fastball 45, Changeup 30
+
+Kenny Robinson (R) STU 45 MOV 45 CON 50 STM 70 HLD 35 VELO 90-92 VT 90-92 | Pitches 6 | Best Curveball 50
+Arsenal: Curveball 50, Splitter 50, Fastball 45, Forkball 45, Slider 45, Changeup 20
+
+Celio Valejo (R) STU 45 MOV 45 CON 50 STM 70 HLD 35 VELO 84-86 VT 84-86 | Pitches 3 | Best Curveball 60
+Arsenal: Curveball 60, Splitter 60, Fastball 35
+
+CL:
+Justin Bowen (R) STU 45 MOV 50 CON 55 STM 50 HLD 35 VELO 90-92 VT 90-92 | Pitches 2 | Best Changeup 55
+Arsenal: Changeup 55, Cutter 45
+
+
+TEAM CHA - Active Pitchers
+SP:
+Jose Hernandez (R) STU 65 MOV 55 CON 45 STM 55 HLD 35 VELO 94-96 VT 94-96 | Pitches 4 | Best Slider 80
+Arsenal: Slider 80, Fastball 70, Sinker 70, Changeup 40
+
+Dabir Aly (L) STU 60 MOV 55 CON 45 STM 60 HLD 80 VELO 88-90 VT 88-90 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Splitter 80, Fastball 45
+
+Tony Barnes (R) STU 50 MOV 50 CON 50 STM 55 HLD 50 VELO 90-92 VT 90-92 | Pitches 5 | Best Splitter 70
+Arsenal: Splitter 70, Curveball 60, Cutter 55, Slider 50, Changeup 40
+
+Roberto Umana (R) STU 50 MOV 50 CON 45 STM 55 HLD 30 VELO 90-92 VT 90-92 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Cutter 50, Fastball 50, Forkball 40
+
+Manny Gonzalez (R) STU 40 MOV 55 CON 45 STM 55 HLD 50 VELO 88-90 VT 89-91 | Pitches 3 | Best Changeup 50
+Arsenal: Changeup 50, Slider 45, Fastball 40
+
+RP:
+Jordan Williams (R) STU 70 MOV 50 CON 45 STM 70 HLD 50 VELO 90-92 VT 90-92 | Pitches 3 | Best Sinker 65
+Arsenal: Sinker 65, Changeup 50, Fastball 50
+
+Cameron Jones (L) STU 50 MOV 45 CON 55 STM 60 HLD 50 VELO 89-91 VT 89-91 | Pitches 3 | Best Forkball 60
+Arsenal: Forkball 60, Slider 50, Fastball 45
+
+Josh Maras (R) STU 45 MOV 55 CON 65 STM 25 HLD 35 VELO 91-93 VT 91-93 | Pitches 2 | Best Slider 50
+Arsenal: Slider 50, Fastball 45
+
+Chris Donovan (R) STU 45 MOV 45 CON 45 STM 65 HLD 55 VELO 83-85 VT 83-85 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Splitter 55, Forkball 50, Cutter 45
+
+Juan Lomeli (R) STU 40 MOV 45 CON 65 STM 45 HLD 20 VELO 85-87 VT 85-87 | Pitches 2 | Best Changeup 65
+Arsenal: Changeup 65, Fastball 35
+
+CL:
+Edwin Martinez (R) STU 55 MOV 50 CON 55 STM 45 HLD 40 VELO 86-88 VT 86-88 | Pitches 3 | Best Curveball 70
+Arsenal: Curveball 70, Sinker 55, Changeup 30
+
+
+TEAM CHI - Active Pitchers
+SP:
+Heriberto Jimenez (L) STU 70 MOV 50 CON 50 STM 75 HLD 70 VELO 90-92 VT 90-92 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 55, Fastball 50
+
+Edgar Gonzalez (L) STU 70 MOV 50 CON 35 STM 75 HLD 50 VELO 83-85 VT 83-85 | Pitches 3 | Best Changeup 85
+Arsenal: Changeup 85, Curveball 75, Fastball 40
+
+Oscar Roa (R) STU 45 MOV 55 CON 50 STM 70 HLD 55 VELO 90-92 VT 90-92 | Pitches 3 | Best Sinker 55
+Arsenal: Sinker 55, Curveball 50, Changeup 35
+
+Manny de Jesus (R) STU 45 MOV 50 CON 50 STM 70 HLD 55 VELO 87-89 VT 87-89 | Pitches 5 | Best Forkball 55
+Arsenal: Forkball 55, Cutter 50, Changeup 45, Fastball 45, Sinker 40
+
+John Jury (R) STU 40 MOV 45 CON 60 STM 70 HLD 40 VELO 88-90 VT 88-90 | Pitches 4 | Best Curveball 50
+Arsenal: Curveball 50, Changeup 50, Fastball 40, Slider 40
+
+RP:
+Willie Leyba (L) STU 55 MOV 50 CON 40 STM 35 HLD 80 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Cutter 50, Slider 50
+
+Tony Suarez (R) STU 50 MOV 50 CON 45 STM 65 HLD 45 VELO 92-94 VT 92-94 | Pitches 2 | Best Circle Change 55
+Arsenal: Circle Change 55, Fastball 55
+
+Tony Espinal (R) STU 45 MOV 55 CON 50 STM 45 HLD 35 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 50, Cutter 50, Slider 45
+
+Andrew Flugence (R) STU 45 MOV 50 CON 50 STM 55 HLD 55 VELO 92-94 VT 92-94 | Pitches 2 | Best Sinker 50
+Arsenal: Sinker 50, Slider 50
+
+Gia-Long Mac (R) STU 40 MOV 60 CON 50 STM 50 HLD 50 VELO 89-91 VT 89-91 | Pitches 4 | Best Sinker 45
+Arsenal: Sinker 45, Changeup 40, Splitter 40, Curveball 20
+
+CL:
+Matt Hyman (R) STU 50 MOV 50 CON 55 STM 70 HLD 60 VELO 84-86 VT 84-86 | Pitches 3 | Best Sinker 55
+Arsenal: Sinker 55, Fastball 40, Splitter 20
+
+
+TEAM CIN - Active Pitchers
+SP:
+Alex Perez (L) STU 55 MOV 50 CON 45 STM 55 HLD 75 VELO 88-90 VT 88-90 | Pitches 6 | Best Changeup 70
+Arsenal: Changeup 70, Circle Change 65, Curveball 60, Forkball 55, Cutter 50, Slider 50
+
+Chris Collette (R) STU 50 MOV 55 CON 45 STM 40 HLD 65 VELO 89-91 VT 89-91 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Curveball 65, Fastball 45
+
+Darius Jones (R) STU 50 MOV 60 CON 45 STM 40 HLD 65 VELO 92-94 VT 92-94 | Pitches 3 | Best Slider 70
+Arsenal: Slider 70, Sinker 65, Changeup 35
+
+Ricardo Hernandez (R) STU 45 MOV 50 CON 55 STM 70 HLD 65 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 50, Sinker 50
+
+Rick Satchell (R) STU 45 MOV 60 CON 55 STM 55 HLD 35 VELO 92-94 VT 92-94 | Pitches 3 | Best Cutter 50
+Arsenal: Cutter 50, Slider 50, Splitter 45
+
+RP:
+Danny Pena (L) STU 60 MOV 55 CON 45 STM 75 HLD 70 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Splitter 70, Fastball 40
+
+Isaiah Simmons (R) STU 50 MOV 45 CON 55 STM 75 HLD 50 VELO 87-89 VT 87-89 | Pitches 4 | Best Splitter 65
+Arsenal: Splitter 65, Changeup 60, Curveball 55, Sinker 50
+
+Kaden Seay (R) STU 50 MOV 50 CON 50 STM 70 HLD 60 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Cutter 50, Fastball 40, Forkball 25
+
+Ryan Hines (R) STU 45 MOV 55 CON 60 STM 80 HLD 35 VELO 87-89 VT 87-89 | Pitches 3 | Best Sinker 50
+Arsenal: Sinker 50, Changeup 45, Slider 45
+
+Antonio Scott (R) STU 45 MOV 55 CON 55 STM 25 HLD 55 VELO 91-93 VT 91-93 | Pitches 2 | Best Changeup 50
+Arsenal: Changeup 50, Fastball 45
+
+CL:
+Gil Medina (R) STU 85 MOV 45 CON 40 STM 55 HLD 35 VELO 88-90 VT 88-90 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Changeup 75, Fastball 45
+
+
+TEAM DAL - Active Pitchers
+SP:
+Jonathan Funches (L) STU 60 MOV 55 CON 35 STM 60 HLD 65 VELO 88-90 VT 88-90 | Pitches 6 | Best Splitter 80
+Arsenal: Splitter 80, Curveball 65, Knuckle Curve 65, Sinker 50, Slider 50, Changeup 40
+
+Anton Garay (L) STU 55 MOV 45 CON 50 STM 55 HLD 80 VELO 85-87 VT 85-87 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Curveball 60, Fastball 40
+
+Warren Holster (R) STU 50 MOV 45 CON 60 STM 60 HLD 60 VELO 91-93 VT 91-93 | Pitches 6 | Best Curveball 55
+Arsenal: Curveball 55, Forkball 55, Slider 55, Splitter 55, Changeup 50, Sinker 50
+
+Mark Marmon (R) STU 50 MOV 50 CON 50 STM 75 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Sinker 50, Slider 45
+
+Gabriel Zayas (R) STU 50 MOV 55 CON 50 STM 60 HLD 55 VELO 85-87 VT 86-88 | Pitches 5 | Best Changeup 50
+Arsenal: Changeup 50, Cutter 50, Sinker 50, Slider 50, Fastball 40
+
+RP:
+Joe Guy (L) STU 50 MOV 45 CON 45 STM 60 HLD 70 VELO 83-85 VT 84-86 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 55, Cutter 50
+
+Jonathan Guzman (R) STU 50 MOV 50 CON 45 STM 45 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Knuckleball 65
+Arsenal: Knuckleball 65, Changeup 60, Slider 45
+
+Vinny Gonzalez (R) STU 45 MOV 50 CON 50 STM 55 HLD 40 VELO 87-89 VT 87-89 | Pitches 4 | Best Changeup 55
+Arsenal: Changeup 55, Cutter 55, Fastball 40, Splitter 25
+
+Ryan Millich (R) STU 40 MOV 70 CON 45 STM 65 HLD 45 VELO 91-93 VT 91-93 | Pitches 2 | Best Sinker 45
+Arsenal: Sinker 45, Slider 45
+
+Alex Reyes (R) STU 25 MOV 80 CON 50 STM 35 HLD 35 VELO 90-92 VT 90-92 | Pitches 2 | Best Slider 35
+Arsenal: Slider 35, Sinker 30
+
+CL:
+Lorenzo Nava (R) STU 50 MOV 50 CON 50 STM 55 HLD 40 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 55, Fastball 40, Splitter 20
+
+
+TEAM DEN - Active Pitchers
+SP:
+Damian Serano (R) STU 50 MOV 45 CON 45 STM 60 HLD 55 VELO 89-91 VT 89-91 | Pitches 3 | Best Curveball 65
+Arsenal: Curveball 65, Splitter 65, Fastball 45
+
+Dave DiAngelo (R) STU 45 MOV 45 CON 50 STM 60 HLD 55 VELO 88-90 VT 88-90 | Pitches 3 | Best Changeup 55
+Arsenal: Changeup 55, Slider 50, Fastball 45
+
+DeMario Rodriguez (R) STU 40 MOV 45 CON 65 STM 55 HLD 45 VELO 89-91 VT 89-91 | Pitches 5 | Best Curveball 45
+Arsenal: Curveball 45, Splitter 45, Fastball 40, Changeup 35, Forkball 35
+
+Al McHaney (L) STU 40 MOV 45 CON 50 STM 50 HLD 60 VELO 83-85 VT 83-85 | Pitches 6 | Best Splitter 55
+Arsenal: Splitter 55, Screwball 50, Changeup 45, Sinker 45, Curveball 20, Knuckle Curve 20
+
+RP:
+Michael Castillo (R) STU 70 MOV 75 CON 25 STM 40 HLD 35 VELO 97-99 VT 97-99 | Pitches 2 | Best Curveball 85
+Arsenal: Curveball 85, Cutter 80
+
+John Wolfe (R) STU 55 MOV 40 CON 50 STM 55 HLD 65 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 65
+Arsenal: Curveball 65, Changeup 55, Fastball 50
+
+Ricky Velez (R) STU 50 MOV 45 CON 50 STM 65 HLD 60 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 55, Fastball 40, Circle Change 20
+
+Arturo Andres (L) STU 50 MOV 50 CON 45 STM 45 HLD 55 VELO 84-86 VT 84-86 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Curveball 55, Cutter 50, Fastball 35
+
+Manny Garcia (R) STU 45 MOV 40 CON 60 STM 60 HLD 35 VELO 84-86 VT 84-86 | Pitches 5 | Best Curveball 55
+Arsenal: Curveball 55, Splitter 55, Changeup 50, Slider 45, Fastball 35
+
+Tony Ramos (R) STU 45 MOV 40 CON 50 STM 60 HLD 45 VELO 84-86 VT 84-86 | Pitches 4 | Best Changeup 55
+Arsenal: Changeup 55, Knuckle Curve 55, Fastball 35, Slider 20
+
+CL:
+Pat Jellison (R) STU 50 MOV 50 CON 50 STM 40 HLD 50 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Curveball 60, Fastball 25, Splitter 25
+
+
+TEAM DET - Active Pitchers
+SP:
+Martin Martinez (R) STU 55 MOV 55 CON 45 STM 35 HLD 25 VELO 91-93 VT 91-93 | Pitches 5 | Best Changeup 70
+Arsenal: Changeup 70, Curveball 65, Forkball 55, Fastball 50, Slider 50
+
+Brett Helvie (R) STU 50 MOV 45 CON 55 STM 55 HLD 40 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 65
+Arsenal: Curveball 65, Changeup 60, Fastball 50
+
+Mike Miranda (L) STU 50 MOV 50 CON 50 STM 75 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Forkball 55, Slider 45, Fastball 40
+
+Mike Dominguez (R) STU 45 MOV 45 CON 50 STM 55 HLD 40 VELO 89-91 VT 89-91 | Pitches 4 | Best Curveball 65
+Arsenal: Curveball 65, Changeup 55, Sinker 50, Forkball 45
+
+Jon Moreno (L) STU 35 MOV 55 CON 65 STM 50 HLD 80 VELO 86-88 VT 86-88 | Pitches 3 | Best Circle Change 50
+Arsenal: Circle Change 50, Sinker 50, Slider 35
+
+RP:
+Jon Solis (R) STU 75 MOV 45 CON 45 STM 80 HLD 70 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Curveball 75, Cutter 55
+
+Tony Garcia (R) STU 65 MOV 45 CON 45 STM 35 HLD 55 VELO 91-93 VT 92-94 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 50, Fastball 50
+
+Jose Flores (R) STU 45 MOV 45 CON 70 STM 55 HLD 20 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Sinker 50, Slider 45, Curveball 20
+
+Marcos Real (R) STU 40 MOV 60 CON 70 STM 30 HLD 30 VELO 88-90 VT 88-90 | Pitches 2 | Best Sinker 45
+Arsenal: Sinker 45, Slider 45
+
+Bill Hackman (R) STU 40 MOV 50 CON 65 STM 25 HLD 50 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 45
+Arsenal: Changeup 45, Slider 45, Fastball 35
+
+CL:
+Jordan Allison (R) STU 55 MOV 60 CON 50 STM 60 HLD 65 VELO 94-96 VT 94-96 | Pitches 3 | Best Sinker 70
+Arsenal: Sinker 70, Slider 70, Curveball 25
+
+
+TEAM HOU - Active Pitchers
+SP:
+Dylan Wilson (R) STU 75 MOV 50 CON 30 STM 65 HLD 65 VELO 87-89 VT 87-89 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Changeup 80, Cutter 60
+
+Scott Szell (R) STU 50 MOV 55 CON 65 STM 50 HLD 25 VELO 89-91 VT 89-91 | Pitches 4 | Best Changeup 75
+Arsenal: Changeup 75, Sinker 55, Slider 50, Fastball 45
+
+Eskil Pedersen (R) STU 50 MOV 55 CON 45 STM 65 HLD 65 VELO 86-88 VT 86-88 | Pitches 5 | Best Changeup 70
+Arsenal: Changeup 70, Splitter 70, Forkball 50, Slider 50, Sinker 45
+
+Nick Case (L) STU 45 MOV 45 CON 50 STM 60 HLD 60 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 55
+Arsenal: Changeup 55, Cutter 50, Forkball 50, Fastball 35
+
+Nate Higgins (L) STU 45 MOV 55 CON 50 STM 60 HLD 55 VELO 89-91 VT 89-91 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Cutter 55, Fastball 45
+
+RP:
+Ernesto Marroquin (R) STU 55 MOV 45 CON 45 STM 55 HLD 80 VELO 86-88 VT 87-89 | Pitches 6 | Best Curveball 60
+Arsenal: Curveball 60, Changeup 60, Forkball 50, Splitter 50, Fastball 40, Circle Change 35
+
+Agustin Tapia (R) STU 55 MOV 50 CON 45 STM 55 HLD 30 VELO 87-89 VT 87-89 | Pitches 3 | Best Slider 50
+Arsenal: Slider 50, Fastball 45, Changeup 35
+
+Alvaro Marrero (R) STU 50 MOV 50 CON 50 STM 35 HLD 20 VELO 95-97 VT 95-97 | Pitches 3 | Best Fastball 65
+Arsenal: Fastball 65, Cutter 45, Splitter 25
+
+Miguel Salgado (R) STU 50 MOV 45 CON 45 STM 60 HLD 55 VELO 91-93 VT 91-93 | Pitches 4 | Best Circle Change 60
+Arsenal: Circle Change 60, Cutter 60, Curveball 50, Slider 50
+
+Miguel Guerrero (L) STU 40 MOV 45 CON 55 STM 65 HLD 60 VELO 87-89 VT 87-89 | Pitches 2 | Best Changeup 50
+Arsenal: Changeup 50, Fastball 40
+
+CL:
+Tony Chavarria (R) STU 45 MOV 50 CON 70 STM 25 HLD 35 VELO 91-93 VT 91-93 | Pitches 2 | Best Curveball 55
+Arsenal: Curveball 55, Fastball 45
+
+
+TEAM LV - Active Pitchers
+SP:
+Bobby Rodriguez (R) STU 70 MOV 60 CON 55 STM 70 HLD 25 VELO 88-90 VT 88-90 | Pitches 4 | Best Circle Change 80
+Arsenal: Circle Change 80, Knuckle Curve 75, Sinker 55, Fastball 45
+
+Oscar Herrera (R) STU 60 MOV 75 CON 35 STM 70 HLD 70 VELO 84-86 VT 84-86 | Pitches 3 | Best Knuckleball 85
+Arsenal: Knuckleball 85, Sinker 50, Changeup 30
+
+Rogelio Cole (R) STU 50 MOV 60 CON 40 STM 55 HLD 70 VELO 93-95 VT 93-95 | Pitches 3 | Best Splitter 75
+Arsenal: Splitter 75, Slider 70, Cutter 40
+
+Fernando Bennett (R) STU 45 MOV 50 CON 50 STM 55 HLD 50 VELO 91-93 VT 91-93 | Pitches 4 | Best Sinker 50
+Arsenal: Sinker 50, Slider 50, Forkball 35, Changeup 25
+
+Jaylen Taylor (R) STU 45 MOV 60 CON 45 STM 55 HLD 70 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 55
+Arsenal: Curveball 55, Changeup 50, Fastball 45
+
+RP:
+Miguel Fernandez (R) STU 55 MOV 50 CON 35 STM 55 HLD 60 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 70
+Arsenal: Curveball 70, Changeup 60, Fastball 50
+
+Havard Jensen (R) STU 55 MOV 50 CON 35 STM 50 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Curveball 65
+Arsenal: Curveball 65, Circle Change 65, Cutter 50, Sinker 45
+
+Kyle Marks (R) STU 45 MOV 50 CON 70 STM 70 HLD 25 VELO 88-90 VT 88-90 | Pitches 2 | Best Slider 45
+Arsenal: Slider 45, Fastball 40
+
+Fred O'Connell (R) STU 45 MOV 55 CON 50 STM 35 HLD 60 VELO 91-93 VT 91-93 | Pitches 4 | Best Sinker 55
+Arsenal: Sinker 55, Changeup 45, Splitter 35, Forkball 25
+
+Jonathan Patterson (R) STU 35 MOV 45 CON 75 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Splitter 55
+Arsenal: Splitter 55, Slider 40, Fastball 35
+
+CL:
+Derrek Sanders (R) STU 60 MOV 45 CON 50 STM 55 HLD 55 VELO 89-91 VT 89-91 | Pitches 3 | Best Curveball 75
+Arsenal: Curveball 75, Cutter 60, Changeup 30
+
+
+TEAM LA - Active Pitchers
+SP:
+Jerry Romero (R) STU 80 MOV 50 CON 30 STM 55 HLD 35 VELO 85-87 VT 85-87 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 50, Fastball 40
+
+Enrique Laxton (R) STU 50 MOV 60 CON 35 STM 45 HLD 40 VELO 90-92 VT 90-92 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Curveball 60, Forkball 55, Cutter 50
+
+Joel Valenty (R) STU 45 MOV 50 CON 45 STM 55 HLD 35 VELO 84-86 VT 84-86 | Pitches 6 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 55, Splitter 55, Cutter 50, Fastball 35, Knuckle Curve 20
+
+Benedicto Brown (R) STU 45 MOV 50 CON 40 STM 55 HLD 70 VELO 87-89 VT 87-89 | Pitches 4 | Best Splitter 70
+Arsenal: Splitter 70, Changeup 50, Slider 50, Fastball 45
+
+Alex Gonzalez (R) STU 40 MOV 55 CON 50 STM 55 HLD 30 VELO 89-91 VT 89-91 | Pitches 4 | Best Cutter 45
+Arsenal: Cutter 45, Changeup 40, Fastball 40, Slider 35
+
+RP:
+Chris Barksdale (L) STU 55 MOV 50 CON 45 STM 65 HLD 75 VELO 89-91 VT 89-91 | Pitches 3 | Best Slider 55
+Arsenal: Slider 55, Sinker 50, Changeup 45
+
+Kevin Cavanaugh (R) STU 50 MOV 45 CON 50 STM 75 HLD 65 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Splitter 60, Fastball 40
+
+Adam Jahn (R) STU 50 MOV 45 CON 50 STM 55 HLD 35 VELO 93-95 VT 93-95 | Pitches 5 | Best Forkball 55
+Arsenal: Forkball 55, Changeup 50, Sinker 50, Curveball 35, Splitter 20
+
+Tae-seon Lee (R) STU 50 MOV 40 CON 45 STM 75 HLD 65 VELO 88-90 VT 88-90 | Pitches 4 | Best Slider 50
+Arsenal: Slider 50, Fastball 45, Changeup 40, Sinker 40
+
+Steve Usher (R) STU 45 MOV 45 CON 40 STM 50 HLD 35 VELO 90-92 VT 90-92 | Pitches 4 | Best Forkball 50
+Arsenal: Forkball 50, Fastball 45, Changeup 40, Curveball 35
+
+CL:
+Tae-mok Kim (R) STU 55 MOV 50 CON 45 STM 40 HLD 70 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Cutter 45, Slider 45, Curveball 30
+
+
+TEAM MIA - Active Pitchers
+SP:
+Gil Aguilar (R) STU 75 MOV 55 CON 45 STM 50 HLD 55 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 50, Fastball 45
+
+Joe Good (R) STU 60 MOV 45 CON 45 STM 55 HLD 40 VELO 89-91 VT 89-91 | Pitches 5 | Best Changeup 65
+Arsenal: Changeup 65, Forkball 50, Slider 50, Fastball 45, Knuckle Curve 45
+
+David Victorero (L) STU 55 MOV 50 CON 40 STM 55 HLD 80 VELO 87-89 VT 87-89 | Pitches 3 | Best Curveball 75
+Arsenal: Curveball 75, Changeup 75, Fastball 45
+
+Bill Borden (R) STU 45 MOV 50 CON 60 STM 65 HLD 55 VELO 91-93 VT 91-93 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Slider 55, Fastball 50
+
+Chris Stella (R) STU 45 MOV 45 CON 60 STM 75 HLD 40 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Cutter 50, Slider 45
+
+RP:
+Luis Prieto (R) STU 70 MOV 45 CON 45 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 2 | Best Curveball 80
+Arsenal: Curveball 80, Fastball 40
+
+Luis Maya (L) STU 65 MOV 45 CON 35 STM 50 HLD 60 VELO 88-90 VT 88-90 | Pitches 3 | Best Cutter 65
+Arsenal: Cutter 65, Sinker 55, Changeup 35
+
+Vicente Gutierrez (L) STU 50 MOV 45 CON 55 STM 25 HLD 60 VELO 90-92 VT 90-92 | Pitches 3 | Best Cutter 55
+Arsenal: Cutter 55, Slider 50, Circle Change 25
+
+Ricky Velez (L) STU 45 MOV 45 CON 45 STM 60 HLD 75 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Fastball 45, Slider 45
+
+Anthony Jackson (L) STU 40 MOV 45 CON 50 STM 50 HLD 40 VELO 91-93 VT 91-93 | Pitches 2 | Best Curveball 45
+Arsenal: Curveball 45, Fastball 45
+
+CL:
+Eric Behan (L) STU 55 MOV 50 CON 55 STM 60 HLD 70 VELO 89-91 VT 89-91 | Pitches 2 | Best Changeup 65
+Arsenal: Changeup 65, Fastball 45
+
+
+TEAM MIN - Active Pitchers
+SP:
+Alexis Perez (L) STU 70 MOV 45 CON 45 STM 45 HLD 55 VELO 85-87 VT 85-87 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Changeup 80, Fastball 40
+
+David Bain (R) STU 50 MOV 50 CON 50 STM 50 HLD 35 VELO 88-90 VT 88-90 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Cutter 55, Fastball 45
+
+Tristan Davis (R) STU 50 MOV 50 CON 50 STM 80 HLD 25 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Curveball 50, Fastball 40
+
+Chris Jenkins (L) STU 45 MOV 45 CON 50 STM 50 HLD 65 VELO 83-85 VT 83-85 | Pitches 3 | Best Curveball 60
+Arsenal: Curveball 60, Splitter 60, Fastball 35
+
+Bill Mendoza (R) STU 45 MOV 50 CON 50 STM 55 HLD 35 VELO 88-90 VT 88-90 | Pitches 4 | Best Curveball 65
+Arsenal: Curveball 65, Knuckle Curve 55, Cutter 50, Changeup 45
+
+RP:
+Emilio Lopez (R) STU 80 MOV 60 CON 20 STM 75 HLD 55 VELO 85-87 VT 85-87 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Changeup 80, Fastball 40
+
+Jake Piscitelli (R) STU 55 MOV 45 CON 65 STM 55 HLD 60 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Slider 50, Fastball 45
+
+Bobby Kinney (L) STU 50 MOV 50 CON 55 STM 30 HLD 60 VELO 86-88 VT 86-88 | Pitches 3 | Best Circle Change 75
+Arsenal: Circle Change 75, Cutter 50, Fastball 40
+
+Jose Varela (R) STU 50 MOV 45 CON 55 STM 70 HLD 65 VELO 85-87 VT 85-87 | Pitches 4 | Best Curveball 65
+Arsenal: Curveball 65, Changeup 45, Fastball 40, Slider 35
+
+Steve Gordon (R) STU 45 MOV 45 CON 50 STM 55 HLD 55 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 55
+Arsenal: Changeup 55, Slider 40, Fastball 35
+
+CL:
+Arturo Garcia (R) STU 65 MOV 50 CON 45 STM 55 HLD 30 VELO 88-90 VT 88-90 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Fastball 45, Changeup 30
+
+
+TEAM NAS - Active Pitchers
+SP:
+Tyshawn Taylor (R) STU 60 MOV 50 CON 30 STM 70 HLD 40 VELO 85-87 VT 85-87 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Changeup 45, Fastball 45
+
+Aiden Watkins (L) STU 50 MOV 45 CON 55 STM 55 HLD 75 VELO 87-89 VT 88-90 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Fastball 45, Changeup 40
+
+Alex Alvarez (R) STU 50 MOV 50 CON 45 STM 55 HLD 45 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Curveball 55, Forkball 55, Fastball 35
+
+Antonio Hernandez (L) STU 45 MOV 45 CON 55 STM 55 HLD 55 VELO 88-90 VT 88-90 | Pitches 3 | Best Curveball 60
+Arsenal: Curveball 60, Cutter 50, Slider 50
+
+Edgar Montiel (R) STU 40 MOV 50 CON 40 STM 70 HLD 70 VELO 86-88 VT 87-89 | Pitches 3 | Best Curveball 55
+Arsenal: Curveball 55, Changeup 45, Fastball 40
+
+RP:
+Arthur Blin (R) STU 55 MOV 40 CON 50 STM 70 HLD 45 VELO 93-95 VT 93-95 | Pitches 4 | Best Curveball 70
+Arsenal: Curveball 70, Fastball 60, Slider 60, Changeup 50
+
+C.J. Bowman (R) STU 50 MOV 60 CON 45 STM 65 HLD 25 VELO 94-96 VT 94-96 | Pitches 2 | Best Slider 65
+Arsenal: Slider 65, Sinker 60
+
+Jacob Sutherland (R) STU 45 MOV 45 CON 65 STM 75 HLD 45 VELO 91-93 VT 91-93 | Pitches 2 | Best Slider 55
+Arsenal: Slider 55, Sinker 50
+
+Jayden Gray (R) STU 45 MOV 50 CON 55 STM 30 HLD 25 VELO 90-92 VT 90-92 | Pitches 2 | Best Changeup 60
+Arsenal: Changeup 60, Fastball 50
+
+Frank Larson (R) STU 45 MOV 55 CON 55 STM 20 HLD 35 VELO 89-91 VT 89-91 | Pitches 2 | Best Sinker 50
+Arsenal: Sinker 50, Slider 50
+
+CL:
+Joe Berger (R) STU 50 MOV 55 CON 55 STM 65 HLD 30 VELO 86-88 VT 86-88 | Pitches 2 | Best Slider 50
+Arsenal: Slider 50, Fastball 45
+
+
+TEAM NY - Active Pitchers
+SP:
+Noor Durrani (R) STU 55 MOV 50 CON 50 STM 70 HLD 45 VELO 91-93 VT 91-93 | Pitches 5 | Best Curveball 65
+Arsenal: Curveball 65, Forkball 65, Slider 60, Fastball 50, Changeup 25
+
+Tony Oubre (R) STU 50 MOV 50 CON 55 STM 70 HLD 70 VELO 87-89 VT 87-89 | Pitches 4 | Best Changeup 75
+Arsenal: Changeup 75, Slider 50, Fastball 45, Forkball 40
+
+Pablo Magana (R) STU 45 MOV 50 CON 60 STM 55 HLD 75 VELO 88-90 VT 88-90 | Pitches 4 | Best Knuckle Curve 55
+Arsenal: Knuckle Curve 55, Splitter 55, Cutter 50, Slider 45
+
+Mike Gemmill (L) STU 45 MOV 55 CON 55 STM 55 HLD 60 VELO 84-86 VT 84-86 | Pitches 4 | Best Changeup 80
+Arsenal: Changeup 80, Splitter 70, Fastball 35, Slider 30
+
+Juan Mederos (R) STU 45 MOV 50 CON 45 STM 65 HLD 35 VELO 87-89 VT 87-89 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Slider 45, Fastball 40, Sinker 40
+
+RP:
+Josh Washington (R) STU 70 MOV 50 CON 35 STM 65 HLD 60 VELO 86-88 VT 88-90 | Pitches 3 | Best Curveball 70
+Arsenal: Curveball 70, Changeup 70, Fastball 45
+
+Dusty Bradley (L) STU 55 MOV 45 CON 40 STM 75 HLD 60 VELO 93-95 VT 93-95 | Pitches 3 | Best Slider 70
+Arsenal: Slider 70, Sinker 55, Changeup 50
+
+Yukinobu Abe (L) STU 50 MOV 50 CON 30 STM 70 HLD 65 VELO 90-92 VT 90-92 | Pitches 2 | Best Changeup 70
+Arsenal: Changeup 70, Fastball 45
+
+Matt Martinson (R) STU 45 MOV 45 CON 60 STM 75 HLD 45 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 55, Fastball 40
+
+Chris Allen (R) STU 25 MOV 50 CON 55 STM 70 HLD 20 VELO 85-87 VT 85-87 | Pitches 2 | Best Sinker 30
+Arsenal: Sinker 30, Slider 30
+
+CL:
+Devon John (L) STU 65 MOV 50 CON 45 STM 75 HLD 60 VELO 85-87 VT 85-87 | Pitches 3 | Best Splitter 80
+Arsenal: Splitter 80, Slider 50, Fastball 40
+
+
+TEAM PHI - Active Pitchers
+SP:
+Hiroki Ono (L) STU 55 MOV 45 CON 60 STM 45 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Splitter 70, Curveball 65, Sinker 50
+
+Gilberto Flores (R) STU 50 MOV 55 CON 50 STM 50 HLD 35 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Curveball 65, Fastball 45
+
+Mike Stanley (R) STU 50 MOV 45 CON 50 STM 65 HLD 55 VELO 91-93 VT 91-93 | Pitches 3 | Best Cutter 55
+Arsenal: Cutter 55, Slider 55, Splitter 50
+
+Roberto Hernandez (R) STU 45 MOV 55 CON 55 STM 60 HLD 35 VELO 86-88 VT 87-89 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Sinker 50, Fastball 40
+
+Matt Adams (R) STU 45 MOV 45 CON 45 STM 75 HLD 65 VELO 89-91 VT 89-91 | Pitches 4 | Best Curveball 50
+Arsenal: Curveball 50, Changeup 50, Sinker 50, Splitter 50
+
+RP:
+Oscar Rebeles (R) STU 55 MOV 40 CON 50 STM 75 HLD 70 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 45, Fastball 40
+
+Isaac Thomas (L) STU 55 MOV 45 CON 40 STM 55 HLD 75 VELO 90-92 VT 90-92 | Pitches 4 | Best Forkball 60
+Arsenal: Forkball 60, Sinker 55, Slider 55, Changeup 35
+
+Chris Barrett (R) STU 50 MOV 45 CON 45 STM 25 HLD 40 VELO 88-90 VT 89-91 | Pitches 3 | Best Changeup 50
+Arsenal: Changeup 50, Slider 50, Fastball 45
+
+Marco Benavides (R) STU 45 MOV 45 CON 50 STM 55 HLD 30 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 50
+Arsenal: Changeup 50, Cutter 50, Forkball 50, Curveball 30
+
+Ryan Page (R) STU 40 MOV 45 CON 50 STM 40 HLD 75 VELO 88-90 VT 88-90 | Pitches 2 | Best Curveball 45
+Arsenal: Curveball 45, Sinker 45
+
+CL:
+Orlando Acosta (R) STU 45 MOV 45 CON 55 STM 65 HLD 65 VELO 88-90 VT 88-90 | Pitches 3 | Best Changeup 55
+Arsenal: Changeup 55, Slider 50, Fastball 45
+
+
+TEAM PHO - Active Pitchers
+SP:
+Stephen Grimes (R) STU 75 MOV 55 CON 45 STM 55 HLD 55 VELO 91-93 VT 91-93 | Pitches 4 | Best Cutter 80
+Arsenal: Cutter 80, Splitter 80, Changeup 75, Fastball 55
+
+Tony Zacate (R) STU 50 MOV 50 CON 55 STM 55 HLD 25 VELO 91-93 VT 91-93 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Sinker 55, Slider 55
+
+Kerry Darling (R) STU 45 MOV 45 CON 60 STM 70 HLD 40 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Sinker 50, Slider 45
+
+Nate Lucas (R) STU 45 MOV 50 CON 60 STM 70 HLD 65 VELO 94-96 VT 94-96 | Pitches 4 | Best Fastball 55
+Arsenal: Fastball 55, Curveball 50, Slider 50, Changeup 40
+
+Jose Contreras (R) STU 45 MOV 55 CON 55 STM 70 HLD 60 VELO 84-86 VT 84-86 | Pitches 3 | Best Knuckleball 70
+Arsenal: Knuckleball 70, Changeup 65, Slider 45
+
+RP:
+Jorge Nino (R) STU 70 MOV 50 CON 40 STM 65 HLD 35 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Curveball 65, Fastball 45
+
+Brian Bird (R) STU 55 MOV 55 CON 50 STM 20 HLD 30 VELO 94-96 VT 94-96 | Pitches 2 | Best Curveball 70
+Arsenal: Curveball 70, Fastball 70
+
+Ricardo Figueroa (R) STU 50 MOV 45 CON 65 STM 45 HLD 30 VELO 88-90 VT 88-90 | Pitches 3 | Best Changeup 55
+Arsenal: Changeup 55, Cutter 55, Fastball 45
+
+Leo Rodriguez (R) STU 50 MOV 45 CON 55 STM 65 HLD 50 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Slider 50, Fastball 45
+
+David Wells (L) STU 50 MOV 45 CON 55 STM 60 HLD 55 VELO 84-86 VT 84-86 | Pitches 3 | Best Curveball 60
+Arsenal: Curveball 60, Changeup 55, Fastball 35
+
+CL:
+Omar Espinoza (R) STU 70 MOV 50 CON 50 STM 55 HLD 25 VELO 86-88 VT 86-88 | Pitches 3 | Best Cutter 60
+Arsenal: Cutter 60, Slider 55, Changeup 35
+
+
+TEAM PIT - Active Pitchers
+SP:
+Jorge Cruz (R) STU 55 MOV 50 CON 55 STM 45 HLD 60 VELO 90-92 VT 90-92 | Pitches 4 | Best Cutter 55
+Arsenal: Cutter 55, Slider 55, Fastball 50, Changeup 25
+
+David Acuna (R) STU 55 MOV 45 CON 45 STM 55 HLD 65 VELO 87-89 VT 87-89 | Pitches 3 | Best Curveball 70
+Arsenal: Curveball 70, Changeup 70, Fastball 45
+
+Brook Coan (R) STU 50 MOV 50 CON 40 STM 55 HLD 60 VELO 89-91 VT 89-91 | Pitches 3 | Best Curveball 65
+Arsenal: Curveball 65, Changeup 65, Sinker 50
+
+Ivan Azocar (R) STU 45 MOV 50 CON 45 STM 60 HLD 55 VELO 86-88 VT 87-89 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 60, Cutter 50
+
+Doug Farmer (L) STU 45 MOV 50 CON 45 STM 65 HLD 70 VELO 88-90 VT 88-90 | Pitches 5 | Best Forkball 50
+Arsenal: Forkball 50, Sinker 50, Slider 50, Fastball 45, Changeup 25
+
+RP:
+Bob Newman (R) STU 55 MOV 50 CON 45 STM 35 HLD 35 VELO 90-92 VT 90-92 | Pitches 2 | Best Slider 60
+Arsenal: Slider 60, Sinker 50
+
+Omar Ramirez (R) STU 50 MOV 40 CON 55 STM 55 HLD 35 VELO 92-94 VT 92-94 | Pitches 3 | Best Slider 60
+Arsenal: Slider 60, Fastball 55, Changeup 50
+
+Ricky Bautista (R) STU 50 MOV 45 CON 45 STM 60 HLD 25 VELO 89-91 VT 89-91 | Pitches 4 | Best Splitter 60
+Arsenal: Splitter 60, Changeup 50, Fastball 45, Slider 45
+
+Danny Davalos (R) STU 50 MOV 45 CON 45 STM 65 HLD 45 VELO 86-88 VT 86-88 | Pitches 4 | Best Splitter 75
+Arsenal: Splitter 75, Curveball 60, Changeup 55, Sinker 50
+
+John Hunter (R) STU 45 MOV 50 CON 45 STM 50 HLD 60 VELO 86-88 VT 86-88 | Pitches 2 | Best Curveball 60
+Arsenal: Curveball 60, Cutter 50
+
+CL:
+Alex Dunlap (R) STU 55 MOV 50 CON 50 STM 65 HLD 45 VELO 87-89 VT 87-89 | Pitches 2 | Best Curveball 70
+Arsenal: Curveball 70, Cutter 55
+
+
+TEAM POR - Active Pitchers
+SP:
+Adam Strate (L) STU 50 MOV 50 CON 55 STM 55 HLD 80 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 75
+Arsenal: Changeup 75, Cutter 50, Slider 45, Curveball 20
+
+David Rodriguez (R) STU 50 MOV 50 CON 50 STM 45 HLD 20 VELO 89-91 VT 89-91 | Pitches 5 | Best Curveball 60
+Arsenal: Curveball 60, Forkball 60, Changeup 55, Slider 50, Fastball 45
+
+Juan White (R) STU 50 MOV 50 CON 40 STM 55 HLD 40 VELO 87-89 VT 87-89 | Pitches 3 | Best Curveball 60
+Arsenal: Curveball 60, Cutter 55, Forkball 55
+
+Dave Lamb (R) STU 45 MOV 50 CON 50 STM 55 HLD 50 VELO 84-86 VT 84-86 | Pitches 5 | Best Changeup 70
+Arsenal: Changeup 70, Splitter 65, Curveball 55, Forkball 50, Fastball 35
+
+Paul Johnson (R) STU 45 MOV 60 CON 40 STM 50 HLD 65 VELO 88-90 VT 89-91 | Pitches 3 | Best Changeup 65
+Arsenal: Changeup 65, Slider 50, Fastball 45
+
+RP:
+Fernando Borrego (R) STU 65 MOV 45 CON 45 STM 60 HLD 45 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 70
+Arsenal: Changeup 70, Sinker 55, Fastball 45
+
+Josh Jones (R) STU 55 MOV 50 CON 40 STM 65 HLD 45 VELO 87-89 VT 87-89 | Pitches 3 | Best Curveball 70
+Arsenal: Curveball 70, Changeup 60, Fastball 45
+
+Dan Carrillo (L) STU 55 MOV 50 CON 30 STM 40 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Circle Change 70
+Arsenal: Circle Change 70, Slider 45, Splitter 45, Fastball 40
+
+Nate Souza (R) STU 50 MOV 50 CON 45 STM 55 HLD 65 VELO 87-89 VT 87-89 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Sinker 50, Slider 40, Curveball 30
+
+Adrian Walrod (R) STU 40 MOV 45 CON 55 STM 55 HLD 30 VELO 89-91 VT 89-91 | Pitches 2 | Best Fastball 40
+Arsenal: Fastball 40, Slider 40
+
+CL:
+Frank Jahr (R) STU 55 MOV 50 CON 45 STM 45 HLD 60 VELO 86-88 VT 86-88 | Pitches 3 | Best Curveball 75
+Arsenal: Curveball 75, Cutter 50, Screwball 45
+
+
+TEAM SD - Active Pitchers
+SP:
+Robbie Kendall (R) STU 45 MOV 45 CON 50 STM 55 HLD 25 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 55
+Arsenal: Changeup 55, Slider 50, Fastball 45
+
+Marco Cuenca (R) STU 45 MOV 50 CON 45 STM 65 HLD 40 VELO 84-86 VT 84-86 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 55, Fastball 35, Forkball 30
+
+Kennie Murdock (R) STU 45 MOV 55 CON 45 STM 70 HLD 65 VELO 89-91 VT 89-91 | Pitches 4 | Best Changeup 50
+Arsenal: Changeup 50, Cutter 50, Splitter 50, Slider 45
+
+Barbu Nica (L) STU 45 MOV 50 CON 45 STM 50 HLD 75 VELO 80-83 VT 83-85 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 55, Forkball 50, Sinker 45
+
+Arthur Rizzo (L) STU 45 MOV 45 CON 45 STM 60 HLD 80 VELO 89-91 VT 89-91 | Pitches 4 | Best Changeup 60
+Arsenal: Changeup 60, Curveball 50, Forkball 50, Sinker 50
+
+RP:
+Alex Martinez (R) STU 70 MOV 50 CON 35 STM 40 HLD 55 VELO 89-91 VT 89-91 | Pitches 3 | Best Curveball 75
+Arsenal: Curveball 75, Changeup 75, Fastball 45
+
+Jose Segura (R) STU 50 MOV 45 CON 50 STM 70 HLD 35 VELO 86-88 VT 86-88 | Pitches 5 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 55, Splitter 50, Slider 45, Fastball 40
+
+Eric Strickland (R) STU 50 MOV 45 CON 45 STM 55 HLD 45 VELO 91-93 VT 91-93 | Pitches 2 | Best Curveball 70
+Arsenal: Curveball 70, Fastball 50
+
+Rich Curtis (R) STU 40 MOV 45 CON 55 STM 80 HLD 55 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 50
+Arsenal: Changeup 50, Curveball 45, Fastball 30
+
+Jerry Wilson (R) STU 40 MOV 50 CON 45 STM 65 HLD 55 VELO 92-94 VT 92-94 | Pitches 5 | Best Changeup 45
+Arsenal: Changeup 45, Fastball 45, Forkball 40, Slider 40, Curveball 35
+
+CL:
+Victor Hernandez (R) STU 45 MOV 50 CON 60 STM 80 HLD 45 VELO 84-86 VT 84-86 | Pitches 2 | Best Knuckle Curve 55
+Arsenal: Knuckle Curve 55, Fastball 35
+
+
+TEAM SF - Active Pitchers
+SP:
+Arturo Gonzalez (R) STU 75 MOV 50 CON 45 STM 60 HLD 75 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 85
+Arsenal: Changeup 85, Curveball 65, Fastball 45
+
+Antonio Pineda (R) STU 50 MOV 55 CON 45 STM 55 HLD 65 VELO 87-89 VT 87-89 | Pitches 3 | Best Changeup 75
+Arsenal: Changeup 75, Curveball 60, Fastball 45
+
+Erik Bunker (L) STU 50 MOV 60 CON 40 STM 60 HLD 75 VELO 88-90 VT 88-90 | Pitches 4 | Best Changeup 75
+Arsenal: Changeup 75, Forkball 55, Sinker 45, Curveball 35
+
+Ryan Harvey (R) STU 45 MOV 45 CON 55 STM 55 HLD 80 VELO 86-88 VT 86-88 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Slider 45, Fastball 40
+
+Kyle Chambers (L) STU 45 MOV 55 CON 50 STM 70 HLD 75 VELO 89-91 VT 89-91 | Pitches 4 | Best Changeup 65
+Arsenal: Changeup 65, Curveball 60, Slider 40, Sinker 30
+
+RP:
+Jon Ramirez (L) STU 65 MOV 40 CON 45 STM 60 HLD 80 VELO 92-94 VT 92-94 | Pitches 3 | Best Slider 70
+Arsenal: Slider 70, Sinker 55, Changeup 50
+
+Rafael Gonzales (R) STU 50 MOV 50 CON 55 STM 35 HLD 35 VELO 91-93 VT 91-93 | Pitches 2 | Best Changeup 65
+Arsenal: Changeup 65, Fastball 50
+
+Alberto Pacheco (L) STU 50 MOV 45 CON 55 STM 40 HLD 65 VELO 86-88 VT 86-88 | Pitches 4 | Best Changeup 55
+Arsenal: Changeup 55, Slider 45, Fastball 40, Forkball 30
+
+Jorge Ortiz (R) STU 50 MOV 55 CON 45 STM 55 HLD 65 VELO 86-88 VT 86-88 | Pitches 2 | Best Circle Change 80
+Arsenal: Circle Change 80, Sinker 50
+
+Tom Daly (L) STU 45 MOV 55 CON 55 STM 30 HLD 80 VELO 85-87 VT 85-87 | Pitches 3 | Best Curveball 55
+Arsenal: Curveball 55, Screwball 55, Fastball 35
+
+CL:
+Rogelio Hidalgo (R) STU 70 MOV 40 CON 50 STM 50 HLD 30 VELO 85-87 VT 85-87 | Pitches 4 | Best Changeup 80
+Arsenal: Changeup 80, Curveball 60, Cutter 45, Fastball 40
+
+
+TEAM SEA - Active Pitchers
+SP:
+Ricardo Sanchez (R) STU 60 MOV 55 CON 50 STM 80 HLD 60 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 85
+Arsenal: Changeup 85, Slider 45, Fastball 40
+
+Sergio Lopez (R) STU 60 MOV 55 CON 40 STM 60 HLD 20 VELO 90-92 VT 90-92 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Sinker 60, Changeup 45
+
+Tony Miller (R) STU 50 MOV 55 CON 50 STM 55 HLD 65 VELO 89-91 VT 89-91 | Pitches 3 | Best Changeup 70
+Arsenal: Changeup 70, Sinker 55, Slider 50
+
+Jahiem Bryant (R) STU 45 MOV 45 CON 55 STM 75 HLD 45 VELO 85-87 VT 85-87 | Pitches 6 | Best Curveball 55
+Arsenal: Curveball 55, Changeup 55, Splitter 50, Slider 45, Forkball 40, Sinker 35
+
+Antonio Romo (R) STU 45 MOV 45 CON 55 STM 50 HLD 50 VELO 87-89 VT 87-89 | Pitches 4 | Best Changeup 55
+Arsenal: Changeup 55, Forkball 50, Curveball 45, Fastball 40
+
+RP:
+Jose Trujillo (R) STU 50 MOV 45 CON 50 STM 35 HLD 40 VELO 86-88 VT 86-88 | Pitches 3 | Best Curveball 60
+Arsenal: Curveball 60, Changeup 55, Fastball 40
+
+Eddie Sandoval (L) STU 50 MOV 45 CON 45 STM 55 HLD 60 VELO 86-88 VT 86-88 | Pitches 4 | Best Forkball 55
+Arsenal: Forkball 55, Sinker 50, Slider 50, Changeup 25
+
+Luke Flores (L) STU 50 MOV 45 CON 20 STM 55 HLD 75 VELO 86-88 VT 86-88 | Pitches 4 | Best Curveball 65
+Arsenal: Curveball 65, Cutter 50, Changeup 40, Fastball 40
+
+Nelson Majano (R) STU 40 MOV 55 CON 55 STM 60 HLD 20 VELO 88-90 VT 88-90 | Pitches 2 | Best Slider 45
+Arsenal: Slider 45, Sinker 40
+
+Eduardo Gonzales (R) STU 40 MOV 50 CON 50 STM 55 HLD 30 VELO 89-91 VT 89-91 | Pitches 2 | Best Changeup 45
+Arsenal: Changeup 45, Fastball 40
+
+CL:
+Jesse Street (R) STU 50 MOV 50 CON 60 STM 40 HLD 45 VELO 90-92 VT 90-92 | Pitches 2 | Best Curveball 65
+Arsenal: Curveball 65, Fastball 50
+
+
+TEAM STL - Active Pitchers
+SP:
+Jose Coronado (L) STU 85 MOV 55 CON 40 STM 45 HLD 65 VELO 91-93 VT 91-93 | Pitches 3 | Best Changeup 85
+Arsenal: Changeup 85, Splitter 85, Fastball 60
+
+Bert Lopez (L) STU 55 MOV 55 CON 55 STM 60 HLD 75 VELO 88-90 VT 88-90 | Pitches 3 | Best Curveball 80
+Arsenal: Curveball 80, Changeup 75, Cutter 35
+
+Mario Flores (L) STU 45 MOV 40 CON 70 STM 55 HLD 60 VELO 84-86 VT 84-86 | Pitches 5 | Best Changeup 55
+Arsenal: Changeup 55, Cutter 50, Forkball 50, Slider 45, Curveball 30
+
+Noah Debrah (R) STU 45 MOV 55 CON 50 STM 65 HLD 20 VELO 86-88 VT 86-88 | Pitches 3 | Best Curveball 55
+Arsenal: Curveball 55, Changeup 55, Cutter 50
+
+Willie Gomez (R) STU 45 MOV 55 CON 45 STM 55 HLD 55 VELO 90-92 VT 90-92 | Pitches 5 | Best Curveball 55
+Arsenal: Curveball 55, Splitter 50, Fastball 45, Slider 40, Changeup 25
+
+RP:
+Harry Benjamin (R) STU 65 MOV 50 CON 45 STM 70 HLD 65 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Knuckle Curve 65, Fastball 40
+
+Isaiah Wilson (R) STU 50 MOV 35 CON 55 STM 50 HLD 45 VELO 92-94 VT 92-94 | Pitches 4 | Best Curveball 60
+Arsenal: Curveball 60, Splitter 55, Fastball 50, Changeup 30
+
+Dave Escobedo (L) STU 50 MOV 50 CON 45 STM 40 HLD 70 VELO 87-89 VT 88-90 | Pitches 3 | Best Knuckle Curve 65
+Arsenal: Knuckle Curve 65, Sinker 50, Changeup 25
+
+Daniel Buckley (R) STU 45 MOV 45 CON 50 STM 60 HLD 45 VELO 88-90 VT 88-90 | Pitches 4 | Best Splitter 55
+Arsenal: Splitter 55, Changeup 50, Forkball 50, Sinker 45
+
+Joe Puerta (R) STU 45 MOV 55 CON 50 STM 25 HLD 50 VELO 85-87 VT 85-87 | Pitches 3 | Best Changeup 60
+Arsenal: Changeup 60, Slider 45, Fastball 40
+
+CL:
+Andrew Williamson (R) STU 70 MOV 55 CON 55 STM 35 HLD 25 VELO 94-96 VT 94-96 | Pitches 2 | Best Cutter 80
+Arsenal: Cutter 80, Slider 80
+
+
+TEAM TB - Active Pitchers
+SP:
+Sergio Martinez (R) STU 50 MOV 55 CON 70 STM 65 HLD 60 VELO 85-87 VT 85-87 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Curveball 60, Cutter 55
+
+Luis Carrera (R) STU 50 MOV 60 CON 45 STM 55 HLD 80 VELO 85-87 VT 85-87 | Pitches 4 | Best Cutter 55
+Arsenal: Cutter 55, Slider 50, Sinker 45, Changeup 40
+
+Brian Manchester (R) STU 45 MOV 55 CON 60 STM 40 HLD 40 VELO 88-90 VT 88-90 | Pitches 5 | Best Changeup 55
+Arsenal: Changeup 55, Forkball 55, Fastball 45, Slider 45, Sinker 25
+
+Julio Gonzalez (R) STU 45 MOV 60 CON 55 STM 55 HLD 30 VELO 84-86 VT 84-86 | Pitches 3 | Best Changeup 80
+Arsenal: Changeup 80, Slider 45, Fastball 35
+
+Nick Olesen (R) STU 45 MOV 45 CON 50 STM 70 HLD 65 VELO 89-91 VT 89-91 | Pitches 5 | Best Curveball 60
+Arsenal: Curveball 60, Changeup 50, Sinker 50, Slider 45, Splitter 40
+
+RP:
+Miguel Mora (R) STU 55 MOV 35 CON 50 STM 70 HLD 70 VELO 90-92 VT 90-92 | Pitches 4 | Best Changeup 55
+Arsenal: Changeup 55, Slider 55, Fastball 50, Curveball 35
+
+Armando Juarez (R) STU 50 MOV 40 CON 50 STM 55 HLD 65 VELO 93-95 VT 93-95 | Pitches 3 | Best Curveball 55
+Arsenal: Curveball 55, Cutter 55, Changeup 50
+
+Emilio Ortega (R) STU 45 MOV 50 CON 55 STM 30 HLD 60 VELO 83-85 VT 83-85 | Pitches 6 | Best Splitter 60
+Arsenal: Splitter 60, Curveball 55, Changeup 50, Forkball 45, Slider 45, Fastball 35
+
+Jeff Mitchell (R) STU 45 MOV 45 CON 50 STM 65 HLD 50 VELO 88-90 VT 88-90 | Pitches 3 | Best Changeup 55
+Arsenal: Changeup 55, Sinker 50, Curveball 45
+
+Jonathan Ponce (L) STU 45 MOV 50 CON 50 STM 45 HLD 65 VELO 92-94 VT 92-94 | Pitches 2 | Best Sinker 50
+Arsenal: Sinker 50, Slider 50
+
+CL:
+Antonio Barbieri (L) STU 60 MOV 50 CON 35 STM 60 HLD 70 VELO 88-90 VT 88-90 | Pitches 4 | Best Changeup 70
+Arsenal: Changeup 70, Forkball 60, Sinker 40, Slider 35

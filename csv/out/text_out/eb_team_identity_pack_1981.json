@@ -1,0 +1,770 @@
+[
+  {
+    "team_id": 3,
+    "team_abbr": "ATL",
+    "identity": {
+      "team_abbr": "ATL",
+      "team_name": "team_name    Atlanta Kings\nteam_name            Kings\nName: 0, dtype: object",
+      "team_id": 3,
+      "identity": {
+        "run_creation": {
+          "team_display": "Atlanta"
+        },
+        "one_run": {
+          "overall_winpct": 0.312,
+          "one_run_g": "10",
+          "one_run_w": "4",
+          "one_run_l": "6",
+          "one_run_winpct": 0.4,
+          "one_run_diff_winpct": 0.088,
+          "one_run_share": 0.312
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "DRAG",
+          "pitch_flag": NaN,
+          "rating": "Bat DRAG"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 20,
+    "team_abbr": "BOS",
+    "identity": {
+      "team_abbr": "BOS",
+      "team_name": "team_name    Boston Patriots\nteam_name           Patriots\nName: 3, dtype: object",
+      "team_id": 20,
+      "identity": {
+        "run_creation": {
+          "team_display": "Boston"
+        },
+        "one_run": {
+          "overall_winpct": 0.531,
+          "one_run_g": "10",
+          "one_run_w": "6",
+          "one_run_l": "4",
+          "one_run_winpct": 0.6,
+          "one_run_diff_winpct": 0.069,
+          "one_run_share": 0.312
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "DRAG",
+          "pitch_flag": NaN,
+          "rating": "Bat DRAG"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 6,
+    "team_abbr": "CHA",
+    "identity": {
+      "team_abbr": "CHA",
+      "team_name": "team_name    Charlotte Colonels\nteam_name              Colonels\nName: 13, dtype: object",
+      "team_id": 6,
+      "identity": {
+        "run_creation": {
+          "team_display": "Charlotte"
+        },
+        "one_run": {
+          "overall_winpct": 0.688,
+          "one_run_g": "10",
+          "one_run_w": "5",
+          "one_run_l": "5",
+          "one_run_winpct": 0.5,
+          "one_run_diff_winpct": -0.188,
+          "one_run_share": 0.312
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "LUCK",
+          "pitch_flag": NaN,
+          "rating": "Bat LUCK"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 12,
+    "team_abbr": "CHI",
+    "identity": {
+      "team_abbr": "CHI",
+      "team_name": "team_name    Chicago Fire\nteam_name            Fire\nName: 12, dtype: object",
+      "team_id": 12,
+      "identity": {
+        "run_creation": {
+          "team_display": "Chicago"
+        },
+        "one_run": {
+          "overall_winpct": 0.531,
+          "one_run_g": "8",
+          "one_run_w": "4",
+          "one_run_l": "4",
+          "one_run_winpct": 0.5,
+          "one_run_diff_winpct": -0.031,
+          "one_run_share": 0.25
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 14,
+    "team_abbr": "CIN",
+    "identity": {
+      "team_abbr": "CIN",
+      "team_name": "team_name    Cincinnati Cougars\nteam_name               Cougars\nName: 5, dtype: object",
+      "team_id": 14,
+      "identity": {
+        "run_creation": {
+          "team_display": "Cincinnati"
+        },
+        "one_run": {
+          "overall_winpct": 0.5,
+          "one_run_g": "9",
+          "one_run_w": "4",
+          "one_run_l": "5",
+          "one_run_winpct": 0.444,
+          "one_run_diff_winpct": -0.056,
+          "one_run_share": 0.281
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": "STINGY",
+          "rating": "Pitch STINGY"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 4,
+    "team_abbr": "DAL",
+    "identity": {
+      "team_abbr": "DAL",
+      "team_name": "team_name    Dallas Rustlers\nteam_name           Rustlers\nName: 17, dtype: object",
+      "team_id": 4,
+      "identity": {
+        "run_creation": {
+          "team_display": "Dallas"
+        },
+        "one_run": {
+          "overall_winpct": 0.594,
+          "one_run_g": "10",
+          "one_run_w": "4",
+          "one_run_l": "6",
+          "one_run_winpct": 0.4,
+          "one_run_diff_winpct": -0.194,
+          "one_run_share": 0.312
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 13,
+    "team_abbr": "DEN",
+    "identity": {
+      "team_abbr": "DEN",
+      "team_name": "team_name    Denver Rocketeers\nteam_name           Rocketeers\nName: 20, dtype: object",
+      "team_id": 13,
+      "identity": {
+        "run_creation": {
+          "team_display": "Denver"
+        },
+        "one_run": {
+          "overall_winpct": 0.562,
+          "one_run_g": "14",
+          "one_run_w": "7",
+          "one_run_l": "7",
+          "one_run_winpct": 0.5,
+          "one_run_diff_winpct": -0.062,
+          "one_run_share": 0.438
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "LUCK",
+          "pitch_flag": NaN,
+          "rating": "Bat LUCK"
+        },
+        "system_crash": {
+          "rating": "Critical Failure"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 5,
+    "team_abbr": "DET",
+    "identity": {
+      "team_abbr": "DET",
+      "team_name": "team_name    Detroit Dukes\nteam_name            Dukes\nName: 7, dtype: object",
+      "team_id": 5,
+      "identity": {
+        "run_creation": {
+          "team_display": "Detroit"
+        },
+        "one_run": {
+          "overall_winpct": 0.531,
+          "one_run_g": "11",
+          "one_run_w": "7",
+          "one_run_l": "4",
+          "one_run_winpct": 0.636,
+          "one_run_diff_winpct": 0.105,
+          "one_run_share": 0.344
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 23,
+    "team_abbr": "HOU",
+    "identity": {
+      "team_abbr": "HOU",
+      "team_name": "team_name    Houston Mavericks\nteam_name            Mavericks\nName: 2, dtype: object",
+      "team_id": 23,
+      "identity": {
+        "run_creation": {
+          "team_display": "Houston"
+        },
+        "one_run": {
+          "overall_winpct": 0.406,
+          "one_run_g": "11",
+          "one_run_w": "6",
+          "one_run_l": "5",
+          "one_run_winpct": 0.545,
+          "one_run_diff_winpct": 0.139,
+          "one_run_share": 0.344
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": "STINGY",
+          "rating": "Pitch STINGY"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 9,
+    "team_abbr": "LA",
+    "identity": {
+      "team_abbr": "LA",
+      "team_name": "team_name    Los Angeles Cobras\nteam_name                Cobras\nName: 8, dtype: object",
+      "team_id": 9,
+      "identity": {
+        "run_creation": {
+          "team_display": "Los Angeles"
+        },
+        "one_run": {
+          "overall_winpct": 0.5,
+          "one_run_g": "7",
+          "one_run_w": "4",
+          "one_run_l": "3",
+          "one_run_winpct": 0.571,
+          "one_run_diff_winpct": 0.071,
+          "one_run_share": 0.219
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "LUCK",
+          "pitch_flag": NaN,
+          "rating": "Bat LUCK"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 17,
+    "team_abbr": "LV",
+    "identity": {
+      "team_abbr": "LV",
+      "team_name": "team_name    Las Vegas Gamblers\nteam_name              Gamblers\nName: 1, dtype: object",
+      "team_id": 17,
+      "identity": {
+        "run_creation": {
+          "team_display": "Las Vegas"
+        },
+        "one_run": {
+          "overall_winpct": 0.75,
+          "one_run_g": "8",
+          "one_run_w": "6",
+          "one_run_l": "2",
+          "one_run_winpct": 0.75,
+          "one_run_diff_winpct": 0.0,
+          "one_run_share": 0.25
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": "STINGY",
+          "rating": "Pitch STINGY"
+        },
+        "system_crash": {
+          "rating": "Critical Failure"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 1,
+    "team_abbr": "MIA",
+    "identity": {
+      "team_abbr": "MIA",
+      "team_name": "team_name    Miami Hurricanes\nteam_name          Hurricanes\nName: 21, dtype: object",
+      "team_id": 1,
+      "identity": {
+        "run_creation": {
+          "team_display": "Miami"
+        },
+        "one_run": {
+          "overall_winpct": 0.562,
+          "one_run_g": "4",
+          "one_run_w": "3",
+          "one_run_l": "1",
+          "one_run_winpct": 0.75,
+          "one_run_diff_winpct": 0.188,
+          "one_run_share": 0.125
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "DRAG",
+          "pitch_flag": "UNLUCKY",
+          "rating": "Snakebit"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 11,
+    "team_abbr": "MIN",
+    "identity": {
+      "team_abbr": "MIN",
+      "team_name": "team_name    Minneapolis Blizzard\nteam_name                Blizzard\nName: 22, dtype: object",
+      "team_id": 11,
+      "identity": {
+        "run_creation": {
+          "team_display": "Minneapolis"
+        },
+        "one_run": {
+          "overall_winpct": 0.344,
+          "one_run_g": "10",
+          "one_run_w": "4",
+          "one_run_l": "6",
+          "one_run_winpct": 0.4,
+          "one_run_diff_winpct": 0.056,
+          "one_run_share": 0.312
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 16,
+    "team_abbr": "NAS",
+    "identity": {
+      "team_abbr": "NAS",
+      "team_name": "team_name    Nashville Blues\nteam_name              Blues\nName: 11, dtype: object",
+      "team_id": 16,
+      "identity": {
+        "run_creation": {
+          "team_display": "Nashville"
+        },
+        "one_run": {
+          "overall_winpct": 0.562,
+          "one_run_g": "4",
+          "one_run_w": "2",
+          "one_run_l": "2",
+          "one_run_winpct": 0.5,
+          "one_run_diff_winpct": -0.062,
+          "one_run_share": 0.125
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "LUCK",
+          "pitch_flag": NaN,
+          "rating": "Bat LUCK"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 15,
+    "team_abbr": "NY",
+    "identity": {
+      "team_abbr": "NY",
+      "team_name": "team_name    New York Aces\nteam_name             Aces\nName: 9, dtype: object",
+      "team_id": 15,
+      "identity": {
+        "run_creation": {
+          "team_display": "New York"
+        },
+        "one_run": {
+          "overall_winpct": 0.5,
+          "one_run_g": "7",
+          "one_run_w": "1",
+          "one_run_l": "6",
+          "one_run_winpct": 0.143,
+          "one_run_diff_winpct": -0.357,
+          "one_run_share": 0.219
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 22,
+    "team_abbr": "PHI",
+    "identity": {
+      "team_abbr": "PHI",
+      "team_name": "team_name    Philadelphia Fury\nteam_name                 Fury\nName: 16, dtype: object",
+      "team_id": 22,
+      "identity": {
+        "run_creation": {
+          "team_display": "Philadelphia"
+        },
+        "one_run": {
+          "overall_winpct": 0.469,
+          "one_run_g": "8",
+          "one_run_w": "4",
+          "one_run_l": "4",
+          "one_run_winpct": 0.5,
+          "one_run_diff_winpct": 0.031,
+          "one_run_share": 0.25
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "DRAG",
+          "pitch_flag": NaN,
+          "rating": "Bat DRAG"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 2,
+    "team_abbr": "PHO",
+    "identity": {
+      "team_abbr": "PHO",
+      "team_name": "team_name    Phoenix Firebirds\nteam_name            Firebirds\nName: 14, dtype: object",
+      "team_id": 2,
+      "identity": {
+        "run_creation": {
+          "team_display": "Phoenix"
+        },
+        "one_run": {
+          "overall_winpct": 0.5,
+          "one_run_g": "5",
+          "one_run_w": "5",
+          "one_run_l": "0",
+          "one_run_winpct": 1.0,
+          "one_run_diff_winpct": 0.5,
+          "one_run_share": 0.156
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 21,
+    "team_abbr": "PIT",
+    "identity": {
+      "team_abbr": "PIT",
+      "team_name": "team_name    Pittsburgh Express\nteam_name               Express\nName: 10, dtype: object",
+      "team_id": 21,
+      "identity": {
+        "run_creation": {
+          "team_display": "Pittsburgh"
+        },
+        "one_run": {
+          "overall_winpct": 0.375,
+          "one_run_g": "7",
+          "one_run_w": "4",
+          "one_run_l": "3",
+          "one_run_winpct": 0.571,
+          "one_run_diff_winpct": 0.196,
+          "one_run_share": 0.219
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 18,
+    "team_abbr": "POR",
+    "identity": {
+      "team_abbr": "POR",
+      "team_name": "team_name    Portland Lumberjacks\nteam_name             Lumberjacks\nName: 19, dtype: object",
+      "team_id": 18,
+      "identity": {
+        "run_creation": {
+          "team_display": "Portland"
+        },
+        "one_run": {
+          "overall_winpct": 0.312,
+          "one_run_g": "7",
+          "one_run_w": "3",
+          "one_run_l": "4",
+          "one_run_winpct": 0.429,
+          "one_run_diff_winpct": 0.116,
+          "one_run_share": 0.219
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "DRAG",
+          "pitch_flag": "UNLUCKY",
+          "rating": "Snakebit"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 7,
+    "team_abbr": "SD",
+    "identity": {
+      "team_abbr": "SD",
+      "team_name": "team_name    San Diego Seraphs\nteam_name              Seraphs\nName: 18, dtype: object",
+      "team_id": 7,
+      "identity": {
+        "run_creation": {
+          "team_display": "San Diego"
+        },
+        "one_run": {
+          "overall_winpct": 0.438,
+          "one_run_g": "8",
+          "one_run_w": "3",
+          "one_run_l": "5",
+          "one_run_winpct": 0.375,
+          "one_run_diff_winpct": -0.062,
+          "one_run_share": 0.25
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "LUCK",
+          "pitch_flag": NaN,
+          "rating": "Bat LUCK"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 24,
+    "team_abbr": "SEA",
+    "identity": {
+      "team_abbr": "SEA",
+      "team_name": "team_name    Seattle Comets\nteam_name            Comets\nName: 4, dtype: object",
+      "team_id": 24,
+      "identity": {
+        "run_creation": {
+          "team_display": "Seattle"
+        },
+        "one_run": {
+          "overall_winpct": 0.5,
+          "one_run_g": "9",
+          "one_run_w": "5",
+          "one_run_l": "4",
+          "one_run_winpct": 0.556,
+          "one_run_diff_winpct": 0.056,
+          "one_run_share": 0.281
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": "UNLUCKY",
+          "rating": "Pitch UNLUCKY"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 10,
+    "team_abbr": "SF",
+    "identity": {
+      "team_abbr": "SF",
+      "team_name": "team_name    San Francisco Warriors\nteam_name                  Warriors\nName: 6, dtype: object",
+      "team_id": 10,
+      "identity": {
+        "run_creation": {
+          "team_display": "San Francisco"
+        },
+        "one_run": {
+          "overall_winpct": 0.562,
+          "one_run_g": "4",
+          "one_run_w": "3",
+          "one_run_l": "1",
+          "one_run_winpct": 0.75,
+          "one_run_diff_winpct": 0.188,
+          "one_run_share": 0.125
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 19,
+    "team_abbr": "STL",
+    "identity": {
+      "team_abbr": "STL",
+      "team_name": "team_name    St. Louis Stallions\nteam_name              Stallions\nName: 23, dtype: object",
+      "team_id": 19,
+      "identity": {
+        "run_creation": {
+          "team_display": "St. Louis"
+        },
+        "one_run": {
+          "overall_winpct": 0.531,
+          "one_run_g": "8",
+          "one_run_w": "3",
+          "one_run_l": "5",
+          "one_run_winpct": 0.375,
+          "one_run_diff_winpct": -0.156,
+          "one_run_share": 0.25
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": NaN,
+          "pitch_flag": NaN,
+          "rating": "Neutral"
+        },
+        "system_crash": {
+          "rating": "System Crash"
+        }
+      }
+    }
+  },
+  {
+    "team_id": 8,
+    "team_abbr": "TB",
+    "identity": {
+      "team_abbr": "TB",
+      "team_name": "team_name    Tampa Bay Storm\nteam_name              Storm\nName: 15, dtype: object",
+      "team_id": 8,
+      "identity": {
+        "run_creation": {
+          "team_display": "Tampa Bay"
+        },
+        "one_run": {
+          "overall_winpct": 0.438,
+          "one_run_g": "9",
+          "one_run_w": "2",
+          "one_run_l": "7",
+          "one_run_winpct": 0.222,
+          "one_run_diff_winpct": -0.215,
+          "one_run_share": 0.281
+        },
+        "heat_check": {},
+        "babip_luck": {
+          "bat_flag": "LUCK",
+          "pitch_flag": "UNLUCKY",
+          "rating": "Hot & leaking"
+        },
+        "system_crash": {
+          "rating": "Critical Failure"
+        }
+      }
+    }
+  }
+]

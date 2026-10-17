@@ -1,0 +1,129 @@
+{
+  "as_of_date": "1981-07-19",
+  "exact_safe_replacements": 18,
+  "accepted_schema_drift": 2,
+  "official_sources_covered": 20,
+  "promotion_status": "SAFE_WITH_ACCEPTED_SCHEMA_DRIFT",
+  "sources": [
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "replacement_status": "ACCEPTED_SCHEMA_DRIFT",
+      "story_impact": "Staff IDs adapted downstream; unmatched ID enrichments limited.",
+      "disabled_or_limited_notes": "See sortable schema adaptation plan."
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "replacement_status": "ACCEPTED_SCHEMA_DRIFT",
+      "story_impact": "Baserunning-value enrichments limited; core batting remains available.",
+      "disabled_or_limited_notes": "See sortable schema adaptation plan."
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    },
+    {
+      "official_target_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "replacement_status": "EXACT_SAFE_REPLACEMENT",
+      "story_impact": "No schema-level story impact.",
+      "disabled_or_limited_notes": "none"
+    }
+  ]
+}

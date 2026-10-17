@@ -1,0 +1,188 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-12",
+  "coverage_label": "1981_week_15",
+  "expected_games_per_team": 89,
+  "sources": [
+    {
+      "source_file": "csv/ootp_csv/games.csv",
+      "used_by_engine": "yes",
+      "row_count": 9127,
+      "min_date": "1981-04-06",
+      "max_date": "1981-07-12",
+      "detected_games_per_team": "89",
+      "source_status": "active_current",
+      "reason": "Authoritative date-filterable game source; completed ABL games are filtered through the active cutoff."
+    },
+    {
+      "source_file": "csv/ootp_csv/teams.csv",
+      "used_by_engine": "yes",
+      "row_count": 158,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "compatible_static",
+      "reason": "Team identity and league/division keys are dimensions, not performance snapshots."
+    },
+    {
+      "source_file": "csv/ootp_csv/divisions.csv",
+      "used_by_engine": "yes",
+      "row_count": 36,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "compatible_static",
+      "reason": "Division names and keys are static structural dimensions."
+    },
+    {
+      "source_file": "csv/ootp_csv/players.csv",
+      "used_by_engine": "yes",
+      "row_count": 12549,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "compatible_static",
+      "reason": "Player names and team identifiers support current raw statistical rows."
+    },
+    {
+      "source_file": "csv/ootp_csv/players_career_batting_stats.csv",
+      "used_by_engine": "yes",
+      "row_count": 89192,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "active_current",
+      "reason": "Raw 1981 cumulative batting totals belong to the coordinated current OOTP export."
+    },
+    {
+      "source_file": "csv/ootp_csv/players_career_pitching_stats.csv",
+      "used_by_engine": "yes",
+      "row_count": 56555,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "active_current",
+      "reason": "Raw 1981 cumulative pitching totals belong to the coordinated current OOTP export."
+    },
+    {
+      "source_file": "csv/out/almanac/1980/league_champions_1980_league200.csv",
+      "used_by_engine": "yes",
+      "row_count": 8,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "compatible_historical",
+      "reason": "1980 context is intentionally historical and cannot replace current-season evidence."
+    },
+    {
+      "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "32",
+      "source_status": "excluded_wrong_games_count",
+      "reason": "Preserved standings snapshot contains 32 games per team, not the active 89-game state."
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "32",
+      "source_status": "excluded_wrong_games_count",
+      "reason": "Preserved weekly-change rows end at 32 games, not the active 89-game state."
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_player_batting.csv",
+      "used_by_engine": "no",
+      "row_count": 470,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "32",
+      "source_status": "excluded_stale_snapshot",
+      "reason": "Preserved early-season player fact is not used for active Week 15 leaders."
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_player_pitching.csv",
+      "used_by_engine": "no",
+      "row_count": 470,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "excluded_stale_snapshot",
+      "reason": "Preserved early-season player fact is not used for active Week 15 leaders."
+    },
+    {
+      "source_file": "csv/story_candidates_1981_week_05.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "excluded_stale_snapshot",
+      "reason": "Preserved Week 5 story candidates are historical artifacts, not active inputs."
+    },
+    {
+      "source_file": "csv/story_menu_1981_week_05.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "excluded_stale_snapshot",
+      "reason": "Preserved Week 5 story menu is not an active input."
+    },
+    {
+      "source_file": "csv/story_menu_1981_week_07.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "",
+      "source_status": "excluded_stale_snapshot",
+      "reason": "Preserved early-season story menu is not an active input."
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_manager_scorecard_1981_current.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "32",
+      "source_status": "disabled_incompatible",
+      "reason": "Manager scorecard is tied to a 32-game standings snapshot; management signals are disabled."
+    },
+    {
+      "source_file": "csv/out/csv_out/z_ABL_Manager_Tendencies.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "62",
+      "source_status": "disabled_incompatible",
+      "reason": "Manager tendencies stop at 62 games; management signals require the 89-game cutoff."
+    },
+    {
+      "source_file": "csv/out/csv_out/z_ABL_Division_Leverage.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "62",
+      "source_status": "disabled_incompatible",
+      "reason": "Division leverage stops at 62 games and cannot support active race signals."
+    },
+    {
+      "source_file": "csv/out/csv_out/z_ABL_Rotation_Stability.csv",
+      "used_by_engine": "no",
+      "row_count": 24,
+      "min_date": "",
+      "max_date": "",
+      "detected_games_per_team": "62",
+      "source_status": "disabled_incompatible",
+      "reason": "Rotation stability stops at 62 games and cannot support active pitcher/team signals."
+    }
+  ]
+}

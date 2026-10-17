@@ -1,0 +1,10 @@
+# Grand Series 1972 Recap (League 200)
+Generated on: 2025-12-01 21:25:27 (local time)
+
+1. 1972-10-23 — Denver Rocketeers 6 vs Atlanta Kings 9 (winner: Atlanta Kings; tally: Atlanta Kings:1)
+2. 1972-10-24 — Denver Rocketeers 0 vs Atlanta Kings 1 (winner: Atlanta Kings; tally: Atlanta Kings:2)
+3. 1972-10-26 — Atlanta Kings 4 vs Denver Rocketeers 5 (winner: Denver Rocketeers; tally: Atlanta Kings:2, Denver Rocketeers:1)
+4. 1972-10-27 — Atlanta Kings 0 vs Denver Rocketeers 6 (winner: Denver Rocketeers; tally: Atlanta Kings:2, Denver Rocketeers:2)
+5. 1972-10-28 — Atlanta Kings 3 vs Denver Rocketeers 0 (winner: Atlanta Kings; tally: Atlanta Kings:3, Denver Rocketeers:2)
+6. 1972-10-30 — Denver Rocketeers 7 vs Atlanta Kings 6 (winner: Denver Rocketeers; tally: Atlanta Kings:3, Denver Rocketeers:3)
+7. 1972-10-31 — Denver Rocketeers 8 vs Atlanta Kings 9 (winner: Atlanta Kings; tally: Atlanta Kings:4, Denver Rocketeers:3)

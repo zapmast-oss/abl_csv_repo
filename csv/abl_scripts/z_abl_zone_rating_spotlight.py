@@ -393,7 +393,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Top two players listed by innings share with ZR for quick reference.",
         ],
     )
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     text_path = txt_dir / out_path.with_suffix(".txt").name
     text_path.write_text(stamp_text_block(text_output), encoding="utf-8")

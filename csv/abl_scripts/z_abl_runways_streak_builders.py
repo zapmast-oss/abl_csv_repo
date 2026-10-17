@@ -486,7 +486,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Opp% is the opponent winning percentage from team records.",
         ],
     )
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     next10_txt_path = txt_dir / next10_path.with_suffix(".txt").name
     next10_txt_path.write_text(stamp_text_block(next10_text_output), encoding="utf-8")

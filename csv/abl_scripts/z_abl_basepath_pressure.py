@@ -383,7 +383,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     out_path = (base_dir / args.out).resolve()
     out_path.parent.mkdir(parents=True, exist_ok=True)
     final_df.to_csv(out_path, index=False)
-    text_dir = base_dir / "out" / "txt_out"
+    text_dir = base_dir / "out" / "text_out"
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / out_path.name.replace(".csv", ".txt")
     text_path.write_text(stamp_text_block(build_text_report(final_df, limit=None)), encoding="utf-8")
