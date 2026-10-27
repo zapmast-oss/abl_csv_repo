@@ -1,0 +1,152 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "adapter_parameterized": true,
+  "wrapper_parameterized": true,
+  "feature_flags_path": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\control\\story_engine_feature_flags_1981_07_20_asof_1981-07-19.json",
+  "feature_flags_created_this_run": false,
+  "feature_flags": {
+    "newsroom_date": "1981-07-20",
+    "as_of_date": "1981-07-19",
+    "enable_feed3_evidence_preview": true,
+    "enable_feed3_rank_adjustment": false,
+    "enable_feed3_new_candidates": false,
+    "enable_owner_front_office_signals": false,
+    "enable_best_game_discovery_signals": false,
+    "enable_historical_fan_interpretation": false,
+    "doctrine": [
+      "StatsPlus enhances. It does not replace.",
+      "StatsPlus annotates before it ranks."
+    ],
+    "behavior": {
+      "feed3_evidence_preview": "Append typed evidence into preview-only outputs.",
+      "rank_adjustment": "Disabled; official candidate scores and order are unchanged.",
+      "new_candidates": "Disabled; the preview cannot create candidates.",
+      "reference_only_signals": "Owner/front-office traits, best-game discovery, and historical fan interpretation remain manual reference only."
+    }
+  },
+  "adapter_stdout": "{\n  \"adapter_created\": true,\n  \"feed3_evidence_records_created\": 53,\n  \"candidates_enriched\": 15,\n  \"rankings_changed\": false,\n  \"new_candidates_created\": false,\n  \"official_story_artifacts_untouched\": true,\n  \"evidence_types_used\": [\n    \"statsplus_baseruns\",\n    \"statsplus_elo\",\n    \"statsplus_fan_interest_context\",\n    \"statsplus_financial_context\",\n    \"statsplus_injury_context\",\n    \"statsplus_pitcher_rwar\",\n    \"statsplus_playoff_odds\",\n    \"statsplus_team_baserunning\",\n    \"statsplus_team_war\",\n    \"statsplus_ubr\"\n  ],\n  \"held_types\": [\n    \"statsplus_player_baserunning\",\n    \"statsplus_team_age_context\"\n  ]\n}",
+  "adapter_stderr": "",
+  "validation_passed": true,
+  "evidence_records_created": 53,
+  "candidates_enriched": 15,
+  "combined_preview_records": 68,
+  "rankings_changed": false,
+  "new_candidates_created": false,
+  "official_story_artifacts_untouched": true,
+  "reference_only_signals_stayed_reference_only": true,
+  "checks": [
+    {
+      "check_name": "preview_enabled",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "ranking_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "new_candidates_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "owner_signals_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "best_games_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "historical_fan_disabled",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "adapter_invoked",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "adapter_exit_code",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "evidence_records",
+      "status": "PASS",
+      "expected": "53",
+      "actual": "53",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "candidates_enriched",
+      "status": "PASS",
+      "expected": "15",
+      "actual": "15",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "combined_records",
+      "status": "PASS",
+      "expected": "68",
+      "actual": "68",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "ranking_effect_none",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "ranking_changed",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "new_candidates_created",
+      "status": "PASS",
+      "expected": "false",
+      "actual": "false",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "official_artifacts_untouched",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Parameterized Feed 3 preview safety check."
+    },
+    {
+      "check_name": "reference_only_stayed_reference_only",
+      "status": "PASS",
+      "expected": "true",
+      "actual": "true",
+      "details": "Parameterized Feed 3 preview safety check."
+    }
+  ]
+}

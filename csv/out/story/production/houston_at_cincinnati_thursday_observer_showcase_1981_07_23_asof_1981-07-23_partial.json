@@ -1,0 +1,236 @@
+{
+  "title": "Houston at Cincinnati — Thursday Observer Showcase Production Packet",
+  "cutoff": "completed games through 1981-07-23 game 1155 (Chicago 15, Dallas 10)",
+  "showcase_game": {
+    "game_id": "1161",
+    "date": "1981-7-23",
+    "played": false,
+    "away": "Houston Mavericks",
+    "home": "Cincinnati Cougars"
+  },
+  "records": {
+    "23": {
+      "w": 54,
+      "l": 41,
+      "runs_for": 392,
+      "runs_against": 358,
+      "last_10": "4-6"
+    },
+    "14": {
+      "w": 50,
+      "l": 46,
+      "runs_for": 434,
+      "runs_against": 382,
+      "last_10": "6-4"
+    }
+  },
+  "season_series": {
+    "Houston": 9,
+    "Cincinnati": 4,
+    "completed_games": 13
+  },
+  "current_series": {
+    "Houston": 1,
+    "Cincinnati": 2,
+    "completed_games": 3
+  },
+  "confirmed_starters": {
+    "23": "Valentin Geffroy",
+    "14": "Chris Collette"
+  },
+  "starter_confirmation_source": "User confirmation; raw game 1161 has not yet populated starter IDs.",
+  "starter_profiles": {
+    "23": {
+      "player_id": "6776",
+      "name": "Valentin Geffroy",
+      "age": 27,
+      "experience_years": 7,
+      "throws": "L",
+      "games": 5,
+      "starts": 0,
+      "wins": 1,
+      "losses": 0,
+      "saves": 2,
+      "innings": "7.1",
+      "era": 1.23,
+      "whip": 0.95,
+      "strikeouts": 5,
+      "walks": 2,
+      "home_runs": 0,
+      "quality_starts": 0,
+      "arsenal": [
+        {
+          "pitch": "fastball",
+          "rating": 40
+        },
+        {
+          "pitch": "curveball",
+          "rating": 55
+        },
+        {
+          "pitch": "forkball",
+          "rating": 50
+        },
+        {
+          "pitch": "changeup",
+          "rating": 35
+        }
+      ],
+      "stuff": 45,
+      "movement": 35,
+      "control": 50,
+      "stamina": 65,
+      "hold": 80,
+      "velocity_code": 6,
+      "injured": false
+    },
+    "14": {
+      "player_id": "5420",
+      "name": "Chris Collette",
+      "age": 23,
+      "experience_years": 9,
+      "throws": "R",
+      "games": 12,
+      "starts": 9,
+      "wins": 8,
+      "losses": 2,
+      "saves": 0,
+      "innings": "62.2",
+      "era": 1.72,
+      "whip": 1.24,
+      "strikeouts": 40,
+      "walks": 29,
+      "home_runs": 3,
+      "quality_starts": 7,
+      "arsenal": [
+        {
+          "pitch": "fastball",
+          "rating": 50
+        },
+        {
+          "pitch": "curveball",
+          "rating": 70
+        },
+        {
+          "pitch": "changeup",
+          "rating": 80
+        }
+      ],
+      "stuff": 55,
+      "movement": 55,
+      "control": 45,
+      "stamina": 35,
+      "hold": 65,
+      "velocity_code": 9,
+      "injured": false
+    }
+  },
+  "verified_staff": {
+    "23": {
+      "manager": "Carlos Sanchez",
+      "general_manager": "Larry Bell",
+      "bench_coach": "Sam Downs",
+      "pitching_coach": "Rodolfo Luna",
+      "hitting_coach": "Ray Gallo"
+    },
+    "14": {
+      "manager": "Chris Allison",
+      "general_manager": "Phil Trammel",
+      "bench_coach": "Scott Willett",
+      "pitching_coach": "Jon Baugher",
+      "hitting_coach": "Jared Teitelbaum"
+    }
+  },
+  "park": "Cougars Park",
+  "top_hitters": {
+    "23": [
+      {
+        "name": "Brent Keyser",
+        "ab": 319,
+        "h": 90,
+        "hr": 9,
+        "rbi": 43,
+        "bb": 30,
+        "pa": 354,
+        "avg": 0.282
+      },
+      {
+        "name": "Alex Ramirez",
+        "ab": 284,
+        "h": 78,
+        "hr": 8,
+        "rbi": 36,
+        "bb": 32,
+        "pa": 321,
+        "avg": 0.275
+      },
+      {
+        "name": "Albert Chavez",
+        "ab": 251,
+        "h": 74,
+        "hr": 7,
+        "rbi": 35,
+        "bb": 23,
+        "pa": 284,
+        "avg": 0.295
+      },
+      {
+        "name": "Apostolos Georghiou",
+        "ab": 276,
+        "h": 77,
+        "hr": 7,
+        "rbi": 34,
+        "bb": 30,
+        "pa": 314,
+        "avg": 0.279
+      }
+    ],
+    "14": [
+      {
+        "name": "Scott Reis",
+        "ab": 338,
+        "h": 92,
+        "hr": 13,
+        "rbi": 63,
+        "bb": 41,
+        "pa": 398,
+        "avg": 0.272
+      },
+      {
+        "name": "Esteban Martinez",
+        "ab": 362,
+        "h": 114,
+        "hr": 9,
+        "rbi": 56,
+        "bb": 43,
+        "pa": 415,
+        "avg": 0.315
+      },
+      {
+        "name": "Joe Rogers",
+        "ab": 303,
+        "h": 89,
+        "hr": 8,
+        "rbi": 54,
+        "bb": 41,
+        "pa": 348,
+        "avg": 0.294
+      },
+      {
+        "name": "Victor Torres",
+        "ab": 356,
+        "h": 89,
+        "hr": 4,
+        "rbi": 37,
+        "bb": 56,
+        "pa": 423,
+        "avg": 0.25
+      }
+    ]
+  },
+  "authority": {
+    "official": "raw OOTP CSV",
+    "enrichment": "StatsPlus not required for any score, record, standing, or schedule claim"
+  },
+  "guardrail": "Do not include or assume the result of game 1161. It is played=0 in games.csv."
+}

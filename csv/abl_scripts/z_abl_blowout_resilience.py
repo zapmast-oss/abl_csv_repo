@@ -401,7 +401,7 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     output_path = (base_dir / args.out).resolve()
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    text_dir = base_dir / "out" / "txt_out"
+    text_dir = base_dir / "out" / "text_out"
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / output_path.name.replace(".csv", ".txt")
 

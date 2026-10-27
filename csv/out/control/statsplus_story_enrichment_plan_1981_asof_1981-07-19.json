@@ -1,0 +1,128 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-19",
+  "sources": [
+    {
+      "file": "01_abl_transactions_personnel_-_owner.csv",
+      "family": "owner info",
+      "candidate_signal": "organization context",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "03_statsplus_Finantials.csv",
+      "family": "financials",
+      "candidate_signal": "resource/results pressure",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "04_statsplus_Historical_Fan_Interest.csv",
+      "family": "historical fan interest",
+      "candidate_signal": "historical fan-pressure context",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "05_statsplus_Fan_Data.csv",
+      "family": "fan data",
+      "candidate_signal": "fan-pressure context",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "07_statsplus_Playoff_Odds_Div.csv",
+      "family": "playoff odds by division",
+      "candidate_signal": "division-race probability and pressure",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "08_statsplus_Playoff_Odds_League.csv",
+      "family": "playoff odds by league",
+      "candidate_signal": "league qualification probability",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "09_statsplus_Base_Runs.csv",
+      "family": "BaseRuns",
+      "candidate_signal": "expected-performance gap",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "10_statsplus_Elo.csv",
+      "family": "ELO ratings",
+      "candidate_signal": "team strength and momentum",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "11_statsplus_Team_WAR.csv",
+      "family": "team WAR",
+      "candidate_signal": "team strength",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "12_statsplus_injury_sumary.csv",
+      "family": "injury summary",
+      "candidate_signal": "injury burden",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "19_statsplus_Team_Baserunning.csv",
+      "family": "team baserunning",
+      "candidate_signal": "team baserunning",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "22_statsplus_Player_Baserunning.csv",
+      "family": "player baserunning",
+      "candidate_signal": "player baserunning",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "24_statsplus_Team_Age.csv",
+      "family": "team age",
+      "candidate_signal": "organization age profile",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "25_statsplus_Best_Batting_Game.csv",
+      "family": "best batting game",
+      "candidate_signal": "game-performance discovery",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    },
+    {
+      "file": "26_statsplus_Best_Pitching_Game.csv",
+      "family": "best pitching game",
+      "candidate_signal": "game-performance discovery",
+      "use_state": "candidate_after_promotion",
+      "authority_class": "STATSPLUS_SPECIFIC_AFTER_PROMOTION",
+      "required_validation": "cutoff, schema, identity, duplicate, and field-semantic validation"
+    }
+  ],
+  "disabled_until_promotion": true,
+  "editorial_rule": "StatsPlus enriches where to look; raw game proof establishes what happened."
+}

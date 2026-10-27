@@ -1,0 +1,206 @@
+{
+  "as_of_date": "1981-07-19",
+  "file_count": 20,
+  "files": [
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "file_size_bytes": 120958,
+      "row_count": 797,
+      "column_count": 42,
+      "sha256_before": "abb9476f484c3bae821c349c737aa71acfa7d76ce5b14febcdc16766262cf5cc",
+      "sha256_archive": "abb9476f484c3bae821c349c737aa71acfa7d76ce5b14febcdc16766262cf5cc",
+      "archived_at_utc": "2026-07-04T12:43:48.475421+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "file_size_bytes": 94050,
+      "row_count": 470,
+      "column_count": 56,
+      "sha256_before": "3e9a5070251a2ea1e60da2ee8cb7f2ded88ddda00fd2f895402bb0b54a2139a5",
+      "sha256_archive": "3e9a5070251a2ea1e60da2ee8cb7f2ded88ddda00fd2f895402bb0b54a2139a5",
+      "archived_at_utc": "2026-07-04T12:43:48.485230+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "file_size_bytes": 95141,
+      "row_count": 797,
+      "column_count": 39,
+      "sha256_before": "f9ef1af486098ac05abe21db2376e4470dea94c8a9e4ae24cb85e372b58ddd38",
+      "sha256_archive": "f9ef1af486098ac05abe21db2376e4470dea94c8a9e4ae24cb85e372b58ddd38",
+      "archived_at_utc": "2026-07-04T12:43:48.492676+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "file_size_bytes": 75794,
+      "row_count": 470,
+      "column_count": 46,
+      "sha256_before": "1e8740be05f83e5d9358f52b7eee2f7bbd3c93eaf8d2cf37050ce97767e1d140",
+      "sha256_archive": "1e8740be05f83e5d9358f52b7eee2f7bbd3c93eaf8d2cf37050ce97767e1d140",
+      "archived_at_utc": "2026-07-04T12:43:48.505219+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "file_size_bytes": 112093,
+      "row_count": 470,
+      "column_count": 35,
+      "sha256_before": "6cb87cfaf6cce79d0e543616f02130c4d8c9a6746669ee59eda6ae0091d88f36",
+      "sha256_archive": "6cb87cfaf6cce79d0e543616f02130c4d8c9a6746669ee59eda6ae0091d88f36",
+      "archived_at_utc": "2026-07-04T12:43:48.513512+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "file_size_bytes": 73141,
+      "row_count": 470,
+      "column_count": 38,
+      "sha256_before": "522d392bb6cbf4604631ed27c605d8196a361da6dbb059d6cbb4c6a21ce157b1",
+      "sha256_archive": "522d392bb6cbf4604631ed27c605d8196a361da6dbb059d6cbb4c6a21ce157b1",
+      "archived_at_utc": "2026-07-04T12:43:48.522669+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "file_size_bytes": 144369,
+      "row_count": 470,
+      "column_count": 63,
+      "sha256_before": "62354a2fb6f2bdfaa55196b0347ec65f059587c8a897e55aedf12039b8625c1d",
+      "sha256_archive": "62354a2fb6f2bdfaa55196b0347ec65f059587c8a897e55aedf12039b8625c1d",
+      "archived_at_utc": "2026-07-04T12:43:48.534441+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "file_size_bytes": 149958,
+      "row_count": 797,
+      "column_count": 61,
+      "sha256_before": "2c6c5eb58892a6b049fbdef4d67a6ea93c8b581be8054e45db981443ee4ad501",
+      "sha256_archive": "2c6c5eb58892a6b049fbdef4d67a6ea93c8b581be8054e45db981443ee4ad501",
+      "archived_at_utc": "2026-07-04T12:43:48.542817+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "file_size_bytes": 87763,
+      "row_count": 470,
+      "column_count": 53,
+      "sha256_before": "fd2ff71fdf3e496149b241773972927b01d6c7ae5c7da7d9eaf0371449ce258d",
+      "sha256_archive": "fd2ff71fdf3e496149b241773972927b01d6c7ae5c7da7d9eaf0371449ce258d",
+      "archived_at_utc": "2026-07-04T12:43:48.555307+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "file_size_bytes": 81999,
+      "row_count": 470,
+      "column_count": 52,
+      "sha256_before": "7813c46f7f230d9ea09f885b1fc85634dec869b41b1732d7b87fd4324106f3c6",
+      "sha256_archive": "7813c46f7f230d9ea09f885b1fc85634dec869b41b1732d7b87fd4324106f3c6",
+      "archived_at_utc": "2026-07-04T12:43:48.564387+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "file_size_bytes": 5194,
+      "row_count": 24,
+      "column_count": 23,
+      "sha256_before": "67710b6031b82416c970c74ca1c60cb0efa4bde7b2643e91ebd71ff72f59b415",
+      "sha256_archive": "67710b6031b82416c970c74ca1c60cb0efa4bde7b2643e91ebd71ff72f59b415",
+      "archived_at_utc": "2026-07-04T12:43:48.564387+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "file_size_bytes": 3022,
+      "row_count": 24,
+      "column_count": 20,
+      "sha256_before": "3cdde30f0a93a2b64f151137b2b5ceacc131fc159f56a35c3859318d6de819d7",
+      "sha256_archive": "3cdde30f0a93a2b64f151137b2b5ceacc131fc159f56a35c3859318d6de819d7",
+      "archived_at_utc": "2026-07-04T12:43:48.571897+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "file_size_bytes": 5435,
+      "row_count": 24,
+      "column_count": 31,
+      "sha256_before": "920d3f4a9393a95670db172896aaa5af0c363a7b2ff70eb0d92d5e3ba74456f2",
+      "sha256_archive": "920d3f4a9393a95670db172896aaa5af0c363a7b2ff70eb0d92d5e3ba74456f2",
+      "archived_at_utc": "2026-07-04T12:43:48.576049+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "file_size_bytes": 4470,
+      "row_count": 24,
+      "column_count": 25,
+      "sha256_before": "15cb046067dcf80e8b083c9d0874d02ae75b467a911e9ae28b7bee64c8a37f65",
+      "sha256_archive": "15cb046067dcf80e8b083c9d0874d02ae75b467a911e9ae28b7bee64c8a37f65",
+      "archived_at_utc": "2026-07-04T12:43:48.576049+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "file_size_bytes": 4682,
+      "row_count": 24,
+      "column_count": 24,
+      "sha256_before": "a5684653185afa415062f7ef494035427ae38f99b9b83a55db5f6e3fc026e40e",
+      "sha256_archive": "a5684653185afa415062f7ef494035427ae38f99b9b83a55db5f6e3fc026e40e",
+      "archived_at_utc": "2026-07-04T12:43:48.580319+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "file_size_bytes": 4968,
+      "row_count": 24,
+      "column_count": 30,
+      "sha256_before": "6bb06273c4e10737e6145293f3dcd587c1e71123ee0b654ad25d4d1b48f247bc",
+      "sha256_archive": "6bb06273c4e10737e6145293f3dcd587c1e71123ee0b654ad25d4d1b48f247bc",
+      "archived_at_utc": "2026-07-04T12:43:48.580319+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "file_size_bytes": 5983,
+      "row_count": 24,
+      "column_count": 47,
+      "sha256_before": "f373299e91790f281a183bcffd6393b42e8b725a3a8c2915a87c7d7100870ada",
+      "sha256_archive": "f373299e91790f281a183bcffd6393b42e8b725a3a8c2915a87c7d7100870ada",
+      "archived_at_utc": "2026-07-04T12:43:48.584307+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "file_size_bytes": 3610,
+      "row_count": 24,
+      "column_count": 25,
+      "sha256_before": "9bf6a165776c80283f164d47a0f338004d2280f6156cf926d906cb89a8c25ac5",
+      "sha256_archive": "9bf6a165776c80283f164d47a0f338004d2280f6156cf926d906cb89a8c25ac5",
+      "archived_at_utc": "2026-07-04T12:43:48.585312+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "file_size_bytes": 5968,
+      "row_count": 24,
+      "column_count": 28,
+      "sha256_before": "c0c81ae668eedbe7a2cc3eb98ac681e14553ea55b7873502e0408403164c93fe",
+      "sha256_archive": "c0c81ae668eedbe7a2cc3eb98ac681e14553ea55b7873502e0408403164c93fe",
+      "archived_at_utc": "2026-07-04T12:43:48.588605+00:00"
+    },
+    {
+      "official_source_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "archive_path": "csv/out/archive/sortable_stats_pre_promotion_1981_asof_1981-07-19/abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "file_size_bytes": 8006,
+      "row_count": 24,
+      "column_count": 32,
+      "sha256_before": "d836310bac6c2c6ccceaa31846214096fa1008ef089f8dbdf69fbc08f3dd26a9",
+      "sha256_archive": "d836310bac6c2c6ccceaa31846214096fa1008ef089f8dbdf69fbc08f3dd26a9",
+      "archived_at_utc": "2026-07-04T12:43:48.588605+00:00"
+    }
+  ]
+}

@@ -592,7 +592,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Indices blend opportunity (60%) with efficiency (40%) to profile each role; PBP fallbacks estimate opportunities when splits are unavailable.",
         ],
     )
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     text_path = txt_dir / out_path.with_suffix(".txt").name
     text_path.write_text(stamp_text_block(text_output), encoding="utf-8")

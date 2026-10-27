@@ -1,0 +1,36 @@
+# Sortable Capture Manifest — Player Statistics — 1981 as of 1981-07-19
+
+- Staging folder: `C:\Users\earld\OneDrive\Documents\Out of the Park Developments\OOTP Baseball 26\saved_games\Action Baseball League.lg\import_export\abl_statistics_player_statistics`
+- Files: **27**
+- Hash: SHA-256
+- Promotion status: **staged; not promoted**
+
+| File | Bytes | Modified (UTC) | Rows | Columns | SHA-256 | Reconciliation | Recommendation |
+|---|---:|---|---:|---:|---|---|---|
+| `abl_statistics_player_statistics_-_sortable_stats_batting_potential.csv` | 54539 | 2026-07-04T11:23:30.651942+00:00 | 856 | 18 | `04ee2f98a83844dff2748af26e18139fa00c8b3f094c79c36becd162e210c1f1` | `NEW_SOURCE_CANDIDATE` | `hold_as_duplicate` |
+| `abl_statistics_player_statistics_-_sortable_stats_batting_ratings.csv` | 67403 | 2026-07-04T11:20:26.386231+00:00 | 856 | 23 | `b89fa04caf7584034d6a52505fed416af51ca3adb0f59bc5f822a3e6c742eb89` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_batting_stats_1.csv` | 86783 | 2026-07-04T11:30:20.920512+00:00 | 856 | 31 | `969b6c7a76f921ccd62a23b9230d814c4175d4c7a3270381a4349bb952761ddc` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_batting_stats_2.csv` | 73042 | 2026-07-04T11:30:34.179633+00:00 | 856 | 24 | `79d1284816f25883fc11603b6c82c30b696d2a09cea2d03082f3c1319127703d` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_default.csv` | 80647 | 2026-07-04T11:38:22.407343+00:00 | 856 | 17 | `5a56d5d60b2b97374fb327818eae1895c3ba91ec9ec40630ef0b05229813a63b` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_fielding_ratings.csv` | 51983 | 2026-07-04T11:31:55.728027+00:00 | 856 | 17 | `82cf93bf25669957024ca00d682ceb0ca4a11a0642be93db335f0f6a4dd1f128` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_fielding_stats.csv` | 79432 | 2026-07-04T11:31:46.052527+00:00 | 856 | 25 | `dc5a747d6d922df72a1cfa6842cae852a9e89c2517541243e8a5d26c9fa2a1f2` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_financial_info.csv` | 57743 | 2026-07-04T11:32:15.103300+00:00 | 856 | 16 | `94a60ad6d8c1f5dc84ce2429ca285e207bcf98f2e1731513dc6b0998396bcd16` | `NEW_SOURCE_CANDIDATE` | `hold_as_duplicate` |
+| `abl_statistics_player_statistics_-_sortable_stats_individual_pitch_potential.csv` | 69716 | 2026-07-04T11:31:17.322785+00:00 | 856 | 23 | `f28fe188dd21b1309a73b20d9a4d7afed3a70ff92d33fcccdf588c889f74c438` | `NEW_SOURCE_CANDIDATE` | `hold_as_duplicate` |
+| `abl_statistics_player_statistics_-_sortable_stats_individual_pitch_ratings.csv` | 69704 | 2026-07-04T11:31:05.746550+00:00 | 856 | 23 | `fe9bbaee65ec96773d50ba5b31799befa41fd198285efb2577ff35b8bb06b6f8` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_personality___morale.csv` | 66751 | 2026-07-04T11:32:37.135209+00:00 | 856 | 17 | `62186774803f28d3153ccfd8de49122649510a6109a36cf473bb624511969eed` | `NEW_SOURCE_CANDIDATE` | `hold_as_duplicate` |
+| `abl_statistics_player_statistics_-_sortable_stats_pitching_potential.csv` | 56340 | 2026-07-04T11:30:52.963803+00:00 | 856 | 16 | `57d907419b5c634bb59d32b94e339336d054db0a56d847b731512f6bc2dd1d00` | `NEW_SOURCE_CANDIDATE` | `hold_as_duplicate` |
+| `abl_statistics_player_statistics_-_sortable_stats_pitching_ratings.csv` | 58060 | 2026-07-04T11:30:43.249889+00:00 | 856 | 18 | `8e1889ec8dfc77d05f4e1c98483cd4deda71ccf39a6702fc93008606a49a1a99` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_pitching_stats_1.csv` | 91629 | 2026-07-04T11:31:28.450654+00:00 | 856 | 31 | `64ac9e34c300dfb9b42547ecb13e0928a294d506454bc181ce296b6c2fb5261b` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_pitching_stats_2.csv` | 93681 | 2026-07-04T11:31:38.208588+00:00 | 856 | 32 | `a23b9e0049be6320df3a0040ec6053f9fdec5e0049fd06f754323daf1800b842` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv` | 129938 | 2026-07-04T11:33:13.096606+00:00 | 856 | 42 | `f0bb219376f26b10004eff4aa3434b42c66e82e54a0012e137a9372681944dfc` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv` | 171472 | 2026-07-04T11:33:45.940941+00:00 | 856 | 56 | `3a8755bd39ba2cd33cee767572e57c48348422413bfd162b43196bffcd21571c` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv` | 102254 | 2026-07-04T11:33:35.849721+00:00 | 856 | 39 | `cf48d233f9a2daf4e891c8b8ca41404b8dd8cb80a1766f72161c25ff79b57445` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv` | 139089 | 2026-07-04T11:34:16.864311+00:00 | 856 | 46 | `6091a03c3dfae3993ba92512015d6bb11c482f5c854c3e3fea371f63ec60a3c8` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv` | 197659 | 2026-07-04T11:32:54.672923+00:00 | 856 | 35 | `9e8ffed0aba69bb861156e241e02969d32ff5bbdd039c337963e69339e759dc3` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv` | 130950 | 2026-07-04T11:33:03.932445+00:00 | 856 | 38 | `6aea1353ad70e1669b53ebee0cb0bee706cbfb88c599b60bdb14195ccd7c3b8c` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv` | 263235 | 2026-07-04T11:34:29.408788+00:00 | 856 | 63 | `dfd898695b609e5956b03882c50a8ada0228f03ec651a8c0e8c3de2918f24c36` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv` | 160994 | 2026-07-04T11:33:24.712127+00:00 | 856 | 61 | `7dbd23174c1816ae2c8e31eae3c0402ba8433f0bcf31f65a059b3e642efee211` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv` | 158625 | 2026-07-04T11:33:56.934177+00:00 | 856 | 53 | `51b14ddc9f6209bb807eb876b3b3fc9fabc5efb7615e4372f0c2894dffa61df0` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv` | 146540 | 2026-07-04T11:34:06.263678+00:00 | 856 | 52 | `381e07324eb82ee06422f9b9af681f1ef9b845aa59805df66af32451b043d2e4` | `EXACT_FILENAME_AND_SCHEMA` | `PROMOTE_REPLACE_EXISTING` |
+| `abl_statistics_player_statistics_-_sortable_stats_popularity_info.csv` | 47546 | 2026-07-04T11:32:26.608290+00:00 | 856 | 9 | `7039022310724e33a4739b00646adb18ae707fc456e3d674d63036df0d24031d` | `NEW_SOURCE_CANDIDATE` | `hold_as_duplicate` |
+| `abl_statistics_player_statistics_-_sortable_stats_position_ratings.csv` | 48552 | 2026-07-04T11:32:05.770564+00:00 | 856 | 18 | `0e1a1737c45c3eb877de03f3048cacbc9a7fcc41be97d46979fde57ee86cbf07` | `OVERLAPPING_VIEW` | `HOLD_DUPLICATE_OR_OVERLAP` |

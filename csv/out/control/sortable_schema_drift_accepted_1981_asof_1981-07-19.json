@@ -1,0 +1,36 @@
+{
+  "as_of_date": "1981-07-19",
+  "decision": "accepted_schema_drift",
+  "files": [
+    {
+      "official_existing_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "staging_file_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "old_column_count": 23,
+      "new_column_count": 13,
+      "old_columns": "ID|Team Name|Abbr|GM|MA|BN|PC|HC|SC|TT|OWN|1BC|3BC|GM_ID|MA_ID|BN_ID|PC_ID|HC_ID|SC_ID|TT_ID|OWN_ID|1BC_ID|3BC_ID",
+      "new_columns": "ID|Team Name|Abbr|GM|MA|BN|PC|HC|SC|TT|OWN|1BC|3BC",
+      "columns_retained": "ID|Team Name|Abbr|GM|MA|BN|PC|HC|SC|TT|OWN|1BC|3BC",
+      "columns_removed": "GM_ID|MA_ID|BN_ID|PC_ID|HC_ID|SC_ID|TT_ID|OWN_ID|1BC_ID|3BC_ID",
+      "columns_added": "",
+      "likely_downstream_impact": "build_star_schema.py can regenerate coach IDs from raw coaches data, but must stop rewriting the source file. Consumers that read *_ID directly need a generated compatibility view.",
+      "story_engine_impact": "Manager/staff identity remains available by name; ID-dependent manager enrichment is limited when a coach-name lookup fails.",
+      "missing_field_disposition": "GM_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; MA_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; BN_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; PC_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; HC_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; SC_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; TT_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; OWN_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; 1BC_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match; 3BC_ID: replaced by coaches.csv/team staff lookup; compatibility view may expose null when no ID match",
+      "schema_decision": "ACCEPTED_FORWARD_STANDARD"
+    },
+    {
+      "official_existing_file_path": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "staging_file_path": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "old_column_count": 20,
+      "new_column_count": 13,
+      "old_columns": "Team Name|G|2B|3B|HR|R|BB|SO|SB|CS|SB%|AVG|WAR|OBP|SLG|OPS|BatR|wSB|UBR|BsR",
+      "new_columns": "Team Name|G|2B|3B|HR|R|BB|SO|SB|AVG|OBP|SLG|OPS",
+      "columns_retained": "Team Name|G|2B|3B|HR|R|BB|SO|SB|AVG|OBP|SLG|OPS",
+      "columns_removed": "CS|SB%|WAR|BatR|wSB|UBR|BsR",
+      "columns_added": "",
+      "likely_downstream_impact": "build_star_schema.py will produce a narrower team batting fact. z_abl_basepath_pressure.py cannot use this file for UBR and loses CS/SB% unless another validated source supplies them.",
+      "story_engine_impact": "Core batting totals remain available. Baserunning-value and caught-stealing enrichments must use another validated source or be disabled/null.",
+      "missing_field_disposition": "CS: replaced by raw/team or aggregated player baserunning source when validated; otherwise unavailable; SB%: replaced by raw/team or aggregated player baserunning source when validated; otherwise unavailable; WAR: replaced by batting_xtra.csv WAR; BatR: marked unavailable; null in compatibility view; disable dependent enrichment; wSB: marked unavailable; null in compatibility view; disable dependent enrichment; UBR: marked unavailable; null in compatibility view; disable dependent enrichment; BsR: marked unavailable; null in compatibility view; disable dependent enrichment",
+      "schema_decision": "ACCEPTED_FORWARD_STANDARD"
+    }
+  ]
+}

@@ -91,8 +91,8 @@ def resolve_text_path(csv_path: Path) -> Path:
     parent = csv_path.parent
     parent_lower = parent.name.lower()
     if parent_lower in {"csv_out"}:
-        text_dir = parent.parent / "txt_out"
-    elif parent_lower in {"txt_out"}:
+        text_dir = parent.parent / "text_out"
+    elif parent_lower in {"text_out"}:
         text_dir = parent
     else:
         text_dir = parent

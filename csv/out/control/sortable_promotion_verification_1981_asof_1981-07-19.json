@@ -1,0 +1,233 @@
+{
+  "as_of_date": "1981-07-19",
+  "official_csv_count": 20,
+  "promoted_file_count": 20,
+  "accepted_drift_files": [
+    "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+    "abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv"
+  ],
+  "unresolved_blockers": 0,
+  "verification_status": "PASS",
+  "files": [
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 42,
+      "column_count_actual": 42,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 56,
+      "column_count_actual": 56,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 39,
+      "column_count_actual": 39,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 46,
+      "column_count_actual": 46,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 35,
+      "column_count_actual": 35,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 38,
+      "column_count_actual": 38,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 63,
+      "column_count_actual": 63,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 61,
+      "column_count_actual": 61,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 53,
+      "column_count_actual": 53,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_player_statistics\\abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "row_count_expected": 856,
+      "row_count_actual": 856,
+      "column_count_expected": 52,
+      "column_count_actual": 52,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 13,
+      "column_count_actual": 13,
+      "sha256_match": "yes",
+      "schema_status": "ACCEPTED_SCHEMA_DRIFT",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 13,
+      "column_count_actual": 13,
+      "sha256_match": "yes",
+      "schema_status": "ACCEPTED_SCHEMA_DRIFT",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 31,
+      "column_count_actual": 31,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 25,
+      "column_count_actual": 25,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 24,
+      "column_count_actual": 24,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 30,
+      "column_count_actual": 30,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 47,
+      "column_count_actual": 47,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 25,
+      "column_count_actual": 25,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 28,
+      "column_count_actual": 28,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    },
+    {
+      "official_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "staging_file": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\abl_statistics_team_statistics\\abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "row_count_expected": 24,
+      "row_count_actual": 24,
+      "column_count_expected": 32,
+      "column_count_actual": 32,
+      "sha256_match": "yes",
+      "schema_status": "EXACT_SCHEMA",
+      "verification_status": "PASS"
+    }
+  ]
+}

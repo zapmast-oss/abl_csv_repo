@@ -1,0 +1,32 @@
+{
+  "count": 2,
+  "treatment": "historical reference only",
+  "files": [
+    {
+      "full_path": "E:\\BACKUP\\BACKUP 2\\ABL 1981\\Points not being used but valuable.txt",
+      "relative_path": "Points not being used but valuable.txt",
+      "file_name": "Points not being used but valuable.txt",
+      "file_size": 2761,
+      "modified_timestamp": "2023-09-15T02:00:58-07:00",
+      "first_10_non_empty_lines": "[\"Ah, team profiling—a craft as intricate as constructing a championship roster. You've got a wealth of data here, Big Earl, and the key is to sort it into buckets that make sense narratively. So, let's break it down, shall we?\", \"### Team Infrastructure\", \"1. **ABL Owner Info**: Owner personalities, negotiation tendencies, and reputations.\", \"2. **ABL Front Office and Coaches**: Details about the front office and coaching staff, including their reputation and negotiation tendencies.\", \"### Financial Health\", \"3. **statsplus financials ABL**: Team budgets, payrolls, and other financial metrics.\", \"4. **statsplus Historical Fan Interest ABL**: Historical fan interest levels for each team.\", \"5. **statsplus fan data ABL**: Current fan mood, loyalty, and interest.\", \"### Team Performance Metrics\", \"6. **League Standings**: Overall performance stats like wins, losses, and run differential.\"]",
+      "inferred_subject": "Deep Dive 25 team-profile planning",
+      "likely_association": "ABL team/league profiling",
+      "content_type": "source-selection/design notes",
+      "recommended_treatment": "historical reference only; reusable design context after fact revalidation",
+      "warnings": "Generated narrative/instructions; not current-state proof."
+    },
+    {
+      "full_path": "E:\\BACKUP\\BACKUP 2\\ABL 1981\\Team Profile Prompts and Tables.txt",
+      "relative_path": "Team Profile Prompts and Tables.txt",
+      "file_name": "Team Profile Prompts and Tables.txt",
+      "file_size": 5812,
+      "modified_timestamp": "2023-09-19T15:20:08-07:00",
+      "first_10_non_empty_lines": "[\"Ah, a structured approach to storytelling—like crafting a nine-inning masterpiece, pitch by pitch. Here's how I'd break it down into narrative-building prompts:\", \"============================================\", \"Previous Team:\", \"Seattle Comets\", \"Seattle\", \"Comets\", \"============================================\", \"New Team:\", \"San Diego Seraphs\", \"San Diego\"]",
+      "inferred_subject": "Deep Dive 25 team-profile planning",
+      "likely_association": "ABL team/league profiling",
+      "content_type": "prompts/design notes",
+      "recommended_treatment": "historical reference only; reusable design context after fact revalidation",
+      "warnings": "Generated narrative/instructions; not current-state proof."
+    }
+  ]
+}
