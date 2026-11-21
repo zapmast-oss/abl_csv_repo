@@ -7,5 +7,8 @@
   "reports": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\editions\\1981-08-19_2acae29146076f62\\teams",
   "ernie": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\editions\\1981-08-19_2acae29146076f62\\ernie_briefing.pdf",
   "story_menu": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\editions\\1981-08-19_2acae29146076f62\\story_menu.csv",
-  "raw_dir": "C:\\sbv_repo\\abl_csv_repo\\output\\newsroom\\snapshots\\2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d"
+  "raw_dir": "C:\\sbv_repo\\abl_csv_repo\\output\\newsroom\\snapshots\\2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "editorial": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\journalism\\1981-08-19_2acae29146076f62",
+  "observer": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\journalism\\1981-08-19_2acae29146076f62\\observer\\ernie-briefing.pdf",
+  "slate": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\journalism\\1981-08-19_2acae29146076f62\\story-slate.pdf"
 }

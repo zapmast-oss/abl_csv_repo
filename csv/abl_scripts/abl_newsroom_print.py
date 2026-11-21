@@ -3,7 +3,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 
-def write_report(path: Path, title: str, sections, edition: str):
+def write_report(path: Path, title: str, sections, edition: str, *, article=False):
     from reportlab.lib.colors import HexColor
     from reportlab.lib.pagesizes import letter
     from reportlab.lib.styles import ParagraphStyle
@@ -21,16 +21,20 @@ def write_report(path: Path, title: str, sections, edition: str):
     if "BeatRegular" not in pdfmetrics.getRegisteredFontNames():
         pdfmetrics.registerFont(TTFont("BeatRegular","C:/Windows/Fonts/arial.ttf"))
         pdfmetrics.registerFont(TTFont("BeatBold","C:/Windows/Fonts/arialbd.ttf"))
+    if article and "ObserverText" not in pdfmetrics.getRegisteredFontNames():
+        pdfmetrics.registerFont(TTFont("ObserverText", "C:/Windows/Fonts/georgia.ttf"))
     heading = ParagraphStyle("section", fontName="BeatBold", fontSize=13, leading=16,
                              spaceBefore=8, spaceAfter=4, keepWithNext=True, textColor=HexColor("#174c56"))
-    body = ParagraphStyle("body", fontName="BeatRegular", fontSize=10.5, leading=14, spaceAfter=6)
+    body = ParagraphStyle("body", fontName="ObserverText" if article else "BeatRegular",
+                          fontSize=12 if article else 10.5, leading=16 if article else 14, spaceAfter=7 if article else 6)
     display = ParagraphStyle("title", parent=heading, fontSize=21, leading=25, textColor=HexColor("#172e47"))
     story = [Paragraph(escape(title), display), Paragraph(escape(edition), body)]
     for label, paragraphs in sections:
         if not paragraphs:
             continue
-        lines.extend(["## " + label, ""])
-        story.append(Paragraph(escape(label), heading))
+        if label:
+            lines.extend(["## " + label, ""])
+            story.append(Paragraph(escape(label), heading))
         for paragraph in paragraphs:
             lines.extend([paragraph, ""])
             story.append(Paragraph(escape(paragraph).replace("\n", "<br/>"), body))

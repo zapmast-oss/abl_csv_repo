@@ -63,7 +63,14 @@ def current_issue_matches(source_id, archive=ARCHIVE):
         Path(current["story_menu"]) != edition / "story_menu.csv"):
         return False
     # A missing component or stale pointer must go through the regular verifier.
+    newsroom = archive / "journalism" / current["edition"]
+    if (current.get("editorial") != str(newsroom) or current.get("observer") != str(newsroom/"observer/ernie-briefing.pdf")
+            or not (newsroom/"files.json").is_file()):
+        return False
+    editorial_files = json.loads((newsroom/"files.json").read_text(encoding="utf-8"))
     return (bool(audited) and "ernie_briefing.pdf" in audited and "story_menu.csv" in audited
+            and {"articles.json","slate.json","story-slate.pdf","observer/ernie-briefing.pdf"} <= editorial_files.keys()
+            and all((newsroom / name).is_file() for name in editorial_files)
             and (Path(current["raw_dir"]) / "manifest.json").is_file()
             and all((edition / name).is_file() for name in audited))
 

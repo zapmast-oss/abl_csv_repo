@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "edition": "1981-08-19_2acae29146076f62",
+  "cutoff": "1981-08-19",
+  "league_date": "1981-08-20",
+  "checked_at_utc": "2026-11-21T11:54:26.137614+00:00",
+  "edition_manifest_sha256": "d4b9dede932eec122b57cf3c3851d190d8a0cf4282032e658cea336f9e7eb9dd",
+  "pdf_files": 11,
+  "markdown_pdf_pairs_verified": 11,
+  "pages_rendered": 18,
+  "page_counts": {
+    "beat/01-MIA.pdf": 1,
+    "beat/02-PHO.pdf": 1,
+    "beat/03-ATL.pdf": 1,
+    "beat/04-DAL.pdf": 1,
+    "beat/06-CHA.pdf": 1,
+    "beat/08-TB.pdf": 1,
+    "beat/10-SF.pdf": 1,
+    "beat/13-DEN.pdf": 1,
+    "league/nbc-east.pdf": 1,
+    "observer/ernie-briefing.pdf": 1,
+    "story-slate.pdf": 8
+  },
+  "checks": [
+    "All production pages rendered with Poppler. Contact sheets of every page were visually reviewed, including all eight slate pages. Ernie and Tampa Bay were additionally reviewed at full raster resolution.",
+    "Extracted PDF text matched every Markdown reading copy after ignoring heading markers, running footers, whitespace and Unicode normalization.",
+    "All extracted words fell within the tested US Letter page bounds (33-581 points horizontally, 22-781 vertically). Visual review found readable headings, bylines, source notes and page footers with no clipping or collisions.",
+    "The four NBC East features, division report and Ernie briefing each fit on one page. The 24-team slate occupies eight pages."
+  ],
+  "limitations": [
+    "This receipt covers the internal production reading copies for this edition. The tests used standard US Letter screen renderings and did not include a physical printout."
+  ]
+}

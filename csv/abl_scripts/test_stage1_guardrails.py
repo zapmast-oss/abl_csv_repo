@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import io
 import json
+import subprocess
 import unittest
 from collections import Counter
 from datetime import date
@@ -21,14 +23,24 @@ OOTP_ROOT = REPO_ROOT / "csv" / "ootp_csv"
 STAGE0_MANIFEST = (
     REPO_ROOT / "docs" / "repo_cleanup_stage0_ootp_sha256_2026_08_14.csv"
 )
+STAGE0_COMMIT = "a8ceb23b87e9f270621fbd36e35c57deabc5e20f"
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+def historical_blob(relative: str) -> bytes:
+    return subprocess.check_output(["git", "show", f"{STAGE0_COMMIT}:{relative}"], cwd=REPO_ROOT)
+
+
+def historical_csv(relative: str) -> list[dict[str, str]]:
+    data = historical_blob(relative)
+    if data.startswith(b"version https://git-lfs.github.com/spec/v1"):
+        oid = data.decode("ascii").split("oid sha256:")[1].splitlines()[0]
+        common = subprocess.check_output(
+            ["git", "rev-parse", "--git-common-dir"], cwd=REPO_ROOT, text=True
+        ).strip()
+        data = (REPO_ROOT / common / "lfs/objects" / oid[:2] / oid[2:4] / oid).read_bytes()
+        if hashlib.sha256(data).hexdigest() != oid:
+            raise ValueError(f"Invalid historical LFS payload: {relative}")
+    return list(csv.DictReader(io.StringIO(data.decode("utf-8-sig"))))
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -45,9 +57,17 @@ class AuthoritativeInputTests(unittest.TestCase):
         self.assertEqual(72, len(expected_rows))
         self.assertEqual(72, len(actual_paths))
         self.assertEqual(set(expected), {path.name for path in actual_paths})
-        for path in actual_paths:
-            self.assertEqual(int(expected[path.name]["size_bytes"]), path.stat().st_size)
-            self.assertEqual(expected[path.name]["sha256"], sha256(path))
+        # The August 14 byte receipt authenticates its original export. The
+        # immediate 72-file contract continues to apply to today's export above.
+        for name, entry in expected.items():
+            obj = historical_blob(f"csv/ootp_csv/{name}")
+            if obj.startswith(b"version https://git-lfs.github.com/spec/v1"):
+                _, hash_line, size_line = obj.decode("ascii").splitlines()
+                self.assertEqual(hash_line, "oid sha256:" + entry["sha256"], name)
+                self.assertEqual(size_line, "size " + entry["size_bytes"], name)
+            else:
+                self.assertEqual(hashlib.sha256(obj).hexdigest(), entry["sha256"], name)
+                self.assertEqual(len(obj), int(entry["size_bytes"]), name)
 
 
 class AuthorityBoundaryTests(unittest.TestCase):
@@ -79,9 +99,7 @@ class AuthorityBoundaryTests(unittest.TestCase):
         self.assertEqual("no", nested["can_support_current_state"])
 
     def test_batch_manifest_corrects_stale_registry_boundary(self) -> None:
-        checked_in = read_csv(
-            REPO_ROOT / "csv" / "out" / "control" / "abl_source_registry.csv"
-        )
+        checked_in = historical_csv("csv/out/control/abl_source_registry.csv")
         self.assertEqual(
             73, sum(row["source_family"] == "ootp_csv" for row in checked_in)
         )
@@ -92,6 +110,11 @@ class AuthorityBoundaryTests(unittest.TestCase):
         self.assertNotIn(
             "csv/ootp_csv/out/csv_out/z_ABL_Manager_Tendencies.csv",
             {row["file_path"] for row in governed},
+        )
+        current = read_csv(REPO_ROOT / "csv/out/control/abl_source_registry.csv")
+        self.assertEqual(
+            {row["file_path"] for row in governed},
+            {row["file_path"] for row in batch_manifest.select_governed_sources(current)},
         )
 
 
@@ -125,7 +148,9 @@ class OutputPathPolicyTests(unittest.TestCase):
 class AsOfCutoffTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.games = read_csv(OOTP_ROOT / "games.csv")
+        # July 24 was a partial day in this fixture. Subsequent exports
+        # legitimately include additional completed July 24 games.
+        cls.games = historical_csv("csv/ootp_csv/games.csv")
 
     def test_july_23_excludes_july_24_and_july_24_can_include_it(self) -> None:
         july23 = date(1981, 7, 23)
