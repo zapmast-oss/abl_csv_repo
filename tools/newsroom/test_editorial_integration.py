@@ -10,12 +10,14 @@ from collections import Counter
 import csv
 from datetime import date, datetime, timezone
 import hashlib
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
 import shutil
 import subprocess
 import sys
+from urllib.parse import unquote, urlsplit
 from uuid import uuid4
 
 from pypdf import PdfReader
@@ -27,6 +29,12 @@ NEWSROOM = ROOT / "csv/abl_scripts/abl_newsroom.py"
 OLD = "4ef0889cf75d5dd089507678fa34b6ae719710d2"
 NEW = "c844e18a9216c78e55cfbe4c0fda6f9c17794790"
 EAST = {1: "MIA", 3: "ATL", 6: "CHA", 8: "TB"}
+PRODUCTION = ROOT / "csv/out/story/newsroom"
+LEGACY_CYCLE = "1981-08-19_2acae29146076f62"
+LEGACY_DIGESTS = {
+    "editions": "642ac5386544828572516291eca3e247432d8488d780827d9d76af0dd988e94f",
+    "journalism": "b6e458ea30228d23fa8fded05d501b07e4f37b7db4402d1ffe58773473442e9a",
+}
 
 
 def require(condition, reason):
@@ -79,14 +87,55 @@ def prepare_export(commit, folder):
             (folder / name).write_bytes(content)
 
 
-def newsroom(archive, source, expect_success=True):
-    result = subprocess.run([sys.executable, "-B", str(NEWSROOM), "--archive", str(archive),
-                             "--source", str(source)], cwd=ROOT, capture_output=True, text=True,
+def newsroom(archive, source, expect_success=True, publish=()):
+    command = [sys.executable, "-B", str(NEWSROOM), "--archive", str(archive), "--source", str(source)]
+    if publish:
+        command.extend(["--publish", *map(str, publish)])
+    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True,
                             encoding="utf-8", errors="replace")
     require((result.returncode == 0) == expect_success, f"Newsroom exit {result.returncode}: {result.stderr}")
     if expect_success:
         return read_json(archive / "current.json")
     return result.stderr.strip()
+
+
+class LocalLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.hrefs = []
+        self.words = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a" and "href" in dict(attrs):
+            self.hrefs.append(dict(attrs)["href"])
+
+    def handle_data(self, text):
+        self.words.append(text)
+
+
+def inspect_page(page):
+    html = LocalLinks()
+    html.feed(page.read_text(encoding="utf-8"))
+    targets = set()
+    for href in html.hrefs:
+        url = urlsplit(href)
+        if url.scheme or url.netloc or not url.path:
+            continue
+        target = (page.parent / unquote(url.path)).resolve()
+        require(target.exists(), f"Broken link in {page}: {href}")
+        targets.add(target)
+    return targets, " ".join(" ".join(html.words).split())
+
+
+def legacy_archives():
+    result = {}
+    for component, expected in LEGACY_DIGESTS.items():
+        files = hash_tree(PRODUCTION / component / LEGACY_CYCLE)
+        canonical = json.dumps(files, sort_keys=True, separators=(",",":")).encode()
+        actual = hashlib.sha256(canonical).hexdigest()
+        require(actual == expected, f"Changed immutable {component} archive, previously {expected}, now {actual}")
+        result[component] = {"file_count":len(files),"tree_sha256":actual}
+    return result
 
 
 def reference_facts(source):
@@ -274,77 +323,176 @@ def synthetic_correct(source, test_source):
     require(changed == set(transfers), "Incomplete synthetic scorer fixture")
 
 
+def reviewed_issue(archive, current, reviews):
+    publication = Path(current["publication"])
+    articles = read_json(publication / "articles.json")["articles"]
+    approved = {r["slug"]:r for r in (read_json(path) for path in reviews)}
+    require(len(articles) == len(reviews), "Reviewed list and published article count disagree")
+    top_links, visible = inspect_page(archive / "index.html")
+    issue_links, _ = inspect_page(publication / "index.html")
+    for article in articles:
+        md = publication / article["path"]
+        pdf, html = md.with_suffix(".pdf"), md.with_suffix(".html")
+        require(md.is_file() and pdf.is_file() and html.is_file(), f"Missing reading copy for {md}")
+        require(html in top_links or (publication / "index.html" in top_links and html in issue_links),
+                f"Approved article is unreachable from the reading page: {html}")
+        text = md.read_text(encoding="utf-8")
+        _, browser = inspect_page(html)
+        printable = " ".join(p.extract_text() for p in PdfReader(pdf).pages)
+        title = article["title"]
+        pdf_body = " ".join(printable.split())
+        require(title in text and title in browser, f"Incomplete edition of {title}")
+        for _, paragraphs in approved[article["slug"]]["sections"]:
+            for paragraph in paragraphs:
+                require(paragraph in text and paragraph in browser and paragraph in pdf_body,
+                        f"Approved paragraph missing from a reading copy of {title}: {paragraph[:45]}")
+        require(article["evidence"] and article["review"], f"Missing evidence/review for {title}")
+    require("411" in visible and "desk" in visible.lower(), "Reading page lacks 411 or reporting desk")
+    return articles
+
+
+def division_update(desk, source):
+    sections = read_json(desk / "queue.json")["divisions"]
+    require(len(sections) == 6, "ABL 411 needs all six divisions")
+    rows = [g for g in table(source,"games") if g["league_id"] == "200" and g["game_type"] == "0"]
+    expected_today = {int(g["game_id"]) for g in rows if game_date(g["date"]) == date(1981,8,19) and g["played"] == "1"}
+    expected_next = {int(g["game_id"]) for g in rows if game_date(g["date"]) == date(1981,8,20) and g["played"] == "0"}
+    actual_today, actual_next = set(), set()
+    for s in sections:
+        require(s["movement"] and s["results"] and s["next"] and s["evidence"], f"Incomplete 411 division {s['division']}")
+        actual_today.update(map(int,s["completed_game_ids"]))
+        actual_next.update(map(int,s["scheduled_game_ids"]))
+    require(expected_today == actual_today and expected_next == actual_next, "411 game/window mismatch")
+    require(1113 in actual_next and 1113 not in actual_today, "Open game #1113 presented as a result")
+    return {"divisions":len(sections),"scheduled_games":sorted(actual_next),"played_games":sorted(actual_today)}
+
+
 def run(work):
     old, new, synthetic, archive = [work / s for s in ("aug18","aug19","synthetic","archive")]
+    initial_archives = legacy_archives()
     for sha, source in [(OLD, old), (NEW, new)]:
         prepare_export(sha, source)
-    # A clean current baseline is the actual activation path. In the chronological
-    # replay, a previously investigated East angle can legitimately be held over.
-    clean = newsroom(work / "baseline-archive", new)
-    facts = editorial_quality(Path(clean["editorial"]), new)
-    rejected = challenged_claims(clean, new)
+    # These four old articles are evidence for regression only. They are never
+    # approved or published by a normal news cycle.
+    archival_facts = editorial_quality(PRODUCTION / "journalism" / LEGACY_CYCLE, new)
+    current_reviews = sorted((ROOT / "tools/newsroom/reviews/1981-08-20").glob("*.json"))
+    require(current_reviews, "No actual reviewed August 20 issue submissions found")
     prior = newsroom(archive, old)
     now = newsroom(archive, new)
     require((prior["cutoff"],now["cutoff"],now["league_date"]) == ("1981-08-18","1981-08-19","1981-08-20"), "Wrong cutoff")
+    for cycle in [prior, now]:
+        require(not cycle.get("publication") and not cycle.get("observer"),
+                "Ordinary cycle published an unreviewed story or forced an Observer article")
+    inspect_page(archive / "index.html")
     edition = archive / "editions" / now["edition"]
-    editorial = Path(now["editorial"])
+    desk = Path(now["editorial"])
+    require(desk.parent == archive / "desks", "Queue entered the publication archive")
     coverage = read_json(edition / "coverage.json")
     require(coverage["completed_game_ids"] == list(range(1441,1453)) and not coverage["corrected_game_ids"], "Wrong baseball delta")
-    require(coverage["assignments"] == 24 and len(coverage["reports"]) == 24, "Incomplete legacy reports")
-    slate = read_json(editorial / "slate.json")
-    previous_slate = read_json(Path(prior["editorial"]) / "slate.json")
-    require(len(slate["teams"]) == len(previous_slate["teams"]) == 24, "Incomplete beat slates")
-    require(set(previous_slate["threads"]) <= set(slate["threads"]), "Prior editorial investigations disappeared")
-    before, legacy_before = hash_tree(editorial), hash_tree(edition)
+    require(coverage["assignments"] == 24 and len(coverage["reports"]) == 24, "Incomplete notebooks")
+    slate = read_json(desk / "slate.json")
+    previous = read_json(Path(prior["editorial"]) / "slate.json")
+    require(len(slate["teams"]) == len(previous["teams"]) == 24, "Incomplete beat slate")
+    require(set(previous["threads"]) <= set(slate["threads"]), "Prior investigations disappeared")
+    require(all((desk / f).is_file() for f in ("queue.json","abl-411.md","abl-411.pdf","story-slate.md","story-slate.pdf")), "Reporting desk incomplete")
+    dispatch = division_update(desk,new)
+    sys.path.insert(0,str(ROOT / "scripts"))
+    from abl_newsroom_control import current_issue_matches
+    require(current_issue_matches(now["source_id"],archive), "Controller rejected complete desk-only cycle")
+    require(not (desk / "observer/ernie-briefing.pdf").exists(), "Templated copy presented as a finished Observer article")
+    rejected = challenged_claims(now, new)
+    initial_pointer = (archive / "current.json").read_bytes()
+    bad = work / "unreviewed.json"
+    draft = read_json(current_reviews[0])
+    draft.pop("review", None)
+    bad.write_text(json.dumps(draft), encoding="utf-8")
+    unreviewed = newsroom(archive, new, False, [bad])
+    draft = read_json(current_reviews[0])
+    draft["title"] += " with an unreviewed change"
+    bad.write_text(json.dumps(draft), encoding="utf-8")
+    changed_copy = newsroom(archive, new, False, [bad])
+    draft = read_json(current_reviews[0])
+    draft["slug"] += "-synthetic-false"
+    draft["sections"][0][1].append("Charlotte is 68-53.")
+    signable = {k:v for k,v in draft.items() if k != "review"}
+    draft["review"]["copy_sha256"] = hashlib.sha256(json.dumps(signable, ensure_ascii=False, sort_keys=True,
+                                                              separators=(",",":")).encode()).hexdigest()
+    bad.write_text(json.dumps(draft), encoding="utf-8")
+    false_story = newsroom(archive, new, False, [current_reviews[0],bad])
+    require("record" in false_story.lower() or "standing" in false_story.lower(), "Bad score/record cleared factual gate")
+    require((archive / "current.json").read_bytes() == initial_pointer, "A rejected review moved the pointer")
+    first = newsroom(archive, new, publish=current_reviews[:1])
+    first_issue = Path(first["publication"])
+    first_hashes = hash_tree(first_issue)
+    accepted = newsroom(archive, new, publish=current_reviews)
+    published = Path(accepted["publication"])
+    articles = reviewed_issue(archive, accepted, current_reviews)
+    if len(current_reviews) > 1:
+        require(read_json(published / "articles.json")["previous_revision"] == first_issue.name and
+                first_issue != published and hash_tree(first_issue) == first_hashes,
+                "Publishing a companion did not preserve and identify its predecessor")
+    require(current_issue_matches(now["source_id"],archive), "Controller rejected approved issue")
+    before, legacy_before, desk_before = hash_tree(published), hash_tree(edition), hash_tree(desk)
     pointer = (archive / "current.json").read_bytes()
-    newsroom(archive, new)
-    require((archive / "current.json").read_bytes() == pointer and hash_tree(editorial) == before,
-            "Repeat produced duplicate or revised journalism")
+    pointer_mtime = (archive / "current.json").stat().st_mtime_ns
+    for requested in ((), current_reviews):
+        newsroom(archive, new, publish=requested)
+        require((archive / "current.json").read_bytes() == pointer and (archive / "current.json").stat().st_mtime_ns == pointer_mtime
+                and hash_tree(published) == before,
+                "Rerun moved current pointer or rewrote approved copy")
     quiet = work / "quiet"
     quiet.mkdir()
     for item in new.glob("*.csv"):
         if item.name != "games.csv":
             shutil.copyfile(item, quiet / item.name)
-    missing = newsroom(archive, quiet, expect_success=False)
-    require("games.csv" in missing and (archive / "current.json").read_bytes() == pointer and hash_tree(edition) == legacy_before,
-            "Export missing games.csv disturbed published work or omitted the failure reason")
+    missing = newsroom(archive, quiet, False)
+    require("games.csv" in missing and (archive / "current.json").read_bytes() == pointer,
+            "Incomplete source disturbed the admitted reporting desk")
     shutil.copyfile(new / "games.csv", quiet / "games.csv")
-    synthetic_correct(new, synthetic)
-    # A new source identity without a new baseball event.
     with (quiet / "languages.csv").open("ab") as sink:
         sink.write(b"\r\n")
     last = newsroom(archive, quiet)
-    quiet_articles = read_json(Path(last["editorial"]) / "articles.json")["articles"]
-    require(not any(a["kind"] in ("beat","league") for a in quiet_articles),
-            "Reformatted source bytes generated a new feature with no baseball change")
+    require(not last.get("publication"), "A harmless byte change created a newly published issue")
+    synthetic_correct(new, synthetic)
     amended = newsroom(archive, synthetic)
     corrected_dir = archive / "editions" / amended["edition"]
     recorded = read_json(corrected_dir / "coverage.json")
     require(recorded["completed_game_ids"] == [] and recorded["corrected_game_ids"] == [1446],
-            "Scorer fixture must affect exactly game #1446")
-    corrected_editorial = Path(amended["editorial"])
-    metadata = read_json(corrected_editorial / "articles.json")
-    current_copy = "\n".join(p.read_text(encoding="utf-8") for p in corrected_editorial.rglob("*.md"))
-    require("1446" in current_copy and "2404" in current_copy and "5582" in current_copy and "rbi" in current_copy.lower(),
-            "Correction must identify the game and both revised player lines")
-    require("Nate Smeltz went 1-for-3" in team_story(editorial,8) and
-            "Nate Smeltz went 0-for-3" in team_story(corrected_editorial,8),
-            "A previously published description of Smeltz's performance was not corrected")
-    require(not any(a["key"] in ("east-1","east-3","east-6") for a in metadata["articles"]),
-            "One San Francisco/Tampa Bay scoring change refiled unrelated East beat articles")
-    require(hash_tree(editorial) == before and hash_tree(edition) == legacy_before,
-            "Correction altered the previous archived beat, Observer or edition")
+            "Scorer fixture must affect precisely game #1446")
+    require(not amended.get("publication"), "New correction silently published or overwrote article copy")
+    notices = read_json(Path(amended["editorial"]) / "desk.json")["correction_register"]
+    require(notices and "1446" in json.dumps(notices), "Game #1446 missing from published-claim correction register")
+    changed_game = next(n for n in notices if n["game_id"] == 1446)
+    affected = {a["title"]:a for a in changed_game["affected_articles"]}
+    expected = {a["title"] for a in articles if 1446 in a["claim_games"]}
+    require(affected.keys() == expected and expected, "Scorer notice omitted the West lead or flagged unrelated reviewed copy")
+    require(any("Margalit" in claim for a in affected.values() for claim in a["claims"]),
+            "Correction failed to identify the previously reported RBI claim")
+    require(not any("64–57" in line for a in affected.values() for line in a["claims"]) and
+            any("64–57" in line for a in affected.values() for line in a["context_to_review"]),
+            "A batting-only correction treated an unchanged standing as a corrected result")
+    require(all((archive / a["path"]).is_file() for a in affected.values()), "Unreachable affected earlier coverage")
+    require("2404" in changed_game["details"] and "5 → 4" in changed_game["details"],
+            "Correction does not expose the old and revised player line")
+    _, visible = inspect_page(archive / "index.html")
+    require("correction" in visible.lower() and "1446" in visible, "Correction not visible to readers")
     newsroom(archive, synthetic)
-    require(len(list((archive / "journalism").iterdir())) == 4, "Replay produced duplicate editorial editions")
-    return dict(test_scope="Two real local OOTP exports; invented RBI/hit transfers for the same game only inside a disposable archive.",
-                tested_at=datetime.now(timezone.utc).isoformat(), commits=[OLD, NEW], real_source_digests=[prior["source_id"],now["source_id"]],
+    require(hash_tree(published) == before and hash_tree(desk) == desk_before and hash_tree(edition) == legacy_before,
+            "Correction overwrote approved copy or a previously admitted desk")
+    require(legacy_archives() == initial_archives, "Original August 19 archives changed")
+    return dict(test_scope="Two pinned real OOTP exports and one invented hit/RBI scorer fixture in a disposable archive.",
+                tested_at=datetime.now(timezone.utc).isoformat(), commits=[OLD,NEW], historical_archive_integrity=initial_archives,
+                real_source_digests=[prior["source_id"],now["source_id"]], active_teams=len(slate["teams"]),
                 cutoffs=[prior["cutoff"],now["cutoff"]], real_delta_games=coverage["completed_game_ids"],
-                prior_investigations=len(previous_slate["threads"]), active_teams=len(slate["teams"]),
-                immutable_prior_files={"legacy":len(legacy_before),"editorial":len(before)},
-                checks=["source-derived four-team fact checks","division synthesis","PDF text","24 monitored beats","real historical replay",
-                        "prior threads retained","unchanged replay","incomplete source rejected","quiet export held","scorer correction propagated","earlier journalism intact"],
-                source_checks=facts,incomplete_source_response=missing, synthetic_revised_game=1446,
-                synthetic_corrected_articles=len(metadata["articles"]), false_claims_rejected=rejected)
+                prior_investigations=len(previous["threads"]), approved_titles=[a["title"] for a in articles], division_update=dispatch,
+                protected_revision_files=len(before), checks=["regular cycle generates no articles","24 continuing beat assignments",
+                    "six-division 411","reject missing editorial review","reject altered reviewed copy","explicit reviewed issue",
+                    "HTML links and matching article formats","immutable same-snapshot editorial revision","duplicate publish and ordinary rerun preserve issue",
+                    "incomplete export rejected","quiet export generates no articles","scorer correction carried through past quiet edition",
+                    "original archive hashes unchanged"], archived_beat_source_checks=archival_facts,
+                incomplete_source_response=missing, unreviewed_response=unreviewed, altered_review_response=changed_copy,
+                signed_false_story_response=false_story,
+                synthetic_revised_game=1446, synthetic_correction_register=notices, false_claims_rejected=rejected)
 
 
 if __name__ == "__main__":

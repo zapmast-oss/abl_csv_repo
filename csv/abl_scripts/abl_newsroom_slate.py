@@ -573,7 +573,8 @@ def assess(item, old, previous_cutoff, cutoff, edition, covered):
     if not covered:
         item["coverage_reference"] = None
     else:
-        item["coverage_reference"] = f"{covered['edition']}/{covered['path']}"
+        path=covered["path"]
+        item["coverage_reference"] = path if path.startswith("issues/") else f"{covered['edition']}/{path}"
     history = list(old.get("developments",[])) if old else []
     if not old or not repeated or revised:
         history.append(dict(cutoff=cutoff,edition=edition,assessment=assessment,trigger=item["trigger"],

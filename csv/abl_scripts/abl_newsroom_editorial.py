@@ -1,12 +1,12 @@
 """Select, fact-check and file internal reporting alongside an immutable intelligence edition."""
-import csv
 import hashlib
 import json
 import re
+from datetime import datetime, timezone
+from html import escape
+import os
 from pathlib import Path
 
-from abl_newsroom_beats import day, rows
-from abl_newsroom_observer import prepare_observer
 from abl_newsroom_factcheck import ClaimCheck
 from abl_newsroom_print import write_report
 from z_abl_story_engine_current_1981 import Builder, CANDIDATE_FIELDS, EVIDENCE_FIELDS, write_csv
@@ -25,25 +25,6 @@ def sha(path):
         return hashlib.file_digest(stream,"sha256").hexdigest()
 
 
-def audit_editorial(path, source):
-    receipt = read(path/"files.json")
-    contents = {p.relative_to(path).as_posix() for p in path.rglob("*") if p.is_file()} - {"files.json"}
-    if set(receipt) != contents or any(sha(path/k)!=v for k,v in receipt.items()):
-        raise ValueError(f"Editorial archive integrity failure: {path}")
-    manifest = read(path/"articles.json")
-    if manifest["source_id"]!=source or len(read(path/"slate.json")["teams"])!=24:
-        raise ValueError("Editorial source or beat register mismatch")
-    for article in manifest["articles"]:
-        if not {article["path"],article["path"][:-3]+".pdf"} <= contents:
-            raise ValueError(f"Incomplete reading copies: {article['path']}")
-    if not {"observer/ernie-briefing.pdf","story-slate.pdf","story_candidates.csv","story_evidence.csv"} <= contents:
-        raise ValueError("Editorial desk records are incomplete")
-
-
-def body_digest(piece):
-    return hashlib.sha256(json.dumps([piece["title"],piece["sections"]],ensure_ascii=False).encode()).hexdigest()
-
-
 def release_problem(piece, v):
     if not (piece.get("title") and piece.get("sections") and piece.get("evidence")):
         return "Missing copy or supporting evidence"
@@ -56,17 +37,6 @@ def release_problem(piece, v):
     if re.search(r"\b(?:1 earned runs|1 innings|1 games|1 home runs)\b",text):
         return "Singular/plural mismatch"
     return None
-
-
-def file_article(stage, piece, stem, edition, v):
-    # Full row selectors travel with the archive. Readers also get the source tables in their copy.
-    tables = sorted(set(re.findall(r"[\w]+\.csv"," ".join(piece["evidence"]))).intersection(v["hashes"]))
-    copy = list(piece["sections"]) + [("Reporting record", [
-        "Sources in the verified ABL export: "+", ".join(tables)+". Full row references accompany this edition in articles.json."])]
-    credit="The Baseball Observer  |  Ernie Bewell" if piece["kind"]=="observer" else piece.get("byline","League desk")
-    write_report(stage/stem,piece["title"],copy,credit+"  |  "+edition,article=True)
-    return dict(path=stem+".md",title=piece["title"],team_ids=piece["team_ids"],kind=piece["kind"],
-                key=piece["key"],trigger=piece["trigger"],evidence=piece["evidence"],body_sha256=body_digest(piece))
 
 
 def record_pitches(stage, slate, v, cycle, raw):
@@ -90,167 +60,179 @@ def record_pitches(stage, slate, v, cycle, raw):
     write_csv(stage/"story_evidence.csv",EVIDENCE_FIELDS,builder.evidence)
 
 
-def reported_brief(p, tid, checker, beats, raw):
-    evidence=list(p["evidence"])
-    title,lead,reading=p["title"],p["observation"],p["significance"]
-    question=p["question"]
-    if p["category"]=="game":
-        gid=int(p["key"].split(":")[2])
-        g=checker.games[gid]
-        a,h=int(g["runs0"]),int(g["runs1"])
-        if a!=h:
-            side=int(h>a)
-            winner,loser=(int(g["home_team"]),int(g["away_team"])) if side else (int(g["away_team"]),int(g["home_team"]))
-            city,other=checker.clubs[winner]["name"],checker.clubs[loser]["name"]
-            line=[r for r in rows(raw,"games_score") if int(r["game_id"])==gid and int(r["team"])==side]
-            frame=max(line,key=lambda r:(int(r["score"]),-int(r["inning"])))
-            tally,inning=int(frame["score"]),int(frame["inning"])
-            ordinal={1:"first",2:"second",3:"third",4:"fourth",5:"fifth",6:"sixth",7:"seventh",8:"eighth",9:"ninth"}.get(inning,f"inning {inning}")
-            title=f"{city} scores {tally} in the {ordinal} to beat {other}" if inning<=9 else f"{city} beats {other} in {g['innings']} innings"
-            when=day(g["date"])
-            lead=f"{city} beat {other} {max(a,h)}–{min(a,h)} on {when:%B} {when.day}. The biggest inning for {city} was the {ordinal}, when it scored {tally}."
-            hits=[r for r in rows(raw,"players_game_batting") if r["league_id"]=="200" and r["level_id"]=="1" and int(r["year"])==when.year and int(r["game_id"])==gid and int(r["team_id"])==winner]
-            if hits:
-                hit=max(hits,key=lambda r:(int(r["rbi"]),int(r["hr"]),int(r["h"])))
-                person=next(r for r in rows(raw,"players") if r["player_id"]==hit["player_id"])
-                if int(hit["rbi"]):
-                    lead+=f" {person['first_name']} {person['last_name']} went {hit['h']}-for-{hit['ab']} and drove in {hit['rbi']}."
-                    evidence.append(f"players.csv and players_game_batting.csv, player_id={hit['player_id']}, team_id={winner}, game_id={gid}.")
-            evidence.append(f"games_score.csv, game_id={gid}, team={side}, inning={inning}.")
-            reading=re.sub(r"^On .*? innings\.\s*","",p["observation"])
-            if reading==p["observation"]:
-                reading=p["significance"]
-    return dict(title=title,sections=[("",[lead,reading]),("What to watch",[question])],
-                evidence=evidence,team_ids=[tid],kind="beat",key=p["key"],byline=beats[tid]["team"]+" beat")
+def seal(folder):
+    store(folder/"files.json",{p.relative_to(folder).as_posix():sha(p) for p in sorted(folder.rglob("*")) if p.is_file()})
 
 
-def prepare_editorial(stage, intel, previous, cycle):
-    from abl_newsroom_east import build_east
-    from abl_newsroom_slate import build_slate
+def audit_files(folder):
+    receipt=read(folder/"files.json")
+    present={p.relative_to(folder).as_posix() for p in folder.rglob("*") if p.is_file()}-{"files.json"}
+    if set(receipt)!=present or any(sha(folder/k)!=v for k,v in receipt.items()):
+        raise ValueError(f"Archive hash mismatch: {folder}")
+    return present
 
-    v, ledger = read(intel/"verification.json"), read(intel/"coverage.json")
-    raw, cutoff = Path(v["raw_dir"]), v["cutoff"]
-    beats = {b["team_id"]:b for b in (read(path) for path in (intel/"teams").glob("*.json"))}
-    with (intel/"story_candidates.csv").open(encoding="utf-8-sig",newline="") as stream:
-        candidates = list(csv.DictReader(stream))
-    new, revised = set(ledger["completed_game_ids"]),set(ledger["corrected_game_ids"])
-    slate = build_slate(raw,cutoff,beats,candidates,previous,cycle)
-    checker=ClaimCheck(raw,cutoff,v["league_date"],beats)
-    if set(slate["teams"]) != {str(t) for t in beats} or any(not b["pitches"] for b in slate["teams"].values()):
-        raise ValueError("Each franchise needs a monitored story slate")
-    record_pitches(stage,slate,v,cycle,raw)
-    history = list(previous.get("coverage",[]))
-    latest = {r["key"]:r for r in history}
-    edition = f"ABL Newsroom  |  League date {v['league_date']}  |  Games through {cutoff}"
-    articles, held = [], []
-    previous_reads=previous.get("assessment_digests",{})
-    reads=dict(previous_reads)
-    def release(piece, stem, force=False):
-        old = latest.get(piece["key"])
-        signature=body_digest(piece)
-        reads[piece["key"]]=signature
-        if old and not force:
-            if old["body_sha256"] == signature:
-                return False
-            observed_change=signature!=previous_reads.get(piece["key"])
-            references=" ".join(piece["evidence"])
-            linked_game=any(re.search(rf"\b{gid}\b",references) for gid in revised)
-            correction=observed_change and (linked_game or (cutoff==previous.get("cutoff") and not new and bool(revised)))
-            if piece["trigger"]==old["trigger"] and not correction:
-                return False
-        problem = release_problem(piece,v)
-        checked={}
-        if not problem:
-            try:
-                checked=checker.evaluate(piece)
-            except ValueError as error:
-                problem=str(error)
-        if problem:
-            held.append(dict(key=piece["key"],title=piece["title"],reason=problem))
-            return False
-        entry = file_article(stage,piece,stem,edition,v)
-        entry.update(edition=cycle,cutoff=cutoff,prior_edition=old["edition"] if old else None,checked=checked)
-        history.append(entry)
-        articles.append(entry)
-        latest[entry["key"]]=entry
-        return True
 
-    east = build_east(raw,cutoff,new,beats,snapshot_date=v["league_date"])
-    for tid, piece in east.get("teams",{}).items():
-        tid = int(tid)
-        piece.update(team_ids=[tid],kind="beat",key=f"east-{tid}",byline=beats[tid]["team"]+" beat")
-        release(piece,f"beat/{tid:02}-{beats[tid]['abbr']}")
-    if east.get("division"):
-        piece = east["division"]
-        piece.update(team_ids=sorted(int(t) for t in east["teams"]),kind="league",key="nbc-east")
-        release(piece,"league/nbc-east")
-    filed = {t for a in articles if a["kind"]=="beat" for t in a["team_ids"]}
-    ranking = sorted(((p["score"],int(t),p) for t,b in slate["teams"].items() for p in b["pitches"] if p["eligible"]),
-                     key=lambda x:(-x[0],x[1],x[2]["key"]))
-    covered_events = set()
-    # Give different investigations a hearing before commissioning a second version of the same race.
-    subjects=[]
-    for _,_,p in ranking:
-        if p["category"] not in subjects:
-            subjects.append(p["category"])
-    varied=[next(row for row in ranking if row[2]["category"]==kind and row[1] not in filed)
-            for kind in subjects if any(row[2]["category"]==kind and row[1] not in filed for row in ranking)]
-    for _, tid, p in varied+ranking:
-        if tid in filed or len(covered_events)>=4:
-            continue
-        event = p.get("trigger",p["key"])
-        if not isinstance(event,str):
-            event=json.dumps(event,sort_keys=True)
-        if event in covered_events:
-            continue
-        piece=reported_brief(p,tid,checker,beats,raw)
-        piece["trigger"]=event
-        if release(piece,f"beat/{tid:02}-{beats[tid]['abbr']}"):
-            filed.add(tid)
-            covered_events.add(event)
-    observer = prepare_observer(raw,cutoff,beats,new,revised,candidates,east,slate)
-    if not release(observer,"observer/ernie-briefing",force=True):
-        raise ValueError(f"Observer briefing held: {held[-1]['reason']}")
-    corrections=list(previous.get("correction_register",[]))
-    for gid in sorted(revised):
-        affected=[dict(edition=a["edition"],path=a["path"],title=a["title"]) for a in previous.get("coverage",[])
-                  if gid in a.get("checked",{}).get("games",[])]
-        corrections.append(dict(game_id=gid,edition=cycle,cutoff=cutoff,desk="observer/ernie-briefing.md",
-                                earlier_articles_citing_game=affected))
-    slate["correction_register"]=corrections
-    slate["coverage"]=history
-    slate["assessment_digests"]=reads
-    slate["cutoff"]=cutoff
-    investigations=dict(previous.get("commissioned_investigations",{}))
-    monitors={**{f"east-{t}":piece for t,piece in east["teams"].items()},**({"nbc-east":east["division"]} if east.get("division") else {})}
-    for key,piece in monitors.items():
-        prior=investigations.get(key,{})
-        reports=[a for a in history if a["key"]==key]
-        updates=list(prior.get("developments",[]))
-        updated=any(a["key"]==key for a in articles)
-        if updated:
-            updates.append(dict(edition=cycle,cutoff=cutoff,title=piece["title"],evidence=piece["evidence"]))
-        investigations[key]=dict(first_edition=prior.get("first_edition",cycle),originating_event=prior.get("originating_event",piece["title"]),
-            team_ids=piece["team_ids"],status="active",last_examined=cycle,trigger=piece["trigger"],developments=updates,
-            assessment="Updated coverage" if updated else "Examined and carried forward",
-            latest_coverage=reports[-1]["edition"]+"/"+reports[-1]["path"] if reports else None)
-    for key in investigations.keys()-monitors.keys():
-        investigations[key]=dict(investigations[key],status="archived",last_examined=cycle,assessment="The current record no longer supports this angle")
-    slate["commissioned_investigations"]=investigations
-    # Full reporting history, including carried articles, lives at the desk for each club.
-    slate_sections = []
-    for tid, t in sorted(slate["teams"].items(),key=lambda item:beats[int(item[0])]["team"]):
-        own = [a for a in history if int(tid) in a["team_ids"]]
-        t["coverage_history"]=[{"edition":a["edition"],"key":a["key"],"path":a["path"],"title":a["title"]} for a in own]
-        t["ready_to_read"]=[link for link in t["coverage_history"] if link["edition"]==cycle]
-        for pitch in t["pitches"]:
-            pitch["coverage_reference"] = next((a["edition"]+"/"+a["path"] for a in reversed(own) if a["key"]==pitch["key"]),None)
-        slate_sections.append((beats[int(tid)]["team"],[t["assignment"]]+[
-            f"{i}. {p['title']} — {p['observation']} {p['question']}" for i,p in enumerate(t["pitches"][:2],1)]))
-    write_report(stage/"story-slate","Newsroom story slate | 24 franchise assignments",slate_sections,edition)
-    store(stage/"slate.json",slate)
-    store(stage/"articles.json",dict(edition=cycle,source_id=v["source_id"],cutoff=cutoff,league_date=v["league_date"],
-        previous_edition=ledger["previous_edition"],articles=articles,held=held,external_publication=False,
-        source_directory=str(raw),evidence_policy="Scores, appearances and standings use completed regular-season games through cutoff. Unplayed rows support schedules only. Personnel attributes use the identified export date."))
-    store(stage/"files.json",{p.relative_to(stage).as_posix():sha(p) for p in stage.rglob("*") if p.is_file()})
-    audit_editorial(stage,v["source_id"])
+def audit_desk(folder, source):
+    contents=audit_files(folder)
+    needed={"desk.json","slate.json","queue.json","story-slate.md","story-slate.pdf","abl-411.md","abl-411.pdf",
+            "story_candidates.csv","story_evidence.csv"}
+    if not needed<=contents or read(folder/"desk.json")["source_id"]!=source or len(read(folder/"slate.json")["teams"])!=24:
+        raise ValueError(f"Incomplete reporting desk: {folder}")
+
+
+def audit_issue(folder, source):
+    contents=audit_files(folder)
+    manifest=read(folder/"articles.json")
+    if manifest["source_id"]!=source or not manifest["articles"] or "index.html" not in contents:
+        raise ValueError(f"Incomplete approved issue: {folder}")
+    for article in manifest["articles"]:
+        stem=article["path"][:-3]
+        if not {stem+suffix for suffix in (".html",".md",".pdf")}<=contents:
+            raise ValueError(f"Approved reading copy missing: {stem}")
+    return manifest
+
+
+def copy_hash(value):
+    source={k:v for k,v in value.items() if k!="review"}
+    return hashlib.sha256(json.dumps(source,sort_keys=True,ensure_ascii=False,separators=(",",":")).encode()).hexdigest()
+
+
+def checked_review(doc, v, checker, threads):
+    if any(doc.get(k)!=v[k] for k in ("source_id","cutoff","league_date")):
+        raise ValueError("Review belongs to a different verified export or issue date")
+    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*",str(doc.get("slug",""))) or doc.get("kind") not in ("observer","beat","league"):
+        raise ValueError("Review needs a valid article slug and desk")
+    review=doc.get("review",{})
+    if (review.get("decision")!="approve" or review.get("copy_sha256")!=copy_hash(doc)
+            or not all(isinstance(review.get(k),str) and review[k].strip() for k in ("reviewer","question","promise","sequence","stakes","ending"))):
+        raise ValueError("Editorial approval of this exact copy is missing or incomplete")
+    if not doc.get("byline") or not doc.get("story_ids") or not set(doc["story_ids"])<=set(threads):
+        raise ValueError("Approved copy must name its desk and link to current investigations")
+    if not doc.get("team_ids") or not set(doc["team_ids"])<=checker.clubs.keys():
+        raise ValueError("Approved copy must identify its ABL franchises")
+    problem=release_problem(doc,v)
+    if problem:
+        raise ValueError(problem)
+    checked=checker.evaluate(doc)
+    named=set(doc.get("claim_games",[]))
+    if not named or not named<=set(checked["games"]):
+        raise ValueError("Article game claims need matching, verified row selectors")
+    for item in doc.get("claim_map",[]):
+        if not item.get("claim") or not item.get("games") or not set(item["games"])<=named:
+            raise ValueError("A correction reference does not identify a verified article claim")
+    excluded={int(row["game_id"]) for row in v.get("log_exceptions",[])}
+    for ref in doc["evidence"]:
+        if "game_logs.csv" in ref:
+            matches=re.findall(r"game[ _]ids?\s*[=:]?\s*(\d+(?:\s*,\s*\d+)*)",ref,re.I)
+            cited={int(gid) for ids in matches for gid in ids.split(",")}
+            if not cited or cited & excluded:
+                raise ValueError("Game-log citation is ambiguous or refers to an excluded block")
+    return checked
+
+
+STYLE="""*{box-sizing:border-box}body{margin:0;background:#f9f7f0;color:#172e31;font:17px/1.55 Georgia,serif}
+main{max-width:960px;margin:auto;padding:26px clamp(18px,4vw,48px) 60px}header{border-top:5px solid #214a46;border-bottom:1px solid #73847c;margin-bottom:24px}
+h1,h2,h3,p{margin:0 0 .72em}h1{font-size:clamp(2.1rem,5vw,3.25rem);line-height:1.1;letter-spacing:-.035em}
+h2{font-size:1.55rem;line-height:1.25;margin-top:1.3em}h3{font-size:1.15rem;margin-top:1em}.date,nav,summary,footer,.meta{font: .91rem/1.55 system-ui,sans-serif}
+.date{margin:.65em 0;color:#435d56}a{color:#12594d;text-underline-offset:.15em}article{max-width:680px}article p{font-size:1.12rem}
+.lead{font-size:1.8rem;line-height:1.17}ul{padding-left:1.3rem}li{margin:.3rem 0}details{margin:1rem 0}summary{cursor:pointer;font-weight:650}
+.divisions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0 1.6rem}
+.divisions section{border-top:1px solid #bbc5bc;padding:.5rem 0}.divisions p{font-size:.96rem}.clubs{columns:3 15rem}.clubs li{break-inside:avoid}footer{border-top:1px solid #a5b3a8;margin-top:2rem;padding-top:1rem}
+@media print{body{background:white}main{padding:0}.clubs{columns:2}}"""
+
+
+def page(title, body):
+    return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+            f'<title>{escape(title)} | ABL Newsroom</title><style>{STYLE}</style></head><body><main>{body}</main></body></html>')
+
+
+def link(target,label):
+    return f'<a href="{escape(target,quote=True)}">{escape(label)}</a>'
+
+
+def render_article(stage, doc, checked, v):
+    stem=doc["kind"]+"/"+doc["slug"]
+    target=stage/stem
+    credit=doc["byline"]+"  |  "+v["league_date"]+"  |  Games through "+v["cutoff"]
+    files=", ".join(sorted(checked["source_tables"]))
+    brief=f"Verified against {files}. Game and player references are in the companion HTML reporting record."
+    write_report(target,doc["title"],list(doc["sections"])+[("Reporting record",[brief])],credit,article=True)
+    text="".join((f"<h2>{escape(h)}</h2>" if h else "")+"".join(f"<p>{escape(p)}</p>" for p in ps) for h,ps in doc["sections"])
+    evidence="".join("<li>"+escape(ref)+"</li>" for ref in doc["evidence"])
+    name=doc["slug"]
+    body=(f'<header><p class="date">{escape(credit)}</p><h1>{escape(doc["title"])}</h1></header><article>{text}</article>'
+          f'<details><summary>Reporting record</summary><ul>{evidence}</ul></details><footer>'
+          +link(name+".pdf","PDF")+ " · "+link(name+".md","Markdown")+" · "+link("../index.html","This issue")+"</footer>")
+    target.with_suffix(".html").write_text(page(doc["title"],body),encoding="utf-8")
+    return dict(key=name,slug=name,title=doc["title"],kind=doc["kind"],team_ids=doc["team_ids"],
+                path=stem+".md",lead=doc.get("lead",False),story_ids=doc["story_ids"],review=doc["review"],
+                evidence=doc["evidence"],checked=checked,claim_games=doc["claim_games"],claim_map=doc.get("claim_map",[]))
+
+
+def active_issue(archive, cycle):
+    folder=archive/"issues"/cycle
+    active=folder/"active.json"
+    if active.exists():
+        revision=read(active)["revision"]
+        if not re.fullmatch(r"[0-9a-f]{20}",revision):
+            raise ValueError("Invalid issue revision")
+        return folder/revision
+    # Recover from a crash between admitting a complete directory and writing its pointer.
+    if folder.exists():
+        revisions={p.name:read(p/"articles.json")["previous_revision"] for p in folder.iterdir() if p.is_dir()}
+        tips=set(revisions)-set(revisions.values())
+        if len(tips)==1:
+            return folder/tips.pop()
+        if revisions:
+            raise ValueError("Ambiguous issue history. Review the archived revisions.")
+    return None
+
+
+def publish(archive, scratch, intel, desk, cycle, paths):
+    v=read(intel/"verification.json")
+    prior=active_issue(archive,cycle)
+    if prior:
+        audit_issue(prior,v["source_id"])
+        if not (prior.parent/"active.json").exists():
+            recovered=scratch/"recovered-issue.json"
+            store(recovered,dict(revision=prior.name,source_id=v["source_id"]))
+            os.replace(recovered,prior.parent/"active.json")
+    if not paths:
+        return prior
+    docs=read(prior/"reviews.json") if prior else {}
+    incoming=[read(path) for path in paths]
+    if len({doc.get("slug") for doc in incoming})!=len(incoming):
+        raise ValueError("Two reviews use the same slug in this submission")
+    if all(docs.get(doc.get("slug"))==doc for doc in incoming):
+        return prior
+    beats={b["team_id"]:b for b in (read(p) for p in (intel/"teams").glob("*.json"))}
+    checker=ClaimCheck(Path(v["raw_dir"]),v["cutoff"],v["league_date"],beats)
+    threads=read(desk/"slate.json")["threads"]
+    for doc in incoming:
+        checked_review(doc,v,checker,threads)
+        docs[doc["slug"]]=doc
+    if sum(bool(d.get("lead")) for d in docs.values())>1:
+        raise ValueError("More than one lead was approved. Submit the updated lead decisions together.")
+    predecessor=prior.name if prior else None
+    revision=hashlib.sha256(json.dumps([predecessor,docs],sort_keys=True,ensure_ascii=False).encode()).hexdigest()[:20]
+    work=scratch/"reviewed-issue"
+    work.mkdir()
+    entries=[render_article(work,d,checked_review(d,v,checker,threads),v) for d in sorted(docs.values(),key=lambda d:(not d.get("lead",False),d["slug"]))]
+    store(work/"reviews.json",docs)
+    store(work/"articles.json",dict(edition=cycle,revision=revision,previous_revision=predecessor,source_id=v["source_id"],
+        cutoff=v["cutoff"],league_date=v["league_date"],approved_at_utc=datetime.now(timezone.utc).isoformat(),
+        articles=entries,externally_published=False))
+    nav="".join("<li>"+link(a["path"][:-3]+".html",a["title"])+"</li>" for a in entries)
+    body=(f'<header><p class="date">Games through {v["cutoff"]}</p><h1>ABL Newsroom · {v["league_date"]}</h1></header><ul>{nav}</ul>'
+          +link(f"../../../desks/{cycle}/abl-411.pdf","ABL 411 · all six divisions")+" · "+link("../../../index.html","Current newsroom"))
+    (work/"index.html").write_text(page("Reviewed issue",body),encoding="utf-8")
+    seal(work)
+    dest=archive/"issues"/cycle/revision
+    dest.parent.mkdir(parents=True,exist_ok=True)
+    if not dest.exists():
+        work.rename(dest)
+    audit_issue(dest,v["source_id"])
+    marker=scratch/"active.json"
+    store(marker,dict(revision=revision,source_id=v["source_id"]))
+    os.replace(marker,dest.parent/"active.json")
+    return dest

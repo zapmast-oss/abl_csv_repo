@@ -57,22 +57,35 @@ def current_issue_matches(source_id, archive=ARCHIVE):
     edition = (editions / current["edition"]).resolve()
     if edition.parent != editions.resolve():
         raise ValueError("Current edition escapes the newsroom archive")
-    audited = json.loads((edition / "files.json").read_text(encoding="utf-8"))
-    if (Path(current["reports"]) != edition / "teams" or
-        Path(current["ernie"]) != edition / "ernie_briefing.pdf" or
-        Path(current["story_menu"]) != edition / "story_menu.csv"):
+    if Path(current["reports"]) != edition/"teams" or Path(current["story_menu"]) != edition/"story_menu.csv":
         return False
-    # A missing component or stale pointer must go through the regular verifier.
-    newsroom = archive / "journalism" / current["edition"]
-    if (current.get("editorial") != str(newsroom) or current.get("observer") != str(newsroom/"observer/ernie-briefing.pdf")
-            or not (newsroom/"files.json").is_file()):
+    def complete(folder, required):
+        if not (folder/"files.json").is_file():
+            return False
+        receipt=json.loads((folder/"files.json").read_text(encoding="utf-8"))
+        return required <= receipt.keys() and all((folder/n).is_file() for n in receipt)
+    desk=archive/"desks"/current["edition"]
+    if (current.get("editorial")!=str(desk) or not (archive/"index.html").is_file()
+            or not complete(desk,{"desk.json","queue.json","abl-411.pdf","story-slate.pdf","slate.json"})
+            or not complete(edition,{"coverage.json","assignments.json","story_menu.csv"})
+            or not (Path(current["raw_dir"])/"manifest.json").is_file()):
         return False
-    editorial_files = json.loads((newsroom/"files.json").read_text(encoding="utf-8"))
-    return (bool(audited) and "ernie_briefing.pdf" in audited and "story_menu.csv" in audited
-            and {"articles.json","slate.json","story-slate.pdf","observer/ernie-briefing.pdf"} <= editorial_files.keys()
-            and all((newsroom / name).is_file() for name in editorial_files)
-            and (Path(current["raw_dir"]) / "manifest.json").is_file()
-            and all((edition / name).is_file() for name in audited))
+    if json.loads((desk/"desk.json").read_text(encoding="utf-8"))["source_id"]!=source_id:
+        return False
+    root=archive/"issues"/current["edition"]
+    active=root/"active.json"
+    if not active.is_file():
+        return current.get("publication") is None and not root.exists()
+    selection=json.loads(active.read_text(encoding="utf-8"))
+    issue=(root/selection["revision"]).resolve()
+    if (issue.parent!=root.resolve() or current.get("publication")!=str(issue) or selection["source_id"]!=source_id
+            or not complete(issue,{"articles.json","reviews.json","index.html"})):
+        return False
+    manifest=json.loads((issue/"articles.json").read_text(encoding="utf-8"))
+    published=json.loads((issue/"files.json").read_text(encoding="utf-8"))
+    return (manifest["source_id"]==source_id and bool(manifest["articles"])
+            and all({a["path"][:-3]+ext for ext in (".html",".md",".pdf")}<=published.keys()
+                    for a in manifest["articles"]))
 
 
 @contextmanager

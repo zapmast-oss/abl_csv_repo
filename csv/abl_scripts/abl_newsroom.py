@@ -16,7 +16,8 @@ from datetime import datetime, timezone
 
 from abl_newsroom_beats import build_beats
 from abl_newsroom_corrections import changed_lines
-from abl_newsroom_editorial import prepare_editorial, audit_editorial
+from abl_newsroom_editorial import active_issue, audit_desk, audit_issue, copy_hash, publish, seal
+from abl_newsroom_reading import reading_index, previous_coverage, correction_register
 from abl_newsroom_print import write_report
 from abl_newsroom_verify import verify_export
 from z_abl_story_engine_current_1981 import Builder, CANDIDATE_FIELDS, EVIDENCE_FIELDS, HIERARCHY_ORDER, write_csv
@@ -241,7 +242,7 @@ def write_edition(stage, v, previous, cycle, previous_cycle, previous_raw=None):
     activity = f"{len(games)} completed games. {v['day']['completed']} of {v['day']['scheduled']} on the cutoff date. {len(new)} games in this edition’s reporting window. {len(corrected)} revised game records."
     exceptions = ", ".join(str(x["game_id"]) for x in v["log_exceptions"])
     source_note = f"Source archive {v['source_id']}. Preflight {v['preflight']['verdict']}. Full raw hashes, exact paths and log exceptions are in verification.json."
-    write_report(stage/"ernie_briefing","Ernie Bewell | League briefing",
+    write_report(stage/"results_memo","Reporting desk | Results memo",
         [("At the desk",[activity,opening]),("Lead stories",lead_notes or ["No fresh game or personnel story met the reporting criteria."]),
          ("Division races",raceboard),("Results on the assignment board",slate),
          ("Follow next",[b["stories"][1]["question"]+" "+b["stories"][1]["evidence"] for b in sorted(beats.values(),key=lambda b:-b["priority"])[:3]] if leads else []),
@@ -273,8 +274,16 @@ def audit(path):
 def summary_for(path):
     v=load(path/"verification.json")
     return dict(edition=path.name,cutoff=v["cutoff"],league_date=v["league_date"],season=v["season"],
-                source_id=v["source_id"],reports=str(path/"teams"),ernie=str(path/"ernie_briefing.pdf"),
+                source_id=v["source_id"],reports=str(path/"teams"),results_memo=str(path/("results_memo.pdf" if (path/"results_memo.pdf").exists() else "ernie_briefing.pdf")),
                 story_menu=str(path/"story_menu.csv"),raw_dir=v["raw_dir"])
+
+
+def desk_summary(intel,desk,issue):
+    summary=summary_for(intel)
+    entries=load(issue/"articles.json")["articles"] if issue else []
+    observer=next((str(issue/(a["path"][:-3]+".pdf")) for a in entries if a["kind"]=="observer"),None)
+    return dict(summary,editorial=str(desk),publication=str(issue) if issue else None,observer=observer,ernie=observer,
+                slate=str(desk/"story-slate.pdf"),queue=str(desk/"queue.json"),abl_411=str(desk/"abl-411.pdf"))
 
 
 def last_edition(archive):
@@ -300,58 +309,15 @@ def last_edition(archive):
     if name or visited!=set(named):
         raise ValueError("Incomplete edition history. Restore the missing archive before continuing.")
     audit(named[tip])
+    desk=archive/"desks"/tip
+    if desk.is_dir():
+        source=load(named[tip]/"verification.json")["source_id"]
+        audit_desk(desk,source)
+        issue=active_issue(archive,tip)
+        if issue:
+            audit_issue(issue,source)
+        return desk_summary(named[tip],desk,issue)
     return summary_for(named[tip])
-
-
-def reading_index(archive, scratch, summary):
-    edition=summary["edition"]
-    path=archive/"editions"/edition
-    coverage=load(path/"coverage.json")
-    registered=load(path/"assignments.json")
-    prefix=f"editions/{edition}/"
-    def link(filename,title):
-        return f'<a href="{escape(prefix+filename,quote=True)}">{escape(title)}</a>'
-    teams=[]
-    for tid,team in sorted(registered.items(),key=lambda item:item[1]["assignment"]):
-        md=coverage["reports"][tid]
-        teams.append(f'<li>{link(md[:-3]+".pdf",team["assignment"])} <small>{link(md,"Markdown")}</small></li>')
-    index=load(Path(summary["editorial"])/"articles.json")
-    slate=load(Path(summary["editorial"])/"slate.json")
-    def article_link(item):
-        stem=f"journalism/{item['edition']}/{item['path'][:-3]}"
-        return f'<li><a href="{escape(stem)}.pdf">{escape(item["title"])}</a> <small><a href="{escape(stem)}.md">Markdown</a></small></li>'
-    def section(kind, heading):
-        items=[item for item in index["articles"] if item["kind"]==kind]
-        if not items:
-            past=next((item for item in reversed(slate["coverage"]) if item["kind"]==kind),None)
-            items=[past] if past else []
-            if past:
-                heading+=f" · most recent, {past['cutoff']}"
-        return f"<h2>{heading}</h2><ul>{''.join(article_link(item) for item in items)}</ul>" if items else ""
-    top=f'journalism/{edition}/'
-    masthead=[f'<a href="{top}story-slate.pdf">24-club story slate</a>',f'<a href="{top}story-slate.md">Slate in Markdown</a>',
-              f'<a href="{top}slate.json">Investigations and coverage history</a>',f'<a href="{top}articles.json">Article evidence</a>',
-              f'<a href="{top}story_candidates.csv">Editorial Story Engine candidates</a>',f'<a href="{top}story_evidence.csv">Editorial Story Engine evidence</a>',
-              link("story_menu.csv","Game and personnel signals"),link("verification.json","Source verification")]
-    update=(f'<h2>ABL 411</h2><p>{link("abl_411.pdf","League update")} · {link("abl_411.md","Markdown")}</p>'
-            if coverage["abl_411"] else '<h2>ABL 411</h2><p>No new bulletin in this edition.</p>')
-    corrections=[]
-    for item in reversed(slate.get("correction_register",[])):
-        source=f"journalism/{item['edition']}/{item['desk'][:-3]}.pdf"
-        corrections.append(f'<li><a href="{escape(source)}">Game {item["game_id"]} · amended reporting, {item["cutoff"]}</a></li>')
-    correction_box="<h2>Scoring corrections</h2><ul>"+"".join(corrections)+"</ul>" if corrections else ""
-    page=f"""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ABL Newsroom | Current edition</title><style>
-body{{font:1.05rem/1.65 system-ui,sans-serif;color:#142e3b;max-width:72rem;margin:2rem auto;padding:0 1.5rem}}h1,h2{{font-family:Georgia,serif}}h1{{margin-bottom:0}}a{{color:#075e63}}ul{{columns:3;column-width:18rem;padding-left:1.25rem}}li{{break-inside:avoid;padding:.25rem 0}}small{{margin-left:.5rem}}nav a{{display:inline-block;margin:0 1.5rem .5rem 0}}
-</style><main><h1>ABL Newsroom</h1><p>League date {summary['league_date']} · Games through {summary['cutoff']}</p>
-{section('observer','The Baseball Observer')}{section('beat','Beat reporting')}{section('league','League reporting')}{update}{correction_box}
-<h2>Franchise intelligence</h2><ul>{''.join(teams)}</ul><h2>Reporting desk</h2><nav>{' '.join(masthead)}</nav>
-<p><a href="journalism/">Earlier journalism</a> · <a href="editions/">Intelligence archive</a> · <a href="current.json">Current edition record</a> · <a href="operations.jsonl">Operations log</a></p></main></html>"""
-    target=archive/"index.html"
-    if not target.is_file() or target.read_text(encoding="utf-8")!=page:
-        tmp=scratch/"index.html"
-        tmp.write_text(page,encoding="utf-8")
-        os.replace(tmp,target)
 
 
 @contextmanager
@@ -365,7 +331,7 @@ def workspace(archive):
             shutil.rmtree(path)
 
 
-def run(archive, source):
+def run(archive, source, reviews=()):
     archive.mkdir(parents=True,exist_ok=True)
     with exclusive(archive), workspace(archive) as scratch:
         stage = Path(scratch)/"edition"
@@ -396,30 +362,38 @@ def run(archive, source):
             save(stage/"files.json",{p.relative_to(stage).as_posix():digest(p) for p in sorted(stage.rglob("*")) if p.is_file()})
             audit(stage)
         intel = dest if dest.exists() else stage
-        supplements=archive/"journalism"
-        supplements.mkdir(exist_ok=True)
-        editorial=supplements/cycle
-        added=not editorial.exists()
+        desk=archive/"desks"/cycle
+        added=not desk.exists()
         if added:
+            from abl_newsroom_dailydesk import build_desk
             parent=load(intel/"coverage.json")["previous_edition"]
-            prior_slate=supplements/parent/"slate.json" if parent else None
-            past=load(prior_slate) if prior_slate and prior_slate.is_file() else {}
-            pending=scratch/"journalism"
+            prior_desk=archive/"desks"/parent if parent else None
+            past=load(prior_desk/"slate.json") if prior_desk and prior_desk.is_dir() else {}
+            if parent:
+                past["coverage"]=previous_coverage(archive,parent,past)
+            pending=scratch/"desk"
             pending.mkdir()
-            prepare_editorial(pending,intel,past,cycle)
-            pending.rename(editorial)
+            build_desk(pending,intel,past,cycle)
+            notices=correction_register(archive,intel,prior_desk,past)
+            save(pending/"desk.json",dict(edition=cycle,source_id=v["source_id"],cutoff=v["cutoff"],league_date=v["league_date"],
+                previous_edition=parent,correction_register=notices))
+            seal(pending)
+            audit_desk(pending,v["source_id"])
+            desk.parent.mkdir(exist_ok=True)
+            pending.rename(desk)
         else:
-            audit_editorial(editorial,v["source_id"])
+            audit_desk(desk,v["source_id"])
+        issue=publish(archive,scratch,intel,desk,cycle,reviews)
         if intel==stage:
             stage.rename(dest)
-        summary=summary_for(dest)
-        summary.update(editorial=str(editorial),observer=str(editorial/"observer/ernie-briefing.pdf"),slate=str(editorial/"story-slate.pdf"))
+        summary=desk_summary(dest,desk,issue)
         reading_index(archive,scratch,summary)
         if pointer_data!=summary or not pointer.is_file():
             staged_pointer = Path(scratch)/"current.json"
             save(staged_pointer,summary)
             os.replace(staged_pointer,pointer)
-        status = "editorial_activated" if same and added else "unchanged" if same else "completed"
+        status = ("issue_revised" if issue and pointer_data.get("publication")!=str(issue) else
+                  "desk_activated" if same and added else "unchanged" if same else "completed")
         journal(archive,status,**summary)
         return dict(status=status,**summary)
 
@@ -428,8 +402,14 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source",type=Path,help="OOTP export folder (defaults to the live ABL export)")
     parser.add_argument("--archive",type=Path,default=ARCHIVE,help="Alternate newsroom archive for isolated replay")
-    parser.add_argument("--status",action="store_true")
+    action=parser.add_mutually_exclusive_group()
+    action.add_argument("--status",action="store_true")
+    action.add_argument("--review-digest",type=Path,metavar="REVIEW.json",help="Print the manuscript fingerprint for an editor's completed review")
+    action.add_argument("--publish",nargs="+",type=Path,metavar="REVIEW.json",help="File only these reviewed manuscripts for the verified source")
     args=parser.parse_args()
+    if args.review_digest:
+        print(copy_hash(load(args.review_digest)))
+        return 0
     archive=args.archive.resolve()
     if archive!=ARCHIVE and not archive.is_relative_to(REPO/"tmp"):
         parser.error("Isolated replays must use a directory beneath repo/tmp")
@@ -437,11 +417,12 @@ def main():
         if args.status:
             current=load(archive/"current.json")
             audit(archive/"editions"/current["edition"])
-            if current.get("editorial"):
-                audit_editorial(Path(current["editorial"]),current["source_id"])
+            audit_desk(Path(current["editorial"]),current["source_id"])
+            if current.get("publication"):
+                audit_issue(Path(current["publication"]),current["source_id"])
             print(json.dumps(current,indent=2))
         else:
-            print(json.dumps(run(archive,args.source),indent=2))
+            print(json.dumps(run(archive,args.source,args.publish or ()),indent=2))
     except Exception as exc:
         archive.mkdir(parents=True,exist_ok=True)
         journal(archive,"failed",error=str(exc),source=str(args.source or "live"))

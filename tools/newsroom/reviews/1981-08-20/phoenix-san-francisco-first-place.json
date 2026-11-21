@@ -1,0 +1,132 @@
+{
+  "source_id": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "cutoff": "1981-08-19",
+  "league_date": "1981-08-20",
+  "slug": "phoenix-san-francisco-first-place",
+  "title": "San Francisco scored 18 and still couldn’t shake Phoenix",
+  "kind": "observer",
+  "byline": "Ernie Bewell",
+  "team_ids": [
+    2,
+    10,
+    9
+  ],
+  "story_ids": [
+    "2:1981:race",
+    "10:1981:race",
+    "2:1981:opponent:10",
+    "10:1981:opponent:2"
+  ],
+  "lead": true,
+  "sections": [
+    [
+      "",
+      [
+        "On July 26 the San Francisco Warriors could have lost a series and still had room to spare. They were six games ahead of Phoenix. On August 19 they scored 18 runs and couldn’t shake the Firebirds. Both clubs finished the night 64–57. Now Phoenix comes to San Francisco for four games, and the winner of Thursday’s opener will have first place to itself.",
+        "San Francisco’s lead disappeared during an eight-game losing streak. The first came August 9, when Minneapolis beat San Francisco 6–5. By August 16, three straight losses to Dallas and three more to Atlanta had left the Warriors even with Phoenix. The next night San Francisco took a 1–0 lead into the seventh against Tampa Bay and lost 2–1. Phoenix beat Dallas 3–2 that night and went in front.",
+        "The Warriors took their share of first place back on Tuesday with a 6–1 win while Phoenix lost. On Wednesday they put six runs across in the first inning against Tampa Bay. Luke Margalit homered and drove in five in the 18–2 win. San Francisco scored 24 runs in its two wins over the Storm. It had scored 15 in the eight straight losses. The bats have given the Warriors a chance to defend first place at home. The standings gave them no head start."
+      ]
+    ],
+    [
+      "The game that kept it even",
+      [
+        "In Phoenix, Stephen Grimes carried a shutout into the ninth against Dallas. By the time he came out with one down, he had allowed three hits and struck out seven. Omar Espinoza got the last two outs. The Firebirds did all their scoring in the fourth, when Alex Monge, acquired from Houston on July 28, homered. Three runs were plenty.",
+        "Phoenix has won nine of the clubs’ 15 meetings, but the four played in San Francisco ended two apiece. Los Angeles is two games behind both leaders. When the Firebirds and Warriors meet August 20, one team can finally put a win on its own side of the standings and a loss on the other’s. See who leaves the opener 65–57. For at least one night, the West will belong to that club alone."
+      ]
+    ]
+  ],
+  "evidence": [
+    "teams.csv, league_id=200, level=1, team_ids=2,10,9,4,8,11,3,23. games.csv, league_id=200, game_type=0, played=1: reconstruct NBC West standings at July 26, August 16, August 17, August 18 and August 19, 1981.",
+    "games.csv, completed game IDs 1335, 1357, 1369, 1378, 1381, 1393, 1405, 1422. San Francisco's eight consecutive decisions from August 9 through August 17 and runs scored during those losses.",
+    "games.csv, completed game IDs 1420, 1422, 1432, 1434, 1443, 1444, 1446. August 17–19 decisions relevant to the race. games_score.csv, game IDs 1422, 1444, 1446, inning and team. Home is team 1 in the line score.",
+    "players_game_batting.csv and players.csv, game_id=1446, team_id=10, player_id=2404. players_game_batting.csv and players.csv, game_id=1444, team_id=2, player_id=5242.",
+    "players_game_pitching_stats.csv and players.csv, game_id=1444, team_id=2, player_ids=6730,5751. Grimes 25 outs, 3 hits allowed and 7 strikeouts. Espinoza 2 outs, save.",
+    "trade_history.csv, message_id=19865 date=1981-07-28, Phoenix received Alex Monge from Houston.",
+    "games.csv, league_id=200, game_type=0, played=1, team_ids=2,10 opposite each other through 1981-08-19. Phoenix went 9–6 overall and 2–2 in San Francisco.",
+    "games.csv, scheduled game IDs 1458, 1470, 1482, 1494, Phoenix visiting San Francisco on August 20–23, 1981."
+  ],
+  "claim_games": [
+    1335,
+    1357,
+    1369,
+    1378,
+    1381,
+    1393,
+    1405,
+    1420,
+    1422,
+    1432,
+    1434,
+    1443,
+    1444,
+    1446,
+    1458,
+    1470,
+    1482,
+    1494
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1335,
+        1357,
+        1369,
+        1378,
+        1381,
+        1393,
+        1405,
+        1422
+      ],
+      "claim": "San Francisco scored 15 runs in eight straight losses from August 9 through August 17."
+    },
+    {
+      "games": [
+        1420,
+        1422,
+        1432,
+        1434
+      ],
+      "claim": "Phoenix took first on August 17. The Warriors drew even the following night."
+    },
+    {
+      "games": [
+        1434,
+        1446
+      ],
+      "claim": "San Francisco scored 24 runs in its last two games against Tampa Bay. Margalit drove in five in the 18–2 win."
+    },
+    {
+      "games": [
+        1444
+      ],
+      "claim": "Stephen Grimes and Omar Espinoza shut out Dallas 3–0. Alex Monge homered in the fourth inning."
+    },
+    {
+      "games": [
+        1443,
+        1444,
+        1446
+      ],
+      "claim": "Phoenix and San Francisco went into the series tied at 64–57 with Los Angeles two games back."
+    },
+    {
+      "games": [
+        1458,
+        1470,
+        1482,
+        1494
+      ],
+      "claim": "Phoenix is scheduled at San Francisco for four games starting August 20."
+    }
+  ],
+  "review": {
+    "question": "How did a six-game San Francisco advantage become a tie that Thursday’s opener will break?",
+    "promise": "The lead follows the lost cushion, the Warriors’ brief fall behind Phoenix, and the separate wins that sent both clubs into their meeting at 64–57.",
+    "sequence": "July 26 standings, the August losing streak, the August 17–18 changes of leader, the contrasting August 19 wins, then the first scheduled head-to-head game.",
+    "stakes": "The opener’s winner moves to 65–57 and sole possession of the NBC West. Los Angeles cannot draw even on Thursday.",
+    "ending": "Return for Phoenix at San Francisco, scheduled game 1458 on August 20. The outcome answers who takes first place.",
+    "reviewer": "Codex editorial desk",
+    "decision": "approve",
+    "copy_sha256": "6dbe3dc98dae218f94176115b7324a931efbf4c509947f4fc828fd324e93eae5"
+  }
+}

@@ -12,6 +12,56 @@ from abl_newsroom_control import claim_operation, current_issue_matches, process
 
 
 class ExportDetectionTests(unittest.TestCase):
+    def test_desk_can_be_complete_without_an_approved_observer(self):
+        scratch = Path(__file__).resolve().parents[2] / "tmp"
+        archive = scratch / ("completeness-check-" + uuid.uuid4().hex)
+        edition = archive / "editions" / "cycle"
+        desk = archive / "desks" / "cycle"
+        raw = archive / "snapshot"
+
+        def seal(folder, mapping):
+            folder.mkdir(parents=True, exist_ok=True)
+            for name, value in mapping.items():
+                target = folder / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(json.dumps(value), encoding="utf-8")
+            (folder / "files.json").write_text(json.dumps(dict.fromkeys(mapping, "fixture")), encoding="utf-8")
+
+        try:
+            seal(edition, {"coverage.json":{}, "assignments.json":{}, "story_menu.csv":""})
+            seal(desk, {"desk.json":{"source_id":"export"}, "queue.json":{}, "abl-411.pdf":"",
+                        "story-slate.pdf":"", "slate.json":{}})
+            raw.mkdir()
+            (raw / "manifest.json").write_text("{}", encoding="utf-8")
+            (archive / "index.html").write_text("Reading page", encoding="utf-8")
+            pointer = dict(source_id="export", edition="cycle", raw_dir=str(raw), reports=str(edition / "teams"),
+                           story_menu=str(edition / "story_menu.csv"), editorial=str(desk), observer=None, publication=None)
+            current = archive / "current.json"
+            current.write_text(json.dumps(pointer), encoding="utf-8")
+            self.assertTrue(current_issue_matches("export", archive))
+            missing_411 = desk / "abl-411.pdf"
+            missing_411.unlink()
+            self.assertFalse(current_issue_matches("export", archive))
+            missing_411.write_text("restored fixture", encoding="utf-8")
+            issue = archive / "issues/cycle/review-a"
+            seal(issue, {"articles.json":{"source_id":"export","articles":[{"path":"league/one.md"}]},
+                         "reviews.json":{}, "index.html":"", "league/one.md":"", "league/one.pdf":"", "league/one.html":""})
+            (issue.parent / "active.json").write_text(json.dumps({"source_id":"export","revision":"review-a"}), encoding="utf-8")
+            pointer["publication"] = str(issue)
+            current.write_text(json.dumps(pointer), encoding="utf-8")
+            self.assertTrue(current_issue_matches("export", archive))
+            (issue / "league/one.pdf").unlink()
+            self.assertFalse(current_issue_matches("export", archive))
+            (issue / "league/one.pdf").write_text("restored fixture", encoding="utf-8")
+            (issue / "league/one.html").unlink()
+            self.assertFalse(current_issue_matches("export", archive))
+            (issue / "league/one.html").write_text("restored fixture", encoding="utf-8")
+            (issue / "articles.json").write_text(json.dumps({"source_id":"export","articles":[]}), encoding="utf-8")
+            self.assertFalse(current_issue_matches("export", archive))
+        finally:
+            if archive.resolve().parent == scratch.resolve():
+                shutil.rmtree(archive)
+
     def test_changes_repeats_missing_files_retry_and_manual_run(self):
         scratch = Path(__file__).resolve().parents[2] / "tmp"
         workspace = scratch / ("export-control-check-" + uuid.uuid4().hex)
