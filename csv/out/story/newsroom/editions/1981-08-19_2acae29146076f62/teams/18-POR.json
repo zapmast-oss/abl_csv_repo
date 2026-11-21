@@ -1,0 +1,706 @@
+{
+  "team_id": 18,
+  "team": "Portland Lumberjacks",
+  "abbr": "POR",
+  "division": "ABC Western Division",
+  "conference": "ABC",
+  "wins": 49,
+  "losses": 72,
+  "gb": 20.0,
+  "priority": 1,
+  "division_leaders_change": false,
+  "division_leaders": [
+    17
+  ],
+  "intensity": "brief",
+  "headline": "Portland fell to Philadelphia 3-1",
+  "brief": "Portland fell to Philadelphia 3-1. [games.csv game_id=1451 date=1981-08-19 league_id=200 game_type=0 played=1] Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-19 — Portland fell to Philadelphia 3-1 in 9 innings. [games.csv game_id=1451 date=1981-08-19 league_id=200 game_type=0 played=1] Jaylen Blackwell (#4453) went 1-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1451, team_id=18, player_id=4453] Paul Johnson (#10056) worked 5 2/3 innings, allowed 2 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1451, team_id=18, player_id=10056]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "Division records — Las Vegas 69-52, Denver 66-55, Seattle 64-57, Portland 49-72. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "Over its last 7 games the club went 4-3, scoring 23 runs and allowing 25. Season totals are 466 scored and 554 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18. Recent game IDs 1380, 1388, 1400, 1412, 1427, 1439, 1451]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Las Vegas Gamblers, Portland is 6-8 with 61 runs scored and 71 allowed. [games.csv 1981 completed regular season, team IDs 18/17, latest game #1199, 1981-07-26]",
+        "Against Denver Rocketeers, Portland is 4-11 with 54 runs scored and 63 allowed. [games.csv 1981 completed regular season, team IDs 18/13, latest game #1116, 1981-07-19]",
+        "Against Seattle Comets, Portland is 3-11 with 44 runs scored and 64 allowed. [games.csv 1981 completed regular season, team IDs 18/24, latest game #1164, 1981-07-23]",
+        "Portland visits Denver Rocketeers in the next listed game on 1981-08-20. [games.csv game_id=1463, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Nick Jones (#7585) leads the club with 118 hits in 412 at-bats, including 4 home runs. [players_game_batting.csv joined to played games.csv, team_id=18, year=1981, through 1981-08-19]",
+        "Adam Strate (#726) leads the staff in innings pitched (180 2/3), with 134 strikeouts, 58 walks and a 3.79 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=18, year=1981, through 1981-08-19]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (4) — 1974, 1976, 1977, 1978. League titles (0) — none. [team_history.csv, team_id=18, league_id=200, year=1972–1980]",
+        "The club finished 79-83 in 1980, division place 2. [team_history_record.csv, team_id=18, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-20 export lists 26 active players. [players_roster_status.csv team_id=18 is_active=1 joined to players.csv player_id, export league date 1981-08-20]",
+        "P — Adam Strate (#726), Adrian Walrod (#1687), Bobby Kinney (#2640), David Rodriguez (#5178), Edgar Jasso (#2840), Fernando Borrego (#5811), Frank Jahr (#1815), Gabe Arrona (#9988), Josh Jones (#723), Juan White (#5208), Paul Johnson (#10056).",
+        "C — Renault Buso (#2816), Victor Salinas (#4998).",
+        "1B — Jeremy Campbell (#2955), Omar Merino (#920).",
+        "2B — Jesus Gago (#4701).",
+        "3B — James McShane (#2320), Roberto Marquez (#4900), Tony Osorio (#5952).",
+        "SS — Kazuhiko Kishimoto (#7960), Lance Gregg (#6752).",
+        "LF — Jaylen Blackwell (#4453), Nukie Frondarina (#4400).",
+        "CF — David de Leon (#5940).",
+        "RF — Mike Hargett (#2855), Nick Jones (#7585)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Gaetano Libertini (#12056), 23, 2B at Santa Ana Lone Stars — drafted in 1981 with overall pick 8. [players.csv player_id=12056, team_affiliations.csv team_id=18 affiliated_team_id=30, teams.csv, export 1981-08-20]",
+        "Daniel Stewart (#9776), 18, 3B at Oak Point Stampede — drafted in 1981 with overall pick 14. [players.csv player_id=9776, team_affiliations.csv team_id=18 affiliated_team_id=113, teams.csv, export 1981-08-20]",
+        "Carlos Garcia (#8388), 20, SS at Lincoln Village Federals — drafted in 1979 with overall pick 26. [players.csv player_id=8388, team_affiliations.csv team_id=18 affiliated_team_id=84, teams.csv, export 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-03-06 — trade with Boston. received Renault Buso (#2816). sent Noah White (#8837). [trade_history.csv date=1981-03-06 team_id_0=18 team_id_1=20 message_id=18948]",
+        "1981-07-27 — trade with Las Vegas. received Manny Moran (#7215), Luis Gortarez (#8610). sent Nate Souza (#1688). [trade_history.csv date=1981-07-27 team_id_0=17 team_id_1=18 message_id=19854]",
+        "Manny Moran (#7215) has 0 batting PA and 0 pitching innings for Portland in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7215, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Portland stand against its division opponents? Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "Will the next series change Portland's recent scoring margin? Over its last 7 games the club went 4-3, scoring 23 runs and allowing 25. Season totals are 466 scored and 554 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18. Recent game IDs 1380, 1388, 1400, 1412, 1427, 1439, 1451]",
+        "What will the next Portland–Denver game do to the division race? Portland visits Denver Rocketeers in the next listed game on 1981-08-20. [games.csv game_id=1463, played=0] Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "What role will Manny Moran (#7215) earn with Portland? Manny Moran (#7215) has 0 batting PA and 0 pitching innings for Portland in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7215, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18] [trade_history.csv date=1981-07-27 team_id_0=17 team_id_1=18 message_id=19854]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Portland Lumberjacks is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Portland Lumberjacks is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "18:1981:division",
+      "question": "Where does Portland stand against its division opponents?",
+      "evidence": "Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]"
+    },
+    {
+      "key": "18:1981:runs",
+      "question": "Will the next series change Portland's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 4-3, scoring 23 runs and allowing 25. Season totals are 466 scored and 554 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18. Recent game IDs 1380, 1388, 1400, 1412, 1427, 1439, 1451]"
+    },
+    {
+      "key": "18:1981:rival:13",
+      "question": "What will the next Portland–Denver game do to the division race?",
+      "evidence": "Portland visits Denver Rocketeers in the next listed game on 1981-08-20. [games.csv game_id=1463, played=0] Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]"
+    },
+    {
+      "key": "18:1981:trade:19854:7215",
+      "question": "What role will Manny Moran (#7215) earn with Portland?",
+      "evidence": "Manny Moran (#7215) has 0 batting PA and 0 pitching innings for Portland in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7215, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18] [trade_history.csv date=1981-07-27 team_id_0=17 team_id_1=18 message_id=19854]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1451,
+      "date": "1981-08-19",
+      "home_id": 18,
+      "away_id": 22,
+      "runs_away": 3,
+      "runs_home": 1,
+      "innings": 9,
+      "summary": "Philadelphia 3, Portland 1",
+      "source": "games.csv game_id=1451 date=1981-08-19 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1451
+  ],
+  "transactions": [
+    {
+      "id": "trade:18948",
+      "date": "1981-03-06",
+      "partner_id": 20,
+      "incoming_ids": [
+        2816
+      ],
+      "outgoing_ids": [
+        8837
+      ],
+      "summary": "trade with Boston. received Renault Buso (#2816). sent Noah White (#8837)",
+      "source": "trade_history.csv date=1981-03-06 team_id_0=18 team_id_1=20 message_id=18948"
+    },
+    {
+      "id": "trade:19854",
+      "date": "1981-07-27",
+      "partner_id": 17,
+      "incoming_ids": [
+        7215,
+        8610
+      ],
+      "outgoing_ids": [
+        1688
+      ],
+      "summary": "trade with Las Vegas. received Manny Moran (#7215), Luis Gortarez (#8610). sent Nate Souza (#1688)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=17 team_id_1=18 message_id=19854"
+    }
+  ],
+  "roster_ids": [
+    723,
+    726,
+    920,
+    1687,
+    1815,
+    2320,
+    2640,
+    2816,
+    2840,
+    2855,
+    2955,
+    4400,
+    4453,
+    4701,
+    4900,
+    4998,
+    5178,
+    5208,
+    5811,
+    5940,
+    5952,
+    6752,
+    7585,
+    7960,
+    9988,
+    10056
+  ],
+  "roster": [
+    {
+      "player_id": 2955,
+      "name": "Jeremy Campbell (#2955)",
+      "age": 30,
+      "position": "1B",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 920,
+      "name": "Omar Merino (#920)",
+      "age": 31,
+      "position": "1B",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4701,
+      "name": "Jesus Gago (#4701)",
+      "age": 30,
+      "position": "2B",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2320,
+      "name": "James McShane (#2320)",
+      "age": 33,
+      "position": "3B",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4900,
+      "name": "Roberto Marquez (#4900)",
+      "age": 29,
+      "position": "3B",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5952,
+      "name": "Tony Osorio (#5952)",
+      "age": 26,
+      "position": "3B",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2816,
+      "name": "Renault Buso (#2816)",
+      "age": 32,
+      "position": "C",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4998,
+      "name": "Victor Salinas (#4998)",
+      "age": 27,
+      "position": "C",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5940,
+      "name": "David de Leon (#5940)",
+      "age": 30,
+      "position": "CF",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4453,
+      "name": "Jaylen Blackwell (#4453)",
+      "age": 31,
+      "position": "LF",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4400,
+      "name": "Nukie Frondarina (#4400)",
+      "age": 27,
+      "position": "LF",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 726,
+      "name": "Adam Strate (#726)",
+      "age": 28,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1687,
+      "name": "Adrian Walrod (#1687)",
+      "age": 34,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2640,
+      "name": "Bobby Kinney (#2640)",
+      "age": 30,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5178,
+      "name": "David Rodriguez (#5178)",
+      "age": 29,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2840,
+      "name": "Edgar Jasso (#2840)",
+      "age": 29,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5811,
+      "name": "Fernando Borrego (#5811)",
+      "age": 27,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1815,
+      "name": "Frank Jahr (#1815)",
+      "age": 29,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 9988,
+      "name": "Gabe Arrona (#9988)",
+      "age": 30,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 723,
+      "name": "Josh Jones (#723)",
+      "age": 28,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5208,
+      "name": "Juan White (#5208)",
+      "age": 27,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 10056,
+      "name": "Paul Johnson (#10056)",
+      "age": 25,
+      "position": "P",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2855,
+      "name": "Mike Hargett (#2855)",
+      "age": 32,
+      "position": "RF",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7585,
+      "name": "Nick Jones (#7585)",
+      "age": 26,
+      "position": "RF",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7960,
+      "name": "Kazuhiko Kishimoto (#7960)",
+      "age": 34,
+      "position": "SS",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6752,
+      "name": "Lance Gregg (#6752)",
+      "age": 27,
+      "position": "SS",
+      "team_id": 18,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 12056,
+      "name": "Gaetano Libertini (#12056)",
+      "age": 23,
+      "position": "2B",
+      "team_id": 30,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 8,
+      "affiliate": "Santa Ana Lone Stars"
+    },
+    {
+      "player_id": 9776,
+      "name": "Daniel Stewart (#9776)",
+      "age": 18,
+      "position": "3B",
+      "team_id": 113,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 14,
+      "affiliate": "Oak Point Stampede"
+    },
+    {
+      "player_id": 8388,
+      "name": "Carlos Garcia (#8388)",
+      "age": 20,
+      "position": "SS",
+      "team_id": 84,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 26,
+      "affiliate": "Lincoln Village Federals"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1380,
+    1388,
+    1400,
+    1412,
+    1427,
+    1439,
+    1451
+  ],
+  "continuity": {
+    "threads": {
+      "18:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Where does Portland stand against its division opponents?",
+        "evidence": "Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "status": "watching"
+      },
+      "18:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Will the next series change Portland's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 4-3, scoring 23 runs and allowing 25. Season totals are 466 scored and 554 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18. Recent game IDs 1380, 1388, 1400, 1412, 1427, 1439, 1451]",
+        "status": "watching"
+      },
+      "18:1981:rival:13": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Portland–Denver game do to the division race?",
+        "evidence": "Portland visits Denver Rocketeers in the next listed game on 1981-08-20. [games.csv game_id=1463, played=0] Portland is 49-72 and trails Las Vegas by 20 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "status": "watching"
+      },
+      "18:1981:trade:19854:7215": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What role will Manny Moran (#7215) earn with Portland?",
+        "evidence": "Manny Moran (#7215) has 0 batting PA and 0 pitching innings for Portland in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7215, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=18] [trade_history.csv date=1981-07-27 team_id_0=17 team_id_1=18 message_id=19854]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      723,
+      726,
+      920,
+      1687,
+      1815,
+      2320,
+      2640,
+      2816,
+      2840,
+      2855,
+      2955,
+      4400,
+      4453,
+      4701,
+      4900,
+      4998,
+      5178,
+      5208,
+      5811,
+      5940,
+      5952,
+      6752,
+      7585,
+      7960,
+      9988,
+      10056
+    ],
+    "names": {
+      "2955": "Jeremy Campbell (#2955)",
+      "920": "Omar Merino (#920)",
+      "4701": "Jesus Gago (#4701)",
+      "2320": "James McShane (#2320)",
+      "4900": "Roberto Marquez (#4900)",
+      "5952": "Tony Osorio (#5952)",
+      "2816": "Renault Buso (#2816)",
+      "4998": "Victor Salinas (#4998)",
+      "5940": "David de Leon (#5940)",
+      "4453": "Jaylen Blackwell (#4453)",
+      "4400": "Nukie Frondarina (#4400)",
+      "726": "Adam Strate (#726)",
+      "1687": "Adrian Walrod (#1687)",
+      "2640": "Bobby Kinney (#2640)",
+      "5178": "David Rodriguez (#5178)",
+      "2840": "Edgar Jasso (#2840)",
+      "5811": "Fernando Borrego (#5811)",
+      "1815": "Frank Jahr (#1815)",
+      "9988": "Gabe Arrona (#9988)",
+      "723": "Josh Jones (#723)",
+      "5208": "Juan White (#5208)",
+      "10056": "Paul Johnson (#10056)",
+      "2855": "Mike Hargett (#2855)",
+      "7585": "Nick Jones (#7585)",
+      "7960": "Kazuhiko Kishimoto (#7960)",
+      "6752": "Lance Gregg (#6752)"
+    },
+    "flags": {
+      "2955": [
+        0,
+        0
+      ],
+      "920": [
+        0,
+        0
+      ],
+      "4701": [
+        0,
+        0
+      ],
+      "2320": [
+        0,
+        0
+      ],
+      "4900": [
+        0,
+        0
+      ],
+      "5952": [
+        0,
+        0
+      ],
+      "2816": [
+        0,
+        0
+      ],
+      "4998": [
+        0,
+        0
+      ],
+      "5940": [
+        0,
+        0
+      ],
+      "4453": [
+        0,
+        0
+      ],
+      "4400": [
+        0,
+        0
+      ],
+      "726": [
+        0,
+        0
+      ],
+      "1687": [
+        0,
+        0
+      ],
+      "2640": [
+        0,
+        0
+      ],
+      "5178": [
+        0,
+        0
+      ],
+      "2840": [
+        0,
+        0
+      ],
+      "5811": [
+        0,
+        0
+      ],
+      "1815": [
+        0,
+        0
+      ],
+      "9988": [
+        0,
+        0
+      ],
+      "723": [
+        0,
+        0
+      ],
+      "5208": [
+        0,
+        0
+      ],
+      "10056": [
+        0,
+        0
+      ],
+      "2855": [
+        0,
+        0
+      ],
+      "7585": [
+        0,
+        0
+      ],
+      "7960": [
+        0,
+        0
+      ],
+      "6752": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18948": "trade with Boston. received Renault Buso (#2816). sent Noah White (#8837)",
+      "trade:19854": "trade with Las Vegas. received Manny Moran (#7215), Luis Gortarez (#8610). sent Nate Souza (#1688)"
+    }
+  },
+  "previous_edition": null
+}

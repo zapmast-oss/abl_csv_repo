@@ -1,0 +1,46 @@
+{
+  "test_scope": "SYNTHETIC isolated scorer correction and missing-pointer recovery. Test writes only under repo/tmp, apart from this acceptance receipt. The following RBI reassignment is invented test data, excluded from production baseball records.",
+  "tested_at_utc": "2026-11-21T10:44:29.912907+00:00",
+  "native_game_id_for_test": 1450,
+  "test_only_rbi_transfers": [
+    {
+      "player_id": "747",
+      "old": 1,
+      "new": 0
+    },
+    {
+      "player_id": "1217",
+      "old": 0,
+      "new": 1
+    }
+  ],
+  "production_input_digest": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "synthetic_source_digest": "469490fe800d8a4aa2b612e881669fea20eaf9473e85fa54fce03c12cb953356",
+  "unchanged_final_score": true,
+  "new_game_ids": [],
+  "revised_game_ids": [
+    1450
+  ],
+  "story_engine_candidates": 1,
+  "evidence_content_checked": [
+    "teams/17-LV.md",
+    "teams/23-HOU.md",
+    "ernie_briefing.md",
+    "story_candidates.csv",
+    "story_evidence.csv"
+  ],
+  "pdf_reopening_checked": [
+    "teams/17-LV.pdf",
+    "ernie_briefing.pdf"
+  ],
+  "duplicate_suppressed": true,
+  "unique_archive_tip_recovered": true,
+  "all_edition_file_hashes_preserved": 170,
+  "isolated_operations": [
+    "completed",
+    "completed",
+    "unchanged",
+    "recovered_pointer",
+    "unchanged"
+  ]
+}

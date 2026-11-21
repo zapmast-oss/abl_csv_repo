@@ -104,6 +104,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--newsroom-date", type=parse_iso_date)
     parser.add_argument("--league-id", default="200")
     parser.add_argument("--output-dir", type=Path, default=CONTROL)
+    parser.add_argument("--raw-dir", type=Path, default=RAW, help="Verified raw CSV snapshot; defaults to the promoted repository export.")
+    parser.add_argument("--json-only", action="store_true", help="Write only the machine-readable preflight receipt.")
     args = parser.parse_args()
     if args.as_of_date.year != args.season:
         parser.error("--as-of-date year must match --season")
@@ -117,13 +119,15 @@ def main() -> int:
     target = args.as_of_date
     newsroom = args.newsroom_date or target
     output_dir = resolve_repo_path(args.output_dir)
+    raw_dir = resolve_repo_path(args.raw_dir)
+    source_label = raw_dir.relative_to(ROOT).as_posix() if raw_dir.is_relative_to(ROOT) else raw_dir.as_posix()
     stem = output_stem(output_dir, args.season, target)
     outputs = tuple(stem.with_suffix(ext) for ext in (".csv", ".json", ".md"))
     validate_output_paths(outputs, ROOT)
     stale_files = STALE_FILES_1981 if args.season == 1981 else []
 
     checks: list[dict[str, str]] = []
-    missing = [name for name in DRIVERS if not (RAW / name).exists()]
+    missing = [name for name in DRIVERS if not (raw_dir / name).exists()]
     source_latest: date | None = None
     record_reconciliation: bool | None = None
     if missing:
@@ -141,7 +145,7 @@ def main() -> int:
         teams: dict[str, str] = {}
         score_coverage = log_coverage = False
     else:
-        with (RAW / "games.csv").open("r", encoding="utf-8-sig", newline="") as handle:
+        with (raw_dir / "games.csv").open("r", encoding="utf-8-sig", newline="") as handle:
             games = list(csv.DictReader(handle))
         source_completed = completed_games_for_season(games, args.season, args.league_id)
         source_dates = [parse_game_date(row["date"]) for row in source_completed]
@@ -155,11 +159,11 @@ def main() -> int:
             counts[row["home_team"]] += 1
             counts[row["away_team"]] += 1
         completed_ids = {row["game_id"] for row in completed}
-        score_ids = read_ids(RAW / "games_score.csv")
-        log_ids = read_ids(RAW / "game_logs.csv")
+        score_ids = read_ids(raw_dir / "games_score.csv")
+        log_ids = read_ids(raw_dir / "game_logs.csv")
         score_coverage = completed_ids.issubset(score_ids)
         log_coverage = completed_ids.issubset(log_ids)
-        with (RAW / "teams.csv").open("r", encoding="utf-8-sig", newline="") as handle:
+        with (raw_dir / "teams.csv").open("r", encoding="utf-8-sig", newline="") as handle:
             teams = {
                 row["team_id"]: f"{row['name']} {row['nickname']}"
                 for row in csv.DictReader(handle)
@@ -193,7 +197,7 @@ def main() -> int:
                 "team_record.csv reflects a later source capture; it cannot validate an earlier as-of cutoff.",
             )
         else:
-            with (RAW / "team_record.csv").open("r", encoding="utf-8-sig", newline="") as handle:
+            with (raw_dir / "team_record.csv").open("r", encoding="utf-8-sig", newline="") as handle:
                 official_records = {
                     row["team_id"]: (int(row["g"]), int(row["w"]), int(row["l"]))
                     for row in csv.DictReader(handle)
@@ -252,10 +256,11 @@ def main() -> int:
     add(checks, "final_verdict", verdict, "PASS" if verdict == "READY_FOR_CURRENT_RUN" else "FAIL", "Story work is safe to resume only on READY_FOR_CURRENT_RUN.")
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    with outputs[0].open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["check_name", "value", "status", "details"])
-        writer.writeheader()
-        writer.writerows(checks)
+    if not args.json_only:
+        with outputs[0].open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=["check_name", "value", "status", "details"])
+            writer.writeheader()
+            writer.writerows(checks)
     team_rows = [
         {"team_id": team_id, "team_name": teams.get(team_id, "unknown"), "games_played": count}
         for team_id, count in sorted(counts.items(), key=lambda item: int(item[0]))
@@ -272,7 +277,7 @@ def main() -> int:
         "min_games_per_team": min_games,
         "max_games_per_team": max_games,
         "all_24_teams_represented": all_teams,
-        "current_state_driver_files_used": [f"csv/ootp_csv/{name}" for name in DRIVERS if (RAW / name).exists()],
+        "current_state_driver_files_used": [f"{source_label}/{name}" for name in DRIVERS if (raw_dir / name).exists()],
         "driver_cross_checks": {
             "games_score_complete": score_coverage,
             "game_logs_complete": log_coverage,
@@ -305,7 +310,7 @@ def main() -> int:
         "## Current-state drivers used",
         "",
     ]
-    lines += [f"- `csv/ootp_csv/{name}`" for name in DRIVERS if (RAW / name).exists()]
+    lines += [f"- `{source_label}/{name}`" for name in DRIVERS if (raw_dir / name).exists()]
     lines += ["", "## Games per team", "", "| Team ID | Team | Games |", "|---:|---|---:|"]
     lines += [f"| {row['team_id']} | {row['team_name']} | {row['games_played']} |" for row in team_rows]
     lines += [
@@ -321,7 +326,8 @@ def main() -> int:
     ]
     lines += [f"- `{item}`" for item in stale_files]
     lines += ["", "## Final verdict", "", f"**{verdict}**", ""]
-    outputs[2].write_text("\n".join(lines), encoding="utf-8")
+    if not args.json_only:
+        outputs[2].write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps({
         "season": args.season,
         "target_as_of_date": target.isoformat(),
@@ -329,7 +335,7 @@ def main() -> int:
         "latest_included_game_date": latest.isoformat() if latest else None,
         "completed_regular_season_games": len(completed),
         "verdict": verdict,
-        "outputs": [str(path) for path in outputs],
+        "outputs": [str(outputs[1])] if args.json_only else [str(path) for path in outputs],
     }, indent=2))
     return 0
 

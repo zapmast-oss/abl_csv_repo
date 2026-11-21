@@ -119,7 +119,12 @@ def validate_control_state() -> dict[str, dict[str, str]]:
 
 
 class Builder:
-    def __init__(self):
+    def __init__(self, *, slug=RUN_SLUG, run_id=RUN_ID, newsroom_date=NEWSROOM_DATE, as_of=AS_OF_DATE, season=SEASON):
+        self.slug = slug
+        self.run_id = run_id
+        self.newsroom_date = newsroom_date
+        self.as_of = as_of
+        self.season = season
         self.candidates: list[dict[str, object]] = []
         self.evidence: list[dict[str, object]] = []
 
@@ -128,10 +133,10 @@ class Builder:
             related: list[str], headline: str, stakes: str, summary: str,
             sources: list[str], score: float, confidence: str,
             evidence: list[dict[str, str]]) -> None:
-        candidate_id = f"{RUN_SLUG}__{signal}__{normalize_id(subject_id)}"
+        candidate_id = f"{self.slug}__{signal}__{normalize_id(subject_id)}"
         self.candidates.append({
-            "candidate_id": candidate_id, "run_id": RUN_ID,
-            "newsroom_date": NEWSROOM_DATE, "as_of_date": AS_OF_DATE, "season": SEASON,
+            "candidate_id": candidate_id, "run_id": self.run_id,
+            "newsroom_date": self.newsroom_date, "as_of_date": self.as_of, "season": self.season,
             "candidate_class": candidate_class, "hierarchy_level": hierarchy,
             "signal_type": signal, "subject_type": subject_type, "subject_id": subject_id,
             "subject_name": subject_name, "related_subjects": "|".join(related),
@@ -144,7 +149,7 @@ class Builder:
                 raise ValueError(f"Evidence source not declared for {candidate_id}: {item['source_file']}")
             self.evidence.append({
                 "evidence_id": f"{candidate_id}__e{index:02d}", "candidate_id": candidate_id,
-                "newsroom_date": NEWSROOM_DATE, "as_of_date": AS_OF_DATE, "season": SEASON,
+                "newsroom_date": self.newsroom_date, "as_of_date": self.as_of, "season": self.season,
                 **item,
             })
 

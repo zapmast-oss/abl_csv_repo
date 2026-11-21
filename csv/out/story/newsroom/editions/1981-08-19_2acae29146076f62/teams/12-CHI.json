@@ -1,0 +1,782 @@
+{
+  "team_id": 12,
+  "team": "Chicago Fire",
+  "abbr": "CHI",
+  "division": "NBC Central Division",
+  "conference": "NBC",
+  "wins": 64,
+  "losses": 57,
+  "gb": 2.0,
+  "priority": 1,
+  "division_leaders_change": false,
+  "division_leaders": [
+    4
+  ],
+  "intensity": "brief",
+  "headline": "Chicago beat Los Angeles 10-3",
+  "brief": "Chicago beat Los Angeles 10-3. [games.csv game_id=1443 date=1981-08-19 league_id=200 game_type=0 played=1] Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-19 — Chicago beat Los Angeles 10-3 in 9 innings. [games.csv game_id=1443 date=1981-08-19 league_id=200 game_type=0 played=1] Jorge Montoya (#2279) went 2-for-5 with 1 HR and 4 RBI. [players_game_batting.csv, game_id=1443, team_id=12, player_id=2279] John Jury (#446) worked 8 innings, allowed 3 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1443, team_id=12, player_id=446]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Division records — Dallas 66-55, Detroit 65-56, Chicago 64-57, Minneapolis 54-66. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Over its last 7 games the club went 5-2, scoring 31 runs and allowing 15. Season totals are 507 scored and 459 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12. Recent game IDs 1368, 1384, 1396, 1408, 1419, 1431, 1443]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Dallas Rustlers, Chicago is 9-5 with 67 runs scored and 51 allowed. [games.csv 1981 completed regular season, team IDs 12/4, latest game #1155, 1981-07-23]",
+        "Against Detroit Dukes, Chicago is 8-7 with 66 runs scored and 78 allowed. [games.csv 1981 completed regular season, team IDs 12/5, latest game #1108, 1981-07-19]",
+        "Against Minneapolis Blizzard, Chicago is 10-4 with 59 runs scored and 28 allowed. [games.csv 1981 completed regular season, team IDs 12/11, latest game #1192, 1981-07-26]",
+        "Chicago hosts Detroit Dukes in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Alex O' Donell (#5585) leads the club with 126 hits in 421 at-bats, including 13 home runs. [players_game_batting.csv joined to played games.csv, team_id=12, year=1981, through 1981-08-19]",
+        "Heriberto Jimenez (#8125) leads the staff in innings pitched (217), with 178 strikeouts, 60 walks and a 3.48 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=12, year=1981, through 1981-08-19]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (5) — 1972, 1973, 1977, 1979, 1980. League titles (0) — none. [team_history.csv, team_id=12, league_id=200, year=1972–1980]",
+        "The club finished 87-75 in 1980, division place 1. [team_history_record.csv, team_id=12, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-20 export lists 26 active players. [players_roster_status.csv team_id=12 is_active=1 joined to players.csv player_id, export league date 1981-08-20]",
+        "P — Edgar Gonzalez (#4518), Gia-Long Mac (#2439), Heriberto Jimenez (#8125), John Jury (#446), Juan Mederos (#454), Justin Bowen (#854), Manny de Jesus (#2083), Matt Hyman (#4868), Mike Roede (#323), Oscar Roa (#4663), Willie Leyba (#6705).",
+        "C — Dave Martinez (#2067), Jose Martinez (#25).",
+        "1B — Chris Valdivia (#7220), Sal Gamez (#9377).",
+        "2B — Ed Montoya (#2039), Mel Montelongo (#6749).",
+        "3B — David Villarreal (#4549), Shane Cobb (#196).",
+        "SS — Pablo Loureiro (#3811).",
+        "LF — Alex O' Donell (#5585), Alvaro Espinoza (#5044), Miguel Morales (#8025).",
+        "CF — Josiah Payne (#6992), Xavier Granville (#4627).",
+        "RF — Jorge Montoya (#2279)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Dylan Adams (#10319), 22, LF at Madison Sundevils — drafted in 1981 with overall pick 23. [players.csv player_id=10319, team_affiliations.csv team_id=12 affiliated_team_id=75, teams.csv, export 1981-08-20]",
+        "Jose Lopez (#7013), 22, 2B at Santa Clarita Red Devils — drafted in 1980 with overall pick 23. [players.csv player_id=7013, team_affiliations.csv team_id=12 affiliated_team_id=31, teams.csv, export 1981-08-20]",
+        "Hector Sanchez (#9431), 20, SS at Madison Sundevils — drafted in 1979 with overall pick 40. [players.csv player_id=9431, team_affiliations.csv team_id=12 affiliated_team_id=75, teams.csv, export 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-07-27 — trade with Boston. received Mike Roede (#323), Desidério Chora (#9908). sent Victor Hernandez (#6732). [trade_history.csv date=1981-07-27 team_id_0=20 team_id_1=12 message_id=19851]",
+        "1981-07-31 — trade with Boston. received Justin Bowen (#854), Javy Madrigal (#10507). sent Miguel Martinez (#4347). [trade_history.csv date=1981-07-31 team_id_0=20 team_id_1=12 message_id=19901]",
+        "1981-07-31 — trade with Atlanta. received Bill Torres (#8235), Rodolfo Gonzalez (#9886). sent Jaden Pierce (#5785). [trade_history.csv date=1981-07-31 team_id_0=3 team_id_1=12 message_id=19907]",
+        "Bill Torres (#8235) has 0 batting PA and 0 pitching innings for Chicago in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=8235, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Chicago stand against its division opponents? Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Will the next series change Chicago's recent scoring margin? Over its last 7 games the club went 5-2, scoring 31 runs and allowing 15. Season totals are 507 scored and 459 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12. Recent game IDs 1368, 1384, 1396, 1408, 1419, 1431, 1443]",
+        "What will the next Chicago–Detroit game do to the division race? Chicago hosts Detroit Dukes in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0] Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "What role will Bill Torres (#8235) earn with Chicago? Bill Torres (#8235) has 0 batting PA and 0 pitching innings for Chicago in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=8235, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12] [trade_history.csv date=1981-07-31 team_id_0=3 team_id_1=12 message_id=19907]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Chicago Fire is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md.",
+        "Earlier internal coverage naming Chicago Fire is filed at csv/out/story/production/abl_matchup_desk_1981_08_01_SF_at_CHI_asof_1981-07-31.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "12:1981:division",
+      "question": "Where does Chicago stand against its division opponents?",
+      "evidence": "Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "12:1981:runs",
+      "question": "Will the next series change Chicago's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 5-2, scoring 31 runs and allowing 15. Season totals are 507 scored and 459 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12. Recent game IDs 1368, 1384, 1396, 1408, 1419, 1431, 1443]"
+    },
+    {
+      "key": "12:1981:rival:5",
+      "question": "What will the next Chicago–Detroit game do to the division race?",
+      "evidence": "Chicago hosts Detroit Dukes in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0] Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "12:1981:trade:19907:8235",
+      "question": "What role will Bill Torres (#8235) earn with Chicago?",
+      "evidence": "Bill Torres (#8235) has 0 batting PA and 0 pitching innings for Chicago in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=8235, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12] [trade_history.csv date=1981-07-31 team_id_0=3 team_id_1=12 message_id=19907]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1443,
+      "date": "1981-08-19",
+      "home_id": 9,
+      "away_id": 12,
+      "runs_away": 10,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "Chicago 10, Los Angeles 3",
+      "source": "games.csv game_id=1443 date=1981-08-19 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1443
+  ],
+  "transactions": [
+    {
+      "id": "trade:18873",
+      "date": "1981-01-03",
+      "partner_id": 10,
+      "incoming_ids": [
+        681,
+        7776
+      ],
+      "outgoing_ids": [
+        6321
+      ],
+      "summary": "trade with San Francisco. received Jerry Wilson (#681), Dave Jackson (#7776). sent Danny Brown (#6321)",
+      "source": "trade_history.csv date=1981-01-03 team_id_0=12 team_id_1=10 message_id=18873"
+    },
+    {
+      "id": "trade:18945",
+      "date": "1981-03-04",
+      "partner_id": 8,
+      "incoming_ids": [
+        6705
+      ],
+      "outgoing_ids": [
+        8805
+      ],
+      "summary": "trade with Tampa Bay. received Willie Leyba (#6705). sent Dave Guadalupe (#8805)",
+      "source": "trade_history.csv date=1981-03-04 team_id_0=8 team_id_1=12 message_id=18945"
+    },
+    {
+      "id": "trade:19807",
+      "date": "1981-07-25",
+      "partner_id": 15,
+      "incoming_ids": [
+        454
+      ],
+      "outgoing_ids": [
+        7107,
+        9305
+      ],
+      "summary": "trade with New York. received Juan Mederos (#454). sent David Acosta (#7107), Alex Castellanos (#9305)",
+      "source": "trade_history.csv date=1981-07-25 team_id_0=15 team_id_1=12 message_id=19807"
+    },
+    {
+      "id": "trade:19850",
+      "date": "1981-07-27",
+      "partner_id": 8,
+      "incoming_ids": [
+        2039
+      ],
+      "outgoing_ids": [
+        3086,
+        10110
+      ],
+      "summary": "trade with Tampa Bay. received Ed Montoya (#2039). sent Tony Espinal (#3086), Luis Robles (#10110)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=12 team_id_1=8 message_id=19850"
+    },
+    {
+      "id": "trade:19851",
+      "date": "1981-07-27",
+      "partner_id": 20,
+      "incoming_ids": [
+        323,
+        9908
+      ],
+      "outgoing_ids": [
+        6732
+      ],
+      "summary": "trade with Boston. received Mike Roede (#323), Desidério Chora (#9908). sent Victor Hernandez (#6732)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=20 team_id_1=12 message_id=19851"
+    },
+    {
+      "id": "trade:19901",
+      "date": "1981-07-31",
+      "partner_id": 20,
+      "incoming_ids": [
+        854,
+        10507
+      ],
+      "outgoing_ids": [
+        4347
+      ],
+      "summary": "trade with Boston. received Justin Bowen (#854), Javy Madrigal (#10507). sent Miguel Martinez (#4347)",
+      "source": "trade_history.csv date=1981-07-31 team_id_0=20 team_id_1=12 message_id=19901"
+    },
+    {
+      "id": "trade:19907",
+      "date": "1981-07-31",
+      "partner_id": 3,
+      "incoming_ids": [
+        8235,
+        9886
+      ],
+      "outgoing_ids": [
+        5785
+      ],
+      "summary": "trade with Atlanta. received Bill Torres (#8235), Rodolfo Gonzalez (#9886). sent Jaden Pierce (#5785)",
+      "source": "trade_history.csv date=1981-07-31 team_id_0=3 team_id_1=12 message_id=19907"
+    }
+  ],
+  "roster_ids": [
+    25,
+    196,
+    323,
+    446,
+    454,
+    854,
+    2039,
+    2067,
+    2083,
+    2279,
+    2439,
+    3811,
+    4518,
+    4549,
+    4627,
+    4663,
+    4868,
+    5044,
+    5585,
+    6705,
+    6749,
+    6992,
+    7220,
+    8025,
+    8125,
+    9377
+  ],
+  "roster": [
+    {
+      "player_id": 7220,
+      "name": "Chris Valdivia (#7220)",
+      "age": 24,
+      "position": "1B",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 9377,
+      "name": "Sal Gamez (#9377)",
+      "age": 26,
+      "position": "1B",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2039,
+      "name": "Ed Montoya (#2039)",
+      "age": 31,
+      "position": "2B",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6749,
+      "name": "Mel Montelongo (#6749)",
+      "age": 27,
+      "position": "2B",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4549,
+      "name": "David Villarreal (#4549)",
+      "age": 31,
+      "position": "3B",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 196,
+      "name": "Shane Cobb (#196)",
+      "age": 35,
+      "position": "3B",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2067,
+      "name": "Dave Martinez (#2067)",
+      "age": 31,
+      "position": "C",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 25,
+      "name": "Jose Martinez (#25)",
+      "age": 33,
+      "position": "C",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6992,
+      "name": "Josiah Payne (#6992)",
+      "age": 22,
+      "position": "CF",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4627,
+      "name": "Xavier Granville (#4627)",
+      "age": 29,
+      "position": "CF",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5585,
+      "name": "Alex O' Donell (#5585)",
+      "age": 26,
+      "position": "LF",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5044,
+      "name": "Alvaro Espinoza (#5044)",
+      "age": 29,
+      "position": "LF",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8025,
+      "name": "Miguel Morales (#8025)",
+      "age": 27,
+      "position": "LF",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4518,
+      "name": "Edgar Gonzalez (#4518)",
+      "age": 27,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2439,
+      "name": "Gia-Long Mac (#2439)",
+      "age": 31,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8125,
+      "name": "Heriberto Jimenez (#8125)",
+      "age": 26,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 446,
+      "name": "John Jury (#446)",
+      "age": 38,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 454,
+      "name": "Juan Mederos (#454)",
+      "age": 33,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 854,
+      "name": "Justin Bowen (#854)",
+      "age": 34,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2083,
+      "name": "Manny de Jesus (#2083)",
+      "age": 31,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4868,
+      "name": "Matt Hyman (#4868)",
+      "age": 30,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 323,
+      "name": "Mike Roede (#323)",
+      "age": 34,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4663,
+      "name": "Oscar Roa (#4663)",
+      "age": 32,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6705,
+      "name": "Willie Leyba (#6705)",
+      "age": 30,
+      "position": "P",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2279,
+      "name": "Jorge Montoya (#2279)",
+      "age": 34,
+      "position": "RF",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3811,
+      "name": "Pablo Loureiro (#3811)",
+      "age": 27,
+      "position": "SS",
+      "team_id": 12,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 10319,
+      "name": "Dylan Adams (#10319)",
+      "age": 22,
+      "position": "LF",
+      "team_id": 75,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 23,
+      "affiliate": "Madison Sundevils"
+    },
+    {
+      "player_id": 7013,
+      "name": "Jose Lopez (#7013)",
+      "age": 22,
+      "position": "2B",
+      "team_id": 31,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 23,
+      "affiliate": "Santa Clarita Red Devils"
+    },
+    {
+      "player_id": 9431,
+      "name": "Hector Sanchez (#9431)",
+      "age": 20,
+      "position": "SS",
+      "team_id": 75,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 40,
+      "affiliate": "Madison Sundevils"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1368,
+    1384,
+    1396,
+    1408,
+    1419,
+    1431,
+    1443
+  ],
+  "continuity": {
+    "threads": {
+      "12:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Where does Chicago stand against its division opponents?",
+        "evidence": "Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "12:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Will the next series change Chicago's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 5-2, scoring 31 runs and allowing 15. Season totals are 507 scored and 459 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12. Recent game IDs 1368, 1384, 1396, 1408, 1419, 1431, 1443]",
+        "status": "watching"
+      },
+      "12:1981:rival:5": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Chicago–Detroit game do to the division race?",
+        "evidence": "Chicago hosts Detroit Dukes in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0] Chicago is 64-57 and trails Dallas by 2 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "12:1981:trade:19907:8235": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What role will Bill Torres (#8235) earn with Chicago?",
+        "evidence": "Bill Torres (#8235) has 0 batting PA and 0 pitching innings for Chicago in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=8235, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=12] [trade_history.csv date=1981-07-31 team_id_0=3 team_id_1=12 message_id=19907]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      25,
+      196,
+      323,
+      446,
+      454,
+      854,
+      2039,
+      2067,
+      2083,
+      2279,
+      2439,
+      3811,
+      4518,
+      4549,
+      4627,
+      4663,
+      4868,
+      5044,
+      5585,
+      6705,
+      6749,
+      6992,
+      7220,
+      8025,
+      8125,
+      9377
+    ],
+    "names": {
+      "7220": "Chris Valdivia (#7220)",
+      "9377": "Sal Gamez (#9377)",
+      "2039": "Ed Montoya (#2039)",
+      "6749": "Mel Montelongo (#6749)",
+      "4549": "David Villarreal (#4549)",
+      "196": "Shane Cobb (#196)",
+      "2067": "Dave Martinez (#2067)",
+      "25": "Jose Martinez (#25)",
+      "6992": "Josiah Payne (#6992)",
+      "4627": "Xavier Granville (#4627)",
+      "5585": "Alex O' Donell (#5585)",
+      "5044": "Alvaro Espinoza (#5044)",
+      "8025": "Miguel Morales (#8025)",
+      "4518": "Edgar Gonzalez (#4518)",
+      "2439": "Gia-Long Mac (#2439)",
+      "8125": "Heriberto Jimenez (#8125)",
+      "446": "John Jury (#446)",
+      "454": "Juan Mederos (#454)",
+      "854": "Justin Bowen (#854)",
+      "2083": "Manny de Jesus (#2083)",
+      "4868": "Matt Hyman (#4868)",
+      "323": "Mike Roede (#323)",
+      "4663": "Oscar Roa (#4663)",
+      "6705": "Willie Leyba (#6705)",
+      "2279": "Jorge Montoya (#2279)",
+      "3811": "Pablo Loureiro (#3811)"
+    },
+    "flags": {
+      "7220": [
+        0,
+        0
+      ],
+      "9377": [
+        0,
+        0
+      ],
+      "2039": [
+        0,
+        0
+      ],
+      "6749": [
+        0,
+        0
+      ],
+      "4549": [
+        0,
+        0
+      ],
+      "196": [
+        0,
+        0
+      ],
+      "2067": [
+        0,
+        0
+      ],
+      "25": [
+        0,
+        0
+      ],
+      "6992": [
+        0,
+        0
+      ],
+      "4627": [
+        0,
+        0
+      ],
+      "5585": [
+        0,
+        0
+      ],
+      "5044": [
+        0,
+        0
+      ],
+      "8025": [
+        0,
+        0
+      ],
+      "4518": [
+        0,
+        0
+      ],
+      "2439": [
+        0,
+        0
+      ],
+      "8125": [
+        0,
+        0
+      ],
+      "446": [
+        0,
+        0
+      ],
+      "454": [
+        0,
+        0
+      ],
+      "854": [
+        0,
+        0
+      ],
+      "2083": [
+        0,
+        0
+      ],
+      "4868": [
+        0,
+        0
+      ],
+      "323": [
+        0,
+        0
+      ],
+      "4663": [
+        0,
+        0
+      ],
+      "6705": [
+        0,
+        0
+      ],
+      "2279": [
+        0,
+        0
+      ],
+      "3811": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18873": "trade with San Francisco. received Jerry Wilson (#681), Dave Jackson (#7776). sent Danny Brown (#6321)",
+      "trade:18945": "trade with Tampa Bay. received Willie Leyba (#6705). sent Dave Guadalupe (#8805)",
+      "trade:19807": "trade with New York. received Juan Mederos (#454). sent David Acosta (#7107), Alex Castellanos (#9305)",
+      "trade:19850": "trade with Tampa Bay. received Ed Montoya (#2039). sent Tony Espinal (#3086), Luis Robles (#10110)",
+      "trade:19851": "trade with Boston. received Mike Roede (#323), Desidério Chora (#9908). sent Victor Hernandez (#6732)",
+      "trade:19901": "trade with Boston. received Justin Bowen (#854), Javy Madrigal (#10507). sent Miguel Martinez (#4347)",
+      "trade:19907": "trade with Atlanta. received Bill Torres (#8235), Rodolfo Gonzalez (#9886). sent Jaden Pierce (#5785)"
+    }
+  },
+  "previous_edition": null
+}

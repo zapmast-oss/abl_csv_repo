@@ -14,6 +14,10 @@ temp.txt
 tmp_*.txt
 
 # Local rebuildable runtime state.
+/output/newsroom/snapshots/
+/csv/out/story/newsroom/.building-*/
+/csv/out/story/newsroom/newsroom.lock
+/logs/newsroom_control/
 data_work/*.db
 data_work/*.db-*
 csv/week_game_ids.npy
