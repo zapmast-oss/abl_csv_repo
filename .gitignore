@@ -18,6 +18,9 @@ tmp_*.txt
 /csv/out/story/newsroom/.building-*/
 /csv/out/story/newsroom/newsroom.lock
 /logs/newsroom_control/
+/logs/production_control/
+/tools/production/dashboard/status.js
+/tmp/abl-command-center-*/
 data_work/*.db
 data_work/*.db-*
 csv/week_game_ids.npy

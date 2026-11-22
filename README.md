@@ -1,5 +1,7 @@
 # abl_csv_repo
 
+Open the [ABL Production Command Center](tools/production/dashboard/index.html) from Production Control. The [operating runbook](docs/ABL_COMMAND_CENTER.md) covers session checkpoints, release tracking, and recovery.
+
 Repo of ABL data
 
 ## Overview

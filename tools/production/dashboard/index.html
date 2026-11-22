@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Local production dashboard for the Action Baseball League and Sim Baseball Vision.">
+  <title>ABL Production Command Center</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script defer src="status.js"></script>
+  <script defer src="dashboard.js"></script>
+</head>
+<body>
+  <a class="skip" href="#baseball">Skip to dashboard</a>
+  <aside class="sidebar">
+    <a class="brand" href="#baseball" aria-label="ABL Command Center home">
+      <span class="monogram" aria-hidden="true">ABL</span>
+      <span><strong>Command Center</strong><small>Sim Baseball Vision</small></span>
+    </a>
+    <nav aria-label="Command Center sections">
+      <a href="#baseball" aria-current="location">Baseball Today</a>
+      <a href="#desk">The Desk</a>
+      <a href="#newsroom">Newsroom &amp; Beats</a>
+      <a href="#programming">SBV Programming</a>
+      <a href="#operations">Production Operations</a>
+      <a href="#archives">Publishing &amp; Archives</a>
+      <a href="#roadmap">Roadmap &amp; Automation</a>
+    </nav>
+    <div class="sidebar-footer" id="references"></div>
+  </aside>
+  <main>
+    <header class="masthead">
+      <span>Action Baseball League</span>
+      <p id="refreshed"></p>
+    </header>
+    <noscript><p class="notice">Enable JavaScript to read the local status file and navigate production records.</p></noscript>
+    <p id="unavailable" class="notice" hidden>Open <strong>Open ABL Command Center</strong> in Production Control to generate this dashboard's local status file.</p>
+    <div id="dashboard" hidden>
+      <section id="baseball" aria-labelledby="baseball-heading">
+        <div class="hero">
+          <div class="hero-text">
+            <h1 id="baseball-heading">Baseball Today</h1>
+            <p id="league-date" class="league-date"></p>
+            <p id="date-source" class="date-source"></p>
+          </div>
+          <div class="field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div id="headline-stats" class="headline-stats"></div>
+        <div id="alerts" class="alerts"></div>
+        <div class="split today-grid">
+          <article class="panel">
+            <div class="panel-heading"><h2>Playing window</h2></div>
+            <div id="playing-window"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><h2>Data readiness</h2></div>
+            <div id="source-state" class="stack"></div>
+          </article>
+        </div>
+      </section>
+      <section id="desk" aria-labelledby="desk-heading">
+        <div class="section-head"><h2 id="desk-heading">The Desk</h2><p id="desk-cutoff"></p></div>
+        <div id="desk-links" class="tiles"></div>
+        <div id="desk-review"></div>
+      </section>
+      <section id="newsroom" aria-labelledby="newsroom-heading">
+        <div class="section-head"><h2 id="newsroom-heading">Newsroom &amp; Franchise Beats</h2><p>24 clubs across six divisions</p></div>
+        <div id="divisions" class="tiles divisions"></div>
+      </section>
+      <section id="programming" aria-labelledby="programming-heading">
+        <div class="section-head"><h2 id="programming-heading">SBV Programming</h2></div>
+        <div id="programs" class="tiles three"></div>
+      </section>
+      <section id="operations" aria-labelledby="operations-heading">
+        <div class="section-head"><h2 id="operations-heading">Production Operations</h2></div>
+        <div id="modes" class="tiles three"></div>
+        <div class="split operation-grid">
+          <article class="panel">
+            <div class="panel-heading"><h3>Production controls</h3></div>
+            <p>In <strong>ABL Production Control</strong>, select <strong>Run ABL Production Session</strong> to checkpoint, resume, or manage releases.</p>
+            <p>Select <strong>Open ABL Command Center</strong> to refresh from current receipts and logs.</p>
+            <div id="operation-links" class="link-row"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><h3>Protection &amp; run logs</h3></div>
+            <div id="protection" class="stack"></div>
+          </article>
+        </div>
+        <div id="session"></div>
+        <div id="deferred"></div>
+      </section>
+      <section id="archives" aria-labelledby="archives-heading">
+        <div class="section-head"><h2 id="archives-heading">Publishing &amp; Archives</h2></div>
+        <article class="panel release-panel">
+          <div class="panel-heading"><h3>Commissioner release queue</h3></div>
+          <div id="releases"></div>
+        </article>
+        <div id="archive-lanes" class="tiles three"></div>
+      </section>
+      <section id="roadmap" aria-labelledby="roadmap-heading">
+        <div class="section-head"><h2 id="roadmap-heading">Roadmap &amp; Automation</h2><p id="registry-size"></p></div>
+        <div class="panel registry">
+          <div class="filters">
+            <label>Project view
+              <select id="project-view">
+                <option value="all">All projects</option>
+                <option value="Verified">Current and historical evidence</option>
+                <option value="Proposed">Planned work</option>
+                <option value="Unconfirmed">Unconfirmed processes</option>
+              </select>
+            </label>
+            <label>Find a project <input id="project-search" type="search" placeholder="Search work, owner, or priority"></label>
+          </div>
+          <p id="project-count" class="muted" role="status"></p>
+          <div id="projects"></div>
+        </div>
+      </section>
+    </div>
+    <footer>ABL Production Command Center <span>Local workspace</span></footer>
+  </main>
+</body>
+</html>
