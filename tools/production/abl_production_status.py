@@ -209,6 +209,9 @@ def gather_status(paths):
     inputs_log = latest_file(paths.repo / "logs/input_updates", "ootp_input_update_*.log")
     poll_log = latest_file(paths.news_logs, "*.log")
     html_path = paths.save / "news/html/index.html"
+    august_reports = paths.repo / "output/pdf"
+    august_prefix = "abl_august_division_challenges"
+    august_cutoff = "1981_08_20_asof_1981-08-19.pdf"
     return {
         "generated_at": utc_now(),
         "baseball": {"league_date": displayed_date, "date_source": date_source, "cutoff": verified.get("cutoff"),
@@ -217,6 +220,10 @@ def gather_status(paths):
                      "slate": slate, "exports": compare_exports(paths, verified, warnings), "last_run": last_run},
         "desk": {"cutoff": current.get("cutoff"),
                  "links": [item for item in (
+                     link(august_reports / f"{august_prefix}_pre_sim_briefing_{august_cutoff}",
+                          "August 20-30 Pre-Sim Briefing"),
+                     link(august_reports / f"{august_prefix}_commissioner_watch_card_{august_cutoff}",
+                          "August 20-30 Watch Card"),
                      link(paths.newsroom / "index.html", "Newsroom reading room"),
                      link(current.get("abl_411"), "ABL 411"),
                      link(current.get("slate"), "Story slate"),
