@@ -19,6 +19,9 @@ tmp_*.txt
 /csv/out/story/newsroom/newsroom.lock
 /logs/newsroom_control/
 /logs/production_control/
+/logs/eab/
+/output/eab/
+/tmp/eab-*/
 /tools/production/dashboard/status.js
 /tmp/abl-command-center-*/
 data_work/*.db

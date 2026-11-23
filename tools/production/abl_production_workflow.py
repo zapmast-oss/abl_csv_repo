@@ -43,6 +43,7 @@ STAGES = {
     "backup": "League backup",
     "capture": "Capture OOTP CSV",
     "validate": "Validate OOTP CSV",
+    "eab": "Publish validated EAB edition locally",
     "sync": "Synchronize ABL Input Data",
     "desk": "Update the Desk",
     "journalism": "Prepare journalism",
@@ -161,6 +162,7 @@ class Session:
     def __init__(self, paths, state):
         self.paths = paths
         self.state = state
+        state["stages"].setdefault("eab", {"label": STAGES["eab"], "status": "Not started", "attempts": []})
         self.folder = paths.control / "sessions" / state["id"]
         self.file = self.folder / "session.json"
 
@@ -374,6 +376,26 @@ class Session:
             raise ValueError("The prepared slate, 411, or franchise queue is missing.")
         return "Slate, ABL 411 and the franchise queue are ready for story selection and review.", outputs
 
+    def publish_eab(self, attempt):
+        self.confirm_current_capture()
+        verified = self.state["verified"]
+        try:
+            runtime = newsroom_python()
+        except FileNotFoundError:
+            runtime = sys.executable
+        command = [runtime, "-B", str(self.paths.repo / "tools/eab/abl_eab.py"), "update",
+                   "--source", verified["raw_dir"], "--source-id", verified["source_id"]]
+        log = attempt / "eab-publication.log"
+        with log.open("w", encoding="utf-8") as handle:
+            result = subprocess.run(command, cwd=self.paths.repo, stdout=handle,
+                                    stderr=subprocess.STDOUT, check=False).returncode
+        if result:
+            raise ValueError(f"EAB update exited {result}. Review {log}.")
+        receipt = json.loads(log.read_text(encoding="utf-8").splitlines()[-1])
+        if receipt["cutoff"] != verified["cutoff"] or receipt["status"] not in {"published", "unchanged"}:
+            raise ValueError(f"EAB did not confirm the session cutoff. Review {log}.")
+        return f"EAB {receipt['status']} for {receipt['cutoff']}.", [Path(receipt["site"]), log]
+
     def backup_video(self, attempt):
         if not Path("H:/").is_dir():
             raise FileNotFoundError("The SBV video backup requires H:.")
@@ -435,6 +457,7 @@ class Session:
             if not self.execute("capture", self.capture_csv) or not self.execute("validate", self.validate_csv):
                 self.defer(CSV_STAGES, "Hold until the OOTP capture passes validation.")
                 return
+        self.execute("eab", self.publish_eab)
         if not self.succeeded("sync"):
             if ask("Preview ABL Input Data synchronization"):
                 if not self.execute("sync", self.sync_input) and self.state["stages"]["sync"]["status"] == "Failed":
@@ -467,6 +490,8 @@ class Session:
             self.csv_cycle()
         else:
             self.defer(CSV_STAGES, "Quick Play checkpoint. Resume to capture and produce coverage if needed.")
+        if not self.succeeded("validate"):
+            self.defer(("eab",), "EAB will update after the OOTP capture passes validation.")
         if self.state["mode"] == "featured" and not self.succeeded("video"):
             if ask("Preview backup of closed OBS recordings and rendered masters"):
                 self.execute("video", self.backup_video)

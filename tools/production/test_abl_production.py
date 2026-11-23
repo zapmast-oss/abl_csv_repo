@@ -79,13 +79,35 @@ class ProductionSessionTests(unittest.TestCase):
             session, "capture_csv", return_value=("Captured fixture.", [])
         ), patch.object(session, "validate_csv", side_effect=ValueError("Mismatched finals")), patch.object(
             session, "sync_input"
-        ) as sync, patch.object(session, "prepare_desk") as desk:
+        ) as sync, patch.object(session, "prepare_desk") as desk, patch.object(session, "publish_eab") as eab:
             self.assertTrue(session.run())
             sync.assert_not_called()
             desk.assert_not_called()
+            eab.assert_not_called()
         self.assertEqual(session.state["stages"]["validate"]["status"], "Failed")
         self.assertEqual(session.state["stages"]["journalism"]["status"], "Deferred")
         self.assertTrue(session.succeeded("close"))
+
+    def test_validated_export_publishes_eab_before_journalism_and_closes(self):
+        session = self.session("standard")
+
+        def publish(_):
+            self.assertTrue(session.succeeded("validate"))
+            self.assertEqual(session.state["stages"]["desk"]["status"], "Not started")
+            return "Fixture EAB edition published.", []
+
+        with patch("abl_production_workflow.ask", side_effect=[True, True, False, True]), patch(
+            "abl_production_workflow.powershell", side_effect=self.native_copy
+        ), patch("builtins.input", side_effect=["1981-08-19", ""]), patch.object(
+            session, "capture_csv", return_value=("Captured fixture.", [])
+        ), patch.object(session, "validate_csv", return_value=("Verified fixture.", [])), patch.object(
+            session, "publish_eab", side_effect=publish
+        ) as eab, patch.object(session, "prepare_desk", side_effect=ValueError("Deliberate newsroom failure")):
+            self.assertTrue(session.run())
+            eab.assert_called_once()
+        self.assertTrue(session.succeeded("eab"))
+        self.assertTrue(session.succeeded("close"))
+        self.assertEqual(session.state["stages"]["desk"]["status"], "Failed")
 
     def test_resumed_export_refuses_a_different_save(self):
         session = self.session()

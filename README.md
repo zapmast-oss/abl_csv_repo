@@ -2,6 +2,8 @@
 
 Open the [ABL Production Command Center](tools/production/dashboard/index.html) from Production Control. The [operating runbook](docs/ABL_COMMAND_CENTER.md) covers session checkpoints, release tracking, and recovery.
 
+Open **Experiencing Action Baseball** with **Open EAB Website** in Production Control. The [EAB operations guide](docs/EAB_OPERATIONS.md) covers updates, the edition archive, and deployment.
+
 Repo of ABL data
 
 ## Overview
