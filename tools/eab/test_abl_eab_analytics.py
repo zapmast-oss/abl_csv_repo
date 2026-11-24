@@ -1,6 +1,8 @@
 """Check that an optional public beacon preserves existing publications."""
 
 from pathlib import Path
+from posixpath import dirname, normpath, join
+import re
 import shutil
 from types import SimpleNamespace
 import unittest
@@ -44,6 +46,15 @@ class AnalyticsTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 PublicPage(html, "index.html")
 
+    def test_today_from_an_edition_page_targets_the_public_homepage(self):
+        world = SimpleNamespace(logos={}, photos={}, season=1981, league_date="1981-08-20", cutoff="1981-08-19")
+        site = Site(self.temp, world, {"id": "1981-08-20_1981-08-19_" + "a" * 16}, {})
+        for path in ("index.html", "teams/index.html"):
+            route = site.route(path)
+            html = site.frame(route, "", "", "Today" if path == "index.html" else "Teams")
+            today = re.search(r'<a(?: aria-current="page")? href="([^"]+)">Today</a>', html)[1]
+            self.assertEqual(normpath(join(dirname(route), today)), "index.html")
+
     def test_copies_track_legacy_newsroom_without_changing_the_original(self):
         old = "1981-08-20_1981-08-19_" + "a" * 16
         new = "1981-08-20_1981-08-19_" + "b" * 16
@@ -51,15 +62,23 @@ class AnalyticsTests(unittest.TestCase):
         issue = f"releases/{old}/newsroom/issues/story/index.html"
         article = str(Path(issue).with_name("article.html")).replace("\\", "/")
         (dist / issue).parent.mkdir(parents=True)
-        issue_html = '<body><a href="article.html#copy">Read the story</a></body>'
+        (dist / "index.html").write_text("<p>Current edition</p>", encoding="utf-8")
+        old_today = '<nav><a href="../../../index.html">Today</a></nav>'
+        issue_html = f'<body>{old_today}<a href="article.html#copy">Read the story</a></body>'
+        article_html = f'<body>{old_today}<p id="copy">Story text</p>{beacon(TEST_TOKEN)}</body>'
         (dist / issue).write_text(issue_html, encoding="utf-8")
-        (dist / article).write_text('<body><p id="copy">Story text</p></body>', encoding="utf-8")
+        (dist / article).write_text(article_html, encoding="utf-8")
         catalog = {"issues": [{"path": issue, "articles": [{"path": article}]}]}
         world = SimpleNamespace(logos={}, photos={})
         site = Site(stage, world, {"id": new}, catalog, dist=dist, analytics_token=TEST_TOKEN)
-        site.tracked_newsroom()
+        site.newsroom_reading_copies()
+        self.assertEqual(set(site.reading_routes), {issue, article})
         validate_pages(stage, dist, set(site.reading_routes.values()), set())
         for destination in site.reading_routes.values():
-            self.assertTrue(PublicPage((stage / destination).read_text(encoding="utf-8"), destination).has_beacon)
+            html = (stage / destination).read_text(encoding="utf-8")
+            self.assertTrue(PublicPage(html, destination).has_beacon)
+            today = re.search(r'<a href="([^"]+)">Today</a>', html)[1]
+            self.assertEqual(normpath(join(dirname(destination), today)), "index.html")
         self.assertEqual((dist / issue).read_text(encoding="utf-8"), issue_html)
+        self.assertEqual((dist / article).read_text(encoding="utf-8"), article_html)
         self.assertEqual(catalog["issues"][0]["articles"][0]["path"], article)

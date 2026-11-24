@@ -19,6 +19,7 @@ NAV = (("Today", "index.html"), ("Newsroom", "newsroom/index.html"), ("Teams", "
        ("Standings", "standings/index.html"), ("Games", "games/index.html"), ("Players", "players/index.html"),
        ("History", "history/index.html"), ("Fan Culture", "fans/index.html"),
        ("Sim Baseball Vision", "sbv/index.html"), ("About", "about/index.html"))
+TODAY_LINK = re.compile(r'(<a(?: aria-current="page")? href=")([^"]+)(">Today</a>)')
 
 
 def pretty(when, *, year=True):
@@ -155,12 +156,15 @@ class Site:
         home = "index.html" if evergreen else self.route("index.html")
         nav = []
         for label, dest in NAV:
-            target = "index.html" if evergreen else self.route(dest)
-            if evergreen and label not in ("Today", "History"):
-                continue
-            if evergreen and label == "History":
+            if label == "Today":
+                target = dest
+            elif not evergreen:
+                target = self.route(dest)
+            elif label == "History":
                 target = "index.html#editions"
                 label = "Publication timeline"
+            else:
+                continue
             current = ' aria-current="page"' if tab == label else ""
             nav.append(f'<a{current} href="{href(page, target)}">{label}</a>')
         baseball_label = "ABL baseball date " if page == home else ""
@@ -589,8 +593,8 @@ class Site:
     def reading_link(self, page, target, label, cls=""):
         return a(page, self.reading_routes.get(target, target), label, cls)
 
-    def tracked_newsroom(self):
-        if not self.beacon:
+    def newsroom_reading_copies(self):
+        if not self.catalog["issues"]:
             return
         pages = {issue["path"] for issue in self.catalog["issues"]}
         pages.update(article["path"] for article in self.all_articles())
@@ -600,7 +604,8 @@ class Site:
             if not source.resolve().is_relative_to(self.dist.resolve()):
                 raise ValueError("Archived newsroom page is outside the publication.")
             html = source.read_text(encoding="utf-8")
-            if self.beacon not in html:
+            today = TODAY_LINK.search(html)
+            if (self.beacon and self.beacon not in html) or (today and today[2] != href(path, "index.html")):
                 self.reading_routes[path] = self.route("reading/" + path.removeprefix("releases/"))
                 copies[path] = html
 
@@ -619,6 +624,8 @@ class Site:
 
             html = BEACON_TAG.sub("", html)
             html = re.sub(r'(?<=\s)(href|src)="([^"]*)"', rebase, html)
+            today_target = href(destination, "index.html")
+            html = TODAY_LINK.sub(lambda link: link[1] + today_target + link[3], html, count=1)
             self.put(destination, html.replace("</body>", self.beacon + "</body>", 1))
 
     def article_cards(self, page, items):
@@ -829,7 +836,7 @@ class Site:
         self.page("about/index.html", "About EAB", about, "About")
 
     def build(self, eligible, media, warnings):
-        self.tracked_newsroom()
+        self.newsroom_reading_copies()
         self.editorial(eligible, warnings)
         self.almanac()
         self.home()
