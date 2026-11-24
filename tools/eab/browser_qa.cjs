@@ -1,13 +1,14 @@
-/* Run browser checks against the local November 23 opening-day build and/or the replay. */
+/* Run browser checks against the local replay or public EAB opening-day edition. */
 const assert = require('node:assert/strict');
 const { mkdirSync } = require('node:fs');
 const { join, resolve } = require('node:path');
 const { pathToFileURL } = require('node:url');
 
 const [directory, screenshots, modulePath = 'playwright', executablePath] = process.argv.slice(2);
-if (!directory || !screenshots) throw new Error('Pass the public folder and the screenshot folder.');
+if (!directory || !screenshots) throw new Error('Pass the site folder or public URL and the screenshot folder.');
 const { chromium } = require(modulePath);
-const index = pathToFileURL(resolve(directory, 'index.html')).href;
+const publicSite = directory.startsWith('https://');
+const index = publicSite ? new URL(directory).href : pathToFileURL(resolve(directory, 'index.html')).href;
 
 async function expectText(locator, pattern) {
   assert.match(await locator.innerText(), pattern);
@@ -19,22 +20,20 @@ async function noOverflow(page) {
 
 async function visitNav(page, label, title) {
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: label, exact: true }).click();
+  await page.waitForLoadState('load');
   await expectText(page.locator('h1'), title);
   await noOverflow(page);
 }
 
 async function audit(browser, name, viewport) {
   const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
-  await context.route(/^https?:/, route => route.abort());
+  await context.route(/^https?:/, route => publicSite && route.request().url().startsWith(index) ? route.continue() : route.abort());
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.goto(index + '#editions');
-  await expectText(page.locator('h1'), /Publication timeline/);
-  await page.getByRole('link', { name: 'Open the current edition' }).click();
+  await page.goto(index);
   const today = page.url();
-  await page.goto(index, { waitUntil: 'commit' });
-  await page.waitForURL(today);
+  assert.equal(today, index);
   await expectText(page.locator('.hero h1'), /first place/i);
   await expectText(page.locator('.edition-bar'), /August 20, 1981.*Finals through August 19/s);
   await expectText(page.locator('.edition-credit time'), /Updated .* UTC/);
@@ -58,27 +57,46 @@ async function audit(browser, name, viewport) {
   await page.getByRole('link', { name: 'Open current issue' }).click();
   await expectText(page.locator('main'), /Games through August 19, 1981/);
   const hasStories = await page.getByRole('link', { name: 'Permanent issue link' }).count();
+  let storyTitle, storyClub;
   if (hasStories) {
     await page.getByRole('link', { name: 'Permanent issue link' }).click();
-    await page.getByRole('link', { name: /couldn.t shake Phoenix/ }).click();
-    await expectText(page.locator('main'), /Ernie Bewell.*August 20, 1981/s);
-    await expectText(page.locator('.reading'), /Games through August 19, 1981/);
-    assert.match(await page.getByRole('link', { name: 'View PDF' }).getAttribute('href'), /\.pdf$/);
+    const observer = await page.getByRole('link', { name: /couldn’t shake Phoenix/ }).count();
+    storyTitle = observer ? /couldn’t shake Phoenix/ : /Miami needs a game before Charlotte/;
+    storyClub = observer ? /Phoenix Firebirds/ : /Miami Hurricanes/;
+    await page.getByRole('link', { name: storyTitle }).click();
+    await expectText(page.locator('main'), observer ? /Ernie Bewell.*August 20, 1981/s : /ABL League Desk.*August 20, 1981/s);
+    const copy = page.locator('.reading');
+    await expectText(copy, /Games through August 19, 1981/);
+    await expectText(copy, observer ? /See who leaves/ : /What it can settle is already being played for/);
+    assert.doesNotMatch(await copy.innerText(), /\ufffd|Reporting record/);
+    assert.equal(await copy.getByRole('link', { name: 'Verified ABL results' }).count(), 1);
+    const pdf = page.getByRole('link', { name: 'View PDF' });
+    assert.match(await pdf.getAttribute('href'), /\.pdf$/);
+    if (publicSite) {
+      const response = await context.request.get(await pdf.evaluate(link => link.href));
+      assert.equal(response.status(), 200);
+      assert.equal((await response.body()).subarray(0, 5).toString(), '%PDF-');
+    }
     await page.screenshot({ path: join(screenshots, `${name}-article.png`) });
     await page.goto(today);
     await visitNav(page, 'Newsroom', /ABL Newsroom/);
-    await page.getByRole('searchbox', { name: 'Search article archive' }).fill('Ernie Phoenix');
+    await page.getByRole('searchbox', { name: 'Search article archive' }).fill(observer ? 'Ernie Phoenix' : 'Miami Charlotte');
     assert.equal(await page.locator('#articles [data-item]:visible').count(), 1);
     const issueLinks = await page.locator('main .list a').evaluateAll(links => links.map(link => link.href));
-    assert.ok(new Set(issueLinks).size > 1, 'Earlier issue must have a distinct URL');
+    assert.ok(issueLinks.length > 0 && new Set(issueLinks).size === issueLinks.length);
     await page.goto(issueLinks.at(-1));
     await expectText(page.locator('main'), /Games through August 19, 1981/);
-    assert.equal(await page.locator('main .tile').count(), 1);
   } else {
     await expectText(page.locator('main'), /This date has no published articles/);
   }
 
   await visitNav(page, 'Teams', /The 24 clubs/);
+  if (storyTitle) {
+    await page.getByRole('link', { name: storyClub }).click();
+    await page.locator('#beat').getByRole('link', { name: storyTitle }).click();
+    await expectText(page.locator('h1'), storyTitle);
+    await visitNav(page, 'Teams', /The 24 clubs/);
+  }
   await page.getByRole('link', { name: /Phoenix Firebirds/ }).click();
   await expectText(page.locator('h1'), /Phoenix Firebirds/);
   await expectText(page.locator('main'), /Recent results.*Upcoming schedule/s);
@@ -108,6 +126,7 @@ async function audit(browser, name, viewport) {
 
   await visitNav(page, 'Players', /Players & statistics/);
   await page.getByRole('link', { name: 'All individual batting' }).click();
+  await page.waitForLoadState('load');
   await page.getByRole('searchbox', { name: 'Find a player or club' }).fill('Luke Margalit');
   assert.equal(await page.locator('#player-table tbody tr:visible').count(), 1);
   await expectText(page.locator('#player-table tbody tr:visible'), /Luke Margalit/);
@@ -136,11 +155,11 @@ async function audit(browser, name, viewport) {
   await visitNav(page, 'About', /See it for yourself/);
   await expectText(page.locator('main'), /fictional professional baseball league/);
   await page.getByRole('link', { name: 'Visit the publication timeline' }).click();
-  await expectText(page.locator('h1'), /Publication timeline/);
-  if (hasStories) {
-    await page.getByRole('link', { name: /Finals through August 18/ }).click();
-    await expectText(page.locator('.edition-bar'), /Finals through August 18/);
-  }
+  await expectText(page.locator('#editions h2'), /Publication timeline/);
+  const earlier = page.locator('#edition-list li a:not(#current-edition)').last();
+  const oldDate = await earlier.innerText();
+  await earlier.click();
+  await expectText(page.locator('.edition-bar'), new RegExp(oldDate.split(' · ').at(-1)));
   assert.deepEqual(errors, []);
   await context.close();
   console.log(`${name}: navigation, issue and archive, 1981 data, historical stats, searches and layout passed`);

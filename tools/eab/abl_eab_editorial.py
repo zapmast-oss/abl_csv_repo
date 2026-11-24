@@ -42,8 +42,11 @@ def identity(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def approved_paths(ledger, archive, warnings):
-    for receipt in sorted(ledger.glob("*/session.json")):
+def approved_paths(ledger, archive, warnings, standalone):
+    receipts = sorted(ledger.glob("*/session.json"))
+    if standalone is not None:
+        receipts.extend(sorted(standalone.glob("*.json")))
+    for receipt in receipts:
         try:
             for entry in read_json(receipt).get("releases", []):
                 approval = entry.get("approval") or {}
@@ -85,13 +88,40 @@ def approved_copy(path, item, manifest, digest):
                    tuple(int(value) for value in item["claim_games"]), path.with_suffix(".pdf").is_file())
 
 
-def eligible_issues(repo, world, prior_editions, warnings, *, ledger=None, newsroom=None):
+def release_approval(manuscript, archive, editions, digest, reviewer, at):
+    """Record a human decision for already-verified copy outside a playing session."""
+    path = manuscript.resolve()
+    if (not path.is_relative_to(archive) or len(path.relative_to(archive).parts) != 4
+            or path.suffix != ".md"):
+        raise ValueError("Select a sealed Newsroom manuscript.")
+    if not re.fullmatch(r"[0-9a-f]{64}", digest) or not reviewer.strip():
+        raise ValueError("Record the exact manuscript hash and the approving reviewer.")
+    folder = path.parent.parent
+    manifest = read_json(folder / "articles.json")
+    if manifest["revision"] != folder.name or not re.fullmatch(r"[0-9a-f]{20}", folder.name):
+        raise ValueError("The manuscript is outside a sealed issue revision.")
+    if not any((item["source_id"], item["league_date"], item["cutoff"]) ==
+               (manifest["source_id"], manifest["league_date"], manifest["cutoff"]) for item in editions):
+        raise ValueError("Publish verified baseball for this source before approving a standalone EAB article.")
+    audit_issue(folder, manifest["source_id"])
+    article = next((item for item in manifest["articles"] if item["path"] == path.relative_to(folder).as_posix()), None)
+    if (article is None or article["review"]["decision"] != "approve"
+            or article["kind"] not in {"observer", "beat", "league"} or not SLUG.fullmatch(article["slug"])
+            or not article["team_ids"]):
+        raise ValueError("The manuscript needs Newsroom review before EAB release approval.")
+    approved_copy(path, article, manifest, digest)
+    return {"lane": "editorial", "channel": "EAB", "title": article["title"], "artifact": str(path),
+            "source_id": manifest["source_id"], "source_cutoff": manifest["cutoff"], "revision": folder.name,
+            "sha256": digest, "approval": {"reviewer": reviewer.strip(), "at": at, "sha256": digest}}
+
+
+def eligible_issues(repo, world, prior_editions, warnings, *, ledger=None, newsroom=None, standalone=None):
     archive = ((newsroom or repo / "csv/out/story/newsroom") / "issues").resolve()
     ledger = ledger or repo / "logs/production_control/sessions"
     known = {m["source_id"]: (m["league_date"], m["cutoff"]) for m in prior_editions}
     known[world.source_id] = (world.league_date, world.cutoff)
     requested = defaultdict(dict)
-    for path, digest, cutoff in approved_paths(ledger, archive, warnings):
+    for path, digest, cutoff in approved_paths(ledger, archive, warnings, standalone):
         if len(path.relative_to(archive).parts) == 4:
             requested[path.parent.parent][path] = (digest, cutoff)
     result = []

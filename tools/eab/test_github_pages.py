@@ -76,12 +76,13 @@ class PagesTests(unittest.TestCase):
                      published_at="2026-11-23T23:00:00Z", style="assets/" + "1" * 24 + ".css",
                      script="assets/" + "2" * 24 + ".js", mark=None)
         home = f"releases/{key}/index.html"
-        self.put(home, '<!doctype html><html lang="en"><body>' + body + '</body></html>')
+        self.put(home, '<!doctype html><html lang="en"><head><title>EAB</title></head><body>'
+                 '<main id="content">' + body + '</main></body></html>')
         files = {path: file_hash(self.publisher.dist / path) for path in (home, entry["style"], entry["script"])}
         self.put(f"releases/{key}/manifest.json", canonical({"entry": entry, "files": files, "issues": []}))
         self.catalog["editions"].append(entry)
         self.catalog["current"] = key
-        self.put("index.html", root_page(self.catalog))
+        self.put("index.html", root_page(self.catalog, self.publisher.dist))
         return entry
 
     def head(self):
@@ -91,6 +92,9 @@ class PagesTests(unittest.TestCase):
         opening = self.head()
         self.assertEqual(self.pages.deploy(wait=0)["status"], "unchanged")
         self.assertEqual(self.head(), opening)
+        landing = self.pages.download("")
+        self.assertLess(landing.index(b'<h1>Game Center</h1>'), landing.index(b'id="editions"'))
+        self.assertNotIn(b'data-open', landing)
 
         later = self.edition("1981-08-20", "1981-08-19", 1450)
         self.put("private.csv", "local output outside the public allowlist")
@@ -126,7 +130,7 @@ class PagesTests(unittest.TestCase):
 
     def test_invalid_local_release_cannot_advance_the_remote(self):
         opening = self.head()
-        self.edition("1981-08-20", "1981-08-19", 1450, '<img src="../../local.ps1">')
+        self.edition("1981-08-20", "1981-08-19", 1450, '<p onclick="open()">Unsafe content</p>')
         with self.assertRaises(ValueError):
             self.pages.deploy(wait=0)
         self.assertEqual(self.head(), opening)

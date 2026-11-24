@@ -3,20 +3,20 @@
 import copy
 from datetime import datetime, timezone
 from hashlib import sha256
-from html import escape
+from html import escape, unescape
 from html.parser import HTMLParser
 import json
 from pathlib import Path
 from posixpath import dirname, join, normpath
 import re
 import shutil
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urlsplit, urlunsplit
 from uuid import uuid4
 import zipfile
 
 from abl_eab_data import ROOT, load_world
-from abl_eab_editorial import PRIVATE, PROHIBITED, eligible_issues, identity, read_json
-from abl_eab_site import HERE, NAME, Site, pretty
+from abl_eab_editorial import PRIVATE, PROHIBITED, eligible_issues, identity, read_json, release_approval
+from abl_eab_site import HERE, Site, pretty
 from abl_newsroom_control import claim_operation
 from abl_newsroom_verify import default_live_dir, verify_export
 
@@ -24,6 +24,7 @@ from abl_newsroom_verify import default_live_dir, verify_export
 ENTRY = re.compile(r"\d{4}-\d{2}-\d{2}_\d{4}-\d{2}-\d{2}_[0-9a-f]{16}\Z")
 ASSET = re.compile(r"assets/[0-9a-f]{24}\.(png|css|js)\Z")
 REGISTER = re.compile(r'<script type="application/json" id="eab-publications">(.*?)</script>', re.S)
+HOME_URL = re.compile(r'(?<=\s)(href|src)="([^"]*)"')
 
 
 def canonical(value):
@@ -68,30 +69,44 @@ def catalog_for(dist):
     return data
 
 
-def root_page(data):
-    edition = next(x for x in data["editions"] if x["id"] == data["current"])
-    name = escape(NAME)
-    target = f"releases/{edition['id']}/index.html"
+def root_page(data, dist):
+    """Serve the sealed baseball homepage at the root and keep the timeline anchor."""
+    current = data["current"]
+    target = f"releases/{current}/index.html"
+
+    def rebase(match):
+        attr, value = match.groups()
+        parts = urlsplit(unescape(value))
+        if parts.scheme or parts.netloc or not parts.path:
+            return match[0]
+        path = normpath(join(dirname(target), parts.path))
+        if path == target:
+            path = "index.html"
+        if not route_ok(path):
+            raise ValueError(f"Invalid link on the current EAB homepage: {value}")
+        if path == "index.html" and parts.fragment and not parts.query:
+            path = ""
+        return f'{attr}="{escape(urlunsplit(("", "", path, parts.query, parts.fragment)), quote=True)}"'
+
     entries = []
     for entry in reversed(data["editions"]):
         title = f"{pretty(entry['league_date'])} · Finals through {pretty(entry['cutoff'], year=False)}"
-        selected = " · Current edition" if entry["id"] == edition["id"] else ""
-        entries.append(f'<li data-item><a href="releases/{entry["id"]}/index.html">{escape(title)}</a>'
+        active = entry["id"] == current
+        selected = " · Current edition" if active else ""
+        anchor = ' id="current-edition"' if active else ""
+        entries.append(f'<li data-item><a{anchor} href="releases/{entry["id"]}/index.html">{escape(title)}</a>'
                        f'<span>{escape(entry["published_at"].replace("T", " ").replace("Z", " UTC") + selected)}</span></li>')
     embedded = canonical(data).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
-    mark = f'<img class="brand-mark" alt="" src="{edition["mark"]}">' if edition["mark"] else ""
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>{name} | Edition timeline</title>
-<link rel="stylesheet" href="{edition["style"]}"><script defer src="{edition["script"]}"></script>
-<script type="application/json" id="eab-publications">{embedded}</script></head><body>
-<header class="masthead"><div class="site-width"><a class="brand" href="{target}">{mark}<span>{name}</span></a></div></header>
-<main class="site-width" id="editions"><header class="page-title"><p class="eyebrow">History &amp; Archives</p>
-<h1>Publication timeline</h1><p>Return to an earlier league date and see the baseball available in that edition.</p></header>
-<p><a id="current-edition" data-open class="button" href="{target}">Open the current edition</a></p>
-<section><h2>Preserved editions</h2><label class="search">Find a league date
+    register = f'<script type="application/json" id="eab-publications">{embedded}</script>'
+    timeline = f"""<section id="editions" aria-labelledby="timeline-title">
+<div class="section-head"><h2 id="timeline-title">Publication timeline</h2></div>
+<label class="search">Find a league date
 <input type="search" data-filter="edition-list" placeholder="Try August 20"></label>
-<p class="sr-only" role="status" data-count="edition-list"></p><ul id="edition-list" class="date-grid">{''.join(entries)}</ul></section>
-</main><footer><div class="site-width">Because baseball matters. <span>Real. Fictional. ⚾.</span></div></footer></body></html>"""
+<p class="sr-only" role="status" data-count="edition-list"></p><ul id="edition-list" class="date-grid">{''.join(entries)}</ul></section>"""
+    home = HOME_URL.sub(rebase, (dist / target).read_text(encoding="utf-8"))
+    if "</head>" not in home or "</main>" not in home:
+        raise ValueError("The sealed EAB homepage is missing its document landmarks.")
+    return home.replace("</head>", register + "</head>", 1).replace("</main>", timeline + "</main>", 1)
 
 
 class PublicPage(HTMLParser):
@@ -219,12 +234,13 @@ def audit_manifest(dist, release_id):
 
 
 class Publisher:
-    def __init__(self, repo=ROOT, *, output=None, ledger=None, newsroom=None, assets=None):
+    def __init__(self, repo=ROOT, *, output=None, ledger=None, newsroom=None, assets=None, approval_dir=None):
         self.repo = repo
         self.output = output or repo / "output/eab"
         self.dist = self.output / "dist"
         self.work = self.output / "work"
         self.logs = self.output / "receipts" if output else repo / "logs/eab"
+        self.approvals = approval_dir or self.logs / "article-approvals"
         self.assets = assets or default_live_dir().parents[1] / "news/html/images"
         self.ledger = ledger
         self.newsroom = newsroom
@@ -233,6 +249,25 @@ class Publisher:
         self.logs.mkdir(parents=True, exist_ok=True)
         with (self.logs / "publications.jsonl").open("a", encoding="utf-8") as stream:
             stream.write(canonical({"at": now(), "status": status, **values}) + "\n")
+
+    def approve_article(self, manuscript, digest, reviewer):
+        self.work.mkdir(parents=True, exist_ok=True)
+        with claim_operation(self.work) as acquired:
+            if not acquired:
+                raise ValueError("An EAB operation is already running.")
+            archive = ((self.newsroom or self.repo / "csv/out/story/newsroom") / "issues").resolve()
+            editions = catalog_for(self.dist)["editions"]
+            entry = release_approval(manuscript, archive, editions, digest, reviewer, now())
+            edition = next(item for item in editions if item["source_id"] == entry["source_id"])
+            audit_manifest(self.dist, edition["id"])
+            receipt = self.approvals / f"{entry['revision']}-{digest}.json"
+            if receipt.is_file():
+                saved = read_json(receipt)["releases"][0]
+                if saved["artifact"] != entry["artifact"] or saved["sha256"] != digest:
+                    raise ValueError("The existing EAB approval refers to a different manuscript.")
+                return saved
+            atomic_write(receipt, (canonical({"releases": [entry]}) + "\n").encode())
+            return entry
 
     def publish(self, source=None, *, expected=None, snapshots=None, before_switch=None):
         """Validate the source using the existing newsroom verifier, then publish locally."""
@@ -264,7 +299,8 @@ class Publisher:
                        or (world.finals < newest[2] and world.season == int(newest[0][:4]))):
             raise ValueError("EAB rejected an earlier or incomplete baseball capture. Use explicit rollback for past editions.")
         warnings = []
-        eligible = eligible_issues(self.repo, world, editions, warnings, ledger=self.ledger, newsroom=self.newsroom)
+        eligible = eligible_issues(self.repo, world, editions, warnings, ledger=self.ledger, newsroom=self.newsroom,
+                                   standalone=self.approvals)
         for detail in warnings:
             self.log("editorial held", detail=detail)
         warnings.clear()
@@ -289,7 +325,7 @@ class Publisher:
             outputs = {path.relative_to(stage).as_posix(): file_hash(path) for path in sorted(stage.rglob("*"))
                        if path.is_file()}
             self.attach(catalog, entry, added)
-            site.put("index.html", root_page(catalog))
+            site.put("index.html", root_page(catalog, stage))
             links = sorted(m["url"] for m in media)
             validate_pages(stage, self.dist, {*outputs, "index.html"}, set(links))
             manifest = {"entry": entry, "issues": added, "files": outputs, "external_links": links}
@@ -301,7 +337,7 @@ class Publisher:
         audit_manifest(self.dist, release_id)
         if before_switch:
             before_switch()
-        atomic_write(self.dist / "index.html", root_page(catalog).encode())
+        atomic_write(self.dist / "index.html", root_page(catalog, self.dist).encode())
         self.log("published", release=release_id, source=world.source_id, cutoff=world.cutoff)
         return entry, "published"
 
@@ -340,7 +376,7 @@ class Publisher:
                 raise ValueError("The selected release was never published.")
             manifest = audit_manifest(self.dist, release_id)
             catalog["current"] = release_id
-            atomic_write(self.dist / "index.html", root_page(catalog).encode())
+            atomic_write(self.dist / "index.html", root_page(catalog, self.dist).encode())
             self.log("rollback", release=release_id, cutoff=manifest["entry"]["cutoff"])
             return manifest["entry"]
 

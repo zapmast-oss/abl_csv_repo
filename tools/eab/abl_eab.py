@@ -83,7 +83,7 @@ def console(publisher):
                 update(publisher)
                 show_publication(pages.deploy())
             elif answer == "2":
-                draft = Publisher(output=publisher.output / "preview")
+                draft = Publisher(output=publisher.output / "preview", approval_dir=publisher.approvals)
                 update(draft)
                 open_site(draft)
             elif answer == "3":
@@ -112,6 +112,10 @@ def main():
     for name in ("open", "status", "console", "package", "verify"):
         commands.add_parser(name)
     commands.add_parser("pages-status")
+    approval = commands.add_parser("approve-article", help="Record the human approval of an exact sealed EAB article")
+    approval.add_argument("manuscript", type=Path)
+    approval.add_argument("--sha256", required=True)
+    approval.add_argument("--reviewer", required=True)
     deploy = commands.add_parser("deploy", help="Publish the current verified local edition to GitHub Pages")
     deploy.add_argument("--source-id")
     deploy.add_argument("--retry", action="store_true")
@@ -134,10 +138,13 @@ def main():
     }
     try:
         if args.command == "preview":
-            draft = Publisher(output=publisher.output / "preview")
+            draft = Publisher(output=publisher.output / "preview", approval_dir=publisher.approvals)
             update(draft)
             if args.open:
                 open_site(draft)
+        elif args.command == "approve-article":
+            entry = publisher.approve_article(args.manuscript, args.sha256, args.reviewer)
+            print(json.dumps({field: entry[field] for field in ("title", "source_cutoff", "sha256", "approval")}))
         elif args.command == "deploy":
             receipt = GitHubPages(publisher).deploy(expected_source=args.source_id, retry=args.retry, wait=args.wait)
             print(json.dumps(receipt))

@@ -590,7 +590,10 @@ class Site:
                             league_date=issue["league_date"], cutoff=issue["cutoff"])
                 body = heading(article.title, f"{article.byline} · {pretty(issue['league_date'])}",
                                "The Baseball Observer" if article.kind == "observer" else "The ABL Newsroom")
-                body += f'<article class="reading"><p class="note">Games through {pretty(issue["cutoff"])}</p>'
+                edition = next((entry["id"] for entry in reversed(self.catalog["editions"])
+                                if entry["source_id"] == issue["source_id"]), self.entry["id"])
+                record = a(route, f"releases/{edition}/games/{issue['cutoff']}.html", "Verified ABL results")
+                body += f'<article class="reading"><p class="note">Games through {pretty(issue["cutoff"])} · {record}</p>'
                 for label, paragraphs in article.sections:
                     if label:
                         body += f"<h2>{escape(label)}</h2>"

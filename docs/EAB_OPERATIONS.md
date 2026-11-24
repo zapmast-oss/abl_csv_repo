@@ -1,10 +1,10 @@
 # Experiencing Action Baseball
 
-Open **ABL Production Control → Run EAB Publishing → Open the public EAB website**. The existing **Open EAB Website** entry opens the [local edition](../output/eab/dist/index.html). Use **Edition timeline** on either site to reopen a past edition. A bookmarked edition keeps its own league date and cutoff. [Public EAB website](https://zapmast-oss.github.io/experiencing-action-baseball/) · [EAB GitHub repository](https://github.com/zapmast-oss/experiencing-action-baseball)
+Open **ABL Production Control → Run EAB Publishing → Open the public EAB website**. The homepage opens directly to the current baseball edition. The existing **Open EAB Website** entry opens the [local edition](../output/eab/dist/index.html). **Edition timeline** remains available at `#editions`. A bookmarked edition keeps its own league date and cutoff. [Public EAB website](https://zapmast-oss.github.io/experiencing-action-baseball/) · [EAB GitHub repository](https://github.com/zapmast-oss/experiencing-action-baseball)
 
 ## Opening edition
 
-The verified league date is **August 20, 1981**, with **1,450 regular-season finals through August 19**. All 72 source files agreed with the promoted repository export. The older July baseline belongs to a prior production cycle. The two reviewed August manuscripts are in the internal Newsroom. EAB opens with the verified baseball record and beat pages for all 24 clubs.
+The verified league date is **August 20, 1981**, with **1,450 regular-season finals through August 19**. All 72 source files agreed with the promoted repository export. The older July baseline belongs to a prior production cycle. The internal Newsroom holds the two sealed source manuscripts. EAB serves the authorized reading copies with the verified baseball record and beat pages for all 24 clubs.
 
 EAB uses the existing OOTP capture and preflight, league and franchise identifiers, approved logos and dated team portraits, six division races and season-correct DCS rules, archived scores and club records, and the Newsroom’s sealed issue and review format. It also renders 1972–1980 regular-season batting and pitching using OOTP player IDs. The current player lines derive from the admitted player-game records. Attendance comes from completed home games with recorded positive attendance. [Source authority](ABL_SOURCE_AUTHORITY_RULES.md) · [Franchise reference](ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md) · [Postseason rules](ABL_POSTSEASON_RULES.md)
 
@@ -17,6 +17,15 @@ The source pack describes the older baseline, Story Engine and editorial standar
 3. For a story, use **Manage publication approvals and receipts** in the existing session console. Queue the exact sealed `.md` manuscript under **Editorial** with channel **EAB**, then approve that exact artifact. EAB matches the receipt’s hash and cutoff to a verified edition and rechecks the newsroom seal. Select **Publish latest verified edition** to include newly eligible copy. Safe HTML and an available reading PDF use the approved text. Internal evidence is excluded. [Editorial review handoff](../tools/newsroom/reviews/editorial-handoff.md)
 
 **Run EAB Publishing** also opens a separate local preview, checks public publication status, restores a previous edition and builds the deployment ZIP. Preview files live under `output/eab/preview/`. Local build and public deployment receipts are under `logs/eab/`. The Windows menu and launchers use the same entry points as before. Recovery copies of the changed source files are under `logs/eab/source-checkpoints/`.
+
+The Newsroom’s `articles.json` and `files.json` seal each reviewed issue under `csv/out/story/newsroom/issues/`. Internal review and EAB channel approval are separate decisions. For an already published baseball cutoff without a protected playing session in Command Center, `approve-article` can record an explicit human EAB decision for an exact sealed manuscript. It rechecks the published source, seal and manuscript hash and stores its approval privately under `logs/eab/article-approvals/`. Run **Publish latest verified edition** after recording approval.
+
+## August 20 editorial review
+
+- **Ernie Bewell, “San Francisco scored 18 and still couldn’t shake Phoenix.”** Verified the July 26 six-game margin, the eight-game losing streak, the 64–57 tie, San Francisco’s 18–2 win and Luke Margalit’s five RBIs. Phoenix’s 3–0 win and the four scheduled games support the article’s pre-series framing. [Sealed manuscript](../csv/out/story/newsroom/issues/1981-08-19_2acae29146076f62/d486b29935a56f9145e3/observer/phoenix-san-francisco-first-place.md)
+- **ABL League Desk, “Miami needs a game before Charlotte comes to town.”** Verified Charlotte’s 4½-game lead, the July 26 finish, both clubs’ six remaining games before August 27 and the conditional standings arithmetic. [Sealed manuscript](../csv/out/story/newsroom/issues/1981-08-19_2acae29146076f62/d486b29935a56f9145e3/league/miami-needs-a-game-before-charlotte.md)
+
+Both manuscripts carry the August 19 completed-game cutoff. The commissioner approved both sealed manuscripts for EAB. The 24 franchise notebooks are reporting material. The older automated package contains eight superseded beat drafts plus a league draft and an Observer draft. They require fresh editorial review before release. [Internal newsroom](../csv/out/story/newsroom/index.html)
 
 ## Verify and recover
 

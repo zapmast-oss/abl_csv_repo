@@ -93,6 +93,8 @@ def acceptance(root):
     base = publisher.dist / "releases" / second["id"]
     main = index.read_text(encoding="utf-8")
     require(first["id"] in main and file_hash(old_home) == old_digest, "Current pointer erased the previous edition")
+    require('class="hero"' in main and 'id="editions"' in main and 'data-open' not in main,
+            "The root page must serve baseball and keep the edition timeline anchor without a redirect")
     print("B and I passed: 1,450 verified finals went live in the fixture with an ineligible issue and no new media", flush=True)
 
     index_digest = file_hash(index)
@@ -124,14 +126,18 @@ def acceptance(root):
     require(article["cutoff"] == manifest["cutoff"] and article["byline"] == "Ernie Bewell", "Article date/byline drifted")
     reading = (publisher.dist / article["path"]).read_text(encoding="utf-8")
     require("August 19, 1981" in reading and "Games through August 19, 1981" in reading
-            and "Reporting record" not in reading and "See who leaves" in reading, "Article lost cutoff or public copy")
+            and "Verified ABL results" in reading and "Reporting record" not in reading
+            and "See who leaves" in reading, "Article lost cutoff, attribution or public copy")
     reader = PdfReader(publisher.dist / article["pdf"])
     pdf = " ".join(p.extract_text() for p in reader.pages)
     require("Games through 1981-08-19" in pdf and "Reporting record" not in pdf and "Ernie Bewell" in pdf,
             "PDF diverged from the public manuscript")
 
-    approvals.append(approve(manifest["articles"][1], manifest["cutoff"]))
-    save_approvals()
+    secondary = issue / manifest["articles"][1]["path"]
+    refuse(lambda: publisher.approve_article(secondary, "0" * 64, "Fixture reviewer"), "exact EAB-approved manuscript")
+    receipt = publisher.approve_article(secondary, file_hash(secondary), "Fixture reviewer")
+    require(publisher.approve_article(secondary, file_hash(secondary), "Fixture reviewer") == receipt,
+            "Repeat standalone approval changed the original receipt")
     latest, _ = publish(new_export, snapshots=snapshots)
     require(catalog()["current"] == latest["id"] and len(catalog()["issues"]) == 2
             and file_hash(previous_issue) == previous_issue_hash and file_hash(old_home) == old_digest,
