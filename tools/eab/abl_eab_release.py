@@ -15,6 +15,7 @@ from urllib.parse import unquote, urlsplit, urlunsplit
 from uuid import uuid4
 import zipfile
 
+from abl_eab_analytics import load_token, valid_beacon
 from abl_eab_data import ROOT, load_world
 from abl_eab_editorial import PRIVATE, PROHIBITED, eligible_issues, identity, read_json, release_approval
 from abl_eab_site import HERE, Site, pretty, publication_time
@@ -133,6 +134,7 @@ class PublicPage(HTMLParser):
         if PRIVATE.search(text) or PROHIBITED.search(text):
             raise ValueError(f"Private material in public page {route}")
         self.route, self.links, self.ids = route, set(), set()
+        self.has_beacon = False
         self.feed(text)
 
     def handle_starttag(self, tag, attributes):
@@ -141,6 +143,11 @@ class PublicPage(HTMLParser):
                 any(key.startswith("on") for key in attrs)):
             raise ValueError(f"Unsafe HTML in {self.route}")
         if tag == "script":
+            if valid_beacon(attrs):
+                if self.has_beacon or len(attributes) != len(attrs):
+                    raise ValueError(f"Duplicate analytics markup in {self.route}")
+                self.has_beacon = True
+                return
             src = attrs.get("src", "")
             local_script = re.fullmatch(r"assets/[0-9a-f]{24}\.js", normpath(join(dirname(self.route), src)))
             catalog_script = (not src and self.route == "index.html" and attrs.get("id") == "eab-publications"
@@ -221,9 +228,11 @@ def media_links():
     return media
 
 
-def signature(world, issue_keys, media):
+def signature(world, issue_keys, media, token=None):
     digest = sha256()
     digest.update(canonical([world.source_id, sorted(issue_keys), world.history, media]).encode())
+    if token:
+        digest.update(canonical({"cloudflare_web_analytics": token}).encode())
     for path in sorted([*HERE.glob("abl_eab_*.py"), HERE / "site.css", HERE / "site.js"]):
         digest.update(path.read_bytes())
     for assets in (world.logos, {tid: blob for tid, (_, blob) in world.photos.items()}):
@@ -323,7 +332,8 @@ class Publisher:
             self.log("editorial held", detail=detail)
         warnings.clear()
         media = media_links()
-        build = signature(world, {i["key"] for i in [*catalog["issues"], *eligible]}, media)
+        token = load_token(self.output)
+        build = signature(world, {i["key"] for i in [*catalog["issues"], *eligible]}, media, token)
         release_id = f"{world.league_date}_{world.cutoff}_{build[:16]}"
         release = self.dist / "releases" / release_id
         if release.is_dir():
@@ -336,7 +346,7 @@ class Publisher:
             entry = dict(id=release_id, signature=build, source_id=world.source_id, season=world.season,
                          league_date=world.league_date, cutoff=world.cutoff, finals=world.finals, published_at=now())
             temporary = copy.deepcopy(catalog)
-            site = Site(stage, world, entry, temporary)
+            site = Site(stage, world, entry, temporary, dist=self.dist, analytics_token=token)
             entry.update(style=site.styles, script=site.script, mark=site.logos.get(0))
             site.build(eligible, media, warnings)
             added = temporary["issues"][len(catalog["issues"]):]

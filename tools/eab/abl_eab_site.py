@@ -2,10 +2,13 @@
 
 from collections import Counter, defaultdict
 from datetime import date
-from html import escape
+from html import escape, unescape
 from pathlib import Path
-from posixpath import dirname, relpath
+from posixpath import dirname, join, normpath, relpath
+import re
+from urllib.parse import urlsplit, urlunsplit
 
+from abl_eab_analytics import BEACON_TAG, beacon
 from abl_eab_data import era, games_behind, ops, record
 from abl_eab_editorial import article_pdf, identity
 
@@ -102,11 +105,14 @@ def table(headers, rows, *, key="", attrs=None, label=""):
 
 
 class Site:
-    def __init__(self, staging, world, entry, catalog):
+    def __init__(self, staging, world, entry, catalog, *, dist=None, analytics_token=None):
         self.stage = staging
         self.world = world
         self.entry = entry
         self.catalog = catalog
+        self.dist = dist
+        self.beacon = beacon(analytics_token)
+        self.reading_routes = {}
         self.prefix = f"releases/{entry['id']}"
         self.styles = self.asset((HERE / "site.css").read_bytes(), "css")
         self.script = self.asset((HERE / "site.js").read_bytes(), "js")
@@ -179,7 +185,7 @@ class Site:
 <main class="site-width" id="content">{body}</main>
 <footer><div class="site-width footer-inner"><div><strong>{NAME}</strong><p>Because baseball matters.</p></div>
 <div>{a(page, "index.html", "Current edition")}{a(page, "index.html#editions", "Publication timeline")}</div>
-<p>Real. Fictional. ⚾.</p></div></footer></body></html>"""
+<p>Real. Fictional. ⚾.</p></div></footer>{self.beacon}</body></html>"""
 
     def page(self, path, title, body, tab="", *, absolute=False, evergreen=False):
         route = path if absolute else self.route(path)
@@ -320,7 +326,7 @@ class Site:
                     body += self.box_score(page, game)
                 for article in self.all_articles():
                     if game.id in article.get("games", []) and article["cutoff"] >= game.day:
-                        body += f'<p class="related">Coverage {a(page, article["path"], article["title"])}</p>'
+                        body += f'<p class="related">Coverage {self.reading_link(page, article["path"], article["title"])}</p>'
                 body += "</section>"
             self.page(local, pretty(day) + " scores & schedule", body, "Games")
 
@@ -365,7 +371,7 @@ class Site:
         stories = []
         if recaps:
             for item in recaps[:3]:
-                stories.append(card(item["title"], item["dek"], a(page, item["path"], "Read the story", "text-link"), item["byline"]))
+                stories.append(card(item["title"], item["dek"], self.reading_link(page, item["path"], "Read the story", "text-link"), item["byline"]))
         else:
             for game in sorted(finals, key=lambda g: -abs(g.score[0] - g.score[1]))[:3]:
                 a_runs, h_runs = game.score
@@ -580,10 +586,45 @@ class Site:
         body += '<p>' + a(page, self.route("history/index.html"), "Browse historical player and club records", "text-link") + '</p>'
         self.page("players/index.html", "Players & statistics", body, "Players")
 
+    def reading_link(self, page, target, label, cls=""):
+        return a(page, self.reading_routes.get(target, target), label, cls)
+
+    def tracked_newsroom(self):
+        if not self.beacon:
+            return
+        pages = {issue["path"] for issue in self.catalog["issues"]}
+        pages.update(article["path"] for article in self.all_articles())
+        copies = {}
+        for path in sorted(pages):
+            source = self.dist / path
+            if not source.resolve().is_relative_to(self.dist.resolve()):
+                raise ValueError("Archived newsroom page is outside the publication.")
+            html = source.read_text(encoding="utf-8")
+            if self.beacon not in html:
+                self.reading_routes[path] = self.route("reading/" + path.removeprefix("releases/"))
+                copies[path] = html
+
+        for original, html in copies.items():
+            destination = self.reading_routes[original]
+
+            def rebase(match):
+                attr, value = match.groups()
+                parts = urlsplit(unescape(value))
+                if parts.scheme or parts.netloc or not parts.path:
+                    return match[0]
+                target = normpath(join(dirname(original), parts.path))
+                target = self.reading_routes.get(target, target)
+                address = urlunsplit(("", "", relpath(target, dirname(destination)), parts.query, parts.fragment))
+                return f'{attr}="{escape(address, quote=True)}"'
+
+            html = BEACON_TAG.sub("", html)
+            html = re.sub(r'(?<=\s)(href|src)="([^"]*)"', rebase, html)
+            self.put(destination, html.replace("</body>", self.beacon + "</body>", 1))
+
     def article_cards(self, page, items):
         return grid([f'<article class="tile" data-item data-search="{escape(" ".join(self.world.teams[t]["name"] for t in item["teams"]), quote=True)}">'
                      f'<small>{escape(item["byline"])} · {pretty(item["league_date"],year=False)}</small>'
-                     f'<h3>{a(page,item["path"],item["title"])}</h3><p>{escape(item["dek"])}</p></article>'
+                     f'<h3>{self.reading_link(page,item["path"],item["title"])}</h3><p>{escape(item["dek"])}</p></article>'
                      for item in items], "story-grid") if items else ""
 
     def editorial(self, eligible, warnings):
@@ -625,7 +666,7 @@ class Site:
                     self.put(item["pdf"], pdf)
                     docs += " · " + a(route, item["pdf"], "View PDF")
                 if previous:
-                    docs += " · " + a(route, previous["path"], "Earlier version")
+                    docs += " · " + self.reading_link(route, previous["path"], "Earlier version")
                 self.page(route, article.title, body + f'<p class="related">{related}</p><p>{docs}</p></article>', "Newsroom", absolute=True)
                 versions[item["digest"]] = item
                 published["articles"].append(item)
@@ -653,7 +694,7 @@ class Site:
         if self.catalog["issues"]:
             archive = search("Search article archive", "articles", "Headline, writer or club")
             archive += '<div id="articles">' + self.article_cards(page, items) + "</div>"
-            archive += '<ul class="list">' + "".join(f'<li>{a(page,i["path"],pretty(i["league_date"]))} · '
+            archive += '<ul class="list">' + "".join(f'<li>{self.reading_link(page,i["path"],pretty(i["league_date"]))} · '
                                                    f'Games through {pretty(i["cutoff"],year=False)}</li>'
                                                    for i in reversed(self.catalog["issues"])) + "</ul>"
         else:
@@ -665,7 +706,7 @@ class Site:
         issue = heading(current_title, f"Games through {pretty(self.world.cutoff)}.", "ABL Newsroom")
         if current:
             issue += self.article_cards(issue_route, current["articles"])
-            issue += f'<p>{a(issue_route, current["path"], "Permanent issue link")}</p>'
+            issue += f'<p>{self.reading_link(issue_route, current["path"], "Permanent issue link")}</p>'
         else:
             issue += '<p>This date has no published articles. Explore the recorded games and club beats.</p>'
             issue += grid([
@@ -788,6 +829,7 @@ class Site:
         self.page("about/index.html", "About EAB", about, "About")
 
     def build(self, eligible, media, warnings):
+        self.tracked_newsroom()
         self.editorial(eligible, warnings)
         self.almanac()
         self.home()

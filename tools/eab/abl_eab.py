@@ -1,12 +1,14 @@
 """Operate the local and public Experiencing Action Baseball editions."""
 
 import argparse
+from getpass import getpass
 import json
 import os
 from pathlib import Path
 import sys
 
-from abl_eab_release import Publisher, catalog_for
+from abl_eab_analytics import TOKEN_FILE, normalize_token
+from abl_eab_release import Publisher, atomic_write, catalog_for
 from github_pages import GitHubPages, SITE
 
 
@@ -48,6 +50,14 @@ def show_publication(result):
         print("EAB is above 80% of the GitHub Pages site size limit.")
 
 
+def configure_traffic(publisher):
+    value = getpass("Public Cloudflare Web Analytics beacon token [Enter to cancel]: ")
+    if value.strip():
+        token = normalize_token(value)
+        atomic_write(publisher.output / TOKEN_FILE, (token + "\n").encode("ascii"))
+        print("Beacon saved. Choose Publish latest verified edition to deploy it.")
+
+
 def public_status(publisher, pages):
     status(publisher)
     last = None
@@ -74,6 +84,7 @@ def console(publisher):
         print("  5. Build deployment ZIP")
         print("  6. Open the public EAB website")
         print("  7. Retry public deployment of the current local edition")
+        print("  8. Configure EAB Website Traffic")
         print("  0. Return to Production Control")
         answer = input("Select: ").strip()
         try:
@@ -100,6 +111,8 @@ def console(publisher):
                 os.startfile(SITE)
             elif answer == "7":
                 show_publication(pages.deploy(retry=True))
+            elif answer == "8":
+                configure_traffic(publisher)
             else:
                 print("Select a listed operation.")
         except (OSError, ValueError, KeyError) as exc:
