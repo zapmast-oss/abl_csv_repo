@@ -9,6 +9,7 @@ import re
 from urllib.parse import urlsplit, urlunsplit
 
 from abl_eab_analytics import BEACON_TAG, beacon
+from abl_eab_coverage import coverage_block
 from abl_eab_data import era, games_behind, ops, record
 from abl_eab_editorial import article_pdf, identity
 
@@ -364,6 +365,7 @@ class Site:
 <h1>{escape(title)}</h1><p class="hero-deck">{escape(detail)}</p>
 <div class="buttons">{a(page, self.route("standings/index.html"), "Explore the races", "button")}{slate_link}</div>
 </div>{media}</section>"""
+        body += self.special_coverage(page, featured=True)
         body += (f'<div class="edition-credit"><p>A fictional baseball world, played in OOTP and preserved game by game. '
                  f'{a(page, self.route("about/index.html"), "See it for yourself.")}</p>'
                  f'{publication_time(self.entry)}</div>')
@@ -371,7 +373,7 @@ class Site:
         body += section(f"Scores · {pretty(world.cutoff, year=False)}", self.scores_strip(page, finals),
                         a(page, self.route(f"games/{world.cutoff}.html"), "All scores & box scores", "text-link"))
         body += '<div class="home-columns"><div>'
-        recaps = self.current_issue["articles"] if self.current_issue else []
+        recaps = [item for item in self.current_issue["articles"] if not item.get("feature_through")] if self.current_issue else []
         stories = []
         if recaps:
             for item in recaps[:3]:
@@ -439,6 +441,16 @@ class Site:
                 if article["path"] not in seen:
                     seen.add(article["path"])
                     yield article
+
+    def special_coverage(self, page, *, featured=False):
+        reports = [item for item in self.all_articles() if item.get("feature_through")
+                   and (not featured or item["league_date"] <= self.world.league_date <= item["feature_through"])]
+        if not reports:
+            return ""
+        cards = [card(item["title"], "Read the pre-simulation race boards, wild-card picture, trade deadline analysis and day-by-day ABL Advance guide.",
+                      self.reading_link(page, item["path"], "Read the coverage", "text-link"), item["byline"])
+                 for item in reports]
+        return section("Special Coverage", grid(cards, "story-grid"))
 
     def team_tile(self, page, tid, *, beat=False):
         club = self.world.teams[tid]
@@ -634,6 +646,23 @@ class Site:
                      f'<h3>{self.reading_link(page,item["path"],item["title"])}</h3><p>{escape(item["dek"])}</p></article>'
                      for item in items], "story-grid") if items else ""
 
+    @staticmethod
+    def coverage_body(sections):
+        finished = []
+        for label, blocks in sections:
+            if label:
+                finished.append(f"<h2>{escape(label)}</h2>")
+            for block in blocks:
+                kind, content = coverage_block(block)
+                if kind == "heading":
+                    finished.append(f"<h3>{escape(content)}</h3>")
+                elif kind == "table":
+                    columns, rows = content
+                    finished.append(table(columns, [[escape(cell) for cell in row] for row in rows], label=label))
+                else:
+                    finished.append(f"<p>{escape(content)}</p>")
+        return "".join(finished)
+
     def editorial(self, eligible, warnings):
         existing = {issue["key"] for issue in self.catalog["issues"]}
         versions = {article["digest"]: article for article in self.all_articles()}
@@ -655,42 +684,62 @@ class Site:
                 item = dict(path=route, title=article.title, slug=article.slug, digest=article.digest, dek=dek,
                             byline=article.byline, teams=list(article.teams), kind=article.kind, games=list(article.game_ids),
                             league_date=issue["league_date"], cutoff=issue["cutoff"])
-                body = heading(article.title, f"{article.byline} · {pretty(issue['league_date'])}",
-                               "The Baseball Observer" if article.kind == "observer" else "The ABL Newsroom")
-                edition = next((entry["id"] for entry in reversed(self.catalog["editions"])
-                                if entry["source_id"] == issue["source_id"]), self.entry["id"])
-                record = a(route, f"releases/{edition}/games/{issue['cutoff']}.html", "Verified ABL results")
-                body += f'<article class="reading"><p class="note">Games through {pretty(issue["cutoff"])} · {record}</p>'
-                for label, paragraphs in article.sections:
-                    if label:
-                        body += f"<h2>{escape(label)}</h2>"
-                    body += "".join(f"<p>{escape(line)}</p>" for line in paragraphs)
-                related = " · ".join(self.team(route, tid) for tid in article.teams)
                 docs = a(route, published["path"], "Read the issue")
                 pdf = article_pdf(article, issue, warnings)
                 if pdf:
                     item["pdf"] = f"{base}/{article.slug}.pdf"
                     self.put(item["pdf"], pdf)
+                if article.feature_through:
+                    item["feature_through"] = article.feature_through
+                    body = heading(article.title, f"{article.byline} · Data cutoff {pretty(issue['cutoff'])}", "Special Coverage")
+                    guide = " · ".join(a(route, self.route(dest), label) for dest, label in (
+                        ("games/index.html", "Game calendar"), ("standings/index.html", "Standings"),
+                        ("sbv/index.html", "Sim Baseball Vision and ABL Advance")))
+                    pdf_link = f'<a href="{href(route, item["pdf"])}" download>Download public PDF</a>'
+                    body += f'<p class="related">{pdf_link} · {guide}</p><article class="reading coverage">'
+                    body += self.coverage_body(article.sections)
+                    related = ""
+                else:
+                    body = heading(article.title, f"{article.byline} · {pretty(issue['league_date'])}",
+                                   "The Baseball Observer" if article.kind == "observer" else "The ABL Newsroom")
+                    edition = next((entry["id"] for entry in reversed(self.catalog["editions"])
+                                    if entry["source_id"] == issue["source_id"]), self.entry["id"])
+                    record = a(route, f"releases/{edition}/games/{issue['cutoff']}.html", "Verified ABL results")
+                    body += f'<article class="reading"><p class="note">Games through {pretty(issue["cutoff"])} · {record}</p>'
+                    for label, paragraphs in article.sections:
+                        if label:
+                            body += f"<h2>{escape(label)}</h2>"
+                        body += "".join(f"<p>{escape(line)}</p>" for line in paragraphs)
+                    related = " · ".join(self.team(route, tid) for tid in article.teams)
+                if pdf:
                     docs += " · " + a(route, item["pdf"], "View PDF")
                 if previous:
                     docs += " · " + self.reading_link(route, previous["path"], "Earlier version")
-                self.page(route, article.title, body + f'<p class="related">{related}</p><p>{docs}</p></article>', "Newsroom", absolute=True)
+                if related:
+                    body += f'<p class="related">{related}</p>'
+                self.page(route, article.title, body + f'<p>{docs}</p></article>', "Newsroom", absolute=True)
                 versions[item["digest"]] = item
                 published["articles"].append(item)
             self.catalog["issues"].append(published)
             page = published["path"]
-            body = heading(f"The {pretty(issue['league_date'], year=False)} issue",
+            issue_title = f"The {pretty(issue['league_date'], year=False)} issue"
+            if all(item.get("feature_through") for item in published["articles"]):
+                published["category"] = "Special Coverage"
+                issue_title = f"Special Coverage · {pretty(issue['league_date'], year=False)}"
+            body = heading(issue_title,
                            f"Games through {pretty(issue['cutoff'])}.", "ABL Newsroom")
             body += self.article_cards(page, published["articles"])
             self.page(page, "Newsroom issue " + issue["league_date"], body, "Newsroom", absolute=True)
         self.current_issue = next((issue for issue in reversed(self.catalog["issues"])
-                                   if issue["source_id"] == self.world.source_id), None)
+                                   if issue["source_id"] == self.world.source_id
+                                   and any(not item.get("feature_through") for item in issue["articles"])), None)
 
     def newsroom(self):
         page = self.route("newsroom/index.html")
         current = self.current_issue
         issue_route = self.route("newsroom/current.html")
         body = heading("ABL Newsroom", "League reporting, franchise beats and The Baseball Observer.")
+        body += self.special_coverage(page)
         current_title = f"The {pretty(self.world.league_date, year=False)} edition"
         body += section(current_title,
                         self.article_cards(page, current["articles"]) if current else
@@ -701,7 +750,7 @@ class Site:
         if self.catalog["issues"]:
             archive = search("Search article archive", "articles", "Headline, writer or club")
             archive += '<div id="articles">' + self.article_cards(page, items) + "</div>"
-            archive += '<ul class="list">' + "".join(f'<li>{self.reading_link(page,i["path"],pretty(i["league_date"]))} · '
+            archive += '<ul class="list">' + "".join(f'<li>{self.reading_link(page,i["path"],i.get("category") or pretty(i["league_date"]))} · '
                                                    f'Games through {pretty(i["cutoff"],year=False)}</li>'
                                                    for i in reversed(self.catalog["issues"])) + "</ul>"
         else:
@@ -822,6 +871,7 @@ class Site:
         programs.append(card("ABL Advance", "Follow the recorded games and the upcoming slate as the league advances.",
                              a(page, self.route("games/index.html"), "Browse the game calendar", "text-link")))
         body += grid(programs, "three")
+        body += self.special_coverage(page)
         self.page("sbv/index.html", "Sim Baseball Vision", body, "Sim Baseball Vision")
         page = self.route("about/index.html")
         about = heading("See it for yourself.", "Experiencing Action Baseball opens the record of a league whose history is still being played.")

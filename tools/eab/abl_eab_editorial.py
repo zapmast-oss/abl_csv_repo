@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 from xml.sax.saxutils import escape
 
+from abl_eab_coverage import coverage_block
 from abl_eab_data import ROOT
 from abl_newsroom_editorial import audit_issue
 
@@ -32,6 +33,8 @@ class Article:
     sections: tuple[tuple[str, tuple[str, ...]], ...]
     game_ids: tuple[int, ...]
     pdf: bool
+    feature_through: str | None = None
+    sealed_pdf: bytes | None = None
 
 
 def read_json(path):
@@ -72,6 +75,17 @@ def approved_copy(path, item, manifest, digest):
     if when != manifest["league_date"] or cutoff != "Games through " + manifest["cutoff"]:
         raise ValueError("Manuscript and sealed issue cutoff do not match.")
     sections = [("", [])]
+    special = item.get("category") == "Special Coverage"
+    feature_through = None
+    sealed_pdf = None
+    if special:
+        feature_through = date.fromisoformat(item["feature_through"]).isoformat()
+        sealed_pdf = path.with_suffix(".pdf").read_bytes()
+        record = re.search(r"(?m)^Public PDF SHA-256: ([a-f0-9]{64})$", "\n".join(blocks))
+        window = re.search(r"(?m)^Homepage feature through: (\d{4}-\d\d-\d\d)$", "\n".join(blocks))
+        if (feature_through < when or not window or window[1] != feature_through
+                or not record or record[1] != identity(sealed_pdf) or not sealed_pdf.startswith(b"%PDF-")):
+            raise ValueError("Special Coverage must match the approved PDF and feature dates.")
     for block in blocks:
         if block.startswith("## "):
             label = block[3:].strip()
@@ -79,13 +93,18 @@ def approved_copy(path, item, manifest, digest):
                 break
             sections.append((label, []))
         else:
-            sections[-1][1].append(" ".join(block.splitlines()))
+            if special:
+                coverage_block(block)
+                sections[-1][1].append(block)
+            else:
+                sections[-1][1].append(" ".join(block.splitlines()))
     exposed = "\n".join([item["title"], byline, *(value for h, ps in sections for value in [h, *ps])])
     if PRIVATE.search(exposed) or PROHIBITED.search(exposed) or not any(ps for _, ps in sections):
         raise ValueError("Manuscript includes private material or has no eligible copy.")
     return Article(item["title"], item["slug"], byline, item["kind"], tuple(item["team_ids"]), digest,
                    item["lead"], tuple((h, tuple(ps)) for h, ps in sections),
-                   tuple(int(value) for value in item["claim_games"]), path.with_suffix(".pdf").is_file())
+                   tuple(int(value) for value in item["claim_games"]), path.with_suffix(".pdf").is_file(),
+                   feature_through, sealed_pdf)
 
 
 def release_approval(manuscript, archive, editions, digest, reviewer, at):
@@ -170,6 +189,8 @@ def eligible_issues(repo, world, prior_editions, warnings, *, ledger=None, newsr
 
 def article_pdf(article, issue, warnings):
     """Render the approved public text. Internal newsroom PDFs carry different metadata."""
+    if article.sealed_pdf is not None:
+        return article.sealed_pdf
     if not article.pdf:
         return None
     try:

@@ -137,6 +137,8 @@ details.box summary { font-weight: 650; cursor: pointer; width: fit-content; }
 .reading { max-width: 70ch; font: 1.14rem/1.7 var(--heading); }
 .reading p { margin-bottom: 1rem; }
 .reading h2 { margin: 1.5rem 0 .65rem; }
+.coverage h3 { margin: .85rem 0 .35rem; }
+.coverage .table-wrap { margin: .6rem 0 1rem; font-family: 'Segoe UI', system-ui, sans-serif; }
 .related { border-top: 1px solid var(--border); margin-top: 1rem; padding-top: .55rem; font-size: .95rem; }
 .list { margin-block: 1.1rem; }
 .list li { margin: .34rem 0; }
