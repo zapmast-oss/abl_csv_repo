@@ -1,6 +1,6 @@
 # Experiencing Action Baseball
 
-Open **ABL Production Control → Open EAB Website**. The local site starts at [`output/eab/dist/index.html`](../output/eab/dist/index.html) and needs only a browser. Use **Edition timeline** to reopen a past edition. A bookmarked edition keeps its own league date and cutoff.
+Open **ABL Production Control → Run EAB Publishing → Open the public EAB website**. The existing **Open EAB Website** entry opens the [local edition](../output/eab/dist/index.html). Use **Edition timeline** on either site to reopen a past edition. A bookmarked edition keeps its own league date and cutoff. [Public EAB website](https://zapmast-oss.github.io/experiencing-action-baseball/) · [EAB GitHub repository](https://github.com/zapmast-oss/experiencing-action-baseball)
 
 ## Opening edition
 
@@ -13,24 +13,25 @@ The source pack describes the older baseline, Story Engine and editorial standar
 ## Produce an update
 
 1. Play and save in OOTP. Run **ABL Production Control → Run ABL Production Session** and complete the existing safety copy and CSV validation. Standard and Featured sessions offer capture immediately. Quick Play can capture when resumed. [Command Center operating guide](ABL_COMMAND_CENTER.md)
-2. EAB verifies the exact capture and its cutoff, builds the baseball edition and switches the local current page. The baseball stage runs before the Desk and video steps. It works for a validated individual final, a full slate, a series or several days of play at once. If the build fails, review the EAB stage log, then resume the session or select **Run EAB Publishing → Publish latest verified update locally** after correcting the source.
-3. For a story, use **Manage publication approvals and receipts** in the existing session console. Queue the exact sealed `.md` manuscript under **Editorial** with channel **EAB**, then approve that exact artifact. EAB matches the receipt’s hash and cutoff to a verified edition and rechecks the newsroom seal. Run **Publish latest verified update locally** to include newly eligible copy. Safe HTML and an available reading PDF use the approved text. Internal evidence is excluded. [Editorial review handoff](../tools/newsroom/reviews/editorial-handoff.md)
+2. EAB verifies the exact capture and its cutoff, builds the baseball edition and switches the local current page. The session then submits that edition to GitHub Pages and checks the public timeline and cutoff. The local build and public deployment have separate stage receipts. Validated baseball publishes independently of journalism or video. If local building fails, review the EAB stage log and resume or select **Publish latest verified edition** after correcting the source.
+3. For a story, use **Manage publication approvals and receipts** in the existing session console. Queue the exact sealed `.md` manuscript under **Editorial** with channel **EAB**, then approve that exact artifact. EAB matches the receipt’s hash and cutoff to a verified edition and rechecks the newsroom seal. Select **Publish latest verified edition** to include newly eligible copy. Safe HTML and an available reading PDF use the approved text. Internal evidence is excluded. [Editorial review handoff](../tools/newsroom/reviews/editorial-handoff.md)
 
-**Run EAB Publishing** also opens a separate preview, lists editions, restores a previous edition and builds the deployment ZIP. Preview files live under `output/eab/preview/`. Local attempt receipts are under `logs/eab/`. The existing Production Control, league backup and Input Data scripts retain their original file hashes. The repository copy of the session workflow from before EAB is checkpointed under `logs/eab/source-checkpoints/`.
+**Run EAB Publishing** also opens a separate local preview, checks public publication status, restores a previous edition and builds the deployment ZIP. Preview files live under `output/eab/preview/`. Local build and public deployment receipts are under `logs/eab/`. The Windows menu and launchers use the same entry points as before. Recovery copies of the changed source files are under `logs/eab/source-checkpoints/`.
 
 ## Verify and recover
 
 Each edition under `output/eab/dist/releases/` carries a checksum manifest with its OOTP source fingerprint, simulated date, completed-game cutoff, edition timestamp and eligible issue versions. Shared artwork and almanac pages use content-derived paths. Each dated homepage and published issue has a permanent URL. Approved corrections receive new URLs and retain their predecessors. An identical rebuild keeps the current edition ID. The root `index.html` switches only after the required files, internal links, anchors and checksums pass validation.
 
-For recovery, choose **Restore an earlier local edition** and enter its ID from **List local editions**. The publisher verifies that edition and switches the pointer. The timeline still lists later issues and editions. Publishing the latest verified source again selects its existing edition when the inputs have stayed the same.
+For recovery, choose **Restore an earlier local and public edition** and enter its ID. EAB verifies the selected edition and publishes its pointer through a new Git commit. The timeline still lists later issues and editions. Publishing the latest verified source again selects its existing edition when the inputs have stayed the same.
 
-Run the following from the repository with the production Python runtime. The acceptance replay uses local Git LFS snapshots and the existing PDF-capable Newsroom dependencies. Its approval receipts and failures are disposable fixtures.
+Run the following from the repository with the production Python runtime. The deployment tests use a disposable Git branch and simulated Pages responses. The original `tools/eab/test_abl_eab.py` replay uses local Git LFS snapshots and the existing PDF-capable Newsroom dependencies.
 
 ```powershell
 python -B tools/eab/abl_eab.py status
+python -B tools/eab/abl_eab.py pages-status
 python -B tools/eab/abl_eab.py verify
 python -B -m unittest discover -s tools/production -p 'test*.py'
-python -B tools/eab/test_abl_eab.py
+python -B -m unittest discover -s tools/eab -p 'test_github_pages.py'
 ```
 
 ## Opening-day verification
@@ -39,11 +40,15 @@ The acceptance replay uses the verified August 18 and August 19 captures. It che
 
 Chrome checks used desktop, tablet and phone widths. They covered the current edition, each franchise beat, division standings, score and schedule navigation, historical player statistics, search, both newsroom issue versions, and the generated PDF link. The replay inspected the PDF text against the original publishing cutoff. The opening ZIP passed its integrity check and its homepage matches the current local edition.
 
-## Host the public edition
+Public HTTPS checks matched the verified homepage, active manifest, box-score day and previous edition byte for byte. Public Chrome checks covered all 24 beats, the current issue, those game and statistics sections, search, artwork, Fan Culture, Sim Baseball Vision and the earlier edition. Reviewed articles and PDFs require EAB approval and were checked in the existing local replay. Defending the Shield returned HTTP 200 with the same homepage hash before and after the EAB launch.
 
-The deployment ZIP is a self-contained static website. **Run EAB Publishing → Build deployment ZIP** assembles the current edition, earlier admitted editions and only their allowlisted assets. At an authorized destination, extract the ZIP as a complete site version, stage it, verify the homepage, two dates and a team or article, then switch the host to the complete version in one operation. Keep prior snapshots accessible at their paths. For host-side recovery, switch back to the previous hosted version or deploy a ZIP after restoring the desired local edition.
+## Publish to GitHub Pages
 
-The existing ChatGPT-hosted ABL site has restricted access. The commissioner’s existing OOTP report and StatsPlus addresses are documented in the public league guide. Their direct endpoints returned HTTP 403 during verification here, so hosting access and upload procedures are unverified. EAB is ready for a separately authorized public static destination. [ABL follow guide](https://forums.ootpdevelopments.com/showthread.php?t=366841)
+The dedicated repository publishes `main` at its project URL over HTTPS. GitHub's built-in Pages workflow serves the static files with its managed permissions. The ABL computer prepares each release. The publisher uses the same file allowlist and checksums as the ZIP, verifies the staged Git files byte for byte, and pushes a fast-forward commit. Each commit preserves the immutable paths already on GitHub. The browser can still open earlier editions, issue revisions and article URLs. Git pushes use the existing `zapmast-oss` credential from Windows Git Credential Manager. [Repository deployments](https://github.com/zapmast-oss/experiencing-action-baseball/actions)
+
+**Check local and public publication status** displays the active local edition, the latest deployment attempt and the actual public cutoff. A submitted commit can be pending while GitHub builds it. A connectivity or deployment failure leaves the local edition available and the session can close. Check status first, then use **Retry public deployment of the current local edition** if needed. A retry republishes the same verified tree when GitHub has the commit and Pages still serves another edition. An edition already confirmed on Pages creates no new commit. For a failed restore, repeat the restore operation. Check the session’s EAB Pages log, `logs/eab/github-pages.jsonl` and the repository deployments for details. If Windows no longer has an authorized credential, sign in again as `zapmast-oss` in Git Credential Manager. [Repository deployments](https://github.com/zapmast-oss/experiencing-action-baseball/actions)
+
+The opening site is about 40 MB uncompressed. The second stored edition added about 12.4 MB, so another 60 editions of that size would approach the 800 MB warning threshold. Shared artwork and almanacs keep their content-derived URLs. The publisher stops before the 1 GB Pages site limit. If growth reaches the warning threshold, move older HTML editions to an authorized static archive with the same directory layout. Keep redirect pages at the original HTML URLs and retain existing PDF and media URLs on Pages. Verify moved editions and deep links before changing the publication manifest. [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
 
 ## Source limits
 

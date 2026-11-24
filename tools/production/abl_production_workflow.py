@@ -44,6 +44,7 @@ STAGES = {
     "capture": "Capture OOTP CSV",
     "validate": "Validate OOTP CSV",
     "eab": "Publish validated EAB edition locally",
+    "eab_pages": "Publish EAB to GitHub Pages",
     "sync": "Synchronize ABL Input Data",
     "desk": "Update the Desk",
     "journalism": "Prepare journalism",
@@ -162,7 +163,8 @@ class Session:
     def __init__(self, paths, state):
         self.paths = paths
         self.state = state
-        state["stages"].setdefault("eab", {"label": STAGES["eab"], "status": "Not started", "attempts": []})
+        for name in ("eab", "eab_pages"):
+            state["stages"].setdefault(name, {"label": STAGES[name], "status": "Not started", "attempts": []})
         self.folder = paths.control / "sessions" / state["id"]
         self.file = self.folder / "session.json"
 
@@ -396,6 +398,23 @@ class Session:
             raise ValueError(f"EAB did not confirm the session cutoff. Review {log}.")
         return f"EAB {receipt['status']} for {receipt['cutoff']}.", [Path(receipt["site"]), log]
 
+    def publish_eab_pages(self, attempt):
+        verified = self.state["verified"]
+        command = [sys.executable, "-B", str(self.paths.repo / "tools/eab/abl_eab.py"), "deploy",
+                   "--source-id", verified["source_id"], "--wait", "35"]
+        log = attempt / "github-pages.log"
+        with log.open("w", encoding="utf-8") as handle:
+            result = subprocess.run(command, cwd=self.paths.repo, stdout=handle,
+                                    stderr=subprocess.STDOUT, check=False).returncode
+        if result == 2:
+            raise Deferred("GitHub Pages has not confirmed the edition yet. Check Run EAB Publishing for the public status.")
+        if result:
+            raise ValueError(f"GitHub Pages deployment could not be confirmed. The local edition is ready. Review {log}.")
+        receipt = json.loads(log.read_text(encoding="utf-8").splitlines()[-1])
+        if receipt["cutoff"] != verified["cutoff"] or receipt["status"] not in {"published", "unchanged", "verified"}:
+            raise ValueError(f"GitHub Pages did not confirm the session cutoff. Review {log}.")
+        return f"GitHub Pages {receipt['status']} for {receipt['cutoff']}. {receipt['url']}", [log]
+
     def backup_video(self, attempt):
         if not Path("H:/").is_dir():
             raise FileNotFoundError("The SBV video backup requires H:.")
@@ -492,6 +511,10 @@ class Session:
             self.defer(CSV_STAGES, "Quick Play checkpoint. Resume to capture and produce coverage if needed.")
         if not self.succeeded("validate"):
             self.defer(("eab",), "EAB will update after the OOTP capture passes validation.")
+        if self.succeeded("eab"):
+            self.execute("eab_pages", self.publish_eab_pages)
+        else:
+            self.defer(("eab_pages",), "GitHub Pages waits for a verified local EAB edition.")
         if self.state["mode"] == "featured" and not self.succeeded("video"):
             if ask("Preview backup of closed OBS recordings and rendered masters"):
                 self.execute("video", self.backup_video)

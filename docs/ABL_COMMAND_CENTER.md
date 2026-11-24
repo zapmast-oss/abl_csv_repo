@@ -32,7 +32,7 @@ Play a featured game or record its pregame material at the commissioner's discre
 
 **PLAY → SAVE → BACKUP → CAPTURE → VALIDATE → PUBLISH BASEBALL TO EAB → UPDATE THE DESK → PREPARE JOURNALISM → REVIEW → PUBLISH WHEN APPROVED → ARCHIVE → CLOSE**
 
-After **Validate**, the session opens the next local **Experiencing Action Baseball** edition from the verified capture. This baseball update runs before the Desk and SBV steps. [EAB operations guide](EAB_OPERATIONS.md)
+After **Validate**, the session opens the next local **Experiencing Action Baseball** edition from the verified capture. The local update runs before the Desk and SBV steps. The GitHub Pages stage publishes that verified edition and checks the public cutoff. A pending or failed public deployment leaves the saved session and local edition available. [EAB operations guide](EAB_OPERATIONS.md)
 
 1. **Play and save.** Choose the game, day, series, or milestone. Let OOTP finish saving. Record the date displayed by OOTP and the window.
 2. **Back up.** The existing rolling backup copies the saved directory with Robocopy `/E`. The session records the Robocopy result, destination, and source and destination comparison of all source `.dat` files. The console holds the session open if protection fails.
