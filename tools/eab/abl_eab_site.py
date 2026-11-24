@@ -23,6 +23,12 @@ def pretty(when, *, year=True):
     return f"{day:%B} {day.day}" + (f", {day.year}" if year else "")
 
 
+def publication_time(entry):
+    timestamp = entry["published_at"]
+    label = timestamp.replace("T", " ").replace("Z", " UTC")
+    return f'<time datetime="{escape(timestamp)}">Published {escape(label)}</time>'
+
+
 def wl(club):
     return f"{club['w']}–{club['l']}"
 
@@ -151,11 +157,15 @@ class Site:
                 label = "Publication timeline"
             current = ' aria-current="page"' if tab == label else ""
             nav.append(f'<a{current} href="{href(page, target)}">{label}</a>')
-        datebar = (f'{self.world.season} season <span>·</span> {pretty(self.world.league_date)}'
+        baseball_label = "ABL baseball date " if page == home else ""
+        datebar = (f'{self.world.season} season <span>·</span> {baseball_label}{pretty(self.world.league_date)}'
                    if not evergreen else "The ABL almanac")
         if not evergreen:
-            datebar += (f'<span class="cutoff">Finals through {pretty(self.world.cutoff, year=False)}</span>'
-                        + a(page, "index.html#editions", "Edition timeline", "edition-link"))
+            datebar += f'<span class="cutoff">Finals through {pretty(self.world.cutoff, year=False)}</span>'
+            if page == home:
+                revision_id = self.entry["id"].rsplit("_", 1)[-1]
+                datebar += f'<span id="publication-details">Publication ID {escape(revision_id)}</span>'
+            datebar += a(page, "index.html#editions", "Edition timeline", "edition-link")
         return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Follow the fictional Action Baseball League through its verified games, clubs and history.">
@@ -346,7 +356,7 @@ class Site:
 </div>{media}</section>"""
         body += (f'<div class="edition-credit"><p>A fictional baseball world, played in OOTP and preserved game by game. '
                  f'{a(page, self.route("about/index.html"), "See it for yourself.")}</p>'
-                 f'<time datetime="{escape(self.entry["published_at"])}">Updated {escape(self.entry["published_at"].replace("T", " ").replace("Z", " UTC"))}</time></div>')
+                 f'{publication_time(self.entry)}</div>')
         finals = [g for g in world.days[world.cutoff] if g.score is not None]
         body += section(f"Scores · {pretty(world.cutoff, year=False)}", self.scores_strip(page, finals),
                         a(page, self.route(f"games/{world.cutoff}.html"), "All scores & box scores", "text-link"))

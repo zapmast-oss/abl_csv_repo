@@ -95,6 +95,8 @@ class PagesTests(unittest.TestCase):
         landing = self.pages.download("")
         self.assertLess(landing.index(b'<h1>Game Center</h1>'), landing.index(b'id="editions"'))
         self.assertNotIn(b'data-open', landing)
+        self.assertIn(b'<strong>Current edition</strong>', landing)
+        self.assertIn(b'id="current-edition" aria-current="true"', landing)
 
         later = self.edition("1981-08-20", "1981-08-19", 1450)
         self.put("private.csv", "local output outside the public allowlist")
@@ -126,6 +128,8 @@ class PagesTests(unittest.TestCase):
             self.pages.deploy(wait=0)
         self.assertEqual(self.pages.deploy(rollback=True, wait=0)["status"], "published")
         self.assertEqual(self.pages.live()[0], self.first)
+        self.assertIn(f'id="current-edition" aria-current="true" href="releases/{self.first["id"]}/index.html"'.encode(),
+                      self.pages.download(""))
         self.assertTrue(git(self.remote, "show", f"main:releases/{later['id']}/index.html"))
 
     def test_invalid_local_release_cannot_advance_the_remote(self):

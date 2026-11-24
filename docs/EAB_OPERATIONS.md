@@ -31,6 +31,8 @@ Both manuscripts carry the August 19 completed-game cutoff. The commissioner app
 
 Each edition under `output/eab/dist/releases/` carries a checksum manifest with its OOTP source fingerprint, simulated date, completed-game cutoff, edition timestamp and eligible issue versions. Shared artwork and almanac pages use content-derived paths. Each dated homepage and published issue has a permanent URL. Approved corrections receive new URLs and retain their predecessors. An identical rebuild keeps the current edition ID. The root `index.html` switches only after the required files, internal links, anchors and checksums pass validation.
 
+The homepage labels the ABL baseball date and its publication revision separately. The timeline numbers revisions in publication order within each baseball date and marks the active edition as current. Newly sealed homepages also carry the publication ID from their permanent URL. A changed verified capture, newly eligible journalism or a changed site build can create a new snapshot. Repeating the same build uses its existing edition, and restoring an earlier edition keeps all revision numbers and archive URLs.
+
 For recovery, choose **Restore an earlier local and public edition** and enter its ID. EAB verifies the selected edition and publishes its pointer through a new Git commit. The timeline still lists later issues and editions. Publishing the latest verified source again selects its existing edition when the inputs have stayed the same.
 
 Run the following from the repository with the production Python runtime. The deployment tests use a disposable Git branch and simulated Pages responses. The original `tools/eab/test_abl_eab.py` replay uses local Git LFS snapshots and the existing PDF-capable Newsroom dependencies.

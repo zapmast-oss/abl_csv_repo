@@ -95,6 +95,9 @@ def acceptance(root):
     require(first["id"] in main and file_hash(old_home) == old_digest, "Current pointer erased the previous edition")
     require('class="hero"' in main and 'id="editions"' in main and 'data-open' not in main,
             "The root page must serve baseball and keep the edition timeline anchor without a redirect")
+    require("August 19, 1981 · Publication revision 1" in main
+            and "August 20, 1981 · Publication revision 1" in main,
+            "A new baseball date should start at revision 1")
     print("B and I passed: 1,450 verified finals went live in the fixture with an ineligible issue and no new media", flush=True)
 
     index_digest = file_hash(index)
@@ -143,11 +146,18 @@ def acceptance(root):
             and file_hash(previous_issue) == previous_issue_hash and file_hash(old_home) == old_digest,
             "New issue failed to preserve the earlier issue and baseball edition")
     require(catalog()["issues"][-1]["articles"][0]["path"] == article["path"], "Existing approved article was duplicated")
+    landing = index.read_text(encoding="utf-8")
+    require(all(f"August 20, 1981 · Publication revision {number}" in landing for number in (1, 2, 3)),
+            "Editorial releases on the same baseball date must have distinct revisions")
+    require('<strong>Current edition</strong> · Publication revision 3' in landing,
+            "The current homepage should label the selected publication revision")
     publisher.rollback(first["id"])
     require(catalog()["current"] == first["id"] and file_hash(previous_issue) == previous_issue_hash, "Rollback lost history")
     restored, _ = publish(new_export, snapshots=snapshots)
     require(restored == latest and len(catalog()["editions"]) == 4, "Restoration duplicated an edition")
     require(issued["cutoff"] == restored["cutoff"], "Editorial-only release advanced the baseball cutoff")
+    require(file_hash(old_home) == old_digest and "Publication revision 3" in index.read_text(encoding="utf-8"),
+            "Restoring a known publication altered an archive or its revision number")
     print("C and E passed: earlier editions and issues survived an interruption, retry and verified rollback", flush=True)
 
     archive = publisher.package()

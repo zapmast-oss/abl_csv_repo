@@ -1,5 +1,6 @@
 """Validate, archive and activate an atomic static EAB publication."""
 
+from collections import Counter
 import copy
 from datetime import datetime, timezone
 from hashlib import sha256
@@ -16,7 +17,7 @@ import zipfile
 
 from abl_eab_data import ROOT, load_world
 from abl_eab_editorial import PRIVATE, PROHIBITED, eligible_issues, identity, read_json, release_approval
-from abl_eab_site import HERE, Site, pretty
+from abl_eab_site import HERE, Site, pretty, publication_time
 from abl_newsroom_control import claim_operation
 from abl_newsroom_verify import default_live_dir, verify_export
 
@@ -25,6 +26,7 @@ ENTRY = re.compile(r"\d{4}-\d{2}-\d{2}_\d{4}-\d{2}-\d{2}_[0-9a-f]{16}\Z")
 ASSET = re.compile(r"assets/[0-9a-f]{24}\.(png|css|js)\Z")
 REGISTER = re.compile(r'<script type="application/json" id="eab-publications">(.*?)</script>', re.S)
 HOME_URL = re.compile(r'(?<=\s)(href|src)="([^"]*)"')
+PUBLICATION_LABEL = re.compile(r'<span id="publication-details">[^<]*</span>')
 
 
 def canonical(value):
@@ -73,6 +75,12 @@ def root_page(data, dist):
     """Serve the sealed baseball homepage at the root and keep the timeline anchor."""
     current = data["current"]
     target = f"releases/{current}/index.html"
+    by_date = Counter()
+    revisions = {}
+    for entry in data["editions"]:
+        day = entry["league_date"]
+        by_date[day] += 1
+        revisions[entry["id"]] = by_date[day]
 
     def rebase(match):
         attr, value = match.groups()
@@ -90,12 +98,13 @@ def root_page(data, dist):
 
     entries = []
     for entry in reversed(data["editions"]):
-        title = f"{pretty(entry['league_date'])} · Finals through {pretty(entry['cutoff'], year=False)}"
+        title = f"{pretty(entry['league_date'])} · Publication revision {revisions[entry['id']]}"
+        cutoff = pretty(entry["cutoff"], year=False)
         active = entry["id"] == current
         selected = " · Current edition" if active else ""
-        anchor = ' id="current-edition"' if active else ""
+        anchor = ' id="current-edition" aria-current="true"' if active else ""
         entries.append(f'<li data-item><a{anchor} href="releases/{entry["id"]}/index.html">{escape(title)}</a>'
-                       f'<span>{escape(entry["published_at"].replace("T", " ").replace("Z", " UTC") + selected)}</span></li>')
+                       f'<span>Finals through {cutoff}{selected}</span><span>{publication_time(entry)}</span></li>')
     embedded = canonical(data).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     register = f'<script type="application/json" id="eab-publications">{embedded}</script>'
     timeline = f"""<section id="editions" aria-labelledby="timeline-title">
@@ -106,6 +115,15 @@ def root_page(data, dist):
     home = HOME_URL.sub(rebase, (dist / target).read_text(encoding="utf-8"))
     if "</head>" not in home or "</main>" not in home:
         raise ValueError("The sealed EAB homepage is missing its document landmarks.")
+    label = f'<span id="publication-details"><strong>Current edition</strong> · Publication revision {revisions[current]}</span>'
+    home, found = PUBLICATION_LABEL.subn(label, home, count=1)
+    if not found:
+        # Restoring an older edition still labels the current homepage without changing its sealed files.
+        edition_link = '<a class="edition-link"'
+        if edition_link in home:
+            home = home.replace(edition_link, label + edition_link, 1)
+        else:
+            timeline = label + timeline
     return home.replace("</head>", register + "</head>", 1).replace("</main>", timeline + "</main>", 1)
 
 
