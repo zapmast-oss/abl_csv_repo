@@ -48,6 +48,17 @@ async function audit(browser, name, viewport) {
   await noOverflow(page);
   await page.screenshot({ path: join(screenshots, `${name}-today.png`) });
 
+  const mound = page.locator('#on-the-mound');
+  await expectText(mound.locator('h2'), /^On the mound$/);
+  assert.equal(await page.getByRole('heading', { name: 'At the plate' }).count(), 1);
+  assert.equal(await mound.locator('li').count(), 3);
+  const grimes = mound.locator('li').filter({ hasText: 'Stephen Grimes' });
+  const line = grimes.getByRole('link', { name: '8.1 IP, 3 H, 0 R, 7 K' });
+  assert.match(await line.getAttribute('href'), /games\/1981-08-19\.html#g-1444$/);
+  await line.click();
+  await expectText(page.locator('#g-1444'), /Final · 0–3/);
+  await page.goto(today);
+
   await visitNav(page, 'Newsroom', /ABL Newsroom/);
   const beatLinks = await page.locator('a.team-tile').evaluateAll(links => links.map(a => [a.href, a.querySelector('b').textContent]));
   assert.equal(new Set(beatLinks.map(([href]) => href)).size, 24);

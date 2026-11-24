@@ -392,20 +392,29 @@ class Site:
                             + (f" +{margin:g}" if margin else " · Pct")) + "</span></li>")
         body += section("Race board", '<ul class="race-list">' + "".join(races) + "</ul>",
                         a(page, self.route("standings/index.html"), "Standings", "text-link"), "sidebar-block")
-        performers = []
+        hitters, pitchers = [], []
         for game in finals:
             for (team, kind), lines in world.boxes[game.id].items():
                 for person, row in lines:
                     if kind == "bat" and (row["hr"] or row["h"] >= 3):
-                        performers.append(((row["hr"], row["h"], row["rbi"]), person, team,
-                                           f'{row["h"]}-for-{row["ab"]}, {row["hr"]} HR, {row["rbi"]} RBI', game))
-        notable = []
-        for _, person, team, result, game in sorted(performers, reverse=True, key=lambda item: item[:3])[:3]:
-            notable.append(f'<li>{self.player_link(page, person, "batting")} · {self.team(page, team, "code")}<br>'
-                           f'{a(page, self.game_route(game), result)}</li>')
-        if notable:
-            body += section("At the plate", '<ul class="performance-list">' + "".join(notable) + "</ul>",
-                            a(page, self.route("players/index.html"), "League leaders", "text-link"), "sidebar-block")
+                        hitters.append(((row["hr"], row["h"], row["rbi"]), person, team,
+                                        f'{row["h"]}-for-{row["ab"]}, {row["hr"]} HR, {row["rbi"]} RBI', game))
+                    elif kind == "pitch" and row["outs"] >= 15:
+                        rank = (-row["r"], row["outs"], row["k"], -row["ha"])
+                        line = f'{ip(row["outs"])} IP, {row["ha"]} H, {row["r"]} R, {row["k"]} K'
+                        pitchers.append((rank, person, team, line, game))
+
+        for title, kind, performers, target, link, anchor in (
+            ("At the plate", "batting", hitters, "players/index.html", "League leaders", ""),
+            ("On the mound", "pitching", pitchers, "players/pitching.html", "Pitching stats", "on-the-mound"),
+        ):
+            notable = []
+            for _, person, team, result, game in sorted(performers, reverse=True, key=lambda item: item[:3])[:3]:
+                notable.append(f'<li>{self.player_link(page, person, kind)} · {self.team(page, team, "code")}<br>'
+                               f'{a(page, self.game_route(game), result)}</li>')
+            if notable:
+                body += section(title, '<ul class="performance-list">' + "".join(notable) + "</ul>",
+                                a(page, self.route(target), link, "text-link"), "sidebar-block", anchor=anchor)
         body += "</aside></div>"
         beat_stories = [item for item in self.all_articles() if item["kind"] == "beat"]
         linked = [self.team_tile(page, tid, beat=True) for tid in sorted(world.teams, key=lambda t: world.teams[t]["name"])]
