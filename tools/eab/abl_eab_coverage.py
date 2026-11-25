@@ -1,6 +1,17 @@
-"""Read the headings, prose and tables in a reviewed Special Coverage manuscript."""
+"""Read the headings, prose and tables in reviewed editorial features."""
 
 import re
+
+
+def feature_inline(text, escape):
+    """Render emphasis from approved copy with all other text escaped."""
+    parts = re.split(r"(\*\*[^*]+\*\*|\*[^*]+\*)", text)
+    for i in range(1, len(parts), 2):
+        fragment = parts[i]
+        tag, size = ("b", 2) if fragment.startswith("**") else ("i", 1)
+        parts[i] = f"<{tag}>{escape(fragment[size:-size])}</{tag}>"
+    parts[::2] = [escape(part) for part in parts[::2]]
+    return "".join(parts)
 
 
 def coverage_block(block):

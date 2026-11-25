@@ -16,6 +16,7 @@ from abl_newsroom_editorial import audit_issue
 
 
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
+OBSERVER_CONVERSATION = "The Observer Conversation"
 PRIVATE = re.compile(r"\b[a-z]:[\\/]|file://|\\\\|(?:^|[ /])(?:csv/out/|output/newsroom/|logs/|\.env\b)",
                      re.I | re.M)
 PROHIBITED = re.compile(r"\.ps1\b|\b(?:password\s*=|bearer\s+[a-z0-9_-]{16,})", re.I)
@@ -35,6 +36,7 @@ class Article:
     pdf: bool
     feature_through: str | None = None
     sealed_pdf: bytes | None = None
+    related_slug: str | None = None
 
 
 def read_json(path):
@@ -76,16 +78,26 @@ def approved_copy(path, item, manifest, digest):
         raise ValueError("Manuscript and sealed issue cutoff do not match.")
     sections = [("", [])]
     special = item.get("category") == "Special Coverage"
+    conversation = item.get("category") == OBSERVER_CONVERSATION
     feature_through = None
     sealed_pdf = None
+    related_slug = None
+    if special or conversation:
+        sealed_pdf = path.with_suffix(".pdf").read_bytes()
+        metadata = "\n".join(blocks)
+        record = re.search(r"(?m)^Public PDF SHA-256: ([a-f0-9]{64})$", metadata)
+        if not record or record[1] != identity(sealed_pdf) or not sealed_pdf.startswith(b"%PDF-"):
+            raise ValueError("The reading PDF differs from the approved manuscript.")
     if special:
         feature_through = date.fromisoformat(item["feature_through"]).isoformat()
-        sealed_pdf = path.with_suffix(".pdf").read_bytes()
-        record = re.search(r"(?m)^Public PDF SHA-256: ([a-f0-9]{64})$", "\n".join(blocks))
-        window = re.search(r"(?m)^Homepage feature through: (\d{4}-\d\d-\d\d)$", "\n".join(blocks))
-        if (feature_through < when or not window or window[1] != feature_through
-                or not record or record[1] != identity(sealed_pdf) or not sealed_pdf.startswith(b"%PDF-")):
+        window = re.search(r"(?m)^Homepage feature through: (\d{4}-\d\d-\d\d)$", metadata)
+        if feature_through < when or not window or window[1] != feature_through:
             raise ValueError("Special Coverage must match the approved PDF and feature dates.")
+    if conversation:
+        related = re.search(r"(?m)^Related briefing: ([a-z0-9-]+)$", metadata)
+        related_slug = item["related_slug"]
+        if item["kind"] != "observer" or not related or related[1] != related_slug or not SLUG.fullmatch(related_slug):
+            raise ValueError("An Observer Conversation must match its approved briefing reference.")
     for block in blocks:
         if block.startswith("## "):
             label = block[3:].strip()
@@ -93,7 +105,7 @@ def approved_copy(path, item, manifest, digest):
                 break
             sections.append((label, []))
         else:
-            if special:
+            if special or conversation:
                 coverage_block(block)
                 sections[-1][1].append(block)
             else:
@@ -104,7 +116,7 @@ def approved_copy(path, item, manifest, digest):
     return Article(item["title"], item["slug"], byline, item["kind"], tuple(item["team_ids"]), digest,
                    item["lead"], tuple((h, tuple(ps)) for h, ps in sections),
                    tuple(int(value) for value in item["claim_games"]), path.with_suffix(".pdf").is_file(),
-                   feature_through, sealed_pdf)
+                   feature_through, sealed_pdf, related_slug)
 
 
 def release_approval(manuscript, archive, editions, digest, reviewer, at):

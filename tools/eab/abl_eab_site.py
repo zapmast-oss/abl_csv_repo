@@ -9,9 +9,9 @@ import re
 from urllib.parse import urlsplit, urlunsplit
 
 from abl_eab_analytics import BEACON_TAG, beacon
-from abl_eab_coverage import coverage_block
+from abl_eab_coverage import coverage_block, feature_inline
 from abl_eab_data import era, games_behind, ops, record
-from abl_eab_editorial import article_pdf, identity
+from abl_eab_editorial import OBSERVER_CONVERSATION, article_pdf, identity
 
 
 HERE = Path(__file__).parent
@@ -365,6 +365,9 @@ class Site:
 <h1>{escape(title)}</h1><p class="hero-deck">{escape(detail)}</p>
 <div class="buttons">{a(page, self.route("standings/index.html"), "Explore the races", "button")}{slate_link}</div>
 </div>{media}</section>"""
+        conversations = [item for item in self.all_articles() if item.get("related_slug")]
+        if conversations:
+            body += section(OBSERVER_CONVERSATION, self.article_cards(page, conversations[:1]))
         body += self.special_coverage(page, featured=True)
         body += (f'<div class="edition-credit"><p>A fictional baseball world, played in OOTP and preserved game by game. '
                  f'{a(page, self.route("about/index.html"), "See it for yourself.")}</p>'
@@ -373,7 +376,8 @@ class Site:
         body += section(f"Scores · {pretty(world.cutoff, year=False)}", self.scores_strip(page, finals),
                         a(page, self.route(f"games/{world.cutoff}.html"), "All scores & box scores", "text-link"))
         body += '<div class="home-columns"><div>'
-        recaps = [item for item in self.current_issue["articles"] if not item.get("feature_through")] if self.current_issue else []
+        recaps = [item for item in self.current_issue["articles"]
+                  if not (item.get("feature_through") or item.get("related_slug"))] if self.current_issue else []
         stories = []
         if recaps:
             for item in recaps[:3]:
@@ -605,11 +609,26 @@ class Site:
     def reading_link(self, page, target, label, cls=""):
         return a(page, self.reading_routes.get(target, target), label, cls)
 
-    def newsroom_reading_copies(self):
+    def issue_route(self, key):
+        return self.route(f"newsroom/issues/{key[:16]}")
+
+    def newsroom_reading_copies(self, eligible=()):
         if not self.catalog["issues"]:
             return
+        articles = list(self.all_articles())
         pages = {issue["path"] for issue in self.catalog["issues"]}
-        pages.update(article["path"] for article in self.all_articles())
+        pages.update(article["path"] for article in articles)
+        related = {}
+        for article in articles:
+            if slug := article.get("related_slug"):
+                related.setdefault(slug, (article["path"], article["title"]))
+        known = {article.get("digest") for article in articles}
+        for issue in eligible:
+            for article in issue["articles"]:
+                if article.related_slug and article.digest not in known:
+                    related[article.related_slug] = (f"{self.issue_route(issue['key'])}/{article.slug}.html", article.title)
+        briefings = {article["path"]: related[article["slug"]] for article in articles
+                     if article.get("feature_through") and article["slug"] in related}
         copies = {}
         for path in sorted(pages):
             source = self.dist / path
@@ -617,7 +636,7 @@ class Site:
                 raise ValueError("Archived newsroom page is outside the publication.")
             html = source.read_text(encoding="utf-8")
             today = TODAY_LINK.search(html)
-            if (self.beacon and self.beacon not in html) or (today and today[2] != href(path, "index.html")):
+            if path in briefings or (self.beacon and self.beacon not in html) or (today and today[2] != href(path, "index.html")):
                 self.reading_routes[path] = self.route("reading/" + path.removeprefix("releases/"))
                 copies[path] = html
 
@@ -638,6 +657,10 @@ class Site:
             html = re.sub(r'(?<=\s)(href|src)="([^"]*)"', rebase, html)
             today_target = href(destination, "index.html")
             html = TODAY_LINK.sub(lambda link: link[1] + today_target + link[3], html, count=1)
+            if original in briefings:
+                target, title = briefings[original]
+                panel = '<aside class="related"><b>The Observer Conversation</b> · ' + a(destination, target, title) + '</aside>'
+                html = html.replace('<article class="reading coverage">', panel + '<article class="reading coverage">', 1)
             self.put(destination, html.replace("</body>", self.beacon + "</body>", 1))
 
     def article_cards(self, page, items):
@@ -660,7 +683,7 @@ class Site:
                     columns, rows = content
                     finished.append(table(columns, [[escape(cell) for cell in row] for row in rows], label=label))
                 else:
-                    finished.append(f"<p>{escape(content)}</p>")
+                    finished.append(f"<p>{feature_inline(content, escape)}</p>")
         return "".join(finished)
 
     def editorial(self, eligible, warnings):
@@ -669,7 +692,7 @@ class Site:
         for issue in eligible:
             if issue["key"] in existing:
                 continue
-            base = self.route(f"newsroom/issues/{issue['key'][:16]}")
+            base = self.issue_route(issue["key"])
             published = {field: issue[field] for field in ("key", "source_id", "edition", "revision", "league_date", "cutoff")}
             published.update(path=base + "/index.html", articles=[])
             for article in sorted(issue["articles"], key=lambda item: not item.lead):
@@ -679,6 +702,8 @@ class Site:
                     published["articles"].append(versions[article.digest])
                     continue
                 opening = next(p for _, paragraphs in article.sections for p in paragraphs)
+                if article.related_slug:
+                    opening = "Ernie Bewell and Big Earl debate the August Division Challenges and put Earl’s pennant-race forecast on the record."
                 dek = opening if len(opening) <= 185 else opening[:185].rsplit(" ", 1)[0] + "…"
                 route = f"{base}/{article.slug}.html"
                 item = dict(path=route, title=article.title, slug=article.slug, digest=article.digest, dek=dek,
@@ -689,7 +714,21 @@ class Site:
                 if pdf:
                     item["pdf"] = f"{base}/{article.slug}.pdf"
                     self.put(item["pdf"], pdf)
-                if article.feature_through:
+                if article.related_slug:
+                    item["related_slug"] = article.related_slug
+                    body = heading(article.title,
+                                   f"{article.byline} · {pretty(issue['league_date'])} · Data cutoff {pretty(issue['cutoff'])}",
+                                   f"{OBSERVER_CONVERSATION} · Commentary")
+                    briefing = next((report for report in self.all_articles()
+                                     if report.get("feature_through") and report["slug"] == article.related_slug), None)
+                    guide = [a(route, self.route("newsroom/index.html") + "#baseball-observer", "The Baseball Observer")]
+                    if briefing:
+                        guide.append(self.reading_link(route, briefing["path"], "August Division Challenges briefing"))
+                    guide.append(f'<a href="{href(route, item["pdf"])}" download>Download public PDF</a>')
+                    body += f'<p class="related">{" · ".join(guide)}</p><article class="reading coverage">'
+                    body += self.coverage_body(article.sections)
+                    related = ""
+                elif article.feature_through:
                     item["feature_through"] = article.feature_through
                     body = heading(article.title, f"{article.byline} · Data cutoff {pretty(issue['cutoff'])}", "Special Coverage")
                     guide = " · ".join(a(route, self.route(dest), label) for dest, label in (
@@ -726,19 +765,25 @@ class Site:
             if all(item.get("feature_through") for item in published["articles"]):
                 published["category"] = "Special Coverage"
                 issue_title = f"Special Coverage · {pretty(issue['league_date'], year=False)}"
+            elif all(item.get("related_slug") for item in published["articles"]):
+                published["category"] = OBSERVER_CONVERSATION
+                issue_title = f"{OBSERVER_CONVERSATION} · {pretty(issue['league_date'], year=False)}"
             body = heading(issue_title,
                            f"Games through {pretty(issue['cutoff'])}.", "ABL Newsroom")
             body += self.article_cards(page, published["articles"])
             self.page(page, "Newsroom issue " + issue["league_date"], body, "Newsroom", absolute=True)
         self.current_issue = next((issue for issue in reversed(self.catalog["issues"])
                                    if issue["source_id"] == self.world.source_id
-                                   and any(not item.get("feature_through") for item in issue["articles"])), None)
+                                   and not issue.get("category")), None)
 
     def newsroom(self):
         page = self.route("newsroom/index.html")
         current = self.current_issue
         issue_route = self.route("newsroom/current.html")
         body = heading("ABL Newsroom", "League reporting, franchise beats and The Baseball Observer.")
+        observer = [item for item in self.all_articles() if item["kind"] == "observer"]
+        if observer:
+            body += section("The Baseball Observer", self.article_cards(page, observer), anchor="baseball-observer")
         body += self.special_coverage(page)
         current_title = f"The {pretty(self.world.league_date, year=False)} edition"
         body += section(current_title,
@@ -866,7 +911,9 @@ class Site:
     def media_and_about(self, media):
         page = self.route("sbv/index.html")
         body = heading("Sim Baseball Vision", "The commissioner’s broadcasts and commentary offer another way to experience the Action Baseball League.")
-        programs = [card(item["title"], item["description"], a(page, item["url"], item["label"], "text-link"))
+        programs = [card(item["title"], item["description"], a(page, item["url"], item["label"], "text-link")
+                         + (' · ' + a(page, self.route("newsroom/index.html") + "#baseball-observer", "Read the Observer", "text-link")
+                            if item["title"] == "The Baseball Observer" and any(i["kind"] == "observer" for i in self.all_articles()) else ""))
                     for item in media]
         programs.append(card("ABL Advance", "Follow the recorded games and the upcoming slate as the league advances.",
                              a(page, self.route("games/index.html"), "Browse the game calendar", "text-link")))
@@ -886,7 +933,7 @@ class Site:
         self.page("about/index.html", "About EAB", about, "About")
 
     def build(self, eligible, media, warnings):
-        self.newsroom_reading_copies()
+        self.newsroom_reading_copies(eligible)
         self.editorial(eligible, warnings)
         self.almanac()
         self.home()
