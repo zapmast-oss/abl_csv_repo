@@ -204,16 +204,15 @@ def confirm_results(raw: Path, state: dict) -> list[dict]:
     return exceptions
 
 
-def confirm_player_game_totals(raw: Path, state: dict) -> None:
+def confirm_player_game_totals(raw: Path, state: dict, reconciliation=None) -> None:
     """Detect a mixed export where the schedule advanced ahead of the player tables."""
+    from abl_player_games import BATTING, PITCHING, player_game_rows
+
     games = {game["game_id"]: game for game in state["games"]}
-    for filename, fields in (("players_game_batting.csv", ("r", "h")),
-                             ("players_game_pitching_stats.csv", ("r", "ha", "gs"))):
+    for filename, fields in ((BATTING, ("r", "h")), (PITCHING, ("r", "ha", "gs"))):
         totals = defaultdict(Counter)
-        for row in rows(raw / filename):
+        for row in player_game_rows(raw, filename, state["season"], games, reconciliation):
             gid = row["game_id"]
-            if gid not in games or row["league_id"] != LEAGUE_ID or row["level_id"] != "1" or int(row["year"]) != state["season"]:
-                continue
             team = row["team_id"]
             if team not in (games[gid]["away_team"], games[gid]["home_team"]):
                 raise ExportError(f"{filename}: player game line has unexpected team {team}, game {gid}")
@@ -231,6 +230,8 @@ def confirm_player_game_totals(raw: Path, state: dict) -> None:
 
 def verify_export(repo: Path, preflight_dir: Path, live_dir: Path | None = None, *, snapshot_root: Path | None = None) -> dict:
     """Return JSON-serializable verified state. Only immutable snapshots feed reporting."""
+    from abl_player_games import reconcile_batting
+
     repo = Path(repo).resolve()
     source = (Path(live_dir) if live_dir else default_live_dir()).resolve()
     promoted = repo / "csv/ootp_csv"
@@ -257,7 +258,8 @@ def verify_export(repo: Path, preflight_dir: Path, live_dir: Path | None = None,
                 if incoming.readline().rstrip() != reference.readline().rstrip():
                     raise ExportError(f"Changed OOTP header requires review: {name}")
     exceptions = confirm_results(raw, state)
-    confirm_player_game_totals(raw, state)
+    reconciliation = reconcile_batting(raw, state, root, exceptions)
+    confirm_player_game_totals(raw, state, reconciliation)
     args = [sys.executable, "-B", str(repo / "csv/abl_scripts/z_abl_current_state_preflight_validate.py"),
             "--season", str(state["season"]), "--as-of-date", state["cutoff"], "--newsroom-date", state["league_date"],
             "--output-dir", str(out), "--raw-dir", str(raw), "--json-only"]
@@ -271,4 +273,8 @@ def verify_export(repo: Path, preflight_dir: Path, live_dir: Path | None = None,
     state.update(hashes=hashes, source_id=source_id, raw_dir=str(raw), live_dir=str(source),
                  preflight=verified, core_files=list(verified["current_state_driver_files_used"]),
                  promoted_matches=72-len(differing), promoted_different_files=differing, log_exceptions=exceptions)
+    if reconciliation:
+        state["player_game_reconciliation"] = reconciliation
+        (out / "player-game-reconciliation.json").write_text(
+            json.dumps(reconciliation, indent=2) + "\n", encoding="utf-8")
     return state

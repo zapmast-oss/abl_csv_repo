@@ -9,6 +9,7 @@ from datetime import date
 from fractions import Fraction
 from pathlib import Path
 
+from abl_player_games import player_game_rows
 from z_abl_current_state_preflight_validate import select_completed_games
 
 
@@ -114,19 +115,15 @@ def game_records(raw_dir, cutoff, teams):
     return games
 
 
-def player_lines(raw_dir, games, year, new_ids):
+def player_lines(raw_dir, games, year, new_ids, reconciliation=None):
     totals, recent = {}, {}
     for kind, source, fields in [("bat", "players_game_batting", BATTING),
                                  ("pit", "players_game_pitching_stats", PITCHING)]:
         totals[kind] = defaultdict(lambda: defaultdict(Counter))
         recent[kind] = defaultdict(dict)
-        for row in rows(raw_dir, source):
-            if row["year"] != str(year) or row["league_id"] != "200" or row["level_id"] != "1":
-                continue
+        for row in player_game_rows(raw_dir, source + ".csv", year, games, reconciliation):
             gid, team, pid = map(int, (row["game_id"], row["team_id"], row["player_id"]))
-            game = games.get(gid)
-            if game is None:
-                continue
+            game = games[gid]
             if team not in (game["home_id"], game["away_id"]):
                 raise ValueError(f"{source}.csv assigns player {pid} to unrelated team {team} in game {gid}")
             stats = {key: int(row[key]) for key in fields}
@@ -302,7 +299,8 @@ def next_opponent(raw_dir, cutoff, teams):
     return {t: min(games) for t, games in scheduled.items()}
 
 
-def build_beats(raw_dir: Path, cutoff: str, new_game_ids: set[int], snapshot_date: str | None = None) -> dict[int, dict]:
+def build_beats(raw_dir: Path, cutoff: str, new_game_ids: set[int], snapshot_date: str | None = None,
+                *, reconciliation=None) -> dict[int, dict]:
     """Read a frozen, validated raw directory. Return a JSON-serializable notebook per club."""
     raw_dir, cutoff = Path(raw_dir), day(cutoff)
     new_ids = {int(x) for x in new_game_ids}
@@ -324,7 +322,7 @@ def build_beats(raw_dir: Path, cutoff: str, new_game_ids: set[int], snapshot_dat
             views[t].append(g)
     records = {t: record(views[t], t) for t in teams}
     previous_records = {t: record([g for g in views[t] if g["game_id"] not in new_ids], t) for t in teams}
-    totals, recent = player_lines(raw_dir, games, cutoff.year, new_ids)
+    totals, recent = player_lines(raw_dir, games, cutoff.year, new_ids, reconciliation)
     players = {int(row["player_id"]): row for row in rows(raw_dir, "players")}
     active = defaultdict(list)
     for row in rows(raw_dir, "players_roster_status"):

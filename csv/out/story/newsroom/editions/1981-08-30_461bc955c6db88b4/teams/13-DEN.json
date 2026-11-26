@@ -1,0 +1,818 @@
+{
+  "team_id": 13,
+  "team": "Denver Rocketeers",
+  "abbr": "DEN",
+  "division": "ABC Western Division",
+  "conference": "ABC",
+  "wins": 71,
+  "losses": 60,
+  "gb": 1.0,
+  "priority": 2,
+  "division_leaders_change": false,
+  "division_leaders": [
+    17
+  ],
+  "intensity": "analysis",
+  "headline": "Denver beat Seattle 2-1",
+  "brief": "Denver beat Seattle 2-1. [games.csv game_id=1572 date=1981-08-30 league_id=200 game_type=0 played=1] Denver is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-20 — Denver fell to Portland 7-2 in 9 innings. [games.csv game_id=1463 date=1981-08-20 league_id=200 game_type=0 played=1] Alex Sandoval (#7426) went 1-for-3 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1463, team_id=13, player_id=7426] Damian Serano (#1733) worked 6 1/3 innings, allowed 1 earned run and struck out 3. [players_game_pitching_stats.csv, game_id=1463, team_id=13, player_id=1733]",
+        "1981-08-21 — Denver fell to Portland 8-5 in 9 innings. [games.csv game_id=1475 date=1981-08-21 league_id=200 game_type=0 played=1] Xavier Little (#6906) went 1-for-4 with 1 HR and 1 RBI. [players_game_batting.csv, game_id=1475, team_id=13, player_id=6906] DeMario Rodriguez (#3754) worked 8 innings, allowed 2 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1475, team_id=13, player_id=3754]",
+        "1981-08-22 — Denver fell to Portland 5-3 in 9 innings. [games.csv game_id=1487 date=1981-08-22 league_id=200 game_type=0 played=1] Boboy Nierva (#122) went 2-for-4 with 1 HR and 1 RBI. [players_game_batting.csv, game_id=1487, team_id=13, player_id=122] Dave DiAngelo (#2313) worked 6 innings, allowed 3 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1487, team_id=13, player_id=2313]",
+        "1981-08-23 — Denver beat Portland 9-1 in 9 innings. [games.csv game_id=1499 date=1981-08-23 league_id=200 game_type=0 played=1] Xavier Little (#6906) went 2-for-4 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1499, team_id=13, player_id=6906] Tony Cossio (#12045) worked 5 2/3 innings, allowed 1 earned run and struck out 5. [players_game_pitching_stats.csv, game_id=1499, team_id=13, player_id=12045]",
+        "1981-08-24 — Denver beat Las Vegas 6-2 in 9 innings. [games.csv game_id=1507 date=1981-08-24 league_id=200 game_type=0 played=1] Alex Sandoval (#7426) went 3-for-4 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1507, team_id=13, player_id=7426] Tony Oubre (#949) worked 8 2/3 innings, allowed 2 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1507, team_id=13, player_id=949]",
+        "1981-08-25 — Denver beat Las Vegas 7-2 in 9 innings. [games.csv game_id=1518 date=1981-08-25 league_id=200 game_type=0 played=1] Jesus Arras (#6049) went 2-for-4 with 2 HR and 2 RBI. [players_game_batting.csv, game_id=1518, team_id=13, player_id=6049] Damian Serano (#1733) worked 7 2/3 innings, allowed 0 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1518, team_id=13, player_id=1733]",
+        "1981-08-27 — Denver fell to Seattle 6-5 in 9 innings. [games.csv game_id=1536 date=1981-08-27 league_id=200 game_type=0 played=1] Xavier Little (#6906) went 1-for-4 with 1 HR and 1 RBI. [players_game_batting.csv, game_id=1536, team_id=13, player_id=6906] Dave DiAngelo (#2313) worked 5 1/3 innings, allowed 4 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1536, team_id=13, player_id=2313]",
+        "1981-08-28 — Denver fell to Seattle 2-1 in 9 innings. [games.csv game_id=1548 date=1981-08-28 league_id=200 game_type=0 played=1] Bobby Scott (#3743) went 2-for-3 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1548, team_id=13, player_id=3743] DeMario Rodriguez (#3754) worked 6 1/3 innings, allowed 2 earned runs and struck out 1. [players_game_pitching_stats.csv, game_id=1548, team_id=13, player_id=3754]",
+        "1981-08-29 — Denver beat Seattle 4-2 in 9 innings. [games.csv game_id=1560 date=1981-08-29 league_id=200 game_type=0 played=1] Jesus Arras (#6049) went 1-for-4 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1560, team_id=13, player_id=6049] Tony Oubre (#949) worked 8 innings, allowed 2 earned runs and struck out 6. [players_game_pitching_stats.csv, game_id=1560, team_id=13, player_id=949]",
+        "1981-08-30 — Denver beat Seattle 2-1 in 9 innings. [games.csv game_id=1572 date=1981-08-30 league_id=200 game_type=0 played=1] Jorge Cuellar (#6544) went 2-for-3 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1572, team_id=13, player_id=6544] Damian Serano (#1733) worked 5 2/3 innings, allowed 1 earned run and struck out 7. [players_game_pitching_stats.csv, game_id=1572, team_id=13, player_id=1733]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Denver is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "Division records — Las Vegas 72-59, Denver 71-60, Seattle 71-60, Portland 54-77. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "Over its last 7 games the club went 5-2, scoring 34 runs and allowing 16. Season totals are 597 scored and 567 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13. Recent game IDs 1499, 1507, 1518, 1536, 1548, 1560, 1572]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Las Vegas Gamblers, Denver is 7-9 with 64 runs scored and 74 allowed. [games.csv 1981 completed regular season, team IDs 13/17, latest game #1518, 1981-08-25]",
+        "Against Seattle Comets, Denver is 9-9 with 85 runs scored and 93 allowed. [games.csv 1981 completed regular season, team IDs 13/24, latest game #1572, 1981-08-30]",
+        "Against Portland Lumberjacks, Denver is 12-7 with 82 runs scored and 75 allowed. [games.csv 1981 completed regular season, team IDs 13/18, latest game #1499, 1981-08-23]",
+        "Denver hosts Pittsburgh Express in the next listed game on 1981-08-31. [games.csv game_id=1578, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Boboy Nierva (#122) leads the club with 142 hits in 446 at-bats, including 12 home runs. [players_game_batting.csv joined to played games.csv, team_id=13, year=1981, through 1981-08-30]",
+        "Dave DiAngelo (#2313) leads the staff in innings pitched (192 1/3), with 119 strikeouts, 87 walks and a 3.56 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=13, year=1981, through 1981-08-30]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (3) — 1972, 1973, 1974. League titles (1) — 1973. [team_history.csv, team_id=13, league_id=200, year=1972–1980]",
+        "The club finished 78-84 in 1980, division place 3. [team_history_record.csv, team_id=13, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-31 export lists 26 active players. [players_roster_status.csv team_id=13 is_active=1 joined to players.csv player_id, export league date 1981-08-31]",
+        "P — Alfonso Herrera (#8783), Damian Serano (#1733), Dave DiAngelo (#2313), DeMario Rodriguez (#3754), Kymani Holloman (#6912), Manny Garcia (#4598), Mason Chaisson (#1540), Pat Jellison (#1386), Paul Conlon (#674), Tony Cossio (#12045), Tony Oubre (#949).",
+        "C — Jeremy Newkirk (#8013), Tony Bautista (#4632).",
+        "1B — Jesus Arras (#6049), Jonathan Stevens (#2293).",
+        "2B — Danny Reyes (#2449), Javier Martinez (#9361), Manny Blanco (#5201).",
+        "3B — Bobby Scott (#3743).",
+        "SS — Jorge Cuellar (#6544), Manuel Payan (#5431).",
+        "LF — Alex Sandoval (#7426), Oliver Rosa (#5206).",
+        "CF — Xavier Little (#6906).",
+        "RF — Boboy Nierva (#122), Tyler Townsley (#384)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Jesus Lago (#10063), 25, P at South Bay Turtles — drafted in 1979 with overall pick 2. [players.csv player_id=10063, team_affiliations.csv team_id=13 affiliated_team_id=48, teams.csv, export 1981-08-31]",
+        "Kevin Preston (#10251), 21, 1B at Weatherby Lake Alouettes — drafted in 1981 with overall pick 3. [players.csv player_id=10251, team_affiliations.csv team_id=13 affiliated_team_id=93, teams.csv, export 1981-08-31]",
+        "Jose Lopez (#5395), 24, 3B at South Bay Turtles — drafted in 1978 with overall pick 29. [players.csv player_id=5395, team_affiliations.csv team_id=13 affiliated_team_id=48, teams.csv, export 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-06-18 — In a trade with New York, Denver received Tony Oubre (#949), Willie Vega (#7820) and sent Ramon Pazmino (#9436). [trade_history.csv date=1981-06-18 team_id_0=13 team_id_1=15 message_id=19446]",
+        "1981-07-23 — In a trade with Atlanta, Denver received Mason Chaisson (#1540) and sent Benito Rodriguez (#11244), Rodolfo Gonzalez (#9886). [trade_history.csv date=1981-07-23 team_id_0=13 team_id_1=3 message_id=19793]",
+        "Mason Chaisson (#1540) has 0 batting PA and 11 pitching innings for Denver in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1540, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Denver stand against its division opponents? Denver is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "Will the next series change Denver's recent scoring margin? Over its last 7 games the club went 5-2, scoring 34 runs and allowing 16. Season totals are 597 scored and 567 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13. Recent game IDs 1499, 1507, 1518, 1536, 1548, 1560, 1572]",
+        "What role will Mason Chaisson (#1540) earn with Denver? Mason Chaisson (#1540) has 0 batting PA and 11 pitching innings for Denver in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1540, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13] [trade_history.csv date=1981-07-23 team_id_0=13 team_id_1=3 message_id=19793]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Denver Rocketeers is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Denver Rocketeers is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "13:1981:division",
+      "question": "Where does Denver stand against its division opponents?",
+      "evidence": "Denver is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]"
+    },
+    {
+      "key": "13:1981:runs",
+      "question": "Will the next series change Denver's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 5-2, scoring 34 runs and allowing 16. Season totals are 597 scored and 567 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13. Recent game IDs 1499, 1507, 1518, 1536, 1548, 1560, 1572]"
+    },
+    {
+      "key": "13:1981:trade:19793:1540",
+      "question": "What role will Mason Chaisson (#1540) earn with Denver?",
+      "evidence": "Mason Chaisson (#1540) has 0 batting PA and 11 pitching innings for Denver in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1540, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13] [trade_history.csv date=1981-07-23 team_id_0=13 team_id_1=3 message_id=19793]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1463,
+      "date": "1981-08-20",
+      "home_id": 13,
+      "away_id": 18,
+      "runs_away": 7,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Portland 7, Denver 2",
+      "source": "games.csv game_id=1463 date=1981-08-20 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1475,
+      "date": "1981-08-21",
+      "home_id": 13,
+      "away_id": 18,
+      "runs_away": 8,
+      "runs_home": 5,
+      "innings": 9,
+      "summary": "Portland 8, Denver 5",
+      "source": "games.csv game_id=1475 date=1981-08-21 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1487,
+      "date": "1981-08-22",
+      "home_id": 13,
+      "away_id": 18,
+      "runs_away": 5,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "Portland 5, Denver 3",
+      "source": "games.csv game_id=1487 date=1981-08-22 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1499,
+      "date": "1981-08-23",
+      "home_id": 13,
+      "away_id": 18,
+      "runs_away": 1,
+      "runs_home": 9,
+      "innings": 9,
+      "summary": "Portland 1, Denver 9",
+      "source": "games.csv game_id=1499 date=1981-08-23 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1507,
+      "date": "1981-08-24",
+      "home_id": 13,
+      "away_id": 17,
+      "runs_away": 2,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Las Vegas 2, Denver 6",
+      "source": "games.csv game_id=1507 date=1981-08-24 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1518,
+      "date": "1981-08-25",
+      "home_id": 13,
+      "away_id": 17,
+      "runs_away": 2,
+      "runs_home": 7,
+      "innings": 9,
+      "summary": "Las Vegas 2, Denver 7",
+      "source": "games.csv game_id=1518 date=1981-08-25 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1536,
+      "date": "1981-08-27",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 5,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Denver 5, Seattle 6",
+      "source": "games.csv game_id=1536 date=1981-08-27 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1548,
+      "date": "1981-08-28",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 1,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Denver 1, Seattle 2",
+      "source": "games.csv game_id=1548 date=1981-08-28 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1560,
+      "date": "1981-08-29",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 4,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Denver 4, Seattle 2",
+      "source": "games.csv game_id=1560 date=1981-08-29 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1572,
+      "date": "1981-08-30",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 2,
+      "runs_home": 1,
+      "innings": 9,
+      "summary": "Denver 2, Seattle 1",
+      "source": "games.csv game_id=1572 date=1981-08-30 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1463,
+    1475,
+    1487,
+    1499,
+    1507,
+    1518,
+    1536,
+    1548,
+    1560,
+    1572
+  ],
+  "transactions": [
+    {
+      "id": "trade:19446",
+      "date": "1981-06-18",
+      "partner_id": 15,
+      "incoming_ids": [
+        949,
+        7820
+      ],
+      "outgoing_ids": [
+        9436
+      ],
+      "summary": "In a trade with New York, Denver received Tony Oubre (#949), Willie Vega (#7820) and sent Ramon Pazmino (#9436)",
+      "source": "trade_history.csv date=1981-06-18 team_id_0=13 team_id_1=15 message_id=19446"
+    },
+    {
+      "id": "trade:19793",
+      "date": "1981-07-23",
+      "partner_id": 3,
+      "incoming_ids": [
+        1540
+      ],
+      "outgoing_ids": [
+        11244,
+        9886
+      ],
+      "summary": "In a trade with Atlanta, Denver received Mason Chaisson (#1540) and sent Benito Rodriguez (#11244), Rodolfo Gonzalez (#9886)",
+      "source": "trade_history.csv date=1981-07-23 team_id_0=13 team_id_1=3 message_id=19793"
+    }
+  ],
+  "roster_ids": [
+    122,
+    384,
+    674,
+    949,
+    1386,
+    1540,
+    1733,
+    2293,
+    2313,
+    2449,
+    3743,
+    3754,
+    4598,
+    4632,
+    5201,
+    5206,
+    5431,
+    6049,
+    6544,
+    6906,
+    6912,
+    7426,
+    8013,
+    8783,
+    9361,
+    12045
+  ],
+  "roster": [
+    {
+      "player_id": 6049,
+      "name": "Jesus Arras (#6049)",
+      "age": 28,
+      "position": "1B",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2293,
+      "name": "Jonathan Stevens (#2293)",
+      "age": 30,
+      "position": "1B",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2449,
+      "name": "Danny Reyes (#2449)",
+      "age": 32,
+      "position": "2B",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 9361,
+      "name": "Javier Martinez (#9361)",
+      "age": 25,
+      "position": "2B",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5201,
+      "name": "Manny Blanco (#5201)",
+      "age": 28,
+      "position": "2B",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3743,
+      "name": "Bobby Scott (#3743)",
+      "age": 30,
+      "position": "3B",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8013,
+      "name": "Jeremy Newkirk (#8013)",
+      "age": 26,
+      "position": "C",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4632,
+      "name": "Tony Bautista (#4632)",
+      "age": 32,
+      "position": "C",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6906,
+      "name": "Xavier Little (#6906)",
+      "age": 24,
+      "position": "CF",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7426,
+      "name": "Alex Sandoval (#7426)",
+      "age": 23,
+      "position": "LF",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5206,
+      "name": "Oliver Rosa (#5206)",
+      "age": 28,
+      "position": "LF",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8783,
+      "name": "Alfonso Herrera (#8783)",
+      "age": 24,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1733,
+      "name": "Damian Serano (#1733)",
+      "age": 34,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2313,
+      "name": "Dave DiAngelo (#2313)",
+      "age": 31,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3754,
+      "name": "DeMario Rodriguez (#3754)",
+      "age": 27,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6912,
+      "name": "Kymani Holloman (#6912)",
+      "age": 23,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4598,
+      "name": "Manny Garcia (#4598)",
+      "age": 29,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1540,
+      "name": "Mason Chaisson (#1540)",
+      "age": 33,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1386,
+      "name": "Pat Jellison (#1386)",
+      "age": 30,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 674,
+      "name": "Paul Conlon (#674)",
+      "age": 34,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 12045,
+      "name": "Tony Cossio (#12045)",
+      "age": 21,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 949,
+      "name": "Tony Oubre (#949)",
+      "age": 30,
+      "position": "P",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 122,
+      "name": "Boboy Nierva (#122)",
+      "age": 39,
+      "position": "RF",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 384,
+      "name": "Tyler Townsley (#384)",
+      "age": 33,
+      "position": "RF",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6544,
+      "name": "Jorge Cuellar (#6544)",
+      "age": 24,
+      "position": "SS",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5431,
+      "name": "Manuel Payan (#5431)",
+      "age": 23,
+      "position": "SS",
+      "team_id": 13,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 10063,
+      "name": "Jesus Lago (#10063)",
+      "age": 25,
+      "position": "P",
+      "team_id": 48,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 2,
+      "affiliate": "South Bay Turtles"
+    },
+    {
+      "player_id": 10251,
+      "name": "Kevin Preston (#10251)",
+      "age": 21,
+      "position": "1B",
+      "team_id": 93,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 3,
+      "affiliate": "Weatherby Lake Alouettes"
+    },
+    {
+      "player_id": 5395,
+      "name": "Jose Lopez (#5395)",
+      "age": 24,
+      "position": "3B",
+      "team_id": 48,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1978,
+      "draft_pick": 29,
+      "affiliate": "South Bay Turtles"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1499,
+    1507,
+    1518,
+    1536,
+    1548,
+    1560,
+    1572
+  ],
+  "continuity": {
+    "threads": {
+      "13:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Where does Denver stand against its division opponents?",
+        "evidence": "Denver is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "status": "watching"
+      },
+      "13:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Will the next series change Denver's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 5-2, scoring 34 runs and allowing 16. Season totals are 597 scored and 567 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13. Recent game IDs 1499, 1507, 1518, 1536, 1548, 1560, 1572]",
+        "status": "watching"
+      },
+      "13:1981:rival:18": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Denver–Portland game do to the division race?",
+        "evidence": "Denver hosts Portland Lumberjacks in the next listed game on 1981-08-20. [games.csv game_id=1463, played=0] Denver is 66-55 and trails Las Vegas by 3 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "status": "carried from earlier coverage"
+      },
+      "13:1981:trade:19793:1540": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "What role will Mason Chaisson (#1540) earn with Denver?",
+        "evidence": "Mason Chaisson (#1540) has 0 batting PA and 11 pitching innings for Denver in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1540, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=13] [trade_history.csv date=1981-07-23 team_id_0=13 team_id_1=3 message_id=19793]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      122,
+      384,
+      674,
+      949,
+      1386,
+      1540,
+      1733,
+      2293,
+      2313,
+      2449,
+      3743,
+      3754,
+      4598,
+      4632,
+      5201,
+      5206,
+      5431,
+      6049,
+      6544,
+      6906,
+      6912,
+      7426,
+      8013,
+      8783,
+      9361,
+      12045
+    ],
+    "names": {
+      "6049": "Jesus Arras (#6049)",
+      "2293": "Jonathan Stevens (#2293)",
+      "2449": "Danny Reyes (#2449)",
+      "9361": "Javier Martinez (#9361)",
+      "5201": "Manny Blanco (#5201)",
+      "3743": "Bobby Scott (#3743)",
+      "8013": "Jeremy Newkirk (#8013)",
+      "4632": "Tony Bautista (#4632)",
+      "6906": "Xavier Little (#6906)",
+      "7426": "Alex Sandoval (#7426)",
+      "5206": "Oliver Rosa (#5206)",
+      "8783": "Alfonso Herrera (#8783)",
+      "1733": "Damian Serano (#1733)",
+      "2313": "Dave DiAngelo (#2313)",
+      "3754": "DeMario Rodriguez (#3754)",
+      "6912": "Kymani Holloman (#6912)",
+      "4598": "Manny Garcia (#4598)",
+      "1540": "Mason Chaisson (#1540)",
+      "1386": "Pat Jellison (#1386)",
+      "674": "Paul Conlon (#674)",
+      "12045": "Tony Cossio (#12045)",
+      "949": "Tony Oubre (#949)",
+      "122": "Boboy Nierva (#122)",
+      "384": "Tyler Townsley (#384)",
+      "6544": "Jorge Cuellar (#6544)",
+      "5431": "Manuel Payan (#5431)"
+    },
+    "flags": {
+      "6049": [
+        0,
+        0
+      ],
+      "2293": [
+        0,
+        0
+      ],
+      "2449": [
+        0,
+        0
+      ],
+      "9361": [
+        0,
+        0
+      ],
+      "5201": [
+        0,
+        0
+      ],
+      "3743": [
+        0,
+        0
+      ],
+      "8013": [
+        0,
+        0
+      ],
+      "4632": [
+        0,
+        0
+      ],
+      "6906": [
+        0,
+        0
+      ],
+      "7426": [
+        0,
+        0
+      ],
+      "5206": [
+        0,
+        0
+      ],
+      "8783": [
+        0,
+        0
+      ],
+      "1733": [
+        0,
+        0
+      ],
+      "2313": [
+        0,
+        0
+      ],
+      "3754": [
+        0,
+        0
+      ],
+      "6912": [
+        0,
+        0
+      ],
+      "4598": [
+        0,
+        0
+      ],
+      "1540": [
+        0,
+        0
+      ],
+      "1386": [
+        0,
+        0
+      ],
+      "674": [
+        0,
+        0
+      ],
+      "12045": [
+        0,
+        0
+      ],
+      "949": [
+        0,
+        0
+      ],
+      "122": [
+        0,
+        0
+      ],
+      "384": [
+        0,
+        0
+      ],
+      "6544": [
+        0,
+        0
+      ],
+      "5431": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:19446": "In a trade with New York, Denver received Tony Oubre (#949), Willie Vega (#7820) and sent Ramon Pazmino (#9436)",
+      "trade:19793": "In a trade with Atlanta, Denver received Mason Chaisson (#1540) and sent Benito Rodriguez (#11244), Rodolfo Gonzalez (#9886)"
+    }
+  },
+  "previous_edition": "1981-08-19_2acae29146076f62"
+}

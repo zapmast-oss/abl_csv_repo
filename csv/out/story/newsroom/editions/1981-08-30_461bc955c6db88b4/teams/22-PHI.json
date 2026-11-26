@@ -1,0 +1,773 @@
+{
+  "team_id": 22,
+  "team": "Philadelphia Fury",
+  "abbr": "PHI",
+  "division": "ABC Eastern Division",
+  "conference": "ABC",
+  "wins": 65,
+  "losses": 66,
+  "gb": 3.0,
+  "priority": 3,
+  "division_leaders_change": false,
+  "division_leaders": [
+    20
+  ],
+  "intensity": "analysis",
+  "headline": "Philadelphia beat New York 10-0",
+  "brief": "Philadelphia beat New York 10-0. [games.csv game_id=1567 date=1981-08-30 league_id=200 game_type=0 played=1] Philadelphia is 65-66 and trails Boston by 3 games in the ABC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 15,20,21,22]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-20 — Philadelphia fell to Boston 3-0 in 9 innings. [games.csv game_id=1459 date=1981-08-20 league_id=200 game_type=0 played=1] Ron Stout (#3201) went 1-for-3 with 0 HR and 0 RBI. [players_game_batting.csv, game_id=1459, team_id=22, player_id=3201] Gilberto Flores (#4859) worked 8 innings, allowed 3 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1459, team_id=22, player_id=4859]",
+        "Boston kept Philadelphia scoreless across all 9 innings. [games_score.csv game_id=1459 team=0]",
+        "1981-08-21 — Philadelphia fell to Boston 2-0 in 9 innings. [games.csv game_id=1471 date=1981-08-21 league_id=200 game_type=0 played=1] Ron Stout (#3201) went 1-for-4 with 0 HR and 0 RBI. [players_game_batting.csv, game_id=1471, team_id=22, player_id=3201] Orlando Acosta (#1076) worked 7 2/3 innings, allowed 1 earned run and struck out 9. [players_game_pitching_stats.csv, game_id=1471, team_id=22, player_id=1076]",
+        "Boston kept Philadelphia scoreless across all 9 innings. [games_score.csv game_id=1471 team=0]",
+        "1981-08-22 — Philadelphia beat Boston 7-2 in 9 innings. [games.csv game_id=1483 date=1981-08-22 league_id=200 game_type=0 played=1] Danny Florez (#8946) went 3-for-3 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1483, team_id=22, player_id=8946] Mike Stanley (#2430) worked 9 innings, allowed 2 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1483, team_id=22, player_id=2430]",
+        "1981-08-23 — Philadelphia beat Boston 11-2 in 9 innings. [games.csv game_id=1495 date=1981-08-23 league_id=200 game_type=0 played=1] Ron Stout (#3201) went 4-for-4 with 1 HR and 5 RBI. [players_game_batting.csv, game_id=1495, team_id=22, player_id=3201] Hiroki Ono (#8636) worked 7 1/3 innings, allowed 2 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1495, team_id=22, player_id=8636]",
+        "1981-08-24 — Philadelphia beat Pittsburgh 6-4 in 9 innings. [games.csv game_id=1505 date=1981-08-24 league_id=200 game_type=0 played=1] Rich Pena (#5140) went 2-for-4 with 1 HR and 4 RBI. [players_game_batting.csv, game_id=1505, team_id=22, player_id=5140] Roberto Hernandez (#6874) worked 8 innings, allowed 4 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1505, team_id=22, player_id=6874]",
+        "1981-08-25 — Philadelphia beat Pittsburgh 2-1 in 9 innings. [games.csv game_id=1515 date=1981-08-25 league_id=200 game_type=0 played=1] Miguel Vasquez (#6140) went 2-for-4 with 1 HR and 1 RBI. [players_game_batting.csv, game_id=1515, team_id=22, player_id=6140] Gilberto Flores (#4859) worked 8 innings, allowed 0 earned runs and struck out 6. [players_game_pitching_stats.csv, game_id=1515, team_id=22, player_id=4859]",
+        "1981-08-27 — Philadelphia beat New York 8-2 in 9 innings. [games.csv game_id=1531 date=1981-08-27 league_id=200 game_type=0 played=1] Rich Pena (#5140) went 2-for-5 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1531, team_id=22, player_id=5140] Mike Stanley (#2430) worked 8 innings, allowed 2 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1531, team_id=22, player_id=2430]",
+        "1981-08-28 — Philadelphia beat New York 11-2 in 9 innings. [games.csv game_id=1543 date=1981-08-28 league_id=200 game_type=0 played=1] Ron Stout (#3201) went 3-for-4 with 1 HR and 4 RBI. [players_game_batting.csv, game_id=1543, team_id=22, player_id=3201] Orlando Acosta (#1076) worked 9 innings, allowed 2 earned runs and struck out 2. [players_game_pitching_stats.csv, game_id=1543, team_id=22, player_id=1076]",
+        "1981-08-29 — Philadelphia beat New York 3-0 in 9 innings. [games.csv game_id=1555 date=1981-08-29 league_id=200 game_type=0 played=1] Javier Robinson (#4363) went 2-for-3 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1555, team_id=22, player_id=4363] Roberto Hernandez (#6874) worked 9 innings, allowed 0 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1555, team_id=22, player_id=6874]",
+        "Philadelphia scored 1 run apiece in innings 1, 5, 7. [games_score.csv game_id=1555 team=1, inning=1, 5, 7]",
+        "1981-08-30 — Philadelphia beat New York 10-0 in 9 innings. [games.csv game_id=1567 date=1981-08-30 league_id=200 game_type=0 played=1] Rich Pena (#5140) went 3-for-4 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1567, team_id=22, player_id=5140] Gilberto Flores (#4859) worked 7 2/3 innings, allowed 0 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1567, team_id=22, player_id=4859]",
+        "Philadelphia scored 3 of its 10 runs in inning 1. [games_score.csv game_id=1567 team=1, inning=1]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Philadelphia is 65-66 and trails Boston by 3 games in the ABC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 15,20,21,22]",
+        "Division records — Boston 68-63, Philadelphia 65-66, Pittsburgh 58-73, New York 54-77. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 15,20,21,22]",
+        "Over its last 7 games the club went 7-0, scoring 51 runs and allowing 11. Season totals are 530 scored and 511 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=22. Recent game IDs 1495, 1505, 1515, 1531, 1543, 1555, 1567]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Boston Patriots, Philadelphia is 10-9 with 73 runs scored and 62 allowed. [games.csv 1981 completed regular season, team IDs 22/20, latest game #1495, 1981-08-23]",
+        "Against Pittsburgh Express, Philadelphia is 9-7 with 60 runs scored and 58 allowed. [games.csv 1981 completed regular season, team IDs 22/21, latest game #1515, 1981-08-25]",
+        "Against New York Aces, Philadelphia is 12-6 with 92 runs scored and 57 allowed. [games.csv 1981 completed regular season, team IDs 22/15, latest game #1567, 1981-08-30]",
+        "Philadelphia visits Las Vegas Gamblers in the next listed game on 1981-09-01. [games.csv game_id=1590, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Ron Stout (#3201) leads the club with 125 hits in 442 at-bats, including 11 home runs. [players_game_batting.csv joined to played games.csv, team_id=22, year=1981, through 1981-08-30]",
+        "Roberto Hernandez (#6874) leads the staff in innings pitched (224 2/3), with 142 strikeouts, 54 walks and a 3.16 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=22, year=1981, through 1981-08-30]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (0) — none. League titles (0) — none. [team_history.csv, team_id=22, league_id=200, year=1972–1980]",
+        "The club finished 72-90 in 1980, division place 4. [team_history_record.csv, team_id=22, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-31 export lists 26 active players. [players_roster_status.csv team_id=22 is_active=1 joined to players.csv player_id, export league date 1981-08-31]",
+        "P — Bastião Manata (#7174), Gilberto Flores (#4859), Hiroki Ono (#8636), Isaac Thomas (#8742), Marco Benavides (#1933), Marco Salinas (#6184), Matt Adams (#2734), Mike Stanley (#2430), Orlando Acosta (#1076), Ricardo Reynoso (#4440), Roberto Hernandez (#6874).",
+        "C — Antonio Garcia (#4515), Jose Cespedes (#4940).",
+        "1B — Rogelio Pineda (#31).",
+        "2B — Cortez Roldan (#5972), Danny Florez (#8946), Jesus Lopez (#6055), Johnny Amaro (#1052).",
+        "3B — Rich Pena (#5140).",
+        "SS — Jesus Gaona (#7151).",
+        "LF — Chris Fritz (#6290), Emanuel Avila (#4539), Kevin Pender (#75).",
+        "CF — Miguel Vasquez (#6140).",
+        "RF — Javier Robinson (#4363), Ron Stout (#3201)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Elijah Price (#9700), 18, P at Florence Tiger Sharks — drafted in 1981 with overall pick 6. [players.csv player_id=9700, team_affiliations.csv team_id=22 affiliated_team_id=85, teams.csv, export 1981-08-31]",
+        "Arturo Baez (#9108), 19, P at Onarga Veterans — drafted in 1980 with overall pick 9. [players.csv player_id=9108, team_affiliations.csv team_id=22 affiliated_team_id=125, teams.csv, export 1981-08-31]",
+        "Tony Cobb (#8778), 25, C at Glendale Owls — drafted in 1978 with overall pick 10. [players.csv player_id=8778, team_affiliations.csv team_id=22 affiliated_team_id=34, teams.csv, export 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "No dated trade involving team #22 appears in this season's trade_history.csv through 1981-08-31."
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Philadelphia stand against its division opponents? Philadelphia is 65-66 and trails Boston by 3 games in the ABC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 15,20,21,22]",
+        "Will the next series change Philadelphia's recent scoring margin? Over its last 7 games the club went 7-0, scoring 51 runs and allowing 11. Season totals are 530 scored and 511 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=22. Recent game IDs 1495, 1505, 1515, 1531, 1543, 1555, 1567]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Philadelphia Fury is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Philadelphia Fury is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "22:1981:division",
+      "question": "Where does Philadelphia stand against its division opponents?",
+      "evidence": "Philadelphia is 65-66 and trails Boston by 3 games in the ABC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 15,20,21,22]"
+    },
+    {
+      "key": "22:1981:runs",
+      "question": "Will the next series change Philadelphia's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 7-0, scoring 51 runs and allowing 11. Season totals are 530 scored and 511 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=22. Recent game IDs 1495, 1505, 1515, 1531, 1543, 1555, 1567]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1459,
+      "date": "1981-08-20",
+      "home_id": 20,
+      "away_id": 22,
+      "runs_away": 0,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "Philadelphia 0, Boston 3",
+      "source": "games.csv game_id=1459 date=1981-08-20 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1471,
+      "date": "1981-08-21",
+      "home_id": 20,
+      "away_id": 22,
+      "runs_away": 0,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Philadelphia 0, Boston 2",
+      "source": "games.csv game_id=1471 date=1981-08-21 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1483,
+      "date": "1981-08-22",
+      "home_id": 20,
+      "away_id": 22,
+      "runs_away": 7,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Philadelphia 7, Boston 2",
+      "source": "games.csv game_id=1483 date=1981-08-22 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1495,
+      "date": "1981-08-23",
+      "home_id": 20,
+      "away_id": 22,
+      "runs_away": 11,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Philadelphia 11, Boston 2",
+      "source": "games.csv game_id=1495 date=1981-08-23 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1505,
+      "date": "1981-08-24",
+      "home_id": 22,
+      "away_id": 21,
+      "runs_away": 4,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Pittsburgh 4, Philadelphia 6",
+      "source": "games.csv game_id=1505 date=1981-08-24 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1515,
+      "date": "1981-08-25",
+      "home_id": 22,
+      "away_id": 21,
+      "runs_away": 1,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Pittsburgh 1, Philadelphia 2",
+      "source": "games.csv game_id=1515 date=1981-08-25 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1531,
+      "date": "1981-08-27",
+      "home_id": 22,
+      "away_id": 15,
+      "runs_away": 2,
+      "runs_home": 8,
+      "innings": 9,
+      "summary": "New York 2, Philadelphia 8",
+      "source": "games.csv game_id=1531 date=1981-08-27 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1543,
+      "date": "1981-08-28",
+      "home_id": 22,
+      "away_id": 15,
+      "runs_away": 2,
+      "runs_home": 11,
+      "innings": 9,
+      "summary": "New York 2, Philadelphia 11",
+      "source": "games.csv game_id=1543 date=1981-08-28 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1555,
+      "date": "1981-08-29",
+      "home_id": 22,
+      "away_id": 15,
+      "runs_away": 0,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "New York 0, Philadelphia 3",
+      "source": "games.csv game_id=1555 date=1981-08-29 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1567,
+      "date": "1981-08-30",
+      "home_id": 22,
+      "away_id": 15,
+      "runs_away": 0,
+      "runs_home": 10,
+      "innings": 9,
+      "summary": "New York 0, Philadelphia 10",
+      "source": "games.csv game_id=1567 date=1981-08-30 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1459,
+    1471,
+    1483,
+    1495,
+    1505,
+    1515,
+    1531,
+    1543,
+    1555,
+    1567
+  ],
+  "transactions": [],
+  "roster_ids": [
+    31,
+    75,
+    1052,
+    1076,
+    1933,
+    2430,
+    2734,
+    3201,
+    4363,
+    4440,
+    4515,
+    4539,
+    4859,
+    4940,
+    5140,
+    5972,
+    6055,
+    6140,
+    6184,
+    6290,
+    6874,
+    7151,
+    7174,
+    8636,
+    8742,
+    8946
+  ],
+  "roster": [
+    {
+      "player_id": 31,
+      "name": "Rogelio Pineda (#31)",
+      "age": 34,
+      "position": "1B",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5972,
+      "name": "Cortez Roldan (#5972)",
+      "age": 28,
+      "position": "2B",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8946,
+      "name": "Danny Florez (#8946)",
+      "age": 23,
+      "position": "2B",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6055,
+      "name": "Jesus Lopez (#6055)",
+      "age": 25,
+      "position": "2B",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1052,
+      "name": "Johnny Amaro (#1052)",
+      "age": 36,
+      "position": "2B",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5140,
+      "name": "Rich Pena (#5140)",
+      "age": 29,
+      "position": "3B",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4515,
+      "name": "Antonio Garcia (#4515)",
+      "age": 31,
+      "position": "C",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4940,
+      "name": "Jose Cespedes (#4940)",
+      "age": 29,
+      "position": "C",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6140,
+      "name": "Miguel Vasquez (#6140)",
+      "age": 27,
+      "position": "CF",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6290,
+      "name": "Chris Fritz (#6290)",
+      "age": 23,
+      "position": "LF",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4539,
+      "name": "Emanuel Avila (#4539)",
+      "age": 27,
+      "position": "LF",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 75,
+      "name": "Kevin Pender (#75)",
+      "age": 36,
+      "position": "LF",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7174,
+      "name": "Bastião Manata (#7174)",
+      "age": 23,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4859,
+      "name": "Gilberto Flores (#4859)",
+      "age": 26,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8636,
+      "name": "Hiroki Ono (#8636)",
+      "age": 28,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8742,
+      "name": "Isaac Thomas (#8742)",
+      "age": 26,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1933,
+      "name": "Marco Benavides (#1933)",
+      "age": 34,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6184,
+      "name": "Marco Salinas (#6184)",
+      "age": 27,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2734,
+      "name": "Matt Adams (#2734)",
+      "age": 29,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2430,
+      "name": "Mike Stanley (#2430)",
+      "age": 33,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1076,
+      "name": "Orlando Acosta (#1076)",
+      "age": 33,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4440,
+      "name": "Ricardo Reynoso (#4440)",
+      "age": 32,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6874,
+      "name": "Roberto Hernandez (#6874)",
+      "age": 23,
+      "position": "P",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4363,
+      "name": "Javier Robinson (#4363)",
+      "age": 30,
+      "position": "RF",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3201,
+      "name": "Ron Stout (#3201)",
+      "age": 29,
+      "position": "RF",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7151,
+      "name": "Jesus Gaona (#7151)",
+      "age": 25,
+      "position": "SS",
+      "team_id": 22,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 9700,
+      "name": "Elijah Price (#9700)",
+      "age": 18,
+      "position": "P",
+      "team_id": 85,
+      "injury_flag": 1,
+      "day_to_day_flag": 1,
+      "draft_year": 1981,
+      "draft_pick": 6,
+      "affiliate": "Florence Tiger Sharks"
+    },
+    {
+      "player_id": 9108,
+      "name": "Arturo Baez (#9108)",
+      "age": 19,
+      "position": "P",
+      "team_id": 125,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 9,
+      "affiliate": "Onarga Veterans"
+    },
+    {
+      "player_id": 8778,
+      "name": "Tony Cobb (#8778)",
+      "age": 25,
+      "position": "C",
+      "team_id": 34,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1978,
+      "draft_pick": 10,
+      "affiliate": "Glendale Owls"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1495,
+    1505,
+    1515,
+    1531,
+    1543,
+    1555,
+    1567
+  ],
+  "continuity": {
+    "threads": {
+      "22:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Where does Philadelphia stand against its division opponents?",
+        "evidence": "Philadelphia is 65-66 and trails Boston by 3 games in the ABC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 15,20,21,22]",
+        "status": "watching"
+      },
+      "22:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Will the next series change Philadelphia's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 7-0, scoring 51 runs and allowing 11. Season totals are 530 scored and 511 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=22. Recent game IDs 1495, 1505, 1515, 1531, 1543, 1555, 1567]",
+        "status": "watching"
+      },
+      "22:1981:rival:20": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Philadelphia–Boston game do to the division race?",
+        "evidence": "Philadelphia visits Boston Patriots in the next listed game on 1981-08-20. [games.csv game_id=1459, played=0] Philadelphia is 57-64 and trails Boston by 4 games in the ABC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 15,20,21,22]",
+        "status": "carried from earlier coverage"
+      }
+    },
+    "roster_ids": [
+      31,
+      75,
+      1052,
+      1076,
+      1933,
+      2430,
+      2734,
+      3201,
+      4363,
+      4440,
+      4515,
+      4539,
+      4859,
+      4940,
+      5140,
+      5972,
+      6055,
+      6140,
+      6184,
+      6290,
+      6874,
+      7151,
+      7174,
+      8636,
+      8742,
+      8946
+    ],
+    "names": {
+      "31": "Rogelio Pineda (#31)",
+      "5972": "Cortez Roldan (#5972)",
+      "8946": "Danny Florez (#8946)",
+      "6055": "Jesus Lopez (#6055)",
+      "1052": "Johnny Amaro (#1052)",
+      "5140": "Rich Pena (#5140)",
+      "4515": "Antonio Garcia (#4515)",
+      "4940": "Jose Cespedes (#4940)",
+      "6140": "Miguel Vasquez (#6140)",
+      "6290": "Chris Fritz (#6290)",
+      "4539": "Emanuel Avila (#4539)",
+      "75": "Kevin Pender (#75)",
+      "7174": "Bastião Manata (#7174)",
+      "4859": "Gilberto Flores (#4859)",
+      "8636": "Hiroki Ono (#8636)",
+      "8742": "Isaac Thomas (#8742)",
+      "1933": "Marco Benavides (#1933)",
+      "6184": "Marco Salinas (#6184)",
+      "2734": "Matt Adams (#2734)",
+      "2430": "Mike Stanley (#2430)",
+      "1076": "Orlando Acosta (#1076)",
+      "4440": "Ricardo Reynoso (#4440)",
+      "6874": "Roberto Hernandez (#6874)",
+      "4363": "Javier Robinson (#4363)",
+      "3201": "Ron Stout (#3201)",
+      "7151": "Jesus Gaona (#7151)"
+    },
+    "flags": {
+      "31": [
+        0,
+        0
+      ],
+      "5972": [
+        0,
+        0
+      ],
+      "8946": [
+        0,
+        0
+      ],
+      "6055": [
+        0,
+        0
+      ],
+      "1052": [
+        0,
+        0
+      ],
+      "5140": [
+        0,
+        0
+      ],
+      "4515": [
+        0,
+        0
+      ],
+      "4940": [
+        0,
+        0
+      ],
+      "6140": [
+        0,
+        0
+      ],
+      "6290": [
+        0,
+        0
+      ],
+      "4539": [
+        0,
+        0
+      ],
+      "75": [
+        0,
+        0
+      ],
+      "7174": [
+        0,
+        0
+      ],
+      "4859": [
+        0,
+        0
+      ],
+      "8636": [
+        0,
+        0
+      ],
+      "8742": [
+        0,
+        0
+      ],
+      "1933": [
+        0,
+        0
+      ],
+      "6184": [
+        0,
+        0
+      ],
+      "2734": [
+        0,
+        0
+      ],
+      "2430": [
+        0,
+        0
+      ],
+      "1076": [
+        0,
+        0
+      ],
+      "4440": [
+        0,
+        0
+      ],
+      "6874": [
+        0,
+        0
+      ],
+      "4363": [
+        0,
+        0
+      ],
+      "3201": [
+        0,
+        0
+      ],
+      "7151": [
+        0,
+        0
+      ]
+    },
+    "deals": {}
+  },
+  "previous_edition": "1981-08-19_2acae29146076f62"
+}

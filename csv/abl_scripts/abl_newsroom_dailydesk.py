@@ -7,6 +7,7 @@ from pathlib import Path
 from abl_newsroom_beats import day, game_records, record, rows, wl
 from abl_newsroom_print import write_report
 from abl_newsroom_slate import build_slate, count, gap, race_order
+from abl_player_games import player_game_rows
 
 
 def read(path):
@@ -152,14 +153,15 @@ def division_brief(division, members, now, before, finals, future, clubs, cutoff
                 scheduled_game_ids=[g["game_id"] for g in next_games],evidence=refs+[game_ref(g) for g in today+next_games])
 
 
-def performances(raw, admitted, people):
+def performances(raw, admitted, people, reconciliation=None):
     """Dated player evidence in the games this edition added or corrected."""
     by_player, actors = defaultdict(list), defaultdict(list)
+    if not admitted:
+        return by_player, actors
+    year = day(next(iter(admitted.values()))["date"]).year
     for file,kind in [("players_game_batting","batting"),("players_game_pitching_stats","pitching")]:
-        for row in rows(raw,file):
+        for row in player_game_rows(raw,file+".csv",year,admitted,reconciliation):
             gid=int(row["game_id"])
-            if gid not in admitted or row["league_id"]!="200" or row["level_id"]!="1":
-                continue
             tid,pid=int(row["team_id"]),int(row["player_id"])
             g=admitted[gid]
             if tid not in (g["home_id"],g["away_id"]) or int(row["year"])!=day(g["date"]).year:
@@ -314,12 +316,13 @@ def build_desk(stage: Path, intel: Path, previous: dict, cycle: str):
     native_evidence=defaultdict(list)
     for row in table(intel/"story_evidence.csv"):
         native_evidence[row["candidate_id"]].append(row)
-    slate=build_slate(raw,cutoff,beats,sources,previous,cycle)
+    reconciliation=v.get("player_game_reconciliation")
+    slate=build_slate(raw,cutoff,beats,sources,previous,cycle,reconciliation=reconciliation)
     record_pitches(stage,slate,v,cycle,raw)
     clubs,book,divisions,context=daily_state(raw,cutoff,beats)
     changes=dict(new=set(ledger["completed_game_ids"]),revised=set(ledger["corrected_game_ids"]))
     people={int(r["player_id"]):f"{r['first_name']} {r['last_name']}" for r in rows(raw,"players")}
-    by_player,best=performances(raw,{g:book[g] for g in changes["new"]|changes["revised"]},people)
+    by_player,best=performances(raw,{g:book[g] for g in changes["new"]|changes["revised"]},people,reconciliation)
     items=[]
     for team,b in slate["teams"].items():
         for p in b["pitches"]:

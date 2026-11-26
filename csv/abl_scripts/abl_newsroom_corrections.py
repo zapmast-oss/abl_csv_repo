@@ -7,6 +7,8 @@ from collections import defaultdict
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
+from abl_player_games import BATTING, player_game_rows
+
 
 PLAYER_TABLES = ("players_game_batting.csv", "players_game_pitching_stats.csv")
 ROW_IDS = {"league_id", "year", "level_id", "game_id", "team_id", "player_id"}
@@ -19,11 +21,13 @@ def _manifest_hashes(directory: Path) -> dict:
     return json.loads(manifest.read_text(encoding="utf-8"))["hashes"]
 
 
-def _line_groups(path: Path, game_ids: set[int], season: int) -> dict:
+def _line_groups(path: Path, game_ids: set[int], season: int, reconciliation=None) -> dict:
     """Stable record identity plus a multiset, so CSV order has no editorial meaning."""
     grouped = defaultdict(list)
     with path.open(encoding="utf-8-sig", newline="") as source:
-        for row in csv.DictReader(source):
+        records = (player_game_rows(path.parent, path.name, season, game_ids, reconciliation)
+                   if path.name == BATTING and reconciliation else csv.DictReader(source))
+        for row in records:
             gid = int(row["game_id"])
             if gid not in game_ids:
                 continue
@@ -74,7 +78,8 @@ def _describe(key, filename, before, after):
     return None
 
 
-def changed_lines(old_dir: Path, new_dir: Path, common_game_ids, season: int) -> dict[int, list[str]]:
+def changed_lines(old_dir: Path, new_dir: Path, common_game_ids, season: int, *,
+                  previous_reconciliation=None, reconciliation=None) -> dict[int, list[str]]:
     """Compare only completed games shared by the previous and new verified editions."""
     old_dir, new_dir = Path(old_dir), Path(new_dir)
     valid_games = {int(gid) for gid in common_game_ids}
@@ -83,10 +88,11 @@ def changed_lines(old_dir: Path, new_dir: Path, common_game_ids, season: int) ->
         return {}
     old_hashes, new_hashes = _manifest_hashes(old_dir), _manifest_hashes(new_dir)
     for filename in (*PLAYER_TABLES, "games_score.csv"):
-        if filename in old_hashes and old_hashes[filename] == new_hashes.get(filename):
+        same_rules = filename != BATTING or previous_reconciliation == reconciliation
+        if same_rules and filename in old_hashes and old_hashes[filename] == new_hashes.get(filename):
             continue
-        old = _line_groups(old_dir / filename, valid_games, int(season))
-        new = _line_groups(new_dir / filename, valid_games, int(season))
+        old = _line_groups(old_dir / filename, valid_games, season, previous_reconciliation)
+        new = _line_groups(new_dir / filename, valid_games, season, reconciliation)
         for key in sorted(old.keys() | new.keys()):
             before, after = sorted(old.get(key, ())), sorted(new.get(key, ()))
             if before == after:

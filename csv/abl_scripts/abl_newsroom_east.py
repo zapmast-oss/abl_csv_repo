@@ -7,6 +7,7 @@ from itertools import groupby
 from pathlib import Path
 
 from abl_newsroom_beats import day, full_name, game_records, innings, percentage, record, rows, wl
+from abl_player_games import player_game_rows
 
 
 MIAMI, ATLANTA, CHARLOTTE, TAMPA = 1, 3, 6, 8
@@ -33,7 +34,7 @@ def piece(title, sections, evidence, trigger):
 
 
 class EastDesk:
-    def __init__(self, raw, cutoff, beats):
+    def __init__(self, raw, cutoff, beats, reconciliation=None):
         self.raw = Path(raw)
         self.cutoff = day(cutoff)
         self.beats = beats
@@ -65,13 +66,9 @@ class EastDesk:
             ("bat", "players_game_batting", ("g", "gs", "ab", "h", "hr", "rbi")),
             ("pit", "players_game_pitching_stats", ("g", "gs", "outs", "er", "k", "bb")),
         ):
-            for r in rows(self.raw, filename):
-                if r["league_id"] != "200" or r["level_id"] != "1" or int(r["year"]) != self.cutoff.year:
-                    continue
+            for r in player_game_rows(self.raw, filename + ".csv", self.cutoff.year, self.games, reconciliation):
                 gid, team = int(r["game_id"]), int(r["team_id"])
-                g = self.games.get(gid)
-                if not g:
-                    continue
+                g = self.games[gid]
                 if team not in (g["home_id"], g["away_id"]):
                     raise ValueError(f"Unrelated team {team} in {filename}.csv game {gid}")
                 self.stats[kind, team, int(r["player_id"])].append(
@@ -390,11 +387,11 @@ class EastDesk:
             refs, f"return-to-east:{c_anchor}:{m_anchor}:charlotte-ahead")
 
 
-def build_east(raw_dir, cutoff, new_game_ids, beats, snapshot_date=None):
+def build_east(raw_dir, cutoff, new_game_ids, beats, snapshot_date=None, *, reconciliation=None):
     """Develop supported investigations. Empty slots deliberately yield to the wider editorial desk."""
     if day(cutoff).year != 1981 or not EAST <= beats.keys():
         return {"teams": {}, "division": None}
-    desk = EastDesk(raw_dir, cutoff, beats)
+    desk = EastDesk(raw_dir, cutoff, beats, reconciliation)
     if set(map(int, new_game_ids)) - desk.games.keys():
         raise ValueError("East articles received unverified completed game IDs")
     for team in EAST:

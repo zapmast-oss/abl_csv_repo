@@ -1,0 +1,604 @@
+{
+  "season": 1981,
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "day": {
+    "scheduled": 12,
+    "completed": 12,
+    "remaining": 0,
+    "remaining_game_ids": [],
+    "status": "COMPLETE"
+  },
+  "hashes": {
+    "cities.csv": "808b20869afab690cc2befc0acb03b3aa6857029b6bfb5b5709499030bb95439",
+    "coaches.csv": "20f0c41705263ef9a8e97fa9a65093f1149c514104c727ae8df63e6225931384",
+    "continents.csv": "9a6823f9099994048e3760698da41c92e483867bec3397f0c2c4cd1a9cc7250a",
+    "divisions.csv": "3c3455fccb3ca4eb28f9a5703c43b1566cca713a88499ae9d8060c276ca2cad4",
+    "game_logs.csv": "412d94d11a9e0da2bad7db19186d6ad9a7aa7e26a82d9e3535fb3ac0b58e1f31",
+    "games.csv": "aaeee5f3dfd3e8d2a01778e7f82310ec13db6eb81d7a1de2a90bf6814825b5f4",
+    "games_score.csv": "0ab5443d6193a4acb754365819a21ffde5e65490a3e1d4f45ea257d2ee33aa1d",
+    "human_manager_history.csv": "1baa85e8186ef4bf4c32c4bb61edf937ac3414fa4b9bb18d767286fe256cbe3d",
+    "human_manager_history_batting_stats.csv": "17706e246aedbd5f85a72266bd563fdf37333a11cc47dea7306f0d6e0b75eeb8",
+    "human_manager_history_fielding_stats_stats.csv": "6a26b1c2f3f8a41125225e640af6e2bc1bf0b40ae3522e1b457291aa1b398072",
+    "human_manager_history_financials.csv": "05ae4173ed28b87e59f948d3dd28a4f03e72af22494eea415109c93ebf97b518",
+    "human_manager_history_pitching_stats.csv": "d05ce1238f20c5f23efc950b4f91770157e7037096b121126583d897b6cb0469",
+    "human_manager_history_record.csv": "abde9f1efe1cc0e46c2a57d59081873860453b997af6501c701b1fff8f8891d0",
+    "human_managers.csv": "5d969fd8359eac4231eddfbcf74132faf7a3d6956a0764ef437a7ff619bfd26d",
+    "language_data.csv": "8fe48bc9a8921e3e31491e6c23eaeb51d06b949e725d8ccf2b266887b0d6e3d9",
+    "languages.csv": "0a08533dd9b8648b1ee2ecd1e804c07ab7e89a63b5524f800c7e8ddffd5fc66f",
+    "league_events.csv": "5008d813d07393d93f571fca1076de854f4e56ac1e35b6f60102a14deb8407c8",
+    "league_history.csv": "c7b4761a3b05edeae1e544951fde9285c9027fc63c65348e96a1a14e8cf4422a",
+    "league_history_all_star.csv": "af2e3f902d1366aebfe4993ed11fe7fb8ccc1ebfa02a52f7ec919e2d71ba0153",
+    "league_history_batting_stats.csv": "f26b7cdb376aef5dd0bc641d6cd82b3451c3272d98a8be4b9eee77c5f2d1c573",
+    "league_history_fielding_stats.csv": "8ba9c29a8b7081889f0bc2e995cab979beafd0f2e45f22332ab2f060d1e8190b",
+    "league_history_pitching_stats.csv": "0f925f30b39bd72d6d6d8cd6b4310e3944f88555a9d579f65e33bf108176a61b",
+    "league_playoff_fixtures.csv": "88f2755a80f9b806b3b11b1a03f9fbd99ff5f115b7d35dd1adcd2cab55fe36e6",
+    "league_playoffs.csv": "b3480cd5adcb4b48db291c3e27033c0b852f97dd4a73f2609215826419605b65",
+    "leagues.csv": "cb514c68f6be86a82d07c84fc2361df2958021ae1f1526ee4a3066e6c84b89a5",
+    "messages.csv": "eb9824065fd4fd03a0abed21e148a1aab87224f80f9b03a398286aac726f9531",
+    "nations.csv": "1468683ae8ba354376bee8a0153b39f49766787c85a92315287dcb69067874ad",
+    "parks.csv": "b9b9d31e39db434ddf610fcc9f4db02ac7952ac9c4380d68acfbef89c513c2a6",
+    "players.csv": "515d446bb899b0f903108da8e157cab39801ef1d50fe86937d20f1c891215d33",
+    "players_at_bat_batting_stats.csv": "279cbfa251fce8eb77a2407ef57472c6e272e539ccc0c675d9c70dca9d73a6ec",
+    "players_awards.csv": "1e4c4150ec8fd12d139f7a86d8b912195fdda72098db989766a83c8e0ade4ea5",
+    "players_batting.csv": "b44956b762687f54220c4e321591a4c493379cd14e051e7c3006c87086b91e9f",
+    "players_career_batting_stats.csv": "9f978b86f8bddf7074929c46ce26d1b1367daa5988babed62af3463bce53295f",
+    "players_career_fielding_stats.csv": "6f5f35af88d8c1f2894c623f675ced9db2230fd4432e3b5b8a751fa7ee9f4305",
+    "players_career_pitching_stats.csv": "7b077ef53ed3f798122d45ce4827af19776c38ece54cecef01da478204ea048b",
+    "players_contract.csv": "31f5232616696dd57a5fcded00edeba8514741035575385488ed4d507488f516",
+    "players_contract_extension.csv": "a1ba9788db5c274b96431a7cb4b4cbeaa68ec55f7f19db0f21f8c71a5da0adfc",
+    "players_fielding.csv": "22a1a9f2a6d1c5ec2903327e1e428ef8969901af0e6c917bf171ae5ba71bad6d",
+    "players_game_batting.csv": "7db764f715dc0d823af5426ebcc12a25e06579bd8da1c078c9ad69616af278bc",
+    "players_game_pitching_stats.csv": "d943dab8bfc6d7f5ba96eede7e03847a5ce78f8bfb36341e6a7f69d0ad369a07",
+    "players_individual_batting_stats.csv": "bddfe423e3be3941d77905b5f04dad187d533cce3cb87a7ca17eeb5993c2d153",
+    "players_injury_history.csv": "a186cb95f1f0ce114db749b82afeb5f33a0659ddb1ff424869e3fe0c42074b32",
+    "players_league_leader.csv": "ba44a40fd28257ed6323ac2df910069bee7e66afaacd238487d8c0cdbd46c607",
+    "players_pitching.csv": "b75bec9ea3fb7825edc09b0aafcedd7dcb19c390175d00ff7726f0173ac46e96",
+    "players_roster_status.csv": "66ea2de3d037da13cc7047c8a1b669f7fd94ae68d105f083eb667f1deba260c8",
+    "players_salary_history.csv": "5773672eefe7bb19258d3d3b25949c858203c3b673df74ac7a6e7826e16aa59d",
+    "players_scouted_ratings.csv": "39a396118cf74ed61b17a4936d85aa484b1eeea8faec16b926150a2d481270a9",
+    "players_streak.csv": "bbec0a419e18259d29844e0c4b9dcadb427685a27bdcfc4a7019669c92e254f6",
+    "players_value.csv": "d1c580e1b73b732128cd854fcbeab12b93e8e8341ba0d491e2717fda376f2b58",
+    "projected_starting_pitchers.csv": "2bd71eb51709a98de5577a1f2a0eb249bc30db4c25bad21bae76783f43726b4b",
+    "states.csv": "c2f7564a56665b98d1e2328e9fa7451d3c1118816646aaac844617cc6efbf0ec",
+    "sub_leagues.csv": "c027c99538ea98956378043cf2357b1d6eb46dfd965805f1d3b47f7155717c2a",
+    "team_affiliations.csv": "46a126eb135b7f2aa4ab1f79839c9a34d1d5a05e90e4dda32e6a4eead29706c8",
+    "team_batting_stats.csv": "5feefac87d77da5e51fd1dcf783ee27d1d6fed516b5cd31f6052b92a8e52a96f",
+    "team_bullpen_pitching_stats.csv": "c1f81eb5a9e5bef2cbc29333f4348fd7cca70917ca408617e3e6c1e5f27017ba",
+    "team_fielding_stats_stats.csv": "6ef5d8b9a49b43f2bb1a2599cca1f5473c0097c9402161c441719133b40bc43c",
+    "team_financials.csv": "5f5cc11d1f27bf82c7e4aa2071d97294e12183110d4208cb593c3417d30041f9",
+    "team_history.csv": "d94291744c4b797f6393538a05a6dca536be3e9d7ce774b0ab3e65af95cd7236",
+    "team_history_batting_stats.csv": "a8bc5887a32a0774469db28fea01264bc651f01ce38d1c69295e7cb6b4f5e973",
+    "team_history_fielding_stats_stats.csv": "e930c6efd266da4926388948aa16f55becbccf4f38080aaada304e0a61438d09",
+    "team_history_financials.csv": "8c7ea34b100dbbd51e1982dd64850b1c647c21a2b4294c809102a802468286b1",
+    "team_history_pitching_stats.csv": "fe88698368117ab53e655c967865ad627c927a74584571694f8583a5012fed30",
+    "team_history_record.csv": "60236112ecb07f7e8f5510e541b8099fc2a33bb430b58b9b448a5ea497585f9e",
+    "team_last_financials.csv": "cee0ecdf68b6d0013458947e7d1d249c833e3ab2692fc76309c79d31ca9b1d1d",
+    "team_pitching_stats.csv": "08427e95c0d2a58044de20e4f27d285e871af7704b0b1e8aa293a72412dfc949",
+    "team_record.csv": "d0562e3df5ab0d5665155bbe7b232b6c13dd6634d31040d5f8ddfb26eafdb482",
+    "team_relations.csv": "f66b5de5b220205899722c1236c47dd60c04486bf5143bec65183a745eda0927",
+    "team_roster.csv": "8ba7287940bfa122a8bedd894d4ee32919e1a121a8f6a427d419cd6e38d86992",
+    "team_roster_staff.csv": "6e37cf8f60e7d8385f1a685fd356b1e6001186e0fa5742bde5d7407693307ae6",
+    "team_starting_pitching_stats.csv": "4f258d8420ce16b1f3adaea7de9c8a2e0f91ff1de4b4651516a57f148379b4dd",
+    "teams.csv": "21e6a928470510bcadcd0d2b3b7d40425b5c97b7a1f75a7aab4ffc59da75e65c",
+    "trade_history.csv": "5115739b1b00c6a98b0795d63562d3fbc7fc7d52caa72e7c05e81f1edb189089"
+  },
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "raw_dir": "C:\\sbv_repo\\abl_csv_repo\\output\\newsroom\\snapshots\\461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "live_dir": "C:\\Users\\earld\\OneDrive\\Documents\\Out of the Park Developments\\OOTP Baseball 26\\saved_games\\Action Baseball League.lg\\import_export\\csv",
+  "preflight": {
+    "season": 1981,
+    "league_id": "200",
+    "newsroom_date": "1981-08-31",
+    "target_as_of_date": "1981-08-30",
+    "source_latest_completed_game_date": "1981-08-30",
+    "earliest_completed_game_date": "1981-04-06",
+    "latest_completed_game_date": "1981-08-30",
+    "completed_regular_season_games": 1571,
+    "min_games_per_team": 130,
+    "max_games_per_team": 131,
+    "all_24_teams_represented": true,
+    "current_state_driver_files_used": [
+      "output/newsroom/snapshots/461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d/games.csv",
+      "output/newsroom/snapshots/461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d/games_score.csv",
+      "output/newsroom/snapshots/461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d/game_logs.csv"
+    ],
+    "driver_cross_checks": {
+      "games_score_complete": true,
+      "game_logs_complete": true,
+      "team_record_reconciliation": true
+    },
+    "games_by_team": [
+      {
+        "team_id": "1",
+        "team_name": "Miami Hurricanes",
+        "games_played": 130
+      },
+      {
+        "team_id": "2",
+        "team_name": "Phoenix Firebirds",
+        "games_played": 131
+      },
+      {
+        "team_id": "3",
+        "team_name": "Atlanta Kings",
+        "games_played": 131
+      },
+      {
+        "team_id": "4",
+        "team_name": "Dallas Rustlers",
+        "games_played": 131
+      },
+      {
+        "team_id": "5",
+        "team_name": "Detroit Dukes",
+        "games_played": 131
+      },
+      {
+        "team_id": "6",
+        "team_name": "Charlotte Colonels",
+        "games_played": 131
+      },
+      {
+        "team_id": "7",
+        "team_name": "San Diego Seraphs",
+        "games_played": 131
+      },
+      {
+        "team_id": "8",
+        "team_name": "Tampa Bay Storm",
+        "games_played": 131
+      },
+      {
+        "team_id": "9",
+        "team_name": "Los Angeles Cobras",
+        "games_played": 131
+      },
+      {
+        "team_id": "10",
+        "team_name": "San Francisco Warriors",
+        "games_played": 131
+      },
+      {
+        "team_id": "11",
+        "team_name": "Minneapolis Blizzard",
+        "games_played": 130
+      },
+      {
+        "team_id": "12",
+        "team_name": "Chicago Fire",
+        "games_played": 131
+      },
+      {
+        "team_id": "13",
+        "team_name": "Denver Rocketeers",
+        "games_played": 131
+      },
+      {
+        "team_id": "14",
+        "team_name": "Cincinnati Cougars",
+        "games_played": 131
+      },
+      {
+        "team_id": "15",
+        "team_name": "New York Aces",
+        "games_played": 131
+      },
+      {
+        "team_id": "16",
+        "team_name": "Nashville Blues",
+        "games_played": 131
+      },
+      {
+        "team_id": "17",
+        "team_name": "Las Vegas Gamblers",
+        "games_played": 131
+      },
+      {
+        "team_id": "18",
+        "team_name": "Portland Lumberjacks",
+        "games_played": 131
+      },
+      {
+        "team_id": "19",
+        "team_name": "St. Louis Stallions",
+        "games_played": 131
+      },
+      {
+        "team_id": "20",
+        "team_name": "Boston Patriots",
+        "games_played": 131
+      },
+      {
+        "team_id": "21",
+        "team_name": "Pittsburgh Express",
+        "games_played": 131
+      },
+      {
+        "team_id": "22",
+        "team_name": "Philadelphia Fury",
+        "games_played": 131
+      },
+      {
+        "team_id": "23",
+        "team_name": "Houston Mavericks",
+        "games_played": 131
+      },
+      {
+        "team_id": "24",
+        "team_name": "Seattle Comets",
+        "games_played": 131
+      }
+    ],
+    "sortable_support_files_available": [
+      "abl_statistics_player_statistics_-_sortable_stats_player_bat_ratings.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_field_ratings.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_field_stats.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_indicative_1.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_indicative_2.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_misc_info.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_pitch_ratings.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+      "abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv"
+    ],
+    "stale_derivative_files_excluded": [
+      "csv/out/star_schema/monday_1981_standings_by_division.csv (32-game snapshot)",
+      "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv (32-game snapshot)",
+      "csv/out/star_schema/fact_player_batting.csv (preserved early snapshot)",
+      "csv/out/star_schema/fact_player_pitching.csv (preserved early snapshot)",
+      "csv/out/csv_out/z_ABL_Manager_Tendencies.csv (62-game snapshot)",
+      "csv/out/csv_out/z_ABL_Division_Leverage.csv (62-game snapshot)",
+      "csv/out/csv_out/z_ABL_Rotation_Stability.csv (62-game snapshot)"
+    ],
+    "verdict": "READY_FOR_CURRENT_RUN",
+    "story_work_safe_to_resume": true,
+    "checks": [
+      {
+        "check_name": "driver_files",
+        "value": "games.csv|games_score.csv|game_logs.csv",
+        "status": "PASS",
+        "details": "All approved drivers found and readable."
+      },
+      {
+        "check_name": "games_score_completed_game_coverage",
+        "value": "True",
+        "status": "PASS",
+        "details": "Covered 1571 of 1571 completed ABL game IDs through 1981-08-30."
+      },
+      {
+        "check_name": "game_logs_completed_game_coverage",
+        "value": "True",
+        "status": "PASS",
+        "details": "Covered 1571 of 1571 completed ABL game IDs through 1981-08-30."
+      },
+      {
+        "check_name": "team_record_reconciliation",
+        "value": "True",
+        "status": "PASS",
+        "details": "Computed G-W-L matches team_record.csv because the source capture does not extend beyond the requested cutoff."
+      },
+      {
+        "check_name": "source_latest_completed_game_date",
+        "value": "1981-08-30",
+        "status": "PASS",
+        "details": "Latest completed regular-season date present in the source capture before cutoff filtering."
+      },
+      {
+        "check_name": "earliest_completed_game_date",
+        "value": "1981-04-06",
+        "status": "PASS",
+        "details": "Earliest completed regular-season game within the requested season and cutoff."
+      },
+      {
+        "check_name": "latest_completed_game_date",
+        "value": "1981-08-30",
+        "status": "PASS",
+        "details": "Filtered evidence must end on the requested cutoff 1981-08-30."
+      },
+      {
+        "check_name": "completed_regular_season_games",
+        "value": "1571",
+        "status": "PASS",
+        "details": "Completed league-200 regular-season games with date <= 1981-08-30."
+      },
+      {
+        "check_name": "teams_represented",
+        "value": "24",
+        "status": "PASS",
+        "details": "Expected all 24 ABL major-league teams."
+      },
+      {
+        "check_name": "min_games_per_team",
+        "value": "130",
+        "status": "PASS",
+        "details": "Minimum completed games across ABL teams at the cutoff."
+      },
+      {
+        "check_name": "max_games_per_team",
+        "value": "131",
+        "status": "PASS",
+        "details": "A two-game spread is accepted for a partial-day cutoff and normal schedule balance."
+      },
+      {
+        "check_name": "sortable_support_files",
+        "value": "20",
+        "status": "PASS",
+        "details": "Supplemental only; cannot prove current date."
+      },
+      {
+        "check_name": "accepted_schema_drift",
+        "value": "2",
+        "status": "PASS",
+        "details": "Staff and team batting 13-column schemas accepted as forward standards."
+      },
+      {
+        "check_name": "stale_derivatives_excluded",
+        "value": "7",
+        "status": "PASS",
+        "details": "Excluded from current-state proof."
+      },
+      {
+        "check_name": "final_verdict",
+        "value": "READY_FOR_CURRENT_RUN",
+        "status": "PASS",
+        "details": "Story work is safe to resume only on READY_FOR_CURRENT_RUN."
+      }
+    ]
+  },
+  "core_files": [
+    "output/newsroom/snapshots/461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d/games.csv",
+    "output/newsroom/snapshots/461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d/games_score.csv",
+    "output/newsroom/snapshots/461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d/game_logs.csv"
+  ],
+  "promoted_matches": 72,
+  "promoted_different_files": [],
+  "log_exceptions": [
+    {
+      "game_id": "9",
+      "date": "1981-04-06",
+      "excluded_log_reason": "batting club Seattle Comets batting, final line St. Louis 11 - Seattle 2"
+    },
+    {
+      "game_id": "21",
+      "date": "1981-04-07",
+      "excluded_log_reason": "batting club Seattle Comets batting, final line St. Louis 7 - Seattle 5"
+    },
+    {
+      "game_id": "33",
+      "date": "1981-04-08",
+      "excluded_log_reason": "batting club Seattle Comets batting, final line St. Louis 1 - Seattle 2"
+    },
+    {
+      "game_id": "47",
+      "date": "1981-04-10",
+      "excluded_log_reason": "batting club Seattle Comets batting, final line Seattle 4 - Nashville 13"
+    },
+    {
+      "game_id": "59",
+      "date": "1981-04-11",
+      "excluded_log_reason": "batting club Seattle Comets batting, final line Seattle 8 - Nashville 6"
+    },
+    {
+      "game_id": "71",
+      "date": "1981-04-12",
+      "excluded_log_reason": "batting club Seattle Comets batting, final line Seattle 4 - Nashville 5"
+    }
+  ],
+  "player_game_reconciliation": {
+    "schema": 1,
+    "rule": "unfinished-game-zero-batting-placeholder",
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "season": 1981,
+    "cutoff": "1981-08-30",
+    "entries": [
+      {
+        "game_id": "1113",
+        "team_id": "19",
+        "player_id": "1547",
+        "game_date": "1981-08-20",
+        "prior_source_id": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+        "prior_innings": 5,
+        "final_innings": 9,
+        "prior_csv_row": 13077,
+        "retained": {
+          "csv_row": 14252,
+          "sha256": "5c678cf78f737e0ff4e93fbab81697e3ec5d7ce4f8f3496079e8032f5c2aa164"
+        },
+        "auxiliary": {
+          "csv_row": 14277,
+          "sha256": "a1d36f8a66f0305ce8b9e21798bba220ea89542fa1034253541fc7b1608d7cb7"
+        },
+        "prior_pa_rows": [
+          {
+            "csv_row": 26294,
+            "inning": 2,
+            "sha256": "22ad509288132411b548a5de089d8c62d368b1dcd17adcbdf445e16b1f109000"
+          },
+          {
+            "csv_row": 26295,
+            "inning": 4,
+            "sha256": "01cdc125f86ecd5e8a7636ce123ea393b1adee2cfa17a0519cf8d8f18da26ecd"
+          }
+        ],
+        "completed_pa_rows": [
+          {
+            "csv_row": 28158,
+            "inning": 2,
+            "sha256": "22ad509288132411b548a5de089d8c62d368b1dcd17adcbdf445e16b1f109000"
+          },
+          {
+            "csv_row": 28159,
+            "inning": 4,
+            "sha256": "01cdc125f86ecd5e8a7636ce123ea393b1adee2cfa17a0519cf8d8f18da26ecd"
+          }
+        ],
+        "play_by_play": [
+          {
+            "game_log_line": 66,
+            "inning": 2
+          },
+          {
+            "game_log_line": 148,
+            "inning": 4
+          }
+        ],
+        "prior_file_hashes": {
+          "games.csv": "4340442bcfb203f9fab2617034056ca43f8031976483851610a2acc02ec7bbaa",
+          "players_game_batting.csv": "6d1c393517fed97c0fae9107b169cdc5bf7696b0c21abf67009598a29051f605",
+          "players_at_bat_batting_stats.csv": "a6a98c0780f7c35d5229953a47a0fb0b3f07325bf9ef087fa761b8c03a848e3b"
+        },
+        "completed_file_hashes": {
+          "games.csv": "aaeee5f3dfd3e8d2a01778e7f82310ec13db6eb81d7a1de2a90bf6814825b5f4",
+          "players_game_batting.csv": "7db764f715dc0d823af5426ebcc12a25e06579bd8da1c078c9ad69616af278bc",
+          "players_at_bat_batting_stats.csv": "279cbfa251fce8eb77a2407ef57472c6e272e539ccc0c675d9c70dca9d73a6ec",
+          "game_logs.csv": "412d94d11a9e0da2bad7db19186d6ad9a7aa7e26a82d9e3535fb3ac0b58e1f31"
+        }
+      },
+      {
+        "game_id": "1113",
+        "team_id": "23",
+        "player_id": "19",
+        "game_date": "1981-08-20",
+        "prior_source_id": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+        "prior_innings": 5,
+        "final_innings": 9,
+        "prior_csv_row": 129,
+        "retained": {
+          "csv_row": 134,
+          "sha256": "339a1505758427ce959ec9fde7a92d40f754bfcf57cd210da35e4a86af38be43"
+        },
+        "auxiliary": {
+          "csv_row": 140,
+          "sha256": "73b782c997da06b62fa8b6198811f54666619464a01d1db1369931822b871f7f"
+        },
+        "prior_pa_rows": [
+          {
+            "csv_row": 473,
+            "inning": 1,
+            "sha256": "6dcae67c0f755c826c0b5529c0fed3ee2143dbdb643690af5a46d2b3d2b65f3c"
+          },
+          {
+            "csv_row": 474,
+            "inning": 4,
+            "sha256": "f5a3381eed0d846e9aafc72a09d4e315ef223df35b0b25202b867a9662f67d9b"
+          }
+        ],
+        "completed_pa_rows": [
+          {
+            "csv_row": 482,
+            "inning": 1,
+            "sha256": "6dcae67c0f755c826c0b5529c0fed3ee2143dbdb643690af5a46d2b3d2b65f3c"
+          },
+          {
+            "csv_row": 483,
+            "inning": 4,
+            "sha256": "f5a3381eed0d846e9aafc72a09d4e315ef223df35b0b25202b867a9662f67d9b"
+          }
+        ],
+        "play_by_play": [
+          {
+            "game_log_line": 40,
+            "inning": 1
+          },
+          {
+            "game_log_line": 185,
+            "inning": 4
+          }
+        ],
+        "prior_file_hashes": {
+          "games.csv": "4340442bcfb203f9fab2617034056ca43f8031976483851610a2acc02ec7bbaa",
+          "players_game_batting.csv": "6d1c393517fed97c0fae9107b169cdc5bf7696b0c21abf67009598a29051f605",
+          "players_at_bat_batting_stats.csv": "a6a98c0780f7c35d5229953a47a0fb0b3f07325bf9ef087fa761b8c03a848e3b"
+        },
+        "completed_file_hashes": {
+          "games.csv": "aaeee5f3dfd3e8d2a01778e7f82310ec13db6eb81d7a1de2a90bf6814825b5f4",
+          "players_game_batting.csv": "7db764f715dc0d823af5426ebcc12a25e06579bd8da1c078c9ad69616af278bc",
+          "players_at_bat_batting_stats.csv": "279cbfa251fce8eb77a2407ef57472c6e272e539ccc0c675d9c70dca9d73a6ec",
+          "game_logs.csv": "412d94d11a9e0da2bad7db19186d6ad9a7aa7e26a82d9e3535fb3ac0b58e1f31"
+        }
+      }
+    ],
+    "season_discrepancies": [
+      {
+        "native_table": "players_career_batting_stats.csv",
+        "team_id": "19",
+        "player_id": "1547",
+        "fields": {
+          "g": {
+            "ootp": 93,
+            "reconciled": 92
+          }
+        }
+      },
+      {
+        "native_table": "players_career_batting_stats.csv",
+        "team_id": "23",
+        "player_id": "19",
+        "fields": {
+          "g": {
+            "ootp": 83,
+            "reconciled": 82
+          }
+        }
+      },
+      {
+        "native_table": "team_batting_stats.csv",
+        "team_id": "19",
+        "player_id": null,
+        "fields": {
+          "gs": {
+            "ootp": 1178,
+            "reconciled": 1179
+          },
+          "pa": {
+            "ootp": 5044,
+            "reconciled": 5046
+          },
+          "ab": {
+            "ootp": 4350,
+            "reconciled": 4352
+          }
+        }
+      },
+      {
+        "native_table": "team_batting_stats.csv",
+        "team_id": "23",
+        "player_id": null,
+        "fields": {
+          "gs": {
+            "ootp": 1178,
+            "reconciled": 1179
+          },
+          "pa": {
+            "ootp": 5104,
+            "reconciled": 5106
+          },
+          "ab": {
+            "ootp": 4475,
+            "reconciled": 4477
+          },
+          "k": {
+            "ootp": 792,
+            "reconciled": 793
+          }
+        }
+      }
+    ],
+    "player_pitch_count_coverage": {
+      "native_nonzero": 525,
+      "derived_nonzero": 0,
+      "differing": 525
+    }
+  }
+}

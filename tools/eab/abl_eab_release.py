@@ -231,6 +231,8 @@ def media_links():
 def signature(world, issue_keys, media, token=None):
     digest = sha256()
     digest.update(canonical([world.source_id, sorted(issue_keys), world.history, media]).encode())
+    if getattr(world, "player_game_reconciliation", None):
+        digest.update(canonical(world.player_game_reconciliation).encode())
     if token:
         digest.update(canonical({"cloudflare_web_analytics": token}).encode())
     for path in sorted([*HERE.glob("abl_eab_*.py"), HERE / "site.css", HERE / "site.js"]):
@@ -309,6 +311,8 @@ class Publisher:
                 if expected and verified["source_id"] != expected:
                     raise ValueError("The validated EAB source differs from the production checkpoint.")
                 world = load_world(self.repo, verified, self.assets)
+                if world.player_game_reconciliation:
+                    self.log("player-game reconciliation", source=world.source_id, report=world.player_game_reconciliation)
                 receipt = self.publish_world(world, stage / "site", before_switch)
             except Exception as exc:
                 self.log("failed", error=str(exc))

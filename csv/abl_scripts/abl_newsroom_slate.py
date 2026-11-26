@@ -11,10 +11,11 @@ from fractions import Fraction
 from pathlib import Path
 
 from abl_newsroom_beats import day, game_records, innings, next_opponent, record, rows, wl
+from abl_player_games import player_game_rows
 
 
 REPO = Path(__file__).resolve().parents[2]
-BATTING = ("ab", "pa", "h", "hr", "rbi", "gs")
+BATTING = ("g", "ab", "pa", "h", "hr", "rbi", "k", "gs")
 PITCHING = ("outs", "er", "k", "gs", "g", "s")
 
 
@@ -69,25 +70,19 @@ def archive_board(clubs, cutoff):
     return prior
 
 
-def game_lines(raw, games, year):
+def game_lines(raw, games, year, reconciliation=None):
     """Keep dated appearances. A player can represent more than one club during a season."""
     by_player = {"bat": defaultdict(list), "pit": defaultdict(list)}
     by_club = {"bat": defaultdict(list), "pit": defaultdict(list)}
     for kind, file, columns in [("bat", "players_game_batting", BATTING),
                                 ("pit", "players_game_pitching_stats", PITCHING)]:
-        seen = set()
-        for row in rows(raw, file):
-            if row["league_id"] != "200" or row["level_id"] != "1" or int(row["year"]) != year:
-                continue
+        for row in player_game_rows(raw, file + ".csv", year, games, reconciliation):
             gid = int(row["game_id"])
-            game = games.get(gid)
-            if game is None:
-                continue
+            game = games[gid]
             tid, pid = int(row["team_id"]), int(row["player_id"])
             key = (tid, pid, gid)
-            if tid not in (game["home_id"], game["away_id"]) or key in seen:
+            if tid not in (game["home_id"], game["away_id"]):
                 raise ValueError(f"Unresolved participant in {file}.csv at team, player, game {key}")
-            seen.add(key)
             entry = (game["date"], gid, tid, pid, {c: int(row[c]) for c in columns})
             by_player[kind][pid].append(entry)
             by_club[kind][tid].append(entry)
@@ -588,7 +583,7 @@ def assess(item, old, previous_cutoff, cutoff, edition, covered):
                 coverage_reference=item["coverage_reference"], scheduled_game_id=item.get("scheduled_game_id"))
 
 
-def build_slate(raw_dir, cutoff, beats, candidates, previous, edition):
+def build_slate(raw_dir, cutoff, beats, candidates, previous, edition, *, reconciliation=None):
     raw = Path(raw_dir)
     when = day(cutoff)
     cutoff = when.isoformat()
@@ -614,7 +609,7 @@ def build_slate(raw_dir, cutoff, beats, candidates, previous, edition):
         if (beat["wins"],beat["losses"]) != (records[t]["wins"],records[t]["losses"]):
             raise ValueError(f"Slate and notebook records disagree for team {t}")
     upcoming = next_opponent(raw,when,clubs)
-    by_player,by_club = game_lines(raw,book,when.year)
+    by_player,by_club = game_lines(raw,book,when.year,reconciliation)
     old_history,old_results = defaultdict(dict),defaultdict(dict)
     for filename,index in [("team_history",old_history),("team_history_record",old_results)]:
         for row in rows(raw,filename):

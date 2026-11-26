@@ -1,0 +1,772 @@
+{
+  "team_id": 9,
+  "team": "Los Angeles Cobras",
+  "abbr": "LA",
+  "division": "NBC Western Division",
+  "conference": "NBC",
+  "wins": 68,
+  "losses": 63,
+  "gb": 2.0,
+  "priority": 4,
+  "division_leaders_change": true,
+  "division_leaders": [
+    2
+  ],
+  "intensity": "feature",
+  "headline": "Los Angeles beat San Diego 5-4",
+  "brief": "Los Angeles beat San Diego 5-4. [games.csv game_id=1493 date=1981-08-23 league_id=200 game_type=0 played=1] Los Angeles is 68-63 and trails Phoenix by 2 games in the NBC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 2,7,9,10]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-20 — Los Angeles beat San Diego 6-3 in 9 innings. [games.csv game_id=1457 date=1981-08-20 league_id=200 game_type=0 played=1] Ricky Lopez (#5907) went 2-for-4 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1457, team_id=9, player_id=5907] Enrique Laxton (#10095) worked 6 2/3 innings, allowed 2 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1457, team_id=9, player_id=10095]",
+        "1981-08-21 — Los Angeles beat San Diego 3-1 in 9 innings. [games.csv game_id=1469 date=1981-08-21 league_id=200 game_type=0 played=1] Bill Haywood (#5893) went 2-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1469, team_id=9, player_id=5893] Alex Gonzalez (#1239) worked 7 2/3 innings, allowed 1 earned run and struck out 7. [players_game_pitching_stats.csv, game_id=1469, team_id=9, player_id=1239]",
+        "1981-08-22 — Los Angeles beat San Diego 3-0 in 9 innings. [games.csv game_id=1481 date=1981-08-22 league_id=200 game_type=0 played=1] Dante Lima (#6387) went 1-for-3 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1481, team_id=9, player_id=6387] Jerry Romero (#8027) worked 6 2/3 innings, allowed 0 earned runs and struck out 9. [players_game_pitching_stats.csv, game_id=1481, team_id=9, player_id=8027]",
+        "Los Angeles scored 2 of its 3 runs in inning 4. [games_score.csv game_id=1481 team=1, inning=4]",
+        "1981-08-23 — Los Angeles beat San Diego 5-4 in 14 innings. [games.csv game_id=1493 date=1981-08-23 league_id=200 game_type=0 played=1] Emmanuel Robertson (#6246) went 3-for-6 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1493, team_id=9, player_id=6246] Chris Barksdale (#7560) worked 8 2/3 innings, allowed 4 earned runs and struck out 9. [players_game_pitching_stats.csv, game_id=1493, team_id=9, player_id=7560]",
+        "Los Angeles scored 2 of its 5 runs in inning 9. [games_score.csv game_id=1493 team=1, inning=9]",
+        "1981-08-24 — Los Angeles beat Phoenix 10-4 in 9 innings. [games.csv game_id=1503 date=1981-08-24 league_id=200 game_type=0 played=1] D.J. Rivera (#10008) went 2-for-3 with 1 HR and 5 RBI. [players_game_batting.csv, game_id=1503, team_id=9, player_id=10008] Joel Valenty (#1534) worked 5 innings, allowed 4 earned runs and struck out 2. [players_game_pitching_stats.csv, game_id=1503, team_id=9, player_id=1534]",
+        "1981-08-25 — Los Angeles fell to Phoenix 8-2 in 9 innings. [games.csv game_id=1512 date=1981-08-25 league_id=200 game_type=0 played=1] Ruben Lara (#9558) went 2-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1512, team_id=9, player_id=9558] Enrique Laxton (#10095) worked 5 innings, allowed 4 earned runs and struck out 6. [players_game_pitching_stats.csv, game_id=1512, team_id=9, player_id=10095]",
+        "1981-08-27 — Los Angeles fell to San Francisco 15-1 in 9 innings. [games.csv game_id=1530 date=1981-08-27 league_id=200 game_type=0 played=1] Orlando Greeley (#4922) went 1-for-3 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1530, team_id=9, player_id=4922] Jerry Romero (#8027) worked 3 1/3 innings, allowed 7 earned runs and struck out 0. [players_game_pitching_stats.csv, game_id=1530, team_id=9, player_id=8027]",
+        "Los Angeles scored 1 of its 1 run in inning 8. [games_score.csv game_id=1530 team=0, inning=8]",
+        "1981-08-28 — Los Angeles beat San Francisco 7-3 in 9 innings. [games.csv game_id=1542 date=1981-08-28 league_id=200 game_type=0 played=1] Orlando Greeley (#4922) went 1-for-4 with 0 HR and 3 RBI. [players_game_batting.csv, game_id=1542, team_id=9, player_id=4922] Jose Cuba (#4719) worked 6 innings, allowed 3 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1542, team_id=9, player_id=4719]",
+        "1981-08-29 — Los Angeles fell to San Francisco 6-1 in 9 innings. [games.csv game_id=1554 date=1981-08-29 league_id=200 game_type=0 played=1] Myles Byrd (#5405) went 2-for-4 with 0 HR and 0 RBI. [players_game_batting.csv, game_id=1554, team_id=9, player_id=5405] Ricardo Figueroa (#137) worked 5 1/3 innings, allowed 3 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1554, team_id=9, player_id=137]",
+        "1981-08-30 — Los Angeles fell to San Francisco 10-4 in 9 innings. [games.csv game_id=1566 date=1981-08-30 league_id=200 game_type=0 played=1] Ramon Reyes (#4928) went 2-for-4 with 2 HR and 2 RBI. [players_game_batting.csv, game_id=1566, team_id=9, player_id=4928] Enrique Laxton (#10095) worked 4 2/3 innings, allowed 7 earned runs and struck out 2. [players_game_pitching_stats.csv, game_id=1566, team_id=9, player_id=10095]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Los Angeles is 68-63 and trails Phoenix by 2 games in the NBC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 2,7,9,10]",
+        "Division records — Phoenix 70-61, San Francisco 69-62, Los Angeles 68-63, San Diego 48-83. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 2,7,9,10]",
+        "Over its last 7 games the club went 3-4, scoring 30 runs and allowing 50. Season totals are 510 scored and 572 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=9. Recent game IDs 1493, 1503, 1512, 1530, 1542, 1554, 1566]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Phoenix Firebirds, Los Angeles is 9-7 with 76 runs scored and 74 allowed. [games.csv 1981 completed regular season, team IDs 9/2, latest game #1512, 1981-08-25]",
+        "Against San Francisco Warriors, Los Angeles is 6-12 with 59 runs scored and 97 allowed. [games.csv 1981 completed regular season, team IDs 9/10, latest game #1566, 1981-08-30]",
+        "Against San Diego Seraphs, Los Angeles is 12-7 with 78 runs scored and 65 allowed. [games.csv 1981 completed regular season, team IDs 9/7, latest game #1493, 1981-08-23]",
+        "Los Angeles hosts Tampa Bay Storm in the next listed game on 1981-08-31. [games.csv game_id=1574, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Orlando Greeley (#4922) leads the club with 135 hits in 457 at-bats, including 19 home runs. [players_game_batting.csv joined to played games.csv, team_id=9, year=1981, through 1981-08-30]",
+        "Jerry Romero (#8027) leads the staff in innings pitched (189 2/3), with 178 strikeouts, 118 walks and a 3.65 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=9, year=1981, through 1981-08-30]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (1) — 1977. League titles (0) — none. [team_history.csv, team_id=9, league_id=200, year=1972–1980]",
+        "The club finished 74-88 in 1980, division place 3. [team_history_record.csv, team_id=9, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-31 export lists 26 active players. [players_roster_status.csv team_id=9 is_active=1 joined to players.csv player_id, export league date 1981-08-31]",
+        "P — Adam Jahn (#1734), Alex Gonzalez (#1239), Chris Barksdale (#7560), Enrique Laxton (#10095), Jerry Romero (#8027), Joel Valenty (#1534), Jordan Cortez (#5928), Jose Cuba (#4719), Kevin Cavanaugh (#1956), Ricardo Figueroa (#137), Tae-mok Kim (#5158).",
+        "C — Lois Neveu (#8120), Ricky Lopez (#5907).",
+        "1B — Jon Travers (#1055), Josh Haderer (#706), Orlando Greeley (#4922), Ryan Cheeks (#5767).",
+        "2B — Emmanuel Robertson (#6246).",
+        "3B — Dante Lima (#6387), Ramon Reyes (#4928).",
+        "SS — D.J. Rivera (#10008).",
+        "LF — Fernando Domenech (#4584), Leonardo Reyes (#4692), Pedro Rivera (#5728).",
+        "CF — Myles Byrd (#5405).",
+        "RF — Bill Haywood (#5893)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Ruben Lara (#9558), 22, CF at Algoma Shamrocks — drafted in 1980 with overall pick 4. [players.csv player_id=9558, team_affiliations.csv team_id=9 affiliated_team_id=44, teams.csv, export 1981-08-31]",
+        "Victor Rivera (#11986), 22, LF at Fort Ashby Colonels — drafted in 1981 with overall pick 10. [players.csv player_id=11986, team_affiliations.csv team_id=9 affiliated_team_id=69, teams.csv, export 1981-08-31]",
+        "Tomas Orozco (#10750), 24, P at Algoma Shamrocks — drafted in 1980 with overall pick 33. [players.csv player_id=10750, team_affiliations.csv team_id=9 affiliated_team_id=44, teams.csv, export 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "No dated trade involving team #9 appears in this season's trade_history.csv through 1981-08-31."
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Los Angeles stand against its division opponents? Los Angeles is 68-63 and trails Phoenix by 2 games in the NBC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 2,7,9,10]",
+        "Will the next series change Los Angeles's recent scoring margin? Over its last 7 games the club went 3-4, scoring 30 runs and allowing 50. Season totals are 510 scored and 572 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=9. Recent game IDs 1493, 1503, 1512, 1530, 1542, 1554, 1566]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Los Angeles Cobras is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md.",
+        "Earlier internal coverage naming Los Angeles Cobras is filed at csv/out/story/production/abl_weekday17_desk_1981_07_27_asof_1981-07-26.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "9:1981:division",
+      "question": "Where does Los Angeles stand against its division opponents?",
+      "evidence": "Los Angeles is 68-63 and trails Phoenix by 2 games in the NBC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 2,7,9,10]"
+    },
+    {
+      "key": "9:1981:runs",
+      "question": "Will the next series change Los Angeles's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 3-4, scoring 30 runs and allowing 50. Season totals are 510 scored and 572 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=9. Recent game IDs 1493, 1503, 1512, 1530, 1542, 1554, 1566]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1457,
+      "date": "1981-08-20",
+      "home_id": 9,
+      "away_id": 7,
+      "runs_away": 3,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "San Diego 3, Los Angeles 6",
+      "source": "games.csv game_id=1457 date=1981-08-20 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1469,
+      "date": "1981-08-21",
+      "home_id": 9,
+      "away_id": 7,
+      "runs_away": 1,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "San Diego 1, Los Angeles 3",
+      "source": "games.csv game_id=1469 date=1981-08-21 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1481,
+      "date": "1981-08-22",
+      "home_id": 9,
+      "away_id": 7,
+      "runs_away": 0,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "San Diego 0, Los Angeles 3",
+      "source": "games.csv game_id=1481 date=1981-08-22 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1493,
+      "date": "1981-08-23",
+      "home_id": 9,
+      "away_id": 7,
+      "runs_away": 4,
+      "runs_home": 5,
+      "innings": 14,
+      "summary": "San Diego 4, Los Angeles 5",
+      "source": "games.csv game_id=1493 date=1981-08-23 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1503,
+      "date": "1981-08-24",
+      "home_id": 9,
+      "away_id": 2,
+      "runs_away": 4,
+      "runs_home": 10,
+      "innings": 9,
+      "summary": "Phoenix 4, Los Angeles 10",
+      "source": "games.csv game_id=1503 date=1981-08-24 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1512,
+      "date": "1981-08-25",
+      "home_id": 9,
+      "away_id": 2,
+      "runs_away": 8,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Phoenix 8, Los Angeles 2",
+      "source": "games.csv game_id=1512 date=1981-08-25 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1530,
+      "date": "1981-08-27",
+      "home_id": 10,
+      "away_id": 9,
+      "runs_away": 1,
+      "runs_home": 15,
+      "innings": 9,
+      "summary": "Los Angeles 1, San Francisco 15",
+      "source": "games.csv game_id=1530 date=1981-08-27 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1542,
+      "date": "1981-08-28",
+      "home_id": 10,
+      "away_id": 9,
+      "runs_away": 7,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "Los Angeles 7, San Francisco 3",
+      "source": "games.csv game_id=1542 date=1981-08-28 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1554,
+      "date": "1981-08-29",
+      "home_id": 10,
+      "away_id": 9,
+      "runs_away": 1,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Los Angeles 1, San Francisco 6",
+      "source": "games.csv game_id=1554 date=1981-08-29 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1566,
+      "date": "1981-08-30",
+      "home_id": 10,
+      "away_id": 9,
+      "runs_away": 4,
+      "runs_home": 10,
+      "innings": 9,
+      "summary": "Los Angeles 4, San Francisco 10",
+      "source": "games.csv game_id=1566 date=1981-08-30 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1457,
+    1469,
+    1481,
+    1493,
+    1503,
+    1512,
+    1530,
+    1542,
+    1554,
+    1566
+  ],
+  "transactions": [],
+  "roster_ids": [
+    137,
+    706,
+    1055,
+    1239,
+    1534,
+    1734,
+    1956,
+    4584,
+    4692,
+    4719,
+    4922,
+    4928,
+    5158,
+    5405,
+    5728,
+    5767,
+    5893,
+    5907,
+    5928,
+    6246,
+    6387,
+    7560,
+    8027,
+    8120,
+    10008,
+    10095
+  ],
+  "roster": [
+    {
+      "player_id": 1055,
+      "name": "Jon Travers (#1055)",
+      "age": 29,
+      "position": "1B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 706,
+      "name": "Josh Haderer (#706)",
+      "age": 37,
+      "position": "1B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4922,
+      "name": "Orlando Greeley (#4922)",
+      "age": 29,
+      "position": "1B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5767,
+      "name": "Ryan Cheeks (#5767)",
+      "age": 28,
+      "position": "1B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6246,
+      "name": "Emmanuel Robertson (#6246)",
+      "age": 23,
+      "position": "2B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6387,
+      "name": "Dante Lima (#6387)",
+      "age": 23,
+      "position": "3B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4928,
+      "name": "Ramon Reyes (#4928)",
+      "age": 26,
+      "position": "3B",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8120,
+      "name": "Lois Neveu (#8120)",
+      "age": 26,
+      "position": "C",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5907,
+      "name": "Ricky Lopez (#5907)",
+      "age": 29,
+      "position": "C",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5405,
+      "name": "Myles Byrd (#5405)",
+      "age": 24,
+      "position": "CF",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4584,
+      "name": "Fernando Domenech (#4584)",
+      "age": 27,
+      "position": "LF",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4692,
+      "name": "Leonardo Reyes (#4692)",
+      "age": 32,
+      "position": "LF",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5728,
+      "name": "Pedro Rivera (#5728)",
+      "age": 31,
+      "position": "LF",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1734,
+      "name": "Adam Jahn (#1734)",
+      "age": 35,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1239,
+      "name": "Alex Gonzalez (#1239)",
+      "age": 30,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7560,
+      "name": "Chris Barksdale (#7560)",
+      "age": 23,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 10095,
+      "name": "Enrique Laxton (#10095)",
+      "age": 24,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8027,
+      "name": "Jerry Romero (#8027)",
+      "age": 27,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1534,
+      "name": "Joel Valenty (#1534)",
+      "age": 31,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5928,
+      "name": "Jordan Cortez (#5928)",
+      "age": 26,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4719,
+      "name": "Jose Cuba (#4719)",
+      "age": 29,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1956,
+      "name": "Kevin Cavanaugh (#1956)",
+      "age": 35,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 137,
+      "name": "Ricardo Figueroa (#137)",
+      "age": 34,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5158,
+      "name": "Tae-mok Kim (#5158)",
+      "age": 29,
+      "position": "P",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5893,
+      "name": "Bill Haywood (#5893)",
+      "age": 27,
+      "position": "RF",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 10008,
+      "name": "D.J. Rivera (#10008)",
+      "age": 29,
+      "position": "SS",
+      "team_id": 9,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 9558,
+      "name": "Ruben Lara (#9558)",
+      "age": 22,
+      "position": "CF",
+      "team_id": 44,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 4,
+      "affiliate": "Algoma Shamrocks"
+    },
+    {
+      "player_id": 11986,
+      "name": "Victor Rivera (#11986)",
+      "age": 22,
+      "position": "LF",
+      "team_id": 69,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 10,
+      "affiliate": "Fort Ashby Colonels"
+    },
+    {
+      "player_id": 10750,
+      "name": "Tomas Orozco (#10750)",
+      "age": 24,
+      "position": "P",
+      "team_id": 44,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 33,
+      "affiliate": "Algoma Shamrocks"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1493,
+    1503,
+    1512,
+    1530,
+    1542,
+    1554,
+    1566
+  ],
+  "continuity": {
+    "threads": {
+      "9:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Where does Los Angeles stand against its division opponents?",
+        "evidence": "Los Angeles is 68-63 and trails Phoenix by 2 games in the NBC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 2,7,9,10]",
+        "status": "watching"
+      },
+      "9:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Will the next series change Los Angeles's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 3-4, scoring 30 runs and allowing 50. Season totals are 510 scored and 572 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=9. Recent game IDs 1493, 1503, 1512, 1530, 1542, 1554, 1566]",
+        "status": "watching"
+      },
+      "9:1981:rival:7": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Los Angeles–San Diego game do to the division race?",
+        "evidence": "Los Angeles hosts San Diego Seraphs in the next listed game on 1981-08-20. [games.csv game_id=1457, played=0] Los Angeles is 62-59 and trails Phoenix and San Francisco by 2 games in the NBC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 2,7,9,10]",
+        "status": "carried from earlier coverage"
+      }
+    },
+    "roster_ids": [
+      137,
+      706,
+      1055,
+      1239,
+      1534,
+      1734,
+      1956,
+      4584,
+      4692,
+      4719,
+      4922,
+      4928,
+      5158,
+      5405,
+      5728,
+      5767,
+      5893,
+      5907,
+      5928,
+      6246,
+      6387,
+      7560,
+      8027,
+      8120,
+      10008,
+      10095
+    ],
+    "names": {
+      "1055": "Jon Travers (#1055)",
+      "706": "Josh Haderer (#706)",
+      "4922": "Orlando Greeley (#4922)",
+      "5767": "Ryan Cheeks (#5767)",
+      "6246": "Emmanuel Robertson (#6246)",
+      "6387": "Dante Lima (#6387)",
+      "4928": "Ramon Reyes (#4928)",
+      "8120": "Lois Neveu (#8120)",
+      "5907": "Ricky Lopez (#5907)",
+      "5405": "Myles Byrd (#5405)",
+      "4584": "Fernando Domenech (#4584)",
+      "4692": "Leonardo Reyes (#4692)",
+      "5728": "Pedro Rivera (#5728)",
+      "1734": "Adam Jahn (#1734)",
+      "1239": "Alex Gonzalez (#1239)",
+      "7560": "Chris Barksdale (#7560)",
+      "10095": "Enrique Laxton (#10095)",
+      "8027": "Jerry Romero (#8027)",
+      "1534": "Joel Valenty (#1534)",
+      "5928": "Jordan Cortez (#5928)",
+      "4719": "Jose Cuba (#4719)",
+      "1956": "Kevin Cavanaugh (#1956)",
+      "137": "Ricardo Figueroa (#137)",
+      "5158": "Tae-mok Kim (#5158)",
+      "5893": "Bill Haywood (#5893)",
+      "10008": "D.J. Rivera (#10008)"
+    },
+    "flags": {
+      "1055": [
+        0,
+        0
+      ],
+      "706": [
+        0,
+        0
+      ],
+      "4922": [
+        0,
+        0
+      ],
+      "5767": [
+        0,
+        0
+      ],
+      "6246": [
+        0,
+        0
+      ],
+      "6387": [
+        0,
+        0
+      ],
+      "4928": [
+        0,
+        0
+      ],
+      "8120": [
+        0,
+        0
+      ],
+      "5907": [
+        0,
+        0
+      ],
+      "5405": [
+        0,
+        0
+      ],
+      "4584": [
+        0,
+        0
+      ],
+      "4692": [
+        0,
+        0
+      ],
+      "5728": [
+        0,
+        0
+      ],
+      "1734": [
+        0,
+        0
+      ],
+      "1239": [
+        0,
+        0
+      ],
+      "7560": [
+        0,
+        0
+      ],
+      "10095": [
+        0,
+        0
+      ],
+      "8027": [
+        0,
+        0
+      ],
+      "1534": [
+        0,
+        0
+      ],
+      "5928": [
+        0,
+        0
+      ],
+      "4719": [
+        0,
+        0
+      ],
+      "1956": [
+        0,
+        0
+      ],
+      "137": [
+        0,
+        0
+      ],
+      "5158": [
+        0,
+        0
+      ],
+      "5893": [
+        0,
+        0
+      ],
+      "10008": [
+        0,
+        0
+      ]
+    },
+    "deals": {}
+  },
+  "previous_edition": "1981-08-19_2acae29146076f62"
+}

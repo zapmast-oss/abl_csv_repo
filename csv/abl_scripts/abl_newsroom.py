@@ -178,19 +178,21 @@ def build_menu(v, cycle, beats, new, corrected, changes, revisions):
     return ranked, builder.evidence
 
 
-def write_edition(stage, v, previous, cycle, previous_cycle, previous_raw=None):
+def write_edition(stage, v, previous, cycle, previous_cycle, previous_raw=None, previous_reconciliation=None):
     games, new, corrected = game_delta(v, previous)
     baseline = previous is None or previous["season"] != v["season"]
     revisions = defaultdict(list)
+    reconciliation = v.get("player_game_reconciliation")
     if not baseline:
-        revisions.update(changed_lines(previous_raw,v["raw_dir"],games.keys() & previous["games"].keys(),v["season"]))
+        revisions.update(changed_lines(previous_raw, v["raw_dir"], games.keys() & previous["games"].keys(), v["season"],
+                                       previous_reconciliation=previous_reconciliation, reconciliation=reconciliation))
         for gid in corrected:
             old = previous["games"][str(gid)]
             latest = games[str(gid)]
             fields = ", ".join(f"{k} {old[k]} to {val}" for k,val in latest.items() if old[k]!=val)
             revisions[gid].insert(0,f"Revised game record ({fields}). [games.csv game_id={gid}]")
         corrected.update(revisions)
-    beats = build_beats(Path(v["raw_dir"]), v["cutoff"], new, v["league_date"])
+    beats = build_beats(Path(v["raw_dir"]), v["cutoff"], new, v["league_date"], reconciliation=reconciliation)
     if set(beats) != {int(t) for t in v["teams"]} or len(beats)!=24:
         raise ValueError("The franchise assignment register does not cover the 24 verified teams")
     save(stage/"assignments.json", assignments(beats))
@@ -242,6 +244,8 @@ def write_edition(stage, v, previous, cycle, previous_cycle, previous_raw=None):
     activity = f"{len(games)} completed games. {v['day']['completed']} of {v['day']['scheduled']} on the cutoff date. {len(new)} games in this edition’s reporting window. {len(corrected)} revised game records."
     exceptions = ", ".join(str(x["game_id"]) for x in v["log_exceptions"])
     source_note = f"Source archive {v['source_id']}. Preflight {v['preflight']['verdict']}. Full raw hashes, exact paths and log exceptions are in verification.json."
+    if reconciliation:
+        source_note += " Batting reconciliations and differences from native OOTP season totals are recorded in verification.json."
     write_report(stage/"results_memo","Reporting desk | Results memo",
         [("At the desk",[activity,opening]),("Lead stories",lead_notes or ["No fresh game or personnel story met the reporting criteria."]),
          ("Division races",raceboard),("Results on the assignment board",slate),
@@ -358,7 +362,8 @@ def run(archive, source, reviews=()):
                 raise ValueError("Previously archived export replayed out of sequence")
         else:
             previous = load(prior_path/"state.json") if prior_path else None
-            write_edition(stage,v,previous,cycle,previous_cycle,pointer_data.get("raw_dir"))
+            prior_audit = load(prior_path/"verification.json").get("player_game_reconciliation") if prior_path else None
+            write_edition(stage,v,previous,cycle,previous_cycle,pointer_data.get("raw_dir"),prior_audit)
             save(stage/"files.json",{p.relative_to(stage).as_posix():digest(p) for p in sorted(stage.rglob("*")) if p.is_file()})
             audit(stage)
         intel = dest if dest.exists() else stage

@@ -14,6 +14,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "csv/abl_scripts"), str(ROOT / "scripts")]
 from abl_newsroom_verify import LEAGUE_ID, iso_date, rows
+from abl_player_games import player_game_rows
 
 
 CODE = re.compile(r"[A-Z0-9]{2,5}\Z")
@@ -58,6 +59,7 @@ class World:
     races: dict
     photos: dict
     logos: dict
+    player_game_reconciliation: dict | None = None
 
     @property
     def finals(self):
@@ -172,30 +174,26 @@ def game_series(days):
     return series
 
 
-def stats(raw, season, games, names):
+def stats(raw, season, games, names, reconciliation=None):
     bat, pitch, boxes = {}, {}, defaultdict(dict)
     appeared = set()
+    finals = {gid for gid, game in games.items() if game.score is not None}
     for filename, numbers, target, kind in (
-        ("players_game_batting.csv", BAT, bat, "bat"),
+        ("players_game_batting.csv", (*BAT, "g", "k"), bat, "bat"),
         ("players_game_pitching_stats.csv", PITCH, pitch, "pitch"),
     ):
-        seen = set()
-        for row in rows(raw / filename):
-            game = games.get(int(row["game_id"]))
-            if game is None or game.score is None or (row["league_id"], row["year"], row["level_id"]) != (
-                    LEAGUE_ID, str(season), "1"):
-                continue
+        for row in player_game_rows(raw, filename, season, finals, reconciliation):
+            game = games[int(row["game_id"])]
             person, club = int(row["player_id"]), int(row["team_id"])
-            key = (game.id, person, club)
-            if key in seen or club not in (game.away, game.home):
-                raise ValueError(f"Duplicate or unmatched ABL player-game row {key}")
-            seen.add(key)
+            if club not in (game.away, game.home):
+                raise ValueError(f"Unmatched ABL player-game row {(game.id, person, club)}")
             line = {k: int(row[k] or 0) for k in numbers}
-            if (kind == "bat" and line["pa"] == 0) or (kind == "pitch" and int(row["bf"] or 0) == 0):
+            if kind == "pitch" and int(row["bf"] or 0) == 0:
                 continue
             totals = target.setdefault((person, club), Counter())
             totals.update(line)
-            totals["g"] += 1
+            if kind == "pitch":
+                totals["g"] += 1
             boxes[game.id].setdefault((club, kind), []).append((person, line))
             appeared.add(person)
     if not appeared <= names.keys():
@@ -360,11 +358,12 @@ def load_world(repo, verified, asset_dir):
     games, days, by_team = read_games(raw, verified, teams)
     players = {int(row["player_id"]): f"{row['first_name']} {row['last_name']}".strip()
                for row in rows(raw / "players.csv")}
-    batting, pitching, boxes = stats(raw, verified["season"], games, players)
+    reconciliation = verified.get("player_game_reconciliation")
+    batting, pitching, boxes = stats(raw, verified["season"], games, players, reconciliation)
     divisions, postseason = races(teams, divisions, verified["season"])
     logos, photos = cover_art(asset_dir, teams, verified["season"], verified["cutoff"])
     history = team_history(repo, raw, verified["season"], teams)
     player_history = historical_player_stats(raw, history, players)
     return World(verified["season"], verified["league_date"], verified["cutoff"], verified["source_id"],
                  teams, divisions, games, days, by_team, game_series(days), players, batting, pitching,
-                 boxes, history, player_history, postseason, photos, logos)
+                 boxes, history, player_history, postseason, photos, logos, reconciliation)

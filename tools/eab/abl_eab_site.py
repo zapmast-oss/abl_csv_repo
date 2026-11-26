@@ -279,10 +279,10 @@ class Site:
             bats = box.get((tid, "bat"), [])
             arms = box.get((tid, "pitch"), [])
             bat_rows = [[self.player_link(page, pid, "batting"), str(r["ab"]), str(r["r"]), str(r["h"]),
-                         str(r["rbi"]), str(r["hr"])] for pid, r in bats]
+                         str(r["rbi"]), str(r["hr"]), str(r["k"])] for pid, r in bats]
             arm_rows = [[self.player_link(page, pid, "pitching"), ip(r["outs"]), str(r["ha"]), str(r["er"]),
                          str(r["bb"]), str(r["k"])] for pid, r in arms]
-            output.append(f"<section><h4>{self.team(page, tid)}</h4>" + table(["Batter", "AB", "R", "H", "RBI", "HR"], bat_rows)
+            output.append(f"<section><h4>{self.team(page, tid)}</h4>" + table(["Batter", "AB", "R", "H", "RBI", "HR", "K"], bat_rows)
                           + table(["Pitcher", "IP", "H", "ER", "BB", "K"], arm_rows) + "</section>")
         return '<details class="box"><summary>Box score</summary>' + grid(output, "two") + "</details>"
 
@@ -561,6 +561,28 @@ class Site:
         world = self.world
         page = self.route("players/index.html")
         body = heading("Players & statistics", f"Regular-season lines through {pretty(world.cutoff)}. Derived from completed OOTP player-game records.")
+        if world.player_game_reconciliation:
+            differences = []
+            for item in world.player_game_reconciliation["season_discrepancies"]:
+                tid = int(item["team_id"])
+                team = self.team(page, tid)
+                subject = team
+                if item["player_id"] is not None:
+                    pid = int(item["player_id"])
+                    name = (self.player_link(page, pid, "batting") if (pid, tid) in world.batting
+                            else escape(world.players.get(pid, f"Player {pid}")))
+                    subject = f"{name} ({team})"
+                for field, totals in item["fields"].items():
+                    native = "Unavailable" if totals["ootp"] is None else str(totals["ootp"])
+                    derived = "Unavailable" if totals["reconciled"] is None else str(totals["reconciled"])
+                    differences.append([subject, field.upper(), native, derived])
+            if differences:
+                body += ('<section class="race"><h2>Differences from OOTP season totals</h2>'
+                         '<p>Completed-game records were checked against an earlier unfinished-game export '
+                         'and the completed play-by-play. EAB uses those verified batting lines. Club GS '
+                         'counts the batting starts credited to individual players.</p>'
+                         + table(["Player or club", "Statistic", "OOTP season export", "EAB game totals"], differences)
+                         + "</section>")
         sections = []
         for kind, source, amount in (("batting", world.batting, "pa"), ("pitching", world.pitching, "outs")):
             directory = defaultdict(Counter)

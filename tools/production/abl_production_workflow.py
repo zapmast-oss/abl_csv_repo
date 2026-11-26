@@ -308,12 +308,15 @@ class Session:
         if (trigger == "post-game" and not game_id and result["cutoff"] == result["league_date"]
                 and captured["games_csv_mtime_ns"] < self.state["save_marker_ns"]):
             raise ValueError("The same-day CSV predates the save. Re-export or supply the completed game ID.")
-        receipt = next((attempt / "preflight").glob("*.json"))
+        receipt = attempt / "preflight" / f"current_state_preflight_{result['season']}_target_{result['cutoff']}.json"
         self.state["verified"] = {
             **{key: result[key] for key in ("source_id", "league_date", "cutoff", "season", "day", "raw_dir")},
             "games": len(result["games"]), "receipt": str(receipt), "verified_at": utc_now(),
         }
-        return f"Current-state preflight passed with {len(result['games'])} finals through {result['cutoff']}.", [receipt]
+        outputs = [receipt]
+        if result.get("player_game_reconciliation"):
+            outputs.append(receipt.with_name("player-game-reconciliation.json"))
+        return f"Current-state preflight passed with {len(result['games'])} finals through {result['cutoff']}.", outputs
 
     def confirm_current_capture(self):
         verified = self.state["verified"]
