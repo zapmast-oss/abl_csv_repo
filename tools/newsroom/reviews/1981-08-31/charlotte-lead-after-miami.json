@@ -1,0 +1,126 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "charlotte-lead-after-miami",
+  "title": "Charlotte’s lead survived four close losses",
+  "kind": "beat",
+  "byline": "Charlotte Colonels beat",
+  "team_ids": [
+    6
+  ],
+  "story_ids": [
+    "6:1981:race",
+    "6:1981:player:7208:bat"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Six runs separated Charlotte from Miami across four games. The Colonels lost 4–2, 4–3, 5–3 and 6–5. On August 30 they had the game tied in the bottom of the ninth before Pat Watters ended it with a single. The 1980 division winner heads home still first, with its lead down to a game and a half.",
+        "Tampa Bay and Atlanta explain why Charlotte still has that lead. The Colonels won four of their first six, adding a game to their August 19 margin before the sweep. In Miami, Dabir Aly struck out ten in the opener and the Colonels scored twice. Miguel Salazar had 17 hits over the full challenge. There was individual production on a trip where four short scores in succession mattered more.",
+        "Charlotte opens September at home against Chicago, itself a game out in the Central. Miami comes to Charlotte for four September 24–27. Those dates put the advantage back in the Colonels’ hands if they can carry a lead to the rematch."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 6. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1454,1466,1478,1490,1501,1508,1525,1537,1549,1561. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1581,1593,1605,1814,1826,1838,1850. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 5456,7208,1972. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1561, bottom of ninth, lines 425–443, Watters singles with two out to score Postell. Cross-check the innings and scoring in games_score.csv, game_id=1561.",
+    "team_history.csv and team_history_record.csv, team ID 6 for 1980 NBC East division title."
+  ],
+  "claim_games": [
+    1454,
+    1466,
+    1478,
+    1490,
+    1501,
+    1508,
+    1525,
+    1537,
+    1549,
+    1561,
+    1581,
+    1593,
+    1605,
+    1814,
+    1826,
+    1838,
+    1850
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1454
+      ],
+      "claim": "1981-08-20. Charlotte Colonels 6, Tampa Bay Storm 5."
+    },
+    {
+      "games": [
+        1466
+      ],
+      "claim": "1981-08-21. Charlotte Colonels 8, Tampa Bay Storm 4."
+    },
+    {
+      "games": [
+        1478
+      ],
+      "claim": "1981-08-22. Charlotte Colonels 9, Tampa Bay Storm 4."
+    },
+    {
+      "games": [
+        1490
+      ],
+      "claim": "1981-08-23. Charlotte Colonels 9, Tampa Bay Storm 10."
+    },
+    {
+      "games": [
+        1501
+      ],
+      "claim": "1981-08-24. Charlotte Colonels 3, Atlanta Kings 9."
+    },
+    {
+      "games": [
+        1508
+      ],
+      "claim": "1981-08-25. Charlotte Colonels 5, Atlanta Kings 4."
+    },
+    {
+      "games": [
+        1525
+      ],
+      "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+    },
+    {
+      "games": [
+        1537
+      ],
+      "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+    },
+    {
+      "games": [
+        1549
+      ],
+      "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+    },
+    {
+      "games": [
+        1561
+      ],
+      "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "The Colonels banked just enough on the first two legs of their road trip to survive a four-game Miami sweep.",
+    "promise": "Charlotte’s lead survived four close losses",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Colonels banked just enough on the first two legs of their road trip to survive a four-game Miami sweep.",
+    "ending": "Charlotte opens September at home against Chicago, itself a game out in the Central. Miami comes to Charlotte for four September 24–27. Those dates put the advantage back in the Colonels’ hands if they can carry a lead to the rematch."
+  }
+}

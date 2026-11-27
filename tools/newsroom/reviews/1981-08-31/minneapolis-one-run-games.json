@@ -1,0 +1,127 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "minneapolis-one-run-games",
+  "title": "Minneapolis made three one-run games count",
+  "kind": "beat",
+  "byline": "Minneapolis Blizzard beat",
+  "team_ids": [
+    11
+  ],
+  "story_ids": [
+    "11:1981:race",
+    "11:1981:player:12030:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "A 17–3 loss on August 20 could have set the terms for Dallas’s four days in Minneapolis. The Blizzard won the next three. Jose Varela worked eight scoreless in the 1–0 win in ten innings, and Minneapolis put ten runs on Dallas the next day. It went on to win twice in Detroit, once in 13 innings.",
+        "Varela pitched eight again August 28, this time allowing two earned runs against Chicago. The score was still tied in the 14th when Hirotoshi Nishimoto’s fly brought Ricky Thompson home. That was the Blizzard’s third one-run win of the challenge. Six wins left them the same eleven and a half games behind Dallas. They mattered to the opponents who had to count them.",
+        "Minneapolis goes to San Diego on September 1 with 32 games still listed. Follow the rotation through the opening series, with Varela’s two long starts giving the next set of outings a benchmark."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 11. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1456,1468,1480,1492,1511,1521,1528,1540,1552,1564. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1585,1597,1606. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2756,11346,6956,12030. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1540, bottom of 14th, lines 550–566, Thompson scores on Nishimoto's sacrifice fly. Cross-check the innings and scoring in games_score.csv, game_id=1540."
+  ],
+  "claim_games": [
+    1456,
+    1468,
+    1480,
+    1492,
+    1511,
+    1521,
+    1528,
+    1540,
+    1552,
+    1564,
+    1585,
+    1597,
+    1606
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1540
+      ],
+      "claim": "Nishimoto's fly in the 14th scores Ricky Thompson."
+    },
+    {
+      "games": [
+        1456
+      ],
+      "claim": "1981-08-20. Dallas Rustlers 17, Minneapolis Blizzard 3."
+    },
+    {
+      "games": [
+        1468
+      ],
+      "claim": "1981-08-21. Dallas Rustlers 3, Minneapolis Blizzard 7."
+    },
+    {
+      "games": [
+        1480
+      ],
+      "claim": "1981-08-22. Dallas Rustlers 0, Minneapolis Blizzard 1."
+    },
+    {
+      "games": [
+        1492
+      ],
+      "claim": "1981-08-23. Dallas Rustlers 1, Minneapolis Blizzard 10."
+    },
+    {
+      "games": [
+        1511
+      ],
+      "claim": "1981-08-25. Minneapolis Blizzard 5, Detroit Dukes 4."
+    },
+    {
+      "games": [
+        1521
+      ],
+      "claim": "1981-08-26. Minneapolis Blizzard 4, Detroit Dukes 2."
+    },
+    {
+      "games": [
+        1528
+      ],
+      "claim": "1981-08-27. Chicago Fire 6, Minneapolis Blizzard 1."
+    },
+    {
+      "games": [
+        1540
+      ],
+      "claim": "1981-08-28. Chicago Fire 2, Minneapolis Blizzard 3."
+    },
+    {
+      "games": [
+        1552
+      ],
+      "claim": "1981-08-29. Chicago Fire 2, Minneapolis Blizzard 0."
+    },
+    {
+      "games": [
+        1564
+      ],
+      "claim": "1981-08-30. Chicago Fire 5, Minneapolis Blizzard 3."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "The Blizzard took games from both Central leaders and the defending champions, with Jose Varela giving them a chance in two extra-inning wins.",
+    "promise": "Minneapolis made three one-run games count",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Blizzard took games from both Central leaders and the defending champions, with Jose Varela giving them a chance in two extra-inning wins.",
+    "ending": "Minneapolis goes to San Diego on September 1 with 32 games still listed. Follow the rotation through the opening series, with Varela’s two long starts giving the next set of outings a benchmark."
+  }
+}

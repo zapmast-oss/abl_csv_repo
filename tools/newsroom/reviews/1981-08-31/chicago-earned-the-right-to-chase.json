@@ -1,0 +1,127 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "chicago-earned-the-right-to-chase",
+  "title": "Chicago earned the right to chase Dallas",
+  "kind": "beat",
+  "byline": "Chicago Fire beat",
+  "team_ids": [
+    12
+  ],
+  "story_ids": [
+    "12:1981:race",
+    "12:1981:player:8125:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "The August 20 Observer conversation gave Chicago credit for a plus-27 run differential in the Conference Challenges and asked when it would show in the standings. This time seven wins came with a much smaller surplus, 40 runs to 34. Heriberto Jimenez gave the Fire eight scoreless innings and 13 strikeouts in their 1–0 opening victory over Detroit. Chicago won both games on August 21 and took three of four from the Dukes.",
+        "The Fire split with Dallas and lost a 14-inning game at Minneapolis on Hirotoshi Nishimoto’s sacrifice fly. They took the other three games from the Blizzard. Those are the wins that mattered while Dallas was sweeping Detroit. Last year Chicago won this division and Detroit went on to win the Grand Series. Chicago now has to find a way past Dallas or Miami.",
+        "The Fire start September at Charlotte. Playing the East leader while Miami opens in Phoenix tests both of Chicago’s routes. Dallas remains on the schedule six times, four of them on the final weekend."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 12. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1455,1467,1479,1491,1502,1510,1528,1540,1552,1564. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1581,1593,1605,1789,1899,1935. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 8125,8025,854,11346. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1540, bottom of 14th, lines 550–566, Thompson scores on Nishimoto's sacrifice fly. Cross-check the innings and scoring in games_score.csv, game_id=1540.",
+    "team_history.csv, team IDs 12,5 for the 1980 NBC Central winner and Grand Series champion.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+    "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+  ],
+  "claim_games": [
+    1455,
+    1467,
+    1479,
+    1491,
+    1502,
+    1510,
+    1528,
+    1540,
+    1552,
+    1564,
+    1581,
+    1593,
+    1605,
+    1789,
+    1899,
+    1935
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1455
+      ],
+      "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+    },
+    {
+      "games": [
+        1467
+      ],
+      "claim": "1981-08-21. Detroit Dukes 5, Chicago Fire 8."
+    },
+    {
+      "games": [
+        1479
+      ],
+      "claim": "1981-08-22. Detroit Dukes 11, Chicago Fire 3."
+    },
+    {
+      "games": [
+        1491
+      ],
+      "claim": "1981-08-23. Detroit Dukes 7, Chicago Fire 9."
+    },
+    {
+      "games": [
+        1502
+      ],
+      "claim": "1981-08-24. Dallas Rustlers 1, Chicago Fire 3."
+    },
+    {
+      "games": [
+        1510
+      ],
+      "claim": "1981-08-25. Dallas Rustlers 3, Chicago Fire 1."
+    },
+    {
+      "games": [
+        1528
+      ],
+      "claim": "1981-08-27. Chicago Fire 6, Minneapolis Blizzard 1."
+    },
+    {
+      "games": [
+        1540
+      ],
+      "claim": "1981-08-28. Chicago Fire 2, Minneapolis Blizzard 3."
+    },
+    {
+      "games": [
+        1552
+      ],
+      "claim": "1981-08-29. Chicago Fire 2, Minneapolis Blizzard 0."
+    },
+    {
+      "games": [
+        1564
+      ],
+      "claim": "1981-08-30. Chicago Fire 5, Minneapolis Blizzard 3."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "A 7–3 stretch turned the Fire’s August case from run differential into actual wins, without settling either route to October.",
+    "promise": "Chicago earned the right to chase Dallas",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "A 7–3 stretch turned the Fire’s August case from run differential into actual wins, without settling either route to October.",
+    "ending": "The Fire start September at Charlotte. Playing the East leader while Miami opens in Phoenix tests both of Chicago’s routes. Dallas remains on the schedule six times, four of them on the final weekend."
+  }
+}
