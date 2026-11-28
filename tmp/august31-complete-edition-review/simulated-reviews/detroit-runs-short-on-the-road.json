@@ -1,0 +1,125 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "detroit-runs-short-on-the-road",
+  "title": "Detroit’s title defense reaches San Francisco six back",
+  "kind": "beat",
+  "byline": "Detroit Dukes beat",
+  "team_ids": [
+    5
+  ],
+  "story_ids": [
+    "5:1981:race",
+    "5:1981:player:4648:bat"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Detroit scored 11 in its only win of the challenge and four runs in four games at Dallas. The 11–3 win in Chicago came after two August 21 losses. Minneapolis then won twice in Detroit before the Dukes went to Dallas. A team that had begun the challenge one game out ended it six back.",
+        "Alex Diaz had 14 hits and six walks over the ten games. Against Dallas, Detroit never scored more than two in a game. Both facts are worth carrying into September. A productive line from one hitter did not turn those four games, and the champions also lost their place at the top of the wild-card standings.",
+        "Detroit opens at San Francisco, a club two places ahead of it on the wild-card line behind Miami, with Los Angeles also between them. The next stop is Charlotte. Both opponents have races of their own to protect, and Detroit needs to start taking decisions from teams in front of it."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 5. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1455,1467,1479,1491,1511,1521,1527,1539,1551,1563. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1576,1586,1598,1610,1622,1634. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 4648,1857,4963. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "team_history.csv and team_history_record.csv, team ID 5 for 1980 ABL champion.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+  ],
+  "claim_games": [
+    1455,
+    1467,
+    1479,
+    1491,
+    1511,
+    1521,
+    1527,
+    1539,
+    1551,
+    1563,
+    1576,
+    1586,
+    1598,
+    1610,
+    1622,
+    1634
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1455
+      ],
+      "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+    },
+    {
+      "games": [
+        1467
+      ],
+      "claim": "1981-08-21. Detroit Dukes 5, Chicago Fire 8."
+    },
+    {
+      "games": [
+        1479
+      ],
+      "claim": "1981-08-22. Detroit Dukes 11, Chicago Fire 3."
+    },
+    {
+      "games": [
+        1491
+      ],
+      "claim": "1981-08-23. Detroit Dukes 7, Chicago Fire 9."
+    },
+    {
+      "games": [
+        1511
+      ],
+      "claim": "1981-08-25. Minneapolis Blizzard 5, Detroit Dukes 4."
+    },
+    {
+      "games": [
+        1521
+      ],
+      "claim": "1981-08-26. Minneapolis Blizzard 4, Detroit Dukes 2."
+    },
+    {
+      "games": [
+        1527
+      ],
+      "claim": "1981-08-27. Detroit Dukes 1, Dallas Rustlers 7."
+    },
+    {
+      "games": [
+        1539
+      ],
+      "claim": "1981-08-28. Detroit Dukes 1, Dallas Rustlers 5."
+    },
+    {
+      "games": [
+        1551
+      ],
+      "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+    },
+    {
+      "games": [
+        1563
+      ],
+      "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "8bf9fd2209535b8282cf9e36a8a4d09d0278877fe692279dd30a4eb6a8827d21",
+    "question": "The Dukes entered one game off Dallas and in the wild-card spot. Four runs in four games at Dallas left both routes steeper.",
+    "promise": "Detroit’s title defense reaches San Francisco six back",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Dukes entered one game off Dallas and in the wild-card spot. Four runs in four games at Dallas left both routes steeper.",
+    "ending": "Detroit opens at San Francisco, a club two places ahead of it on the wild-card line behind Miami, with Los Angeles also between them. The next stop is Charlotte. Both opponents have races of their own to protect, and Detroit needs to start taking decisions from teams in front of it."
+  }
+}

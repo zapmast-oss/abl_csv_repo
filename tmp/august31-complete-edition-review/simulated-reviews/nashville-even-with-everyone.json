@@ -1,0 +1,127 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "nashville-even-with-everyone",
+  "title": "Nashville split with every Central opponent",
+  "kind": "beat",
+  "byline": "Nashville Blues beat",
+  "team_ids": [
+    16
+  ],
+  "story_ids": [
+    "16:1981:race",
+    "16:1981:player:6643:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Nashville won twice at Cincinnati and split two with St. Louis. Then the Blues won the first two in Houston and lost the last two. The potential go-ahead run was on second when Juan Grant lined out to center for the last out of the 10–9 finale.",
+        "Jose Orozco drove in 14 over the challenge and Brett Petrillo drove in 12. Nashville scored 60 runs. It finished 5–5 and eleven games back, with two wins against the division leader and three winnable series that stayed even.",
+        "The schedule sends the Blues to Seattle next. Their lineup will have another say in a pennant race when the Comets start the series level with Denver for the wild card."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 16. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1461,1473,1485,1497,1517,1523,1533,1545,1557,1569. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1580,1592,1604. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 9363,1057,6643. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1569, top of ninth, lines 438–459, Juan Grant makes final out with bases loaded. Cross-check the innings and scoring in games_score.csv, game_id=1569."
+  ],
+  "claim_games": [
+    1461,
+    1473,
+    1485,
+    1497,
+    1517,
+    1523,
+    1533,
+    1545,
+    1557,
+    1569,
+    1580,
+    1592,
+    1604
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1569
+      ],
+      "claim": "Juan Grant makes the final out with the bases loaded."
+    },
+    {
+      "games": [
+        1461
+      ],
+      "claim": "1981-08-20. Nashville Blues 7, Cincinnati Cougars 0."
+    },
+    {
+      "games": [
+        1473
+      ],
+      "claim": "1981-08-21. Nashville Blues 7, Cincinnati Cougars 8."
+    },
+    {
+      "games": [
+        1485
+      ],
+      "claim": "1981-08-22. Nashville Blues 8, Cincinnati Cougars 5."
+    },
+    {
+      "games": [
+        1497
+      ],
+      "claim": "1981-08-23. Nashville Blues 3, Cincinnati Cougars 5."
+    },
+    {
+      "games": [
+        1517
+      ],
+      "claim": "1981-08-25. St. Louis Stallions 7, Nashville Blues 13."
+    },
+    {
+      "games": [
+        1523
+      ],
+      "claim": "1981-08-26. St. Louis Stallions 6, Nashville Blues 2."
+    },
+    {
+      "games": [
+        1533
+      ],
+      "claim": "1981-08-27. Nashville Blues 5, Houston Mavericks 1."
+    },
+    {
+      "games": [
+        1545
+      ],
+      "claim": "1981-08-28. Nashville Blues 6, Houston Mavericks 5."
+    },
+    {
+      "games": [
+        1557
+      ],
+      "claim": "1981-08-29. Nashville Blues 0, Houston Mavericks 10."
+    },
+    {
+      "games": [
+        1569
+      ],
+      "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "21e08937d0a011f4d8772df93600419a5d0b7bd44f3dcc2cc7be2b0f8ed9c9a6",
+    "question": "Jose Orozco drove in 14 as the Blues played every series to a draw, including two wins in Houston.",
+    "promise": "Nashville split with every Central opponent",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Jose Orozco drove in 14 as the Blues played every series to a draw, including two wins in Houston.",
+    "ending": "The schedule sends the Blues to Seattle next. Their lineup will have another say in a pennant race when the Comets start the series level with Denver for the wild card."
+  }
+}

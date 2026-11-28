@@ -1,0 +1,140 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "miami-makes-four-count",
+  "title": "Miami made all four count",
+  "kind": "beat",
+  "byline": "Miami Hurricanes beat",
+  "team_ids": [
+    1
+  ],
+  "story_ids": [
+    "1:1981:race"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "The last out of the Charlotte series never came. Pat Watters singled with two gone in the ninth, Dwayne Postell scored, and Miami won its fourth straight game against the division leader. On August 20 the question was whether Miami could get close enough that four wins would give it first. Six games later the answer was still no. The Hurricanes needed those four just to get within a game and a half.",
+        "Atlanta took three of the opening four. Two Miami wins over Tampa Bay followed, by 10–3 and 9–1. Then Addie de Ruijter, acquired from Phoenix on July 29, drove in all four runs in the first game against Charlotte. The newcomers were part of the August 20 question. De Ruijter gave Miami a concrete answer in a game with a direct bearing on first place.",
+        "Miami now owns the NBC wild-card lead by half a game over Chicago. At 71 wins it is within two of its entire 1980 total. Its next series is in Phoenix, where de Ruijter’s former club leads the West. The return series with Charlotte begins September 24 on the Colonels’ field."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 1. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1453,1465,1477,1489,1509,1520,1525,1537,1549,1561. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1575,1584,1596,1814,1826,1838,1850. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1849,1972,9405. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1561, bottom of ninth, lines 425–443, Watters singles with two out to score Postell. Cross-check the innings and scoring in games_score.csv, game_id=1561.",
+    "trade_history.csv, message_id=19877, date=1981-07-29, team IDs 1,2, player ID 1849.",
+    "team_history_record.csv, team ID 1 for 1980, 73 wins and 89 losses.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+    "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+  ],
+  "claim_games": [
+    1453,
+    1465,
+    1477,
+    1489,
+    1509,
+    1520,
+    1525,
+    1537,
+    1549,
+    1561,
+    1575,
+    1584,
+    1596,
+    1814,
+    1826,
+    1838,
+    1850
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1561
+      ],
+      "claim": "Watters singles in the ninth to complete the sweep over Charlotte."
+    },
+    {
+      "games": [
+        1525
+      ],
+      "claim": "De Ruijter drives in all four Miami runs in the opener."
+    },
+    {
+      "games": [
+        1453
+      ],
+      "claim": "1981-08-20. Miami Hurricanes 2, Atlanta Kings 3."
+    },
+    {
+      "games": [
+        1465
+      ],
+      "claim": "1981-08-21. Miami Hurricanes 3, Atlanta Kings 2."
+    },
+    {
+      "games": [
+        1477
+      ],
+      "claim": "1981-08-22. Miami Hurricanes 4, Atlanta Kings 5."
+    },
+    {
+      "games": [
+        1489
+      ],
+      "claim": "1981-08-23. Miami Hurricanes 3, Atlanta Kings 8."
+    },
+    {
+      "games": [
+        1509
+      ],
+      "claim": "1981-08-25. Tampa Bay Storm 3, Miami Hurricanes 10."
+    },
+    {
+      "games": [
+        1520
+      ],
+      "claim": "1981-08-26. Tampa Bay Storm 1, Miami Hurricanes 9."
+    },
+    {
+      "games": [
+        1525
+      ],
+      "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+    },
+    {
+      "games": [
+        1537
+      ],
+      "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+    },
+    {
+      "games": [
+        1549
+      ],
+      "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+    },
+    {
+      "games": [
+        1561
+      ],
+      "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "cba7256338476231d5bfb1d2294fe5250bfd736d46a4a1c7be211707505c30df",
+    "question": "The Hurricanes left Atlanta in a worse position, then turned the Charlotte series into the league’s most productive four nights for a chaser.",
+    "promise": "Miami made all four count",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Hurricanes left Atlanta in a worse position, then turned the Charlotte series into the league’s most productive four nights for a chaser.",
+    "ending": "Miami now owns the NBC wild-card lead by half a game over Chicago. At 71 wins it is within two of its entire 1980 total. Its next series is in Phoenix, where de Ruijter’s former club leads the West. The return series with Charlotte begins September 24 on the Colonels’ field."
+  }
+}

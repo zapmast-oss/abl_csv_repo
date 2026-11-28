@@ -1,0 +1,120 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "new-york-from-twelve-to-zero",
+  "title": "New York went from twelve runs to two shutouts",
+  "kind": "beat",
+  "byline": "New York Aces beat",
+  "team_ids": [
+    15
+  ],
+  "story_ids": [
+    "15:1981:race"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "The Aces scored 12 in Pittsburgh on August 20. They scored 14 in the nine games that followed and lost every one. In Philadelphia they were shut out twice to end the challenge. The last of those games, 10–0, told a different story from two earlier one-run losses at Pittsburgh, when a single extra run might have changed the result.",
+        "Robby Chacon hit safely 11 times in 35 at-bats and drew six walks during the challenge. That is one usable part of a lineup that managed four runs in four games at Philadelphia. It gives the Aces something more specific to examine than the 1–9 record.",
+        "New York returns home to face Cincinnati on August 31. With expansion scheduled one day later, a useful watch is whether the Aces change who hits around the players already reaching base. The first new lineup will tell more than an assumption about who is coming up."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 15. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1460,1472,1484,1496,1514,1522,1531,1543,1555,1567. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1577,1587,1599. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2144,8707. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up."
+  ],
+  "claim_games": [
+    1460,
+    1472,
+    1484,
+    1496,
+    1514,
+    1522,
+    1531,
+    1543,
+    1555,
+    1567,
+    1577,
+    1587,
+    1599
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1460
+      ],
+      "claim": "1981-08-20. New York Aces 12, Pittsburgh Express 8."
+    },
+    {
+      "games": [
+        1472
+      ],
+      "claim": "1981-08-21. New York Aces 4, Pittsburgh Express 5."
+    },
+    {
+      "games": [
+        1484
+      ],
+      "claim": "1981-08-22. New York Aces 1, Pittsburgh Express 7."
+    },
+    {
+      "games": [
+        1496
+      ],
+      "claim": "1981-08-23. New York Aces 3, Pittsburgh Express 4."
+    },
+    {
+      "games": [
+        1514
+      ],
+      "claim": "1981-08-25. New York Aces 1, Boston Patriots 4."
+    },
+    {
+      "games": [
+        1522
+      ],
+      "claim": "1981-08-26. New York Aces 1, Boston Patriots 3."
+    },
+    {
+      "games": [
+        1531
+      ],
+      "claim": "1981-08-27. New York Aces 2, Philadelphia Fury 8."
+    },
+    {
+      "games": [
+        1543
+      ],
+      "claim": "1981-08-28. New York Aces 2, Philadelphia Fury 11."
+    },
+    {
+      "games": [
+        1555
+      ],
+      "claim": "1981-08-29. New York Aces 0, Philadelphia Fury 3."
+    },
+    {
+      "games": [
+        1567
+      ],
+      "claim": "1981-08-30. New York Aces 0, Philadelphia Fury 10."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "99f4c486eefa9350b38db95e483d082ceabdd92649ed9c5db9459832739f2720",
+    "question": "The Aces won their opener and lost nine straight. Robby Chacon’s work at the plate gives their Cincinnati series a narrower question than the record.",
+    "promise": "New York went from twelve runs to two shutouts",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Aces won their opener and lost nine straight. Robby Chacon’s work at the plate gives their Cincinnati series a narrower question than the record.",
+    "ending": "New York returns home to face Cincinnati on August 31. With expansion scheduled one day later, a useful watch is whether the Aces change who hits around the players already reaching base. The first new lineup will tell more than an assumption about who is coming up."
+  }
+}

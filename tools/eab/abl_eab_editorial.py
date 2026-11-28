@@ -74,7 +74,7 @@ def approved_copy(path, item, manifest, digest):
     heading, credit, *blocks = re.split(r"\n\s*\n", content.decode("utf-8-sig").replace("\r\n", "\n").strip())
     if heading != "# " + item["title"] or not item["title"].strip():
         raise ValueError("Manuscript and sealed issue title do not match.")
-    byline, when, cutoff = (part.strip() for part in credit.split("|"))
+    byline, when, cutoff = (part.strip() for part in credit.rsplit("|", 2))
     if when != manifest["league_date"] or cutoff != "Games through " + manifest["cutoff"]:
         raise ValueError("Manuscript and sealed issue cutoff do not match.")
     sections = [("", [])]

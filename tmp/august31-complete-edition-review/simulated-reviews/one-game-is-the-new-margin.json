@@ -1,0 +1,329 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "one-game-is-the-new-margin",
+  "title": "The contenders can hear each other now",
+  "kind": "observer",
+  "byline": "Ernie Bewell | The Baseball Observer",
+  "team_ids": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    12,
+    13,
+    14,
+    17,
+    19,
+    20,
+    22,
+    23,
+    24
+  ],
+  "story_ids": [
+    "1:1981:race",
+    "2:1981:race",
+    "4:1981:race",
+    "5:1981:race",
+    "6:1981:race",
+    "9:1981:race",
+    "10:1981:race",
+    "12:1981:race",
+    "13:1981:race",
+    "14:1981:race",
+    "17:1981:race",
+    "19:1981:race",
+    "20:1981:race",
+    "22:1981:race",
+    "23:1981:race",
+    "24:1981:race"
+  ],
+  "lead": true,
+  "sections": [
+    [
+      "",
+      [
+        "Two outs in the ninth, a tie score, and Pat Watters had a one-and-two count. He singled to left, Dwayne Postell scored, and Miami won 6–5. Charlotte had come to Miami with five and a half games to spare. It left with a game and a half. The Colonels are still first in the East. The Hurricanes can see them now.",
+        "The August 20 briefing asked what Miami could do before Charlotte arrived. A sweep was worth four games, and the Hurricanes needed help to get close enough to take first. They dropped three of four in Atlanta, then beat Tampa Bay twice. They entered the Charlotte series farther back than they had been on August 19. Addie de Ruijter drove in all four Miami runs in the opener. The sweep put Miami half a game ahead of Chicago for the wild card.",
+        "In The Pennant Races Come Home, Big Earl backed Charlotte and looked to the Central for the NBC wild card. Charlotte still has the division lead. Miami’s four wins have put the second part of that forecast in doubt. The August 20 conversation was an editorial reconstruction. Its forecasts belong to that date and the standings now belong to August 30."
+      ]
+    ],
+    [
+      "Dallas beat Detroit. Chicago kept coming.",
+      [
+        "Detroit opened the challenge one game back of Dallas. On August 21, Heriberto Jimenez struck out 13 in eight scoreless innings in Chicago’s 1–0 win. Chicago took three of the four from Detroit and drew level with Dallas by August 26. The finale the briefing circled, Detroit at Dallas, became four wins for the Rustlers. Anton Garay gave them eight scoreless innings in the 4–0 third game. Detroit scored four runs in the entire series and finished the challenge 1–9.",
+        "Big Earl favored Dallas or Detroit over Chicago. Dallas answered for itself. So did the Fire, who took three of four in Minneapolis and finished just one game behind. The Central has six more Dallas–Chicago games on the schedule, including the last four in Dallas. That is enough baseball for the order to change without waiting on anybody else."
+      ]
+    ],
+    [
+      "The West was worth watching. Both of them were.",
+      [
+        "Phoenix and San Francisco started level. Phoenix took three games at San Francisco, including a 2–0 game in which Tony Zacate gave the Firebirds eight scoreless innings. The Warriors answered with three wins in four against Los Angeles. Phoenix finished one up on San Francisco and two up on Los Angeles. Earl’s forecast of a San Francisco recovery is still within reach. The first series gave the Firebirds some reason to believe in their own place.",
+        "Across the league, Seattle opened with three wins over Las Vegas. In the 14th inning on August 21, David Olguin stole second, took third on the throwing error and scored on Adam Wilson’s single. By August 29 the Comets and Gamblers shared first. Denver then took the last two games of its series in Seattle, 4–2 and 2–1, and Las Vegas closed with a win in Portland. Earl’s Las Vegas pick still sits first. His Denver wild-card pick now shares the line with Seattle. All three clubs will see one another again before the schedule runs out."
+      ]
+    ],
+    [
+      "Houston still owns the margin",
+      [
+        "The briefing flagged the extra St. Louis–Houston game. The Stallions completed that 5–3 win and swept the four regular games in St. Louis. They went 9–2, the best record of the challenge, and drew even with Cincinnati. Houston went 3–8 and still leads both clubs by eight. The Mavericks have room to absorb a bad week. St. Louis has a reason to keep asking how much room there is.",
+        "Philadelphia won eight straight after two shutout losses in Boston. It picked up one game on the Patriots, whose final weekend included Jorge Galvez’s five-hit shutout in Pittsburgh. Houston and Boston both still sit atop their divisions. Las Vegas does, too. August gave Earl’s American Conference picks their places in the standings and gave the clubs behind them reasons to keep playing for those places.",
+        "Start September by watching who can take a series from a contender outside its own division. Miami opens at Phoenix and Detroit at San Francisco. The head-to-head games return later in September. The first job is to be close enough when they do."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 1,2,4,5,6,9,10,12,13,14,17,19,20,22,23,24. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1113,1455,1458,1467,1476,1479,1491,1494,1507,1518,1525,1527,1534,1537,1539,1549,1551,1560,1561,1563,1565,1566,1568,1569,1570,1571,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1575,1576,1814,1866,1872,1899,1907,1935,1943. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1849,1972,9405,8125,5873,1440,1952,8049,8217,1. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1476, bottom of 14th, lines 659–671, Olguin reaches, steals second, takes third on error and scores on Wilson's single. Cross-check the innings and scoring in games_score.csv, game_id=1476.",
+    "game_logs.csv, game_id=1561, bottom of ninth, lines 425–443, Watters singles with two out to score Postell. Cross-check the innings and scoring in games_score.csv, game_id=1561.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+    "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up.",
+    "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+  ],
+  "claim_games": [
+    1113,
+    1455,
+    1458,
+    1467,
+    1476,
+    1479,
+    1491,
+    1494,
+    1507,
+    1518,
+    1525,
+    1527,
+    1534,
+    1537,
+    1539,
+    1549,
+    1551,
+    1560,
+    1561,
+    1563,
+    1565,
+    1566,
+    1568,
+    1569,
+    1570,
+    1571,
+    1572,
+    1575,
+    1576,
+    1814,
+    1866,
+    1872,
+    1899,
+    1907,
+    1935,
+    1943
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1561
+      ],
+      "claim": "Pat Watters singles with two outs in the ninth to score Dwayne Postell and end the Charlotte sweep."
+    },
+    {
+      "games": [
+        1455,
+        1467,
+        1479,
+        1491,
+        1527,
+        1539,
+        1551,
+        1563
+      ],
+      "claim": "Chicago wins three of four against Detroit and Dallas sweeps the Dukes."
+    },
+    {
+      "games": [
+        1476,
+        1560,
+        1571,
+        1572
+      ],
+      "claim": "Wilson ends the 14-inning game in Seattle. Denver wins the last two there while Las Vegas holds first."
+    },
+    {
+      "games": [
+        1113
+      ],
+      "claim": "1981-08-20. St. Louis Stallions 5, Houston Mavericks 3."
+    },
+    {
+      "games": [
+        1455
+      ],
+      "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+    },
+    {
+      "games": [
+        1458
+      ],
+      "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+    },
+    {
+      "games": [
+        1467
+      ],
+      "claim": "1981-08-21. Detroit Dukes 5, Chicago Fire 8."
+    },
+    {
+      "games": [
+        1476
+      ],
+      "claim": "1981-08-21. Las Vegas Gamblers 3, Seattle Comets 4."
+    },
+    {
+      "games": [
+        1479
+      ],
+      "claim": "1981-08-22. Detroit Dukes 11, Chicago Fire 3."
+    },
+    {
+      "games": [
+        1491
+      ],
+      "claim": "1981-08-23. Detroit Dukes 7, Chicago Fire 9."
+    },
+    {
+      "games": [
+        1494
+      ],
+      "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+    },
+    {
+      "games": [
+        1507
+      ],
+      "claim": "1981-08-24. Las Vegas Gamblers 2, Denver Rocketeers 6."
+    },
+    {
+      "games": [
+        1518
+      ],
+      "claim": "1981-08-25. Las Vegas Gamblers 2, Denver Rocketeers 7."
+    },
+    {
+      "games": [
+        1525
+      ],
+      "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+    },
+    {
+      "games": [
+        1527
+      ],
+      "claim": "1981-08-27. Detroit Dukes 1, Dallas Rustlers 7."
+    },
+    {
+      "games": [
+        1534
+      ],
+      "claim": "1981-08-27. Cincinnati Cougars 0, St. Louis Stallions 6."
+    },
+    {
+      "games": [
+        1537
+      ],
+      "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+    },
+    {
+      "games": [
+        1539
+      ],
+      "claim": "1981-08-28. Detroit Dukes 1, Dallas Rustlers 5."
+    },
+    {
+      "games": [
+        1549
+      ],
+      "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+    },
+    {
+      "games": [
+        1551
+      ],
+      "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+    },
+    {
+      "games": [
+        1560
+      ],
+      "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+    },
+    {
+      "games": [
+        1561
+      ],
+      "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+    },
+    {
+      "games": [
+        1563
+      ],
+      "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+    },
+    {
+      "games": [
+        1565
+      ],
+      "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+    },
+    {
+      "games": [
+        1566
+      ],
+      "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+    },
+    {
+      "games": [
+        1568
+      ],
+      "claim": "1981-08-30. Boston Patriots 2, Pittsburgh Express 0."
+    },
+    {
+      "games": [
+        1569
+      ],
+      "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+    },
+    {
+      "games": [
+        1570
+      ],
+      "claim": "1981-08-30. Cincinnati Cougars 2, St. Louis Stallions 4."
+    },
+    {
+      "games": [
+        1571
+      ],
+      "claim": "1981-08-30. Las Vegas Gamblers 5, Portland Lumberjacks 2."
+    },
+    {
+      "games": [
+        1572
+      ],
+      "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "a61c086b782acd5a08e5c5f2700ba990c607f206b40e27fdea5b2fb623edcb15",
+    "question": "Miami’s sweep, Chicago’s pursuit and Denver’s two late wins show why August vindicated some of Big Earl’s picks while eroding their margins.",
+    "promise": "The contenders can hear each other now",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Miami’s sweep, Chicago’s pursuit and Denver’s two late wins show why August vindicated some of Big Earl’s picks while eroding their margins.",
+    "ending": "Start September by watching who can take a series from a contender outside its own division. Miami opens at Phoenix and Detroit at San Francisco. The head-to-head games return later in September. The first job is to be close enough when they do."
+  }
+}
