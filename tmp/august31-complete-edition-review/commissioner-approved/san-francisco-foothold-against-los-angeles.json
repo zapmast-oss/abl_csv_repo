@@ -1,0 +1,124 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "san-francisco-foothold-against-los-angeles",
+  "title": "San Francisco found a foothold against Los Angeles",
+  "kind": "beat",
+  "byline": "San Francisco Warriors beat",
+  "team_ids": [
+    10
+  ],
+  "story_ids": [
+    "10:1981:race",
+    "10:1981:player:5575:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "The August 20 forecast called for a San Francisco recovery against familiar opponents. Phoenix took three of four in the Warriors’ own park. San Francisco then split two at San Diego. The recovery finally found a place to start in the four with Los Angeles, and the Warriors ended the challenge one game out instead of looking up at both rivals.",
+        "San Francisco put 15 runs on Los Angeles in the opener and won the last two. Bernardo Valenzuela homered and drove in three in the 10–4 finale. Miguel Collado hit four home runs over the full challenge. The offense that scored five runs in its last three games before the Los Angeles series scored 34 in the four against the Cobras.",
+        "Detroit comes to San Francisco on August 31. A Warriors win and a Phoenix loss would tie the West again. The next Phoenix series waits until September 28, also on the Warriors’ field."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 10. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1458,1470,1482,1494,1504,1513,1530,1542,1554,1566. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1576,1586,1598,1866,1878,1890. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 8897,5838,5575. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+  ],
+  "claim_games": [
+    1458,
+    1470,
+    1482,
+    1494,
+    1504,
+    1513,
+    1530,
+    1542,
+    1554,
+    1566,
+    1576,
+    1586,
+    1598,
+    1866,
+    1878,
+    1890
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1458
+      ],
+      "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+    },
+    {
+      "games": [
+        1470
+      ],
+      "claim": "1981-08-21. Phoenix Firebirds 6, San Francisco Warriors 3."
+    },
+    {
+      "games": [
+        1482
+      ],
+      "claim": "1981-08-22. Phoenix Firebirds 1, San Francisco Warriors 2."
+    },
+    {
+      "games": [
+        1494
+      ],
+      "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+    },
+    {
+      "games": [
+        1504
+      ],
+      "claim": "1981-08-24. San Francisco Warriors 3, San Diego Seraphs 4."
+    },
+    {
+      "games": [
+        1513
+      ],
+      "claim": "1981-08-25. San Francisco Warriors 2, San Diego Seraphs 1."
+    },
+    {
+      "games": [
+        1530
+      ],
+      "claim": "1981-08-27. Los Angeles Cobras 1, San Francisco Warriors 15."
+    },
+    {
+      "games": [
+        1542
+      ],
+      "claim": "1981-08-28. Los Angeles Cobras 7, San Francisco Warriors 3."
+    },
+    {
+      "games": [
+        1554
+      ],
+      "claim": "1981-08-29. Los Angeles Cobras 1, San Francisco Warriors 6."
+    },
+    {
+      "games": [
+        1566
+      ],
+      "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Commissioner",
+    "copy_sha256": "1487791019a5fc304d662328148bbcb11c6c252328096ba6f5c32dcfbf7db5df",
+    "question": "The Warriors lost the opening duel with Phoenix but took three of four from Los Angeles, with Bernardo Valenzuela helping close the series.",
+    "promise": "San Francisco found a foothold against Los Angeles",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Warriors lost the opening duel with Phoenix but took three of four from Los Angeles, with Bernardo Valenzuela helping close the series.",
+    "ending": "Detroit comes to San Francisco on August 31. A Warriors win and a Phoenix loss would tie the West again. The next Phoenix series waits until September 28, also on the Warriors’ field."
+  }
+}

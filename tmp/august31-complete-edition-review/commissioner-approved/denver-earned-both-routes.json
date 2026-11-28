@@ -1,0 +1,128 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "denver-earned-both-routes",
+  "title": "Denver put the division within reach",
+  "kind": "beat",
+  "byline": "Denver Rocketeers beat",
+  "team_ids": [
+    13
+  ],
+  "story_ids": [
+    "13:1981:race",
+    "13:1981:player:949:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Portland took the first three in Denver. The Rocketeers won the fourth, swept two from Las Vegas, then lost the first two in Seattle by a run each. That left Denver two games behind Seattle going into August 29, with two more games on the same field.",
+        "Tony Oubre went eight innings in the 4–2 win. Damian Serano struck out seven in 5⅔ innings in the 2–1 finale. Denver came home level with Seattle and one game behind Las Vegas. The 5–5 record matters less than the clubs Denver took those four late decisions from.",
+        "Pittsburgh arrives first and Denver goes to Houston next. Four more with Seattle are in Denver on September 24–27. The schedule still gives the Rocketeers a chance to turn a tie for one berth into control of a division."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 13. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1463,1475,1487,1499,1507,1518,1536,1548,1560,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1578,1589,1601,1620,1823,1835,1847,1859,1907,1943. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 949,1733,6906. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+  ],
+  "claim_games": [
+    1463,
+    1475,
+    1487,
+    1499,
+    1507,
+    1518,
+    1536,
+    1548,
+    1560,
+    1572,
+    1578,
+    1589,
+    1601,
+    1620,
+    1823,
+    1835,
+    1847,
+    1859,
+    1907,
+    1943
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1463
+      ],
+      "claim": "1981-08-20. Portland Lumberjacks 7, Denver Rocketeers 2."
+    },
+    {
+      "games": [
+        1475
+      ],
+      "claim": "1981-08-21. Portland Lumberjacks 8, Denver Rocketeers 5."
+    },
+    {
+      "games": [
+        1487
+      ],
+      "claim": "1981-08-22. Portland Lumberjacks 5, Denver Rocketeers 3."
+    },
+    {
+      "games": [
+        1499
+      ],
+      "claim": "1981-08-23. Portland Lumberjacks 1, Denver Rocketeers 9."
+    },
+    {
+      "games": [
+        1507
+      ],
+      "claim": "1981-08-24. Las Vegas Gamblers 2, Denver Rocketeers 6."
+    },
+    {
+      "games": [
+        1518
+      ],
+      "claim": "1981-08-25. Las Vegas Gamblers 2, Denver Rocketeers 7."
+    },
+    {
+      "games": [
+        1536
+      ],
+      "claim": "1981-08-27. Denver Rocketeers 5, Seattle Comets 6."
+    },
+    {
+      "games": [
+        1548
+      ],
+      "claim": "1981-08-28. Denver Rocketeers 1, Seattle Comets 2."
+    },
+    {
+      "games": [
+        1560
+      ],
+      "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+    },
+    {
+      "games": [
+        1572
+      ],
+      "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Commissioner",
+    "copy_sha256": "2d4715d3c2973cebb550a45cc0b51d27f688a95aba2d6fd0e99e80d27fe339c1",
+    "question": "Two wins over Las Vegas and two at the end of the Seattle series left Denver a game from first and tied for the wild card.",
+    "promise": "Denver put the division within reach",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Two wins over Las Vegas and two at the end of the Seattle series left Denver a game from first and tied for the wild card.",
+    "ending": "Pittsburgh arrives first and Denver goes to Houston next. Four more with Seattle are in Denver on September 24–27. The schedule still gives the Rocketeers a chance to turn a tie for one berth into control of a division."
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "los-angeles-fourteen-innings-but-no-ground",
+  "title": "The Cobras won 14 innings and gained no ground on Phoenix",
+  "kind": "beat",
+  "byline": "Los Angeles Cobras beat",
+  "team_ids": [
+    9
+  ],
+  "story_ids": [
+    "9:1981:race",
+    "9:1981:player:5405:bat"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Fernando Domenech had four hits in the 14-inning win that completed Los Angeles’s sweep of San Diego. The Cobras scored ten against Phoenix next. Five straight wins were enough to get their attention in the West. Over the last five, only the 7–3 win in San Francisco went their way.",
+        "Ramon Reyes homered twice in the finale against the Warriors. Los Angeles still lost 10–4 and finished two back of Phoenix, the same gap it had on August 19. A six-win challenge left a clear September assignment. There are runs to be had, but the opening sweep cannot stand in for wins against the two teams ahead.",
+        "The Cobras host Tampa Bay next and have six games left against Phoenix. Four are in Phoenix to end the season. San Francisco visits Los Angeles for four in September before those final games arrive."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 9. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1457,1469,1481,1493,1503,1512,1530,1542,1554,1566. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1574,1583,1595,1800,1810,1901,1937. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 4584,4928,5405,1956. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+  ],
+  "claim_games": [
+    1457,
+    1469,
+    1481,
+    1493,
+    1503,
+    1512,
+    1530,
+    1542,
+    1554,
+    1566,
+    1574,
+    1583,
+    1595,
+    1800,
+    1810,
+    1901,
+    1937
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1457
+      ],
+      "claim": "1981-08-20. San Diego Seraphs 3, Los Angeles Cobras 6."
+    },
+    {
+      "games": [
+        1469
+      ],
+      "claim": "1981-08-21. San Diego Seraphs 1, Los Angeles Cobras 3."
+    },
+    {
+      "games": [
+        1481
+      ],
+      "claim": "1981-08-22. San Diego Seraphs 0, Los Angeles Cobras 3."
+    },
+    {
+      "games": [
+        1493
+      ],
+      "claim": "1981-08-23. San Diego Seraphs 4, Los Angeles Cobras 5."
+    },
+    {
+      "games": [
+        1503
+      ],
+      "claim": "1981-08-24. Phoenix Firebirds 4, Los Angeles Cobras 10."
+    },
+    {
+      "games": [
+        1512
+      ],
+      "claim": "1981-08-25. Phoenix Firebirds 8, Los Angeles Cobras 2."
+    },
+    {
+      "games": [
+        1530
+      ],
+      "claim": "1981-08-27. Los Angeles Cobras 1, San Francisco Warriors 15."
+    },
+    {
+      "games": [
+        1542
+      ],
+      "claim": "1981-08-28. Los Angeles Cobras 7, San Francisco Warriors 3."
+    },
+    {
+      "games": [
+        1554
+      ],
+      "claim": "1981-08-29. Los Angeles Cobras 1, San Francisco Warriors 6."
+    },
+    {
+      "games": [
+        1566
+      ],
+      "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Commissioner",
+    "copy_sha256": "cb8b83ac0b307bcd096412b43be268aff4a5525e78ee9b05c9e19f94891bb00f",
+    "question": "Los Angeles had a 5–0 start and a six-win challenge, but a losing series at San Francisco kept it two games back.",
+    "promise": "The Cobras won 14 innings and gained no ground on Phoenix",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Los Angeles had a 5–0 start and a six-win challenge, but a losing series at San Francisco kept it two games back.",
+    "ending": "The Cobras host Tampa Bay next and have six games left against Phoenix. Four are in Phoenix to end the season. San Francisco visits Los Angeles for four in September before those final games arrive."
+  }
+}

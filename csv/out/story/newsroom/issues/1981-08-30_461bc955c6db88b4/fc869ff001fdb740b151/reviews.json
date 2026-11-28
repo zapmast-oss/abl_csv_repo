@@ -1,0 +1,3828 @@
+{
+  "one-game-is-the-new-margin": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "one-game-is-the-new-margin",
+    "title": "The contenders can hear each other now",
+    "kind": "observer",
+    "byline": "Ernie Bewell | The Baseball Observer",
+    "team_ids": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      9,
+      10,
+      12,
+      13,
+      14,
+      17,
+      19,
+      20,
+      22,
+      23,
+      24
+    ],
+    "story_ids": [
+      "1:1981:race",
+      "2:1981:race",
+      "4:1981:race",
+      "5:1981:race",
+      "6:1981:race",
+      "9:1981:race",
+      "10:1981:race",
+      "12:1981:race",
+      "13:1981:race",
+      "14:1981:race",
+      "17:1981:race",
+      "19:1981:race",
+      "20:1981:race",
+      "22:1981:race",
+      "23:1981:race",
+      "24:1981:race"
+    ],
+    "lead": true,
+    "sections": [
+      [
+        "",
+        [
+          "Two outs in the ninth, a tie score, and Pat Watters had a one-and-two count. He singled to left, Dwayne Postell scored, and Miami won 6–5. Charlotte had come to Miami with five and a half games to spare. It left with a game and a half. The Colonels are still first in the East. The Hurricanes can see them now.",
+          "The August 20 briefing asked what Miami could do before Charlotte arrived. A sweep was worth four games, and the Hurricanes needed help to get close enough to take first. They dropped three of four in Atlanta, then beat Tampa Bay twice. They entered the Charlotte series farther back than they had been on August 19. Addie de Ruijter drove in all four Miami runs in the opener. The sweep put Miami half a game ahead of Chicago for the wild card.",
+          "In The Pennant Races Come Home, Big Earl backed Charlotte and looked to the Central for the NBC wild card. Charlotte still has the division lead. Miami’s four wins have put the second part of that forecast in doubt. The August 20 conversation was an editorial reconstruction. Its forecasts belong to that date and the standings now belong to August 30."
+        ]
+      ],
+      [
+        "Dallas beat Detroit. Chicago kept coming.",
+        [
+          "Detroit opened the challenge one game back of Dallas. On August 21, Heriberto Jimenez struck out 13 in eight scoreless innings in Chicago’s 1–0 win. Chicago took three of the four from Detroit and drew level with Dallas by August 26. The finale the briefing circled, Detroit at Dallas, became four wins for the Rustlers. Anton Garay gave them eight scoreless innings in the 4–0 third game. Detroit scored four runs in the entire series and finished the challenge 1–9.",
+          "Big Earl favored Dallas or Detroit over Chicago. Dallas answered for itself. So did the Fire, who took three of four in Minneapolis and finished just one game behind. The Central has six more Dallas–Chicago games on the schedule, including the last four in Dallas. That is enough baseball for the order to change without waiting on anybody else."
+        ]
+      ],
+      [
+        "The West was worth watching. Both of them were.",
+        [
+          "Phoenix and San Francisco started level. Phoenix took three games at San Francisco, including a 2–0 game in which Tony Zacate gave the Firebirds eight scoreless innings. The Warriors answered with three wins in four against Los Angeles. Phoenix finished one up on San Francisco and two up on Los Angeles. Earl’s forecast of a San Francisco recovery is still within reach. The first series gave the Firebirds some reason to believe in their own place.",
+          "Across the league, Seattle opened with three wins over Las Vegas. In the 14th inning on August 21, David Olguin stole second, took third on the throwing error and scored on Adam Wilson’s single. By August 29 the Comets and Gamblers shared first. Denver then took the last two games of its series in Seattle, 4–2 and 2–1, and Las Vegas closed with a win in Portland. Earl’s Las Vegas pick still sits first. His Denver wild-card pick now shares the line with Seattle. All three clubs will see one another again before the schedule runs out."
+        ]
+      ],
+      [
+        "Houston still owns the margin",
+        [
+          "The briefing flagged the extra St. Louis–Houston game. The Stallions completed that 5–3 win and swept the four regular games in St. Louis. They went 9–2, the best record of the challenge, and drew even with Cincinnati. Houston went 3–8 and still leads both clubs by eight. The Mavericks have room to absorb a bad week. St. Louis has a reason to keep asking how much room there is.",
+          "Philadelphia won eight straight after two shutout losses in Boston. It picked up one game on the Patriots, whose final weekend included Jorge Galvez’s five-hit shutout in Pittsburgh. Houston and Boston both still sit atop their divisions. Las Vegas does, too. August gave Earl’s American Conference picks their places in the standings and gave the clubs behind them reasons to keep playing for those places.",
+          "Start September by watching who can take a series from a contender outside its own division. Miami opens at Phoenix and Detroit at San Francisco. The head-to-head games return later in September. The first job is to be close enough when they do."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 1,2,4,5,6,9,10,12,13,14,17,19,20,22,23,24. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1113,1455,1458,1467,1476,1479,1491,1494,1507,1518,1525,1527,1534,1537,1539,1549,1551,1560,1561,1563,1565,1566,1568,1569,1570,1571,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1575,1576,1814,1866,1872,1899,1907,1935,1943. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1849,1972,9405,8125,5873,1440,1952,8049,8217,1. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1476, bottom of 14th, lines 659–671, Olguin reaches, steals second, takes third on error and scores on Wilson's single. Cross-check the innings and scoring in games_score.csv, game_id=1476.",
+      "game_logs.csv, game_id=1561, bottom of ninth, lines 425–443, Watters singles with two out to score Postell. Cross-check the innings and scoring in games_score.csv, game_id=1561.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+      "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up.",
+      "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+    ],
+    "claim_games": [
+      1113,
+      1455,
+      1458,
+      1467,
+      1476,
+      1479,
+      1491,
+      1494,
+      1507,
+      1518,
+      1525,
+      1527,
+      1534,
+      1537,
+      1539,
+      1549,
+      1551,
+      1560,
+      1561,
+      1563,
+      1565,
+      1566,
+      1568,
+      1569,
+      1570,
+      1571,
+      1572,
+      1575,
+      1576,
+      1814,
+      1866,
+      1872,
+      1899,
+      1907,
+      1935,
+      1943
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1561
+        ],
+        "claim": "Pat Watters singles with two outs in the ninth to score Dwayne Postell and end the Charlotte sweep."
+      },
+      {
+        "games": [
+          1455,
+          1467,
+          1479,
+          1491,
+          1527,
+          1539,
+          1551,
+          1563
+        ],
+        "claim": "Chicago wins three of four against Detroit and Dallas sweeps the Dukes."
+      },
+      {
+        "games": [
+          1476,
+          1560,
+          1571,
+          1572
+        ],
+        "claim": "Wilson ends the 14-inning game in Seattle. Denver wins the last two there while Las Vegas holds first."
+      },
+      {
+        "games": [
+          1113
+        ],
+        "claim": "1981-08-20. St. Louis Stallions 5, Houston Mavericks 3."
+      },
+      {
+        "games": [
+          1455
+        ],
+        "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+      },
+      {
+        "games": [
+          1458
+        ],
+        "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+      },
+      {
+        "games": [
+          1467
+        ],
+        "claim": "1981-08-21. Detroit Dukes 5, Chicago Fire 8."
+      },
+      {
+        "games": [
+          1476
+        ],
+        "claim": "1981-08-21. Las Vegas Gamblers 3, Seattle Comets 4."
+      },
+      {
+        "games": [
+          1479
+        ],
+        "claim": "1981-08-22. Detroit Dukes 11, Chicago Fire 3."
+      },
+      {
+        "games": [
+          1491
+        ],
+        "claim": "1981-08-23. Detroit Dukes 7, Chicago Fire 9."
+      },
+      {
+        "games": [
+          1494
+        ],
+        "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+      },
+      {
+        "games": [
+          1507
+        ],
+        "claim": "1981-08-24. Las Vegas Gamblers 2, Denver Rocketeers 6."
+      },
+      {
+        "games": [
+          1518
+        ],
+        "claim": "1981-08-25. Las Vegas Gamblers 2, Denver Rocketeers 7."
+      },
+      {
+        "games": [
+          1525
+        ],
+        "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1527
+        ],
+        "claim": "1981-08-27. Detroit Dukes 1, Dallas Rustlers 7."
+      },
+      {
+        "games": [
+          1534
+        ],
+        "claim": "1981-08-27. Cincinnati Cougars 0, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1537
+        ],
+        "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1539
+        ],
+        "claim": "1981-08-28. Detroit Dukes 1, Dallas Rustlers 5."
+      },
+      {
+        "games": [
+          1549
+        ],
+        "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+      },
+      {
+        "games": [
+          1551
+        ],
+        "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+      },
+      {
+        "games": [
+          1560
+        ],
+        "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1561
+        ],
+        "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+      },
+      {
+        "games": [
+          1563
+        ],
+        "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+      },
+      {
+        "games": [
+          1565
+        ],
+        "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+      },
+      {
+        "games": [
+          1566
+        ],
+        "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+      },
+      {
+        "games": [
+          1568
+        ],
+        "claim": "1981-08-30. Boston Patriots 2, Pittsburgh Express 0."
+      },
+      {
+        "games": [
+          1569
+        ],
+        "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+      },
+      {
+        "games": [
+          1570
+        ],
+        "claim": "1981-08-30. Cincinnati Cougars 2, St. Louis Stallions 4."
+      },
+      {
+        "games": [
+          1571
+        ],
+        "claim": "1981-08-30. Las Vegas Gamblers 5, Portland Lumberjacks 2."
+      },
+      {
+        "games": [
+          1572
+        ],
+        "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "a61c086b782acd5a08e5c5f2700ba990c607f206b40e27fdea5b2fb623edcb15",
+      "question": "Miami’s sweep, Chicago’s pursuit and Denver’s two late wins show why August vindicated some of Big Earl’s picks while eroding their margins.",
+      "promise": "The contenders can hear each other now",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Miami’s sweep, Chicago’s pursuit and Denver’s two late wins show why August vindicated some of Big Earl’s picks while eroding their margins.",
+      "ending": "Start September by watching who can take a series from a contender outside its own division. Miami opens at Phoenix and Detroit at San Francisco. The head-to-head games return later in September. The first job is to be close enough when they do."
+    }
+  },
+  "atlanta-made-the-east-work": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "atlanta-made-the-east-work",
+    "title": "Atlanta made the East leaders earn it",
+    "kind": "beat",
+    "byline": "Atlanta Kings beat",
+    "team_ids": [
+      3
+    ],
+    "story_ids": [
+      "3:1981:race"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Before Charlotte ever got to Miami, Atlanta had a vote. The Kings took three of four from the Hurricanes and split two with Charlotte, opening the latter set with a 9–3 win. Miami entered its showdown five and a half back. Atlanta mattered to that margin even though it finished August 30 ten games out.",
+          "The Kings swept the closing set with Tampa Bay, including a 14-inning 8–6 win. Eric Gray had five hits in the 10–0 opener, and Jordan Santistevan drove in three runs in each of the first two. Across the ten games Atlanta outscored the opposition 61–28. It took a good stretch against the leaders and turned it into an 8–2 challenge.",
+          "Dallas gets the Kings next. The Rustlers have a one-game lead over idle Chicago on August 31. Atlanta’s first outside assignment gives it another chance to leave its mark on somebody else’s race."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 3. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1453,1465,1477,1489,1501,1508,1526,1538,1550,1562. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1573,1582,1594. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1054,4545,7392,7613. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+    ],
+    "claim_games": [
+      1453,
+      1465,
+      1477,
+      1489,
+      1501,
+      1508,
+      1526,
+      1538,
+      1550,
+      1562,
+      1573,
+      1582,
+      1594
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1453
+        ],
+        "claim": "1981-08-20. Miami Hurricanes 2, Atlanta Kings 3."
+      },
+      {
+        "games": [
+          1465
+        ],
+        "claim": "1981-08-21. Miami Hurricanes 3, Atlanta Kings 2."
+      },
+      {
+        "games": [
+          1477
+        ],
+        "claim": "1981-08-22. Miami Hurricanes 4, Atlanta Kings 5."
+      },
+      {
+        "games": [
+          1489
+        ],
+        "claim": "1981-08-23. Miami Hurricanes 3, Atlanta Kings 8."
+      },
+      {
+        "games": [
+          1501
+        ],
+        "claim": "1981-08-24. Charlotte Colonels 3, Atlanta Kings 9."
+      },
+      {
+        "games": [
+          1508
+        ],
+        "claim": "1981-08-25. Charlotte Colonels 5, Atlanta Kings 4."
+      },
+      {
+        "games": [
+          1526
+        ],
+        "claim": "1981-08-27. Atlanta Kings 10, Tampa Bay Storm 0."
+      },
+      {
+        "games": [
+          1538
+        ],
+        "claim": "1981-08-28. Atlanta Kings 8, Tampa Bay Storm 6."
+      },
+      {
+        "games": [
+          1550
+        ],
+        "claim": "1981-08-29. Atlanta Kings 6, Tampa Bay Storm 1."
+      },
+      {
+        "games": [
+          1562
+        ],
+        "claim": "1981-08-30. Atlanta Kings 6, Tampa Bay Storm 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "90d78e3b37ea2890fe7a4ab9fa55b33ef410e08845c455fb9998f078be1e8446",
+      "question": "The Kings shaped the Charlotte–Miami margin, then swept Tampa Bay behind a productive stretch from Jordan Santistevan.",
+      "promise": "Atlanta made the East leaders earn it",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Kings shaped the Charlotte–Miami margin, then swept Tampa Bay behind a productive stretch from Jordan Santistevan.",
+      "ending": "Dallas gets the Kings next. The Rustlers have a one-game lead over idle Chicago on August 31. Atlanta’s first outside assignment gives it another chance to leave its mark on somebody else’s race."
+    }
+  },
+  "august-31-division-and-wild-card-board": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "august-31-division-and-wild-card-board",
+    "title": "Six division races and two wild cards after the August challenge",
+    "kind": "league",
+    "byline": "The Desk | Action Baseball League",
+    "team_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "story_ids": [
+      "1:1981:race",
+      "2:1981:race",
+      "3:1981:race",
+      "4:1981:race",
+      "5:1981:race",
+      "6:1981:race",
+      "7:1981:race",
+      "8:1981:race",
+      "9:1981:race",
+      "10:1981:race",
+      "11:1981:race",
+      "12:1981:race",
+      "13:1981:race",
+      "14:1981:race",
+      "15:1981:race",
+      "16:1981:race",
+      "17:1981:race",
+      "18:1981:race",
+      "19:1981:race",
+      "20:1981:race",
+      "21:1981:race",
+      "22:1981:race",
+      "23:1981:race",
+      "24:1981:race"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "The August Division Challenges added 121 verified finals, including the completion of the previously unfinished St. Louis–Houston game. The regular-season ledger now has 1,571 finals through August 30. St. Louis led the window at 9–2. Atlanta and Philadelphia went 8–2. Detroit, Tampa Bay and New York each went 1–9.",
+          "Below, the first record is through August 19, the second through August 30. The bracketed record covers August 20–30. Games back compares each club with the leader at the same cutoff."
+        ]
+      ],
+      [
+        "NBC East",
+        [
+          "Charlotte Colonels 69–52 (0 GB) → 73–58 (0 GB) [4–6]",
+          "Miami Hurricanes 64–56 (4.5 GB) → 71–59 (1.5 GB) [7–3]",
+          "Atlanta Kings 55–66 (14 GB) → 63–68 (10 GB) [8–2]",
+          "Tampa Bay Storm 53–68 (16 GB) → 54–77 (19 GB) [1–9]",
+          "Miami swept Charlotte and reduced the margin from four and a half games to one and a half. Atlanta won three of four from Miami, split with Charlotte and swept Tampa Bay. It played a part in the race even from third. Miami visits Phoenix beginning August 31, Charlotte hosts Chicago beginning September 1, and the Hurricanes get four more directly against Charlotte there September 24–27."
+        ]
+      ],
+      [
+        "NBC Central",
+        [
+          "Dallas Rustlers 66–55 (0 GB) → 72–59 (0 GB) [6–4]",
+          "Chicago Fire 64–57 (2 GB) → 71–60 (1 GB) [7–3]",
+          "Detroit Dukes 65–56 (1 GB) → 66–65 (6 GB) [1–9]",
+          "Minneapolis Blizzard 54–66 (11.5 GB) → 60–70 (11.5 GB) [6–4]",
+          "Dallas swept defending champion Detroit and went into September a game ahead of Chicago. The Fire gained a game on Dallas over the full challenge and moved from third to second. Minneapolis finished 6–4 after taking three of four from Dallas and both games from Detroit. The Rustlers visit Chicago September 21–22 and host the Fire October 1–4."
+        ]
+      ],
+      [
+        "NBC West",
+        [
+          "Phoenix Firebirds 64–57 (0 GB) → 70–61 (0 GB) [6–4]",
+          "San Francisco Warriors 64–57 (0 GB) → 69–62 (1 GB) [5–5]",
+          "Los Angeles Cobras 62–59 (2 GB) → 68–63 (2 GB) [6–4]",
+          "San Diego Seraphs 45–76 (19 GB) → 48–83 (22 GB) [3–7]",
+          "Phoenix broke the August 19 tie by taking three of four at San Francisco. The Warriors’ three wins in four against Los Angeles kept them a game back. The Cobras are still two back despite sweeping San Diego and going 6–4 overall. Each pair of the top three still meets. San Francisco visits Los Angeles September 24–27 and hosts Phoenix September 28–30. Phoenix also has six with Los Angeles, including four to finish the schedule."
+        ]
+      ],
+      [
+        "ABC East",
+        [
+          "Boston Patriots 61–60 (0 GB) → 68–63 (0 GB) [7–3]",
+          "Philadelphia Fury 57–64 (4 GB) → 65–66 (3 GB) [8–2]",
+          "Pittsburgh Express 54–67 (7 GB) → 58–73 (10 GB) [4–6]",
+          "New York Aces 53–68 (8 GB) → 54–77 (14 GB) [1–9]",
+          "Boston and Philadelphia split four at Boston. Philadelphia won all six of its remaining challenge games and shaved one game off Boston’s lead. Pittsburgh finished ten back after losing both games to Philadelphia and three of four to Boston. New York lost nine straight after winning the opener. Boston opens September at Houston and Philadelphia at Las Vegas. The contenders meet at Boston again September 28–30."
+        ]
+      ],
+      [
+        "ABC Central",
+        [
+          "Houston Mavericks 72–48 (0 GB) → 75–56 (0 GB) [3–8]",
+          "Cincinnati Cougars 63–58 (9.5 GB) → 67–64 (8 GB) [4–6]",
+          "St. Louis Stallions 58–62 (14 GB) → 67–64 (8 GB) [9–2]",
+          "Nashville Blues 59–62 (13.5 GB) → 64–67 (11 GB) [5–5]",
+          "St. Louis used five wins over Houston and three over Cincinnati to draw level with the Cougars for second. It gained six games on Houston. Cincinnati went 4–6 and still gained a game and a half. Houston kept an eight-game lead by winning its final two against Nashville. The Blues split with all three division opponents. Cincinnati and St. Louis meet September 24–27, Houston goes to St. Louis September 28–30, and Cincinnati has six games left with Houston."
+        ]
+      ],
+      [
+        "ABC West",
+        [
+          "Las Vegas Gamblers 69–52 (0 GB) → 72–59 (0 GB) [3–7]",
+          "Denver Rocketeers 66–55 (3 GB) → 71–60 (1 GB) [5–5]",
+          "Seattle Comets 64–57 (5 GB) → 71–60 (1 GB) [7–3]",
+          "Portland Lumberjacks 49–72 (20 GB) → 54–77 (18 GB) [5–5]",
+          "Las Vegas’s lead over Denver shrank from three to one, and its advantage over Seattle from five to one. Seattle won three of four against Las Vegas and tied the Gamblers before the last day. Denver won both games against Las Vegas, then won the last two at Seattle to pull even with the Comets. Portland took three of four at Denver and split four with Las Vegas. All three contenders play one another again by October 4."
+        ]
+      ],
+      [
+        "Wild cards and the DCS under the 1981 rules",
+        [
+          "Each conference sends three division winners and its best remaining club. Miami is 71–59, half a game ahead of Chicago (71–60), two and a half ahead of San Francisco (69–62), three and a half ahead of Los Angeles (68–63), and five and a half ahead of Detroit (66–65). Detroit held the wild-card position on August 19.",
+          "Denver and Seattle are tied at 71–60 in the ABC, four games in front of both Cincinnati and St. Louis and six ahead of Philadelphia. Denver held the wild-card position alone on August 19. The standings supply no official decision between Denver and Seattle.",
+          "If the season ended on these records, Charlotte would be the NBC’s top seed and Miami its wild card. The same-division protection would pair Charlotte with Phoenix and Dallas with Miami. In the ABC, Houston would face the Denver–Seattle wild-card survivor, with Las Vegas facing Boston. The August standings establish position. The remaining schedule and any official tiebreak determine the field."
+        ]
+      ],
+      [
+        "Roster expansion and September assignments",
+        [
+          "Twenty-two clubs have 31 games listed. Miami and Minneapolis have 32. Eight games are scheduled for August 31. Miami at Phoenix crosses a wild-card leader with a division leader, Detroit at San Francisco brings two NBC chasers together, and Pittsburgh at Denver and Nashville at Seattle give the tied ABC wild-card clubs separate tests. Dallas can gain half a game on idle Chicago by beating Atlanta.",
+          "The August 20 briefing asked how deadline arrivals would be used. Miami’s Addie de Ruijter drove in 12 runs during the challenge, including all four in the Charlotte opener. Justin Bowen, acquired from Boston, saved four games for Chicago. Those are two different ways the deadline deals are showing up in the race. Keep their actual use in view when the active lists get longer.",
+          "The league export schedules active rosters to expand from 26 to 40 on September 1. Expansion is still marked inactive at this cutoff. Start with the August 31 active lists and check the September 1 roster and transaction records before reporting a call-up. Confirm the first use in a box score. Watch whether contenders use the extra places for relief innings, bench matchups or coverage for unavailable players, and where clubs farther back give an unfamiliar player a start."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1113,1455,1458,1459,1462,1471,1474,1486,1494,1495,1498,1507,1516,1518,1525,1533,1534,1537,1546,1549,1551,1558,1560,1561,1563,1564,1565,1566,1567,1568,1569,1570,1571,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1573,1574,1575,1576,1577,1578,1579,1580,1581,1588,1590,1620,1789,1800,1806,1814,1817,1821,1823,1866,1867,1870,1872,1899,1901,1905,1907,1935,1937,1941,1943. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1849,854. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "trade_history.csv, message_id=19901, date=1981-07-31, team IDs 20,12, player ID 854. Compare saves with the player pitching lines.",
+      "trade_history.csv, message_id=19877, date=1981-07-29, team IDs 1,2, player ID 1849. Compare RBI with the player batting lines.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+      "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up.",
+      "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+    ],
+    "claim_games": [
+      1113,
+      1455,
+      1458,
+      1459,
+      1462,
+      1471,
+      1474,
+      1486,
+      1494,
+      1495,
+      1498,
+      1507,
+      1516,
+      1518,
+      1525,
+      1533,
+      1534,
+      1537,
+      1546,
+      1549,
+      1551,
+      1558,
+      1560,
+      1561,
+      1563,
+      1564,
+      1565,
+      1566,
+      1567,
+      1568,
+      1569,
+      1570,
+      1571,
+      1572,
+      1573,
+      1574,
+      1575,
+      1576,
+      1577,
+      1578,
+      1579,
+      1580,
+      1581,
+      1588,
+      1590,
+      1620,
+      1789,
+      1800,
+      1806,
+      1814,
+      1817,
+      1821,
+      1823,
+      1866,
+      1867,
+      1870,
+      1872,
+      1899,
+      1901,
+      1905,
+      1907,
+      1935,
+      1937,
+      1941,
+      1943
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1113,
+          1462,
+          1474,
+          1486,
+          1498,
+          1534,
+          1546,
+          1558,
+          1570
+        ],
+        "claim": "St. Louis wins five against Houston and three against Cincinnati."
+      },
+      {
+        "games": [
+          1525,
+          1537,
+          1549,
+          1561
+        ],
+        "claim": "Miami sweeps Charlotte and closes to a game and a half."
+      },
+      {
+        "games": [
+          1560,
+          1571,
+          1572
+        ],
+        "claim": "Las Vegas ends a game up and Denver and Seattle tie for the wild card."
+      },
+      {
+        "games": [
+          1113
+        ],
+        "claim": "1981-08-20. St. Louis Stallions 5, Houston Mavericks 3."
+      },
+      {
+        "games": [
+          1455
+        ],
+        "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+      },
+      {
+        "games": [
+          1458
+        ],
+        "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+      },
+      {
+        "games": [
+          1459
+        ],
+        "claim": "1981-08-20. Philadelphia Fury 0, Boston Patriots 3."
+      },
+      {
+        "games": [
+          1462
+        ],
+        "claim": "1981-08-20. Houston Mavericks 1, St. Louis Stallions 7."
+      },
+      {
+        "games": [
+          1471
+        ],
+        "claim": "1981-08-21. Philadelphia Fury 0, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1474
+        ],
+        "claim": "1981-08-21. Houston Mavericks 2, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1486
+        ],
+        "claim": "1981-08-22. Houston Mavericks 0, St. Louis Stallions 10."
+      },
+      {
+        "games": [
+          1494
+        ],
+        "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+      },
+      {
+        "games": [
+          1495
+        ],
+        "claim": "1981-08-23. Philadelphia Fury 11, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1498
+        ],
+        "claim": "1981-08-23. Houston Mavericks 0, St. Louis Stallions 9."
+      },
+      {
+        "games": [
+          1507
+        ],
+        "claim": "1981-08-24. Las Vegas Gamblers 2, Denver Rocketeers 6."
+      },
+      {
+        "games": [
+          1516
+        ],
+        "claim": "1981-08-25. Houston Mavericks 0, Cincinnati Cougars 4."
+      },
+      {
+        "games": [
+          1518
+        ],
+        "claim": "1981-08-25. Las Vegas Gamblers 2, Denver Rocketeers 7."
+      },
+      {
+        "games": [
+          1525
+        ],
+        "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1533
+        ],
+        "claim": "1981-08-27. Nashville Blues 5, Houston Mavericks 1."
+      },
+      {
+        "games": [
+          1534
+        ],
+        "claim": "1981-08-27. Cincinnati Cougars 0, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1537
+        ],
+        "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1546
+        ],
+        "claim": "1981-08-28. Cincinnati Cougars 1, St. Louis Stallions 12."
+      },
+      {
+        "games": [
+          1549
+        ],
+        "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+      },
+      {
+        "games": [
+          1551
+        ],
+        "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+      },
+      {
+        "games": [
+          1558
+        ],
+        "claim": "1981-08-29. Cincinnati Cougars 6, St. Louis Stallions 5."
+      },
+      {
+        "games": [
+          1560
+        ],
+        "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1561
+        ],
+        "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+      },
+      {
+        "games": [
+          1563
+        ],
+        "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+      },
+      {
+        "games": [
+          1564
+        ],
+        "claim": "1981-08-30. Chicago Fire 5, Minneapolis Blizzard 3."
+      },
+      {
+        "games": [
+          1565
+        ],
+        "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+      },
+      {
+        "games": [
+          1566
+        ],
+        "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+      },
+      {
+        "games": [
+          1567
+        ],
+        "claim": "1981-08-30. New York Aces 0, Philadelphia Fury 10."
+      },
+      {
+        "games": [
+          1568
+        ],
+        "claim": "1981-08-30. Boston Patriots 2, Pittsburgh Express 0."
+      },
+      {
+        "games": [
+          1569
+        ],
+        "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+      },
+      {
+        "games": [
+          1570
+        ],
+        "claim": "1981-08-30. Cincinnati Cougars 2, St. Louis Stallions 4."
+      },
+      {
+        "games": [
+          1571
+        ],
+        "claim": "1981-08-30. Las Vegas Gamblers 5, Portland Lumberjacks 2."
+      },
+      {
+        "games": [
+          1572
+        ],
+        "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "75befb34787cb57b4687c625b244a5c26333c185a45c80f54101a99838f3c5ca",
+      "question": "The full August 19 and August 30 comparison, a rules-based October field, and the September series and roster decisions that can change it.",
+      "promise": "Six division races and two wild cards after the August challenge",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The full August 19 and August 30 comparison, a rules-based October field, and the September series and roster decisions that can change it.",
+      "ending": "The league export schedules active rosters to expand from 26 to 40 on September 1. Expansion is still marked inactive at this cutoff. Start with the August 31 active lists and check the September 1 roster and transaction records before reporting a call-up. Confirm the first use in a box score. Watch whether contenders use the extra places for relief innings, bench matchups or coverage for unavailable players, and where clubs farther back give an unfamiliar player a start."
+    }
+  },
+  "boston-galvez-bought-room": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "boston-galvez-bought-room",
+    "title": "Jorge Galvez gave Boston room to breathe",
+    "kind": "beat",
+    "byline": "Boston Patriots beat",
+    "team_ids": [
+      20
+    ],
+    "story_ids": [
+      "20:1981:race",
+      "20:1981:player:1:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Philadelphia came to Boston for four with a four-game deficit. The Patriots shut the Fury out twice, then lost the next two by a combined 18–4. The split sent the Fury away still four back. Boston kept three of those games in hand even after Philadelphia ran its winning streak to eight.",
+          "Jorge Galvez allowed one earned run in 24⅓ innings during the challenge. On August 30 in Pittsburgh he gave up five hits over nine innings and Boston needed only two runs. Mike Randolph recorded six saves in the challenge. The finale showed that Boston could finish a series without calling on him.",
+          "Boston won seven of ten and starts September at Houston. The Fury return to Boston on September 28. The Patriots have several road series before then in which to protect the margin their pitchers helped keep."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 20. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1459,1471,1483,1495,1514,1522,1532,1544,1556,1568. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1588,1600,1607,1867,1879,1891. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1,3081. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+    ],
+    "claim_games": [
+      1459,
+      1471,
+      1483,
+      1495,
+      1514,
+      1522,
+      1532,
+      1544,
+      1556,
+      1568,
+      1588,
+      1600,
+      1607,
+      1867,
+      1879,
+      1891
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1459
+        ],
+        "claim": "1981-08-20. Philadelphia Fury 0, Boston Patriots 3."
+      },
+      {
+        "games": [
+          1471
+        ],
+        "claim": "1981-08-21. Philadelphia Fury 0, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1483
+        ],
+        "claim": "1981-08-22. Philadelphia Fury 7, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1495
+        ],
+        "claim": "1981-08-23. Philadelphia Fury 11, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1514
+        ],
+        "claim": "1981-08-25. New York Aces 1, Boston Patriots 4."
+      },
+      {
+        "games": [
+          1522
+        ],
+        "claim": "1981-08-26. New York Aces 1, Boston Patriots 3."
+      },
+      {
+        "games": [
+          1532
+        ],
+        "claim": "1981-08-27. Boston Patriots 3, Pittsburgh Express 5."
+      },
+      {
+        "games": [
+          1544
+        ],
+        "claim": "1981-08-28. Boston Patriots 4, Pittsburgh Express 0."
+      },
+      {
+        "games": [
+          1556
+        ],
+        "claim": "1981-08-29. Boston Patriots 6, Pittsburgh Express 3."
+      },
+      {
+        "games": [
+          1568
+        ],
+        "claim": "1981-08-30. Boston Patriots 2, Pittsburgh Express 0."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "12708be062338ea87de1a67b956c9afa7aca48e0e79129ba1cb073b1b4afddb8",
+      "question": "The Patriots withstood Philadelphia’s winning streak by allowing little in their own wins, culminating in Galvez’s five-hit shutout.",
+      "promise": "Jorge Galvez gave Boston room to breathe",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Patriots withstood Philadelphia’s winning streak by allowing little in their own wins, culminating in Galvez’s five-hit shutout.",
+      "ending": "Boston won seven of ten and starts September at Houston. The Fury return to Boston on September 28. The Patriots have several road series before then in which to protect the margin their pitchers helped keep."
+    }
+  },
+  "charlotte-lead-after-miami": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "charlotte-lead-after-miami",
+    "title": "Charlotte’s lead survived four close losses",
+    "kind": "beat",
+    "byline": "Charlotte Colonels beat",
+    "team_ids": [
+      6
+    ],
+    "story_ids": [
+      "6:1981:race",
+      "6:1981:player:7208:bat"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Six runs separated Charlotte from Miami across four games. The Colonels lost 4–2, 4–3, 5–3 and 6–5. On August 30 they had the game tied in the bottom of the ninth before Pat Watters ended it with a single. The 1980 division winner heads home still first, with its lead down to a game and a half.",
+          "Tampa Bay and Atlanta explain why Charlotte still has that lead. The Colonels won four of their first six, adding a game to their August 19 margin before the sweep. In Miami, Dabir Aly struck out ten in the opener and the Colonels scored twice. Miguel Salazar had 17 hits over the full challenge. There was individual production on a trip where four short scores in succession mattered more.",
+          "Charlotte opens September at home against Chicago, itself a game out in the Central. Miami comes to Charlotte for four September 24–27. Those dates put the advantage back in the Colonels’ hands if they can carry a lead to the rematch."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 6. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1454,1466,1478,1490,1501,1508,1525,1537,1549,1561. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1581,1593,1605,1814,1826,1838,1850. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 5456,7208,1972. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1561, bottom of ninth, lines 425–443, Watters singles with two out to score Postell. Cross-check the innings and scoring in games_score.csv, game_id=1561.",
+      "team_history.csv and team_history_record.csv, team ID 6 for 1980 NBC East division title."
+    ],
+    "claim_games": [
+      1454,
+      1466,
+      1478,
+      1490,
+      1501,
+      1508,
+      1525,
+      1537,
+      1549,
+      1561,
+      1581,
+      1593,
+      1605,
+      1814,
+      1826,
+      1838,
+      1850
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1454
+        ],
+        "claim": "1981-08-20. Charlotte Colonels 6, Tampa Bay Storm 5."
+      },
+      {
+        "games": [
+          1466
+        ],
+        "claim": "1981-08-21. Charlotte Colonels 8, Tampa Bay Storm 4."
+      },
+      {
+        "games": [
+          1478
+        ],
+        "claim": "1981-08-22. Charlotte Colonels 9, Tampa Bay Storm 4."
+      },
+      {
+        "games": [
+          1490
+        ],
+        "claim": "1981-08-23. Charlotte Colonels 9, Tampa Bay Storm 10."
+      },
+      {
+        "games": [
+          1501
+        ],
+        "claim": "1981-08-24. Charlotte Colonels 3, Atlanta Kings 9."
+      },
+      {
+        "games": [
+          1508
+        ],
+        "claim": "1981-08-25. Charlotte Colonels 5, Atlanta Kings 4."
+      },
+      {
+        "games": [
+          1525
+        ],
+        "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1537
+        ],
+        "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1549
+        ],
+        "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+      },
+      {
+        "games": [
+          1561
+        ],
+        "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "03cece53f62bb1549ac4687f63cb3c191abad4e77b0f8b1f6bcc8f4103b55b86",
+      "question": "The Colonels banked just enough on the first two legs of their road trip to survive a four-game Miami sweep.",
+      "promise": "Charlotte’s lead survived four close losses",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Colonels banked just enough on the first two legs of their road trip to survive a four-game Miami sweep.",
+      "ending": "Charlotte opens September at home against Chicago, itself a game out in the Central. Miami comes to Charlotte for four September 24–27. Those dates put the advantage back in the Colonels’ hands if they can carry a lead to the rematch."
+    }
+  },
+  "chicago-earned-the-right-to-chase": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "chicago-earned-the-right-to-chase",
+    "title": "Chicago earned the right to chase Dallas",
+    "kind": "beat",
+    "byline": "Chicago Fire beat",
+    "team_ids": [
+      12
+    ],
+    "story_ids": [
+      "12:1981:race",
+      "12:1981:player:8125:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "The August 20 Observer conversation gave Chicago credit for a plus-27 run differential in the Conference Challenges and asked when it would show in the standings. This time seven wins came with a much smaller surplus, 40 runs to 34. Heriberto Jimenez gave the Fire eight scoreless innings and 13 strikeouts in their 1–0 opening victory over Detroit. Chicago won both games on August 21 and took three of four from the Dukes.",
+          "The Fire split with Dallas and lost a 14-inning game at Minneapolis on Hirotoshi Nishimoto’s sacrifice fly. They took the other three games from the Blizzard. Those are the wins that mattered while Dallas was sweeping Detroit. Last year Chicago won this division and Detroit went on to win the Grand Series. Chicago now has to find a way past Dallas or Miami.",
+          "The Fire start September at Charlotte. Playing the East leader while Miami opens in Phoenix tests both of Chicago’s routes. Dallas remains on the schedule six times, four of them on the final weekend."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 12. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1455,1467,1479,1491,1502,1510,1528,1540,1552,1564. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1581,1593,1605,1789,1899,1935. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 8125,8025,854,11346. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1540, bottom of 14th, lines 550–566, Thompson scores on Nishimoto's sacrifice fly. Cross-check the innings and scoring in games_score.csv, game_id=1540.",
+      "team_history.csv, team IDs 12,5 for the 1980 NBC Central winner and Grand Series champion.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+      "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+    ],
+    "claim_games": [
+      1455,
+      1467,
+      1479,
+      1491,
+      1502,
+      1510,
+      1528,
+      1540,
+      1552,
+      1564,
+      1581,
+      1593,
+      1605,
+      1789,
+      1899,
+      1935
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1455
+        ],
+        "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+      },
+      {
+        "games": [
+          1467
+        ],
+        "claim": "1981-08-21. Detroit Dukes 5, Chicago Fire 8."
+      },
+      {
+        "games": [
+          1479
+        ],
+        "claim": "1981-08-22. Detroit Dukes 11, Chicago Fire 3."
+      },
+      {
+        "games": [
+          1491
+        ],
+        "claim": "1981-08-23. Detroit Dukes 7, Chicago Fire 9."
+      },
+      {
+        "games": [
+          1502
+        ],
+        "claim": "1981-08-24. Dallas Rustlers 1, Chicago Fire 3."
+      },
+      {
+        "games": [
+          1510
+        ],
+        "claim": "1981-08-25. Dallas Rustlers 3, Chicago Fire 1."
+      },
+      {
+        "games": [
+          1528
+        ],
+        "claim": "1981-08-27. Chicago Fire 6, Minneapolis Blizzard 1."
+      },
+      {
+        "games": [
+          1540
+        ],
+        "claim": "1981-08-28. Chicago Fire 2, Minneapolis Blizzard 3."
+      },
+      {
+        "games": [
+          1552
+        ],
+        "claim": "1981-08-29. Chicago Fire 2, Minneapolis Blizzard 0."
+      },
+      {
+        "games": [
+          1564
+        ],
+        "claim": "1981-08-30. Chicago Fire 5, Minneapolis Blizzard 3."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "1b415bf4459053774be150686adc93c799f54150261bc2cb9c3e3e52c4265b43",
+      "question": "A 7–3 stretch turned the Fire’s August case from run differential into actual wins, without settling either route to October.",
+      "promise": "Chicago earned the right to chase Dallas",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "A 7–3 stretch turned the Fire’s August case from run differential into actual wins, without settling either route to October.",
+      "ending": "The Fire start September at Charlotte. Playing the East leader while Miami opens in Phoenix tests both of Chicago’s routes. Dallas remains on the schedule six times, four of them on the final weekend."
+    }
+  },
+  "cincinnati-one-gain-one-new-problem": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "cincinnati-one-gain-one-new-problem",
+    "title": "Cincinnati gained on Houston and picked up a rival",
+    "kind": "beat",
+    "byline": "Cincinnati Cougars beat",
+    "team_ids": [
+      14
+    ],
+    "story_ids": [
+      "14:1981:race",
+      "14:1981:player:7584:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Cincinnati lost to Houston in 16 innings August 24. The next day Alex Perez struck out ten and held the Mavericks scoreless for 8⅓ innings in a 4–0 win. The split was useful. The Cougars gained a game and a half on Houston over the challenge even though they went 4–6.",
+          "The trip to St. Louis shows why that progress has limits. The Cougars scored one run in the first two games combined. Jordan Pedroza drove in four in their 6–5 win on August 29. St. Louis won the last game 4–2, leaving both clubs 67–64, eight back of Houston and four off the wild-card line.",
+          "Cincinnati opens at New York. Before taking four more games against Houston on the final weekend, it gets another four with St. Louis at home September 24–27. A good start away from the division would give both of those series more room to matter."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 14. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1461,1473,1485,1497,1506,1516,1534,1546,1558,1570. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1577,1587,1599,1821,1833,1845,1857,1905,1941. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 7584,7393. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+    ],
+    "claim_games": [
+      1461,
+      1473,
+      1485,
+      1497,
+      1506,
+      1516,
+      1534,
+      1546,
+      1558,
+      1570,
+      1577,
+      1587,
+      1599,
+      1821,
+      1833,
+      1845,
+      1857,
+      1905,
+      1941
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1461
+        ],
+        "claim": "1981-08-20. Nashville Blues 7, Cincinnati Cougars 0."
+      },
+      {
+        "games": [
+          1473
+        ],
+        "claim": "1981-08-21. Nashville Blues 7, Cincinnati Cougars 8."
+      },
+      {
+        "games": [
+          1485
+        ],
+        "claim": "1981-08-22. Nashville Blues 8, Cincinnati Cougars 5."
+      },
+      {
+        "games": [
+          1497
+        ],
+        "claim": "1981-08-23. Nashville Blues 3, Cincinnati Cougars 5."
+      },
+      {
+        "games": [
+          1506
+        ],
+        "claim": "1981-08-24. Houston Mavericks 3, Cincinnati Cougars 2."
+      },
+      {
+        "games": [
+          1516
+        ],
+        "claim": "1981-08-25. Houston Mavericks 0, Cincinnati Cougars 4."
+      },
+      {
+        "games": [
+          1534
+        ],
+        "claim": "1981-08-27. Cincinnati Cougars 0, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1546
+        ],
+        "claim": "1981-08-28. Cincinnati Cougars 1, St. Louis Stallions 12."
+      },
+      {
+        "games": [
+          1558
+        ],
+        "claim": "1981-08-29. Cincinnati Cougars 6, St. Louis Stallions 5."
+      },
+      {
+        "games": [
+          1570
+        ],
+        "claim": "1981-08-30. Cincinnati Cougars 2, St. Louis Stallions 4."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "eedb8e4cdee6cae21816228e5115714779a79b1a6d4065d2dd5adf3823f4200a",
+      "question": "Alex Perez earned a split with Houston. The Cougars still finished tied with St. Louis after losing three games there.",
+      "promise": "Cincinnati gained on Houston and picked up a rival",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Alex Perez earned a split with Houston. The Cougars still finished tied with St. Louis after losing three games there.",
+      "ending": "Cincinnati opens at New York. Before taking four more games against Houston on the final weekend, it gets another four with St. Louis at home September 24–27. A good start away from the division would give both of those series more room to matter."
+    }
+  },
+  "dallas-sweep-does-not-buy-breathing-room": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "dallas-sweep-does-not-buy-breathing-room",
+    "title": "Dallas swept the champions and still has Chicago behind it",
+    "kind": "beat",
+    "byline": "Dallas Rustlers beat",
+    "team_ids": [
+      4
+    ],
+    "story_ids": [
+      "4:1981:race",
+      "4:1981:player:5873:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Dallas opened the challenge with 17 runs at Minneapolis and lost the next three there. It split two games in Chicago and was level with the Fire when Detroit arrived. The Rustlers’ four-game sweep of the defending champions was emphatic, by a combined 20–4. The reward in the standings was a one-game lead, with Chicago still close enough to make the next Dallas loss count.",
+          "Anton Garay allowed four hits over eight scoreless innings against Detroit on August 29. He had already given Dallas eight scoreless innings in Minneapolis with no decision, in a game the Rustlers lost 1–0 in ten. The two starts tell the difference between getting a good outing and turning it into an August result.",
+          "Dallas opens at home against Atlanta, an 8–2 club in the challenge. Six games remain against the Fire. Two are in Chicago in September, and the final four of the season are in Dallas."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 4. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1456,1468,1480,1492,1502,1510,1527,1539,1551,1563. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1573,1789,1798,1899,1911,1923,1935. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 5873,6196,2859. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+    ],
+    "claim_games": [
+      1456,
+      1468,
+      1480,
+      1492,
+      1502,
+      1510,
+      1527,
+      1539,
+      1551,
+      1563,
+      1573,
+      1789,
+      1798,
+      1899,
+      1911,
+      1923,
+      1935
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1456
+        ],
+        "claim": "1981-08-20. Dallas Rustlers 17, Minneapolis Blizzard 3."
+      },
+      {
+        "games": [
+          1468
+        ],
+        "claim": "1981-08-21. Dallas Rustlers 3, Minneapolis Blizzard 7."
+      },
+      {
+        "games": [
+          1480
+        ],
+        "claim": "1981-08-22. Dallas Rustlers 0, Minneapolis Blizzard 1."
+      },
+      {
+        "games": [
+          1492
+        ],
+        "claim": "1981-08-23. Dallas Rustlers 1, Minneapolis Blizzard 10."
+      },
+      {
+        "games": [
+          1502
+        ],
+        "claim": "1981-08-24. Dallas Rustlers 1, Chicago Fire 3."
+      },
+      {
+        "games": [
+          1510
+        ],
+        "claim": "1981-08-25. Dallas Rustlers 3, Chicago Fire 1."
+      },
+      {
+        "games": [
+          1527
+        ],
+        "claim": "1981-08-27. Detroit Dukes 1, Dallas Rustlers 7."
+      },
+      {
+        "games": [
+          1539
+        ],
+        "claim": "1981-08-28. Detroit Dukes 1, Dallas Rustlers 5."
+      },
+      {
+        "games": [
+          1551
+        ],
+        "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+      },
+      {
+        "games": [
+          1563
+        ],
+        "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "8901e64f48143a057c4f02ace063204102108b95db5029f40e3d9973f824d195",
+      "question": "Anton Garay’s eight scoreless innings helped Dallas win a series it needed just to retain a one-game lead.",
+      "promise": "Dallas swept the champions and still has Chicago behind it",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Anton Garay’s eight scoreless innings helped Dallas win a series it needed just to retain a one-game lead.",
+      "ending": "Dallas opens at home against Atlanta, an 8–2 club in the challenge. Six games remain against the Fire. Two are in Chicago in September, and the final four of the season are in Dallas."
+    }
+  },
+  "denver-earned-both-routes": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "denver-earned-both-routes",
+    "title": "Denver put the division within reach",
+    "kind": "beat",
+    "byline": "Denver Rocketeers beat",
+    "team_ids": [
+      13
+    ],
+    "story_ids": [
+      "13:1981:race",
+      "13:1981:player:949:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Portland took the first three in Denver. The Rocketeers won the fourth, swept two from Las Vegas, then lost the first two in Seattle by a run each. That left Denver two games behind Seattle going into August 29, with two more games on the same field.",
+          "Tony Oubre went eight innings in the 4–2 win. Damian Serano struck out seven in 5⅔ innings in the 2–1 finale. Denver came home level with Seattle and one game behind Las Vegas. The 5–5 record matters less than the clubs Denver took those four late decisions from.",
+          "Pittsburgh arrives first and Denver goes to Houston next. Four more with Seattle are in Denver on September 24–27. The schedule still gives the Rocketeers a chance to turn a tie for one berth into control of a division."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 13. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1463,1475,1487,1499,1507,1518,1536,1548,1560,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1578,1589,1601,1620,1823,1835,1847,1859,1907,1943. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 949,1733,6906. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1463,
+      1475,
+      1487,
+      1499,
+      1507,
+      1518,
+      1536,
+      1548,
+      1560,
+      1572,
+      1578,
+      1589,
+      1601,
+      1620,
+      1823,
+      1835,
+      1847,
+      1859,
+      1907,
+      1943
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1463
+        ],
+        "claim": "1981-08-20. Portland Lumberjacks 7, Denver Rocketeers 2."
+      },
+      {
+        "games": [
+          1475
+        ],
+        "claim": "1981-08-21. Portland Lumberjacks 8, Denver Rocketeers 5."
+      },
+      {
+        "games": [
+          1487
+        ],
+        "claim": "1981-08-22. Portland Lumberjacks 5, Denver Rocketeers 3."
+      },
+      {
+        "games": [
+          1499
+        ],
+        "claim": "1981-08-23. Portland Lumberjacks 1, Denver Rocketeers 9."
+      },
+      {
+        "games": [
+          1507
+        ],
+        "claim": "1981-08-24. Las Vegas Gamblers 2, Denver Rocketeers 6."
+      },
+      {
+        "games": [
+          1518
+        ],
+        "claim": "1981-08-25. Las Vegas Gamblers 2, Denver Rocketeers 7."
+      },
+      {
+        "games": [
+          1536
+        ],
+        "claim": "1981-08-27. Denver Rocketeers 5, Seattle Comets 6."
+      },
+      {
+        "games": [
+          1548
+        ],
+        "claim": "1981-08-28. Denver Rocketeers 1, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1560
+        ],
+        "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1572
+        ],
+        "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "2d4715d3c2973cebb550a45cc0b51d27f688a95aba2d6fd0e99e80d27fe339c1",
+      "question": "Two wins over Las Vegas and two at the end of the Seattle series left Denver a game from first and tied for the wild card.",
+      "promise": "Denver put the division within reach",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Two wins over Las Vegas and two at the end of the Seattle series left Denver a game from first and tied for the wild card.",
+      "ending": "Pittsburgh arrives first and Denver goes to Houston next. Four more with Seattle are in Denver on September 24–27. The schedule still gives the Rocketeers a chance to turn a tie for one berth into control of a division."
+    }
+  },
+  "detroit-runs-short-on-the-road": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "detroit-runs-short-on-the-road",
+    "title": "Detroit’s title defense reaches San Francisco six back",
+    "kind": "beat",
+    "byline": "Detroit Dukes beat",
+    "team_ids": [
+      5
+    ],
+    "story_ids": [
+      "5:1981:race",
+      "5:1981:player:4648:bat"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Detroit scored 11 in its only win of the challenge and four runs in four games at Dallas. The 11–3 win in Chicago came after two August 21 losses. Minneapolis then won twice in Detroit before the Dukes went to Dallas. A team that had begun the challenge one game out ended it six back.",
+          "Alex Diaz had 14 hits and six walks over the ten games. Against Dallas, Detroit never scored more than two in a game. Both facts are worth carrying into September. A productive line from one hitter did not turn those four games, and the champions also lost their place at the top of the wild-card standings.",
+          "Detroit opens at San Francisco, a club two places ahead of it on the wild-card line behind Miami, with Los Angeles also between them. The next stop is Charlotte. Both opponents have races of their own to protect, and Detroit needs to start taking decisions from teams in front of it."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 5. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1455,1467,1479,1491,1511,1521,1527,1539,1551,1563. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1576,1586,1598,1610,1622,1634. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 4648,1857,4963. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "team_history.csv and team_history_record.csv, team ID 5 for 1980 ABL champion.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1455,
+      1467,
+      1479,
+      1491,
+      1511,
+      1521,
+      1527,
+      1539,
+      1551,
+      1563,
+      1576,
+      1586,
+      1598,
+      1610,
+      1622,
+      1634
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1455
+        ],
+        "claim": "1981-08-21. Detroit Dukes 0, Chicago Fire 1."
+      },
+      {
+        "games": [
+          1467
+        ],
+        "claim": "1981-08-21. Detroit Dukes 5, Chicago Fire 8."
+      },
+      {
+        "games": [
+          1479
+        ],
+        "claim": "1981-08-22. Detroit Dukes 11, Chicago Fire 3."
+      },
+      {
+        "games": [
+          1491
+        ],
+        "claim": "1981-08-23. Detroit Dukes 7, Chicago Fire 9."
+      },
+      {
+        "games": [
+          1511
+        ],
+        "claim": "1981-08-25. Minneapolis Blizzard 5, Detroit Dukes 4."
+      },
+      {
+        "games": [
+          1521
+        ],
+        "claim": "1981-08-26. Minneapolis Blizzard 4, Detroit Dukes 2."
+      },
+      {
+        "games": [
+          1527
+        ],
+        "claim": "1981-08-27. Detroit Dukes 1, Dallas Rustlers 7."
+      },
+      {
+        "games": [
+          1539
+        ],
+        "claim": "1981-08-28. Detroit Dukes 1, Dallas Rustlers 5."
+      },
+      {
+        "games": [
+          1551
+        ],
+        "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+      },
+      {
+        "games": [
+          1563
+        ],
+        "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "8bf9fd2209535b8282cf9e36a8a4d09d0278877fe692279dd30a4eb6a8827d21",
+      "question": "The Dukes entered one game off Dallas and in the wild-card spot. Four runs in four games at Dallas left both routes steeper.",
+      "promise": "Detroit’s title defense reaches San Francisco six back",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Dukes entered one game off Dallas and in the wild-card spot. Four runs in four games at Dallas left both routes steeper.",
+      "ending": "Detroit opens at San Francisco, a club two places ahead of it on the wild-card line behind Miami, with Los Angeles also between them. The next stop is Charlotte. Both opponents have races of their own to protect, and Detroit needs to start taking decisions from teams in front of it."
+    }
+  },
+  "houston-eight-game-buffer": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "houston-eight-game-buffer",
+    "title": "Houston still has eight games to spend",
+    "kind": "beat",
+    "byline": "Houston Mavericks beat",
+    "team_ids": [
+      23
+    ],
+    "story_ids": [
+      "23:1981:race",
+      "23:1981:player:2383:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Houston lost twice to St. Louis on August 20, on different fields. First came the 5–3 completion of the unfinished game in Houston, then a 7–1 loss in St. Louis to open the regular four-game set. Houston lost those four by a combined 32–3. A stretch that began with the league’s best record ended with eight losses in 11 games.",
+          "There were ways for Houston to win even in that stretch. Scott Szell allowed three earned runs in 25 innings across three starts. The Mavericks beat Cincinnati 3–2 in 16 innings, and their bats recovered for 10–0 and 10–9 wins to finish against Nashville. Apostolos Georghiou homered and had three hits in the last game. Houston still leads Cincinnati and St. Louis by eight.",
+          "Boston and Denver come to Houston to start September. The East leader and one of the two clubs tied for the wild card give Houston an early look at the company it may have in October."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 23. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1113,1462,1474,1486,1498,1506,1516,1533,1545,1557,1569. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1588,1600,1607,1620,1632,1644,1870,1905,1941. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2383,8032. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+    ],
+    "claim_games": [
+      1113,
+      1462,
+      1474,
+      1486,
+      1498,
+      1506,
+      1516,
+      1533,
+      1545,
+      1557,
+      1569,
+      1588,
+      1600,
+      1607,
+      1620,
+      1632,
+      1644,
+      1870,
+      1905,
+      1941
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1113
+        ],
+        "claim": "1981-08-20. St. Louis Stallions 5, Houston Mavericks 3."
+      },
+      {
+        "games": [
+          1462
+        ],
+        "claim": "1981-08-20. Houston Mavericks 1, St. Louis Stallions 7."
+      },
+      {
+        "games": [
+          1474
+        ],
+        "claim": "1981-08-21. Houston Mavericks 2, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1486
+        ],
+        "claim": "1981-08-22. Houston Mavericks 0, St. Louis Stallions 10."
+      },
+      {
+        "games": [
+          1498
+        ],
+        "claim": "1981-08-23. Houston Mavericks 0, St. Louis Stallions 9."
+      },
+      {
+        "games": [
+          1506
+        ],
+        "claim": "1981-08-24. Houston Mavericks 3, Cincinnati Cougars 2."
+      },
+      {
+        "games": [
+          1516
+        ],
+        "claim": "1981-08-25. Houston Mavericks 0, Cincinnati Cougars 4."
+      },
+      {
+        "games": [
+          1533
+        ],
+        "claim": "1981-08-27. Nashville Blues 5, Houston Mavericks 1."
+      },
+      {
+        "games": [
+          1545
+        ],
+        "claim": "1981-08-28. Nashville Blues 6, Houston Mavericks 5."
+      },
+      {
+        "games": [
+          1557
+        ],
+        "claim": "1981-08-29. Nashville Blues 0, Houston Mavericks 10."
+      },
+      {
+        "games": [
+          1569
+        ],
+        "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "0ac957a1f249ca4e683f32b5f71e386018ab03c3545078328b8ba4f8dd05a62c",
+      "question": "Five losses to St. Louis made Houston’s lead look less comfortable. Two late wins over Nashville kept it substantial.",
+      "promise": "Houston still has eight games to spend",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Five losses to St. Louis made Houston’s lead look less comfortable. Two late wins over Nashville kept it substantial.",
+      "ending": "Boston and Denver come to Houston to start September. The East leader and one of the two clubs tied for the wild card give Houston an early look at the company it may have in October."
+    }
+  },
+  "las-vegas-one-game-left-of-cushion": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "las-vegas-one-game-left-of-cushion",
+    "title": "Las Vegas brought one game of its lead home",
+    "kind": "beat",
+    "byline": "Las Vegas Gamblers beat",
+    "team_ids": [
+      17
+    ],
+    "story_ids": [
+      "17:1981:race"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Las Vegas left for Seattle three games ahead of Denver and five ahead of Seattle. The Comets took the first three, and Denver won both games in the middle series. When Las Vegas lost 6–5 in Portland on August 29, Seattle was level with it in the standings.",
+          "Rogelio Cole worked 7⅔ innings and allowed two runs in the 5–2 win that ended the trip. Denver’s win at Seattle left both challengers a game behind. Las Vegas kept first after a 3–7 stretch on a schedule that gave both pursuers direct chances to take it away.",
+          "Philadelphia arrives September 1 on eight straight wins. The Gamblers still owe Denver six games and Seattle three. Home field against Denver to close the season will matter more if Las Vegas can make something of the games before those nine."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 17. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1464,1476,1488,1500,1507,1518,1535,1547,1559,1571. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1590,1602,1608,1806,1812,1872,1884,1896,1907,1943. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 6052,8713. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+    ],
+    "claim_games": [
+      1464,
+      1476,
+      1488,
+      1500,
+      1507,
+      1518,
+      1535,
+      1547,
+      1559,
+      1571,
+      1590,
+      1602,
+      1608,
+      1806,
+      1812,
+      1872,
+      1884,
+      1896,
+      1907,
+      1943
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1464
+        ],
+        "claim": "1981-08-20. Las Vegas Gamblers 0, Seattle Comets 4."
+      },
+      {
+        "games": [
+          1476
+        ],
+        "claim": "1981-08-21. Las Vegas Gamblers 3, Seattle Comets 4."
+      },
+      {
+        "games": [
+          1488
+        ],
+        "claim": "1981-08-22. Las Vegas Gamblers 2, Seattle Comets 7."
+      },
+      {
+        "games": [
+          1500
+        ],
+        "claim": "1981-08-23. Las Vegas Gamblers 3, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1507
+        ],
+        "claim": "1981-08-24. Las Vegas Gamblers 2, Denver Rocketeers 6."
+      },
+      {
+        "games": [
+          1518
+        ],
+        "claim": "1981-08-25. Las Vegas Gamblers 2, Denver Rocketeers 7."
+      },
+      {
+        "games": [
+          1535
+        ],
+        "claim": "1981-08-27. Las Vegas Gamblers 4, Portland Lumberjacks 0."
+      },
+      {
+        "games": [
+          1547
+        ],
+        "claim": "1981-08-28. Las Vegas Gamblers 3, Portland Lumberjacks 5."
+      },
+      {
+        "games": [
+          1559
+        ],
+        "claim": "1981-08-29. Las Vegas Gamblers 5, Portland Lumberjacks 6."
+      },
+      {
+        "games": [
+          1571
+        ],
+        "claim": "1981-08-30. Las Vegas Gamblers 5, Portland Lumberjacks 2."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "7c9162daa4ad786f0228b70ea18949412c5d53dadf37b3fa53a8711736aba0a7",
+      "question": "A 3–7 road trip nearly erased the Gamblers’ cushion until Rogelio Cole helped win the finale at Portland.",
+      "promise": "Las Vegas brought one game of its lead home",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "A 3–7 road trip nearly erased the Gamblers’ cushion until Rogelio Cole helped win the finale at Portland.",
+      "ending": "Philadelphia arrives September 1 on eight straight wins. The Gamblers still owe Denver six games and Seattle three. Home field against Denver to close the season will matter more if Las Vegas can make something of the games before those nine."
+    }
+  },
+  "los-angeles-fourteen-innings-but-no-ground": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "los-angeles-fourteen-innings-but-no-ground",
+    "title": "The Cobras won 14 innings and gained no ground on Phoenix",
+    "kind": "beat",
+    "byline": "Los Angeles Cobras beat",
+    "team_ids": [
+      9
+    ],
+    "story_ids": [
+      "9:1981:race",
+      "9:1981:player:5405:bat"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Fernando Domenech had four hits in the 14-inning win that completed Los Angeles’s sweep of San Diego. The Cobras scored ten against Phoenix next. Five straight wins were enough to get their attention in the West. Over the last five, only the 7–3 win in San Francisco went their way.",
+          "Ramon Reyes homered twice in the finale against the Warriors. Los Angeles still lost 10–4 and finished two back of Phoenix, the same gap it had on August 19. A six-win challenge left a clear September assignment. There are runs to be had, but the opening sweep cannot stand in for wins against the two teams ahead.",
+          "The Cobras host Tampa Bay next and have six games left against Phoenix. Four are in Phoenix to end the season. San Francisco visits Los Angeles for four in September before those final games arrive."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 9. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1457,1469,1481,1493,1503,1512,1530,1542,1554,1566. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1574,1583,1595,1800,1810,1901,1937. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 4584,4928,5405,1956. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+    ],
+    "claim_games": [
+      1457,
+      1469,
+      1481,
+      1493,
+      1503,
+      1512,
+      1530,
+      1542,
+      1554,
+      1566,
+      1574,
+      1583,
+      1595,
+      1800,
+      1810,
+      1901,
+      1937
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1457
+        ],
+        "claim": "1981-08-20. San Diego Seraphs 3, Los Angeles Cobras 6."
+      },
+      {
+        "games": [
+          1469
+        ],
+        "claim": "1981-08-21. San Diego Seraphs 1, Los Angeles Cobras 3."
+      },
+      {
+        "games": [
+          1481
+        ],
+        "claim": "1981-08-22. San Diego Seraphs 0, Los Angeles Cobras 3."
+      },
+      {
+        "games": [
+          1493
+        ],
+        "claim": "1981-08-23. San Diego Seraphs 4, Los Angeles Cobras 5."
+      },
+      {
+        "games": [
+          1503
+        ],
+        "claim": "1981-08-24. Phoenix Firebirds 4, Los Angeles Cobras 10."
+      },
+      {
+        "games": [
+          1512
+        ],
+        "claim": "1981-08-25. Phoenix Firebirds 8, Los Angeles Cobras 2."
+      },
+      {
+        "games": [
+          1530
+        ],
+        "claim": "1981-08-27. Los Angeles Cobras 1, San Francisco Warriors 15."
+      },
+      {
+        "games": [
+          1542
+        ],
+        "claim": "1981-08-28. Los Angeles Cobras 7, San Francisco Warriors 3."
+      },
+      {
+        "games": [
+          1554
+        ],
+        "claim": "1981-08-29. Los Angeles Cobras 1, San Francisco Warriors 6."
+      },
+      {
+        "games": [
+          1566
+        ],
+        "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "cb8b83ac0b307bcd096412b43be268aff4a5525e78ee9b05c9e19f94891bb00f",
+      "question": "Los Angeles had a 5–0 start and a six-win challenge, but a losing series at San Francisco kept it two games back.",
+      "promise": "The Cobras won 14 innings and gained no ground on Phoenix",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Los Angeles had a 5–0 start and a six-win challenge, but a losing series at San Francisco kept it two games back.",
+      "ending": "The Cobras host Tampa Bay next and have six games left against Phoenix. Four are in Phoenix to end the season. San Francisco visits Los Angeles for four in September before those final games arrive."
+    }
+  },
+  "miami-makes-four-count": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "miami-makes-four-count",
+    "title": "Miami made all four count",
+    "kind": "beat",
+    "byline": "Miami Hurricanes beat",
+    "team_ids": [
+      1
+    ],
+    "story_ids": [
+      "1:1981:race"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "The last out of the Charlotte series never came. Pat Watters singled with two gone in the ninth, Dwayne Postell scored, and Miami won its fourth straight game against the division leader. On August 20 the question was whether Miami could get close enough that four wins would give it first. Six games later the answer was still no. The Hurricanes needed those four just to get within a game and a half.",
+          "Atlanta took three of the opening four. Two Miami wins over Tampa Bay followed, by 10–3 and 9–1. Then Addie de Ruijter, acquired from Phoenix on July 29, drove in all four runs in the first game against Charlotte. The newcomers were part of the August 20 question. De Ruijter gave Miami a concrete answer in a game with a direct bearing on first place.",
+          "Miami now owns the NBC wild-card lead by half a game over Chicago. At 71 wins it is within two of its entire 1980 total. Its next series is in Phoenix, where de Ruijter’s former club leads the West. The return series with Charlotte begins September 24 on the Colonels’ field."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 1. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1453,1465,1477,1489,1509,1520,1525,1537,1549,1561. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1575,1584,1596,1814,1826,1838,1850. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1849,1972,9405. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1561, bottom of ninth, lines 425–443, Watters singles with two out to score Postell. Cross-check the innings and scoring in games_score.csv, game_id=1561.",
+      "trade_history.csv, message_id=19877, date=1981-07-29, team IDs 1,2, player ID 1849.",
+      "team_history_record.csv, team ID 1 for 1980, 73 wins and 89 losses.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection.",
+      "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+    ],
+    "claim_games": [
+      1453,
+      1465,
+      1477,
+      1489,
+      1509,
+      1520,
+      1525,
+      1537,
+      1549,
+      1561,
+      1575,
+      1584,
+      1596,
+      1814,
+      1826,
+      1838,
+      1850
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1561
+        ],
+        "claim": "Watters singles in the ninth to complete the sweep over Charlotte."
+      },
+      {
+        "games": [
+          1525
+        ],
+        "claim": "De Ruijter drives in all four Miami runs in the opener."
+      },
+      {
+        "games": [
+          1453
+        ],
+        "claim": "1981-08-20. Miami Hurricanes 2, Atlanta Kings 3."
+      },
+      {
+        "games": [
+          1465
+        ],
+        "claim": "1981-08-21. Miami Hurricanes 3, Atlanta Kings 2."
+      },
+      {
+        "games": [
+          1477
+        ],
+        "claim": "1981-08-22. Miami Hurricanes 4, Atlanta Kings 5."
+      },
+      {
+        "games": [
+          1489
+        ],
+        "claim": "1981-08-23. Miami Hurricanes 3, Atlanta Kings 8."
+      },
+      {
+        "games": [
+          1509
+        ],
+        "claim": "1981-08-25. Tampa Bay Storm 3, Miami Hurricanes 10."
+      },
+      {
+        "games": [
+          1520
+        ],
+        "claim": "1981-08-26. Tampa Bay Storm 1, Miami Hurricanes 9."
+      },
+      {
+        "games": [
+          1525
+        ],
+        "claim": "1981-08-27. Charlotte Colonels 2, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1537
+        ],
+        "claim": "1981-08-28. Charlotte Colonels 3, Miami Hurricanes 4."
+      },
+      {
+        "games": [
+          1549
+        ],
+        "claim": "1981-08-29. Charlotte Colonels 3, Miami Hurricanes 5."
+      },
+      {
+        "games": [
+          1561
+        ],
+        "claim": "1981-08-30. Charlotte Colonels 5, Miami Hurricanes 6."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "cba7256338476231d5bfb1d2294fe5250bfd736d46a4a1c7be211707505c30df",
+      "question": "The Hurricanes left Atlanta in a worse position, then turned the Charlotte series into the league’s most productive four nights for a chaser.",
+      "promise": "Miami made all four count",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Hurricanes left Atlanta in a worse position, then turned the Charlotte series into the league’s most productive four nights for a chaser.",
+      "ending": "Miami now owns the NBC wild-card lead by half a game over Chicago. At 71 wins it is within two of its entire 1980 total. Its next series is in Phoenix, where de Ruijter’s former club leads the West. The return series with Charlotte begins September 24 on the Colonels’ field."
+    }
+  },
+  "minneapolis-one-run-games": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "minneapolis-one-run-games",
+    "title": "Minneapolis made three one-run games count",
+    "kind": "beat",
+    "byline": "Minneapolis Blizzard beat",
+    "team_ids": [
+      11
+    ],
+    "story_ids": [
+      "11:1981:race",
+      "11:1981:player:12030:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "A 17–3 loss on August 20 could have set the terms for Dallas’s four days in Minneapolis. The Blizzard won the next three. Jose Varela worked eight scoreless in the 1–0 win in ten innings, and Minneapolis put ten runs on Dallas the next day. It went on to win twice in Detroit, once in 13 innings.",
+          "Varela pitched eight again August 28, this time allowing two earned runs against Chicago. The score was still tied in the 14th when Hirotoshi Nishimoto’s fly brought Ricky Thompson home. That was the Blizzard’s third one-run win of the challenge. Six wins left them the same eleven and a half games behind Dallas. They mattered to the opponents who had to count them.",
+          "Minneapolis goes to San Diego on September 1 with 32 games still listed. Follow the rotation through the opening series, with Varela’s two long starts giving the next set of outings a benchmark."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 11. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1456,1468,1480,1492,1511,1521,1528,1540,1552,1564. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1585,1597,1606. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2756,11346,6956,12030. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1540, bottom of 14th, lines 550–566, Thompson scores on Nishimoto's sacrifice fly. Cross-check the innings and scoring in games_score.csv, game_id=1540."
+    ],
+    "claim_games": [
+      1456,
+      1468,
+      1480,
+      1492,
+      1511,
+      1521,
+      1528,
+      1540,
+      1552,
+      1564,
+      1585,
+      1597,
+      1606
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1540
+        ],
+        "claim": "Nishimoto's fly in the 14th scores Ricky Thompson."
+      },
+      {
+        "games": [
+          1456
+        ],
+        "claim": "1981-08-20. Dallas Rustlers 17, Minneapolis Blizzard 3."
+      },
+      {
+        "games": [
+          1468
+        ],
+        "claim": "1981-08-21. Dallas Rustlers 3, Minneapolis Blizzard 7."
+      },
+      {
+        "games": [
+          1480
+        ],
+        "claim": "1981-08-22. Dallas Rustlers 0, Minneapolis Blizzard 1."
+      },
+      {
+        "games": [
+          1492
+        ],
+        "claim": "1981-08-23. Dallas Rustlers 1, Minneapolis Blizzard 10."
+      },
+      {
+        "games": [
+          1511
+        ],
+        "claim": "1981-08-25. Minneapolis Blizzard 5, Detroit Dukes 4."
+      },
+      {
+        "games": [
+          1521
+        ],
+        "claim": "1981-08-26. Minneapolis Blizzard 4, Detroit Dukes 2."
+      },
+      {
+        "games": [
+          1528
+        ],
+        "claim": "1981-08-27. Chicago Fire 6, Minneapolis Blizzard 1."
+      },
+      {
+        "games": [
+          1540
+        ],
+        "claim": "1981-08-28. Chicago Fire 2, Minneapolis Blizzard 3."
+      },
+      {
+        "games": [
+          1552
+        ],
+        "claim": "1981-08-29. Chicago Fire 2, Minneapolis Blizzard 0."
+      },
+      {
+        "games": [
+          1564
+        ],
+        "claim": "1981-08-30. Chicago Fire 5, Minneapolis Blizzard 3."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "7e52632941ebb1254fefe71d92c4a0d5f4381565ba1a5441b57b9417ba79368b",
+      "question": "The Blizzard took games from both Central leaders and the defending champions, with Jose Varela giving them a chance in two extra-inning wins.",
+      "promise": "Minneapolis made three one-run games count",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Blizzard took games from both Central leaders and the defending champions, with Jose Varela giving them a chance in two extra-inning wins.",
+      "ending": "Minneapolis goes to San Diego on September 1 with 32 games still listed. Follow the rotation through the opening series, with Varela’s two long starts giving the next set of outings a benchmark."
+    }
+  },
+  "nashville-even-with-everyone": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "nashville-even-with-everyone",
+    "title": "Nashville split with every Central opponent",
+    "kind": "beat",
+    "byline": "Nashville Blues beat",
+    "team_ids": [
+      16
+    ],
+    "story_ids": [
+      "16:1981:race",
+      "16:1981:player:6643:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Nashville won twice at Cincinnati and split two with St. Louis. Then the Blues won the first two in Houston and lost the last two. The potential go-ahead run was on second when Juan Grant lined out to center for the last out of the 10–9 finale.",
+          "Jose Orozco drove in 14 over the challenge and Brett Petrillo drove in 12. Nashville scored 60 runs. It finished 5–5 and eleven games back, with two wins against the division leader and three winnable series that stayed even.",
+          "The schedule sends the Blues to Seattle next. Their lineup will have another say in a pennant race when the Comets start the series level with Denver for the wild card."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 16. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1461,1473,1485,1497,1517,1523,1533,1545,1557,1569. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1580,1592,1604. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 9363,1057,6643. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1569, top of ninth, lines 438–459, Juan Grant makes final out with bases loaded. Cross-check the innings and scoring in games_score.csv, game_id=1569."
+    ],
+    "claim_games": [
+      1461,
+      1473,
+      1485,
+      1497,
+      1517,
+      1523,
+      1533,
+      1545,
+      1557,
+      1569,
+      1580,
+      1592,
+      1604
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1569
+        ],
+        "claim": "Juan Grant makes the final out with the bases loaded."
+      },
+      {
+        "games": [
+          1461
+        ],
+        "claim": "1981-08-20. Nashville Blues 7, Cincinnati Cougars 0."
+      },
+      {
+        "games": [
+          1473
+        ],
+        "claim": "1981-08-21. Nashville Blues 7, Cincinnati Cougars 8."
+      },
+      {
+        "games": [
+          1485
+        ],
+        "claim": "1981-08-22. Nashville Blues 8, Cincinnati Cougars 5."
+      },
+      {
+        "games": [
+          1497
+        ],
+        "claim": "1981-08-23. Nashville Blues 3, Cincinnati Cougars 5."
+      },
+      {
+        "games": [
+          1517
+        ],
+        "claim": "1981-08-25. St. Louis Stallions 7, Nashville Blues 13."
+      },
+      {
+        "games": [
+          1523
+        ],
+        "claim": "1981-08-26. St. Louis Stallions 6, Nashville Blues 2."
+      },
+      {
+        "games": [
+          1533
+        ],
+        "claim": "1981-08-27. Nashville Blues 5, Houston Mavericks 1."
+      },
+      {
+        "games": [
+          1545
+        ],
+        "claim": "1981-08-28. Nashville Blues 6, Houston Mavericks 5."
+      },
+      {
+        "games": [
+          1557
+        ],
+        "claim": "1981-08-29. Nashville Blues 0, Houston Mavericks 10."
+      },
+      {
+        "games": [
+          1569
+        ],
+        "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "21e08937d0a011f4d8772df93600419a5d0b7bd44f3dcc2cc7be2b0f8ed9c9a6",
+      "question": "Jose Orozco drove in 14 as the Blues played every series to a draw, including two wins in Houston.",
+      "promise": "Nashville split with every Central opponent",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Jose Orozco drove in 14 as the Blues played every series to a draw, including two wins in Houston.",
+      "ending": "The schedule sends the Blues to Seattle next. Their lineup will have another say in a pennant race when the Comets start the series level with Denver for the wild card."
+    }
+  },
+  "new-york-from-twelve-to-zero": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "new-york-from-twelve-to-zero",
+    "title": "New York went from twelve runs to two shutouts",
+    "kind": "beat",
+    "byline": "New York Aces beat",
+    "team_ids": [
+      15
+    ],
+    "story_ids": [
+      "15:1981:race"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "The Aces scored 12 in Pittsburgh on August 20. They scored 14 in the nine games that followed and lost every one. In Philadelphia they were shut out twice to end the challenge. The last of those games, 10–0, told a different story from two earlier one-run losses at Pittsburgh, when a single extra run might have changed the result.",
+          "Robby Chacon hit safely 11 times in 35 at-bats and drew six walks during the challenge. That is one usable part of a lineup that managed four runs in four games at Philadelphia. It gives the Aces something more specific to examine than the 1–9 record.",
+          "New York returns home to face Cincinnati on August 31. With expansion scheduled one day later, a useful watch is whether the Aces change who hits around the players already reaching base. The first new lineup will tell more than an assumption about who is coming up."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 15. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1460,1472,1484,1496,1514,1522,1531,1543,1555,1567. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1577,1587,1599. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2144,8707. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up."
+    ],
+    "claim_games": [
+      1460,
+      1472,
+      1484,
+      1496,
+      1514,
+      1522,
+      1531,
+      1543,
+      1555,
+      1567,
+      1577,
+      1587,
+      1599
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1460
+        ],
+        "claim": "1981-08-20. New York Aces 12, Pittsburgh Express 8."
+      },
+      {
+        "games": [
+          1472
+        ],
+        "claim": "1981-08-21. New York Aces 4, Pittsburgh Express 5."
+      },
+      {
+        "games": [
+          1484
+        ],
+        "claim": "1981-08-22. New York Aces 1, Pittsburgh Express 7."
+      },
+      {
+        "games": [
+          1496
+        ],
+        "claim": "1981-08-23. New York Aces 3, Pittsburgh Express 4."
+      },
+      {
+        "games": [
+          1514
+        ],
+        "claim": "1981-08-25. New York Aces 1, Boston Patriots 4."
+      },
+      {
+        "games": [
+          1522
+        ],
+        "claim": "1981-08-26. New York Aces 1, Boston Patriots 3."
+      },
+      {
+        "games": [
+          1531
+        ],
+        "claim": "1981-08-27. New York Aces 2, Philadelphia Fury 8."
+      },
+      {
+        "games": [
+          1543
+        ],
+        "claim": "1981-08-28. New York Aces 2, Philadelphia Fury 11."
+      },
+      {
+        "games": [
+          1555
+        ],
+        "claim": "1981-08-29. New York Aces 0, Philadelphia Fury 3."
+      },
+      {
+        "games": [
+          1567
+        ],
+        "claim": "1981-08-30. New York Aces 0, Philadelphia Fury 10."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "99f4c486eefa9350b38db95e483d082ceabdd92649ed9c5db9459832739f2720",
+      "question": "The Aces won their opener and lost nine straight. Robby Chacon’s work at the plate gives their Cincinnati series a narrower question than the record.",
+      "promise": "New York went from twelve runs to two shutouts",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Aces won their opener and lost nine straight. Robby Chacon’s work at the plate gives their Cincinnati series a narrower question than the record.",
+      "ending": "New York returns home to face Cincinnati on August 31. With expansion scheduled one day later, a useful watch is whether the Aces change who hits around the players already reaching base. The first new lineup will tell more than an assumption about who is coming up."
+    }
+  },
+  "philadelphia-eight-straight": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "philadelphia-eight-straight",
+    "title": "Eight straight wins brought Philadelphia back within three",
+    "kind": "beat",
+    "byline": "Philadelphia Fury beat",
+    "team_ids": [
+      22
+    ],
+    "story_ids": [
+      "22:1981:race",
+      "22:1981:player:3201:bat"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Philadelphia went 18 innings without a run to start the challenge. It scored 18 over the next two games at Boston. The two wins restored the four-game division gap and began a streak that ran through Pittsburgh and all four games with New York.",
+          "Ron Stout had 21 hits and 15 RBI in the ten games. Four of those hits came in the 10–0 finale against New York, when Gilberto Flores worked 7⅔ scoreless innings. The Fury allowed four runs in the whole New York series. Boston kept winning too, so eight straight took only one game off the deficit from August 19.",
+          "Philadelphia starts September in Las Vegas, while Boston goes to Houston. The three remaining head-to-head games are at Boston September 28–30. Three back today is close enough to give that series weight, with two different West and Central tests to get through first."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 22. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1459,1471,1483,1495,1505,1515,1531,1543,1555,1567. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1590,1602,1608,1867,1879,1891. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 3201,5140,4859. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1459,
+      1471,
+      1483,
+      1495,
+      1505,
+      1515,
+      1531,
+      1543,
+      1555,
+      1567,
+      1590,
+      1602,
+      1608,
+      1867,
+      1879,
+      1891
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1459
+        ],
+        "claim": "1981-08-20. Philadelphia Fury 0, Boston Patriots 3."
+      },
+      {
+        "games": [
+          1471
+        ],
+        "claim": "1981-08-21. Philadelphia Fury 0, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1483
+        ],
+        "claim": "1981-08-22. Philadelphia Fury 7, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1495
+        ],
+        "claim": "1981-08-23. Philadelphia Fury 11, Boston Patriots 2."
+      },
+      {
+        "games": [
+          1505
+        ],
+        "claim": "1981-08-24. Pittsburgh Express 4, Philadelphia Fury 6."
+      },
+      {
+        "games": [
+          1515
+        ],
+        "claim": "1981-08-25. Pittsburgh Express 1, Philadelphia Fury 2."
+      },
+      {
+        "games": [
+          1531
+        ],
+        "claim": "1981-08-27. New York Aces 2, Philadelphia Fury 8."
+      },
+      {
+        "games": [
+          1543
+        ],
+        "claim": "1981-08-28. New York Aces 2, Philadelphia Fury 11."
+      },
+      {
+        "games": [
+          1555
+        ],
+        "claim": "1981-08-29. New York Aces 0, Philadelphia Fury 3."
+      },
+      {
+        "games": [
+          1567
+        ],
+        "claim": "1981-08-30. New York Aces 0, Philadelphia Fury 10."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "76528c0db3d60a3d9f0773af9428e610d8df95932d402777dd2e3cffa0f1061c",
+      "question": "Ron Stout’s 21 hits helped turn two shutout losses into an eight-game run. Boston still has the lead and hosts the last meeting.",
+      "promise": "Eight straight wins brought Philadelphia back within three",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Ron Stout’s 21 hits helped turn two shutout losses into an eight-game run. Boston still has the lead and hosts the last meeting.",
+      "ending": "Philadelphia starts September in Las Vegas, while Boston goes to Houston. The three remaining head-to-head games are at Boston September 28–30. Three back today is close enough to give that series weight, with two different West and Central tests to get through first."
+    }
+  },
+  "phoenix-started-by-winning-in-san-francisco": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "phoenix-started-by-winning-in-san-francisco",
+    "title": "Phoenix took the lead on San Francisco’s field",
+    "kind": "beat",
+    "byline": "Phoenix Firebirds beat",
+    "team_ids": [
+      2
+    ],
+    "story_ids": [
+      "2:1981:race",
+      "2:1981:player:2025:bat"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Two clubs arrived at the opening series on 64–57. Phoenix won the first two in San Francisco, dropped the third 2–1, then closed the set with a 2–0 win. Tony Zacate went eight scoreless and allowed two hits in that last game. The Firebirds finished the challenge one game in front. The two-game margin they took out of San Francisco bought them time when the Warriors won their closing series.",
+          "Phoenix split with Los Angeles and split at San Diego. Zacate returned for the August 30 4–1 win, allowing one earned run in 7⅔ innings. Nick Perez had 17 hits and four steals over the stretch. The team that won 107 games and this division last season has a much smaller margin to protect this time.",
+          "The Firebirds open the next series at home against Miami, which arrives with six straight wins. They return to San Francisco for three September 28–30. The first meeting showed what Phoenix could do in that park. The second may ask it to protect what it won there."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 2. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1458,1470,1482,1494,1503,1512,1529,1541,1553,1565. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1575,1584,1596,1866,1878,1890. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1440,2025. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "team_history.csv and team_history_record.csv, team ID 2 for 1980, 107 wins and first in the NBC West."
+    ],
+    "claim_games": [
+      1458,
+      1470,
+      1482,
+      1494,
+      1503,
+      1512,
+      1529,
+      1541,
+      1553,
+      1565,
+      1575,
+      1584,
+      1596,
+      1866,
+      1878,
+      1890
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1458
+        ],
+        "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+      },
+      {
+        "games": [
+          1470
+        ],
+        "claim": "1981-08-21. Phoenix Firebirds 6, San Francisco Warriors 3."
+      },
+      {
+        "games": [
+          1482
+        ],
+        "claim": "1981-08-22. Phoenix Firebirds 1, San Francisco Warriors 2."
+      },
+      {
+        "games": [
+          1494
+        ],
+        "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+      },
+      {
+        "games": [
+          1503
+        ],
+        "claim": "1981-08-24. Phoenix Firebirds 4, Los Angeles Cobras 10."
+      },
+      {
+        "games": [
+          1512
+        ],
+        "claim": "1981-08-25. Phoenix Firebirds 8, Los Angeles Cobras 2."
+      },
+      {
+        "games": [
+          1529
+        ],
+        "claim": "1981-08-27. Phoenix Firebirds 3, San Diego Seraphs 1."
+      },
+      {
+        "games": [
+          1541
+        ],
+        "claim": "1981-08-28. Phoenix Firebirds 1, San Diego Seraphs 3."
+      },
+      {
+        "games": [
+          1553
+        ],
+        "claim": "1981-08-29. Phoenix Firebirds 3, San Diego Seraphs 5."
+      },
+      {
+        "games": [
+          1565
+        ],
+        "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "e9630311eb463f31d1447fac3f5cae40d0db797e4c322807aff5c22e75657001",
+      "question": "Tony Zacate’s eight scoreless innings ended the opening series, and his August 30 start kept the lead intact.",
+      "promise": "Phoenix took the lead on San Francisco’s field",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Tony Zacate’s eight scoreless innings ended the opening series, and his August 30 start kept the lead intact.",
+      "ending": "The Firebirds open the next series at home against Miami, which arrives with six straight wins. They return to San Francisco for three September 28–30. The first meeting showed what Phoenix could do in that park. The second may ask it to protect what it won there."
+    }
+  },
+  "pittsburgh-good-first-reference-point": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "pittsburgh-good-first-reference-point",
+    "title": "Joe Good gave Pittsburgh a start it can build on",
+    "kind": "beat",
+    "byline": "Pittsburgh Express beat",
+    "team_ids": [
+      21
+    ],
+    "story_ids": [
+      "21:1981:race",
+      "21:1981:player:3032:pit",
+      "21:1981:player:6620:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Joe Good struck out six and allowed one earned run in 5⅓ innings on August 30. The Express lost 2–0 because Jorge Galvez shut them out. For Pittsburgh, the line is a useful entry in the record of what it received from Miami in the July 28 deal that sent Daniel Vega the other way.",
+          "Pittsburgh answered the opening 12–8 loss to New York with three straight wins, two by a run. It went 1–5 the rest of the way against Philadelphia and Boston. The two games in Philadelphia and the Boston finale were all decided by two runs or fewer. Last year’s East winner finished the challenge ten back, with a sharper question about where the offense comes from when a starter gives it that kind of game.",
+          "The Denver series begins August 31. Good’s Boston start is evidence for following his next outing as September opens, while the offense has a chance to recover against a club on the wild-card line."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 21. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1460,1472,1484,1496,1505,1515,1532,1544,1556,1568. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1578,1589,1601. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 3032,6620,965. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "trade_history.csv, message_id=19868, date=1981-07-28, team IDs 21,1, player IDs 3032,8655.",
+      "team_history.csv, team ID 21 for 1980 ABC East first place.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1460,
+      1472,
+      1484,
+      1496,
+      1505,
+      1515,
+      1532,
+      1544,
+      1556,
+      1568,
+      1578,
+      1589,
+      1601
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1460
+        ],
+        "claim": "1981-08-20. New York Aces 12, Pittsburgh Express 8."
+      },
+      {
+        "games": [
+          1472
+        ],
+        "claim": "1981-08-21. New York Aces 4, Pittsburgh Express 5."
+      },
+      {
+        "games": [
+          1484
+        ],
+        "claim": "1981-08-22. New York Aces 1, Pittsburgh Express 7."
+      },
+      {
+        "games": [
+          1496
+        ],
+        "claim": "1981-08-23. New York Aces 3, Pittsburgh Express 4."
+      },
+      {
+        "games": [
+          1505
+        ],
+        "claim": "1981-08-24. Pittsburgh Express 4, Philadelphia Fury 6."
+      },
+      {
+        "games": [
+          1515
+        ],
+        "claim": "1981-08-25. Pittsburgh Express 1, Philadelphia Fury 2."
+      },
+      {
+        "games": [
+          1532
+        ],
+        "claim": "1981-08-27. Boston Patriots 3, Pittsburgh Express 5."
+      },
+      {
+        "games": [
+          1544
+        ],
+        "claim": "1981-08-28. Boston Patriots 4, Pittsburgh Express 0."
+      },
+      {
+        "games": [
+          1556
+        ],
+        "claim": "1981-08-29. Boston Patriots 6, Pittsburgh Express 3."
+      },
+      {
+        "games": [
+          1568
+        ],
+        "claim": "1981-08-30. Boston Patriots 2, Pittsburgh Express 0."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "0a4e9adea998e655f73a837abd916aac4b3b283b3e9bbcb03cb20386e5303b24",
+      "question": "A trade acquisition kept the Express close against Boston. Three early wins over New York did not carry over against the East’s top two.",
+      "promise": "Joe Good gave Pittsburgh a start it can build on",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "A trade acquisition kept the Express close against Boston. Three early wins over New York did not carry over against the East’s top two.",
+      "ending": "The Denver series begins August 31. Good’s Boston start is evidence for following his next outing as September opens, while the offense has a chance to recover against a club on the wild-card line."
+    }
+  },
+  "portland-campbell-and-the-contenders": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "portland-campbell-and-the-contenders",
+    "title": "Jeremy Campbell gave the West something to work around",
+    "kind": "beat",
+    "byline": "Portland Lumberjacks beat",
+    "team_ids": [
+      18
+    ],
+    "story_ids": [
+      "18:1981:race",
+      "18:1981:player:2955:bat"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Portland won three straight in Denver to open the challenge. Then it lost both games to Seattle, took two from Las Vegas and finished 5–5. Eighteen games out, the Lumberjacks still made each of the three West contenders account for them.",
+          "Jeremy Campbell hit seven homers and drove in 13 in those ten games. He went deep once in Portland’s 5–3 win against Las Vegas and twice in the 6–5 win the following day. Frank Jahr saved four games during the challenge without an earned run. The Lumberjacks had scoring and late innings worth following even when they could make little immediate use of the wins themselves.",
+          "St. Louis arrives just off a 9–2 stretch. Portland has a chance to find out whether Campbell’s August work carries into another series against a club with something at stake."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 18. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1463,1475,1487,1499,1519,1524,1535,1547,1559,1571. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1579,1591,1603,1944. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2955,1815. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1463,
+      1475,
+      1487,
+      1499,
+      1519,
+      1524,
+      1535,
+      1547,
+      1559,
+      1571,
+      1579,
+      1591,
+      1603,
+      1944
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1463
+        ],
+        "claim": "1981-08-20. Portland Lumberjacks 7, Denver Rocketeers 2."
+      },
+      {
+        "games": [
+          1475
+        ],
+        "claim": "1981-08-21. Portland Lumberjacks 8, Denver Rocketeers 5."
+      },
+      {
+        "games": [
+          1487
+        ],
+        "claim": "1981-08-22. Portland Lumberjacks 5, Denver Rocketeers 3."
+      },
+      {
+        "games": [
+          1499
+        ],
+        "claim": "1981-08-23. Portland Lumberjacks 1, Denver Rocketeers 9."
+      },
+      {
+        "games": [
+          1519
+        ],
+        "claim": "1981-08-25. Seattle Comets 8, Portland Lumberjacks 3."
+      },
+      {
+        "games": [
+          1524
+        ],
+        "claim": "1981-08-26. Seattle Comets 7, Portland Lumberjacks 6."
+      },
+      {
+        "games": [
+          1535
+        ],
+        "claim": "1981-08-27. Las Vegas Gamblers 4, Portland Lumberjacks 0."
+      },
+      {
+        "games": [
+          1547
+        ],
+        "claim": "1981-08-28. Las Vegas Gamblers 3, Portland Lumberjacks 5."
+      },
+      {
+        "games": [
+          1559
+        ],
+        "claim": "1981-08-29. Las Vegas Gamblers 5, Portland Lumberjacks 6."
+      },
+      {
+        "games": [
+          1571
+        ],
+        "claim": "1981-08-30. Las Vegas Gamblers 5, Portland Lumberjacks 2."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "695970d32fcd8aa0fd4d399db3e3e8549253ba9f6967288bba0126611e319a4d",
+      "question": "Seven home runs, including three in two wins over Las Vegas, helped Portland leave a mark on both sides of the race.",
+      "promise": "Jeremy Campbell gave the West something to work around",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Seven home runs, including three in two wins over Las Vegas, helped Portland leave a mark on both sides of the race.",
+      "ending": "St. Louis arrives just off a 9–2 stretch. Portland has a chance to find out whether Campbell’s August work carries into another series against a club with something at stake."
+    }
+  },
+  "san-diego-what-two-wins-took": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "san-diego-what-two-wins-took",
+    "title": "San Diego found a way to take two from first place",
+    "kind": "beat",
+    "byline": "San Diego Seraphs beat",
+    "team_ids": [
+      7
+    ],
+    "story_ids": [
+      "7:1981:race",
+      "7:1981:player:10161:pit",
+      "7:1981:player:3555:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "The Seraphs had one run in the two middle games at Los Angeles and were swept, though the last loss took 14 innings. At home they beat San Francisco 4–3 and took consecutive games from Phoenix, 3–1 and 5–3. Those two wins took two days out of the Firebirds’ chance to extend their West lead.",
+          "Barbu Nica let in one earned run over 14⅓ innings in two starts during the challenge. Elijah Lundy gave the Seraphs 14⅔ innings and allowed three earned runs in his two. There is more to learn from those outings than from the club’s 48–83 record alone, especially when the offense supplied only 23 runs in ten games.",
+          "Minneapolis visits September 1. With roster expansion scheduled that day, the immediate question is how San Diego uses the innings around its starters, and whether the extra places turn into real work on the field."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 7. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1457,1469,1481,1493,1504,1513,1529,1541,1553,1565. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1585,1597,1606. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 10161,9599,3555,4595. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up."
+    ],
+    "claim_games": [
+      1457,
+      1469,
+      1481,
+      1493,
+      1504,
+      1513,
+      1529,
+      1541,
+      1553,
+      1565,
+      1585,
+      1597,
+      1606
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1457
+        ],
+        "claim": "1981-08-20. San Diego Seraphs 3, Los Angeles Cobras 6."
+      },
+      {
+        "games": [
+          1469
+        ],
+        "claim": "1981-08-21. San Diego Seraphs 1, Los Angeles Cobras 3."
+      },
+      {
+        "games": [
+          1481
+        ],
+        "claim": "1981-08-22. San Diego Seraphs 0, Los Angeles Cobras 3."
+      },
+      {
+        "games": [
+          1493
+        ],
+        "claim": "1981-08-23. San Diego Seraphs 4, Los Angeles Cobras 5."
+      },
+      {
+        "games": [
+          1504
+        ],
+        "claim": "1981-08-24. San Francisco Warriors 3, San Diego Seraphs 4."
+      },
+      {
+        "games": [
+          1513
+        ],
+        "claim": "1981-08-25. San Francisco Warriors 2, San Diego Seraphs 1."
+      },
+      {
+        "games": [
+          1529
+        ],
+        "claim": "1981-08-27. Phoenix Firebirds 3, San Diego Seraphs 1."
+      },
+      {
+        "games": [
+          1541
+        ],
+        "claim": "1981-08-28. Phoenix Firebirds 1, San Diego Seraphs 3."
+      },
+      {
+        "games": [
+          1553
+        ],
+        "claim": "1981-08-29. Phoenix Firebirds 3, San Diego Seraphs 5."
+      },
+      {
+        "games": [
+          1565
+        ],
+        "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "964344d933e551f813c05ae52ce8e800c628ba87a2c3c54d0bde4a60f7e99bee",
+      "question": "Two wins against Phoenix after a Los Angeles sweep make the Seraphs’ starting staff worth following into roster expansion.",
+      "promise": "San Diego found a way to take two from first place",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Two wins against Phoenix after a Los Angeles sweep make the Seraphs’ starting staff worth following into roster expansion.",
+      "ending": "Minneapolis visits September 1. With roster expansion scheduled that day, the immediate question is how San Diego uses the innings around its starters, and whether the extra places turn into real work on the field."
+    }
+  },
+  "san-francisco-foothold-against-los-angeles": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "san-francisco-foothold-against-los-angeles",
+    "title": "San Francisco found a foothold against Los Angeles",
+    "kind": "beat",
+    "byline": "San Francisco Warriors beat",
+    "team_ids": [
+      10
+    ],
+    "story_ids": [
+      "10:1981:race",
+      "10:1981:player:5575:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "The August 20 forecast called for a San Francisco recovery against familiar opponents. Phoenix took three of four in the Warriors’ own park. San Francisco then split two at San Diego. The recovery finally found a place to start in the four with Los Angeles, and the Warriors ended the challenge one game out instead of looking up at both rivals.",
+          "San Francisco put 15 runs on Los Angeles in the opener and won the last two. Bernardo Valenzuela homered and drove in three in the 10–4 finale. Miguel Collado hit four home runs over the full challenge. The offense that scored five runs in its last three games before the Los Angeles series scored 34 in the four against the Cobras.",
+          "Detroit comes to San Francisco on August 31. A Warriors win and a Phoenix loss would tie the West again. The next Phoenix series waits until September 28, also on the Warriors’ field."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 10. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1458,1470,1482,1494,1504,1513,1530,1542,1554,1566. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1576,1586,1598,1866,1878,1890. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 8897,5838,5575. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+    ],
+    "claim_games": [
+      1458,
+      1470,
+      1482,
+      1494,
+      1504,
+      1513,
+      1530,
+      1542,
+      1554,
+      1566,
+      1576,
+      1586,
+      1598,
+      1866,
+      1878,
+      1890
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1458
+        ],
+        "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+      },
+      {
+        "games": [
+          1470
+        ],
+        "claim": "1981-08-21. Phoenix Firebirds 6, San Francisco Warriors 3."
+      },
+      {
+        "games": [
+          1482
+        ],
+        "claim": "1981-08-22. Phoenix Firebirds 1, San Francisco Warriors 2."
+      },
+      {
+        "games": [
+          1494
+        ],
+        "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+      },
+      {
+        "games": [
+          1504
+        ],
+        "claim": "1981-08-24. San Francisco Warriors 3, San Diego Seraphs 4."
+      },
+      {
+        "games": [
+          1513
+        ],
+        "claim": "1981-08-25. San Francisco Warriors 2, San Diego Seraphs 1."
+      },
+      {
+        "games": [
+          1530
+        ],
+        "claim": "1981-08-27. Los Angeles Cobras 1, San Francisco Warriors 15."
+      },
+      {
+        "games": [
+          1542
+        ],
+        "claim": "1981-08-28. Los Angeles Cobras 7, San Francisco Warriors 3."
+      },
+      {
+        "games": [
+          1554
+        ],
+        "claim": "1981-08-29. Los Angeles Cobras 1, San Francisco Warriors 6."
+      },
+      {
+        "games": [
+          1566
+        ],
+        "claim": "1981-08-30. Los Angeles Cobras 4, San Francisco Warriors 10."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "1487791019a5fc304d662328148bbcb11c6c252328096ba6f5c32dcfbf7db5df",
+      "question": "The Warriors lost the opening duel with Phoenix but took three of four from Los Angeles, with Bernardo Valenzuela helping close the series.",
+      "promise": "San Francisco found a foothold against Los Angeles",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Warriors lost the opening duel with Phoenix but took three of four from Los Angeles, with Bernardo Valenzuela helping close the series.",
+      "ending": "Detroit comes to San Francisco on August 31. A Warriors win and a Phoenix loss would tie the West again. The next Phoenix series waits until September 28, also on the Warriors’ field."
+    }
+  },
+  "seattle-what-a-one-run-game-costs": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "seattle-what-a-one-run-game-costs",
+    "title": "Seattle saw both sides of a one-run finish",
+    "kind": "beat",
+    "byline": "Seattle Comets beat",
+    "team_ids": [
+      24
+    ],
+    "story_ids": [
+      "24:1981:race",
+      "24:1981:player:6735:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Adam Wilson singled in the 14th inning August 21, scoring David Olguin to beat Las Vegas 4–3. Seattle took three of four from the Gamblers and both games at Portland. It shared first before the final day. Then Denver won the finale 2–1, and Las Vegas finished its own trip with a win.",
+          "Tony Miller struck out eight in 7⅓ innings in that last loss. Carlos Merlos had 17 hits during the challenge. Seattle went 7–3 and made up four games on Las Vegas. Losing the last two let Denver catch it.",
+          "Nashville comes in on August 31. Denver and Seattle share the wild-card line at 71–60, and Las Vegas still has to come back to Seattle for three September 28–30. The Comets get time to get ahead before the next couple of one-run games carry the same kind of price."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 24. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1464,1476,1488,1500,1519,1524,1536,1548,1560,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1580,1592,1604,1823,1859,1872,1884,1896. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1952,8049,6735,6611. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "game_logs.csv, game_id=1476, bottom of 14th, lines 659–671, Olguin reaches, steals second, takes third on error and scores on Wilson's single. Cross-check the innings and scoring in games_score.csv, game_id=1476.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1464,
+      1476,
+      1488,
+      1500,
+      1519,
+      1524,
+      1536,
+      1548,
+      1560,
+      1572,
+      1580,
+      1592,
+      1604,
+      1823,
+      1859,
+      1872,
+      1884,
+      1896
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1476
+        ],
+        "claim": "Adam Wilson singles in the winning run in the 14th."
+      },
+      {
+        "games": [
+          1464
+        ],
+        "claim": "1981-08-20. Las Vegas Gamblers 0, Seattle Comets 4."
+      },
+      {
+        "games": [
+          1476
+        ],
+        "claim": "1981-08-21. Las Vegas Gamblers 3, Seattle Comets 4."
+      },
+      {
+        "games": [
+          1488
+        ],
+        "claim": "1981-08-22. Las Vegas Gamblers 2, Seattle Comets 7."
+      },
+      {
+        "games": [
+          1500
+        ],
+        "claim": "1981-08-23. Las Vegas Gamblers 3, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1519
+        ],
+        "claim": "1981-08-25. Seattle Comets 8, Portland Lumberjacks 3."
+      },
+      {
+        "games": [
+          1524
+        ],
+        "claim": "1981-08-26. Seattle Comets 7, Portland Lumberjacks 6."
+      },
+      {
+        "games": [
+          1536
+        ],
+        "claim": "1981-08-27. Denver Rocketeers 5, Seattle Comets 6."
+      },
+      {
+        "games": [
+          1548
+        ],
+        "claim": "1981-08-28. Denver Rocketeers 1, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1560
+        ],
+        "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+      },
+      {
+        "games": [
+          1572
+        ],
+        "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "e4bd57d4d94461cb509f0de913ee5d487a951bfbb70702da9b0a72c44919e437",
+      "question": "Adam Wilson ended a 14-inning win over Las Vegas. A one-run loss to Denver on August 30 left the Comets tied for the wild card.",
+      "promise": "Seattle saw both sides of a one-run finish",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "Adam Wilson ended a 14-inning win over Las Vegas. A one-run loss to Denver on August 30 left the Comets tied for the wild card.",
+      "ending": "Nashville comes in on August 31. Denver and Seattle share the wild-card line at 71–60, and Las Vegas still has to come back to Seattle for three September 28–30. The Comets get time to get ahead before the next couple of one-run games carry the same kind of price."
+    }
+  },
+  "st-louis-made-up-six-games": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "st-louis-made-up-six-games",
+    "title": "St. Louis made up six games and earned another look",
+    "kind": "beat",
+    "byline": "St. Louis Stallions beat",
+    "team_ids": [
+      19
+    ],
+    "story_ids": [
+      "19:1981:race",
+      "19:1981:player:6418:pit"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "St. Louis won five games against Houston before the two clubs were done with their opening assignment. One was the completion of the unfinished game in Houston. The other four came at home. Chris Jorge threw a six-hit shutout in the 9–0 finale. Danny Martinez had seven hits over the two shutout wins that ended that set.",
+          "The Stallions won three of four from Cincinnati, too. In the 4–2 finale Bert Lopez struck out eight in 7⅔ innings. An 11-game challenge produced nine wins, 77 runs and the same 67–64 record as Cincinnati. St. Louis already has five more wins than it managed in all of 1980. It is eight behind Houston and four off the wild-card line.",
+          "The Stallions go to Portland on August 31. Houston visits again September 28–30, immediately after four at Cincinnati. That run will test whether the gains St. Louis made playing those clubs in August can survive the rest of its schedule."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 19. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1113,1462,1474,1486,1498,1517,1523,1534,1546,1558,1570. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1579,1591,1603,1821,1833,1845,1857,1870,1882,1894. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 8217,6418,6733. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "team_history_record.csv, team ID 19 for 1980, 62 wins and 100 losses.",
+      "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+    ],
+    "claim_games": [
+      1113,
+      1462,
+      1474,
+      1486,
+      1498,
+      1517,
+      1523,
+      1534,
+      1546,
+      1558,
+      1570,
+      1579,
+      1591,
+      1603,
+      1821,
+      1833,
+      1845,
+      1857,
+      1870,
+      1882,
+      1894
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1113
+        ],
+        "claim": "1981-08-20. St. Louis Stallions 5, Houston Mavericks 3."
+      },
+      {
+        "games": [
+          1462
+        ],
+        "claim": "1981-08-20. Houston Mavericks 1, St. Louis Stallions 7."
+      },
+      {
+        "games": [
+          1474
+        ],
+        "claim": "1981-08-21. Houston Mavericks 2, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1486
+        ],
+        "claim": "1981-08-22. Houston Mavericks 0, St. Louis Stallions 10."
+      },
+      {
+        "games": [
+          1498
+        ],
+        "claim": "1981-08-23. Houston Mavericks 0, St. Louis Stallions 9."
+      },
+      {
+        "games": [
+          1517
+        ],
+        "claim": "1981-08-25. St. Louis Stallions 7, Nashville Blues 13."
+      },
+      {
+        "games": [
+          1523
+        ],
+        "claim": "1981-08-26. St. Louis Stallions 6, Nashville Blues 2."
+      },
+      {
+        "games": [
+          1534
+        ],
+        "claim": "1981-08-27. Cincinnati Cougars 0, St. Louis Stallions 6."
+      },
+      {
+        "games": [
+          1546
+        ],
+        "claim": "1981-08-28. Cincinnati Cougars 1, St. Louis Stallions 12."
+      },
+      {
+        "games": [
+          1558
+        ],
+        "claim": "1981-08-29. Cincinnati Cougars 6, St. Louis Stallions 5."
+      },
+      {
+        "games": [
+          1570
+        ],
+        "claim": "1981-08-30. Cincinnati Cougars 2, St. Louis Stallions 4."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "c13a05e0732b9e664c5ce000e9df5fbfbb12312ecbded8cdf3f08d0b88d45d6a",
+      "question": "The Stallions went 9–2, beat Houston five times and moved level with Cincinnati behind Danny Martinez and Chris Jorge.",
+      "promise": "St. Louis made up six games and earned another look",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "The Stallions went 9–2, beat Houston five times and moved level with Cincinnati behind Danny Martinez and Chris Jorge.",
+      "ending": "The Stallions go to Portland on August 31. Houston visits again September 28–30, immediately after four at Cincinnati. That run will test whether the gains St. Louis made playing those clubs in August can survive the rest of its schedule."
+    }
+  },
+  "tampa-bay-kimpton-kept-reaching": {
+    "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+    "league_date": "1981-08-31",
+    "cutoff": "1981-08-30",
+    "slug": "tampa-bay-kimpton-kept-reaching",
+    "title": "Tampa Bay kept finding Walter Kimpton on base",
+    "kind": "beat",
+    "byline": "Tampa Bay Storm beat",
+    "team_ids": [
+      8
+    ],
+    "story_ids": [
+      "8:1981:race"
+    ],
+    "lead": false,
+    "sections": [
+      [
+        "",
+        [
+          "Nate Smeltz drove in five on August 23, and the Storm needed them in a 10–9 win over Charlotte. It was the club’s only win of the challenge. Tampa Bay later took Atlanta to the 14th and lost 8–6. The two games are worth keeping separate from the 81 runs the Storm allowed across the ten-game stretch.",
+          "Walter Kimpton had 12 hits, ten walks and six stolen bases in the challenge. The Storm scored only four runs in two games at Miami and were shut out in their first game back home. Kimpton kept giving the batters behind him a chance to change that pattern.",
+          "The Storm go to Los Angeles next. With the expansion date approaching, keep Kimpton’s trips on base in view and watch which hitters get the chances to move him. There is a September job to define even with Tampa Bay 19 games out."
+        ]
+      ]
+    ],
+    "evidence": [
+      "team_record.csv, teams.csv and divisions.csv, team IDs 8. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+      "games.csv, completed game IDs 1454,1466,1478,1490,1509,1520,1526,1538,1550,1562. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+      "games.csv, scheduled game IDs 1574,1583,1595. The companion ledger carries the full remaining schedule and venue for each club.",
+      "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 7350,1005,4358. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+      "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up."
+    ],
+    "claim_games": [
+      1454,
+      1466,
+      1478,
+      1490,
+      1509,
+      1520,
+      1526,
+      1538,
+      1550,
+      1562,
+      1574,
+      1583,
+      1595
+    ],
+    "claim_map": [
+      {
+        "games": [
+          1454
+        ],
+        "claim": "1981-08-20. Charlotte Colonels 6, Tampa Bay Storm 5."
+      },
+      {
+        "games": [
+          1466
+        ],
+        "claim": "1981-08-21. Charlotte Colonels 8, Tampa Bay Storm 4."
+      },
+      {
+        "games": [
+          1478
+        ],
+        "claim": "1981-08-22. Charlotte Colonels 9, Tampa Bay Storm 4."
+      },
+      {
+        "games": [
+          1490
+        ],
+        "claim": "1981-08-23. Charlotte Colonels 9, Tampa Bay Storm 10."
+      },
+      {
+        "games": [
+          1509
+        ],
+        "claim": "1981-08-25. Tampa Bay Storm 3, Miami Hurricanes 10."
+      },
+      {
+        "games": [
+          1520
+        ],
+        "claim": "1981-08-26. Tampa Bay Storm 1, Miami Hurricanes 9."
+      },
+      {
+        "games": [
+          1526
+        ],
+        "claim": "1981-08-27. Atlanta Kings 10, Tampa Bay Storm 0."
+      },
+      {
+        "games": [
+          1538
+        ],
+        "claim": "1981-08-28. Atlanta Kings 8, Tampa Bay Storm 6."
+      },
+      {
+        "games": [
+          1550
+        ],
+        "claim": "1981-08-29. Atlanta Kings 6, Tampa Bay Storm 1."
+      },
+      {
+        "games": [
+          1562
+        ],
+        "claim": "1981-08-30. Atlanta Kings 6, Tampa Bay Storm 1."
+      }
+    ],
+    "review": {
+      "decision": "approve",
+      "reviewer": "Commissioner",
+      "copy_sha256": "33fb87f11e599f3efe1cd81914656fd6edb1fd13fc08fc1ad5c83d3819052d88",
+      "question": "A rare win over Charlotte and Kimpton’s work getting on and moving up give the Storm concrete September questions after a 1–9 stretch.",
+      "promise": "Tampa Bay kept finding Walter Kimpton on base",
+      "sequence": "Read the window chronologically and verify against the dated selectors.",
+      "stakes": "A rare win over Charlotte and Kimpton’s work getting on and moving up give the Storm concrete September questions after a 1–9 stretch.",
+      "ending": "The Storm go to Los Angeles next. With the expansion date approaching, keep Kimpton’s trips on base in view and watch which hitters get the chances to move him. There is a September job to define even with Tampa Bay 19 games out."
+    }
+  }
+}

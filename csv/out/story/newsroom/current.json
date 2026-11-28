@@ -9,9 +9,9 @@
   "story_menu": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\editions\\1981-08-30_461bc955c6db88b4\\story_menu.csv",
   "raw_dir": "C:\\sbv_repo\\abl_csv_repo\\output\\newsroom\\snapshots\\461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
   "editorial": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\desks\\1981-08-30_461bc955c6db88b4",
-  "publication": null,
-  "observer": null,
-  "ernie": null,
+  "publication": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\fc869ff001fdb740b151",
+  "observer": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\fc869ff001fdb740b151\\observer\\one-game-is-the-new-margin.pdf",
+  "ernie": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\fc869ff001fdb740b151\\observer\\one-game-is-the-new-margin.pdf",
   "slate": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\desks\\1981-08-30_461bc955c6db88b4\\story-slate.pdf",
   "queue": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\desks\\1981-08-30_461bc955c6db88b4\\queue.json",
   "abl_411": "C:\\sbv_repo\\abl_csv_repo\\csv\\out\\story\\newsroom\\desks\\1981-08-30_461bc955c6db88b4\\abl-411.pdf"

@@ -1,0 +1,124 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "phoenix-started-by-winning-in-san-francisco",
+  "title": "Phoenix took the lead on San Francisco’s field",
+  "kind": "beat",
+  "byline": "Phoenix Firebirds beat",
+  "team_ids": [
+    2
+  ],
+  "story_ids": [
+    "2:1981:race",
+    "2:1981:player:2025:bat"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Two clubs arrived at the opening series on 64–57. Phoenix won the first two in San Francisco, dropped the third 2–1, then closed the set with a 2–0 win. Tony Zacate went eight scoreless and allowed two hits in that last game. The Firebirds finished the challenge one game in front. The two-game margin they took out of San Francisco bought them time when the Warriors won their closing series.",
+        "Phoenix split with Los Angeles and split at San Diego. Zacate returned for the August 30 4–1 win, allowing one earned run in 7⅔ innings. Nick Perez had 17 hits and four steals over the stretch. The team that won 107 games and this division last season has a much smaller margin to protect this time.",
+        "The Firebirds open the next series at home against Miami, which arrives with six straight wins. They return to San Francisco for three September 28–30. The first meeting showed what Phoenix could do in that park. The second may ask it to protect what it won there."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 2. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1458,1470,1482,1494,1503,1512,1529,1541,1553,1565. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1575,1584,1596,1866,1878,1890. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1440,2025. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "team_history.csv and team_history_record.csv, team ID 2 for 1980, 107 wins and first in the NBC West."
+  ],
+  "claim_games": [
+    1458,
+    1470,
+    1482,
+    1494,
+    1503,
+    1512,
+    1529,
+    1541,
+    1553,
+    1565,
+    1575,
+    1584,
+    1596,
+    1866,
+    1878,
+    1890
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1458
+      ],
+      "claim": "1981-08-20. Phoenix Firebirds 9, San Francisco Warriors 7."
+    },
+    {
+      "games": [
+        1470
+      ],
+      "claim": "1981-08-21. Phoenix Firebirds 6, San Francisco Warriors 3."
+    },
+    {
+      "games": [
+        1482
+      ],
+      "claim": "1981-08-22. Phoenix Firebirds 1, San Francisco Warriors 2."
+    },
+    {
+      "games": [
+        1494
+      ],
+      "claim": "1981-08-23. Phoenix Firebirds 2, San Francisco Warriors 0."
+    },
+    {
+      "games": [
+        1503
+      ],
+      "claim": "1981-08-24. Phoenix Firebirds 4, Los Angeles Cobras 10."
+    },
+    {
+      "games": [
+        1512
+      ],
+      "claim": "1981-08-25. Phoenix Firebirds 8, Los Angeles Cobras 2."
+    },
+    {
+      "games": [
+        1529
+      ],
+      "claim": "1981-08-27. Phoenix Firebirds 3, San Diego Seraphs 1."
+    },
+    {
+      "games": [
+        1541
+      ],
+      "claim": "1981-08-28. Phoenix Firebirds 1, San Diego Seraphs 3."
+    },
+    {
+      "games": [
+        1553
+      ],
+      "claim": "1981-08-29. Phoenix Firebirds 3, San Diego Seraphs 5."
+    },
+    {
+      "games": [
+        1565
+      ],
+      "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Commissioner",
+    "copy_sha256": "e9630311eb463f31d1447fac3f5cae40d0db797e4c322807aff5c22e75657001",
+    "question": "Tony Zacate’s eight scoreless innings ended the opening series, and his August 30 start kept the lead intact.",
+    "promise": "Phoenix took the lead on San Francisco’s field",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Tony Zacate’s eight scoreless innings ended the opening series, and his August 30 start kept the lead intact.",
+    "ending": "The Firebirds open the next series at home against Miami, which arrives with six straight wins. They return to San Francisco for three September 28–30. The first meeting showed what Phoenix could do in that park. The second may ask it to protect what it won there."
+  }
+}
