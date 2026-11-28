@@ -365,9 +365,10 @@ class Site:
 <h1>{escape(title)}</h1><p class="hero-deck">{escape(detail)}</p>
 <div class="buttons">{a(page, self.route("standings/index.html"), "Explore the races", "button")}{slate_link}</div>
 </div>{media}</section>"""
-        conversations = [item for item in self.all_articles() if item.get("related_slug")]
+        conversations = self.conversations()
         if conversations:
-            body += section(OBSERVER_CONVERSATION, self.article_cards(page, conversations[:1]))
+            body += section(OBSERVER_CONVERSATION, self.article_cards(page, conversations[:1]),
+                            self.conversation_archive_link(page))
         body += self.special_coverage(page, featured=True)
         body += (f'<div class="edition-credit"><p>A fictional baseball world, played in OOTP and preserved game by game. '
                  f'{a(page, self.route("about/index.html"), "See it for yourself.")}</p>'
@@ -634,23 +635,54 @@ class Site:
     def issue_route(self, key):
         return self.route(f"newsroom/issues/{key[:16]}")
 
+    def conversation_archive_link(self, page):
+        return a(page, self.route("newsroom/observer-conversation/index.html"), "The Observer Conversation archive", "text-link")
+
+    def conversations(self):
+        episodes = {}
+        for item in self.all_articles():
+            if item.get("related_slug"):
+                episodes.setdefault((item["league_date"], item["slug"]), item)
+        return sorted(episodes.values(), key=lambda item: item["league_date"], reverse=True)
+
+    def editorial_routes(self, eligible):
+        """Resolve related pages before rendering either article in a pair."""
+        known = list(self.all_articles())
+        by_digest = {item["digest"]: item for item in known if "digest" in item}
+        routes = {(item["league_date"], item["slug"]): item for item in reversed(known)
+                  if "league_date" in item and "slug" in item}
+        for issue in eligible:
+            for article in issue["articles"]:
+                when = issue["league_date"]
+                item = by_digest.get(article.digest)
+                if item is None:
+                    item = dict(path=f"{self.issue_route(issue['key'])}/{article.slug}.html",
+                                title=article.title, slug=article.slug, league_date=when,
+                                kind=article.kind, related_slug=article.related_slug,
+                                feature_through=article.feature_through)
+                routes[when, article.slug] = item
+        return routes
+
+    def companion_panel(self, page, item):
+        return ('<aside class="related"><b>The Observer Conversation</b> · '
+                + self.reading_link(page, item["path"], item["title"]) + "</aside>")
+
+    def conversation_companion_link(self, page, item):
+        label = "August Division Challenges briefing" if item.get("feature_through") else "Ernie’s independent article"
+        return self.reading_link(page, item["path"], label + " · " + item["title"])
+
     def newsroom_reading_copies(self, eligible=()):
         if not self.catalog["issues"]:
             return
         articles = list(self.all_articles())
         pages = {issue["path"] for issue in self.catalog["issues"]}
         pages.update(article["path"] for article in articles)
-        related = {}
-        for article in articles:
-            if slug := article.get("related_slug"):
-                related.setdefault(slug, (article["path"], article["title"]))
-        known = {article.get("digest") for article in articles}
-        for issue in eligible:
-            for article in issue["articles"]:
-                if article.related_slug and article.digest not in known:
-                    related[article.related_slug] = (f"{self.issue_route(issue['key'])}/{article.slug}.html", article.title)
-        briefings = {article["path"]: related[article["slug"]] for article in articles
-                     if article.get("feature_through") and article["slug"] in related}
+        routes = self.editorial_routes(eligible)
+        related = {(item["league_date"], item["related_slug"]): item
+                   for item in routes.values() if item.get("related_slug")}
+        companions = {article["path"]: related[key] for article in articles
+                      if (key := (article.get("league_date"), article.get("slug"))) in related}
+        conversations = {article["path"]: article for article in articles if article.get("related_slug")}
         copies = {}
         for path in sorted(pages):
             source = self.dist / path
@@ -658,7 +690,7 @@ class Site:
                 raise ValueError("Archived newsroom page is outside the publication.")
             html = source.read_text(encoding="utf-8")
             today = TODAY_LINK.search(html)
-            if path in briefings or (self.beacon and self.beacon not in html) or (today and today[2] != href(path, "index.html")):
+            if path in companions or path in conversations or (self.beacon and self.beacon not in html) or (today and today[2] != href(path, "index.html")):
                 self.reading_routes[path] = self.route("reading/" + path.removeprefix("releases/"))
                 copies[path] = html
 
@@ -679,10 +711,21 @@ class Site:
             html = re.sub(r'(?<=\s)(href|src)="([^"]*)"', rebase, html)
             today_target = href(destination, "index.html")
             html = TODAY_LINK.sub(lambda link: link[1] + today_target + link[3], html, count=1)
-            if original in briefings:
-                target, title = briefings[original]
-                panel = '<aside class="related"><b>The Observer Conversation</b> · ' + a(destination, target, title) + '</aside>'
-                html = html.replace('<article class="reading coverage">', panel + '<article class="reading coverage">', 1)
+            if original in companions and '<aside class="related"><b>The Observer Conversation</b>' not in html:
+                panel = self.companion_panel(destination, companions[original])
+                html = re.sub(r'<article class="reading(?: coverage)?">', lambda match: panel + match[0], html, count=1)
+            if original in conversations:
+                archive = self.conversation_archive_link(destination)
+                episode = conversations[original]
+                companion = routes.get((episode["league_date"], episode["related_slug"]))
+                if companion and not companion.get("related_slug"):
+                    target = self.reading_routes.get(companion["path"], companion["path"])
+                    if f'href="{href(destination, target)}"' not in html:
+                        archive += " · " + self.conversation_companion_link(destination, companion)
+                if "The Observer Conversation archive</a>" in html:
+                    html = re.sub(r'<a [^>]*>The Observer Conversation archive</a>', lambda _: archive, html, count=1)
+                else:
+                    html = html.replace('<article class="reading coverage">', f'<p class="related">{archive}</p><article class="reading coverage">', 1)
             self.put(destination, html.replace("</body>", self.beacon + "</body>", 1))
 
     def article_cards(self, page, items):
@@ -711,6 +754,9 @@ class Site:
     def editorial(self, eligible, warnings):
         existing = {issue["key"] for issue in self.catalog["issues"]}
         versions = {article["digest"]: article for article in self.all_articles()}
+        routes = self.editorial_routes(eligible)
+        companions = {(item["league_date"], item["related_slug"]): item
+                      for item in routes.values() if item.get("related_slug")}
         for issue in eligible:
             if issue["key"] in existing:
                 continue
@@ -725,7 +771,7 @@ class Site:
                     continue
                 opening = next(p for _, paragraphs in article.sections for p in paragraphs)
                 if article.related_slug:
-                    opening = "Ernie Bewell and Big Earl debate the August Division Challenges and put Earl’s pennant-race forecast on the record."
+                    opening = article.subtitle or "Ernie Bewell and Big Earl discuss the Action Baseball League."
                 dek = opening if len(opening) <= 185 else opening[:185].rsplit(" ", 1)[0] + "…"
                 route = f"{base}/{article.slug}.html"
                 item = dict(path=route, title=article.title, slug=article.slug, digest=article.digest, dek=dek,
@@ -738,14 +784,19 @@ class Site:
                     self.put(item["pdf"], pdf)
                 if article.related_slug:
                     item["related_slug"] = article.related_slug
-                    body = heading(article.title,
-                                   f"{article.byline} · {pretty(issue['league_date'])} · Data cutoff {pretty(issue['cutoff'])}",
-                                   f"{OBSERVER_CONVERSATION} · Commentary")
-                    briefing = next((report for report in self.all_articles()
-                                     if report.get("feature_through") and report["slug"] == article.related_slug), None)
-                    guide = [a(route, self.route("newsroom/index.html") + "#baseball-observer", "The Baseball Observer")]
-                    if briefing:
-                        guide.append(self.reading_link(route, briefing["path"], "August Division Challenges briefing"))
+                    credit = f"{article.byline} · {pretty(issue['league_date'])} · Data cutoff {pretty(issue['cutoff'])}"
+                    body = heading(article.title, article.subtitle or credit, f"{OBSERVER_CONVERSATION} · Commentary")
+                    if article.subtitle:
+                        body += f'<p class="note">{escape(credit)}</p>'
+                    date = issue["league_date"]
+                    companion = routes.get((date, article.related_slug))
+                    guide = [self.conversation_archive_link(route)]
+                    if companion and not companion.get("related_slug"):
+                        guide.append(self.conversation_companion_link(route, companion))
+                    earlier = max((item for item in routes.values() if item.get("related_slug") and item["league_date"] < date),
+                                  key=lambda item: item["league_date"], default=None)
+                    if earlier:
+                        guide.append(self.reading_link(route, earlier["path"], "Earlier conversation · " + earlier["title"]))
                     guide.append(f'<a href="{href(route, item["pdf"])}" download>Download public PDF</a>')
                     body += f'<p class="related">{" · ".join(guide)}</p><article class="reading coverage">'
                     body += self.coverage_body(article.sections)
@@ -757,7 +808,10 @@ class Site:
                         ("games/index.html", "Game calendar"), ("standings/index.html", "Standings"),
                         ("sbv/index.html", "Sim Baseball Vision and ABL Advance")))
                     pdf_link = f'<a href="{href(route, item["pdf"])}" download>Download public PDF</a>'
-                    body += f'<p class="related">{pdf_link} · {guide}</p><article class="reading coverage">'
+                    body += f'<p class="related">{pdf_link} · {guide}</p>'
+                    if companion := companions.get((issue["league_date"], article.slug)):
+                        body += self.companion_panel(route, companion)
+                    body += '<article class="reading coverage">'
                     body += self.coverage_body(article.sections)
                     related = ""
                 else:
@@ -766,6 +820,8 @@ class Site:
                     edition = next((entry["id"] for entry in reversed(self.catalog["editions"])
                                     if entry["source_id"] == issue["source_id"]), self.entry["id"])
                     record = a(route, f"releases/{edition}/games/{issue['cutoff']}.html", "Verified ABL results")
+                    if companion := companions.get((issue["league_date"], article.slug)):
+                        body += self.companion_panel(route, companion)
                     body += f'<article class="reading"><p class="note">Games through {pretty(issue["cutoff"])} · {record}</p>'
                     for label, paragraphs in article.sections:
                         if label:
@@ -803,9 +859,21 @@ class Site:
         current = self.current_issue
         issue_route = self.route("newsroom/current.html")
         body = heading("ABL Newsroom", "League reporting, franchise beats and The Baseball Observer.")
-        observer = [item for item in self.all_articles() if item["kind"] == "observer"]
+        observer = [item for item in self.all_articles() if item["kind"] == "observer" and not item.get("related_slug")]
         if observer:
             body += section("The Baseball Observer", self.article_cards(page, observer), anchor="baseball-observer")
+        conversations = self.conversations()
+        if conversations:
+            archive_page = self.route("newsroom/observer-conversation/index.html")
+            archive_body = heading(OBSERVER_CONVERSATION, "Conversations and commentary with Ernie Bewell and Big Earl.",
+                                   "The Baseball Observer")
+            archive_body += grid([card(item["title"], item["dek"],
+                                       self.reading_link(archive_page, item["path"], "Read the conversation"),
+                                       pretty(item["league_date"])) for item in conversations], "story-grid")
+            archive_body += f'<p>{a(archive_page, page + ("#baseball-observer" if observer else ""), "The Baseball Observer reporting")}</p>'
+            self.page(archive_page, OBSERVER_CONVERSATION, archive_body, "Newsroom", absolute=True)
+            body += section(OBSERVER_CONVERSATION, self.article_cards(page, conversations[:1]),
+                            self.conversation_archive_link(page), anchor="observer-conversation")
         body += self.special_coverage(page)
         current_title = f"The {pretty(self.world.league_date, year=False)} edition"
         body += section(current_title,

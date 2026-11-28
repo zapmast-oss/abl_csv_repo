@@ -10,7 +10,7 @@ from pathlib import Path
 import re
 from xml.sax.saxutils import escape
 
-from abl_eab_coverage import coverage_block
+from abl_eab_coverage import coverage_block, feature_inline
 from abl_eab_data import ROOT
 from abl_newsroom_editorial import audit_issue
 
@@ -37,6 +37,7 @@ class Article:
     feature_through: str | None = None
     sealed_pdf: bytes | None = None
     related_slug: str | None = None
+    subtitle: str | None = None
 
 
 def read_json(path):
@@ -82,6 +83,7 @@ def approved_copy(path, item, manifest, digest):
     feature_through = None
     sealed_pdf = None
     related_slug = None
+    subtitle = None
     if special or conversation:
         sealed_pdf = path.with_suffix(".pdf").read_bytes()
         metadata = "\n".join(blocks)
@@ -94,10 +96,15 @@ def approved_copy(path, item, manifest, digest):
         if feature_through < when or not window or window[1] != feature_through:
             raise ValueError("Special Coverage must match the approved PDF and feature dates.")
     if conversation:
-        related = re.search(r"(?m)^Related briefing: ([a-z0-9-]+)$", metadata)
+        related = re.search(r"(?m)^Related (?:briefing|article): ([a-z0-9-]+)$", metadata)
         related_slug = item["related_slug"]
         if item["kind"] != "observer" or not related or related[1] != related_slug or not SLUG.fullmatch(related_slug):
-            raise ValueError("An Observer Conversation must match its approved briefing reference.")
+            raise ValueError("An Observer Conversation must match its approved companion reference.")
+        subtitle = item.get("subtitle")
+        if subtitle:
+            signed = re.search(r"(?m)^Subtitle: (.+)$", metadata)
+            if not signed or signed[1] != subtitle:
+                raise ValueError("The Observer Conversation subtitle differs from the approved manuscript.")
     for block in blocks:
         if block.startswith("## "):
             label = block[3:].strip()
@@ -110,13 +117,13 @@ def approved_copy(path, item, manifest, digest):
                 sections[-1][1].append(block)
             else:
                 sections[-1][1].append(" ".join(block.splitlines()))
-    exposed = "\n".join([item["title"], byline, *(value for h, ps in sections for value in [h, *ps])])
+    exposed = "\n".join([item["title"], subtitle or "", byline, *(value for h, ps in sections for value in [h, *ps])])
     if PRIVATE.search(exposed) or PROHIBITED.search(exposed) or not any(ps for _, ps in sections):
         raise ValueError("Manuscript includes private material or has no eligible copy.")
     return Article(item["title"], item["slug"], byline, item["kind"], tuple(item["team_ids"]), digest,
                    item["lead"], tuple((h, tuple(ps)) for h, ps in sections),
                    tuple(int(value) for value in item["claim_games"]), path.with_suffix(".pdf").is_file(),
-                   feature_through, sealed_pdf, related_slug)
+                   feature_through, sealed_pdf, related_slug, subtitle)
 
 
 def release_approval(manuscript, archive, editions, digest, reviewer, at):
@@ -217,16 +224,20 @@ def article_pdf(article, issue, warnings):
     ink = colors.HexColor("#152419")
     title = ParagraphStyle("title", fontName="Times-Bold", fontSize=26, leading=30, textColor=ink, spaceAfter=13)
     heading = ParagraphStyle("heading", fontName="Helvetica-Bold", fontSize=13, leading=17,
-                             textColor=ink, spaceBefore=10, spaceAfter=6)
+                             textColor=ink, spaceBefore=10, spaceAfter=6,
+                             keepWithNext=bool(article.related_slug))
     body = ParagraphStyle("body", fontName="Times-Roman", fontSize=12, leading=17, spaceAfter=10)
     story = [
         Paragraph(escape(article.title), title),
         Paragraph(escape(f"{article.byline} | {issue['league_date']} | Games through {issue['cutoff']}"), heading),
     ]
+    if article.subtitle:
+        story.append(Paragraph(escape(article.subtitle), heading))
     for label, paragraphs in article.sections:
         if label:
             story.append(Paragraph(escape(label), heading))
-        story.extend(Paragraph(escape(text), body) for text in paragraphs)
+        story.extend(Paragraph(feature_inline(text, escape) if article.related_slug else escape(text), body)
+                     for text in paragraphs)
     try:
         SimpleDocTemplate(output, title=article.title, author=article.byline).build(
             story, canvasmaker=lambda *a, **kw: Canvas(*a, **{**kw, "invariant": True}))

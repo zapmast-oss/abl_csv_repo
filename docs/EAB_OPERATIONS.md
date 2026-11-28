@@ -37,6 +37,10 @@ The targeted regression test runs with `python -B tools/newsroom/test_player_gam
 
 Both manuscripts carry the August 19 completed-game cutoff. The commissioner approved both sealed manuscripts for EAB. The 24 franchise notebooks are reporting material. The older automated package contains eight superseded beat drafts plus a league draft and an Observer draft. They require fresh editorial review before release. [Internal newsroom](../csv/out/story/newsroom/index.html)
 
+## The Observer Conversation
+
+The Baseball Observer newsroom lists independent reporting and links to **The Observer Conversation** archive. A conversation uses its own Observer manuscript slug and a sealed series category. Record the subtitle and related article slug in the manuscript’s Reporting record, and include the approved reading PDF’s SHA-256. Use the same baseball date for an episode and its companion. EAB lists an available episode in the date-ordered series archive and adds reciprocal links once both pieces are published. If the companion arrives later, the conversation’s current reading copy carries the link and its original URL remains sealed.
+
 ## Verify and recover
 
 Each edition under `output/eab/dist/releases/` carries a checksum manifest with its OOTP source fingerprint, simulated date, completed-game cutoff, edition timestamp and eligible issue versions. Shared artwork and almanac pages use content-derived paths. Each dated homepage and published issue has a permanent URL. Approved corrections receive new URLs and retain their predecessors. An identical rebuild keeps the current edition ID. The root `index.html` switches only after the required files, internal links, anchors and checksums pass validation.
