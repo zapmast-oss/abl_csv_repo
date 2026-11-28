@@ -1,0 +1,55 @@
+{
+  "edition": "1981-08-30_461bc955c6db88b4",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "revision": "9d7fd1ed5af977b99b39",
+  "previous_revision": null,
+  "externally_published": false,
+  "articles": [
+    {
+      "title": "This Is the Test",
+      "slug": "this-is-the-test-conversation",
+      "kind": "observer",
+      "path": "observer/this-is-the-test-conversation.md",
+      "category": "The Observer Conversation",
+      "related_slug": "this-is-the-test",
+      "subtitle": "Ernie Bewell and Big Earl Look Back at the August Division Challenges",
+      "team_ids": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        9,
+        10,
+        12,
+        13,
+        17,
+        19,
+        20,
+        22,
+        23,
+        24
+      ],
+      "lead": false,
+      "claim_games": [
+        1113,
+        1494,
+        1525,
+        1537,
+        1549,
+        1561,
+        1563,
+        1566,
+        1568,
+        1572
+      ],
+      "review": {
+        "decision": "approve",
+        "reviewer": "Commissioner",
+        "scope": "Exact conversation copy supplied for release, with mechanical formatting only."
+      }
+    }
+  ]
+}

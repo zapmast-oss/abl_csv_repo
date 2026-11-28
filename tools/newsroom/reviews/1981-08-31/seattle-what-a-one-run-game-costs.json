@@ -1,0 +1,133 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "seattle-what-a-one-run-game-costs",
+  "title": "Seattle saw both sides of a one-run finish",
+  "kind": "beat",
+  "byline": "Seattle Comets beat",
+  "team_ids": [
+    24
+  ],
+  "story_ids": [
+    "24:1981:race",
+    "24:1981:player:6735:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Adam Wilson singled in the 14th inning August 21, scoring David Olguin to beat Las Vegas 4–3. Seattle took three of four from the Gamblers and both games at Portland. It shared first before the final day. Then Denver won the finale 2–1, and Las Vegas finished its own trip with a win.",
+        "Tony Miller struck out eight in 7⅓ innings in that last loss. Carlos Merlos had 17 hits during the challenge. Seattle went 7–3 and made up four games on Las Vegas. Losing the last two let Denver catch it.",
+        "Nashville comes in on August 31. Denver and Seattle share the wild-card line at 71–60, and Las Vegas still has to come back to Seattle for three September 28–30. The Comets get time to get ahead before the next couple of one-run games carry the same kind of price."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 24. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1464,1476,1488,1500,1519,1524,1536,1548,1560,1572. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1580,1592,1604,1823,1859,1872,1884,1896. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1952,8049,6735,6611. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "game_logs.csv, game_id=1476, bottom of 14th, lines 659–671, Olguin reaches, steals second, takes third on error and scores on Wilson's single. Cross-check the innings and scoring in games_score.csv, game_id=1476.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+  ],
+  "claim_games": [
+    1464,
+    1476,
+    1488,
+    1500,
+    1519,
+    1524,
+    1536,
+    1548,
+    1560,
+    1572,
+    1580,
+    1592,
+    1604,
+    1823,
+    1859,
+    1872,
+    1884,
+    1896
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1476
+      ],
+      "claim": "Adam Wilson singles in the winning run in the 14th."
+    },
+    {
+      "games": [
+        1464
+      ],
+      "claim": "1981-08-20. Las Vegas Gamblers 0, Seattle Comets 4."
+    },
+    {
+      "games": [
+        1476
+      ],
+      "claim": "1981-08-21. Las Vegas Gamblers 3, Seattle Comets 4."
+    },
+    {
+      "games": [
+        1488
+      ],
+      "claim": "1981-08-22. Las Vegas Gamblers 2, Seattle Comets 7."
+    },
+    {
+      "games": [
+        1500
+      ],
+      "claim": "1981-08-23. Las Vegas Gamblers 3, Seattle Comets 2."
+    },
+    {
+      "games": [
+        1519
+      ],
+      "claim": "1981-08-25. Seattle Comets 8, Portland Lumberjacks 3."
+    },
+    {
+      "games": [
+        1524
+      ],
+      "claim": "1981-08-26. Seattle Comets 7, Portland Lumberjacks 6."
+    },
+    {
+      "games": [
+        1536
+      ],
+      "claim": "1981-08-27. Denver Rocketeers 5, Seattle Comets 6."
+    },
+    {
+      "games": [
+        1548
+      ],
+      "claim": "1981-08-28. Denver Rocketeers 1, Seattle Comets 2."
+    },
+    {
+      "games": [
+        1560
+      ],
+      "claim": "1981-08-29. Denver Rocketeers 4, Seattle Comets 2."
+    },
+    {
+      "games": [
+        1572
+      ],
+      "claim": "1981-08-30. Denver Rocketeers 2, Seattle Comets 1."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "Adam Wilson ended a 14-inning win over Las Vegas. A one-run loss to Denver on August 30 left the Comets tied for the wild card.",
+    "promise": "Seattle saw both sides of a one-run finish",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Adam Wilson ended a 14-inning win over Las Vegas. A one-run loss to Denver on August 30 left the Comets tied for the wild card.",
+    "ending": "Nashville comes in on August 31. Denver and Seattle share the wild-card line at 71–60, and Las Vegas still has to come back to Seattle for three September 28–30. The Comets get time to get ahead before the next couple of one-run games carry the same kind of price."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "purpose": "voice_and_framing_pass_only",
+  "rankings_changed": false,
+  "new_candidates_created": false,
+  "required_opening": "Baseball matters because the stakes are incredibly high.",
+  "required_frame": "The July 20 board is not simply a list of standings. It is a pressure map.",
+  "framing_sequence": [
+    "consequence",
+    "pressure",
+    "opportunity_and_danger",
+    "proof",
+    "labeled_enrichment",
+    "evidence_boundary"
+  ],
+  "story_frames": {
+    "dallas_detroit": {
+      "hook": "Dallas has only two games of separation to protect.",
+      "proof": "Dallas 52-41; Detroit 50-43.",
+      "ranking": "lead_unchanged"
+    },
+    "chicago_dallas": {
+      "hook": "Chicago cannot take the lead in this series, but it can erase the gap.",
+      "proof": "Chicago is four games behind Dallas with four head-to-head games scheduled.",
+      "high_end": "Chicago sweep ties Dallas.",
+      "low_end": "Dallas sweep pushes Chicago eight games back.",
+      "ranking": "additive_setup_only"
+    },
+    "broader_races": {
+      "hook": "The pressure is not isolated to one division.",
+      "proof": "SF-PHO 2 games; LV-SEA 3; BOS-NY 4; HOU-CIN 5."
+    }
+  },
+  "statsplus_rule": {
+    "doctrine": "StatsPlus enhances. It does not replace.",
+    "enrichment_only": ["playoff odds", "ELO", "BaseRuns", "injuries", "fan/financial context", "UBR", "rWAR"],
+    "reference_only": ["owner/front-office traits", "best-game discovery", "historical fan interpretation"]
+  },
+  "voice_checks": [
+    "Begin with consequence rather than arithmetic.",
+    "Use records as proof rather than the hook.",
+    "Earn every dramatic word with measurable stakes.",
+    "Let the next game prove the story."
+  ],
+  "caution_flags": [
+    "No July 20 results.",
+    "Chicago cannot take sole first place in this series.",
+    "No settled-division or award declarations.",
+    "No fake motivation or clubhouse invention.",
+    "No unsupported collapse, turnaround, luck, regression, injury-causation, fan-emotion, or blame language."
+  ]
+}

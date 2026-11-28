@@ -1,0 +1,124 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "philadelphia-eight-straight",
+  "title": "Eight straight wins brought Philadelphia back within three",
+  "kind": "beat",
+  "byline": "Philadelphia Fury beat",
+  "team_ids": [
+    22
+  ],
+  "story_ids": [
+    "22:1981:race",
+    "22:1981:player:3201:bat"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Philadelphia went 18 innings without a run to start the challenge. It scored 18 over the next two games at Boston. The two wins restored the four-game division gap and began a streak that ran through Pittsburgh and all four games with New York.",
+        "Ron Stout had 21 hits and 15 RBI in the ten games. Four of those hits came in the 10–0 finale against New York, when Gilberto Flores worked 7⅔ scoreless innings. The Fury allowed four runs in the whole New York series. Boston kept winning too, so eight straight took only one game off the deficit from August 19.",
+        "Philadelphia starts September in Las Vegas, while Boston goes to Houston. The three remaining head-to-head games are at Boston September 28–30. Three back today is close enough to give that series weight, with two different West and Central tests to get through first."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 22. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1459,1471,1483,1495,1505,1515,1531,1543,1555,1567. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1590,1602,1608,1867,1879,1891. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 3201,5140,4859. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "league_playoffs.csv, league_id=200. Apply docs/ABL_POSTSEASON_RULES.md for wild-card calculations and 1981 DCS protection."
+  ],
+  "claim_games": [
+    1459,
+    1471,
+    1483,
+    1495,
+    1505,
+    1515,
+    1531,
+    1543,
+    1555,
+    1567,
+    1590,
+    1602,
+    1608,
+    1867,
+    1879,
+    1891
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1459
+      ],
+      "claim": "1981-08-20. Philadelphia Fury 0, Boston Patriots 3."
+    },
+    {
+      "games": [
+        1471
+      ],
+      "claim": "1981-08-21. Philadelphia Fury 0, Boston Patriots 2."
+    },
+    {
+      "games": [
+        1483
+      ],
+      "claim": "1981-08-22. Philadelphia Fury 7, Boston Patriots 2."
+    },
+    {
+      "games": [
+        1495
+      ],
+      "claim": "1981-08-23. Philadelphia Fury 11, Boston Patriots 2."
+    },
+    {
+      "games": [
+        1505
+      ],
+      "claim": "1981-08-24. Pittsburgh Express 4, Philadelphia Fury 6."
+    },
+    {
+      "games": [
+        1515
+      ],
+      "claim": "1981-08-25. Pittsburgh Express 1, Philadelphia Fury 2."
+    },
+    {
+      "games": [
+        1531
+      ],
+      "claim": "1981-08-27. New York Aces 2, Philadelphia Fury 8."
+    },
+    {
+      "games": [
+        1543
+      ],
+      "claim": "1981-08-28. New York Aces 2, Philadelphia Fury 11."
+    },
+    {
+      "games": [
+        1555
+      ],
+      "claim": "1981-08-29. New York Aces 0, Philadelphia Fury 3."
+    },
+    {
+      "games": [
+        1567
+      ],
+      "claim": "1981-08-30. New York Aces 0, Philadelphia Fury 10."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "Ron Stout’s 21 hits helped turn two shutout losses into an eight-game run. Boston still has the lead and hosts the last meeting.",
+    "promise": "Eight straight wins brought Philadelphia back within three",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Ron Stout’s 21 hits helped turn two shutout losses into an eight-game run. Boston still has the lead and hosts the last meeting.",
+    "ending": "Philadelphia starts September in Las Vegas, while Boston goes to Houston. The three remaining head-to-head games are at Boston September 28–30. Three back today is close enough to give that series weight, with two different West and Central tests to get through first."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-19",
+  "feed3_promoted": true,
+  "current_folder": "C:\\sbv_repo\\abl_csv_repo\\csv\\statsplus\\current",
+  "current_file_count": 25,
+  "intentional_exclusions": [
+    6,
+    27
+  ],
+  "accepted_schema_drift": [
+    4
+  ],
+  "accepted_reshaped_schema": [
+    1
+  ],
+  "accepted_added_detail": [
+    15,
+    16,
+    19,
+    21,
+    24
+  ],
+  "accepted_reordered_overlap": [
+    7,
+    8
+  ],
+  "unavailable_fields": [
+    "Owner Mood",
+    "Season Objective",
+    "Specific Goals"
+  ],
+  "available_new_enrichments": [
+    "team UBR (table 19)",
+    "player rWAR (table 21)",
+    "expanded team-age detail (table 24)",
+    "IP/SV/BS pitching detail (tables 15/16)"
+  ],
+  "authority_boundaries": {
+    "raw_ootp": "completed games, scores, logs, current-state date, and official standings proof",
+    "sortable_stats": "governed current player/team enrichment",
+    "statsplus": "supplemental model/context values with source labels"
+  },
+  "doctrine": "StatsPlus enhances. It does not replace.",
+  "expandable_feed_note": "Future advanced batting, pitching, standardized metrics, or matchup matrices require staged intake and separate promotion.",
+  "story_signals_enabled": false,
+  "ready_for_later_story_engine_enrichment_task": true,
+  "promotion_action_counts": {
+    "PROMOTE_ACCEPT_RESHAPED_SCHEMA": 1,
+    "PROMOTE_AS_STATSPLUS_CURRENT": 16,
+    "PROMOTE_ACCEPT_SCHEMA_DRIFT": 1,
+    "PROMOTE_REORDERED_OVERLAP": 2,
+    "PROMOTE_ACCEPT_ADDED_DETAIL": 5
+  }
+}

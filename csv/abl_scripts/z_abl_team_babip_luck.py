@@ -302,7 +302,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     final_df.to_csv(out_path, index=False)
 
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     text_path = txt_dir / out_path.with_suffix(".txt").name
     text_path.write_text(stamp_text_block(build_text_report(final_df)), encoding="utf-8")

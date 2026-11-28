@@ -1,0 +1,40 @@
+{
+  "checked_on": "2026-11-21",
+  "source_id": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "edition": "1981-08-19_2acae29146076f62",
+  "menu": {
+    "path": "C:/Users/earld/Scripts/ABL-Production-Control.ps1",
+    "operation": "Run ABL Newsroom Now",
+    "observed_completion_utc": "2026-11-21T10:39:45+00:00",
+    "menu_result": "selected, confirmed, completed, returned to live menu, exited 0",
+    "newsroom_journal_result": "unchanged",
+    "installed_launcher_sha256": "14dddd15f20a60e56829ff2e9b5a7e18353fa1b11f79eec966da642be6b31236",
+    "existing_menu_sha256": "6c83bde910e671fed890f596ee9ed269a242582cc58a735060a08719acf7a5b6",
+    "existing_csv_updater_sha256": "46be8d03bf38ff9275ca09d860642c5afd830b3f637711cdbafa4d5b1e88d0d4",
+    "existing_league_backup_sha256": "c518ce4a3ba42456234a5ab642360dc3372d06e2fadfe662730bca901c079c6b",
+    "backup_updater_menu_match_preinstallation_hashes": true
+  },
+  "scheduled_task": {
+    "name": "\\ABL Daily Newsroom",
+    "enabled": true,
+    "principal": "current signed-in user, limited privileges",
+    "recurrence": "PT5M",
+    "on_demand_test_utc": "2026-11-21T10:39:52+00:00",
+    "on_demand_exit": 0,
+    "first_clock_run_utc": "2026-11-21T10:40:31+00:00",
+    "clock_run_exit": 0,
+    "receipt_recorded_utc": "2026-11-21T10:40:32+00:00",
+    "receipt_status": "unchanged",
+    "next_trigger_when_queried_utc": "2026-11-21T10:45:31+00:00",
+    "state_file": "logs/newsroom_control/poll-state.json"
+  },
+  "regression_test": {
+    "file": "tools/newsroom/test_newsroom_control.py",
+    "repeated_export_skips_duplicate": true,
+    "same_size_same_timestamp_edit_detected": true,
+    "missing_input_rejected": true,
+    "failed_verification_preserves_last_success_and_retries": true,
+    "concurrent_control_runs_excluded": true,
+    "report_pointer_required_for_unchanged_skip": true
+  }
+}

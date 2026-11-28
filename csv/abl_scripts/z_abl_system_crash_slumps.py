@@ -554,7 +554,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     team_counts["team_display"] = team_counts["team_id"].map(team_names).fillna(team_counts["team_id"].astype(str))
     team_counts["conf_div"] = team_counts["team_id"].map(conf_map).fillna("")
 
-    txt_dir = base_dir / "out" / "txt_out"
+    txt_dir = base_dir / "out" / "text_out"
     txt_dir.mkdir(parents=True, exist_ok=True)
     current_txt_path = txt_dir / current_path.with_suffix(".txt").name
     current_txt = text_summary(current_out, team_counts)

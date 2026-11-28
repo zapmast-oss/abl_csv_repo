@@ -618,7 +618,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             "Plus metrics compare to league averages when stable data exists.",
         ],
     )
-    text_dir = base_dir / "out" / "txt_out"
+    text_dir = base_dir / "out" / "text_out"
     text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / out_path.name.replace(".csv", ".txt")
     text_path.write_text(stamp_text_block(text_output), encoding="utf-8")

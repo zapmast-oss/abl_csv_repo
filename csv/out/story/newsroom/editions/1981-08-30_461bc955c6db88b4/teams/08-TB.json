@@ -1,0 +1,849 @@
+{
+  "team_id": 8,
+  "team": "Tampa Bay Storm",
+  "abbr": "TB",
+  "division": "NBC Eastern Division",
+  "conference": "NBC",
+  "wins": 54,
+  "losses": 77,
+  "gb": 19.0,
+  "priority": 4,
+  "division_leaders_change": false,
+  "division_leaders": [
+    6
+  ],
+  "intensity": "feature",
+  "headline": "Tampa Bay fell to Atlanta 8-6",
+  "brief": "Tampa Bay fell to Atlanta 8-6. [games.csv game_id=1538 date=1981-08-28 league_id=200 game_type=0 played=1] Tampa Bay is 54-77 and trails Charlotte by 19 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-20 — Tampa Bay fell to Charlotte 6-5 in 9 innings. [games.csv game_id=1454 date=1981-08-20 league_id=200 game_type=0 played=1] Frank Jimenez (#4573) went 3-for-5 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1454, team_id=8, player_id=4573] Sergio Martinez (#4645) worked 8 innings, allowed 5 earned runs and struck out 6. [players_game_pitching_stats.csv, game_id=1454, team_id=8, player_id=4645]",
+        "1981-08-21 — Tampa Bay fell to Charlotte 8-4 in 9 innings. [games.csv game_id=1466 date=1981-08-21 league_id=200 game_type=0 played=1] Orlando Hernandez (#4358) went 2-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1466, team_id=8, player_id=4358] Luis Carrera (#8654) worked 6 1/3 innings, allowed 2 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1466, team_id=8, player_id=8654]",
+        "1981-08-22 — Tampa Bay fell to Charlotte 9-4 in 10 innings. [games.csv game_id=1478 date=1981-08-22 league_id=200 game_type=0 played=1] Jorge Bailon (#736) went 1-for-4 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1478, team_id=8, player_id=736] Julio Gonzalez (#5311) worked 7 2/3 innings, allowed 1 earned run and struck out 3. [players_game_pitching_stats.csv, game_id=1478, team_id=8, player_id=5311]",
+        "1981-08-23 — Tampa Bay beat Charlotte 10-9 in 9 innings. [games.csv game_id=1490 date=1981-08-23 league_id=200 game_type=0 played=1] Nate Smeltz (#1005) went 2-for-4 with 1 HR and 5 RBI. [players_game_batting.csv, game_id=1490, team_id=8, player_id=1005] Nick Olesen (#1706) worked 3 1/3 innings, allowed 6 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1490, team_id=8, player_id=1706]",
+        "1981-08-25 — Tampa Bay fell to Miami 10-3 in 9 innings. [games.csv game_id=1509 date=1981-08-25 league_id=200 game_type=0 played=1] Troy Miles (#4713) went 1-for-3 with 1 HR and 1 RBI. [players_game_batting.csv, game_id=1509, team_id=8, player_id=4713] Sergio Martinez (#4645) worked 5 2/3 innings, allowed 8 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1509, team_id=8, player_id=4645]",
+        "1981-08-26 — Tampa Bay fell to Miami 9-1 in 9 innings. [games.csv game_id=1520 date=1981-08-26 league_id=200 game_type=0 played=1] Jorge Bailon (#736) went 1-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1520, team_id=8, player_id=736] Luis Carrera (#8654) worked 6 1/3 innings, allowed 4 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1520, team_id=8, player_id=8654]",
+        "1981-08-27 — Tampa Bay fell to Atlanta 10-0 in 9 innings. [games.csv game_id=1526 date=1981-08-27 league_id=200 game_type=0 played=1] Jorge Bailon (#736) went 1-for-3 with 0 HR and 0 RBI. [players_game_batting.csv, game_id=1526, team_id=8, player_id=736] Julio Gonzalez (#5311) worked 5 innings, allowed 5 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1526, team_id=8, player_id=5311]",
+        "Atlanta kept Tampa Bay scoreless across all 9 innings. [games_score.csv game_id=1526 team=1]",
+        "1981-08-28 — Tampa Bay fell to Atlanta 8-6 in 14 innings. [games.csv game_id=1538 date=1981-08-28 league_id=200 game_type=0 played=1] DeMario Taveras (#5822) went 1-for-1 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1538, team_id=8, player_id=5822] Jonathan Funches (#6782) worked 6 2/3 innings, allowed 4 earned runs and struck out 8. [players_game_pitching_stats.csv, game_id=1538, team_id=8, player_id=6782]",
+        "Tampa Bay scored 3 of its 6 runs in inning 9. [games_score.csv game_id=1538 team=1, inning=9]",
+        "1981-08-29 — Tampa Bay fell to Atlanta 6-1 in 9 innings. [games.csv game_id=1550 date=1981-08-29 league_id=200 game_type=0 played=1] Orlando Hernandez (#4358) went 1-for-3 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1550, team_id=8, player_id=4358] Nick Olesen (#1706) worked 6 2/3 innings, allowed 5 earned runs and struck out 2. [players_game_pitching_stats.csv, game_id=1550, team_id=8, player_id=1706]",
+        "1981-08-30 — Tampa Bay fell to Atlanta 6-1 in 9 innings. [games.csv game_id=1562 date=1981-08-30 league_id=200 game_type=0 played=1] Cory Lynn (#302) went 2-for-4 with 0 HR and 0 RBI. [players_game_batting.csv, game_id=1562, team_id=8, player_id=302] Sergio Martinez (#4645) worked 8 innings, allowed 5 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1562, team_id=8, player_id=4645]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Tampa Bay is 54-77 and trails Charlotte by 19 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "Division records — Charlotte 73-58, Miami 71-59, Atlanta 63-68, Tampa Bay 54-77. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "Over its last 7 games the club went 1-6, scoring 22 runs and allowing 58. Season totals are 539 scored and 648 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8. Recent game IDs 1490, 1509, 1520, 1526, 1538, 1550, 1562]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Charlotte Colonels, Tampa Bay is 5-14 with 75 runs scored and 113 allowed. [games.csv 1981 completed regular season, team IDs 8/6, latest game #1490, 1981-08-23]",
+        "Against Miami Hurricanes, Tampa Bay is 7-9 with 76 runs scored and 82 allowed. [games.csv 1981 completed regular season, team IDs 8/1, latest game #1520, 1981-08-26]",
+        "Against Atlanta Kings, Tampa Bay is 8-10 with 64 runs scored and 74 allowed. [games.csv 1981 completed regular season, team IDs 8/3, latest game #1562, 1981-08-30]",
+        "Tampa Bay visits Los Angeles Cobras in the next listed game on 1981-08-31. [games.csv game_id=1574, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Nate Smeltz (#1005) leads the club with 163 hits in 509 at-bats, including 22 home runs. [players_game_batting.csv joined to played games.csv, team_id=8, year=1981, through 1981-08-30]",
+        "Sergio Martinez (#4645) leads the staff in innings pitched (217), with 139 strikeouts, 55 walks and a 3.98 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=8, year=1981, through 1981-08-30]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (1) — 1976. League titles (0) — none. [team_history.csv, team_id=8, league_id=200, year=1972–1980]",
+        "The club finished 80-82 in 1980, division place 3. [team_history_record.csv, team_id=8, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-31 export lists 26 active players. [players_roster_status.csv team_id=8 is_active=1 joined to players.csv player_id, export league date 1981-08-31]",
+        "P — Antonio Barbieri (#7943), Armando Juarez (#2959), Emilio Ortega (#4396), Jonathan Funches (#6782), Jonathan Ponce (#4552), Julio Gonzalez (#5311), Luis Carrera (#8654), Miguel Mora (#1961), Nick Olesen (#1706), Sergio Martinez (#4645), Tony Espinal (#3086).",
+        "C — Tyler Lett (#33), Xavier Rogers (#5959).",
+        "1B — DeMario Taveras (#5822), Francisco Lizarraga (#6244), Jorge Bailon (#736), Preston Strate (#977).",
+        "2B — Isaiah Pittman (#4445), Nate Smeltz (#1005), Orlando Hernandez (#4358).",
+        "3B — Cory Lynn (#302), Ruben Flores (#7339).",
+        "SS — Steve Rutherford (#481).",
+        "LF — Walter Kimpton (#7350).",
+        "CF — Troy Miles (#4713).",
+        "RF — Frank Jimenez (#4573)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Jed Vallis (#9056), 18, C at Hialeah War Dogs — drafted in 1980 with overall pick 8. [players.csv player_id=9056, team_affiliations.csv team_id=8 affiliated_team_id=122, teams.csv, export 1981-08-31]",
+        "Sean Falls (#9502), 23, 1B at Sergeant Bluff Diamondbacks — drafted in 1979 with overall pick 11. [players.csv player_id=9502, team_affiliations.csv team_id=8 affiliated_team_id=29, teams.csv, export 1981-08-31]",
+        "Antonio Lopez (#12009), 21, LF at Akron Honkers — drafted in 1981 with overall pick 15. [players.csv player_id=12009, team_affiliations.csv team_id=8 affiliated_team_id=96, teams.csv, export 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-07-24 — In a trade with Dallas, Tampa Bay received Jonathan Funches (#6782) and sent Brian Manchester (#1656). [trade_history.csv date=1981-07-24 team_id_0=8 team_id_1=4 message_id=19798]",
+        "1981-07-27 — In a trade with Chicago, Tampa Bay received Tony Espinal (#3086), Luis Robles (#10110) and sent Ed Montoya (#2039). [trade_history.csv date=1981-07-27 team_id_0=12 team_id_1=8 message_id=19850]",
+        "1981-07-27 — In a trade with Houston, Tampa Bay received Jose Carranza (#9320), Matt Johnson (#9625) and sent Jeff Mitchell (#2790). [trade_history.csv date=1981-07-27 team_id_0=8 team_id_1=23 message_id=19853]",
+        "Jose Carranza (#9320) has 0 batting PA and 0 pitching innings for Tampa Bay in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=9320, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Tampa Bay stand against its division opponents? Tampa Bay is 54-77 and trails Charlotte by 19 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "Will the next series change Tampa Bay's recent scoring margin? Over its last 7 games the club went 1-6, scoring 22 runs and allowing 58. Season totals are 539 scored and 648 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8. Recent game IDs 1490, 1509, 1520, 1526, 1538, 1550, 1562]",
+        "What role will Jose Carranza (#9320) earn with Tampa Bay? Jose Carranza (#9320) has 0 batting PA and 0 pitching innings for Tampa Bay in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=9320, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8] [trade_history.csv date=1981-07-27 team_id_0=8 team_id_1=23 message_id=19853]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Tampa Bay Storm is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Tampa Bay Storm is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "8:1981:division",
+      "question": "Where does Tampa Bay stand against its division opponents?",
+      "evidence": "Tampa Bay is 54-77 and trails Charlotte by 19 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]"
+    },
+    {
+      "key": "8:1981:runs",
+      "question": "Will the next series change Tampa Bay's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 1-6, scoring 22 runs and allowing 58. Season totals are 539 scored and 648 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8. Recent game IDs 1490, 1509, 1520, 1526, 1538, 1550, 1562]"
+    },
+    {
+      "key": "8:1981:trade:19853:9320",
+      "question": "What role will Jose Carranza (#9320) earn with Tampa Bay?",
+      "evidence": "Jose Carranza (#9320) has 0 batting PA and 0 pitching innings for Tampa Bay in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=9320, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8] [trade_history.csv date=1981-07-27 team_id_0=8 team_id_1=23 message_id=19853]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1454,
+      "date": "1981-08-20",
+      "home_id": 8,
+      "away_id": 6,
+      "runs_away": 6,
+      "runs_home": 5,
+      "innings": 9,
+      "summary": "Charlotte 6, Tampa Bay 5",
+      "source": "games.csv game_id=1454 date=1981-08-20 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1466,
+      "date": "1981-08-21",
+      "home_id": 8,
+      "away_id": 6,
+      "runs_away": 8,
+      "runs_home": 4,
+      "innings": 9,
+      "summary": "Charlotte 8, Tampa Bay 4",
+      "source": "games.csv game_id=1466 date=1981-08-21 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1478,
+      "date": "1981-08-22",
+      "home_id": 8,
+      "away_id": 6,
+      "runs_away": 9,
+      "runs_home": 4,
+      "innings": 10,
+      "summary": "Charlotte 9, Tampa Bay 4",
+      "source": "games.csv game_id=1478 date=1981-08-22 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1490,
+      "date": "1981-08-23",
+      "home_id": 8,
+      "away_id": 6,
+      "runs_away": 9,
+      "runs_home": 10,
+      "innings": 9,
+      "summary": "Charlotte 9, Tampa Bay 10",
+      "source": "games.csv game_id=1490 date=1981-08-23 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1509,
+      "date": "1981-08-25",
+      "home_id": 1,
+      "away_id": 8,
+      "runs_away": 3,
+      "runs_home": 10,
+      "innings": 9,
+      "summary": "Tampa Bay 3, Miami 10",
+      "source": "games.csv game_id=1509 date=1981-08-25 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1520,
+      "date": "1981-08-26",
+      "home_id": 1,
+      "away_id": 8,
+      "runs_away": 1,
+      "runs_home": 9,
+      "innings": 9,
+      "summary": "Tampa Bay 1, Miami 9",
+      "source": "games.csv game_id=1520 date=1981-08-26 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1526,
+      "date": "1981-08-27",
+      "home_id": 8,
+      "away_id": 3,
+      "runs_away": 10,
+      "runs_home": 0,
+      "innings": 9,
+      "summary": "Atlanta 10, Tampa Bay 0",
+      "source": "games.csv game_id=1526 date=1981-08-27 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1538,
+      "date": "1981-08-28",
+      "home_id": 8,
+      "away_id": 3,
+      "runs_away": 8,
+      "runs_home": 6,
+      "innings": 14,
+      "summary": "Atlanta 8, Tampa Bay 6",
+      "source": "games.csv game_id=1538 date=1981-08-28 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1550,
+      "date": "1981-08-29",
+      "home_id": 8,
+      "away_id": 3,
+      "runs_away": 6,
+      "runs_home": 1,
+      "innings": 9,
+      "summary": "Atlanta 6, Tampa Bay 1",
+      "source": "games.csv game_id=1550 date=1981-08-29 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1562,
+      "date": "1981-08-30",
+      "home_id": 8,
+      "away_id": 3,
+      "runs_away": 6,
+      "runs_home": 1,
+      "innings": 9,
+      "summary": "Atlanta 6, Tampa Bay 1",
+      "source": "games.csv game_id=1562 date=1981-08-30 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1454,
+    1466,
+    1478,
+    1490,
+    1509,
+    1520,
+    1526,
+    1538,
+    1550,
+    1562
+  ],
+  "transactions": [
+    {
+      "id": "trade:18945",
+      "date": "1981-03-04",
+      "partner_id": 12,
+      "incoming_ids": [
+        8805
+      ],
+      "outgoing_ids": [
+        6705
+      ],
+      "summary": "In a trade with Chicago, Tampa Bay received Dave Guadalupe (#8805) and sent Willie Leyba (#6705)",
+      "source": "trade_history.csv date=1981-03-04 team_id_0=8 team_id_1=12 message_id=18945"
+    },
+    {
+      "id": "trade:19798",
+      "date": "1981-07-24",
+      "partner_id": 4,
+      "incoming_ids": [
+        6782
+      ],
+      "outgoing_ids": [
+        1656
+      ],
+      "summary": "In a trade with Dallas, Tampa Bay received Jonathan Funches (#6782) and sent Brian Manchester (#1656)",
+      "source": "trade_history.csv date=1981-07-24 team_id_0=8 team_id_1=4 message_id=19798"
+    },
+    {
+      "id": "trade:19850",
+      "date": "1981-07-27",
+      "partner_id": 12,
+      "incoming_ids": [
+        3086,
+        10110
+      ],
+      "outgoing_ids": [
+        2039
+      ],
+      "summary": "In a trade with Chicago, Tampa Bay received Tony Espinal (#3086), Luis Robles (#10110) and sent Ed Montoya (#2039)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=12 team_id_1=8 message_id=19850"
+    },
+    {
+      "id": "trade:19853",
+      "date": "1981-07-27",
+      "partner_id": 23,
+      "incoming_ids": [
+        9320,
+        9625
+      ],
+      "outgoing_ids": [
+        2790
+      ],
+      "summary": "In a trade with Houston, Tampa Bay received Jose Carranza (#9320), Matt Johnson (#9625) and sent Jeff Mitchell (#2790)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=8 team_id_1=23 message_id=19853"
+    }
+  ],
+  "roster_ids": [
+    33,
+    302,
+    481,
+    736,
+    977,
+    1005,
+    1706,
+    1961,
+    2959,
+    3086,
+    4358,
+    4396,
+    4445,
+    4552,
+    4573,
+    4645,
+    4713,
+    5311,
+    5822,
+    5959,
+    6244,
+    6782,
+    7339,
+    7350,
+    7943,
+    8654
+  ],
+  "roster": [
+    {
+      "player_id": 5822,
+      "name": "DeMario Taveras (#5822)",
+      "age": 30,
+      "position": "1B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6244,
+      "name": "Francisco Lizarraga (#6244)",
+      "age": 23,
+      "position": "1B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 736,
+      "name": "Jorge Bailon (#736)",
+      "age": 39,
+      "position": "1B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 977,
+      "name": "Preston Strate (#977)",
+      "age": 37,
+      "position": "1B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4445,
+      "name": "Isaiah Pittman (#4445)",
+      "age": 31,
+      "position": "2B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1005,
+      "name": "Nate Smeltz (#1005)",
+      "age": 30,
+      "position": "2B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4358,
+      "name": "Orlando Hernandez (#4358)",
+      "age": 30,
+      "position": "2B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 302,
+      "name": "Cory Lynn (#302)",
+      "age": 36,
+      "position": "3B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7339,
+      "name": "Ruben Flores (#7339)",
+      "age": 28,
+      "position": "3B",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 33,
+      "name": "Tyler Lett (#33)",
+      "age": 34,
+      "position": "C",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5959,
+      "name": "Xavier Rogers (#5959)",
+      "age": 30,
+      "position": "C",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4713,
+      "name": "Troy Miles (#4713)",
+      "age": 30,
+      "position": "CF",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7350,
+      "name": "Walter Kimpton (#7350)",
+      "age": 29,
+      "position": "LF",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7943,
+      "name": "Antonio Barbieri (#7943)",
+      "age": 24,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2959,
+      "name": "Armando Juarez (#2959)",
+      "age": 30,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4396,
+      "name": "Emilio Ortega (#4396)",
+      "age": 31,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6782,
+      "name": "Jonathan Funches (#6782)",
+      "age": 24,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4552,
+      "name": "Jonathan Ponce (#4552)",
+      "age": 29,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5311,
+      "name": "Julio Gonzalez (#5311)",
+      "age": 26,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8654,
+      "name": "Luis Carrera (#8654)",
+      "age": 22,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1961,
+      "name": "Miguel Mora (#1961)",
+      "age": 35,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1706,
+      "name": "Nick Olesen (#1706)",
+      "age": 33,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4645,
+      "name": "Sergio Martinez (#4645)",
+      "age": 27,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3086,
+      "name": "Tony Espinal (#3086)",
+      "age": 30,
+      "position": "P",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4573,
+      "name": "Frank Jimenez (#4573)",
+      "age": 29,
+      "position": "RF",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 481,
+      "name": "Steve Rutherford (#481)",
+      "age": 36,
+      "position": "SS",
+      "team_id": 8,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 9056,
+      "name": "Jed Vallis (#9056)",
+      "age": 18,
+      "position": "C",
+      "team_id": 122,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 8,
+      "affiliate": "Hialeah War Dogs"
+    },
+    {
+      "player_id": 9502,
+      "name": "Sean Falls (#9502)",
+      "age": 23,
+      "position": "1B",
+      "team_id": 29,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 11,
+      "affiliate": "Sergeant Bluff Diamondbacks"
+    },
+    {
+      "player_id": 12009,
+      "name": "Antonio Lopez (#12009)",
+      "age": 21,
+      "position": "LF",
+      "team_id": 96,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 15,
+      "affiliate": "Akron Honkers"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1490,
+    1509,
+    1520,
+    1526,
+    1538,
+    1550,
+    1562
+  ],
+  "continuity": {
+    "threads": {
+      "8:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Where does Tampa Bay stand against its division opponents?",
+        "evidence": "Tampa Bay is 54-77 and trails Charlotte by 19 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "status": "watching"
+      },
+      "8:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Will the next series change Tampa Bay's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 1-6, scoring 22 runs and allowing 58. Season totals are 539 scored and 648 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8. Recent game IDs 1490, 1509, 1520, 1526, 1538, 1550, 1562]",
+        "status": "watching"
+      },
+      "8:1981:rival:6": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Tampa Bay–Charlotte game do to the division race?",
+        "evidence": "Tampa Bay hosts Charlotte Colonels in the next listed game on 1981-08-20. [games.csv game_id=1454, played=0] Tampa Bay is 53-68 and trails Charlotte by 16 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 1,3,6,8]",
+        "status": "carried from earlier coverage"
+      },
+      "8:1981:trade:19853:9320": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "What role will Jose Carranza (#9320) earn with Tampa Bay?",
+        "evidence": "Jose Carranza (#9320) has 0 batting PA and 0 pitching innings for Tampa Bay in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=9320, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=8] [trade_history.csv date=1981-07-27 team_id_0=8 team_id_1=23 message_id=19853]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      33,
+      302,
+      481,
+      736,
+      977,
+      1005,
+      1706,
+      1961,
+      2959,
+      3086,
+      4358,
+      4396,
+      4445,
+      4552,
+      4573,
+      4645,
+      4713,
+      5311,
+      5822,
+      5959,
+      6244,
+      6782,
+      7339,
+      7350,
+      7943,
+      8654
+    ],
+    "names": {
+      "5822": "DeMario Taveras (#5822)",
+      "6244": "Francisco Lizarraga (#6244)",
+      "736": "Jorge Bailon (#736)",
+      "977": "Preston Strate (#977)",
+      "4445": "Isaiah Pittman (#4445)",
+      "1005": "Nate Smeltz (#1005)",
+      "4358": "Orlando Hernandez (#4358)",
+      "302": "Cory Lynn (#302)",
+      "7339": "Ruben Flores (#7339)",
+      "33": "Tyler Lett (#33)",
+      "5959": "Xavier Rogers (#5959)",
+      "4713": "Troy Miles (#4713)",
+      "7350": "Walter Kimpton (#7350)",
+      "7943": "Antonio Barbieri (#7943)",
+      "2959": "Armando Juarez (#2959)",
+      "4396": "Emilio Ortega (#4396)",
+      "6782": "Jonathan Funches (#6782)",
+      "4552": "Jonathan Ponce (#4552)",
+      "5311": "Julio Gonzalez (#5311)",
+      "8654": "Luis Carrera (#8654)",
+      "1961": "Miguel Mora (#1961)",
+      "1706": "Nick Olesen (#1706)",
+      "4645": "Sergio Martinez (#4645)",
+      "3086": "Tony Espinal (#3086)",
+      "4573": "Frank Jimenez (#4573)",
+      "481": "Steve Rutherford (#481)"
+    },
+    "flags": {
+      "5822": [
+        0,
+        0
+      ],
+      "6244": [
+        0,
+        0
+      ],
+      "736": [
+        0,
+        0
+      ],
+      "977": [
+        0,
+        0
+      ],
+      "4445": [
+        0,
+        0
+      ],
+      "1005": [
+        0,
+        0
+      ],
+      "4358": [
+        0,
+        0
+      ],
+      "302": [
+        0,
+        0
+      ],
+      "7339": [
+        0,
+        0
+      ],
+      "33": [
+        0,
+        0
+      ],
+      "5959": [
+        0,
+        0
+      ],
+      "4713": [
+        0,
+        0
+      ],
+      "7350": [
+        0,
+        0
+      ],
+      "7943": [
+        0,
+        0
+      ],
+      "2959": [
+        0,
+        0
+      ],
+      "4396": [
+        0,
+        0
+      ],
+      "6782": [
+        0,
+        0
+      ],
+      "4552": [
+        0,
+        0
+      ],
+      "5311": [
+        0,
+        0
+      ],
+      "8654": [
+        0,
+        0
+      ],
+      "1961": [
+        0,
+        0
+      ],
+      "1706": [
+        0,
+        0
+      ],
+      "4645": [
+        0,
+        0
+      ],
+      "3086": [
+        0,
+        0
+      ],
+      "4573": [
+        0,
+        0
+      ],
+      "481": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18945": "In a trade with Chicago, Tampa Bay received Dave Guadalupe (#8805) and sent Willie Leyba (#6705)",
+      "trade:19798": "In a trade with Dallas, Tampa Bay received Jonathan Funches (#6782) and sent Brian Manchester (#1656)",
+      "trade:19850": "In a trade with Chicago, Tampa Bay received Tony Espinal (#3086), Luis Robles (#10110) and sent Ed Montoya (#2039)",
+      "trade:19853": "In a trade with Houston, Tampa Bay received Jose Carranza (#9320), Matt Johnson (#9625) and sent Jeff Mitchell (#2790)"
+    }
+  },
+  "previous_edition": "1981-08-19_2acae29146076f62"
+}

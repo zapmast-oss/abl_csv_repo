@@ -1,0 +1,44 @@
+[
+  {
+    "title": "The Baseball Observer",
+    "description": "Ernie Bewell follows the races, the players and the questions raised by the games.",
+    "label": "Watch the Observer",
+    "url": "https://www.youtube.com/playlist?list=PLnGodfs9kp4v7J2bf19WdP8Di_ElqMweB"
+  },
+  {
+    "title": "ABL 411",
+    "description": "The league’s short-form updates from Sim Baseball Vision.",
+    "label": "Browse ABL 411",
+    "url": "https://www.youtube.com/playlist?list=PLfb0Nxyi4rhU"
+  },
+  {
+    "title": "ABL Ballpark Feed",
+    "description": "Select games from the ballpark, including St. Louis at Houston on July 16, 1981.",
+    "label": "Watch the July 16 game",
+    "url": "https://www.youtube.com/watch?v=VzDa04It9lE"
+  },
+  {
+    "title": "Showcases and discussion",
+    "description": "Follow the Observer’s Showcase coverage and talk about the games in the OOTP forum.",
+    "label": "Read the Observer thread",
+    "url": "https://forums.ootpdevelopments.com/showthread.php?t=366841"
+  },
+  {
+    "title": "The 1981 season on SBV",
+    "description": "Follow the season as it advances through Act 3 of the pennant race.",
+    "label": "Browse the Act 3 playlist",
+    "url": "https://www.youtube.com/playlist?list=PLnGodfs9kp4u3ewDJSNAaoJW9HNjiRMYp"
+  },
+  {
+    "title": "Live and recorded programming",
+    "description": "The Sim Baseball Vision channel keeps the commissioner’s videos and programming together.",
+    "label": "Open Sim Baseball Vision",
+    "url": "https://www.youtube.com/channel/UCd1wShl1bahaTldUtqVZVwg"
+  },
+  {
+    "title": "Big Earl and the league discussion",
+    "description": "Follow the original league discussion and Big Earl’s club coverage.",
+    "label": "Read the Action Baseball League thread",
+    "url": "https://forums.ootpdevelopments.com/showthread.php?p=5049449"
+  }
+]

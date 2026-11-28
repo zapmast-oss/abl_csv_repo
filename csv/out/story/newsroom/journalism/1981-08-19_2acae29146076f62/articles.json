@@ -1,0 +1,507 @@
+{
+  "edition": "1981-08-19_2acae29146076f62",
+  "source_id": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "cutoff": "1981-08-19",
+  "league_date": "1981-08-20",
+  "previous_edition": null,
+  "articles": [
+    {
+      "path": "beat/06-CHA.md",
+      "title": "How Charlotte built a lead it can defend",
+      "team_ids": [
+        6
+      ],
+      "kind": "beat",
+      "key": "east-6",
+      "trigger": "first-berth-1980:sole-leader-6:winning-against-all-three",
+      "evidence": [
+        "games.csv, league_id=200, game_type=0, played=1, season 1981 through 1981-08-19. team_id=6, grouped by opponents 1, 3, 8 and all other clubs; current calendar month.",
+        "players.csv and players_game_pitching_stats.csv, team_id=6, player_id=8725, opponents 1, 3, 8.",
+        "team_history.csv and team_history_record.csv, league_id=200, team_id=6, years 1972–1980.",
+        "games.csv, scheduled Charlotte series game IDs 1454, 1466, 1478, 1490."
+      ],
+      "body_sha256": "6d630266af072405730564da9d8e75b84503f09b057ece7ac94acb55356bb8f7",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "players.csv",
+          "players_game_pitching_stats.csv",
+          "team_history.csv",
+          "team_history_record.csv"
+        ],
+        "games": [
+          1454,
+          1466,
+          1478,
+          1490
+        ],
+        "teams": [
+          6
+        ],
+        "players": [
+          8725
+        ],
+        "transactions": [],
+        "score_claims": 0,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "beat/01-MIA.md",
+      "title": "What Miami bought in three July trades",
+      "team_ids": [
+        1
+      ],
+      "kind": "beat",
+      "key": "east-1",
+      "trigger": "july-deals-19852-19868-19877:winning-with-negative-differential",
+      "evidence": [
+        "games.csv, league_id=200, game_type=0, played=1, season 1981 through 1981-08-19. team_id=1, margins exactly 1 or at least 5; records before and from 1981-07-27.",
+        "trade_history.csv date=1981-07-27 team_id_0=19 team_id_1=1 message_id=19852",
+        "trade_history.csv date=1981-07-28 team_id_0=1 team_id_1=21 message_id=19868",
+        "trade_history.csv date=1981-07-29 team_id_0=1 team_id_1=2 message_id=19877",
+        "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, league_id=200, level_id=1. Players 671, 8655, 1849. Compare sending-club games through each trade date and Miami games beginning that date through 1981-08-19."
+      ],
+      "body_sha256": "ae12ccb6fd1b71dc1d24da3590786ee0cee9f9c9f37abc1141bd3a9fa28420e8",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "players.csv",
+          "players_game_batting.csv",
+          "players_game_pitching_stats.csv",
+          "trade_history.csv"
+        ],
+        "games": [],
+        "teams": [
+          1
+        ],
+        "players": [],
+        "transactions": [
+          19852,
+          19868,
+          19877
+        ],
+        "score_claims": 0,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "beat/03-ATL.md",
+      "title": "Atlanta has already shown Miami what it can do",
+      "team_ids": [
+        3
+      ],
+      "kind": "beat",
+      "key": "east-3",
+      "trigger": "atlanta-hosts-miami:1453:winning-matchup",
+      "evidence": [
+        "games.csv, league_id=200, game_type=0, played=1, season 1981 through 1981-08-19. team_id=3, record against team_id=1, and season split at July 1.",
+        "games.csv, scheduled Atlanta home series IDs 1453, 1465, 1477, 1489.",
+        "players_game_pitching_stats.csv, player_id=6333, team_id=3. Miami game IDs 217, 278, 542, 1082.",
+        "players_game_batting.csv and players.csv, team_id=3, player_id=4545, filtered to validated season games."
+      ],
+      "body_sha256": "b0b1d5eabf9da101e9e5306a5898b83ea774192cc5b9dde9828ae1efaa380f06",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "players.csv",
+          "players_game_batting.csv",
+          "players_game_pitching_stats.csv"
+        ],
+        "games": [
+          217,
+          278,
+          542,
+          1082,
+          1453,
+          1465,
+          1477,
+          1489
+        ],
+        "teams": [
+          1,
+          3
+        ],
+        "players": [
+          4545,
+          6333
+        ],
+        "transactions": [],
+        "score_claims": 0,
+        "record_claims": 1
+      }
+    },
+    {
+      "path": "beat/08-TB.md",
+      "title": "Nate Smeltz keeps hitting while Tampa Bay pays for the walks",
+      "team_ids": [
+        8
+      ],
+      "kind": "beat",
+      "key": "east-8",
+      "trigger": "tampa-starter-command:trade-19798:game-1446",
+      "evidence": [
+        "games.csv, league_id=200, game_type=0, played=1, season 1981 through 1981-08-19. team_id=8, game_id=1446; last seven IDs 1367, 1384, 1396, 1408, 1422, 1434, 1446.",
+        "trade_history.csv date=1981-07-24 team_id_0=8 team_id_1=4 message_id=19798",
+        "players.csv and players_game_batting.csv, player_id=1005, team_id=8, season and game_id=1446.",
+        "players_game_pitching_stats.csv, player_ids=6782,1656, team_ids=8,4, through 1981-08-19; split at trade date 1981-07-24, starter line game_id=1446.",
+        "games.csv, scheduled Tampa Bay series game IDs 1454, 1466, 1478, 1490."
+      ],
+      "body_sha256": "67afa6896e36e0c08e58dc4c9fc1285625c02c7dd6d48b67866bb84acd583893",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "players.csv",
+          "players_game_batting.csv",
+          "players_game_pitching_stats.csv",
+          "trade_history.csv"
+        ],
+        "games": [
+          1367,
+          1384,
+          1396,
+          1408,
+          1422,
+          1434,
+          1446,
+          1454,
+          1466,
+          1478,
+          1490
+        ],
+        "teams": [
+          4,
+          8
+        ],
+        "players": [
+          1005,
+          1656,
+          6782
+        ],
+        "transactions": [
+          19798
+        ],
+        "score_claims": 0,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "league/nbc-east.md",
+      "title": "Before Charlotte and Miami meet, the rest of the East gets a say",
+      "team_ids": [
+        1,
+        3,
+        6,
+        8
+      ],
+      "kind": "league",
+      "key": "nbc-east",
+      "trigger": "return-to-east:1454:1453:charlotte-ahead",
+      "evidence": [
+        "games.csv, league_id=200, game_type=0, played=1, season 1981 through 1981-08-19. team_ids=1,3,6,8. Standings before 1981-07-27 and at cutoff; division and outside-division splits.",
+        "games.csv, scheduled Charlotte and Miami series IDs 1454, 1466, 1478, 1490, 1453, 1465, 1477, 1489.",
+        "games.csv, scheduled remaining Charlotte–Miami game IDs 1525, 1537, 1549, 1561, 1814, 1826, 1838, 1850."
+      ],
+      "body_sha256": "26b51c662319c8e647e345f6a720f71bb13a545ce7af9781810f83e6c837c9f1",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv"
+        ],
+        "games": [
+          1453,
+          1454,
+          1465,
+          1466,
+          1477,
+          1478,
+          1489,
+          1490,
+          1525,
+          1537,
+          1549,
+          1561,
+          1814,
+          1826,
+          1838,
+          1850
+        ],
+        "teams": [
+          1,
+          3,
+          6,
+          8
+        ],
+        "players": [],
+        "transactions": [],
+        "score_claims": 0,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "beat/02-PHO.md",
+      "title": "Phoenix joins San Francisco atop the NBC Western Division",
+      "team_ids": [
+        2
+      ],
+      "kind": "beat",
+      "key": "2:1981:race",
+      "trigger": "18ee15751c166448e1e0c27b",
+      "evidence": [
+        "games.csv league_id=200 game_type=0 played=1 division team IDs 2,7,9,10 through 1981-08-12 and 1981-08-19",
+        "teams.csv, divisions.csv, sub_leagues.csv league_id=200 team_id=2",
+        "games.csv league_id=200 game_type=0 played=1 division team IDs 2,7,9,10 through 1981-07-19",
+        "csv/out/story/editorial/observer_editorial_board_1981_07_20_asof_1981-07-19.csv candidate_id=1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-western-division",
+        "team_history.csv league_id=200 team_id=2 years=1972,1973,1974,1975,1976,1977,1978,1979,1980 made_playoffs,won_playoffs",
+        "team_history_record.csv league_id=200 year=1980 team_id=2"
+      ],
+      "body_sha256": "ad286d6d5a4bdce837a9f7dd7f37e3b59729fc0058e8383a12a73d5f684b6adf",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "divisions.csv",
+          "games.csv",
+          "observer_editorial_board_1981_07_20_asof_1981-07-19.csv",
+          "sub_leagues.csv",
+          "team_history.csv",
+          "team_history_record.csv",
+          "teams.csv"
+        ],
+        "games": [],
+        "teams": [
+          2,
+          7,
+          9,
+          10
+        ],
+        "players": [],
+        "transactions": [],
+        "score_claims": 0,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "beat/13-DEN.md",
+      "title": "Denver leads Seattle by 2 games in the provisional ABC wild-card order",
+      "team_ids": [
+        13
+      ],
+      "kind": "beat",
+      "key": "13:1981:wildcard",
+      "trigger": "2b0e4a63636a36437575f003",
+      "evidence": [
+        "league_playoffs.csv league_id=200 num_wild_cards=1",
+        "games.csv league_id=200 game_type=0 played=1 through 1981-08-19; teams.csv, sub_leagues.csv and divisions.csv conference=ABC, team IDs 13,17,18,24,14,16,19,23,15,20,21,22"
+      ],
+      "body_sha256": "f55a91dfaaa8f9f4c44b89417b5e89b8152dcdfb6345bf35c735cfecf37ddc80",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "divisions.csv",
+          "games.csv",
+          "league_playoffs.csv",
+          "sub_leagues.csv",
+          "teams.csv"
+        ],
+        "games": [],
+        "teams": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "players": [],
+        "transactions": [],
+        "score_claims": 0,
+        "record_claims": 1
+      }
+    },
+    {
+      "path": "beat/04-DAL.md",
+      "title": "What Dallas has received from Brian Manchester",
+      "team_ids": [
+        4
+      ],
+      "kind": "beat",
+      "key": "4:1981:trade:19798:1656",
+      "trigger": "4ebd9e5c246671ded41c7608",
+      "evidence": [
+        "trade_history.csv date=1981-07-24 team_id_0=8 team_id_1=4 message_id=19798",
+        "players.csv player_id=1656",
+        "players_game_pitching_stats.csv player_id=1656 team_id=4 joined to played ABL regular-season games after 1981-07-24 through 1981-08-19, excluding the trade date",
+        "players_game_pitching_stats.csv player_id=1656 team_id=8 joined to played ABL regular-season games before 1981-07-24 in 1981",
+        "games.csv game_id=1221,1273,1321,1378,1432 (ABL completed regular season)"
+      ],
+      "body_sha256": "0fb060f46b241a285f96bf3f22211b2abf2a687c9eb605dbcba97e48e6fd8778",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "players.csv",
+          "players_game_pitching_stats.csv",
+          "trade_history.csv"
+        ],
+        "games": [
+          1221,
+          1273,
+          1321,
+          1378,
+          1432
+        ],
+        "teams": [
+          4,
+          8
+        ],
+        "players": [
+          1656
+        ],
+        "transactions": [
+          19798
+        ],
+        "score_claims": 0,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "beat/10-SF.md",
+      "title": "San Francisco scores 6 in the first to beat Tampa Bay",
+      "team_ids": [
+        10
+      ],
+      "kind": "beat",
+      "key": "game:1981:1446:10",
+      "trigger": "61b63b676beeca43e2b2dc7a",
+      "evidence": [
+        "games.csv game_id=1446 date=1981-08-19 league_id=200 game_type=0 played=1",
+        "games_score.csv game_id=1446, away and home inning totals",
+        "games.csv game_id=1378,1381,1393,1405,1422,1434,1446 (ABL completed regular season)",
+        "players.csv and players_game_batting.csv, player_id=2404, team_id=10, game_id=1446.",
+        "games_score.csv, game_id=1446, team=1, inning=1."
+      ],
+      "body_sha256": "2f778da8ab5a84084ed2d02c3b541fa7fa6fea9f4e5090c60bacca4d175165bb",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "games_score.csv",
+          "players.csv",
+          "players_game_batting.csv"
+        ],
+        "games": [
+          1378,
+          1381,
+          1393,
+          1405,
+          1422,
+          1434,
+          1446
+        ],
+        "teams": [
+          10
+        ],
+        "players": [
+          2404
+        ],
+        "transactions": [],
+        "score_claims": 1,
+        "record_claims": 0
+      }
+    },
+    {
+      "path": "observer/ernie-briefing.md",
+      "title": "Phoenix visits San Francisco with the NBC West tied",
+      "team_ids": [],
+      "kind": "observer",
+      "key": "observer",
+      "trigger": "1981-08-19",
+      "evidence": [
+        "games.csv and teams.csv — league 200, played regular-season games through 1981-08-19. Standings, recent form and series records use the participating clubs and the final scores.",
+        "games.csv — game_id=1458, date=1981-08-20, played=0, visitor=2, home=10. Schedule only.",
+        "games.csv — game_id=1446, team_id=10. Comparison game IDs 1378, 1381, 1393, 1405, 1422, 1434.",
+        "games.csv — game_id=1450; meeting IDs 1450, 1438, 1426.",
+        "team_history.csv — league_id=200, team_id=6 and 1, made_playoffs=1 before 1981; games.csv, final runs for both clubs through 1981-08-19.",
+        "players.csv player_id=6730",
+        "players_game_pitching_stats.csv team_id=2 player_id=6730 joined to played ABL regular-season games through 1981-08-19",
+        "games.csv game_id=1377,1385,1397,1409,1420,1432,1444 (ABL completed regular season)"
+      ],
+      "body_sha256": "7b910e67f68b956ac4db701585056ead9afda98f9e99ec740dca0cee1aad1da1",
+      "edition": "1981-08-19_2acae29146076f62",
+      "cutoff": "1981-08-19",
+      "prior_edition": null,
+      "checked": {
+        "source_tables": [
+          "games.csv",
+          "players.csv",
+          "players_game_pitching_stats.csv",
+          "team_history.csv",
+          "teams.csv"
+        ],
+        "games": [
+          1377,
+          1378,
+          1381,
+          1385,
+          1393,
+          1397,
+          1405,
+          1409,
+          1420,
+          1422,
+          1426,
+          1432,
+          1434,
+          1438,
+          1444,
+          1446,
+          1450,
+          1458
+        ],
+        "teams": [
+          2,
+          6,
+          10
+        ],
+        "players": [
+          6730
+        ],
+        "transactions": [],
+        "score_claims": 2,
+        "record_claims": 1
+      }
+    }
+  ],
+  "held": [],
+  "external_publication": false,
+  "source_directory": "C:\\sbv_repo\\abl_csv_repo\\output\\newsroom\\snapshots\\2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "evidence_policy": "Scores, appearances and standings use completed regular-season games through cutoff. Unplayed rows support schedules only. Personnel attributes use the identified export date."
+}

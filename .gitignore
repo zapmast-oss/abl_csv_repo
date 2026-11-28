@@ -1,0 +1,29 @@
+# External ignored OOTP almanac junction/content.
+data_raw/ootp_html/
+
+# Python runtime artifacts.
+__pycache__/
+*.py[cod]
+*.pyc.*
+
+# Routine logs and temporary/scratch files.
+logs/**/*.log
+.tmp*
+*.tmp
+temp.txt
+tmp_*.txt
+
+# Local rebuildable runtime state.
+/output/newsroom/snapshots/
+/csv/out/story/newsroom/.building-*/
+/csv/out/story/newsroom/newsroom.lock
+/logs/newsroom_control/
+/logs/production_control/
+/logs/eab/
+/output/eab/
+/tmp/eab-*/
+/tools/production/dashboard/status.js
+/tmp/abl-command-center-*/
+data_work/*.db
+data_work/*.db-*
+csv/week_game_ids.npy

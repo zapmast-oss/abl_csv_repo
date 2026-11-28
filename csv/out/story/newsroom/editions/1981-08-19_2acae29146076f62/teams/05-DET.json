@@ -1,0 +1,723 @@
+{
+  "team_id": 5,
+  "team": "Detroit Dukes",
+  "abbr": "DET",
+  "division": "NBC Central Division",
+  "conference": "NBC",
+  "wins": 65,
+  "losses": 56,
+  "gb": 1.0,
+  "priority": 1,
+  "division_leaders_change": false,
+  "division_leaders": [
+    4
+  ],
+  "intensity": "brief",
+  "headline": "Detroit fell to Atlanta 8-6",
+  "brief": "Detroit fell to Atlanta 8-6. [games.csv game_id=1441 date=1981-08-19 league_id=200 game_type=0 played=1] Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-19 — Detroit fell to Atlanta 8-6 in 9 innings. [games.csv game_id=1441 date=1981-08-19 league_id=200 game_type=0 played=1] Armando Garcia (#4854) went 2-for-5 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1441, team_id=5, player_id=4854] Kennie Murdock (#4963) worked 8 innings, allowed 1 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1441, team_id=5, player_id=4963]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Division records — Dallas 66-55, Detroit 65-56, Chicago 64-57, Minneapolis 54-66. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Over its last 7 games the club went 4-3, scoring 31 runs and allowing 21. Season totals are 540 scored and 485 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5. Recent game IDs 1366, 1385, 1397, 1409, 1417, 1429, 1441]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Dallas Rustlers, Detroit is 9-5 with 69 runs scored and 49 allowed. [games.csv 1981 completed regular season, team IDs 5/4, latest game #1191, 1981-07-26]",
+        "Against Chicago Fire, Detroit is 7-8 with 78 runs scored and 66 allowed. [games.csv 1981 completed regular season, team IDs 5/12, latest game #1108, 1981-07-19]",
+        "Against Minneapolis Blizzard, Detroit is 7-7 with 52 runs scored and 57 allowed. [games.csv 1981 completed regular season, team IDs 5/11, latest game #1156, 1981-07-23]",
+        "Detroit visits Chicago Fire in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Francisco Fernandez (#926), Armando Garcia (#4854) share the club lead in hits (101). [players_game_batting.csv joined to played games.csv, team_id=5, year=1981, through 1981-08-19]",
+        "Mike Miranda (#2135) leads the staff in innings pitched (205 1/3), with 140 strikeouts, 50 walks and a 3.24 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=5, year=1981, through 1981-08-19]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (5) — 1974, 1975, 1976, 1979, 1980. League titles (1) — 1980. [team_history.csv, team_id=5, league_id=200, year=1972–1980]",
+        "The club finished 86-76 in 1980, division place 2. [team_history_record.csv, team_id=5, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-20 export lists 26 active players. [players_roster_status.csv team_id=5 is_active=1 joined to players.csv player_id, export league date 1981-08-20]",
+        "P — Bill Hackman (#1000), Brett Helvie (#1857), Chris Allen (#536), Jon Moreno (#3805), Jordan Allison (#2865), Jose Flores (#812), Kennie Murdock (#4963), Marcos Real (#577), Martin Martinez (#4422), Mike Miranda (#2135), Tony Garcia (#5452).",
+        "C — Jake Simper (#642), Sergio Ornelas (#958).",
+        "1B — Francisco Fernandez (#926), Juan Aranda (#5077), Rodolfo Mondragon (#6700).",
+        "2B — Luis Rios (#649).",
+        "3B — Armando Garcia (#4854), Mezian Ridha (#4560).",
+        "SS — Ahmed Hayes (#5029), Alex Escobedo (#8229).",
+        "LF — Alex Diaz (#4648), Xavier Brown (#6808).",
+        "CF — Ben Benton (#967).",
+        "RF — Ethan Harrison (#607), Roberto Rodriguez (#5981)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Jeremy Browning (#8847), 23, 3B at Jackson Stars — drafted in 1979 with overall pick 13. [players.csv player_id=8847, team_affiliations.csv team_id=5 affiliated_team_id=33, teams.csv, export 1981-08-20]",
+        "Jesus Borrego (#9032), 20, 3B at Little Rock Red Claws — drafted in 1980 with overall pick 22. [players.csv player_id=9032, team_affiliations.csv team_id=5 affiliated_team_id=54, teams.csv, export 1981-08-20]",
+        "Steve Spurrell (#10222), 18, 1B at Novato Padres — drafted in 1981 with overall pick 47. [players.csv player_id=10222, team_affiliations.csv team_id=5 affiliated_team_id=89, teams.csv, export 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-01-11 — trade with New York. received Martin Martinez (#4422). sent Jonathan Heberling (#9444), Felix Jaquez (#10153), Carlos Escobar (#8568). [trade_history.csv date=1981-01-11 team_id_0=15 team_id_1=5 message_id=18884]",
+        "1981-07-26 — trade with New York. received Chris Allen (#536). sent Hector Wilson (#10151), Bobby Ramirez (#8373). [trade_history.csv date=1981-07-26 team_id_0=15 team_id_1=5 message_id=19814]",
+        "1981-07-28 — trade with San Diego. received Kennie Murdock (#4963). sent Bob Morales (#9196). [trade_history.csv date=1981-07-28 team_id_0=7 team_id_1=5 message_id=19867]",
+        "Kennie Murdock (#4963) has 0 batting PA and 39 2/3 pitching innings for Detroit in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=4963, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Detroit stand against its division opponents? Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Will the next series change Detroit's recent scoring margin? Over its last 7 games the club went 4-3, scoring 31 runs and allowing 21. Season totals are 540 scored and 485 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5. Recent game IDs 1366, 1385, 1397, 1409, 1417, 1429, 1441]",
+        "What will the next Detroit–Chicago game do to the division race? Detroit visits Chicago Fire in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0] Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "What role will Kennie Murdock (#4963) earn with Detroit? Kennie Murdock (#4963) has 0 batting PA and 39 2/3 pitching innings for Detroit in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=4963, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5] [trade_history.csv date=1981-07-28 team_id_0=7 team_id_1=5 message_id=19867]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Detroit Dukes is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md.",
+        "Earlier internal coverage naming Detroit Dukes is filed at csv/out/story/production/abl_weekday17_desk_1981_07_27_asof_1981-07-26.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "5:1981:division",
+      "question": "Where does Detroit stand against its division opponents?",
+      "evidence": "Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "5:1981:runs",
+      "question": "Will the next series change Detroit's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 4-3, scoring 31 runs and allowing 21. Season totals are 540 scored and 485 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5. Recent game IDs 1366, 1385, 1397, 1409, 1417, 1429, 1441]"
+    },
+    {
+      "key": "5:1981:rival:12",
+      "question": "What will the next Detroit–Chicago game do to the division race?",
+      "evidence": "Detroit visits Chicago Fire in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0] Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "5:1981:trade:19867:4963",
+      "question": "What role will Kennie Murdock (#4963) earn with Detroit?",
+      "evidence": "Kennie Murdock (#4963) has 0 batting PA and 39 2/3 pitching innings for Detroit in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=4963, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5] [trade_history.csv date=1981-07-28 team_id_0=7 team_id_1=5 message_id=19867]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1441,
+      "date": "1981-08-19",
+      "home_id": 5,
+      "away_id": 3,
+      "runs_away": 8,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Atlanta 8, Detroit 6",
+      "source": "games.csv game_id=1441 date=1981-08-19 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1441
+  ],
+  "transactions": [
+    {
+      "id": "trade:18884",
+      "date": "1981-01-11",
+      "partner_id": 15,
+      "incoming_ids": [
+        4422
+      ],
+      "outgoing_ids": [
+        9444,
+        10153,
+        8568
+      ],
+      "summary": "trade with New York. received Martin Martinez (#4422). sent Jonathan Heberling (#9444), Felix Jaquez (#10153), Carlos Escobar (#8568)",
+      "source": "trade_history.csv date=1981-01-11 team_id_0=15 team_id_1=5 message_id=18884"
+    },
+    {
+      "id": "trade:19814",
+      "date": "1981-07-26",
+      "partner_id": 15,
+      "incoming_ids": [
+        536
+      ],
+      "outgoing_ids": [
+        10151,
+        8373
+      ],
+      "summary": "trade with New York. received Chris Allen (#536). sent Hector Wilson (#10151), Bobby Ramirez (#8373)",
+      "source": "trade_history.csv date=1981-07-26 team_id_0=15 team_id_1=5 message_id=19814"
+    },
+    {
+      "id": "trade:19867",
+      "date": "1981-07-28",
+      "partner_id": 7,
+      "incoming_ids": [
+        4963
+      ],
+      "outgoing_ids": [
+        9196
+      ],
+      "summary": "trade with San Diego. received Kennie Murdock (#4963). sent Bob Morales (#9196)",
+      "source": "trade_history.csv date=1981-07-28 team_id_0=7 team_id_1=5 message_id=19867"
+    }
+  ],
+  "roster_ids": [
+    536,
+    577,
+    607,
+    642,
+    649,
+    812,
+    926,
+    958,
+    967,
+    1000,
+    1857,
+    2135,
+    2865,
+    3805,
+    4422,
+    4560,
+    4648,
+    4854,
+    4963,
+    5029,
+    5077,
+    5452,
+    5981,
+    6700,
+    6808,
+    8229
+  ],
+  "roster": [
+    {
+      "player_id": 926,
+      "name": "Francisco Fernandez (#926)",
+      "age": 38,
+      "position": "1B",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5077,
+      "name": "Juan Aranda (#5077)",
+      "age": 29,
+      "position": "1B",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6700,
+      "name": "Rodolfo Mondragon (#6700)",
+      "age": 29,
+      "position": "1B",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 649,
+      "name": "Luis Rios (#649)",
+      "age": 30,
+      "position": "2B",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4854,
+      "name": "Armando Garcia (#4854)",
+      "age": 26,
+      "position": "3B",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4560,
+      "name": "Mezian Ridha (#4560)",
+      "age": 27,
+      "position": "3B",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 642,
+      "name": "Jake Simper (#642)",
+      "age": 33,
+      "position": "C",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 958,
+      "name": "Sergio Ornelas (#958)",
+      "age": 27,
+      "position": "C",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 967,
+      "name": "Ben Benton (#967)",
+      "age": 34,
+      "position": "CF",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4648,
+      "name": "Alex Diaz (#4648)",
+      "age": 30,
+      "position": "LF",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6808,
+      "name": "Xavier Brown (#6808)",
+      "age": 28,
+      "position": "LF",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1000,
+      "name": "Bill Hackman (#1000)",
+      "age": 35,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1857,
+      "name": "Brett Helvie (#1857)",
+      "age": 33,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 536,
+      "name": "Chris Allen (#536)",
+      "age": 40,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3805,
+      "name": "Jon Moreno (#3805)",
+      "age": 29,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2865,
+      "name": "Jordan Allison (#2865)",
+      "age": 33,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 812,
+      "name": "Jose Flores (#812)",
+      "age": 38,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4963,
+      "name": "Kennie Murdock (#4963)",
+      "age": 30,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 577,
+      "name": "Marcos Real (#577)",
+      "age": 35,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4422,
+      "name": "Martin Martinez (#4422)",
+      "age": 31,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2135,
+      "name": "Mike Miranda (#2135)",
+      "age": 32,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5452,
+      "name": "Tony Garcia (#5452)",
+      "age": 24,
+      "position": "P",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 607,
+      "name": "Ethan Harrison (#607)",
+      "age": 36,
+      "position": "RF",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5981,
+      "name": "Roberto Rodriguez (#5981)",
+      "age": 26,
+      "position": "RF",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5029,
+      "name": "Ahmed Hayes (#5029)",
+      "age": 30,
+      "position": "SS",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8229,
+      "name": "Alex Escobedo (#8229)",
+      "age": 24,
+      "position": "SS",
+      "team_id": 5,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 8847,
+      "name": "Jeremy Browning (#8847)",
+      "age": 23,
+      "position": "3B",
+      "team_id": 33,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 13,
+      "affiliate": "Jackson Stars"
+    },
+    {
+      "player_id": 9032,
+      "name": "Jesus Borrego (#9032)",
+      "age": 20,
+      "position": "3B",
+      "team_id": 54,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 22,
+      "affiliate": "Little Rock Red Claws"
+    },
+    {
+      "player_id": 10222,
+      "name": "Steve Spurrell (#10222)",
+      "age": 18,
+      "position": "1B",
+      "team_id": 89,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 47,
+      "affiliate": "Novato Padres"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1366,
+    1385,
+    1397,
+    1409,
+    1417,
+    1429,
+    1441
+  ],
+  "continuity": {
+    "threads": {
+      "5:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Where does Detroit stand against its division opponents?",
+        "evidence": "Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "5:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Will the next series change Detroit's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 4-3, scoring 31 runs and allowing 21. Season totals are 540 scored and 485 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5. Recent game IDs 1366, 1385, 1397, 1409, 1417, 1429, 1441]",
+        "status": "watching"
+      },
+      "5:1981:rival:12": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Detroit–Chicago game do to the division race?",
+        "evidence": "Detroit visits Chicago Fire in the next listed game on 1981-08-20. [games.csv game_id=1455, played=0] Detroit is 65-56 and trails Dallas by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "5:1981:trade:19867:4963": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What role will Kennie Murdock (#4963) earn with Detroit?",
+        "evidence": "Kennie Murdock (#4963) has 0 batting PA and 39 2/3 pitching innings for Detroit in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=4963, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=5] [trade_history.csv date=1981-07-28 team_id_0=7 team_id_1=5 message_id=19867]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      536,
+      577,
+      607,
+      642,
+      649,
+      812,
+      926,
+      958,
+      967,
+      1000,
+      1857,
+      2135,
+      2865,
+      3805,
+      4422,
+      4560,
+      4648,
+      4854,
+      4963,
+      5029,
+      5077,
+      5452,
+      5981,
+      6700,
+      6808,
+      8229
+    ],
+    "names": {
+      "926": "Francisco Fernandez (#926)",
+      "5077": "Juan Aranda (#5077)",
+      "6700": "Rodolfo Mondragon (#6700)",
+      "649": "Luis Rios (#649)",
+      "4854": "Armando Garcia (#4854)",
+      "4560": "Mezian Ridha (#4560)",
+      "642": "Jake Simper (#642)",
+      "958": "Sergio Ornelas (#958)",
+      "967": "Ben Benton (#967)",
+      "4648": "Alex Diaz (#4648)",
+      "6808": "Xavier Brown (#6808)",
+      "1000": "Bill Hackman (#1000)",
+      "1857": "Brett Helvie (#1857)",
+      "536": "Chris Allen (#536)",
+      "3805": "Jon Moreno (#3805)",
+      "2865": "Jordan Allison (#2865)",
+      "812": "Jose Flores (#812)",
+      "4963": "Kennie Murdock (#4963)",
+      "577": "Marcos Real (#577)",
+      "4422": "Martin Martinez (#4422)",
+      "2135": "Mike Miranda (#2135)",
+      "5452": "Tony Garcia (#5452)",
+      "607": "Ethan Harrison (#607)",
+      "5981": "Roberto Rodriguez (#5981)",
+      "5029": "Ahmed Hayes (#5029)",
+      "8229": "Alex Escobedo (#8229)"
+    },
+    "flags": {
+      "926": [
+        0,
+        0
+      ],
+      "5077": [
+        0,
+        0
+      ],
+      "6700": [
+        0,
+        0
+      ],
+      "649": [
+        0,
+        0
+      ],
+      "4854": [
+        0,
+        0
+      ],
+      "4560": [
+        0,
+        0
+      ],
+      "642": [
+        0,
+        0
+      ],
+      "958": [
+        0,
+        0
+      ],
+      "967": [
+        0,
+        0
+      ],
+      "4648": [
+        0,
+        0
+      ],
+      "6808": [
+        0,
+        0
+      ],
+      "1000": [
+        0,
+        0
+      ],
+      "1857": [
+        0,
+        0
+      ],
+      "536": [
+        0,
+        0
+      ],
+      "3805": [
+        0,
+        0
+      ],
+      "2865": [
+        0,
+        0
+      ],
+      "812": [
+        0,
+        0
+      ],
+      "4963": [
+        0,
+        0
+      ],
+      "577": [
+        0,
+        0
+      ],
+      "4422": [
+        0,
+        0
+      ],
+      "2135": [
+        0,
+        0
+      ],
+      "5452": [
+        0,
+        0
+      ],
+      "607": [
+        0,
+        0
+      ],
+      "5981": [
+        0,
+        0
+      ],
+      "5029": [
+        0,
+        0
+      ],
+      "8229": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18884": "trade with New York. received Martin Martinez (#4422). sent Jonathan Heberling (#9444), Felix Jaquez (#10153), Carlos Escobar (#8568)",
+      "trade:19814": "trade with New York. received Chris Allen (#536). sent Hector Wilson (#10151), Bobby Ramirez (#8373)",
+      "trade:19867": "trade with San Diego. received Kennie Murdock (#4963). sent Bob Morales (#9196)"
+    }
+  },
+  "previous_edition": null
+}

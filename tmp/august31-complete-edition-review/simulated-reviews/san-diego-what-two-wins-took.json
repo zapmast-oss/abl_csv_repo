@@ -1,0 +1,122 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "san-diego-what-two-wins-took",
+  "title": "San Diego found a way to take two from first place",
+  "kind": "beat",
+  "byline": "San Diego Seraphs beat",
+  "team_ids": [
+    7
+  ],
+  "story_ids": [
+    "7:1981:race",
+    "7:1981:player:10161:pit",
+    "7:1981:player:3555:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "The Seraphs had one run in the two middle games at Los Angeles and were swept, though the last loss took 14 innings. At home they beat San Francisco 4–3 and took consecutive games from Phoenix, 3–1 and 5–3. Those two wins took two days out of the Firebirds’ chance to extend their West lead.",
+        "Barbu Nica let in one earned run over 14⅓ innings in two starts during the challenge. Elijah Lundy gave the Seraphs 14⅔ innings and allowed three earned runs in his two. There is more to learn from those outings than from the club’s 48–83 record alone, especially when the offense supplied only 23 runs in ten games.",
+        "Minneapolis visits September 1. With roster expansion scheduled that day, the immediate question is how San Diego uses the innings around its starters, and whether the extra places turn into real work on the field."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 7. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1457,1469,1481,1493,1504,1513,1529,1541,1553,1565. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1585,1597,1606. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 10161,9599,3555,4595. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "leagues.csv, league_id=200, roster_expand_date=1981-9-1, rosters_expanded=0, active_roster_limit=26, expanded_roster_limit=40. Compare future exports of players_roster_status.csv and box scores before naming any call-up."
+  ],
+  "claim_games": [
+    1457,
+    1469,
+    1481,
+    1493,
+    1504,
+    1513,
+    1529,
+    1541,
+    1553,
+    1565,
+    1585,
+    1597,
+    1606
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1457
+      ],
+      "claim": "1981-08-20. San Diego Seraphs 3, Los Angeles Cobras 6."
+    },
+    {
+      "games": [
+        1469
+      ],
+      "claim": "1981-08-21. San Diego Seraphs 1, Los Angeles Cobras 3."
+    },
+    {
+      "games": [
+        1481
+      ],
+      "claim": "1981-08-22. San Diego Seraphs 0, Los Angeles Cobras 3."
+    },
+    {
+      "games": [
+        1493
+      ],
+      "claim": "1981-08-23. San Diego Seraphs 4, Los Angeles Cobras 5."
+    },
+    {
+      "games": [
+        1504
+      ],
+      "claim": "1981-08-24. San Francisco Warriors 3, San Diego Seraphs 4."
+    },
+    {
+      "games": [
+        1513
+      ],
+      "claim": "1981-08-25. San Francisco Warriors 2, San Diego Seraphs 1."
+    },
+    {
+      "games": [
+        1529
+      ],
+      "claim": "1981-08-27. Phoenix Firebirds 3, San Diego Seraphs 1."
+    },
+    {
+      "games": [
+        1541
+      ],
+      "claim": "1981-08-28. Phoenix Firebirds 1, San Diego Seraphs 3."
+    },
+    {
+      "games": [
+        1553
+      ],
+      "claim": "1981-08-29. Phoenix Firebirds 3, San Diego Seraphs 5."
+    },
+    {
+      "games": [
+        1565
+      ],
+      "claim": "1981-08-30. Phoenix Firebirds 4, San Diego Seraphs 1."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "964344d933e551f813c05ae52ce8e800c628ba87a2c3c54d0bde4a60f7e99bee",
+    "question": "Two wins against Phoenix after a Los Angeles sweep make the Seraphs’ starting staff worth following into roster expansion.",
+    "promise": "San Diego found a way to take two from first place",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Two wins against Phoenix after a Los Angeles sweep make the Seraphs’ starting staff worth following into roster expansion.",
+    "ending": "Minneapolis visits September 1. With roster expansion scheduled that day, the immediate question is how San Diego uses the innings around its starters, and whether the extra places turn into real work on the field."
+  }
+}

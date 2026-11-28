@@ -1,0 +1,126 @@
+{
+  "as_of_date": "1981-07-19",
+  "missing_count": 10,
+  "missing_sources": [
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_batting_stats.csv",
+      "subject_area": "batting",
+      "likely_grain": "one row per team-season/snapshot",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides the 24-team offensive totals needed to reconcile and enrich team identity.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "team stats",
+      "recommended_capture_priority": "P0 - critical"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_batting_xtra.csv",
+      "subject_area": "batting",
+      "likely_grain": "one row per team-season/snapshot",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Adds advanced team batting/baserunning denominators not guaranteed by the player-only capture.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "team stats",
+      "recommended_capture_priority": "P0 - critical"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_1.csv",
+      "subject_area": "fielding_and_defense",
+      "likely_grain": "table-specific; inspect keys",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides team catcher-defense and running-control evidence for defensive context.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "team stats",
+      "recommended_capture_priority": "P0 - critical"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_c_fielding_2.csv",
+      "subject_area": "fielding_and_defense",
+      "likely_grain": "table-specific; inspect keys",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides team catcher-defense and running-control evidence for defensive context.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "team stats",
+      "recommended_capture_priority": "P0 - critical"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_1.csv",
+      "subject_area": "pitching",
+      "likely_grain": "one row per team-season/snapshot",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides core 24-team pitching totals and workload needed for team run-prevention enrichment.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "team stats",
+      "recommended_capture_priority": "P0 - critical"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_pitching_2.csv",
+      "subject_area": "pitching",
+      "likely_grain": "one row per team-season/snapshot",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides advanced 24-team pitching rates and components for validated run-prevention profiles.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "team stats",
+      "recommended_capture_priority": "P0 - critical"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "subject_area": "staff_and_management",
+      "likely_grain": "table-specific; inspect keys",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Supplies the team-to-manager/staff layer required for management context and later manager signals.",
+      "required_for_current_state_enrichment": "yes",
+      "likely_ootp_report_family": "staff",
+      "recommended_capture_priority": "P1 - high"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "subject_area": "teams",
+      "likely_grain": "table-specific; inspect keys",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides a supplemental OOTP team-record/history report for reconciliation against raw-game standings; it cannot establish the cutoff.",
+      "required_for_current_state_enrichment": "no - validation/context only",
+      "likely_ootp_report_family": "team context",
+      "recommended_capture_priority": "P1 - high"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "subject_area": "financial_and_team_context",
+      "likely_grain": "table-specific; inspect keys",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides payroll, budget, attendance, and financial context for organization and fan stories.",
+      "required_for_current_state_enrichment": "no - context only",
+      "likely_ootp_report_family": "financials",
+      "recommended_capture_priority": "P2 - context"
+    },
+    {
+      "existing_file_name": "abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "subject_area": "financial_and_team_context",
+      "likely_grain": "table-specific; inspect keys",
+      "source_family": "sortable_stats",
+      "authority_level": "supplemental_report_extract",
+      "volatility": "changes every export",
+      "why_it_matters": "Provides park and team personality context unavailable in a player-statistics-only capture.",
+      "required_for_current_state_enrichment": "no - context only",
+      "likely_ootp_report_family": "park/personality",
+      "recommended_capture_priority": "P2 - context"
+    }
+  ]
+}

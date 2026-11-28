@@ -1,0 +1,794 @@
+Batter Profile Prep - ALL TEAMS
+Generated on: 2025-12-14 23:47:26
+
+
+TEAM ATL - Active Batters
+1B:
+Jordan Santistevan (S) POS 1B CON 50 GAP 55 POW 65 EYE 50 SPE 25 OverallBat 55 | Best POW 65 | Second GAP 55 | BA vL - BA vR - | STE 20 RUN 20 BUN 25
+Tony Sotelo (R) POS 1B CON 45 GAP 50 POW 55 EYE 45 SPE 45 OverallBat 48.8 | Best POW 55 | Second GAP 50 | BA vL - BA vR - | STE 45 RUN 50 BUN 30
+
+2B:
+Eric Gray (R) POS 2B CON 65 GAP 55 POW 45 EYE 55 SPE 55 OverallBat 55 | Best CON 65 | Second EYE 55 | BA vL - BA vR - | STE 55 RUN 60 BUN 35
+J.R. Engelhardt (R) POS 2B CON 50 GAP 50 POW 40 EYE 50 SPE 45 OverallBat 47.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 60 RUN 55 BUN 50
+Victor Garcia (R) POS 2B CON 45 GAP 45 POW 35 EYE 55 SPE 25 OverallBat 45 | Best EYE 55 | Second CON 45 | BA vL - BA vR - | STE 35 RUN 20 BUN 50
+
+3B:
+Marcos Valverde (R) POS 3B CON 75 GAP 70 POW 30 EYE 40 SPE 60 OverallBat 53.8 | Best CON 75 | Second GAP 70 | BA vL - BA vR - | STE 60 RUN 50 BUN 70
+
+C:
+Keith Parker (R) POS C CON 45 GAP 50 POW 50 EYE 50 SPE 20 OverallBat 48.8 | Best EYE 50 | Second GAP 50 | BA vL - BA vR - | STE 25 RUN 20 BUN 40
+Danny Esterez (R) POS C CON 45 GAP 45 POW 50 EYE 50 SPE 20 OverallBat 47.5 | Best EYE 50 | Second POW 50 | BA vL - BA vR - | STE 20 RUN 25 BUN 35
+
+CF:
+Jesus Guzman (R) POS CF CON 45 GAP 45 POW 35 EYE 45 SPE 80 OverallBat 42.5 | Best SPE 80 | Second CON 45 | BA vL - BA vR - | STE 85 RUN 80 BUN 35
+
+LF:
+Kurtis Bailey (L) POS LF CON 45 GAP 50 POW 50 EYE 55 SPE 65 OverallBat 50 | Best SPE 65 | Second EYE 55 | BA vL - BA vR - | STE 65 RUN 70 BUN 35
+Rory Jackson (R) POS LF CON 45 GAP 50 POW 50 EYE 45 SPE 70 OverallBat 47.5 | Best SPE 70 | Second GAP 50 | BA vL - BA vR - | STE 60 RUN 80 BUN 40
+Salvador Stewart (L) POS LF CON 60 GAP 45 POW 50 EYE 30 SPE 55 OverallBat 46.2 | Best CON 60 | Second SPE 55 | BA vL - BA vR - | STE 50 RUN 60 BUN 30
+
+RF:
+Gustavo Navarro (L) POS RF CON 50 GAP 60 POW 45 EYE 55 SPE 70 OverallBat 52.5 | Best SPE 70 | Second GAP 60 | BA vL - BA vR - | STE 70 RUN 65 BUN 55
+
+SS:
+Bobby McKellar (S) POS SS CON 45 GAP 50 POW 45 EYE 55 SPE 45 OverallBat 48.8 | Best EYE 55 | Second GAP 50 | BA vL - BA vR - | STE 55 RUN 40 BUN 55
+Luis Rosales (R) POS SS CON 45 GAP 45 POW 45 EYE 50 SPE 40 OverallBat 46.2 | Best EYE 50 | Second CON 45 | BA vL - BA vR - | STE 45 RUN 35 BUN 25
+
+
+TEAM BOS - Active Batters
+1B:
+Joe Turner (R) POS 1B CON 45 GAP 50 POW 75 EYE 55 SPE 20 OverallBat 56.2 | Best POW 75 | Second EYE 55 | BA vL - BA vR - | STE 25 RUN 20 BUN 35
+Jose Cooper (R) POS 1B CON 60 GAP 55 POW 45 EYE 50 SPE 25 OverallBat 52.5 | Best CON 60 | Second GAP 55 | BA vL - BA vR - | STE 25 RUN 20 BUN 50
+
+2B:
+Maynard Bell (R) POS 2B CON 50 GAP 55 POW 50 EYE 40 SPE 45 OverallBat 48.8 | Best GAP 55 | Second CON 50 | BA vL - BA vR - | STE 50 RUN 50 BUN 30
+Victor Rivera (S) POS 2B CON 45 GAP 45 POW 35 EYE 50 SPE 50 OverallBat 43.8 | Best EYE 50 | Second SPE 50 | BA vL - BA vR - | STE 55 RUN 50 BUN 75
+Freddy Zambrano (R) POS 2B CON 50 GAP 40 POW 30 EYE 45 SPE 45 OverallBat 41.2 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 50 RUN 50 BUN 60
+
+3B:
+Danny Salas (L) POS 3B CON 45 GAP 45 POW 70 EYE 50 SPE 50 OverallBat 52.5 | Best POW 70 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 60 BUN 35
+
+C:
+Andrew Gilbert (R) POS C CON 45 GAP 55 POW 40 EYE 50 SPE 25 OverallBat 47.5 | Best GAP 55 | Second EYE 50 | BA vL - BA vR - | STE 25 RUN 25 BUN 30
+David Ramos (R) POS C CON 45 GAP 35 POW 40 EYE 50 SPE 20 OverallBat 42.5 | Best EYE 50 | Second CON 45 | BA vL - BA vR - | STE 20 RUN 20 BUN 55
+
+CF:
+Alex Fernandez (S) POS CF CON 50 GAP 40 POW 30 EYE 55 SPE 75 OverallBat 43.8 | Best SPE 75 | Second EYE 55 | BA vL - BA vR - | STE 85 RUN 70 BUN 55
+Andy Ayala (R) POS CF CON 50 GAP 40 POW 25 EYE 40 SPE 80 OverallBat 38.8 | Best SPE 80 | Second CON 50 | BA vL - BA vR - | STE 90 RUN 75 BUN 50
+
+LF:
+Juan Perez (R) POS LF CON 50 GAP 50 POW 70 EYE 60 SPE 20 OverallBat 57.5 | Best POW 70 | Second EYE 60 | BA vL - BA vR - | STE 20 RUN 20 BUN 25
+Jeremy Northway (L) POS LF CON 45 GAP 35 POW 50 EYE 70 SPE 40 OverallBat 50 | Best EYE 70 | Second POW 50 | BA vL - BA vR - | STE 35 RUN 30 BUN 50
+Jesse Gonzales (R) POS LF CON 55 GAP 50 POW 45 EYE 45 SPE 65 OverallBat 48.8 | Best SPE 65 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 65 BUN 35
+
+RF:
+Sandy Fierro (R) POS RF CON 50 GAP 45 POW 45 EYE 45 SPE 60 OverallBat 46.2 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 65 RUN 50 BUN 35
+
+SS:
+Noah White (R) POS SS CON 45 GAP 45 POW 30 EYE 45 SPE 50 OverallBat 41.2 | Best SPE 50 | Second CON 45 | BA vL - BA vR - | STE 60 RUN 50 BUN 70
+
+
+TEAM CHA - Active Batters
+1B:
+Manny Flores (L) POS 1B CON 50 GAP 70 POW 55 EYE 70 SPE 55 OverallBat 61.2 | Best EYE 70 | Second GAP 70 | BA vL - BA vR - | STE 60 RUN 60 BUN 35
+
+2B:
+Yen Do (R) POS 2B CON 50 GAP 55 POW 50 EYE 50 SPE 55 OverallBat 51.2 | Best GAP 55 | Second SPE 55 | BA vL - BA vR - | STE 65 RUN 55 BUN 25
+Jose Vicario (R) POS 2B CON 55 GAP 45 POW 45 EYE 45 SPE 40 OverallBat 47.5 | Best CON 55 | Second EYE 45 | BA vL - BA vR - | STE 35 RUN 40 BUN 55
+Alex Gonzales (R) POS 2B CON 50 GAP 55 POW 30 EYE 55 SPE 45 OverallBat 47.5 | Best EYE 55 | Second GAP 55 | BA vL - BA vR - | STE 45 RUN 45 BUN 70
+
+3B:
+Sergio Barraza (R) POS 3B CON 50 GAP 45 POW 45 EYE 65 SPE 45 OverallBat 51.2 | Best EYE 65 | Second CON 50 | BA vL - BA vR - | STE 50 RUN 45 BUN 40
+Donovan Lewis (L) POS 3B CON 55 GAP 45 POW 45 EYE 45 SPE 30 OverallBat 47.5 | Best CON 55 | Second EYE 45 | BA vL - BA vR - | STE 25 RUN 30 BUN 35
+
+C:
+David Reeder (R) POS C CON 65 GAP 65 POW 50 EYE 50 SPE 20 OverallBat 57.5 | Best CON 65 | Second GAP 65 | BA vL - BA vR - | STE 20 RUN 20 BUN 30
+Cody Larkin (L) POS C CON 45 GAP 55 POW 45 EYE 50 SPE 30 OverallBat 48.8 | Best GAP 55 | Second EYE 50 | BA vL - BA vR - | STE 30 RUN 30 BUN 50
+
+CF:
+Santiago Castro (L) POS CF CON 45 GAP 55 POW 50 EYE 55 SPE 80 OverallBat 51.2 | Best SPE 80 | Second EYE 55 | BA vL - BA vR - | STE 80 RUN 80 BUN 65
+
+LF:
+Dustin Meredith (R) POS LF CON 45 GAP 50 POW 55 EYE 50 SPE 20 OverallBat 50 | Best POW 55 | Second EYE 50 | BA vL - BA vR - | STE 25 RUN 20 BUN 35
+Sancakil Prado (R) POS LF CON 50 GAP 45 POW 45 EYE 50 SPE 65 OverallBat 47.5 | Best SPE 65 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 70 BUN 50
+
+RF:
+Miguel Salazar (R) POS RF CON 65 GAP 60 POW 40 EYE 45 SPE 65 OverallBat 52.5 | Best CON 65 | Second SPE 65 | BA vL - BA vR - | STE 65 RUN 50 BUN 75
+Nigel Hudson (L) POS RF CON 45 GAP 55 POW 55 EYE 50 SPE 60 OverallBat 51.2 | Best SPE 60 | Second GAP 55 | BA vL - BA vR - | STE 60 RUN 70 BUN 30
+Mario de la Torre (L) POS RF CON 70 GAP 50 POW 35 EYE 30 SPE 60 OverallBat 46.2 | Best CON 70 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 50 BUN 45
+
+SS:
+Julio Haro (R) POS SS CON 50 GAP 45 POW 50 EYE 35 SPE 70 OverallBat 45 | Best SPE 70 | Second CON 50 | BA vL - BA vR - | STE 65 RUN 75 BUN 70
+
+
+TEAM CHI - Active Batters
+1B:
+Sal Gamez (L) POS 1B CON 55 GAP 50 POW 65 EYE 50 SPE 30 OverallBat 55 | Best POW 65 | Second CON 55 | BA vL - BA vR - | STE 30 RUN 30 BUN 30
+Miguel Martinez (R) POS 1B CON 75 GAP 50 POW 40 EYE 30 SPE 40 OverallBat 48.8 | Best CON 75 | Second GAP 50 | BA vL - BA vR - | STE 35 RUN 35 BUN 55
+
+2B:
+Mel Montelongo (S) POS 2B CON 45 GAP 45 POW 45 EYE 65 SPE 60 OverallBat 50 | Best EYE 65 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 65 BUN 35
+Melvin Delgado (R) POS 2B CON 50 GAP 45 POW 30 EYE 40 SPE 50 OverallBat 41.2 | Best CON 50 | Second SPE 50 | BA vL - BA vR - | STE 60 RUN 45 BUN 55
+
+3B:
+Shane Cobb (S) POS 3B CON 55 GAP 45 POW 55 EYE 45 SPE 60 OverallBat 50 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 70 BUN 30
+Mario Carbonell (R) POS 3B CON 50 GAP 40 POW 45 EYE 25 SPE 25 OverallBat 40 | Best CON 50 | Second POW 45 | BA vL - BA vR - | STE 25 RUN 20 BUN 40
+
+C:
+Jose Martinez (S) POS C CON 40 GAP 45 POW 50 EYE 55 SPE 20 OverallBat 47.5 | Best EYE 55 | Second POW 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+Dave Martinez (R) POS C CON 35 GAP 40 POW 45 EYE 45 SPE 20 OverallBat 41.2 | Best EYE 45 | Second POW 45 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+
+CF:
+Alex O' Donell (R) POS CF CON 55 GAP 50 POW 55 EYE 40 SPE 55 OverallBat 50 | Best CON 55 | Second POW 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 65
+
+LF:
+Miguel Morales (S) POS LF CON 55 GAP 55 POW 60 EYE 65 SPE 50 OverallBat 58.8 | Best EYE 65 | Second POW 60 | BA vL - BA vR - | STE 55 RUN 40 BUN 80
+Alvaro Espinoza (L) POS LF CON 50 GAP 70 POW 35 EYE 50 SPE 60 OverallBat 51.2 | Best GAP 70 | Second SPE 60 | BA vL - BA vR - | STE 75 RUN 60 BUN 55
+Julio Ramirez (L) POS LF CON 55 GAP 40 POW 50 EYE 35 SPE 40 OverallBat 45 | Best CON 55 | Second POW 50 | BA vL - BA vR - | STE 35 RUN 45 BUN 30
+
+RF:
+Victor Hernandez (R) POS RF CON 50 GAP 50 POW 60 EYE 45 SPE 65 OverallBat 51.2 | Best SPE 65 | Second POW 60 | BA vL - BA vR - | STE 60 RUN 70 BUN 70
+Xavier Granville (L) POS RF CON 65 GAP 50 POW 30 EYE 30 SPE 75 OverallBat 43.8 | Best SPE 75 | Second CON 65 | BA vL - BA vR - | STE 70 RUN 80 BUN 65
+
+SS:
+David Villarreal (R) POS SS CON 50 GAP 50 POW 40 EYE 50 SPE 55 OverallBat 47.5 | Best SPE 55 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 65 BUN 35
+
+
+TEAM CIN - Active Batters
+1B:
+Esteban Martinez (S) POS 1B CON 60 GAP 60 POW 60 EYE 50 SPE 70 OverallBat 57.5 | Best SPE 70 | Second CON 60 | BA vL - BA vR - | STE 65 RUN 80 BUN 65
+Patricio Cogumbreiro (L) POS 1B CON 70 GAP 50 POW 50 EYE 50 SPE 25 OverallBat 55 | Best CON 70 | Second EYE 50 | BA vL - BA vR - | STE 20 RUN 25 BUN 50
+Barry Wilson (S) POS 1B CON 35 GAP 55 POW 65 EYE 60 SPE 25 OverallBat 53.8 | Best POW 65 | Second EYE 60 | BA vL - BA vR - | STE 20 RUN 25 BUN 35
+
+2B:
+Pablo Loureiro (L) POS 2B CON 45 GAP 30 POW 35 EYE 65 SPE 30 OverallBat 43.8 | Best EYE 65 | Second CON 45 | BA vL - BA vR - | STE 35 RUN 35 BUN 50
+Ricky Chavez (R) POS 2B CON 45 GAP 30 POW 35 EYE 55 SPE 45 OverallBat 41.2 | Best EYE 55 | Second CON 45 | BA vL - BA vR - | STE 45 RUN 55 BUN 45
+
+3B:
+Joe Rogers (R) POS 3B CON 50 GAP 65 POW 55 EYE 50 SPE 30 OverallBat 55 | Best GAP 65 | Second POW 55 | BA vL - BA vR - | STE 25 RUN 20 BUN 35
+Luis Mata (R) POS 3B CON 45 GAP 45 POW 45 EYE 60 SPE 25 OverallBat 48.8 | Best EYE 60 | Second CON 45 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+
+C:
+Felipe Martin (R) POS C CON 50 GAP 50 POW 50 EYE 50 SPE 20 OverallBat 50 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 40
+Jordan Pedroza (S) POS C CON 45 GAP 45 POW 40 EYE 60 SPE 25 OverallBat 47.5 | Best EYE 60 | Second CON 45 | BA vL - BA vR - | STE 20 RUN 30 BUN 30
+
+CF:
+Scott Reis (R) POS CF CON 55 GAP 55 POW 70 EYE 60 SPE 65 OverallBat 60 | Best POW 70 | Second SPE 65 | BA vL - BA vR - | STE 65 RUN 70 BUN 30
+
+LF:
+Victor Torres (L) POS LF CON 55 GAP 55 POW 55 EYE 65 SPE 65 OverallBat 57.5 | Best EYE 65 | Second SPE 65 | BA vL - BA vR - | STE 75 RUN 70 BUN 35
+Jim Marshall (R) POS LF CON 50 GAP 50 POW 50 EYE 45 SPE 60 OverallBat 48.8 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 65 RUN 65 BUN 30
+Vinny Cambrelen (L) POS LF CON 55 GAP 45 POW 45 EYE 45 SPE 70 OverallBat 47.5 | Best SPE 70 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 60 BUN 35
+
+RF:
+Tony Jones (L) POS RF CON 50 GAP 55 POW 45 EYE 55 SPE 65 OverallBat 51.2 | Best SPE 65 | Second EYE 55 | BA vL - BA vR - | STE 70 RUN 65 BUN 30
+
+SS:
+Lance Lynd (L) POS SS CON 45 GAP 50 POW 40 EYE 45 SPE 60 OverallBat 45 | Best SPE 60 | Second GAP 50 | BA vL - BA vR - | STE 50 RUN 60 BUN 55
+
+
+TEAM DAL - Active Batters
+1B:
+Bill Rambow (L) POS 1B CON 45 GAP 50 POW 70 EYE 65 SPE 45 OverallBat 57.5 | Best POW 70 | Second EYE 65 | BA vL - BA vR - | STE 50 RUN 50 BUN 30
+Bill Parlier (R) POS 1B CON 40 GAP 55 POW 65 EYE 65 SPE 25 OverallBat 56.2 | Best EYE 65 | Second POW 65 | BA vL - BA vR - | STE 30 RUN 25 BUN 25
+Ray Swerdlove (R) POS 1B CON 50 GAP 55 POW 50 EYE 45 SPE 30 OverallBat 50 | Best GAP 55 | Second CON 50 | BA vL - BA vR - | STE 40 RUN 30 BUN 40
+
+2B:
+Mike Frierson (R) POS 2B CON 55 GAP 45 POW 55 EYE 55 SPE 35 OverallBat 52.5 | Best CON 55 | Second EYE 55 | BA vL - BA vR - | STE 45 RUN 30 BUN 45
+Jalen Smith (R) POS 2B CON 65 GAP 50 POW 45 EYE 40 SPE 60 OverallBat 50 | Best CON 65 | Second SPE 60 | BA vL - BA vR - | STE 55 RUN 60 BUN 65
+David Betancourt (S) POS 2B CON 45 GAP 45 POW 40 EYE 50 SPE 40 OverallBat 45 | Best EYE 50 | Second CON 45 | BA vL - BA vR - | STE 50 RUN 40 BUN 75
+
+3B:
+Cliff Barron (R) POS 3B CON 50 GAP 50 POW 50 EYE 50 SPE 45 OverallBat 50 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 60 RUN 45 BUN 30
+
+C:
+Devon Barlow (L) POS C CON 65 GAP 55 POW 45 EYE 45 SPE 25 OverallBat 52.5 | Best CON 65 | Second GAP 55 | BA vL - BA vR - | STE 25 RUN 35 BUN 35
+Andy Casas (R) POS C CON 55 GAP 45 POW 45 EYE 40 SPE 35 OverallBat 46.2 | Best CON 55 | Second GAP 45 | BA vL - BA vR - | STE 50 RUN 45 BUN 35
+
+CF:
+Alex Moreno (R) POS CF CON 45 GAP 45 POW 45 EYE 50 SPE 70 OverallBat 46.2 | Best SPE 70 | Second EYE 50 | BA vL - BA vR - | STE 85 RUN 75 BUN 50
+
+LF:
+Jose Castillo (R) POS LF CON 55 GAP 65 POW 45 EYE 50 SPE 60 OverallBat 53.8 | Best GAP 65 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 50 BUN 80
+Rich Vela (L) POS LF CON 55 GAP 45 POW 50 EYE 50 SPE 60 OverallBat 50 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 55 RUN 65 BUN 40
+Bill Martenson (L) POS LF CON 45 GAP 40 POW 50 EYE 50 SPE 75 OverallBat 46.2 | Best SPE 75 | Second EYE 50 | BA vL - BA vR - | STE 80 RUN 80 BUN 70
+
+RF:
+Alejandro Rosado (L) POS RF CON 55 GAP 50 POW 50 EYE 45 SPE 65 OverallBat 50 | Best SPE 65 | Second CON 55 | BA vL - BA vR - | STE 80 RUN 65 BUN 35
+
+SS:
+John Thurston (R) POS SS CON 45 GAP 35 POW 30 EYE 55 SPE 60 OverallBat 41.2 | Best SPE 60 | Second EYE 55 | BA vL - BA vR - | STE 65 RUN 55 BUN 75
+
+
+TEAM DEN - Active Batters
+1B:
+Jonathan Stevens (S) POS 1B CON 55 GAP 65 POW 55 EYE 50 SPE 25 OverallBat 56.2 | Best GAP 65 | Second CON 55 | BA vL - BA vR - | STE 30 RUN 20 BUN 35
+Jesus Arras (R) POS 1B CON 50 GAP 45 POW 70 EYE 50 SPE 20 OverallBat 53.8 | Best POW 70 | Second CON 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 40
+
+2B:
+Javier Martinez (R) POS 2B CON 60 GAP 55 POW 45 EYE 45 SPE 60 OverallBat 51.2 | Best CON 60 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 55 BUN 35
+Juan Martinez (L) POS 2B CON 45 GAP 45 POW 40 EYE 50 SPE 50 OverallBat 45 | Best EYE 50 | Second SPE 50 | BA vL - BA vR - | STE 60 RUN 55 BUN 45
+Danny Reyes (R) POS 2B CON 60 GAP 50 POW 40 EYE 30 SPE 65 OverallBat 45 | Best SPE 65 | Second CON 60 | BA vL - BA vR - | STE 65 RUN 65 BUN 45
+
+3B:
+Bobby Scott (R) POS 3B CON 50 GAP 55 POW 45 EYE 40 SPE 35 OverallBat 47.5 | Best GAP 55 | Second CON 50 | BA vL - BA vR - | STE 45 RUN 35 BUN 35
+
+C:
+Tony Bautista (R) POS C CON 45 GAP 50 POW 50 EYE 50 SPE 30 OverallBat 48.8 | Best EYE 50 | Second GAP 50 | BA vL - BA vR - | STE 30 RUN 40 BUN 35
+Jorge Montes (L) POS C CON 45 GAP 45 POW 50 EYE 45 SPE 35 OverallBat 46.2 | Best POW 50 | Second CON 45 | BA vL - BA vR - | STE 45 RUN 40 BUN 30
+
+CF:
+Xavier Little (L) POS CF CON 60 GAP 50 POW 55 EYE 45 SPE 55 OverallBat 52.5 | Best CON 60 | Second POW 55 | BA vL - BA vR - | STE 65 RUN 55 BUN 35
+
+LF:
+Boboy Nierva (L) POS LF CON 65 GAP 45 POW 55 EYE 55 SPE 60 OverallBat 55 | Best CON 65 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 55 BUN 55
+Oliver Rosa (R) POS LF CON 65 GAP 55 POW 50 EYE 50 SPE 35 OverallBat 55 | Best CON 65 | Second GAP 55 | BA vL - BA vR - | STE 30 RUN 45 BUN 35
+
+RF:
+Jesus Lago (R) POS RF CON 60 GAP 55 POW 50 EYE 45 SPE 60 OverallBat 52.5 | Best CON 60 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 50 BUN 35
+Tyler Townsley (S) POS RF CON 40 GAP 45 POW 55 EYE 55 SPE 80 OverallBat 48.8 | Best SPE 80 | Second EYE 55 | BA vL - BA vR - | STE 85 RUN 80 BUN 75
+
+SS:
+Manuel Payan (R) POS SS CON 55 GAP 50 POW 35 EYE 75 SPE 60 OverallBat 53.8 | Best EYE 75 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 55 BUN 60
+Jorge Cuellar (R) POS SS CON 45 GAP 50 POW 50 EYE 60 SPE 35 OverallBat 51.2 | Best EYE 60 | Second GAP 50 | BA vL - BA vR - | STE 35 RUN 30 BUN 45
+
+
+TEAM DET - Active Batters
+1B:
+Francisco Fernandez (R) POS 1B CON 70 GAP 55 POW 55 EYE 50 SPE 60 OverallBat 57.5 | Best CON 70 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 60 BUN 40
+Juan Aranda (R) POS 1B CON 50 GAP 60 POW 60 EYE 50 SPE 25 OverallBat 55 | Best GAP 60 | Second POW 60 | BA vL - BA vR - | STE 25 RUN 30 BUN 45
+Mezian Ridha (R) POS 1B CON 50 GAP 50 POW 55 EYE 55 SPE 40 OverallBat 52.5 | Best EYE 55 | Second POW 55 | BA vL - BA vR - | STE 45 RUN 50 BUN 35
+Damian Aguilar (R) POS 1B CON 50 GAP 45 POW 50 EYE 55 SPE 25 OverallBat 50 | Best EYE 55 | Second CON 50 | BA vL - BA vR - | STE 20 RUN 25 BUN 30
+
+2B:
+Luis Rios (R) POS 2B CON 45 GAP 45 POW 55 EYE 45 SPE 70 OverallBat 47.5 | Best SPE 70 | Second POW 55 | BA vL - BA vR - | STE 65 RUN 75 BUN 40
+
+3B:
+Roberto Rodriguez (S) POS 3B CON 50 GAP 70 POW 55 EYE 50 SPE 25 OverallBat 56.2 | Best GAP 70 | Second POW 55 | BA vL - BA vR - | STE 20 RUN 25 BUN 30
+Armando Garcia (L) POS 3B CON 50 GAP 45 POW 40 EYE 45 SPE 40 OverallBat 45 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 35 RUN 35 BUN 50
+
+C:
+Jake Simper (R) POS C CON 45 GAP 45 POW 50 EYE 50 SPE 30 OverallBat 47.5 | Best EYE 50 | Second POW 50 | BA vL - BA vR - | STE 45 RUN 20 BUN 50
+Sergio Ornelas (L) POS C CON 45 GAP 55 POW 50 EYE 35 SPE 40 OverallBat 46.2 | Best GAP 55 | Second POW 50 | BA vL - BA vR - | STE 35 RUN 40 BUN 35
+
+CF:
+Alex Diaz (R) POS CF CON 50 GAP 40 POW 35 EYE 55 SPE 70 OverallBat 45 | Best SPE 70 | Second EYE 55 | BA vL - BA vR - | STE 75 RUN 70 BUN 75
+
+LF:
+Tony King (L) POS LF CON 55 GAP 35 POW 30 EYE 80 SPE 45 OverallBat 50 | Best EYE 80 | Second CON 55 | BA vL - BA vR - | STE 35 RUN 45 BUN 50
+Dave Murphy (R) POS LF CON 55 GAP 50 POW 50 EYE 35 SPE 50 OverallBat 47.5 | Best CON 55 | Second GAP 50 | BA vL - BA vR - | STE 50 RUN 50 BUN 30
+
+RF:
+Ethan Harrison (L) POS RF CON 50 GAP 65 POW 65 EYE 65 SPE 55 OverallBat 61.2 | Best EYE 65 | Second GAP 65 | BA vL - BA vR - | STE 60 RUN 60 BUN 25
+
+SS:
+Alex Escobedo (L) POS SS CON 55 GAP 50 POW 35 EYE 45 SPE 45 OverallBat 46.2 | Best CON 55 | Second GAP 50 | BA vL - BA vR - | STE 35 RUN 35 BUN 55
+Ahmed Hayes (R) POS SS CON 45 GAP 35 POW 35 EYE 50 SPE 25 OverallBat 41.2 | Best EYE 50 | Second CON 45 | BA vL - BA vR - | STE 30 RUN 20 BUN 50
+
+
+TEAM HOU - Active Batters
+1B:
+Tak-hing Zhao (R) POS 1B CON 40 GAP 50 POW 70 EYE 55 SPE 30 OverallBat 53.8 | Best POW 70 | Second EYE 55 | BA vL - BA vR - | STE 25 RUN 30 BUN 30
+Brent Keyser (R) POS 1B CON 65 GAP 55 POW 45 EYE 50 SPE 65 OverallBat 53.8 | Best CON 65 | Second SPE 65 | BA vL - BA vR - | STE 65 RUN 70 BUN 35
+Albert Chavez (R) POS 1B CON 60 GAP 55 POW 50 EYE 45 SPE 40 OverallBat 52.5 | Best CON 60 | Second GAP 55 | BA vL - BA vR - | STE 45 RUN 45 BUN 35
+
+2B:
+Elijah Glenn (L) POS 2B CON 65 GAP 60 POW 45 EYE 40 SPE 35 OverallBat 52.5 | Best CON 65 | Second GAP 60 | BA vL - BA vR - | STE 50 RUN 35 BUN 30
+Ricky Castillo (R) POS 2B CON 50 GAP 45 POW 45 EYE 50 SPE 50 OverallBat 47.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 45 BUN 50
+
+3B:
+Blake Ayala (R) POS 3B CON 40 GAP 45 POW 55 EYE 55 SPE 40 OverallBat 48.8 | Best EYE 55 | Second POW 55 | BA vL - BA vR - | STE 40 RUN 40 BUN 35
+Miguel Ramirez (S) POS 3B CON 45 GAP 50 POW 35 EYE 45 SPE 35 OverallBat 43.8 | Best GAP 50 | Second CON 45 | BA vL - BA vR - | STE 45 RUN 35 BUN 30
+
+C:
+Alex Ramirez (S) POS C CON 50 GAP 60 POW 50 EYE 50 SPE 30 OverallBat 52.5 | Best GAP 60 | Second CON 50 | BA vL - BA vR - | STE 25 RUN 35 BUN 40
+Danny Morales (R) POS C CON 50 GAP 40 POW 40 EYE 35 SPE 25 OverallBat 41.2 | Best CON 50 | Second GAP 40 | BA vL - BA vR - | STE 30 RUN 20 BUN 30
+
+CF:
+Apostolos Georghiou (R) POS CF CON 45 GAP 55 POW 55 EYE 45 SPE 50 OverallBat 50 | Best GAP 55 | Second POW 55 | BA vL - BA vR - | STE 50 RUN 45 BUN 60
+
+LF:
+Warren Ufena (L) POS LF CON 55 GAP 55 POW 55 EYE 65 SPE 55 OverallBat 57.5 | Best EYE 65 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 45 BUN 25
+Alex Monge (L) POS LF CON 50 GAP 50 POW 60 EYE 50 SPE 55 OverallBat 52.5 | Best POW 60 | Second SPE 55 | BA vL - BA vR - | STE 50 RUN 55 BUN 35
+Juan Cid (L) POS LF CON 80 GAP 55 POW 30 EYE 40 SPE 45 OverallBat 51.2 | Best CON 80 | Second GAP 55 | BA vL - BA vR - | STE 50 RUN 40 BUN 55
+
+RF:
+Jesus Vasquez (L) POS RF CON 65 GAP 65 POW 35 EYE 35 SPE 65 OverallBat 50 | Best CON 65 | Second GAP 65 | BA vL - BA vR - | STE 60 RUN 55 BUN 40
+
+SS:
+Felix Alvarez (L) POS SS CON 55 GAP 45 POW 35 EYE 45 SPE 65 OverallBat 45 | Best SPE 65 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 60 BUN 45
+
+
+TEAM LV - Active Batters
+1B:
+Mike Rabel (R) POS 1B CON 50 GAP 55 POW 70 EYE 50 SPE 45 OverallBat 56.2 | Best POW 70 | Second GAP 55 | BA vL - BA vR - | STE 45 RUN 45 BUN 35
+Eddie Rodriguez (R) POS 1B CON 50 GAP 55 POW 65 EYE 50 SPE 60 OverallBat 55 | Best POW 65 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 65 BUN 65
+Jose Charon (R) POS 1B CON 50 GAP 70 POW 55 EYE 45 SPE 40 OverallBat 55 | Best GAP 70 | Second POW 55 | BA vL - BA vR - | STE 50 RUN 50 BUN 25
+
+2B:
+Chris Dye (R) POS 2B CON 60 GAP 50 POW 40 EYE 45 SPE 60 OverallBat 48.8 | Best CON 60 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 65 BUN 55
+Vinny Lopez (R) POS 2B CON 55 GAP 45 POW 35 EYE 40 SPE 45 OverallBat 43.8 | Best CON 55 | Second GAP 45 | BA vL - BA vR - | STE 50 RUN 45 BUN 50
+David Avila (R) POS 2B CON 55 GAP 50 POW 30 EYE 40 SPE 60 OverallBat 43.8 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 55 BUN 30
+
+3B:
+Jeff Smith (R) POS 3B CON 45 GAP 60 POW 60 EYE 55 SPE 25 OverallBat 55 | Best GAP 60 | Second POW 60 | BA vL - BA vR - | STE 30 RUN 20 BUN 25
+
+C:
+Pedro Blas (R) POS C CON 50 GAP 65 POW 40 EYE 45 SPE 25 OverallBat 50 | Best GAP 65 | Second CON 50 | BA vL - BA vR - | STE 25 RUN 20 BUN 40
+Jon Dominguez (L) POS C CON 50 GAP 35 POW 45 EYE 50 SPE 55 OverallBat 45 | Best SPE 55 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 50 BUN 50
+
+CF:
+Mario Smithson (R) POS CF CON 50 GAP 55 POW 50 EYE 40 SPE 70 OverallBat 48.8 | Best SPE 70 | Second GAP 55 | BA vL - BA vR - | STE 75 RUN 75 BUN 60
+
+LF:
+Nelson Narvaez (R) POS LF CON 30 GAP 55 POW 75 EYE 55 SPE 40 OverallBat 53.8 | Best POW 75 | Second EYE 55 | BA vL - BA vR - | STE 50 RUN 45 BUN 30
+Jon Martinez (L) POS LF CON 55 GAP 55 POW 50 EYE 50 SPE 45 OverallBat 52.5 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 55 RUN 55 BUN 25
+
+RF:
+Charles Crane (R) POS RF CON 50 GAP 45 POW 35 EYE 45 SPE 70 OverallBat 43.8 | Best SPE 70 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 70 BUN 55
+
+SS:
+David Jimenez (R) POS SS CON 45 GAP 50 POW 45 EYE 60 SPE 60 OverallBat 50 | Best EYE 60 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 50 BUN 45
+Danny Herrera (R) POS SS CON 45 GAP 30 POW 30 EYE 40 SPE 55 OverallBat 36.2 | Best SPE 55 | Second CON 45 | BA vL - BA vR - | STE 60 RUN 50 BUN 50
+
+
+TEAM LA - Active Batters
+1B:
+Orlando Greeley (L) POS 1B CON 60 GAP 50 POW 60 EYE 45 SPE 40 OverallBat 53.8 | Best CON 60 | Second POW 60 | BA vL - BA vR - | STE 35 RUN 35 BUN 35
+Jon Travers (R) POS 1B CON 55 GAP 50 POW 40 EYE 70 SPE 40 OverallBat 53.8 | Best EYE 70 | Second CON 55 | BA vL - BA vR - | STE 50 RUN 40 BUN 50
+Josh Haderer (L) POS 1B CON 55 GAP 55 POW 50 EYE 45 SPE 30 OverallBat 51.2 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 30 RUN 35 BUN 35
+Ryan Cheeks (L) POS 1B CON 45 GAP 50 POW 50 EYE 45 SPE 35 OverallBat 47.5 | Best GAP 50 | Second POW 50 | BA vL - BA vR - | STE 35 RUN 40 BUN 30
+
+2B:
+Emmanuel Robertson (L) POS 2B CON 55 GAP 55 POW 50 EYE 45 SPE 50 OverallBat 51.2 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 50 RUN 40 BUN 30
+Alex Zarate (R) POS 2B CON 50 GAP 45 POW 35 EYE 50 SPE 50 OverallBat 45 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 55 BUN 60
+
+3B:
+Ramon Reyes (L) POS 3B CON 50 GAP 50 POW 45 EYE 55 SPE 65 OverallBat 50 | Best SPE 65 | Second EYE 55 | BA vL - BA vR - | STE 60 RUN 75 BUN 30
+
+C:
+Lois Neveu (S) POS C CON 50 GAP 50 POW 50 EYE 45 SPE 30 OverallBat 48.8 | Best CON 50 | Second GAP 50 | BA vL - BA vR - | STE 40 RUN 20 BUN 25
+Ricky Lopez (R) POS C CON 45 GAP 40 POW 45 EYE 45 SPE 35 OverallBat 43.8 | Best CON 45 | Second EYE 45 | BA vL - BA vR - | STE 35 RUN 40 BUN 50
+
+CF:
+Myles Byrd (R) POS CF CON 55 GAP 45 POW 45 EYE 55 SPE 60 OverallBat 50 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 55 RUN 55 BUN 65
+
+LF:
+Pedro Rivera (R) POS LF CON 45 GAP 45 POW 70 EYE 60 SPE 45 OverallBat 55 | Best POW 70 | Second EYE 60 | BA vL - BA vR - | STE 45 RUN 40 BUN 55
+Fernando Domenech (R) POS LF CON 55 GAP 50 POW 50 EYE 35 SPE 55 OverallBat 47.5 | Best CON 55 | Second SPE 55 | BA vL - BA vR - | STE 50 RUN 60 BUN 70
+Leonardo Reyes (R) POS LF CON 50 GAP 50 POW 40 EYE 45 SPE 75 OverallBat 46.2 | Best SPE 75 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 80 BUN 60
+
+RF:
+Bill Haywood (R) POS RF CON 50 GAP 55 POW 55 EYE 45 SPE 60 OverallBat 51.2 | Best SPE 60 | Second GAP 55 | BA vL - BA vR - | STE 75 RUN 60 BUN 30
+
+SS:
+D.J. Rivera (R) POS SS CON 50 GAP 45 POW 40 EYE 45 SPE 45 OverallBat 45 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 45 RUN 55 BUN 45
+
+
+TEAM MIA - Active Batters
+1B:
+Pat Watters (R) POS 1B CON 70 GAP 60 POW 55 EYE 50 SPE 60 OverallBat 58.8 | Best CON 70 | Second GAP 60 | BA vL - BA vR - | STE 65 RUN 65 BUN 35
+Oscar Romero (L) POS 1B CON 45 GAP 60 POW 60 EYE 60 SPE 20 OverallBat 56.2 | Best EYE 60 | Second GAP 60 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+Toichi Kubota (L) POS 1B CON 40 GAP 45 POW 65 EYE 55 SPE 20 OverallBat 51.2 | Best POW 65 | Second EYE 55 | BA vL - BA vR - | STE 20 RUN 20 BUN 35
+
+2B:
+Isidoro Fortichiari (R) POS 2B CON 55 GAP 55 POW 55 EYE 50 SPE 45 OverallBat 53.8 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 50 RUN 50 BUN 65
+Jose Barajas (R) POS 2B CON 50 GAP 50 POW 40 EYE 40 SPE 55 OverallBat 45 | Best SPE 55 | Second CON 50 | BA vL - BA vR - | STE 65 RUN 55 BUN 30
+
+3B:
+Phil Hyde (R) POS 3B CON 40 GAP 45 POW 50 EYE 55 SPE 40 OverallBat 47.5 | Best EYE 55 | Second POW 50 | BA vL - BA vR - | STE 35 RUN 40 BUN 30
+
+C:
+Jorge Suarez (L) POS C CON 50 GAP 45 POW 45 EYE 50 SPE 25 OverallBat 47.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 20 RUN 25 BUN 30
+Dwayne Postell (L) POS C CON 45 GAP 50 POW 40 EYE 55 SPE 25 OverallBat 47.5 | Best EYE 55 | Second GAP 50 | BA vL - BA vR - | STE 30 RUN 20 BUN 50
+
+CF:
+Pete Rick (R) POS CF CON 40 GAP 50 POW 50 EYE 45 SPE 50 OverallBat 46.2 | Best GAP 50 | Second POW 50 | BA vL - BA vR - | STE 55 RUN 45 BUN 55
+
+LF:
+Jason Bozeman (L) POS LF CON 55 GAP 55 POW 45 EYE 45 SPE 60 OverallBat 50 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 60 BUN 30
+
+RF:
+Alex Moncayo (S) POS RF CON 70 GAP 70 POW 40 EYE 40 SPE 25 OverallBat 55 | Best CON 70 | Second GAP 70 | BA vL - BA vR - | STE 30 RUN 25 BUN 65
+Billy Martinez (L) POS RF CON 65 GAP 45 POW 40 EYE 45 SPE 60 OverallBat 48.8 | Best CON 65 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 65 BUN 75
+Gary McMinn (L) POS RF CON 35 GAP 45 POW 55 EYE 50 SPE 65 OverallBat 46.2 | Best SPE 65 | Second POW 55 | BA vL - BA vR - | STE 65 RUN 70 BUN 70
+
+SS:
+Raul Rodriguez (R) POS SS CON 45 GAP 40 POW 25 EYE 55 SPE 65 OverallBat 41.2 | Best SPE 65 | Second EYE 55 | BA vL - BA vR - | STE 70 RUN 70 BUN 55
+Dave Trujillo (R) POS SS CON 45 GAP 45 POW 30 EYE 35 SPE 65 OverallBat 38.8 | Best SPE 65 | Second CON 45 | BA vL - BA vR - | STE 55 RUN 70 BUN 55
+
+
+TEAM MIN - Active Batters
+1B:
+Alberto Abad (L) POS 1B CON 45 GAP 55 POW 65 EYE 55 SPE 25 OverallBat 55 | Best POW 65 | Second EYE 55 | BA vL - BA vR - | STE 30 RUN 20 BUN 25
+Ricky Thompson (R) POS 1B CON 75 GAP 65 POW 35 EYE 45 SPE 45 OverallBat 55 | Best CON 75 | Second GAP 65 | BA vL - BA vR - | STE 50 RUN 45 BUN 30
+Hirotoshi Nishimoto (R) POS 1B CON 40 GAP 55 POW 65 EYE 50 SPE 20 OverallBat 52.5 | Best POW 65 | Second GAP 55 | BA vL - BA vR - | STE 20 RUN 20 BUN 30
+
+2B:
+Lee Byron (R) POS 2B CON 55 GAP 50 POW 55 EYE 50 SPE 50 OverallBat 52.5 | Best CON 55 | Second POW 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 40
+Lou Nisbet (R) POS 2B CON 55 GAP 55 POW 45 EYE 40 SPE 45 OverallBat 48.8 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 30 RUN 50 BUN 35
+Jorge Ortiz (R) POS 2B CON 75 GAP 60 POW 20 EYE 35 SPE 55 OverallBat 47.5 | Best CON 75 | Second GAP 60 | BA vL - BA vR - | STE 60 RUN 55 BUN 55
+
+3B:
+Dwayne Harrison (R) POS 3B CON 45 GAP 45 POW 50 EYE 50 SPE 30 OverallBat 47.5 | Best EYE 50 | Second POW 50 | BA vL - BA vR - | STE 40 RUN 20 BUN 35
+
+C:
+David Salazar (R) POS C CON 45 GAP 55 POW 50 EYE 50 SPE 25 OverallBat 50 | Best GAP 55 | Second EYE 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 30
+Fernando Blancas (R) POS C CON 45 GAP 45 POW 50 EYE 45 SPE 25 OverallBat 46.2 | Best POW 50 | Second CON 45 | BA vL - BA vR - | STE 30 RUN 25 BUN 35
+
+CF:
+Ricky Ortiz (L) POS CF CON 50 GAP 50 POW 50 EYE 45 SPE 60 OverallBat 48.8 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 55 RUN 60 BUN 30
+
+LF:
+Adrian Smith (L) POS LF CON 50 GAP 55 POW 60 EYE 45 SPE 35 OverallBat 52.5 | Best POW 60 | Second GAP 55 | BA vL - BA vR - | STE 45 RUN 25 BUN 45
+Edwin Rivera (R) POS LF CON 55 GAP 55 POW 55 EYE 45 SPE 25 OverallBat 52.5 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 20 RUN 20 BUN 75
+
+RF:
+Luis Perez (S) POS RF CON 45 GAP 70 POW 50 EYE 35 SPE 55 OverallBat 50 | Best GAP 70 | Second SPE 55 | BA vL - BA vR - | STE 65 RUN 50 BUN 50
+Nate Ellerd (L) POS RF CON 50 GAP 50 POW 35 EYE 50 SPE 70 OverallBat 46.2 | Best SPE 70 | Second CON 50 | BA vL - BA vR - | STE 70 RUN 70 BUN 50
+
+SS:
+Enrique Amaya (L) POS SS CON 65 GAP 50 POW 30 EYE 35 SPE 40 OverallBat 45 | Best CON 65 | Second GAP 50 | BA vL - BA vR - | STE 45 RUN 45 BUN 60
+
+
+TEAM NAS - Active Batters
+1B:
+Ricardo Espinosa (R) POS 1B CON 55 GAP 50 POW 60 EYE 55 SPE 20 OverallBat 55 | Best POW 60 | Second CON 55 | BA vL - BA vR - | STE 20 RUN 20 BUN 45
+Andres Salas (R) POS 1B CON 80 GAP 50 POW 30 EYE 40 SPE 55 OverallBat 50 | Best CON 80 | Second SPE 55 | BA vL - BA vR - | STE 50 RUN 50 BUN 50
+
+2B:
+Gabe Escobedo (R) POS 2B CON 45 GAP 50 POW 45 EYE 45 SPE 60 OverallBat 46.2 | Best SPE 60 | Second GAP 50 | BA vL - BA vR - | STE 60 RUN 65 BUN 60
+Joe Marriott (R) POS 2B CON 65 GAP 55 POW 25 EYE 40 SPE 60 OverallBat 46.2 | Best CON 65 | Second SPE 60 | BA vL - BA vR - | STE 55 RUN 65 BUN 50
+
+3B:
+Jose Orozco (S) POS 3B CON 60 GAP 65 POW 65 EYE 50 SPE 20 OverallBat 60 | Best GAP 65 | Second POW 65 | BA vL - BA vR - | STE 25 RUN 20 BUN 70
+Juan Davila (R) POS 3B CON 45 GAP 40 POW 50 EYE 70 SPE 65 OverallBat 51.2 | Best EYE 70 | Second SPE 65 | BA vL - BA vR - | STE 70 RUN 75 BUN 50
+
+C:
+Aaron Campbell (R) POS C CON 45 GAP 40 POW 35 EYE 55 SPE 25 OverallBat 43.8 | Best EYE 55 | Second CON 45 | BA vL - BA vR - | STE 30 RUN 20 BUN 65
+Carlos Chavez (R) POS C CON 35 GAP 45 POW 45 EYE 45 SPE 25 OverallBat 42.5 | Best EYE 45 | Second GAP 45 | BA vL - BA vR - | STE 30 RUN 30 BUN 40
+
+CF:
+Juan Grant (L) POS CF CON 50 GAP 50 POW 50 EYE 55 SPE 55 OverallBat 51.2 | Best EYE 55 | Second SPE 55 | BA vL - BA vR - | STE 60 RUN 40 BUN 40
+
+LF:
+Brett Petrillo (L) POS LF CON 55 GAP 60 POW 65 EYE 65 SPE 75 OverallBat 61.2 | Best SPE 75 | Second EYE 65 | BA vL - BA vR - | STE 90 RUN 80 BUN 35
+Hector Chavez (L) POS LF CON 50 GAP 40 POW 65 EYE 55 SPE 50 OverallBat 52.5 | Best POW 65 | Second EYE 55 | BA vL - BA vR - | STE 50 RUN 50 BUN 40
+
+RF:
+Kevin Walker (R) POS RF CON 55 GAP 55 POW 65 EYE 45 SPE 35 OverallBat 55 | Best POW 65 | Second CON 55 | BA vL - BA vR - | STE 40 RUN 35 BUN 35
+Tyreek Morson (L) POS RF CON 50 GAP 50 POW 60 EYE 50 SPE 25 OverallBat 52.5 | Best POW 60 | Second CON 50 | BA vL - BA vR - | STE 20 RUN 25 BUN 60
+
+SS:
+Jordan Arteaga (R) POS SS CON 55 GAP 55 POW 55 EYE 40 SPE 45 OverallBat 51.2 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 55 RUN 40 BUN 35
+Marco Figueroa (R) POS SS CON 45 GAP 45 POW 30 EYE 35 SPE 30 OverallBat 38.8 | Best CON 45 | Second GAP 45 | BA vL - BA vR - | STE 35 RUN 25 BUN 40
+
+
+TEAM NY - Active Batters
+1B:
+Josh Young (R) POS 1B CON 50 GAP 50 POW 55 EYE 60 SPE 25 OverallBat 53.8 | Best EYE 60 | Second POW 55 | BA vL - BA vR - | STE 30 RUN 20 BUN 40
+Robby Chacon (R) POS 1B CON 50 GAP 50 POW 55 EYE 55 SPE 30 OverallBat 52.5 | Best EYE 55 | Second POW 55 | BA vL - BA vR - | STE 25 RUN 20 BUN 30
+
+2B:
+Yonetoshi Hirao (R) POS 2B CON 45 GAP 50 POW 50 EYE 70 SPE 25 OverallBat 53.8 | Best EYE 70 | Second GAP 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 30
+Paul MacPherson (R) POS 2B CON 55 GAP 50 POW 50 EYE 45 SPE 25 OverallBat 50 | Best CON 55 | Second GAP 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 40
+
+3B:
+Pedro Marquez (R) POS 3B CON 50 GAP 35 POW 35 EYE 55 SPE 50 OverallBat 43.8 | Best EYE 55 | Second CON 50 | BA vL - BA vR - | STE 55 RUN 50 BUN 50
+
+C:
+Jon Duffy (R) POS C CON 45 GAP 45 POW 35 EYE 50 SPE 25 OverallBat 43.8 | Best EYE 50 | Second CON 45 | BA vL - BA vR - | STE 20 RUN 25 BUN 55
+Tim Wheeldon (L) POS C CON 50 GAP 45 POW 35 EYE 45 SPE 30 OverallBat 43.8 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 35 RUN 35 BUN 50
+
+CF:
+Jonathan Mestas (L) POS CF CON 55 GAP 40 POW 40 EYE 55 SPE 80 OverallBat 47.5 | Best SPE 80 | Second CON 55 | BA vL - BA vR - | STE 85 RUN 80 BUN 65
+
+LF:
+Chris Frison (R) POS LF CON 70 GAP 65 POW 35 EYE 40 SPE 25 OverallBat 52.5 | Best CON 70 | Second GAP 65 | BA vL - BA vR - | STE 20 RUN 20 BUN 55
+Eric Burton (R) POS LF CON 40 GAP 45 POW 70 EYE 50 SPE 55 OverallBat 51.2 | Best POW 70 | Second SPE 55 | BA vL - BA vR - | STE 50 RUN 55 BUN 30
+Aaron Jackson (L) POS LF CON 45 GAP 45 POW 45 EYE 50 SPE 60 OverallBat 46.2 | Best SPE 60 | Second EYE 50 | BA vL - BA vR - | STE 55 RUN 60 BUN 40
+
+RF:
+Raul Juarez (L) POS RF CON 50 GAP 55 POW 55 EYE 50 SPE 55 OverallBat 52.5 | Best GAP 55 | Second POW 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 40
+Jerry Nunez (L) POS RF CON 45 GAP 45 POW 50 EYE 50 SPE 45 OverallBat 47.5 | Best EYE 50 | Second POW 50 | BA vL - BA vR - | STE 55 RUN 40 BUN 35
+
+SS:
+Peter Moltke (R) POS SS CON 55 GAP 45 POW 35 EYE 50 SPE 75 OverallBat 46.2 | Best SPE 75 | Second CON 55 | BA vL - BA vR - | STE 75 RUN 85 BUN 55
+Eddie Castruita (L) POS SS CON 50 GAP 50 POW 35 EYE 40 SPE 50 OverallBat 43.8 | Best CON 50 | Second GAP 50 | BA vL - BA vR - | STE 45 RUN 45 BUN 35
+
+
+TEAM PHI - Active Batters
+1B:
+Rogelio Pineda (L) POS 1B CON 75 GAP 50 POW 55 EYE 50 SPE 25 OverallBat 57.5 | Best CON 75 | Second POW 55 | BA vL - BA vR - | STE 35 RUN 20 BUN 40
+Ron Stout (L) POS 1B CON 55 GAP 50 POW 50 EYE 60 SPE 45 OverallBat 53.8 | Best EYE 60 | Second CON 55 | BA vL - BA vR - | STE 50 RUN 45 BUN 25
+
+2B:
+Cortez Roldan (R) POS 2B CON 45 GAP 50 POW 45 EYE 55 SPE 60 OverallBat 48.8 | Best SPE 60 | Second EYE 55 | BA vL - BA vR - | STE 70 RUN 60 BUN 55
+Jesus Lopez (S) POS 2B CON 50 GAP 50 POW 40 EYE 50 SPE 40 OverallBat 47.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 35 RUN 35 BUN 50
+Johnny Amaro (R) POS 2B CON 65 GAP 50 POW 35 EYE 35 SPE 60 OverallBat 46.2 | Best CON 65 | Second SPE 60 | BA vL - BA vR - | STE 70 RUN 70 BUN 50
+Danny Florez (R) POS 2B CON 50 GAP 50 POW 25 EYE 45 SPE 60 OverallBat 42.5 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 60 RUN 60 BUN 50
+
+3B:
+Rich Pena (R) POS 3B CON 50 GAP 45 POW 55 EYE 40 SPE 35 OverallBat 47.5 | Best POW 55 | Second CON 50 | BA vL - BA vR - | STE 40 RUN 35 BUN 35
+
+C:
+Jose Cespedes (R) POS C CON 55 GAP 55 POW 50 EYE 55 SPE 25 OverallBat 53.8 | Best CON 55 | Second EYE 55 | BA vL - BA vR - | STE 20 RUN 25 BUN 35
+Antonio Garcia (R) POS C CON 40 GAP 40 POW 40 EYE 50 SPE 40 OverallBat 42.5 | Best EYE 50 | Second CON 40 | BA vL - BA vR - | STE 40 RUN 45 BUN 45
+
+CF:
+Chris Fritz (L) POS CF CON 55 GAP 55 POW 55 EYE 45 SPE 75 OverallBat 52.5 | Best SPE 75 | Second CON 55 | BA vL - BA vR - | STE 70 RUN 75 BUN 40
+Miguel Vasquez (L) POS CF CON 45 GAP 50 POW 45 EYE 70 SPE 60 OverallBat 52.5 | Best EYE 70 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 60 BUN 30
+
+LF:
+Emanuel Avila (R) POS LF CON 50 GAP 60 POW 50 EYE 55 SPE 45 OverallBat 53.8 | Best GAP 60 | Second EYE 55 | BA vL - BA vR - | STE 45 RUN 55 BUN 40
+Kevin Pender (R) POS LF CON 55 GAP 50 POW 45 EYE 45 SPE 60 OverallBat 48.8 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 65 BUN 65
+
+RF:
+Javier Robinson (R) POS RF CON 45 GAP 45 POW 45 EYE 50 SPE 55 OverallBat 46.2 | Best SPE 55 | Second EYE 50 | BA vL - BA vR - | STE 55 RUN 60 BUN 65
+
+SS:
+Jesus Gaona (L) POS SS CON 50 GAP 45 POW 40 EYE 50 SPE 30 OverallBat 46.2 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 35 RUN 25 BUN 45
+
+
+TEAM PHO - Active Batters
+1B:
+Nick Perez (R) POS 1B CON 60 GAP 60 POW 30 EYE 70 SPE 80 OverallBat 55 | Best SPE 80 | Second EYE 70 | BA vL - BA vR - | STE 80 RUN 80 BUN 45
+Kevin Bell (R) POS 1B CON 70 GAP 45 POW 40 EYE 50 SPE 35 OverallBat 51.2 | Best CON 70 | Second EYE 50 | BA vL - BA vR - | STE 35 RUN 40 BUN 45
+
+2B:
+Addie de Ruijter (R) POS 2B CON 55 GAP 60 POW 50 EYE 50 SPE 30 OverallBat 53.8 | Best GAP 60 | Second CON 55 | BA vL - BA vR - | STE 35 RUN 30 BUN 30
+Gary Schuckman (R) POS 2B CON 70 GAP 60 POW 35 EYE 40 SPE 70 OverallBat 51.2 | Best CON 70 | Second SPE 70 | BA vL - BA vR - | STE 70 RUN 80 BUN 50
+Marco Benavente (R) POS 2B CON 55 GAP 40 POW 35 EYE 45 SPE 60 OverallBat 43.8 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 70 RUN 55 BUN 80
+
+3B:
+Frank Greene (R) POS 3B CON 45 GAP 50 POW 55 EYE 50 SPE 40 OverallBat 50 | Best POW 55 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 35 BUN 45
+Justin Clayton (R) POS 3B CON 45 GAP 50 POW 50 EYE 55 SPE 35 OverallBat 50 | Best EYE 55 | Second GAP 50 | BA vL - BA vR - | STE 40 RUN 35 BUN 45
+
+C:
+Bunichi Nakamura (R) POS C CON 45 GAP 45 POW 55 EYE 60 SPE 45 OverallBat 51.2 | Best EYE 60 | Second POW 55 | BA vL - BA vR - | STE 55 RUN 55 BUN 30
+Sam Ashworth (R) POS C CON 45 GAP 45 POW 45 EYE 50 SPE 60 OverallBat 46.2 | Best SPE 60 | Second EYE 50 | BA vL - BA vR - | STE 65 RUN 65 BUN 50
+
+CF:
+Josh Harrison (R) POS CF CON 50 GAP 40 POW 35 EYE 50 SPE 55 OverallBat 43.8 | Best SPE 55 | Second CON 50 | BA vL - BA vR - | STE 50 RUN 55 BUN 55
+
+LF:
+Jose Angel (R) POS LF CON 45 GAP 55 POW 55 EYE 50 SPE 40 OverallBat 51.2 | Best GAP 55 | Second POW 55 | BA vL - BA vR - | STE 55 RUN 40 BUN 30
+Alex Reyna (L) POS LF CON 45 GAP 45 POW 40 EYE 70 SPE 65 OverallBat 50 | Best EYE 70 | Second SPE 65 | BA vL - BA vR - | STE 65 RUN 65 BUN 55
+
+RF:
+Jon Laflin (R) POS RF CON 55 GAP 45 POW 65 EYE 55 SPE 35 OverallBat 55 | Best POW 65 | Second CON 55 | BA vL - BA vR - | STE 45 RUN 35 BUN 40
+Sergio Perez (L) POS RF CON 50 GAP 45 POW 50 EYE 45 SPE 60 OverallBat 47.5 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 55 RUN 65 BUN 35
+
+SS:
+Vinny Herrera (S) POS SS CON 50 GAP 45 POW 45 EYE 55 SPE 45 OverallBat 48.8 | Best EYE 55 | Second CON 50 | BA vL - BA vR - | STE 50 RUN 60 BUN 35
+
+
+TEAM PIT - Active Batters
+1B:
+Antonio Serrano (R) POS 1B CON 70 GAP 65 POW 75 EYE 50 SPE 30 OverallBat 65 | Best POW 75 | Second CON 70 | BA vL - BA vR - | STE 40 RUN 20 BUN 30
+Luis Sanchez (L) POS 1B CON 45 GAP 65 POW 75 EYE 50 SPE 30 OverallBat 58.8 | Best POW 75 | Second GAP 65 | BA vL - BA vR - | STE 40 RUN 30 BUN 35
+Jonathan Greene (L) POS 1B CON 55 GAP 50 POW 50 EYE 55 SPE 60 OverallBat 52.5 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 75 RUN 60 BUN 65
+
+2B:
+Zach McNeil (R) POS 2B CON 45 GAP 45 POW 40 EYE 50 SPE 60 OverallBat 45 | Best SPE 60 | Second EYE 50 | BA vL - BA vR - | STE 60 RUN 60 BUN 55
+Tristan Parker (R) POS 2B CON 35 GAP 45 POW 45 EYE 45 SPE 55 OverallBat 42.5 | Best SPE 55 | Second EYE 45 | BA vL - BA vR - | STE 55 RUN 60 BUN 70
+
+3B:
+Davon Grace (R) POS 3B CON 60 GAP 55 POW 45 EYE 50 SPE 60 OverallBat 52.5 | Best CON 60 | Second SPE 60 | BA vL - BA vR - | STE 65 RUN 60 BUN 30
+Daniel Vega (R) POS 3B CON 50 GAP 45 POW 50 EYE 50 SPE 55 OverallBat 48.8 | Best SPE 55 | Second CON 50 | BA vL - BA vR - | STE 50 RUN 55 BUN 40
+Scott Dishman (R) POS 3B CON 40 GAP 40 POW 50 EYE 40 SPE 60 OverallBat 42.5 | Best SPE 60 | Second POW 50 | BA vL - BA vR - | STE 60 RUN 65 BUN 40
+
+C:
+Roberto Valderrama (L) POS C CON 50 GAP 50 POW 40 EYE 50 SPE 35 OverallBat 47.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 30 RUN 40 BUN 55
+Tony Guzman (S) POS C CON 60 GAP 55 POW 35 EYE 30 SPE 20 OverallBat 45 | Best CON 60 | Second GAP 55 | BA vL - BA vR - | STE 20 RUN 20 BUN 50
+
+CF:
+Luis Hard (R) POS CF CON 45 GAP 45 POW 45 EYE 65 SPE 45 OverallBat 50 | Best EYE 65 | Second CON 45 | BA vL - BA vR - | STE 45 RUN 30 BUN 40
+
+LF:
+Rob Maldonado (L) POS LF CON 50 GAP 45 POW 55 EYE 50 SPE 45 OverallBat 50 | Best POW 55 | Second CON 50 | BA vL - BA vR - | STE 55 RUN 35 BUN 40
+Victor Lopez (L) POS LF CON 55 GAP 45 POW 45 EYE 50 SPE 65 OverallBat 48.8 | Best SPE 65 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 65 BUN 65
+
+RF:
+Tony Villalta (R) POS RF CON 55 GAP 55 POW 45 EYE 45 SPE 65 OverallBat 50 | Best SPE 65 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 70 BUN 30
+
+SS:
+Erick Velazquez (S) POS SS CON 55 GAP 60 POW 50 EYE 20 SPE 45 OverallBat 46.2 | Best GAP 60 | Second CON 55 | BA vL - BA vR - | STE 55 RUN 45 BUN 35
+
+
+TEAM POR - Active Batters
+1B:
+Jeremy Campbell (L) POS 1B CON 35 GAP 50 POW 85 EYE 45 SPE 65 OverallBat 53.8 | Best POW 85 | Second SPE 65 | BA vL - BA vR - | STE 70 RUN 75 BUN 30
+Omar Merino (R) POS 1B CON 45 GAP 50 POW 55 EYE 60 SPE 45 OverallBat 52.5 | Best EYE 60 | Second POW 55 | BA vL - BA vR - | STE 50 RUN 45 BUN 40
+Dave Namowicz (L) POS 1B CON 50 GAP 45 POW 65 EYE 30 SPE 30 OverallBat 47.5 | Best POW 65 | Second CON 50 | BA vL - BA vR - | STE 40 RUN 40 BUN 30
+
+2B:
+Jesus Gago (R) POS 2B CON 55 GAP 55 POW 50 EYE 55 SPE 55 OverallBat 53.8 | Best CON 55 | Second EYE 55 | BA vL - BA vR - | STE 60 RUN 45 BUN 40
+
+3B:
+Roberto Marquez (R) POS 3B CON 45 GAP 50 POW 55 EYE 65 SPE 30 OverallBat 53.8 | Best EYE 65 | Second POW 55 | BA vL - BA vR - | STE 30 RUN 30 BUN 30
+Tony Osorio (R) POS 3B CON 75 GAP 50 POW 30 EYE 30 SPE 35 OverallBat 46.2 | Best CON 75 | Second GAP 50 | BA vL - BA vR - | STE 30 RUN 35 BUN 45
+
+C:
+Renault Buso (R) POS C CON 50 GAP 55 POW 50 EYE 40 SPE 25 OverallBat 48.8 | Best GAP 55 | Second CON 50 | BA vL - BA vR - | STE 20 RUN 20 BUN 40
+Victor Salinas (R) POS C CON 60 GAP 55 POW 30 EYE 40 SPE 25 OverallBat 46.2 | Best CON 60 | Second GAP 55 | BA vL - BA vR - | STE 30 RUN 20 BUN 55
+
+CF:
+David de Leon (R) POS CF CON 55 GAP 50 POW 50 EYE 45 SPE 60 OverallBat 50 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 55 BUN 60
+Shigeo Oshima (R) POS CF CON 55 GAP 45 POW 50 EYE 45 SPE 70 OverallBat 48.8 | Best SPE 70 | Second CON 55 | BA vL - BA vR - | STE 70 RUN 70 BUN 30
+
+LF:
+Nukie Frondarina (L) POS LF CON 50 GAP 45 POW 65 EYE 50 SPE 55 OverallBat 52.5 | Best POW 65 | Second SPE 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 30
+
+RF:
+Mike Hargett (R) POS RF CON 60 GAP 45 POW 50 EYE 50 SPE 60 OverallBat 51.2 | Best CON 60 | Second SPE 60 | BA vL - BA vR - | STE 55 RUN 55 BUN 30
+Nick Jones (R) POS RF CON 65 GAP 65 POW 35 EYE 40 SPE 55 OverallBat 51.2 | Best CON 65 | Second GAP 65 | BA vL - BA vR - | STE 60 RUN 45 BUN 75
+
+SS:
+Lance Gregg (R) POS SS CON 65 GAP 55 POW 50 EYE 45 SPE 65 OverallBat 53.8 | Best CON 65 | Second SPE 65 | BA vL - BA vR - | STE 65 RUN 65 BUN 65
+Reomel Bernardo (R) POS SS CON 50 GAP 45 POW 35 EYE 35 SPE 40 OverallBat 41.2 | Best CON 50 | Second GAP 45 | BA vL - BA vR - | STE 40 RUN 35 BUN 45
+
+
+TEAM SD - Active Batters
+1B:
+Elijah Griffith (S) POS 1B CON 50 GAP 45 POW 55 EYE 65 SPE 25 OverallBat 53.8 | Best EYE 65 | Second POW 55 | BA vL - BA vR - | STE 20 RUN 25 BUN 55
+Jose Torres (L) POS 1B CON 55 GAP 50 POW 55 EYE 45 SPE 30 OverallBat 51.2 | Best CON 55 | Second POW 55 | BA vL - BA vR - | STE 25 RUN 30 BUN 75
+
+2B:
+Dante Ramos (L) POS 2B CON 70 GAP 60 POW 50 EYE 20 SPE 45 OverallBat 50 | Best CON 70 | Second GAP 60 | BA vL - BA vR - | STE 50 RUN 40 BUN 80
+Jason Stoker (R) POS 2B CON 50 GAP 35 POW 35 EYE 50 SPE 35 OverallBat 42.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 25 RUN 35 BUN 45
+Tony Steele (R) POS 2B CON 45 GAP 20 POW 35 EYE 50 SPE 50 OverallBat 37.5 | Best EYE 50 | Second SPE 50 | BA vL - BA vR - | STE 50 RUN 50 BUN 55
+
+3B:
+Carlos Fournier (L) POS 3B CON 50 GAP 45 POW 45 EYE 50 SPE 50 OverallBat 47.5 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 55 BUN 35
+Masakuni Shiratori (R) POS 3B CON 50 GAP 45 POW 35 EYE 45 SPE 30 OverallBat 43.8 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 25 RUN 25 BUN 50
+
+C:
+Artur Vaulin (S) POS C CON 55 GAP 50 POW 35 EYE 45 SPE 20 OverallBat 46.2 | Best CON 55 | Second GAP 50 | BA vL - BA vR - | STE 25 RUN 20 BUN 50
+Takeshi Chano (S) POS C CON 40 GAP 30 POW 45 EYE 55 SPE 25 OverallBat 42.5 | Best EYE 55 | Second POW 45 | BA vL - BA vR - | STE 20 RUN 25 BUN 50
+
+CF:
+Brandon Barclay (S) POS CF CON 50 GAP 45 POW 40 EYE 50 SPE 60 OverallBat 46.2 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 75 RUN 60 BUN 50
+
+LF:
+Landon Keiter (L) POS LF CON 55 GAP 35 POW 35 EYE 50 SPE 50 OverallBat 43.8 | Best CON 55 | Second EYE 50 | BA vL - BA vR - | STE 55 RUN 40 BUN 55
+
+RF:
+Edwin Avalos (L) POS RF CON 50 GAP 55 POW 50 EYE 50 SPE 35 OverallBat 51.2 | Best GAP 55 | Second CON 50 | BA vL - BA vR - | STE 45 RUN 35 BUN 70
+Antonio Aguilar (R) POS RF CON 50 GAP 50 POW 45 EYE 45 SPE 60 OverallBat 47.5 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 45 RUN 50 BUN 25
+Elijah Wheat (R) POS RF CON 55 GAP 55 POW 45 EYE 30 SPE 75 OverallBat 46.2 | Best SPE 75 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 70 BUN 50
+
+SS:
+Justin Motley (R) POS SS CON 40 GAP 50 POW 40 EYE 45 SPE 45 OverallBat 43.8 | Best GAP 50 | Second EYE 45 | BA vL - BA vR - | STE 45 RUN 40 BUN 55
+
+
+TEAM SF - Active Batters
+1B:
+Bobby Jackson (S) POS 1B CON 45 GAP 55 POW 80 EYE 65 SPE 25 OverallBat 61.2 | Best POW 80 | Second EYE 65 | BA vL - BA vR - | STE 30 RUN 20 BUN 35
+Victor Quintero (R) POS 1B CON 50 GAP 50 POW 75 EYE 55 SPE 30 OverallBat 57.5 | Best POW 75 | Second EYE 55 | BA vL - BA vR - | STE 30 RUN 30 BUN 30
+
+2B:
+Ron Hutchinson (R) POS 2B CON 50 GAP 55 POW 50 EYE 45 SPE 70 OverallBat 50 | Best SPE 70 | Second GAP 55 | BA vL - BA vR - | STE 65 RUN 70 BUN 55
+Zach Adams (R) POS 2B CON 30 GAP 50 POW 55 EYE 55 SPE 55 OverallBat 47.5 | Best EYE 55 | Second POW 55 | BA vL - BA vR - | STE 70 RUN 60 BUN 40
+Daniel Anderson (R) POS 2B CON 45 GAP 50 POW 45 EYE 50 SPE 60 OverallBat 47.5 | Best SPE 60 | Second EYE 50 | BA vL - BA vR - | STE 60 RUN 60 BUN 30
+
+3B:
+Chad Averitt (R) POS 3B CON 50 GAP 55 POW 55 EYE 55 SPE 55 OverallBat 53.8 | Best EYE 55 | Second GAP 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 65
+Dave Barajas (R) POS 3B CON 50 GAP 50 POW 55 EYE 45 SPE 40 OverallBat 50 | Best POW 55 | Second CON 50 | BA vL - BA vR - | STE 40 RUN 45 BUN 40
+
+C:
+Mike McQuigg (L) POS C CON 50 GAP 50 POW 40 EYE 45 SPE 20 OverallBat 46.2 | Best CON 50 | Second GAP 50 | BA vL - BA vR - | STE 25 RUN 20 BUN 30
+Jose Garcia (R) POS C CON 35 GAP 35 POW 40 EYE 50 SPE 30 OverallBat 40 | Best EYE 50 | Second POW 40 | BA vL - BA vR - | STE 25 RUN 35 BUN 55
+
+CF:
+Leo Diaz (L) POS CF CON 45 GAP 50 POW 45 EYE 50 SPE 55 OverallBat 47.5 | Best SPE 55 | Second EYE 50 | BA vL - BA vR - | STE 70 RUN 50 BUN 40
+
+LF:
+Bernardo Valenzuela (R) POS LF CON 55 GAP 50 POW 55 EYE 60 SPE 65 OverallBat 55 | Best SPE 65 | Second EYE 60 | BA vL - BA vR - | STE 65 RUN 65 BUN 30
+Adan Reid Jr. (L) POS LF CON 55 GAP 45 POW 55 EYE 35 SPE 60 OverallBat 47.5 | Best SPE 60 | Second CON 55 | BA vL - BA vR - | STE 60 RUN 55 BUN 65
+Luis Garcia (R) POS LF CON 50 GAP 40 POW 35 EYE 55 SPE 60 OverallBat 45 | Best SPE 60 | Second EYE 55 | BA vL - BA vR - | STE 70 RUN 50 BUN 50
+
+RF:
+Luke Margalit (L) POS RF CON 55 GAP 50 POW 55 EYE 50 SPE 50 OverallBat 52.5 | Best CON 55 | Second POW 55 | BA vL - BA vR - | STE 45 RUN 55 BUN 30
+
+SS:
+Miguel Collado (L) POS SS CON 60 GAP 65 POW 65 EYE 50 SPE 55 OverallBat 60 | Best GAP 65 | Second POW 65 | BA vL - BA vR - | STE 65 RUN 55 BUN 30
+
+
+TEAM SEA - Active Batters
+1B:
+Carlos Merlos (L) POS 1B CON 60 GAP 55 POW 65 EYE 30 SPE 50 OverallBat 52.5 | Best POW 65 | Second CON 60 | BA vL - BA vR - | STE 55 RUN 55 BUN 35
+Kevin Fink (R) POS 1B CON 55 GAP 50 POW 55 EYE 50 SPE 30 OverallBat 52.5 | Best CON 55 | Second POW 55 | BA vL - BA vR - | STE 25 RUN 35 BUN 30
+Andy Palmer (R) POS 1B CON 50 GAP 65 POW 45 EYE 50 SPE 35 OverallBat 52.5 | Best GAP 65 | Second CON 50 | BA vL - BA vR - | STE 25 RUN 30 BUN 35
+Mike Martinez (R) POS 1B CON 55 GAP 50 POW 50 EYE 50 SPE 50 OverallBat 51.2 | Best CON 55 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 55 BUN 35
+Jordan Cooper (R) POS 1B CON 50 GAP 50 POW 50 EYE 50 SPE 50 OverallBat 50 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 50 RUN 45 BUN 40
+
+2B:
+Kevin Richardson (R) POS 2B CON 55 GAP 50 POW 45 EYE 35 SPE 70 OverallBat 46.2 | Best SPE 70 | Second CON 55 | BA vL - BA vR - | STE 75 RUN 75 BUN 30
+Antonio Luciano (R) POS 2B CON 50 GAP 45 POW 45 EYE 35 SPE 60 OverallBat 43.8 | Best SPE 60 | Second CON 50 | BA vL - BA vR - | STE 75 RUN 60 BUN 50
+
+3B:
+Do-hyun Hu (R) POS 3B CON 50 GAP 50 POW 65 EYE 50 SPE 35 OverallBat 53.8 | Best POW 65 | Second CON 50 | BA vL - BA vR - | STE 40 RUN 40 BUN 30
+
+C:
+Luis Chaves (R) POS C CON 60 GAP 50 POW 40 EYE 35 SPE 30 OverallBat 46.2 | Best CON 60 | Second GAP 50 | BA vL - BA vR - | STE 40 RUN 30 BUN 50
+Josiah King (R) POS C CON 45 GAP 45 POW 45 EYE 45 SPE 25 OverallBat 45 | Best CON 45 | Second EYE 45 | BA vL - BA vR - | STE 35 RUN 20 BUN 60
+
+CF:
+Pedro Medina (R) POS CF CON 75 GAP 50 POW 20 EYE 45 SPE 65 OverallBat 47.5 | Best CON 75 | Second SPE 65 | BA vL - BA vR - | STE 60 RUN 60 BUN 60
+
+LF:
+Adam Wilson (R) POS LF CON 40 GAP 55 POW 75 EYE 55 SPE 30 OverallBat 56.2 | Best POW 75 | Second EYE 55 | BA vL - BA vR - | STE 25 RUN 25 BUN 40
+Alex Bautista (R) POS LF CON 55 GAP 55 POW 45 EYE 50 SPE 70 OverallBat 51.2 | Best SPE 70 | Second CON 55 | BA vL - BA vR - | STE 65 RUN 70 BUN 70
+
+RF:
+David Olguin (L) POS RF CON 55 GAP 60 POW 60 EYE 45 SPE 70 OverallBat 55 | Best SPE 70 | Second GAP 60 | BA vL - BA vR - | STE 70 RUN 75 BUN 35
+
+SS:
+Billy Mendoza (R) POS SS CON 45 GAP 55 POW 55 EYE 45 SPE 45 OverallBat 50 | Best GAP 55 | Second POW 55 | BA vL - BA vR - | STE 45 RUN 55 BUN 45
+
+
+TEAM STL - Active Batters
+1B:
+Victor Campos (R) POS 1B CON 50 GAP 60 POW 80 EYE 60 SPE 50 OverallBat 62.5 | Best POW 80 | Second EYE 60 | BA vL - BA vR - | STE 55 RUN 50 BUN 40
+Alex Lander (S) POS 1B CON 50 GAP 50 POW 75 EYE 55 SPE 25 OverallBat 57.5 | Best POW 75 | Second EYE 55 | BA vL - BA vR - | STE 30 RUN 25 BUN 40
+
+2B:
+Mike Castro (S) POS 2B CON 50 GAP 50 POW 35 EYE 45 SPE 45 OverallBat 45 | Best CON 50 | Second GAP 50 | BA vL - BA vR - | STE 45 RUN 35 BUN 50
+
+3B:
+Chris Sullivan (R) POS 3B CON 45 GAP 50 POW 50 EYE 55 SPE 25 OverallBat 50 | Best EYE 55 | Second GAP 50 | BA vL - BA vR - | STE 20 RUN 25 BUN 35
+David Markel (R) POS 3B CON 40 GAP 50 POW 50 EYE 50 SPE 40 OverallBat 47.5 | Best EYE 50 | Second GAP 50 | BA vL - BA vR - | STE 45 RUN 40 BUN 20
+
+C:
+Ismael Hernandez (R) POS C CON 45 GAP 55 POW 35 EYE 45 SPE 25 OverallBat 45 | Best GAP 55 | Second CON 45 | BA vL - BA vR - | STE 20 RUN 25 BUN 45
+Jon Ramos (R) POS C CON 50 GAP 45 POW 35 EYE 20 SPE 20 OverallBat 37.5 | Best CON 50 | Second GAP 45 | BA vL - BA vR - | STE 20 RUN 20 BUN 30
+
+CF:
+Willie Carvajal (R) POS CF CON 65 GAP 50 POW 50 EYE 35 SPE 55 OverallBat 50 | Best CON 65 | Second SPE 55 | BA vL - BA vR - | STE 70 RUN 55 BUN 40
+Albert Munroe (R) POS CF CON 50 GAP 50 POW 50 EYE 50 SPE 50 OverallBat 50 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 45 RUN 45 BUN 75
+Chris Gillum (L) POS CF CON 40 GAP 50 POW 55 EYE 50 SPE 25 OverallBat 48.8 | Best POW 55 | Second EYE 50 | BA vL - BA vR - | STE 25 RUN 25 BUN 35
+
+LF:
+Javier Gomez (R) POS LF CON 55 GAP 65 POW 50 EYE 45 SPE 50 OverallBat 53.8 | Best GAP 65 | Second CON 55 | BA vL - BA vR - | STE 45 RUN 40 BUN 35
+Spencer Barrier (L) POS LF CON 45 GAP 40 POW 50 EYE 50 SPE 40 OverallBat 46.2 | Best EYE 50 | Second POW 50 | BA vL - BA vR - | STE 40 RUN 35 BUN 25
+
+RF:
+Danny Martinez (L) POS RF CON 55 GAP 55 POW 50 EYE 50 SPE 40 OverallBat 52.5 | Best CON 55 | Second GAP 55 | BA vL - BA vR - | STE 40 RUN 40 BUN 35
+
+SS:
+Brandon Simms (R) POS SS CON 60 GAP 55 POW 45 EYE 45 SPE 45 OverallBat 51.2 | Best CON 60 | Second GAP 55 | BA vL - BA vR - | STE 35 RUN 45 BUN 35
+Jose Padilla (R) POS SS CON 65 GAP 50 POW 35 EYE 35 SPE 55 OverallBat 46.2 | Best CON 65 | Second SPE 55 | BA vL - BA vR - | STE 55 RUN 65 BUN 60
+
+
+TEAM TB - Active Batters
+1B:
+Francisco Lizarraga (L) POS 1B CON 55 GAP 55 POW 55 EYE 65 SPE 20 OverallBat 57.5 | Best EYE 65 | Second CON 55 | BA vL - BA vR - | STE 25 RUN 20 BUN 35
+Preston Strate (R) POS 1B CON 80 GAP 50 POW 40 EYE 60 SPE 60 OverallBat 57.5 | Best CON 80 | Second EYE 60 | BA vL - BA vR - | STE 65 RUN 60 BUN 50
+Elias Garcia (L) POS 1B CON 50 GAP 60 POW 55 EYE 55 SPE 30 OverallBat 55 | Best GAP 60 | Second EYE 55 | BA vL - BA vR - | STE 30 RUN 30 BUN 35
+
+2B:
+Nate Smeltz (R) POS 2B CON 65 GAP 70 POW 65 EYE 65 SPE 30 OverallBat 66.2 | Best GAP 70 | Second CON 65 | BA vL - BA vR - | STE 40 RUN 25 BUN 30
+Isaiah Pittman (R) POS 2B CON 40 GAP 45 POW 55 EYE 55 SPE 75 OverallBat 48.8 | Best SPE 75 | Second EYE 55 | BA vL - BA vR - | STE 80 RUN 80 BUN 55
+Orlando Hernandez (R) POS 2B CON 50 GAP 45 POW 40 EYE 45 SPE 45 OverallBat 45 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 45 RUN 45 BUN 50
+
+3B:
+Ruben Flores (R) POS 3B CON 45 GAP 45 POW 50 EYE 50 SPE 35 OverallBat 47.5 | Best EYE 50 | Second POW 50 | BA vL - BA vR - | STE 40 RUN 35 BUN 45
+Cory Lynn (L) POS 3B CON 50 GAP 45 POW 40 EYE 45 SPE 40 OverallBat 45 | Best CON 50 | Second EYE 45 | BA vL - BA vR - | STE 60 RUN 35 BUN 60
+
+C:
+Tyler Lett (L) POS C CON 50 GAP 45 POW 50 EYE 50 SPE 20 OverallBat 48.8 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 25 RUN 20 BUN 25
+Ryan Castelluccio (S) POS C CON 45 GAP 45 POW 35 EYE 25 SPE 20 OverallBat 37.5 | Best CON 45 | Second GAP 45 | BA vL - BA vR - | STE 20 RUN 25 BUN 75
+
+CF:
+DeMario Taveras (L) POS CF CON 55 GAP 50 POW 40 EYE 50 SPE 75 OverallBat 48.8 | Best SPE 75 | Second CON 55 | BA vL - BA vR - | STE 75 RUN 80 BUN 40
+
+LF:
+Walter Kimpton (R) POS LF CON 50 GAP 50 POW 55 EYE 45 SPE 75 OverallBat 50 | Best SPE 75 | Second POW 55 | BA vL - BA vR - | STE 95 RUN 75 BUN 70
+Nehemiah Hearns (L) POS LF CON 50 GAP 45 POW 50 EYE 50 SPE 45 OverallBat 48.8 | Best CON 50 | Second EYE 50 | BA vL - BA vR - | STE 45 RUN 45 BUN 30
+
+RF:
+Frank Jimenez (R) POS RF CON 60 GAP 45 POW 55 EYE 50 SPE 60 OverallBat 52.5 | Best CON 60 | Second SPE 60 | BA vL - BA vR - | STE 60 RUN 60 BUN 60
+
+SS:
+Steve Rutherford (R) POS SS CON 40 GAP 40 POW 40 EYE 50 SPE 55 OverallBat 42.5 | Best SPE 55 | Second EYE 50 | BA vL - BA vR - | STE 65 RUN 60 BUN 55

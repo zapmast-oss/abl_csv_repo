@@ -1,0 +1,123 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "boston-galvez-bought-room",
+  "title": "Jorge Galvez gave Boston room to breathe",
+  "kind": "beat",
+  "byline": "Boston Patriots beat",
+  "team_ids": [
+    20
+  ],
+  "story_ids": [
+    "20:1981:race",
+    "20:1981:player:1:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Philadelphia came to Boston for four with a four-game deficit. The Patriots shut the Fury out twice, then lost the next two by a combined 18–4. The split sent the Fury away still four back. Boston kept three of those games in hand even after Philadelphia ran its winning streak to eight.",
+        "Jorge Galvez allowed one earned run in 24⅓ innings during the challenge. On August 30 in Pittsburgh he gave up five hits over nine innings and Boston needed only two runs. Mike Randolph recorded six saves in the challenge. The finale showed that Boston could finish a series without calling on him.",
+        "Boston won seven of ten and starts September at Houston. The Fury return to Boston on September 28. The Patriots have several road series before then in which to protect the margin their pitchers helped keep."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 20. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1459,1471,1483,1495,1514,1522,1532,1544,1556,1568. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1588,1600,1607,1867,1879,1891. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 1,3081. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+  ],
+  "claim_games": [
+    1459,
+    1471,
+    1483,
+    1495,
+    1514,
+    1522,
+    1532,
+    1544,
+    1556,
+    1568,
+    1588,
+    1600,
+    1607,
+    1867,
+    1879,
+    1891
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1459
+      ],
+      "claim": "1981-08-20. Philadelphia Fury 0, Boston Patriots 3."
+    },
+    {
+      "games": [
+        1471
+      ],
+      "claim": "1981-08-21. Philadelphia Fury 0, Boston Patriots 2."
+    },
+    {
+      "games": [
+        1483
+      ],
+      "claim": "1981-08-22. Philadelphia Fury 7, Boston Patriots 2."
+    },
+    {
+      "games": [
+        1495
+      ],
+      "claim": "1981-08-23. Philadelphia Fury 11, Boston Patriots 2."
+    },
+    {
+      "games": [
+        1514
+      ],
+      "claim": "1981-08-25. New York Aces 1, Boston Patriots 4."
+    },
+    {
+      "games": [
+        1522
+      ],
+      "claim": "1981-08-26. New York Aces 1, Boston Patriots 3."
+    },
+    {
+      "games": [
+        1532
+      ],
+      "claim": "1981-08-27. Boston Patriots 3, Pittsburgh Express 5."
+    },
+    {
+      "games": [
+        1544
+      ],
+      "claim": "1981-08-28. Boston Patriots 4, Pittsburgh Express 0."
+    },
+    {
+      "games": [
+        1556
+      ],
+      "claim": "1981-08-29. Boston Patriots 6, Pittsburgh Express 3."
+    },
+    {
+      "games": [
+        1568
+      ],
+      "claim": "1981-08-30. Boston Patriots 2, Pittsburgh Express 0."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "12708be062338ea87de1a67b956c9afa7aca48e0e79129ba1cb073b1b4afddb8",
+    "question": "The Patriots withstood Philadelphia’s winning streak by allowing little in their own wins, culminating in Galvez’s five-hit shutout.",
+    "promise": "Jorge Galvez gave Boston room to breathe",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "The Patriots withstood Philadelphia’s winning streak by allowing little in their own wins, culminating in Galvez’s five-hit shutout.",
+    "ending": "Boston won seven of ten and starts September at Houston. The Fury return to Boston on September 28. The Patriots have several road series before then in which to protect the margin their pitchers helped keep."
+  }
+}

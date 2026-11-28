@@ -1,0 +1,726 @@
+{
+  "team_id": 11,
+  "team": "Minneapolis Blizzard",
+  "abbr": "MIN",
+  "division": "NBC Central Division",
+  "conference": "NBC",
+  "wins": 54,
+  "losses": 66,
+  "gb": 11.5,
+  "priority": 1,
+  "division_leaders_change": false,
+  "division_leaders": [
+    4
+  ],
+  "intensity": "brief",
+  "headline": "Minneapolis beat Charlotte 9-3",
+  "brief": "Minneapolis beat Charlotte 9-3. [games.csv game_id=1442 date=1981-08-19 league_id=200 game_type=0 played=1] Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-19 — Minneapolis beat Charlotte 9-3 in 9 innings. [games.csv game_id=1442 date=1981-08-19 league_id=200 game_type=0 played=1] Alex Francis (#5841) went 1-for-3 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1442, team_id=11, player_id=5841] David Bain (#361) worked 6 1/3 innings, allowed 3 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1442, team_id=11, player_id=361]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Division records — Dallas 66-55, Detroit 65-56, Chicago 64-57, Minneapolis 54-66. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Over its last 7 games the club went 4-3, scoring 32 runs and allowing 22. Season totals are 450 scored and 458 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11. Recent game IDs 1367, 1386, 1398, 1410, 1418, 1430, 1442]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Dallas Rustlers, Minneapolis is 6-9 with 65 runs scored and 88 allowed. [games.csv 1981 completed regular season, team IDs 11/4, latest game #1107, 1981-07-19]",
+        "Against Detroit Dukes, Minneapolis is 7-7 with 57 runs scored and 52 allowed. [games.csv 1981 completed regular season, team IDs 11/5, latest game #1156, 1981-07-23]",
+        "Against Chicago Fire, Minneapolis is 4-10 with 28 runs scored and 59 allowed. [games.csv 1981 completed regular season, team IDs 11/12, latest game #1192, 1981-07-26]",
+        "Minneapolis hosts Dallas Rustlers in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Ricky Thompson (#6956) leads the club with 160 hits in 468 at-bats, including 6 home runs. [players_game_batting.csv joined to played games.csv, team_id=11, year=1981, through 1981-08-19]",
+        "Tristan Davis (#8698) leads the staff in innings pitched (178 2/3), with 128 strikeouts, 65 walks and a 3.27 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=11, year=1981, through 1981-08-19]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (1) — 1978. League titles (0) — none. [team_history.csv, team_id=11, league_id=200, year=1972–1980]",
+        "The club finished 65-97 in 1980, division place 4. [team_history_record.csv, team_id=11, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-20 export lists 26 active players. [players_roster_status.csv team_id=11 is_active=1 joined to players.csv player_id, export league date 1981-08-20]",
+        "P — Alexis Perez (#5836), Arturo Garcia (#5899), Bill Mendoza (#5009), Danny Sias (#12030), David Bain (#361), Emilio Lopez (#8069), Jake Piscitelli (#2431), Jose Varela (#2756), Nate Butler (#8204), Steve Gordon (#2555), Tristan Davis (#8698).",
+        "C — David Salazar (#6507), Fernando Blancas (#11338).",
+        "1B — Alberto Abad (#4807), Hirotoshi Nishimoto (#11346), Ricky Thompson (#6956).",
+        "2B — Alex Francis (#5841), Jorge Ortiz (#8924).",
+        "3B — Dwayne Harrison (#6067), Joaquin Yellock (#5849).",
+        "SS — Enrique Amaya (#8772).",
+        "LF — Adrian Smith (#6922), Edwin Rivera (#6226).",
+        "CF — Ricky Ortiz (#7165).",
+        "RF — Luis Perez (#6450), Nate Ellerd (#159).",
+        "Active players carrying an injury flag on the 1981-08-20 snapshot: Jorge Ortiz (#8924), Nate Ellerd (#159). Game-day availability requires a dated roster update. [players.csv injury_is_injured=1, players_roster_status.csv team_id=11 is_active=1 joined to players.csv player_id, export league date 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Felix Torres (#11971), 23, 1B at Salt Lake City Badlanders — drafted in 1981 with overall pick 19. [players.csv player_id=11971, team_affiliations.csv team_id=11 affiliated_team_id=27, teams.csv, export 1981-08-20]",
+        "Giovanni Swanson (#11397), 22, LF at Laredo Checkers — drafted in 1981 with overall pick 33. [players.csv player_id=11397, team_affiliations.csv team_id=11 affiliated_team_id=73, teams.csv, export 1981-08-20]",
+        "David Palacios (#7716), 21, 2B at Norfolk Stingrays — drafted in 1978 with overall pick 33. [players.csv player_id=7716, team_affiliations.csv team_id=11 affiliated_team_id=66, teams.csv, export 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-02-14 — trade with Houston. received Jayden Martin (#8256), Juan Santos (#7757), Tony Rodriquez (#9288), Jeremiah Matthews (#7545). sent Jesus Vasquez (#4495). [trade_history.csv date=1981-02-14 team_id_0=23 team_id_1=11 message_id=18925]",
+        "1981-07-02 — trade with Cincinnati. received Alex Rodriguez (#7177), Jorge Moya (#9169). sent Lee Byron (#3989). [trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578]",
+        "1981-07-31 — trade with Houston. received Jonathan Serrano (#7643), Alush Demachi (#6369). sent Chris Jenkins (#6159). [trade_history.csv date=1981-07-31 team_id_0=11 team_id_1=23 message_id=19908]",
+        "Jonathan Serrano (#7643) has 0 batting PA and 0 pitching innings for Minneapolis in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7643, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Minneapolis stand against its division opponents? Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Will the next series change Minneapolis's recent scoring margin? Over its last 7 games the club went 4-3, scoring 32 runs and allowing 22. Season totals are 450 scored and 458 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11. Recent game IDs 1367, 1386, 1398, 1410, 1418, 1430, 1442]",
+        "What will the next Minneapolis–Dallas game do to the division race? Minneapolis hosts Dallas Rustlers in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0] Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "What role will Jonathan Serrano (#7643) earn with Minneapolis? Jonathan Serrano (#7643) has 0 batting PA and 0 pitching innings for Minneapolis in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7643, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11] [trade_history.csv date=1981-07-31 team_id_0=11 team_id_1=23 message_id=19908]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Minneapolis Blizzard is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Minneapolis Blizzard is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "11:1981:division",
+      "question": "Where does Minneapolis stand against its division opponents?",
+      "evidence": "Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "11:1981:runs",
+      "question": "Will the next series change Minneapolis's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 4-3, scoring 32 runs and allowing 22. Season totals are 450 scored and 458 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11. Recent game IDs 1367, 1386, 1398, 1410, 1418, 1430, 1442]"
+    },
+    {
+      "key": "11:1981:rival:4",
+      "question": "What will the next Minneapolis–Dallas game do to the division race?",
+      "evidence": "Minneapolis hosts Dallas Rustlers in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0] Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "11:1981:trade:19908:7643",
+      "question": "What role will Jonathan Serrano (#7643) earn with Minneapolis?",
+      "evidence": "Jonathan Serrano (#7643) has 0 batting PA and 0 pitching innings for Minneapolis in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7643, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11] [trade_history.csv date=1981-07-31 team_id_0=11 team_id_1=23 message_id=19908]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1442,
+      "date": "1981-08-19",
+      "home_id": 11,
+      "away_id": 6,
+      "runs_away": 3,
+      "runs_home": 9,
+      "innings": 9,
+      "summary": "Charlotte 3, Minneapolis 9",
+      "source": "games.csv game_id=1442 date=1981-08-19 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1442
+  ],
+  "transactions": [
+    {
+      "id": "trade:18925",
+      "date": "1981-02-14",
+      "partner_id": 23,
+      "incoming_ids": [
+        8256,
+        7757,
+        9288,
+        7545
+      ],
+      "outgoing_ids": [
+        4495
+      ],
+      "summary": "trade with Houston. received Jayden Martin (#8256), Juan Santos (#7757), Tony Rodriquez (#9288), Jeremiah Matthews (#7545). sent Jesus Vasquez (#4495)",
+      "source": "trade_history.csv date=1981-02-14 team_id_0=23 team_id_1=11 message_id=18925"
+    },
+    {
+      "id": "trade:19578",
+      "date": "1981-07-02",
+      "partner_id": 14,
+      "incoming_ids": [
+        7177,
+        9169
+      ],
+      "outgoing_ids": [
+        3989
+      ],
+      "summary": "trade with Cincinnati. received Alex Rodriguez (#7177), Jorge Moya (#9169). sent Lee Byron (#3989)",
+      "source": "trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578"
+    },
+    {
+      "id": "trade:19908",
+      "date": "1981-07-31",
+      "partner_id": 23,
+      "incoming_ids": [
+        7643,
+        6369
+      ],
+      "outgoing_ids": [
+        6159
+      ],
+      "summary": "trade with Houston. received Jonathan Serrano (#7643), Alush Demachi (#6369). sent Chris Jenkins (#6159)",
+      "source": "trade_history.csv date=1981-07-31 team_id_0=11 team_id_1=23 message_id=19908"
+    }
+  ],
+  "roster_ids": [
+    159,
+    361,
+    2431,
+    2555,
+    2756,
+    4807,
+    5009,
+    5836,
+    5841,
+    5849,
+    5899,
+    6067,
+    6226,
+    6450,
+    6507,
+    6922,
+    6956,
+    7165,
+    8069,
+    8204,
+    8698,
+    8772,
+    8924,
+    11338,
+    11346,
+    12030
+  ],
+  "roster": [
+    {
+      "player_id": 4807,
+      "name": "Alberto Abad (#4807)",
+      "age": 30,
+      "position": "1B",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 11346,
+      "name": "Hirotoshi Nishimoto (#11346)",
+      "age": 31,
+      "position": "1B",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6956,
+      "name": "Ricky Thompson (#6956)",
+      "age": 27,
+      "position": "1B",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5841,
+      "name": "Alex Francis (#5841)",
+      "age": 30,
+      "position": "2B",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8924,
+      "name": "Jorge Ortiz (#8924)",
+      "age": 23,
+      "position": "2B",
+      "team_id": 11,
+      "injury_flag": 1,
+      "day_to_day_flag": 1
+    },
+    {
+      "player_id": 6067,
+      "name": "Dwayne Harrison (#6067)",
+      "age": 28,
+      "position": "3B",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5849,
+      "name": "Joaquin Yellock (#5849)",
+      "age": 30,
+      "position": "3B",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6507,
+      "name": "David Salazar (#6507)",
+      "age": 24,
+      "position": "C",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 11338,
+      "name": "Fernando Blancas (#11338)",
+      "age": 26,
+      "position": "C",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7165,
+      "name": "Ricky Ortiz (#7165)",
+      "age": 23,
+      "position": "CF",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6922,
+      "name": "Adrian Smith (#6922)",
+      "age": 27,
+      "position": "LF",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6226,
+      "name": "Edwin Rivera (#6226)",
+      "age": 28,
+      "position": "LF",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5836,
+      "name": "Alexis Perez (#5836)",
+      "age": 30,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5899,
+      "name": "Arturo Garcia (#5899)",
+      "age": 26,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5009,
+      "name": "Bill Mendoza (#5009)",
+      "age": 26,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 12030,
+      "name": "Danny Sias (#12030)",
+      "age": 20,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 361,
+      "name": "David Bain (#361)",
+      "age": 30,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8069,
+      "name": "Emilio Lopez (#8069)",
+      "age": 26,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2431,
+      "name": "Jake Piscitelli (#2431)",
+      "age": 32,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2756,
+      "name": "Jose Varela (#2756)",
+      "age": 31,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8204,
+      "name": "Nate Butler (#8204)",
+      "age": 24,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2555,
+      "name": "Steve Gordon (#2555)",
+      "age": 33,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8698,
+      "name": "Tristan Davis (#8698)",
+      "age": 24,
+      "position": "P",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6450,
+      "name": "Luis Perez (#6450)",
+      "age": 24,
+      "position": "RF",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 159,
+      "name": "Nate Ellerd (#159)",
+      "age": 32,
+      "position": "RF",
+      "team_id": 11,
+      "injury_flag": 1,
+      "day_to_day_flag": 1
+    },
+    {
+      "player_id": 8772,
+      "name": "Enrique Amaya (#8772)",
+      "age": 25,
+      "position": "SS",
+      "team_id": 11,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 11971,
+      "name": "Felix Torres (#11971)",
+      "age": 23,
+      "position": "1B",
+      "team_id": 27,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 19,
+      "affiliate": "Salt Lake City Badlanders"
+    },
+    {
+      "player_id": 11397,
+      "name": "Giovanni Swanson (#11397)",
+      "age": 22,
+      "position": "LF",
+      "team_id": 73,
+      "injury_flag": 1,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 33,
+      "affiliate": "Laredo Checkers"
+    },
+    {
+      "player_id": 7716,
+      "name": "David Palacios (#7716)",
+      "age": 21,
+      "position": "2B",
+      "team_id": 66,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1978,
+      "draft_pick": 33,
+      "affiliate": "Norfolk Stingrays"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1367,
+    1386,
+    1398,
+    1410,
+    1418,
+    1430,
+    1442
+  ],
+  "continuity": {
+    "threads": {
+      "11:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Where does Minneapolis stand against its division opponents?",
+        "evidence": "Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "11:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Will the next series change Minneapolis's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 4-3, scoring 32 runs and allowing 22. Season totals are 450 scored and 458 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11. Recent game IDs 1367, 1386, 1398, 1410, 1418, 1430, 1442]",
+        "status": "watching"
+      },
+      "11:1981:rival:4": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Minneapolis–Dallas game do to the division race?",
+        "evidence": "Minneapolis hosts Dallas Rustlers in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0] Minneapolis is 54-66 and trails Dallas by 11.5 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "11:1981:trade:19908:7643": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What role will Jonathan Serrano (#7643) earn with Minneapolis?",
+        "evidence": "Jonathan Serrano (#7643) has 0 batting PA and 0 pitching innings for Minneapolis in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=7643, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=11] [trade_history.csv date=1981-07-31 team_id_0=11 team_id_1=23 message_id=19908]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      159,
+      361,
+      2431,
+      2555,
+      2756,
+      4807,
+      5009,
+      5836,
+      5841,
+      5849,
+      5899,
+      6067,
+      6226,
+      6450,
+      6507,
+      6922,
+      6956,
+      7165,
+      8069,
+      8204,
+      8698,
+      8772,
+      8924,
+      11338,
+      11346,
+      12030
+    ],
+    "names": {
+      "4807": "Alberto Abad (#4807)",
+      "11346": "Hirotoshi Nishimoto (#11346)",
+      "6956": "Ricky Thompson (#6956)",
+      "5841": "Alex Francis (#5841)",
+      "8924": "Jorge Ortiz (#8924)",
+      "6067": "Dwayne Harrison (#6067)",
+      "5849": "Joaquin Yellock (#5849)",
+      "6507": "David Salazar (#6507)",
+      "11338": "Fernando Blancas (#11338)",
+      "7165": "Ricky Ortiz (#7165)",
+      "6922": "Adrian Smith (#6922)",
+      "6226": "Edwin Rivera (#6226)",
+      "5836": "Alexis Perez (#5836)",
+      "5899": "Arturo Garcia (#5899)",
+      "5009": "Bill Mendoza (#5009)",
+      "12030": "Danny Sias (#12030)",
+      "361": "David Bain (#361)",
+      "8069": "Emilio Lopez (#8069)",
+      "2431": "Jake Piscitelli (#2431)",
+      "2756": "Jose Varela (#2756)",
+      "8204": "Nate Butler (#8204)",
+      "2555": "Steve Gordon (#2555)",
+      "8698": "Tristan Davis (#8698)",
+      "6450": "Luis Perez (#6450)",
+      "159": "Nate Ellerd (#159)",
+      "8772": "Enrique Amaya (#8772)"
+    },
+    "flags": {
+      "4807": [
+        0,
+        0
+      ],
+      "11346": [
+        0,
+        0
+      ],
+      "6956": [
+        0,
+        0
+      ],
+      "5841": [
+        0,
+        0
+      ],
+      "8924": [
+        1,
+        1
+      ],
+      "6067": [
+        0,
+        0
+      ],
+      "5849": [
+        0,
+        0
+      ],
+      "6507": [
+        0,
+        0
+      ],
+      "11338": [
+        0,
+        0
+      ],
+      "7165": [
+        0,
+        0
+      ],
+      "6922": [
+        0,
+        0
+      ],
+      "6226": [
+        0,
+        0
+      ],
+      "5836": [
+        0,
+        0
+      ],
+      "5899": [
+        0,
+        0
+      ],
+      "5009": [
+        0,
+        0
+      ],
+      "12030": [
+        0,
+        0
+      ],
+      "361": [
+        0,
+        0
+      ],
+      "8069": [
+        0,
+        0
+      ],
+      "2431": [
+        0,
+        0
+      ],
+      "2756": [
+        0,
+        0
+      ],
+      "8204": [
+        0,
+        0
+      ],
+      "2555": [
+        0,
+        0
+      ],
+      "8698": [
+        0,
+        0
+      ],
+      "6450": [
+        0,
+        0
+      ],
+      "159": [
+        1,
+        1
+      ],
+      "8772": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18925": "trade with Houston. received Jayden Martin (#8256), Juan Santos (#7757), Tony Rodriquez (#9288), Jeremiah Matthews (#7545). sent Jesus Vasquez (#4495)",
+      "trade:19578": "trade with Cincinnati. received Alex Rodriguez (#7177), Jorge Moya (#9169). sent Lee Byron (#3989)",
+      "trade:19908": "trade with Houston. received Jonathan Serrano (#7643), Alush Demachi (#6369). sent Chris Jenkins (#6159)"
+    }
+  },
+  "previous_edition": null
+}

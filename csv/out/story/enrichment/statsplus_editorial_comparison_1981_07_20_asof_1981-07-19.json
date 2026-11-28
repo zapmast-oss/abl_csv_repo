@@ -1,0 +1,91 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "slate_rewrite_recommended": false,
+  "limited_slate_annotation_recommended": true,
+  "new_possible_angles": [
+    "San Francisco–Phoenix model-gap investigation",
+    "Atlanta underlying-strength/under-performance investigation",
+    "Philadelphia injury/availability investigation without collapse framing"
+  ],
+  "comparisons": [
+    {
+      "topic": "Dallas–Detroit lead",
+      "verdict": "Strengthens",
+      "evidence": "DAL Div/PO 60.0/79.7 vs DET 24.9/52.0; ELO 1516.8 vs 1517.9; WAR 25.12 vs 23.66",
+      "recommendation": "Keep lead. Detroit’s slight ELO edge adds competitive tension."
+    },
+    {
+      "topic": "Las Vegas–Seattle",
+      "verdict": "Strengthens with caution",
+      "evidence": "LV Div/PO 66.6/81.7 vs SEA 20.3/42.4; ELO 1526.0 vs 1512.7; both xWΔ +5",
+      "recommendation": "Keep secondary; both +5 xWΔ discourages certainty."
+    },
+    {
+      "topic": "San Francisco–Phoenix",
+      "verdict": "Strongly enriches/complicates",
+      "evidence": "SF Div/PO 66.4/72.7 vs PHO 7.4/10.5; PHO ELO 1517.5 vs SF 1511.0; PHO xWΔ 9",
+      "recommendation": "Consider raising within secondary board; investigate wide model gap."
+    },
+    {
+      "topic": "Las Vegas at Denver",
+      "verdict": "Strengthens setup",
+      "evidence": "LV ELO 1526.0 vs DEN 1507.6; PO odds 81.7 vs 28.9; UBR 1.31 vs -23.65",
+      "recommendation": "Keep as unplayed setup."
+    },
+    {
+      "topic": "José Coronado",
+      "verdict": "Strengthens",
+      "evidence": "rWAR 4.28; WAR 4.34; ERA 2.859; FIP 2.701; xFIP 3.053; K/9 10.10",
+      "recommendation": "Add labeled rWAR/FIP context; no award claim."
+    },
+    {
+      "topic": "Manny Flores",
+      "verdict": "Strengthens",
+      "evidence": "WAR 4.28; wRC+ 167.97; wOBA .4316; OPS .9546; 18 HR",
+      "recommendation": "Add wRC+/wOBA/OPS context; no award claim."
+    },
+    {
+      "topic": "Boston–New York",
+      "verdict": "Adds model separation",
+      "evidence": "BOS Div/PO 82.2/82.6 vs NY 8.7/9.0; ELO 1507.2 vs 1492.2",
+      "recommendation": "Keep mention; model is less balanced than standings."
+    },
+    {
+      "topic": "Houston–Cincinnati",
+      "verdict": "Adds useful counterpoint",
+      "evidence": "HOU Div/PO 83.1/91.2 vs CIN 11.0/32.7; TotalWAR HOU 26.54 vs CIN 26.68; CIN pWΔ -4",
+      "recommendation": "Keep mention/watch; Cincinnati WAR/under-performance complicates odds."
+    },
+    {
+      "topic": "Atlanta",
+      "verdict": "Creates investigation angle",
+      "evidence": "ELO 7d 6.5, 30d 16.0; xWΔ -6; TotalWAR 23.06; PO odds 1.2",
+      "recommendation": "Underlying strength plus positive ELO movement merits investigation, not promotion yet."
+    },
+    {
+      "topic": "Seattle sustainability",
+      "verdict": "Strengthens watch",
+      "evidence": "xWΔ +5; pWΔ +5; Div odds 20.3; PO odds 42.4; ELO 1512.7",
+      "recommendation": "Keep watch; no regression claim."
+    },
+    {
+      "topic": "Detroit attendance",
+      "verdict": "Strengthens measured context",
+      "evidence": "Fan Interest 100; Avg attendance 26990; 96.0% full; 1980/81 interest 100/100",
+      "recommendation": "Use interest/capacity figures without inferred emotion."
+    },
+    {
+      "topic": "Tampa Bay pressure",
+      "verdict": "Strengthens and complicates",
+      "evidence": "Payroll $10,826,460; PO odds 2.6; ELO 1482.3; xWΔ -4; Fan interest 73",
+      "recommendation": "Keep watch; BaseRuns softens simple failure framing."
+    },
+    {
+      "topic": "Chicago–Dallas series",
+      "verdict": "Supports series setup",
+      "evidence": "DAL Div/PO 60.0/79.7 vs CHI 15.0/35.9; ELO 1516.8 vs 1513.4; WAR 25.12 vs 21.79",
+      "recommendation": "Use as enhancement to existing raw-proof investigation."
+    }
+  ]
+}

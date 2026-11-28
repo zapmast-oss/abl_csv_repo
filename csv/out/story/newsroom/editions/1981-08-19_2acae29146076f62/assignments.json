@@ -1,0 +1,314 @@
+{
+  "1": {
+    "assignment": "Miami Hurricanes beat",
+    "franchise_id": 1,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "2": {
+    "assignment": "Phoenix Firebirds beat",
+    "franchise_id": 2,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "3": {
+    "assignment": "Atlanta Kings beat",
+    "franchise_id": 3,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "4": {
+    "assignment": "Dallas Rustlers beat",
+    "franchise_id": 4,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "5": {
+    "assignment": "Detroit Dukes beat",
+    "franchise_id": 5,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "6": {
+    "assignment": "Charlotte Colonels beat",
+    "franchise_id": 6,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "7": {
+    "assignment": "San Diego Seraphs beat",
+    "franchise_id": 7,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "8": {
+    "assignment": "Tampa Bay Storm beat",
+    "franchise_id": 8,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "9": {
+    "assignment": "Los Angeles Cobras beat",
+    "franchise_id": 9,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "10": {
+    "assignment": "San Francisco Warriors beat",
+    "franchise_id": 10,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "11": {
+    "assignment": "Minneapolis Blizzard beat",
+    "franchise_id": 11,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "12": {
+    "assignment": "Chicago Fire beat",
+    "franchise_id": 12,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "13": {
+    "assignment": "Denver Rocketeers beat",
+    "franchise_id": 13,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "14": {
+    "assignment": "Cincinnati Cougars beat",
+    "franchise_id": 14,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "15": {
+    "assignment": "New York Aces beat",
+    "franchise_id": 15,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "16": {
+    "assignment": "Nashville Blues beat",
+    "franchise_id": 16,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "17": {
+    "assignment": "Las Vegas Gamblers beat",
+    "franchise_id": 17,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "18": {
+    "assignment": "Portland Lumberjacks beat",
+    "franchise_id": 18,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "19": {
+    "assignment": "St. Louis Stallions beat",
+    "franchise_id": 19,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "20": {
+    "assignment": "Boston Patriots beat",
+    "franchise_id": 20,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "21": {
+    "assignment": "Pittsburgh Express beat",
+    "franchise_id": 21,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "22": {
+    "assignment": "Philadelphia Fury beat",
+    "franchise_id": 22,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "23": {
+    "assignment": "Houston Mavericks beat",
+    "franchise_id": 23,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  },
+  "24": {
+    "assignment": "Seattle Comets beat",
+    "franchise_id": 24,
+    "remit": [
+      "franchise record",
+      "current roster and farm system",
+      "division race",
+      "game and player performance",
+      "transactions",
+      "open questions",
+      "coverage history"
+    ]
+  }
+}

@@ -1,4 +1,10 @@
 import pandas as pd
+from pathlib import Path
+
+from abl_team_helper import allowed_team_ids
+
+CSV_ROOT = Path(__file__).resolve().parents[1]
+DATA_ROOT = CSV_ROOT / "ootp_csv"
 
 LEAGUE_ID = 200
 SEASON = 1981
@@ -7,7 +13,7 @@ SEASON = 1981
 AWAY_TEAM_ID = 12  # Chicago Fire
 HOME_TEAM_ID = 1   # Miami Hurricanes
 
-# Canonical manager names – these are the ones that matter for ABL
+# Canonical manager names for our featured clubs
 MANAGER_OVERRIDES = {
     12: "Matt Mead",  # Chicago Fire
     1: "Seth Coe",    # Miami Hurricanes
@@ -21,21 +27,14 @@ TEAM_DISPLAY_OVERRIDES = {
 
 
 def load_csv(name: str) -> pd.DataFrame:
-    return pd.read_csv(name)
+    path = DATA_ROOT / name
+    if not path.exists():
+        raise FileNotFoundError(f"Missing CSV: {path}")
+    return pd.read_csv(path)
 
 
 def get_team_display(teams: pd.DataFrame, team_id: int) -> str:
-    """
-    Return a nice display name for the team.
-
-    Priority:
-      1) Hard-coded TEAM_DISPLAY_OVERRIDES (for ABL majors)
-      2) name + nickname from teams.csv
-      3) team_name from teams.csv
-      4) nickname from teams.csv
-      5) 'Team {team_id}' fallback
-    """
-    # 1) Hard override for our two teams (and any others you add later)
+    """Return a nice display name for the team."""
     if team_id in TEAM_DISPLAY_OVERRIDES:
         return TEAM_DISPLAY_OVERRIDES[team_id]
 
@@ -55,23 +54,16 @@ def get_team_display(teams: pd.DataFrame, team_id: int) -> str:
 
     row = row.iloc[0]
 
-    # 2) name + nickname, e.g. "Chicago Fire"
-    name = None
-    nickname = None
-
-    if "name" in row.index:
-        name = str(row["name"]).strip()
-    if "nickname" in row.index:
-        nickname = str(row["nickname"]).strip()
+    name = str(row.get("name", "")).strip()
+    nickname = str(row.get("nickname", "")).strip()
 
     if name and nickname:
         return f"{name} {nickname}"
     if name:
         return name
-    if "team_name" in row.index:
-        tn = str(row["team_name"]).strip()
-        if tn:
-            return tn
+    team_name = str(row.get("team_name", "")).strip()
+    if team_name:
+        return team_name
     if nickname:
         return nickname
 
@@ -79,38 +71,25 @@ def get_team_display(teams: pd.DataFrame, team_id: int) -> str:
 
 
 def get_manager_name(team_id: int) -> str:
-    """
-    Always use the canonical name from MANAGER_OVERRIDES for ABL clubs.
-    """
+    """Always use the canonical name from MANAGER_OVERRIDES for ABL clubs."""
     return MANAGER_OVERRIDES.get(team_id, "Unknown manager")
 
 
 def build_manager_block(manager_name: str, team_name: str, is_home: bool) -> str:
-    """
-    Build the descriptive block for one manager, using your lore:
-      - Both in 10th season with the club
-      - Coe has 2 ABL titles
-      - Shared broad tactical tendencies (big fly, long leash for starters, etc.)
-    """
+    """Build a descriptive summary for one manager."""
     if is_home:
         header = (
-            f"HOME manager – {manager_name} ({team_name}), "
-            "in his 10th season with the club. He’s already brought home 2 ABL championships."
+            f"HOME manager - {manager_name} ({team_name}), in his 10th season with the club. "
+            "He has already brought home 2 ABL championships."
         )
     else:
         header = (
-            f"AWAY manager – {manager_name} ({team_name}), "
-            "in his 10th season with the club."
+            f"AWAY manager - {manager_name} ({team_name}), in his 10th season with the club."
         )
 
-    lines = []
-    lines.append(header)
-    lines.append(
-        "He tends to let the clubhouse police itself rather than being overly hands-on."
-    )
-    lines.append(
-        "Prefers to sit back and wait for the big hit rather than play much small ball."
-    )
+    lines = [header]
+    lines.append("He tends to let the clubhouse police itself rather than being overly hands-on.")
+    lines.append("Prefers to sit back and wait for the big hit rather than play much small ball.")
     lines.append(
         "He likes to give his starters a long leash, and is patient with his bullpen once he goes to it. "
         "He is flexible at the back end and not married to a strict closer role, and tends not to chase "
@@ -120,16 +99,20 @@ def build_manager_block(manager_name: str, team_name: str, is_home: bool) -> str
 
 
 def main() -> None:
-    # We only need teams.csv to get city + nickname if overrides don't exist
     teams = load_csv("teams.csv")
+    allowed_ids = set(allowed_team_ids())
+    teams = teams[teams["team_id"].isin(allowed_ids)].copy()
+    if "league_id" in teams.columns:
+        league_ids = {int(x) for x in teams["league_id"].unique()}
+        print(f"[check] Manager matchup league_ids after filter: {league_ids}")
 
-    away_team_name = get_team_display(teams, AWAY_TEAM_ID)  # 'Chicago Fire'
-    home_team_name = get_team_display(teams, HOME_TEAM_ID)  # 'Miami Hurricanes'
+    away_team_name = get_team_display(teams, AWAY_TEAM_ID)
+    home_team_name = get_team_display(teams, HOME_TEAM_ID)
 
-    away_mgr_name = get_manager_name(AWAY_TEAM_ID)          # 'Matt Mead'
-    home_mgr_name = get_manager_name(HOME_TEAM_ID)          # 'Seth Coe'
+    away_mgr_name = get_manager_name(AWAY_TEAM_ID)
+    home_mgr_name = get_manager_name(HOME_TEAM_ID)
 
-    print("=== ABL Manager Matchup – CHI Fire at MIA Hurricanes ===\n")
+    print("=== ABL Manager Matchup - CHI Fire at MIA Hurricanes ===\n")
 
     print(build_manager_block(away_mgr_name, away_team_name, is_home=False))
     print()
@@ -147,7 +130,7 @@ def main() -> None:
     )
     print(
         f"{away_team_name} under {away_mgr_name} has a very defined identity, and "
-        f"{home_team_name} under {home_mgr_name} has become one of the league’s benchmark franchises."
+        f"{home_team_name} under {home_mgr_name} has become one of the league's benchmark franchises."
     )
 
 

@@ -1,11 +1,15 @@
 import pandas as pd
+from pathlib import Path
 
-# Constants
-TEAMS_CSV = "teams.csv"
-COACHES_CSV = "coaches.csv"
-STAFF_CSV = "team_roster_staff.csv"
+from abl_team_helper import allowed_team_ids
 
-# Featured matchup: CHI at MIA
+CSV_ROOT = Path(__file__).resolve().parents[1]
+DATA_ROOT = CSV_ROOT / "ootp_csv"
+
+TEAMS_CSV = DATA_ROOT / "teams.csv"
+COACHES_CSV = DATA_ROOT / "coaches.csv"
+STAFF_CSV = DATA_ROOT / "team_roster_staff.csv"
+
 AWAY_TEAM_ID = 12  # Chicago Fire
 HOME_TEAM_ID = 1   # Miami Hurricanes
 
@@ -24,10 +28,7 @@ def build_team_display(teams: pd.DataFrame) -> pd.DataFrame:
     nickname = teams["nickname"].fillna("").astype(str).str.strip()
     name = teams["name"].fillna("").astype(str).str.strip()
 
-    teams["team_display"] = (
-        (abbr + " " + nickname).str.strip()
-    )
-    # Fallbacks if abbr/nickname are missing
+    teams["team_display"] = (abbr + " " + nickname).str.strip()
     teams.loc[teams["team_display"] == "", "team_display"] = name
     teams.loc[teams["team_display"] == "", "team_display"] = (
         "Team " + teams["team_id"].astype(str)
@@ -35,9 +36,7 @@ def build_team_display(teams: pd.DataFrame) -> pd.DataFrame:
     return teams
 
 
-def get_manager_name(team_id: int,
-                     staff: pd.DataFrame,
-                     coaches: pd.DataFrame) -> str:
+def get_manager_name(team_id: int, staff: pd.DataFrame, coaches: pd.DataFrame) -> str:
     """Return the manager's full name for a given team_id, or 'Unknown manager'."""
     srow = staff.loc[staff["team_id"] == team_id]
     if srow.empty:
@@ -55,11 +54,7 @@ def get_manager_name(team_id: int,
     return full if full else "Unknown manager"
 
 
-def describe_side(label: str,
-                  team_id: int,
-                  teams: pd.DataFrame,
-                  staff: pd.DataFrame,
-                  coaches: pd.DataFrame):
+def describe_side(label: str, team_id: int, teams: pd.DataFrame, staff: pd.DataFrame, coaches: pd.DataFrame) -> None:
     trow = teams.loc[teams["team_id"] == team_id]
     if trow.empty:
         team_display = f"Team {team_id}"
@@ -68,14 +63,20 @@ def describe_side(label: str,
 
     mgr_name = get_manager_name(team_id, staff, coaches)
 
-    print(f"{label} manager – {mgr_name} ({team_display}).")
+    print(f"{label} manager - {mgr_name} ({team_display}).")
 
 
 def main():
     teams, coaches, staff = load_data()
+    allowed_ids = set(allowed_team_ids())
+    teams = teams[teams["team_id"].isin(allowed_ids)].copy()
+    staff = staff[staff["team_id"].isin(allowed_ids)].copy() if "team_id" in staff.columns else staff
+    if "league_id" in teams.columns:
+        league_ids = {int(x) for x in teams["league_id"].unique()}
+        print(f"[check] Managers matchup league_ids after filter: {league_ids}")
     teams = build_team_display(teams)
 
-    print("=== ABL Manager Matchup – CHI Fire at MIA Hurricanes ===\n")
+    print("=== ABL Manager Matchup - CHI Fire at MIA Hurricanes ===\n")
     describe_side("AWAY", AWAY_TEAM_ID, teams, staff, coaches)
     describe_side("HOME", HOME_TEAM_ID, teams, staff, coaches)
 

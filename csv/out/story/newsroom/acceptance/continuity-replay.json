@@ -1,0 +1,81 @@
+{
+  "baseline_sha": "a74abd475d067a465a34e51ff4a9253d7597e77186c0fbca4a7190bd56e7c576",
+  "later_sha": "2acae29146076f6298fcafecf8afc73fb47bfdc8e8362ea73a5c38454767d02d",
+  "game_ids": [
+    1441,
+    1442,
+    1443,
+    1444,
+    1445,
+    1446,
+    1447,
+    1448,
+    1449,
+    1450,
+    1451,
+    1452
+  ],
+  "retained_threads": 70,
+  "threads_with_updated_evidence": 70,
+  "team_notebooks": 24,
+  "story_engine_games": 12,
+  "per_game_beat_appearances": [
+    2
+  ],
+  "checks": [
+    {
+      "test": "duplicate",
+      "returncode": 0,
+      "edition_artifacts_and_pointer_unchanged": true
+    },
+    {
+      "test": "rollback",
+      "returncode": 1,
+      "edition_artifacts_and_pointer_unchanged": true
+    },
+    {
+      "test": "incomplete",
+      "returncode": 1,
+      "edition_artifacts_and_pointer_unchanged": true
+    },
+    {
+      "test": "recovery",
+      "returncode": 0,
+      "edition_artifacts_and_pointer_unchanged": true
+    }
+  ],
+  "test_scope": "Isolated end-to-end CLI replay in repo/tmp with an independent archive, pointer and operations journal. Historical inputs materialized from local git objects, with all LFS payloads SHA-256 checked against their Git pointers. Production controls, pointer, OOTP and promoted CSVs were outside the test write scope.",
+  "tested_at_utc": "2026-11-21T10:40:41.295453+00:00",
+  "historical_source_commit": "4ef0889cf75d5dd089507678fa34b6ae719710d2",
+  "production_repo_base_commit": "c844e18a9216c78e55cfbe4c0fda6f9c17794790",
+  "test_type": "working tree executable paths",
+  "native_preflight": [
+    "READY_FOR_CURRENT_RUN",
+    "READY_FOR_CURRENT_RUN"
+  ],
+  "completed_games": [
+    1438,
+    1450
+  ],
+  "regular_season_cutoffs": [
+    "1981-08-18",
+    "1981-08-19"
+  ],
+  "latest_league_date": "1981-08-20",
+  "checksums_under_test": {
+    "abl_newsroom.py": "53a5841c8154d7bf3541f8e8b4dba58e3a5633b5325a43b8166a5927bdd15ed1",
+    "abl_newsroom_beats.py": "d6a0dd15c3ab5d6d5b19abc829c9d24b8ecd4f4dd48aecfc71f6d9e60b5cc5f6",
+    "abl_newsroom_verify.py": "0136b2a99ff1414f71b7fe27328ef12fc51830667b4f1d7d716f4d34b63c6fe2",
+    "abl_newsroom_print.py": "698883661a8ae8214bb612dd8efb21992f818bc409e8228a3975646ebc276839",
+    "z_abl_current_state_preflight_validate.py": "61ee1d365253756225b8d0c0b753fb6ed8be1f9ed0397a48cc13793ef596c521",
+    "z_abl_story_engine_current_1981.py": "bb12f8f523ff7c120014cdf2b7028bf5b2dac1c44a70cc68c4529b2cd056bb2c"
+  },
+  "validating_operation_statuses": [
+    "completed",
+    "completed",
+    "unchanged",
+    "failed",
+    "failed",
+    "unchanged"
+  ]
+}

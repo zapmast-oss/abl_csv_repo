@@ -1,0 +1,51 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "package_type": "Ballpark Feed pregame setup",
+  "venue": "Chicago Grounds",
+  "status": "safe_for_pregame_use",
+  "opening_setup": "Chicago returns home after a 2-2 road split at Detroit to host first-place Dallas for four games.",
+  "detroit_context": {
+    "series_result": "2-2 split",
+    "july_19_result": "Chicago 4, Detroit 1"
+  },
+  "standings_context": {
+    "dallas_record": "52-41",
+    "chicago_record": "48-45",
+    "chicago_place": 3,
+    "chicago_games_back": 4
+  },
+  "upcoming_series": {
+    "matchup": "Dallas at Chicago",
+    "dates": ["1981-07-20", "1981-07-21", "1981-07-22", "1981-07-23"],
+    "games": 4,
+    "results_included": false,
+    "scheduled_starters_available": false
+  },
+  "series_stakes": [
+    {"chicago_series_record": "4-0", "chicago_games_back_after": 0, "meaning": "Tie Dallas at 52-45"},
+    {"chicago_series_record": "3-1", "chicago_games_back_after": 2},
+    {"chicago_series_record": "2-2", "chicago_games_back_after": 4},
+    {"chicago_series_record": "1-3", "chicago_games_back_after": 6},
+    {"chicago_series_record": "0-4", "chicago_games_back_after": 8}
+  ],
+  "feed3_enrichment": {
+    "authority": "enrichment_only",
+    "dallas_division_odds_pct": 60.0,
+    "chicago_division_odds_pct": 15.0,
+    "interpretation": "Dallas is the model favorite; Chicago has a direct schedule opportunity."
+  },
+  "historical_context": {
+    "chicago_playoff_appearances_1972_1980": 5,
+    "championships": 0,
+    "grand_series_appearances": 1,
+    "best_finish": "Lost the 1973 Grand Series to Denver, 4-3",
+    "boundary": "Context only; do not infer current motivation, burden, or destiny."
+  },
+  "caution_flags": [
+    "No July 20 result language.",
+    "Chicago can tie Dallas with a sweep but cannot take sole possession of first.",
+    "StatsPlus odds do not replace official standings.",
+    "No invented motivation, clubhouse drama, fan emotion, or manager intent."
+  ]
+}

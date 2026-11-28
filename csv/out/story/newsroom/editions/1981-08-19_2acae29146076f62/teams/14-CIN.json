@@ -1,0 +1,721 @@
+{
+  "team_id": 14,
+  "team": "Cincinnati Cougars",
+  "abbr": "CIN",
+  "division": "ABC Central Division",
+  "conference": "ABC",
+  "wins": 63,
+  "losses": 58,
+  "gb": 9.5,
+  "priority": 1,
+  "division_leaders_change": false,
+  "division_leaders": [
+    23
+  ],
+  "intensity": "brief",
+  "headline": "Cincinnati beat Denver 4-1",
+  "brief": "Cincinnati beat Denver 4-1. [games.csv game_id=1449 date=1981-08-19 league_id=200 game_type=0 played=1] Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-19 — Cincinnati beat Denver 4-1 in 9 innings. [games.csv game_id=1449 date=1981-08-19 league_id=200 game_type=0 played=1] Victor Moguel (#5521) went 1-for-4 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1449, team_id=14, player_id=5521] Rick Satchell (#851) worked 8 innings, allowed 1 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1449, team_id=14, player_id=851]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+        "Division records — Houston 72-48, Cincinnati 63-58, Nashville 59-62, St. Louis 58-62. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+        "Over its last 7 games the club went 4-3, scoring 35 runs and allowing 20. Season totals are 532 scored and 483 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14. Recent game IDs 1380, 1390, 1402, 1414, 1425, 1437, 1449]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Houston Mavericks, Cincinnati is 4-10 with 57 runs scored and 61 allowed. [games.csv 1981 completed regular season, team IDs 14/23, latest game #1161, 1981-07-23]",
+        "Against Nashville Blues, Cincinnati is 9-6 with 78 runs scored and 59 allowed. [games.csv 1981 completed regular season, team IDs 14/16, latest game #1114, 1981-07-19]",
+        "Against St. Louis Stallions, Cincinnati is 9-5 with 44 runs scored and 26 allowed. [games.csv 1981 completed regular season, team IDs 14/19, latest game #1198, 1981-07-26]",
+        "Cincinnati hosts Nashville Blues in the next listed game on 1981-08-20. [games.csv game_id=1461, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Esteban Martinez (#5590) leads the club with 139 hits in 457 at-bats, including 12 home runs. [players_game_batting.csv joined to played games.csv, team_id=14, year=1981, through 1981-08-19]",
+        "Alex Perez (#7584) leads the staff in innings pitched (196 1/3), with 153 strikeouts, 73 walks and a 3.12 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=14, year=1981, through 1981-08-19]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (4) — 1976, 1977, 1979, 1980. League titles (0) — none. [team_history.csv, team_id=14, league_id=200, year=1972–1980]",
+        "The club finished 97-65 in 1980, division place 1. [team_history_record.csv, team_id=14, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-20 export lists 26 active players. [players_roster_status.csv team_id=14 is_active=1 joined to players.csv player_id, export league date 1981-08-20]",
+        "P — Alex Perez (#7584), Antonio Scott (#371), Chris Collette (#5420), Danny Pena (#4677), Darius Jones (#5895), Gil Medina (#5798), Isaiah Simmons (#1380), Kaden Seay (#4907), Ricardo Hernandez (#7955), Rick Satchell (#851), Ryan Hines (#1813).",
+        "C — Jordan Pedroza (#7393), Victor Moguel (#5521).",
+        "1B — Esteban Martinez (#5590).",
+        "2B — Lee Byron (#3989).",
+        "3B — Jayden Bonner (#4844), Jose Hernandez (#4369), Luis Mata (#4703).",
+        "SS — Joe Rogers (#737).",
+        "LF — Jim Marshall (#1400), Victor Torres (#2178), Vinny Cambrelen (#8677).",
+        "CF — Scott Reis (#609).",
+        "RF — Barry Wilson (#294), Gilberto Perez (#4471), Patrício Cogumbreiro (#4392)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Manny Esquivel (#9426), 23, 2B at Fort Lauderdale Diamond Dawgs — drafted in 1979 with overall pick 12. [players.csv player_id=9426, team_affiliations.csv team_id=14 affiliated_team_id=32, teams.csv, export 1981-08-20]",
+        "Elijah Philpot (#5373), 23, LF at Fort Lauderdale Diamond Dawgs — drafted in 1978 with overall pick 22. [players.csv player_id=5373, team_affiliations.csv team_id=14 affiliated_team_id=32, teams.csv, export 1981-08-20]",
+        "Aiden Belcher (#10129), 23, 1B at Fort Lauderdale Diamond Dawgs — drafted in 1980 with overall pick 25. [players.csv player_id=10129, team_affiliations.csv team_id=14 affiliated_team_id=32, teams.csv, export 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-02-12 — trade with Phoenix. received Jordan Pedroza (#7393). sent Jorge Nino (#4409). [trade_history.csv date=1981-02-12 team_id_0=2 team_id_1=14 message_id=18924]",
+        "1981-06-11 — trade with Boston. received Jason Brown (#1834). sent Jose Canas (#7646). [trade_history.csv date=1981-06-11 team_id_0=14 team_id_1=20 message_id=19397]",
+        "1981-07-02 — trade with Minneapolis. received Lee Byron (#3989). sent Alex Rodriguez (#7177), Jorge Moya (#9169). [trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578]",
+        "Lee Byron (#3989) has 170 batting PA and 0 pitching innings for Cincinnati in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=3989, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Cincinnati stand against its division opponents? Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+        "Will the next series change Cincinnati's recent scoring margin? Over its last 7 games the club went 4-3, scoring 35 runs and allowing 20. Season totals are 532 scored and 483 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14. Recent game IDs 1380, 1390, 1402, 1414, 1425, 1437, 1449]",
+        "What will the next Cincinnati–Nashville game do to the division race? Cincinnati hosts Nashville Blues in the next listed game on 1981-08-20. [games.csv game_id=1461, played=0] Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+        "What role will Lee Byron (#3989) earn with Cincinnati? Lee Byron (#3989) has 170 batting PA and 0 pitching innings for Cincinnati in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=3989, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14] [trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Cincinnati Cougars is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Cincinnati Cougars is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "14:1981:division",
+      "question": "Where does Cincinnati stand against its division opponents?",
+      "evidence": "Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]"
+    },
+    {
+      "key": "14:1981:runs",
+      "question": "Will the next series change Cincinnati's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 4-3, scoring 35 runs and allowing 20. Season totals are 532 scored and 483 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14. Recent game IDs 1380, 1390, 1402, 1414, 1425, 1437, 1449]"
+    },
+    {
+      "key": "14:1981:rival:16",
+      "question": "What will the next Cincinnati–Nashville game do to the division race?",
+      "evidence": "Cincinnati hosts Nashville Blues in the next listed game on 1981-08-20. [games.csv game_id=1461, played=0] Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]"
+    },
+    {
+      "key": "14:1981:trade:19578:3989",
+      "question": "What role will Lee Byron (#3989) earn with Cincinnati?",
+      "evidence": "Lee Byron (#3989) has 170 batting PA and 0 pitching innings for Cincinnati in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=3989, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14] [trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1449,
+      "date": "1981-08-19",
+      "home_id": 13,
+      "away_id": 14,
+      "runs_away": 4,
+      "runs_home": 1,
+      "innings": 9,
+      "summary": "Cincinnati 4, Denver 1",
+      "source": "games.csv game_id=1449 date=1981-08-19 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1449
+  ],
+  "transactions": [
+    {
+      "id": "trade:18924",
+      "date": "1981-02-12",
+      "partner_id": 2,
+      "incoming_ids": [
+        7393
+      ],
+      "outgoing_ids": [
+        4409
+      ],
+      "summary": "trade with Phoenix. received Jordan Pedroza (#7393). sent Jorge Nino (#4409)",
+      "source": "trade_history.csv date=1981-02-12 team_id_0=2 team_id_1=14 message_id=18924"
+    },
+    {
+      "id": "trade:19397",
+      "date": "1981-06-11",
+      "partner_id": 20,
+      "incoming_ids": [
+        1834
+      ],
+      "outgoing_ids": [
+        7646
+      ],
+      "summary": "trade with Boston. received Jason Brown (#1834). sent Jose Canas (#7646)",
+      "source": "trade_history.csv date=1981-06-11 team_id_0=14 team_id_1=20 message_id=19397"
+    },
+    {
+      "id": "trade:19578",
+      "date": "1981-07-02",
+      "partner_id": 11,
+      "incoming_ids": [
+        3989
+      ],
+      "outgoing_ids": [
+        7177,
+        9169
+      ],
+      "summary": "trade with Minneapolis. received Lee Byron (#3989). sent Alex Rodriguez (#7177), Jorge Moya (#9169)",
+      "source": "trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578"
+    }
+  ],
+  "roster_ids": [
+    294,
+    371,
+    609,
+    737,
+    851,
+    1380,
+    1400,
+    1813,
+    2178,
+    3989,
+    4369,
+    4392,
+    4471,
+    4677,
+    4703,
+    4844,
+    4907,
+    5420,
+    5521,
+    5590,
+    5798,
+    5895,
+    7393,
+    7584,
+    7955,
+    8677
+  ],
+  "roster": [
+    {
+      "player_id": 5590,
+      "name": "Esteban Martinez (#5590)",
+      "age": 25,
+      "position": "1B",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3989,
+      "name": "Lee Byron (#3989)",
+      "age": 31,
+      "position": "2B",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4844,
+      "name": "Jayden Bonner (#4844)",
+      "age": 29,
+      "position": "3B",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4369,
+      "name": "Jose Hernandez (#4369)",
+      "age": 31,
+      "position": "3B",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4703,
+      "name": "Luis Mata (#4703)",
+      "age": 30,
+      "position": "3B",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7393,
+      "name": "Jordan Pedroza (#7393)",
+      "age": 27,
+      "position": "C",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5521,
+      "name": "Victor Moguel (#5521)",
+      "age": 26,
+      "position": "C",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 609,
+      "name": "Scott Reis (#609)",
+      "age": 35,
+      "position": "CF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1400,
+      "name": "Jim Marshall (#1400)",
+      "age": 33,
+      "position": "LF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2178,
+      "name": "Victor Torres (#2178)",
+      "age": 33,
+      "position": "LF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8677,
+      "name": "Vinny Cambrelen (#8677)",
+      "age": 27,
+      "position": "LF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7584,
+      "name": "Alex Perez (#7584)",
+      "age": 26,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 371,
+      "name": "Antonio Scott (#371)",
+      "age": 38,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5420,
+      "name": "Chris Collette (#5420)",
+      "age": 24,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4677,
+      "name": "Danny Pena (#4677)",
+      "age": 30,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5895,
+      "name": "Darius Jones (#5895)",
+      "age": 31,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5798,
+      "name": "Gil Medina (#5798)",
+      "age": 26,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1380,
+      "name": "Isaiah Simmons (#1380)",
+      "age": 34,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4907,
+      "name": "Kaden Seay (#4907)",
+      "age": 29,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7955,
+      "name": "Ricardo Hernandez (#7955)",
+      "age": 35,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 851,
+      "name": "Rick Satchell (#851)",
+      "age": 32,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1813,
+      "name": "Ryan Hines (#1813)",
+      "age": 33,
+      "position": "P",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 294,
+      "name": "Barry Wilson (#294)",
+      "age": 38,
+      "position": "RF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4471,
+      "name": "Gilberto Perez (#4471)",
+      "age": 28,
+      "position": "RF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4392,
+      "name": "Patrício Cogumbreiro (#4392)",
+      "age": 27,
+      "position": "RF",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 737,
+      "name": "Joe Rogers (#737)",
+      "age": 36,
+      "position": "SS",
+      "team_id": 14,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 9426,
+      "name": "Manny Esquivel (#9426)",
+      "age": 23,
+      "position": "2B",
+      "team_id": 32,
+      "injury_flag": 1,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 12,
+      "affiliate": "Fort Lauderdale Diamond Dawgs"
+    },
+    {
+      "player_id": 5373,
+      "name": "Elijah Philpot (#5373)",
+      "age": 23,
+      "position": "LF",
+      "team_id": 32,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1978,
+      "draft_pick": 22,
+      "affiliate": "Fort Lauderdale Diamond Dawgs"
+    },
+    {
+      "player_id": 10129,
+      "name": "Aiden Belcher (#10129)",
+      "age": 23,
+      "position": "1B",
+      "team_id": 32,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 25,
+      "affiliate": "Fort Lauderdale Diamond Dawgs"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1380,
+    1390,
+    1402,
+    1414,
+    1425,
+    1437,
+    1449
+  ],
+  "continuity": {
+    "threads": {
+      "14:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Where does Cincinnati stand against its division opponents?",
+        "evidence": "Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+        "status": "watching"
+      },
+      "14:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Will the next series change Cincinnati's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 4-3, scoring 35 runs and allowing 20. Season totals are 532 scored and 483 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14. Recent game IDs 1380, 1390, 1402, 1414, 1425, 1437, 1449]",
+        "status": "watching"
+      },
+      "14:1981:rival:16": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Cincinnati–Nashville game do to the division race?",
+        "evidence": "Cincinnati hosts Nashville Blues in the next listed game on 1981-08-20. [games.csv game_id=1461, played=0] Cincinnati is 63-58 and trails Houston by 9.5 games in the ABC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 14,16,19,23]",
+        "status": "watching"
+      },
+      "14:1981:trade:19578:3989": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What role will Lee Byron (#3989) earn with Cincinnati?",
+        "evidence": "Lee Byron (#3989) has 170 batting PA and 0 pitching innings for Cincinnati in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=3989, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=14] [trade_history.csv date=1981-07-02 team_id_0=14 team_id_1=11 message_id=19578]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      294,
+      371,
+      609,
+      737,
+      851,
+      1380,
+      1400,
+      1813,
+      2178,
+      3989,
+      4369,
+      4392,
+      4471,
+      4677,
+      4703,
+      4844,
+      4907,
+      5420,
+      5521,
+      5590,
+      5798,
+      5895,
+      7393,
+      7584,
+      7955,
+      8677
+    ],
+    "names": {
+      "5590": "Esteban Martinez (#5590)",
+      "3989": "Lee Byron (#3989)",
+      "4844": "Jayden Bonner (#4844)",
+      "4369": "Jose Hernandez (#4369)",
+      "4703": "Luis Mata (#4703)",
+      "7393": "Jordan Pedroza (#7393)",
+      "5521": "Victor Moguel (#5521)",
+      "609": "Scott Reis (#609)",
+      "1400": "Jim Marshall (#1400)",
+      "2178": "Victor Torres (#2178)",
+      "8677": "Vinny Cambrelen (#8677)",
+      "7584": "Alex Perez (#7584)",
+      "371": "Antonio Scott (#371)",
+      "5420": "Chris Collette (#5420)",
+      "4677": "Danny Pena (#4677)",
+      "5895": "Darius Jones (#5895)",
+      "5798": "Gil Medina (#5798)",
+      "1380": "Isaiah Simmons (#1380)",
+      "4907": "Kaden Seay (#4907)",
+      "7955": "Ricardo Hernandez (#7955)",
+      "851": "Rick Satchell (#851)",
+      "1813": "Ryan Hines (#1813)",
+      "294": "Barry Wilson (#294)",
+      "4471": "Gilberto Perez (#4471)",
+      "4392": "Patrício Cogumbreiro (#4392)",
+      "737": "Joe Rogers (#737)"
+    },
+    "flags": {
+      "5590": [
+        0,
+        0
+      ],
+      "3989": [
+        0,
+        0
+      ],
+      "4844": [
+        0,
+        0
+      ],
+      "4369": [
+        0,
+        0
+      ],
+      "4703": [
+        0,
+        0
+      ],
+      "7393": [
+        0,
+        0
+      ],
+      "5521": [
+        0,
+        0
+      ],
+      "609": [
+        0,
+        0
+      ],
+      "1400": [
+        0,
+        0
+      ],
+      "2178": [
+        0,
+        0
+      ],
+      "8677": [
+        0,
+        0
+      ],
+      "7584": [
+        0,
+        0
+      ],
+      "371": [
+        0,
+        0
+      ],
+      "5420": [
+        0,
+        0
+      ],
+      "4677": [
+        0,
+        0
+      ],
+      "5895": [
+        0,
+        0
+      ],
+      "5798": [
+        0,
+        0
+      ],
+      "1380": [
+        0,
+        0
+      ],
+      "4907": [
+        0,
+        0
+      ],
+      "7955": [
+        0,
+        0
+      ],
+      "851": [
+        0,
+        0
+      ],
+      "1813": [
+        0,
+        0
+      ],
+      "294": [
+        0,
+        0
+      ],
+      "4471": [
+        0,
+        0
+      ],
+      "4392": [
+        0,
+        0
+      ],
+      "737": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18924": "trade with Phoenix. received Jordan Pedroza (#7393). sent Jorge Nino (#4409)",
+      "trade:19397": "trade with Boston. received Jason Brown (#1834). sent Jose Canas (#7646)",
+      "trade:19578": "trade with Minneapolis. received Lee Byron (#3989). sent Alex Rodriguez (#7177), Jorge Moya (#9169)"
+    }
+  },
+  "previous_edition": null
+}

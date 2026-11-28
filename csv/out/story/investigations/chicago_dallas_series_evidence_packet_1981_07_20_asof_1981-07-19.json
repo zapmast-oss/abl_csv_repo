@@ -1,0 +1,688 @@
+{
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "authority": {
+    "raw_ootp": "current proof",
+    "sortable_stats": "player/team context",
+    "statsplus_feed3": "enrichment only",
+    "historical": "governed context"
+  },
+  "confirmed_facts": {
+    "detroit_road_split_proven": true,
+    "upcoming_dallas_four_game_home_series_proven": true,
+    "five_playoff_appearances_no_championships_proven": true,
+    "chicago_record": "48-45",
+    "dallas_record": "52-41",
+    "detroit_record": "50-43",
+    "chicago_games_back": 4,
+    "best_supported_angle": "Chicago returns from a four-game road split to host first-place Dallas in a four-game series that can move Chicago from four games back to tied, or as far as eight games back."
+  },
+  "detroit_series": [
+    {
+      "date": "1981-07-16",
+      "game_id": 1072,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Detroit 4, Chicago 2",
+      "chicago_result": "L"
+    },
+    {
+      "date": "1981-07-17",
+      "game_id": 1084,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Detroit 10, Chicago 0",
+      "chicago_result": "L"
+    },
+    {
+      "date": "1981-07-18",
+      "game_id": 1096,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Chicago 4, Detroit 2",
+      "chicago_result": "W"
+    },
+    {
+      "date": "1981-07-19",
+      "game_id": 1108,
+      "away": "Chicago",
+      "home": "Detroit",
+      "score": "Chicago 4, Detroit 1",
+      "chicago_result": "W"
+    }
+  ],
+  "standings": [
+    {
+      "place": 1,
+      "team": "Dallas Rustlers",
+      "record": "52-41",
+      "games_back": 0
+    },
+    {
+      "place": 2,
+      "team": "Detroit Dukes",
+      "record": "50-43",
+      "games_back": 2
+    },
+    {
+      "place": 3,
+      "team": "Chicago Fire",
+      "record": "48-45",
+      "games_back": 4
+    },
+    {
+      "place": 4,
+      "team": "Minneapolis Blizzard",
+      "record": "40-53",
+      "games_back": 12
+    }
+  ],
+  "upcoming_series": [
+    {
+      "date": "1981-07-20",
+      "game_id": 1119,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    },
+    {
+      "date": "1981-07-21",
+      "game_id": 1131,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    },
+    {
+      "date": "1981-07-22",
+      "game_id": 1143,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    },
+    {
+      "date": "1981-07-23",
+      "game_id": 1155,
+      "away": "Dallas",
+      "home": "Chicago",
+      "status": "unplayed",
+      "scheduled_starters": null
+    }
+  ],
+  "conditional_series_math": [
+    {
+      "chicago_series_record": "4-0",
+      "chicago_after": "52-45",
+      "dallas_after": "52-45",
+      "chicago_games_back_after": 0
+    },
+    {
+      "chicago_series_record": "3-1",
+      "chicago_after": "51-46",
+      "dallas_after": "53-44",
+      "chicago_games_back_after": 2
+    },
+    {
+      "chicago_series_record": "2-2",
+      "chicago_after": "50-47",
+      "dallas_after": "54-43",
+      "chicago_games_back_after": 4
+    },
+    {
+      "chicago_series_record": "1-3",
+      "chicago_after": "49-48",
+      "dallas_after": "55-42",
+      "chicago_games_back_after": 6
+    },
+    {
+      "chicago_series_record": "0-4",
+      "chicago_after": "48-49",
+      "dallas_after": "56-41",
+      "chicago_games_back_after": 8
+    }
+  ],
+  "franchise_history": {
+    "playoff_appearances_1972_1980": 5,
+    "playoff_years": [
+      1972,
+      1973,
+      1977,
+      1979,
+      1980
+    ],
+    "championships": 0,
+    "grand_series_appearances": 1,
+    "best_finish": "Lost 1973 Grand Series to Denver, 4-3",
+    "premise_verdict": "The phrase 'five playoff appearances and no championships' is accurate."
+  },
+  "team_texture": {
+    "chicago": {
+      "hitters": [
+        "Alex O' Donell: 2.8 WAR",
+        "Sal Gamez: 2.4 WAR, 15 HR, 67 RBI",
+        "Miguel Morales: 2.3 WAR, 15 HR"
+      ],
+      "pitchers": [
+        "Heriberto Jimenez: 3.2 WAR, 12-8, 3.86 ERA",
+        "John Jury: 2.3 WAR, 9-6, 2.44 ERA",
+        "Edgar Gonzalez: 10-4, 3.21 ERA"
+      ],
+      "july_19": [
+        "Sal Gamez: two home runs, two RBI",
+        "Miguel Morales: home run",
+        "Victor Hernandez: home run",
+        "Tony Suarez: winning pitcher",
+        "Matt Hyman: save"
+      ]
+    },
+    "dallas": {
+      "hitters": [
+        "Devon Barlow: 2.9 WAR, .301/.368/.519",
+        "Rich Vela: 2.1 WAR"
+      ],
+      "pitchers": [
+        "Anton Garay: 2.9 WAR, 11-2, 3.30 ERA",
+        "Mark Marmon: 1.9 WAR, 2.80 ERA"
+      ]
+    }
+  },
+  "setting": {
+    "chicago_manager": "Matt Mead",
+    "dallas_manager": "Brian Parsley",
+    "manager_tendencies_available": false,
+    "ballpark": "Chicago Grounds",
+    "capacity": 18500,
+    "park_factor_average": 0.965,
+    "park_factor_home_runs": 1.131,
+    "chicago_attendance": 857704,
+    "chicago_attendance_per_game": 18249,
+    "chicago_fan_interest": 82
+  },
+  "feed3_enrichment": {
+    "authority": "enrichment_only",
+    "strongest_enhancement": "Dallas holds a large playoff-odds advantage (60.0% division and 79.7% playoff versus Chicago's 15.0% and 35.9%), while ELO is close at 1516.8 to 1513.4.",
+    "chicago": {
+      "team_abbr": "CHI",
+      "team_name": "Chicago Fire",
+      "feed3_record_crosscheck": "48-45",
+      "division_odds_pct": "15.0",
+      "playoff_odds_pct": "35.9",
+      "average_projected_wins": "83.6",
+      "remaining_sos": "0.497",
+      "elo": "1513.4",
+      "elo_season_change": "7.1",
+      "elo_30day_change": "-1.5",
+      "elo_7day_change": "-0.2",
+      "baseruns_pythag_win_delta": "0",
+      "baseruns_expected_win_delta": "-1",
+      "baseruns_xwins": "49",
+      "run_differential": "10",
+      "expected_run_differential": "19",
+      "batter_war": "12.72",
+      "pitcher_war": "9.07",
+      "total_war": "21.79",
+      "injury_count": "3",
+      "dl_days": "90",
+      "salary_on_dl": "$193k",
+      "fan_interest": "82",
+      "fan_interest_30day_change": "-2",
+      "average_attendance": "18249",
+      "capacity_pct_full": "98.64324324324325",
+      "historical_fan_interest_1980": "82",
+      "historical_fan_interest_1981": "82",
+      "payroll": "8535570",
+      "budget": "10700000",
+      "total_revenue": "9540438",
+      "cash_for_trades": "3302243",
+      "owner_name": "Willie Roy",
+      "owner_type": "Personable",
+      "owner_patience": "Demanding",
+      "owner_spending": "Controlling",
+      "owner_involvement": "Hands-off",
+      "owner_priority": "Winning",
+      "ml_age": "29.3",
+      "ml_pitcher_age": "30.3",
+      "ml_batter_age": "28.6",
+      "team_wsb": "0.27",
+      "team_ubr": "-11.50",
+      "team_sb": "53",
+      "team_cs": "44",
+      "best_batting_game_notes": "Miguel Morales vs MIN April 29, 1981 GS=77 | Miguel Morales vs DET May 3, 1981 GS=77",
+      "best_pitching_game_notes": "Edgar Gonzalez vs MIN June 22, 1981 GS=96 | Heriberto Jimenez vs LA June 5, 1981 GS=95 | Edgar Gonzalez vs PHO April 19, 1981 GS=91",
+      "authority_caution": "Feed 3 model/context only; raw OOTP governs games, records, scores, and standings."
+    },
+    "dallas": {
+      "team_abbr": "DAL",
+      "team_name": "Dallas Rustlers",
+      "feed3_record_crosscheck": "52-41",
+      "division_odds_pct": "60.0",
+      "playoff_odds_pct": "79.7",
+      "average_projected_wins": "88.3",
+      "remaining_sos": "0.495",
+      "elo": "1516.8",
+      "elo_season_change": "36.4",
+      "elo_30day_change": "6.0",
+      "elo_7day_change": "3.1",
+      "baseruns_pythag_win_delta": "-1",
+      "baseruns_expected_win_delta": "1",
+      "baseruns_xwins": "51",
+      "run_differential": "67",
+      "expected_run_differential": "45",
+      "batter_war": "14.38",
+      "pitcher_war": "10.74",
+      "total_war": "25.12",
+      "injury_count": "5",
+      "dl_days": "255",
+      "salary_on_dl": "$233k",
+      "fan_interest": "71",
+      "fan_interest_30day_change": "-2",
+      "average_attendance": "22539",
+      "capacity_pct_full": "96.32051282051282",
+      "historical_fan_interest_1980": "68",
+      "historical_fan_interest_1981": "71",
+      "payroll": "6592350",
+      "budget": "7800000",
+      "total_revenue": "9866640",
+      "cash_for_trades": "3044889",
+      "owner_name": "Tommy Mauldin",
+      "owner_type": "Normal",
+      "owner_patience": "Tolerant",
+      "owner_spending": "Controlling",
+      "owner_involvement": "Hands-off",
+      "owner_priority": "Balanced",
+      "ml_age": "30.1",
+      "ml_pitcher_age": "29.5",
+      "ml_batter_age": "30.5",
+      "team_wsb": "1.45",
+      "team_ubr": "-6.00",
+      "team_sb": "78",
+      "team_cs": "56",
+      "best_batting_game_notes": "",
+      "best_pitching_game_notes": "Warren Holster vs CHI June 26, 1981 GS=91",
+      "authority_caution": "Feed 3 model/context only; raw OOTP governs games, records, scores, and standings."
+    },
+    "interpretation": "Feed 3 strengthens the series setup. Dallas has the large odds/WAR advantage, while ELO is close and BaseRuns is nearly neutral. Chicago remains a plausible direct challenger, not a model favorite.",
+    "reference_only": [
+      "owner/front-office traits",
+      "best-game discovery",
+      "historical fan interpretation"
+    ]
+  },
+  "editorial_decision": {
+    "classification": "PROMOTE_SERIES_SETUP",
+    "add_to_july_20_slate": true,
+    "replace_existing_story": false,
+    "annotation_only": true,
+    "save_for_ballpark_feed": true,
+    "placement": "Add as a concise Chicago-Dallas series annotation beneath the Dallas-Detroit lead; do not replace the existing lead or secondary slate."
+  },
+  "cautions": [
+    "No July 20 result may be used or implied.",
+    "A Chicago sweep would tie Dallas, not move Chicago ahead.",
+    "Do not call Chicago cursed or claim the series will define the season.",
+    "Do not infer fan emotion, manager tendencies, motives, or clubhouse drama.",
+    "Do not prove schedule/results from StatsPlus.",
+    "Do not claim owner motives.",
+    "Best-game notes require raw verification before publication.",
+    "Odds are model output, not destiny."
+  ],
+  "evidence_index": [
+    {
+      "evidence_id": "CHI-DAL-001",
+      "category": "source_state",
+      "claim": "Current-state cutoff is July 19",
+      "status": "CONFIRMED",
+      "finding": "Preflight passes with 1,115 completed ABL games through July 19; July 20 is not a results date.",
+      "source_files": "csv/out/control/current_state_preflight_1981_target_1981-07-19.csv",
+      "source_record_ids": "latest_completed_game_date|final_verdict",
+      "editorial_boundary": "Do not use July 20 results."
+    },
+    {
+      "evidence_id": "CHI-DAL-002",
+      "category": "Detroit series",
+      "claim": "Chicago played at Detroit July 16",
+      "status": "CONFIRMED",
+      "finding": "Detroit won 4-2.",
+      "source_files": "csv/ootp_csv/games.csv",
+      "source_record_ids": "game_id 1072",
+      "editorial_boundary": "Chicago was the road team."
+    },
+    {
+      "evidence_id": "CHI-DAL-003",
+      "category": "Detroit series",
+      "claim": "Chicago played at Detroit July 17",
+      "status": "CONFIRMED",
+      "finding": "Detroit won 10-0.",
+      "source_files": "csv/ootp_csv/games.csv",
+      "source_record_ids": "game_id 1084",
+      "editorial_boundary": "Chicago was the road team."
+    },
+    {
+      "evidence_id": "CHI-DAL-004",
+      "category": "Detroit series",
+      "claim": "Chicago played at Detroit July 18",
+      "status": "CONFIRMED",
+      "finding": "Chicago won 4-2.",
+      "source_files": "csv/ootp_csv/games.csv",
+      "source_record_ids": "game_id 1096",
+      "editorial_boundary": "Chicago was the road team."
+    },
+    {
+      "evidence_id": "CHI-DAL-005",
+      "category": "Detroit series",
+      "claim": "Chicago played at Detroit July 19",
+      "status": "CONFIRMED",
+      "finding": "Chicago won 4-1.",
+      "source_files": "csv/ootp_csv/games.csv",
+      "source_record_ids": "game_id 1108",
+      "editorial_boundary": "Chicago was the road team."
+    },
+    {
+      "evidence_id": "CHI-DAL-006",
+      "category": "Detroit series",
+      "claim": "July 19 completed a four-game road split",
+      "status": "CONFIRMED",
+      "finding": "The consecutive July 16-19 set contained four games, all in Detroit; Chicago lost the first two and won the last two.",
+      "source_files": "csv/ootp_csv/games.csv",
+      "source_record_ids": "game_ids 1072|1084|1096|1108",
+      "editorial_boundary": "Safe to call it a four-game road split."
+    },
+    {
+      "evidence_id": "CHI-DAL-007",
+      "category": "standings",
+      "claim": "Chicago current record and position",
+      "status": "CONFIRMED",
+      "finding": "Chicago is 48-45, third in the NBC Central, four games behind Dallas.",
+      "source_files": "csv/ootp_csv/team_record.csv|csv/ootp_csv/teams.csv",
+      "source_record_ids": "team_id 12",
+      "editorial_boundary": "Current through July 19."
+    },
+    {
+      "evidence_id": "CHI-DAL-008",
+      "category": "standings",
+      "claim": "Dallas current record and position",
+      "status": "CONFIRMED",
+      "finding": "Dallas is 52-41, first in the NBC Central.",
+      "source_files": "csv/ootp_csv/team_record.csv|csv/ootp_csv/teams.csv",
+      "source_record_ids": "team_id 4",
+      "editorial_boundary": "Current through July 19."
+    },
+    {
+      "evidence_id": "CHI-DAL-009",
+      "category": "standings",
+      "claim": "Detroit current record and position",
+      "status": "CONFIRMED",
+      "finding": "Detroit is 50-43, second in the NBC Central, two games behind Dallas.",
+      "source_files": "csv/ootp_csv/team_record.csv|csv/ootp_csv/teams.csv",
+      "source_record_ids": "team_id 5",
+      "editorial_boundary": "Chicago also trails Detroit by two games."
+    },
+    {
+      "evidence_id": "CHI-DAL-010",
+      "category": "upcoming series",
+      "claim": "Chicago hosts Dallas for four games",
+      "status": "CONFIRMED",
+      "finding": "Dallas is scheduled at Chicago July 20-23; all four games are unplayed in the cutoff data.",
+      "source_files": "csv/ootp_csv/games.csv",
+      "source_record_ids": "game_ids 1119|1131|1143|1155",
+      "editorial_boundary": "Schedule context only."
+    },
+    {
+      "evidence_id": "CHI-DAL-011",
+      "category": "upcoming series",
+      "claim": "Scheduled starters are available",
+      "status": "UNCONFIRMED",
+      "finding": "The four games contain starter IDs of 0; projected_starting_pitchers.csv is not date-linked closely enough to assign starters safely.",
+      "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/projected_starting_pitchers.csv",
+      "source_record_ids": "game_ids 1119|1131|1143|1155",
+      "editorial_boundary": "Do not name scheduled starters."
+    },
+    {
+      "evidence_id": "CHI-DAL-012",
+      "category": "standings math",
+      "claim": "The Dallas series can create meaningful movement",
+      "status": "CONFIRMED",
+      "finding": "Starting four games back: a Chicago sweep produces a tie; 3-1 cuts the gap to two; 2-2 leaves it at four; 1-3 expands it to six; 0-4 expands it to eight.",
+      "source_files": "csv/ootp_csv/team_record.csv|csv/ootp_csv/games.csv",
+      "source_record_ids": "team_ids 12|4 and game_ids 1119|1131|1143|1155",
+      "editorial_boundary": "These are conditional outcomes only."
+    },
+    {
+      "evidence_id": "CHI-DAL-013",
+      "category": "franchise history",
+      "claim": "Chicago made five playoffs from 1972-1980",
+      "status": "CONFIRMED",
+      "finding": "Playoff seasons: 1972, 1973, 1977, 1979, and 1980.",
+      "source_files": "csv/ootp_csv/team_history.csv",
+      "source_record_ids": "team_id 12 years 1972-1980",
+      "editorial_boundary": "Five appearances is accurate."
+    },
+    {
+      "evidence_id": "CHI-DAL-014",
+      "category": "franchise history",
+      "claim": "Chicago won no championships from 1972-1980",
+      "status": "CONFIRMED",
+      "finding": "won_playoffs is 0 in all nine seasons; governed current-history sortable also reports PO=5 and CHAMP=0.",
+      "source_files": "csv/ootp_csv/team_history.csv|csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+      "source_record_ids": "team_id 12",
+      "editorial_boundary": "No-championship premise is accurate."
+    },
+    {
+      "evidence_id": "CHI-DAL-015",
+      "category": "franchise history",
+      "claim": "Chicago's best postseason finish",
+      "status": "CONFIRMED",
+      "finding": "Chicago reached the 1973 Grand Series and lost to Denver 4-3; other exits were 1972 first round, 1977 first round, 1979 conference round, and 1980 conference round.",
+      "source_files": "csv/out/almanac/1972/games_1972_league200.csv|csv/out/almanac/1973/games_1973_league200.csv|csv/out/almanac/1977/games_1977_league200.csv|csv/out/almanac/1979/games_1979_league200.csv|csv/out/almanac/1980/games_1980_league200.csv",
+      "source_record_ids": "Chicago postseason date/opponent groups",
+      "editorial_boundary": "History is context and not destiny."
+    },
+    {
+      "evidence_id": "CHI-DAL-016",
+      "category": "Chicago hitters",
+      "claim": "Chicago's current leading hitters",
+      "status": "CONFIRMED",
+      "finding": "Alex O' Donell leads Chicago hitters at 2.8 WAR; Sal Gamez has 2.4 WAR, 15 HR and 67 RBI; Miguel Morales has 2.3 WAR and 15 HR.",
+      "source_files": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "source_record_ids": "player_ids 5585|9377|8025",
+      "editorial_boundary": "Use current-value language only."
+    },
+    {
+      "evidence_id": "CHI-DAL-017",
+      "category": "Chicago pitchers",
+      "claim": "Chicago's current leading pitchers",
+      "status": "CONFIRMED",
+      "finding": "Heriberto Jimenez leads Chicago pitchers at 3.2 WAR; John Jury has a 2.44 ERA in 133.0 innings; Edgar Gonzalez is 10-4 with a 3.21 ERA.",
+      "source_files": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv|csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "source_record_ids": "player_ids 8125|446|4518",
+      "editorial_boundary": "No upcoming starter assignment is implied."
+    },
+    {
+      "evidence_id": "CHI-DAL-018",
+      "category": "July 19 performers",
+      "claim": "Chicago's July 19 win had supported player texture",
+      "status": "CONFIRMED",
+      "finding": "Sal Gamez hit two home runs and drove in two; Miguel Morales and Victor Hernandez also homered; Tony Suarez earned the win with four innings and one run; Matt Hyman recorded the save.",
+      "source_files": "csv/ootp_csv/players_game_batting.csv|csv/ootp_csv/players_game_pitching_stats.csv",
+      "source_record_ids": "game_id 1108",
+      "editorial_boundary": "Game-specific facts only."
+    },
+    {
+      "evidence_id": "CHI-DAL-019",
+      "category": "Dallas hitters",
+      "claim": "Dallas's current leading hitters",
+      "status": "CONFIRMED",
+      "finding": "Devon Barlow leads Dallas hitters at 2.9 WAR with a .301/.368/.519 line; Rich Vela has 2.1 WAR.",
+      "source_files": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+      "source_record_ids": "player_ids 6196|4786",
+      "editorial_boundary": "Current through promoted sortable capture."
+    },
+    {
+      "evidence_id": "CHI-DAL-020",
+      "category": "Dallas pitchers",
+      "claim": "Dallas's current leading pitchers",
+      "status": "CONFIRMED",
+      "finding": "Anton Garay leads Dallas pitchers at 2.9 WAR, 11-2 with a 3.30 ERA; Mark Marmon has a 2.80 ERA and 1.9 WAR.",
+      "source_files": "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv|csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+      "source_record_ids": "player_ids 5873|6831",
+      "editorial_boundary": "No upcoming starter assignment is implied."
+    },
+    {
+      "evidence_id": "CHI-DAL-021",
+      "category": "staff",
+      "claim": "Manager names",
+      "status": "CONFIRMED",
+      "finding": "Chicago manager Matt Mead and Dallas manager Brian Parsley agree across raw staff linkage and promoted staff data.",
+      "source_files": "csv/ootp_csv/team_roster_staff.csv|csv/ootp_csv/coaches.csv|csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+      "source_record_ids": "coach_ids 46|146",
+      "editorial_boundary": "Do not infer tendencies or motives."
+    },
+    {
+      "evidence_id": "CHI-DAL-022",
+      "category": "ballpark",
+      "claim": "Chicago home setting",
+      "status": "CONFIRMED",
+      "finding": "The series is scheduled at Chicago Grounds, capacity 18,500; park factors list .965 AVG and 1.131 HR.",
+      "source_files": "csv/ootp_csv/teams.csv|csv/ootp_csv/parks.csv|csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+      "source_record_ids": "team_id 12|park_id 12",
+      "editorial_boundary": "Park factors add setting not prediction."
+    },
+    {
+      "evidence_id": "CHI-DAL-023",
+      "category": "fans",
+      "claim": "Chicago attendance and interest context",
+      "status": "CONFIRMED",
+      "finding": "Promoted team financials list 857,704 attendance, 18,249 per game, and fan interest 82.",
+      "source_files": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "source_record_ids": "team_id 12",
+      "editorial_boundary": "Do not infer fan emotion."
+    },
+    {
+      "evidence_id": "CHI-DAL-024",
+      "category": "story framing",
+      "claim": "This is a golden opportunity and redemption test",
+      "status": "PARTIALLY_SUPPORTED",
+      "finding": "The four head-to-head games create direct mathematical opportunity, and the no-title history is proven; 'golden,' 'redemption,' and claims that Chicago confronts its history are editorial interpretations rather than facts.",
+      "source_files": "multiple approved sources",
+      "source_record_ids": "CHI-DAL-006 through CHI-DAL-023",
+      "editorial_boundary": "Prefer direct opportunity and historical context."
+    },
+    {
+      "evidence_id": "CHI-DAL-025",
+      "category": "verdict",
+      "claim": "Story classification",
+      "status": "RECOMMENDATION",
+      "finding": "PROMOTE_SERIES_SETUP",
+      "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/team_record.csv|csv/ootp_csv/team_history.csv|promoted sortable stats",
+      "source_record_ids": "CHI-DAL-006|007|008|010|012|013|014",
+      "editorial_boundary": "Add to July 20 slate as a series setup beneath Dallas-Detroit lead."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-01",
+      "category": "Feed 3 playoff model",
+      "claim": "Dallas is the model favorite",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago division/playoff odds are 15.0%/35.9%; Dallas is 60.0%/79.7%.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Odds are enrichment, not standings or destiny."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-02",
+      "category": "Feed 3 ELO",
+      "claim": "The clubs are close by ELO",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago is 1513.4 and Dallas is 1516.8, a 3.4-point difference.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "ELO does not override Dallas's four-game standings lead."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-03",
+      "category": "Feed 3 BaseRuns",
+      "claim": "Neither record is far from modeled expectation",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago has xW delta -1; Dallas has xW delta +1.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Do not label either club lucky or due for regression."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-04",
+      "category": "Feed 3 team WAR",
+      "claim": "Dallas has the stronger aggregate WAR",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago total WAR is 21.79; Dallas is 25.12.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Team WAR enriches the matchup; it does not prove a result."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-05",
+      "category": "Feed 3 injuries",
+      "claim": "Both clubs carry injury context",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago lists 3 injuries/90 DL days; Dallas 5/255.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Do not infer series impact without validated player availability."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-06",
+      "category": "Feed 3 fans/finance",
+      "claim": "The series has supported attendance and financial context",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago: interest 82, 18,249 average attendance, 98.6% full, $8.54M payroll. Dallas: 71, 22,539, 96.3%, $6.59M.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Do not infer fan emotion or organizational intent."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-07",
+      "category": "Feed 3 age/baserunning",
+      "claim": "Chicago and Dallas have veteran-age rosters and negative UBR",
+      "status": "ENRICHMENT_ONLY",
+      "finding": "Chicago MLB age 29.3 and UBR -11.50; Dallas 30.1 and -6.00.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Context only; no automated candidate or ranking effect."
+    },
+    {
+      "evidence_id": "CHI-DAL-F3-08",
+      "category": "Feed 3 reference-only",
+      "claim": "Owner traits and best-game discovery remain reference-only",
+      "status": "REFERENCE_ONLY",
+      "finding": "Owner/front-office traits and discovered best-game notes were not automated.",
+      "source_files": "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json",
+      "source_record_ids": "CHI|DAL",
+      "editorial_boundary": "Raw verification is required before publishing a discovered game claim."
+    }
+  ],
+  "source_files": [
+    "csv/out/control/current_state_preflight_1981_target_1981-07-19.csv",
+    "csv/ootp_csv/games.csv",
+    "csv/ootp_csv/teams.csv",
+    "csv/ootp_csv/team_record.csv",
+    "csv/ootp_csv/team_history.csv",
+    "csv/ootp_csv/team_roster_staff.csv",
+    "csv/ootp_csv/coaches.csv",
+    "csv/ootp_csv/parks.csv",
+    "csv/ootp_csv/players_game_batting.csv",
+    "csv/ootp_csv/players_game_pitching_stats.csv",
+    "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_bat_stats.csv",
+    "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_1.csv",
+    "csv/abl_statistics/abl_statistics_player_statistics_-_sortable_stats_player_pitch_stats_2.csv",
+    "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_cur_rec_hist.csv",
+    "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_pers_park.csv",
+    "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+    "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_abl_staff.csv",
+    "csv/out/almanac/1972/games_1972_league200.csv",
+    "csv/out/almanac/1973/games_1973_league200.csv",
+    "csv/out/almanac/1977/games_1977_league200.csv",
+    "csv/out/almanac/1979/games_1979_league200.csv",
+    "csv/out/almanac/1980/games_1980_league200.csv",
+    "csv/out/story/investigations/chicago_dallas_statsplus_enrichment_note_1981_07_20_asof_1981-07-19.json"
+  ]
+}

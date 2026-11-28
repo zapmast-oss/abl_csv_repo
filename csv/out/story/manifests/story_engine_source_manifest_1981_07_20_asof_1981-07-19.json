@@ -1,0 +1,238 @@
+{
+  "run_id": "current_1981_07_20_asof_1981-07-19",
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "entry_count": 25,
+  "sources": [
+    {
+      "source_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+      "used_by_run": "yes",
+      "source_status": "promoted_enrichment",
+      "evidence_role": "enrichment",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/divisions.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/game_logs.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/games.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/games_score.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/players.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/players_career_batting_stats.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/players_career_pitching_stats.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/sub_leagues.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/ootp_csv/teams.csv",
+      "used_by_run": "yes",
+      "source_status": "active_current",
+      "evidence_role": "current_state_fact",
+      "batch_manifest_status": "hash_verified",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/out/almanac/1980/league_champions_1980_league200.csv",
+      "used_by_run": "yes",
+      "source_status": "compatible_historical",
+      "evidence_role": "historical_context",
+      "batch_manifest_status": "not_in_current_batch_historical",
+      "reason": "Used by one or more evidence records."
+    },
+    {
+      "source_file": "csv/out/star_schema/monday_1981_standings_by_division.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "32-game standings snapshot"
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_team_reporting_1981_weekly_change.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "32-game weekly snapshot"
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_player_batting.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "preserved early player snapshot"
+    },
+    {
+      "source_file": "csv/out/star_schema/fact_player_pitching.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "preserved early player snapshot"
+    },
+    {
+      "source_file": "csv/out/csv_out/z_ABL_Manager_Tendencies.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "62-game tendency report"
+    },
+    {
+      "source_file": "csv/out/csv_out/z_ABL_Division_Leverage.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "62-game division report"
+    },
+    {
+      "source_file": "csv/out/csv_out/z_ABL_Rotation_Stability.csv",
+      "used_by_run": "no",
+      "source_status": "excluded_stale_snapshot",
+      "evidence_role": "none",
+      "batch_manifest_status": "excluded",
+      "reason": "62-game rotation report"
+    },
+    {
+      "source_file": "signal:manager_tendency",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "Staff names available, but no cutoff-compatible tactical tendency source."
+    },
+    {
+      "source_file": "signal:staff_id_complete_linkage",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "Removed staff ID fields; unresolved coach-name matches must remain null."
+    },
+    {
+      "source_file": "signal:caught_stealing_rate",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "CS and SB% unavailable in accepted team batting schema without another validated source."
+    },
+    {
+      "source_file": "signal:BatR",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "source_file": "signal:wSB",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "source_file": "signal:UBR",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "source_file": "signal:BsR",
+      "used_by_run": "no",
+      "source_status": "disabled_unavailable",
+      "evidence_role": "disabled_signal",
+      "batch_manifest_status": "not_applicable",
+      "reason": "Removed and unavailable."
+    }
+  ],
+  "disabled_signals": [
+    {
+      "signal": "manager_tendency",
+      "reason": "Staff names available, but no cutoff-compatible tactical tendency source."
+    },
+    {
+      "signal": "staff_id_complete_linkage",
+      "reason": "Removed staff ID fields; unresolved coach-name matches must remain null."
+    },
+    {
+      "signal": "caught_stealing_rate",
+      "reason": "CS and SB% unavailable in accepted team batting schema without another validated source."
+    },
+    {
+      "signal": "BatR",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "wSB",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "UBR",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "BsR",
+      "reason": "Removed and unavailable."
+    }
+  ]
+}

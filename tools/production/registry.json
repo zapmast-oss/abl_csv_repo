@@ -1,0 +1,1846 @@
+{
+  "description": "Master ABL production registry. Owners identify operating roles.",
+  "priority": {
+    "P0": "Protection and source integrity",
+    "P1": "Current production",
+    "P2": "Optional or future production"
+  },
+  "projects": [
+    {
+      "id": "play",
+      "title": "Play and save the league",
+      "section": "baseball",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Advance the ABL in OOTP at the commissioner's chosen pace and capture the saved league date.",
+      "owner": "Commissioner",
+      "automation": "Manual",
+      "priority": "P0",
+      "dependencies": [],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "save:flag_save_completed.dat",
+          "label": "Completed-save marker"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "League reference"
+        }
+      ],
+      "next_action": "Choose the next game, day or series in OOTP. Save before starting a checkpoint."
+    },
+    {
+      "id": "season-calendar",
+      "title": "Season calendar and playing windows",
+      "section": "baseball",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Use league 200 dates and game state to distinguish verified finals from upcoming fixtures.",
+      "owner": "Commissioner",
+      "automation": "Assisted",
+      "priority": "P0",
+      "dependencies": [
+        "Play and save",
+        "OOTP CSV validation"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/ootp_csv/leagues.csv",
+          "label": "OOTP league settings"
+        },
+        {
+          "path": "csv/ootp_csv/games.csv",
+          "label": "OOTP schedule and results"
+        }
+      ],
+      "next_action": "Choose the playing window and record it at session close."
+    },
+    {
+      "id": "september",
+      "title": "September call-ups",
+      "section": "baseball",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Capture a pre-expansion roster baseline and verify actual moves, player roles and affiliate context.",
+      "owner": "Commissioner and newsroom",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Before-and-after exports",
+        "affiliate map"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "csv/ootp_csv/leagues.csv",
+          "label": "September 1 roster expansion setting"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Affiliate and roster reference"
+        }
+      ],
+      "next_action": "At OOTP's expansion event, export both roster states and reconcile call-ups before coverage."
+    },
+    {
+      "id": "postseason",
+      "title": "Postseason qualification and coverage",
+      "section": "baseball",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Prepare DCS, CCS and Grand Series coverage using three division winners and one wild card per conference.",
+      "owner": "Commissioner and newsroom",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Final regular-season standings",
+        "official fixtures",
+        "1981 DCS protection"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "docs/ABL_POSTSEASON_RULES.md",
+          "label": "Postseason rules authority"
+        },
+        {
+          "path": "csv/ootp_csv/league_playoffs.csv",
+          "label": "OOTP playoff settings"
+        }
+      ],
+      "next_action": "Validate the field against OOTP and apply same-division DCS protection before any bracket is used."
+    },
+    {
+      "id": "end-season",
+      "title": "Season close and rollover",
+      "section": "baseball",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Freeze regular-season and postseason evidence, final reports and protection receipts before rollover.",
+      "owner": "Commissioner and preservation",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Final scores and awards",
+        "league safety copy",
+        "verified archive"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Season-close checklist"
+        },
+        {
+          "path": "VALIDATION_RUNBOOK.md",
+          "label": "Historical pack validation"
+        }
+      ],
+      "next_action": "Use the season-end checkpoint at the Grand Series final and before confirming OOTP rollover."
+    },
+    {
+      "id": "verified-input",
+      "title": "OOTP export and verification",
+      "section": "desk",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Stage the 72 registered game exports and reconcile results, logs, player totals and as-of date.",
+      "owner": "ABL data operations",
+      "automation": "Assisted",
+      "priority": "P0",
+      "dependencies": [
+        "OOTP CSV export",
+        "registered source schema"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/abl_scripts/abl_newsroom_verify.py",
+          "label": "Active export verifier"
+        },
+        {
+          "path": "docs/ABL_CURRENT_STATE_PREFLIGHT.md",
+          "label": "Preflight rules"
+        }
+      ],
+      "next_action": "Export from the saved league and validate the intended cutoff before preparing coverage."
+    },
+    {
+      "id": "intelligence",
+      "title": "League intelligence and continuity",
+      "section": "desk",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Refresh the ABL 411, results memo, standings movement and club story continuity from verified games.",
+      "owner": "Newsroom",
+      "automation": "Automatic",
+      "priority": "P1",
+      "dependencies": [
+        "Verified OOTP CSV",
+        "current edition"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Newsroom reading room"
+        },
+        {
+          "path": "csv/abl_scripts/abl_newsroom_dailydesk.py",
+          "label": "Daily Desk builder"
+        }
+      ],
+      "next_action": "Read the latest desk sheet after each completed export."
+    },
+    {
+      "id": "story-engine",
+      "title": "Story candidates and claim evidence",
+      "section": "desk",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Surface traceable candidates and preserve correction and continuity evidence for story selection.",
+      "owner": "Newsroom",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Current Desk",
+        "cutoff-compatible evidence"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "docs/ABL_STORY_EVIDENCE_SCHEMA.md",
+          "label": "Claim evidence schema"
+        },
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current story slate"
+        }
+      ],
+      "next_action": "Review the slate and chase a claim only when its evidence answers the reporting question."
+    },
+    {
+      "id": "statsplus-profile",
+      "title": "StatsPlus and sortable enrichment",
+      "section": "desk",
+      "status": "Historical baseline",
+      "basis": "Verified",
+      "purpose": "Use modeled odds, ELO and other enrichment with explicit as-of and authority labels.",
+      "owner": "ABL data operations",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Fresh StatsPlus batch",
+        "preflight",
+        "reconciliation and promotion approval"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "docs/ABL_STATSPLUS_FRESH_CAPTURE_RUNBOOK.md",
+          "label": "Fresh capture and promotion"
+        },
+        {
+          "path": "csv/out/control/statsplus_promotion_verification_1981_asof_1981-07-19.json",
+          "label": "July 19 promotion receipt"
+        },
+        {
+          "path": "docs/ABL_SORTABLE_STATS_RECONCILIATION_RUNBOOK.md",
+          "label": "Sortable stats reconciliation"
+        }
+      ],
+      "next_action": "Profile a fresh batch before using model fields for August or later coverage."
+    },
+    {
+      "id": "review",
+      "title": "Story selection and corrections",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Select leads, review source claims and create a dated revision when approved copy changes.",
+      "owner": "Commissioner and newsroom",
+      "automation": "Manual",
+      "priority": "P1",
+      "dependencies": [
+        "Prepared slate",
+        "immutable evidence",
+        "editorial decision"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "tools/newsroom/reviews/editorial-handoff.md",
+          "label": "Review handoff"
+        },
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Reading room and reviewed issue"
+        }
+      ],
+      "next_action": "Review the next slate and file a linked revision for any approved correction."
+    },
+    {
+      "id": "newsroom-poll",
+      "title": "Daily Newsroom export poll",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Watch the OOTP export fingerprint and prepare a local desk edition when the source changes.",
+      "owner": "ABL data operations",
+      "automation": "Automatic",
+      "priority": "P1",
+      "dependencies": [
+        "Windows interactive user",
+        "completed CSV export",
+        "verifier"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "logs/newsroom_control/poll-state.json",
+          "label": "Latest poll state"
+        },
+        {
+          "path": "csv/out/story/newsroom/acceptance/production-control.json",
+          "label": "Poll and menu acceptance"
+        },
+        {
+          "path": "scripts/abl_newsroom_control.py",
+          "label": "Existing polling entry point"
+        }
+      ],
+      "next_action": "Check the last receipt for failures or stale inputs before relying on the edition."
+    },
+    {
+      "id": "league-wire",
+      "title": "Division wire and ballpark coverage",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Track movement, direct matchups and follow-up questions across all six divisions.",
+      "owner": "Newsroom",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "team records",
+        "schedule"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current Desk and Beat Reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division and franchise map"
+        }
+      ],
+      "next_action": "Update each division after its relevant series and select stories for review."
+    },
+    {
+      "id": "observer",
+      "title": "Baseball Observer",
+      "section": "programming",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Develop the leading evidence-backed narrative and identify the next game that can resolve it.",
+      "owner": "Ernie Bewell desk and commissioner",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified slate",
+        "editorial review"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Reviewed Observer issue"
+        },
+        {
+          "path": "baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md",
+          "label": "August 19 Showcase desk"
+        }
+      ],
+      "next_action": "Choose an angle for the next Observer issue and review the evidence packet."
+    },
+    {
+      "id": "411",
+      "title": "ABL 411",
+      "section": "programming",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Brief the commissioner on results, division movement and upcoming schedule.",
+      "owner": "Newsroom",
+      "automation": "Automatic",
+      "priority": "P1",
+      "dependencies": [
+        "Verified daily desk"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "csv/abl_scripts/abl_newsroom_dailydesk.py",
+          "label": "Desk generation"
+        }
+      ],
+      "next_action": "Use the current 411 as the post-day and pregame briefing."
+    },
+    {
+      "id": "ballpark-feed",
+      "title": "Ballpark Feed and featured games",
+      "section": "programming",
+      "status": "Prepared",
+      "basis": "Verified",
+      "purpose": "Package a game intro, game footage and a recap around verified matchup stakes.",
+      "owner": "SBV producer",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Chosen showcase game",
+        "pregame evidence",
+        "original recording"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/production/chicago_dallas_ballpark_feed_setup_1981_07_20_asof_1981-07-19.md",
+          "label": "Historical Ballpark Feed setup"
+        },
+        {
+          "path": "baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md",
+          "label": "August Showcase prep"
+        }
+      ],
+      "next_action": "Choose a featured game and prepare its intro before first pitch."
+    },
+    {
+      "id": "monday",
+      "title": "It's Monday weekly program",
+      "section": "programming",
+      "status": "Prepared",
+      "basis": "Verified",
+      "purpose": "Compare the past reporting week with the current division races and select a weekly segment mix.",
+      "owner": "Ernie Bewell desk and SBV producer",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Prior and current cutoff",
+        "schedule",
+        "reviewed story slate"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/docs/its_monday_video_structure.md",
+          "label": "Program structure"
+        },
+        {
+          "path": "csv/abl_scripts/z_abl_baseball_observer_packet_weekly_1981.py",
+          "label": "Weekly packet builder"
+        }
+      ],
+      "next_action": "At the first Monday desk, run the weekly packet for the last completed reporting window."
+    },
+    {
+      "id": "deep-dive",
+      "title": "Deep Dive 25 and flashback programming",
+      "section": "programming",
+      "status": "Prepared",
+      "basis": "Verified",
+      "purpose": "Prepare season retrospectives and contrast current stories with supported historical context.",
+      "owner": "ABL historian and SBV producer",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Season-pack validation",
+        "archived stats",
+        "editorial review"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/control/deep_dive_25_legacy_text_inventory.csv",
+          "label": "Legacy Deep Dive inventory"
+        },
+        {
+          "path": "csv/out/almanac/1980/eb_flashback_brief_1980_league200.md",
+          "label": "1980 flashback brief"
+        }
+      ],
+      "next_action": "Select a season and test its archival claims before scripting."
+    },
+    {
+      "id": "production-control",
+      "title": "Production Control menu",
+      "section": "operations",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Launch the dashboard and session controller through the established PowerShell menu.",
+      "owner": "Commissioner",
+      "automation": "Assisted",
+      "priority": "P0",
+      "dependencies": [
+        "PowerShell",
+        "Python 3.12",
+        "repository"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "scripts:ABL-Production-Control.ps1",
+          "label": "Live menu"
+        },
+        {
+          "path": "tools/production/Install-ABLCommandCenter.ps1",
+          "label": "Command Center menu integration"
+        }
+      ],
+      "next_action": "Open the Command Center from Production Control at the start of play."
+    },
+    {
+      "id": "backup-league",
+      "title": "League safety backup",
+      "section": "operations",
+      "status": "Drive dependent",
+      "basis": "Verified",
+      "purpose": "Keep a rolling safety copy of the saved game and record the verified data files for the session.",
+      "owner": "Commissioner and preservation",
+      "automation": "Assisted",
+      "priority": "P0",
+      "dependencies": [
+        "Completed OOTP save",
+        "H: available"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "scripts:Backup ABL League.ps1",
+          "label": "League backup operation"
+        },
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Protection and recovery"
+        }
+      ],
+      "next_action": "Connect H: and run the protected checkpoint before starting optional production."
+    },
+    {
+      "id": "input-sync",
+      "title": "ABL Input Data and repository update",
+      "section": "operations",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Use the existing exact-set Preview and checksum-verified Update for the repository CSV mirror.",
+      "owner": "ABL data operations",
+      "automation": "Assisted",
+      "priority": "P0",
+      "dependencies": [
+        "Verified OOTP capture",
+        "repository write access"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "scripts:Update the Repo.ps1",
+          "label": "Live Preview and Update script"
+        },
+        {
+          "path": "logs/input_updates",
+          "label": "Native input update history"
+        }
+      ],
+      "next_action": "Preview differences, then approve Update when ready to refresh inputs."
+    },
+    {
+      "id": "analytics",
+      "title": "Star schema and analytic reports",
+      "section": "operations",
+      "status": "Prepared",
+      "basis": "Verified",
+      "purpose": "Build compatible fact tables and analytic reports for stats, comparison and EB research.",
+      "owner": "ABL data operations",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Synchronized CSV snapshot",
+        "compatible optional statistics"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/abl_scripts/build_star_schema.py",
+          "label": "Star schema builder"
+        },
+        {
+          "path": "csv/out/star_schema",
+          "label": "Generated facts and dimensions"
+        },
+        {
+          "path": "docs/ABL_REPO_MAP.md",
+          "label": "Repository map"
+        }
+      ],
+      "next_action": "Run the selected build against a verified cutoff and retain its output receipt."
+    },
+    {
+      "id": "html-reports",
+      "title": "OOTP HTML report generation",
+      "section": "operations",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Generate and inspect the OOTP HTML report tree for the chosen saved state.",
+      "owner": "Commissioner",
+      "automation": "Manual",
+      "priority": "P1",
+      "dependencies": [
+        "Saved OOTP game",
+        "report settings"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "save:news/html/index.html",
+          "label": "Generated local HTML"
+        },
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "HTML lane procedure"
+        }
+      ],
+      "next_action": "Generate reports in OOTP when a website update or a historical freeze is needed."
+    },
+    {
+      "id": "obs",
+      "title": "OBS recordings and footage",
+      "section": "operations",
+      "status": "Manual",
+      "basis": "Verified",
+      "purpose": "Record selected games and retain original MKV footage before cutting a program.",
+      "owner": "SBV producer",
+      "automation": "Manual",
+      "priority": "P1",
+      "dependencies": [
+        "Commissioner-selected match",
+        "OBS",
+        "available storage"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "home:Videos",
+          "label": "OBS source folder"
+        },
+        {
+          "path": "scripts:Backup SBV Videos.ps1",
+          "label": "Originals copy lane"
+        }
+      ],
+      "next_action": "Close the recording and play a short sample before backing up."
+    },
+    {
+      "id": "masters",
+      "title": "Voiceover, edit and production masters",
+      "section": "operations",
+      "status": "Manual",
+      "basis": "Verified",
+      "purpose": "Assemble approved narration and visuals and render a production master.",
+      "owner": "SBV producer",
+      "automation": "Manual",
+      "priority": "P2",
+      "dependencies": [
+        "Reviewed script",
+        "recordings and renders"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "scripts:Backup SBV Videos.ps1",
+          "label": "MP4 master copy lane"
+        },
+        {
+          "path": "csv/docs/its_monday_video_structure.md",
+          "label": "Editing and segment structure"
+        }
+      ],
+      "next_action": "Verify the rendered master before queuing the exact file for approval."
+    },
+    {
+      "id": "backup-video",
+      "title": "Video originals and masters backup",
+      "section": "operations",
+      "status": "Drive dependent",
+      "basis": "Verified",
+      "purpose": "Preserve top-level OBS MKVs and finished MP4s on H: using the existing two copy lanes.",
+      "owner": "SBV producer and preservation",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Closed MKV and MP4 files",
+        "H: available"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "scripts:Backup SBV Videos.ps1",
+          "label": "Native Preview and Update"
+        }
+      ],
+      "next_action": "Preview both lanes and explicitly run Update after the media stop changing."
+    },
+    {
+      "id": "mirror",
+      "title": "H: to I: mirror and verification",
+      "section": "archives",
+      "status": "Drive dependent",
+      "basis": "Verified",
+      "purpose": "Use read-only verification to inspect replica drift and separately authorize any mirror deletions.",
+      "owner": "Preservation",
+      "automation": "Assisted",
+      "priority": "P0",
+      "dependencies": [
+        "Correct H: and I: volumes",
+        "reviewed difference list"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "scripts:Verify H to I Mirror.ps1",
+          "label": "Read-only verification"
+        },
+        {
+          "path": "scripts:Mirror H to I.ps1",
+          "label": "Legacy destructive mirror"
+        }
+      ],
+      "next_action": "Verify on both mounted volumes and inspect extras, failures and exclusions before deciding on a mirror update."
+    },
+    {
+      "id": "html-website",
+      "title": "HTML website update",
+      "section": "archives",
+      "status": "Unconfirmed",
+      "basis": "Unconfirmed",
+      "purpose": "Release an approved HTML report bundle to the established site and retain its receipt.",
+      "owner": "SBV publisher",
+      "automation": "Manual",
+      "priority": "P1",
+      "dependencies": [
+        "Generated HTML",
+        "exact reviewed bundle",
+        "site destination"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "save:news/html/index.html",
+          "label": "Local report bundle entry"
+        },
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "HTML release procedure"
+        }
+      ],
+      "next_action": "Verify the site destination and upload procedure with the commissioner before the first tracked update."
+    },
+    {
+      "id": "statsplus-update",
+      "title": "StatsPlus league update",
+      "section": "archives",
+      "status": "Unconfirmed",
+      "basis": "Unconfirmed",
+      "purpose": "Track the external StatsPlus league refresh independently from OOTP CSV sync and local enrichment.",
+      "owner": "Commissioner and SBV publisher",
+      "automation": "Manual",
+      "priority": "P1",
+      "dependencies": [
+        "Verified source cutoff",
+        "StatsPlus destination and configured interface"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "docs/ABL_STATSPLUS_AUTHORITY_RULES.md",
+          "label": "StatsPlus authority and use"
+        }
+      ],
+      "next_action": "Confirm the active StatsPlus upload process and record approval and the resulting link separately."
+    },
+    {
+      "id": "external-editorial",
+      "title": "Editorial, forum and video releases",
+      "section": "archives",
+      "status": "Ready",
+      "basis": "Verified",
+      "purpose": "Keep the reviewed artifact hash, channel, approval and final public URL together.",
+      "owner": "Commissioner and SBV publisher",
+      "automation": "Manual",
+      "priority": "P1",
+      "dependencies": [
+        "Commissioner approval",
+        "exact artifact",
+        "channel"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Approval and receipt workflow"
+        },
+        {
+          "path": "tools/production/abl_production.py",
+          "label": "Local release ledger"
+        }
+      ],
+      "next_action": "Queue the selected exact artifact, obtain approval, and record its URL after manual publication."
+    },
+    {
+      "id": "session-archives",
+      "title": "Session checkpoint archive",
+      "section": "archives",
+      "status": "Ready",
+      "basis": "Verified",
+      "purpose": "Retain protected-session receipts, source fingerprints, run logs, deferred work and publication decisions.",
+      "owner": "Preservation",
+      "automation": "Automatic",
+      "priority": "P0",
+      "dependencies": [
+        "Verified league backup and session record"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "tools/production/abl_production_workflow.py",
+          "label": "Checkpoint writer"
+        },
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Checkpoint and rerun procedure"
+        }
+      ],
+      "next_action": "Close each played session and retain the recorded checkpoint and any pending work."
+    },
+    {
+      "id": "almanac",
+      "title": "Historical reconstruction and almanac",
+      "section": "archives",
+      "status": "Prepared",
+      "basis": "Verified",
+      "purpose": "Preserve source HTML and derived season packs for 1972 through 1980 with source-level validation.",
+      "owner": "ABL historian",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Archived OOTP HTML",
+        "season-specific extractors"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/in/almanac_core",
+          "label": "Archived source HTML"
+        },
+        {
+          "path": "csv/out/almanac",
+          "label": "Historical seasons"
+        },
+        {
+          "path": "VALIDATION_RUNBOOK.md",
+          "label": "Pack regeneration and verification"
+        }
+      ],
+      "next_action": "Rebuild or extend a historical season only when inputs and intended coverage are clear."
+    },
+    {
+      "id": "provenance",
+      "title": "Data governance and historical source pack",
+      "section": "archives",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Retain source precedence, cutoff compatibility and the July project history behind current work.",
+      "owner": "ABL data operations",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Registered inputs",
+        "original documentation"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "docs/ABL_DATA_SOURCE_GOVERNANCE.md",
+          "label": "Source governance"
+        },
+        {
+          "path": "_chatgpt_project_source/00_START_HERE.md",
+          "label": "July 20 project source pack"
+        }
+      ],
+      "next_action": "Use the newest verified August edition for current operations and keep each historical pack dated."
+    },
+    {
+      "id": "restore",
+      "title": "Restore drill and dated milestones",
+      "section": "roadmap",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Exercise a full restore to a disposable OOTP save and retain dated postseason or season-end copies.",
+      "owner": "Preservation",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Backup drive",
+        "disposable restore location",
+        "operator validation"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "scripts:Backup ABL League.ps1",
+          "label": "Backup source and destination controls"
+        },
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Preservation procedure"
+        }
+      ],
+      "next_action": "Test a restore from the safety copy to a disposable OOTP save and log the result."
+    },
+    {
+      "id": "weekly-automation",
+      "title": "Weekly and milestone preparation",
+      "section": "roadmap",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Package deterministic Monday and milestone outputs on compatible inputs for human review.",
+      "owner": "ABL data operations and newsroom",
+      "automation": "Assisted",
+      "priority": "P2",
+      "dependencies": [
+        "Baseline snapshots and test fixtures"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "docs/ABL_EXISTING_ENGINE_INVENTORY.md",
+          "label": "Existing engines"
+        },
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Exact cadence triggers"
+        }
+      ],
+      "next_action": "Verify weekly and call-up outputs against two known checkpoints before adding automation."
+    },
+    {
+      "id": "postseason-engine",
+      "title": "Postseason and tournament automation",
+      "section": "roadmap",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Test official qualification, DCS protection, clinch/elimination and postseason game coverage.",
+      "owner": "ABL data operations",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "OOTP playoffs fixtures",
+        "rule evidence",
+        "replay tests"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "docs/ABL_POSTSEASON_RULES.md",
+          "label": "Postseason rule authority"
+        },
+        {
+          "path": "docs/ABL_OPEN_LOOPS_BACKLOG.md",
+          "label": "Postseason work items"
+        }
+      ],
+      "next_action": "Build postseason test fixtures from actual archive evidence before enabling automated claims."
+    },
+    {
+      "id": "channel-audit",
+      "title": "Publishing channel inventory",
+      "section": "roadmap",
+      "status": "Planned",
+      "basis": "Proposed",
+      "purpose": "Confirm destination, access, approval handoff and archive locations for each external channel.",
+      "owner": "Commissioner and SBV publisher",
+      "automation": "Manual",
+      "priority": "P2",
+      "dependencies": [
+        "Commissioner and SBV platform workflows"
+      ],
+      "last_verified": null,
+      "evidence": [
+        {
+          "path": "docs/ABL_COMMAND_CENTER.md",
+          "label": "Release workflow"
+        }
+      ],
+      "next_action": "Verify the HTML site, StatsPlus, forum and video destinations with actual operator evidence."
+    },
+    {
+      "id": "division-nbc-east",
+      "title": "NBC Eastern Division",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Follow the NBC east race, divisional series, schedule pressure and standing movement.",
+      "owner": "Newsroom division desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified schedule and division reports"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division membership"
+        }
+      ],
+      "next_action": "Review the 411 and the next divisional series immediately after the last game."
+    },
+    {
+      "id": "division-nbc-central",
+      "title": "NBC Central Division",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Follow the NBC central race, divisional series, schedule pressure and standing movement.",
+      "owner": "Newsroom division desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified schedule and division reports"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division membership"
+        }
+      ],
+      "next_action": "Review the 411 and the next divisional series immediately after the last game."
+    },
+    {
+      "id": "division-nbc-west",
+      "title": "NBC Western Division",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Follow the NBC west race, divisional series, schedule pressure and standing movement.",
+      "owner": "Newsroom division desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified schedule and division reports"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division membership"
+        }
+      ],
+      "next_action": "Review the 411 and the next divisional series immediately after the last game."
+    },
+    {
+      "id": "division-abc-east",
+      "title": "ABC Eastern Division",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Follow the ABC east race, divisional series, schedule pressure and standing movement.",
+      "owner": "Newsroom division desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified schedule and division reports"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division membership"
+        }
+      ],
+      "next_action": "Review the 411 and the next divisional series immediately after the last game."
+    },
+    {
+      "id": "division-abc-central",
+      "title": "ABC Central Division",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Follow the ABC central race, divisional series, schedule pressure and standing movement.",
+      "owner": "Newsroom division desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified schedule and division reports"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division membership"
+        }
+      ],
+      "next_action": "Review the 411 and the next divisional series immediately after the last game."
+    },
+    {
+      "id": "division-abc-west",
+      "title": "ABC Western Division",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Follow the ABC west race, divisional series, schedule pressure and standing movement.",
+      "owner": "Newsroom division desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified schedule and division reports"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current ABL 411"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Division membership"
+        }
+      ],
+      "next_action": "Review the 411 and the next divisional series immediately after the last game."
+    },
+    {
+      "id": "beat-mia",
+      "title": "Miami Hurricanes",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Miami Hurricanes's results, current roster questions and reporting continuity in the NBC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 1,
+      "division": "division-nbc-east"
+    },
+    {
+      "id": "beat-pho",
+      "title": "Phoenix Firebirds",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Phoenix Firebirds's results, current roster questions and reporting continuity in the NBC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 2,
+      "division": "division-nbc-west"
+    },
+    {
+      "id": "beat-atl",
+      "title": "Atlanta Kings",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Atlanta Kings's results, current roster questions and reporting continuity in the NBC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 3,
+      "division": "division-nbc-east"
+    },
+    {
+      "id": "beat-dal",
+      "title": "Dallas Rustlers",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Dallas Rustlers's results, current roster questions and reporting continuity in the NBC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 4,
+      "division": "division-nbc-central"
+    },
+    {
+      "id": "beat-det",
+      "title": "Detroit Dukes",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Detroit Dukes's results, current roster questions and reporting continuity in the NBC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 5,
+      "division": "division-nbc-central"
+    },
+    {
+      "id": "beat-cha",
+      "title": "Charlotte Colonels",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Charlotte Colonels's results, current roster questions and reporting continuity in the NBC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 6,
+      "division": "division-nbc-east"
+    },
+    {
+      "id": "beat-sd",
+      "title": "San Diego Seraphs",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain San Diego Seraphs's results, current roster questions and reporting continuity in the NBC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 7,
+      "division": "division-nbc-west"
+    },
+    {
+      "id": "beat-tb",
+      "title": "Tampa Bay Storm",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Tampa Bay Storm's results, current roster questions and reporting continuity in the NBC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 8,
+      "division": "division-nbc-east"
+    },
+    {
+      "id": "beat-la",
+      "title": "Los Angeles Cobras",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Los Angeles Cobras's results, current roster questions and reporting continuity in the NBC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 9,
+      "division": "division-nbc-west"
+    },
+    {
+      "id": "beat-sf",
+      "title": "San Francisco Warriors",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain San Francisco Warriors's results, current roster questions and reporting continuity in the NBC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 10,
+      "division": "division-nbc-west"
+    },
+    {
+      "id": "beat-min",
+      "title": "Minneapolis Blizzard",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Minneapolis Blizzard's results, current roster questions and reporting continuity in the NBC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 11,
+      "division": "division-nbc-central"
+    },
+    {
+      "id": "beat-chi",
+      "title": "Chicago Fire",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Chicago Fire's results, current roster questions and reporting continuity in the NBC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 12,
+      "division": "division-nbc-central"
+    },
+    {
+      "id": "beat-den",
+      "title": "Denver Rocketeers",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Denver Rocketeers's results, current roster questions and reporting continuity in the ABC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 13,
+      "division": "division-abc-west"
+    },
+    {
+      "id": "beat-cin",
+      "title": "Cincinnati Cougars",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Cincinnati Cougars's results, current roster questions and reporting continuity in the ABC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 14,
+      "division": "division-abc-central"
+    },
+    {
+      "id": "beat-ny",
+      "title": "New York Aces",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain New York Aces's results, current roster questions and reporting continuity in the ABC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 15,
+      "division": "division-abc-east"
+    },
+    {
+      "id": "beat-nas",
+      "title": "Nashville Blues",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Nashville Blues's results, current roster questions and reporting continuity in the ABC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 16,
+      "division": "division-abc-central"
+    },
+    {
+      "id": "beat-lv",
+      "title": "Las Vegas Gamblers",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Las Vegas Gamblers's results, current roster questions and reporting continuity in the ABC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 17,
+      "division": "division-abc-west"
+    },
+    {
+      "id": "beat-por",
+      "title": "Portland Lumberjacks",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Portland Lumberjacks's results, current roster questions and reporting continuity in the ABC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 18,
+      "division": "division-abc-west"
+    },
+    {
+      "id": "beat-stl",
+      "title": "St. Louis Stallions",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain St. Louis Stallions's results, current roster questions and reporting continuity in the ABC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 19,
+      "division": "division-abc-central"
+    },
+    {
+      "id": "beat-bos",
+      "title": "Boston Patriots",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Boston Patriots's results, current roster questions and reporting continuity in the ABC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 20,
+      "division": "division-abc-east"
+    },
+    {
+      "id": "beat-pit",
+      "title": "Pittsburgh Express",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Pittsburgh Express's results, current roster questions and reporting continuity in the ABC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 21,
+      "division": "division-abc-east"
+    },
+    {
+      "id": "beat-phi",
+      "title": "Philadelphia Fury",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Philadelphia Fury's results, current roster questions and reporting continuity in the ABC Eastern Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 22,
+      "division": "division-abc-east"
+    },
+    {
+      "id": "beat-hou",
+      "title": "Houston Mavericks",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Houston Mavericks's results, current roster questions and reporting continuity in the ABC Central Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 23,
+      "division": "division-abc-central"
+    },
+    {
+      "id": "beat-sea",
+      "title": "Seattle Comets",
+      "section": "newsroom",
+      "status": "Operating",
+      "basis": "Verified",
+      "purpose": "Maintain Seattle Comets's results, current roster questions and reporting continuity in the ABC Western Division.",
+      "owner": "Newsroom franchise desk",
+      "automation": "Assisted",
+      "priority": "P1",
+      "dependencies": [
+        "Verified Desk",
+        "OOTP evidence and franchise assignment"
+      ],
+      "last_verified": "2026-11-22",
+      "evidence": [
+        {
+          "path": "csv/out/story/newsroom/index.html",
+          "label": "Current franchise beat reports"
+        },
+        {
+          "path": "docs/ABL_LEAGUE_AND_FRANCHISE_REFERENCE.md",
+          "label": "Franchise and affiliates"
+        }
+      ],
+      "next_action": "Read the current beat assignment, then verify and select follow-ups after the next series.",
+      "team_id": 24,
+      "division": "division-abc-west"
+    }
+  ]
+}

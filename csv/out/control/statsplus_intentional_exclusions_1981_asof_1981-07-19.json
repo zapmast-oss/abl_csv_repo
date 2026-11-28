@@ -1,0 +1,19 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-19",
+  "exclusions_correctly_marked": true,
+  "exclusions": [
+    {
+      "table_number": 6,
+      "table": "standings",
+      "reason": "Current standings are governed through raw OOTP current-state authority.",
+      "status": "intentionally excluded from Feed 3 promotion"
+    },
+    {
+      "table_number": 27,
+      "table": "Grand Tournament of Champions history",
+      "reason": "The table does not change until postseason.",
+      "status": "intentionally excluded from this current refresh"
+    }
+  ]
+}

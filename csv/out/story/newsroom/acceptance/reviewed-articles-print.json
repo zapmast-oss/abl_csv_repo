@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "cycle": "1981-08-19_2acae29146076f62",
+  "issue_revision": "d486b29935a56f9145e3",
+  "checked_at_utc": "2026-11-21T20:29:55.488396+00:00",
+  "pdf_files": 2,
+  "pages": 2,
+  "articles": [
+    {
+      "pdf": "league/miami-needs-a-game-before-charlotte.pdf",
+      "pages": 1,
+      "pdf_sha256": "706f8cae1a92e1746f8c5067200687f66499100772096db8e25ac250795b56dd",
+      "approval_sha256": "73d19d48cd3bb78b8f45c3a720aa13ef538760af756601ab52d985b9f4b76a62"
+    },
+    {
+      "pdf": "observer/phoenix-san-francisco-first-place.pdf",
+      "pages": 1,
+      "pdf_sha256": "31226803685fa93f93755ab6b32678661b50cd8b1086eb7bce90e63eb6cc352a",
+      "approval_sha256": "6dbe3dc98dae218f94176115b7324a931efbf4c509947f4fc828fd324e93eae5"
+    }
+  ],
+  "checks": [
+    "Every approved paragraph appears in the matching production Markdown. Approved copy digests match the archived review records.",
+    "The text of each production PDF matches its entire Markdown counterpart, including the reporting record, after normalizing whitespace, Unicode, Markdown headings and printed footers.",
+    "Both US Letter PDFs were rendered at 95 DPI with Poppler and read from beginning to end. Titles, bylines, body text, source notes and footers are legible, with no overflow, extra pages or orphaned sections.",
+    "All word bounds lie between 32 and 581 horizontal points and between 24 and 781 vertical points."
+  ]
+}

@@ -10,6 +10,9 @@ from typing import Dict, List, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 from abl_config import stamp_text_block
+from abl_path_policy import validate_output_paths
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -440,19 +443,14 @@ def build_text_report(df: pd.DataFrame, limit: int = 24) -> str:
         "ABL Manager Tendencies",
         "=" * 26,
         "Summarizes each skipper's small-ball usage, hook speed, and platoon appetite versus league norms.",
-        "Useful for scouting playoff matchupsâ€”know who bunts, who yanks starters fast, and who trusts platoons.",
+        "Useful for scouting playoff matchups?know who bunts, who yanks starters fast, and who trusts platoons.",
         "",
     ]
-    table_header = (
-        f"{'Manager / Team':<30} | {'Rating':<11} {'Idx':>6} | "
-        f"{'Small':<11} {'Idx':>6} | {'Hook':<11} {'Idx':>6} | "
-        f"{'Platoon':<13} {'Idx':>6}"
-    )
-    lines.append(table_header)
-    lines.append("-" * len(table_header))
+
     def fmt_val(val: float) -> str:
         return f"{val:.3f}" if pd.notna(val) else "NA"
 
+    rows = []
     for _, row in df.head(limit).iterrows():
         team_name = row["team_display"] or f"Team {int(row['team_id'])}"
         team_abbr = row.get("team_abbr", "").strip()
@@ -464,20 +462,52 @@ def build_text_report(df: pd.DataFrame, limit: int = 24) -> str:
         tag = row.get("conf_div", "")
         combo = f"{team_abbr} {tag}".strip()
         row_header = f"{manager} ({combo})" if manager else combo
-        small_label = row.get("smallball_rating", "NA")
-        hook_label = row.get("hook_rating", "NA")
-        platoon_label = row.get("platoon_rating", "NA")
-        mgr_idx = row.get("manager_index")
-        rating_label = row.get("manager_rating", "NA")
-        small_idx = fmt_val(row.get("smallball_index"))
-        hook_idx = fmt_val(row.get("hook_index"))
-        platoon_idx = fmt_val(row.get("platoon_index"))
-        lines.append(
-            f"{row_header:<30} | {rating_label:<11} {fmt_val(mgr_idx):>6} | "
-            f"{small_label:<11} {small_idx:>6} | {hook_label:<11} {hook_idx:>6} | "
-            f"{platoon_label:<13} {platoon_idx:>6}"
+        rows.append(
+            (
+                row_header,
+                row.get("manager_rating", "NA"),
+                fmt_val(row.get("manager_index")),
+                row.get("smallball_rating", "NA"),
+                fmt_val(row.get("smallball_index")),
+                row.get("hook_rating", "NA"),
+                fmt_val(row.get("hook_index")),
+                row.get("platoon_rating", "NA"),
+                fmt_val(row.get("platoon_index")),
+            )
         )
+
+    headers = [
+        "Manager / Team",
+        "Rating",
+        "Idx",
+        "Small",
+        "Idx",
+        "Hook",
+        "Idx",
+        "Platoon",
+        "Idx",
+    ]
+    col_widths = [len(h) for h in headers]
+    for r in rows:
+        for i, val in enumerate(r):
+            col_widths[i] = max(col_widths[i], len(str(val)))
+
+    def fmt_row(vals):
+        return (
+            f"{vals[0]:<{col_widths[0]}} | "
+            f"{vals[1]:<{col_widths[1]}} {vals[2]:>{col_widths[2]}} | "
+            f"{vals[3]:<{col_widths[3]}} {vals[4]:>{col_widths[4]}} | "
+            f"{vals[5]:<{col_widths[5]}} {vals[6]:>{col_widths[6]}} | "
+            f"{vals[7]:<{col_widths[7]}} {vals[8]:>{col_widths[8]}}"
+        )
+
+    header_line = fmt_row(headers)
+    lines.append(header_line)
+    lines.append("-" * len(header_line))
+    for r in rows:
+        lines.append(fmt_row(r))
     lines.append("")
+
     lines.append("Key:")
     lines.append("  Small-ball ratings: Bunt & Run (>=1.30), Pressure (1.10-1.29), Balanced (0.90-1.09), Swing Away (<0.90).")
     lines.append("  Hook ratings: Quick Hook (>=1.15), Short Leash (1.00-1.14), Standard (0.85-0.99), Patient (<0.85).")
@@ -507,8 +537,8 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/csv_out/z_ABL_Manager_Tendencies.csv",
-        help="Output CSV path (default inside out/csv_out).",
+        default="csv/out/csv_out/z_ABL_Manager_Tendencies.csv",
+        help="Output CSV path (default inside csv/out/csv_out).",
     )
     return parser.parse_args(argv)
 
@@ -626,17 +656,20 @@ def main(argv: Optional[List[str]] = None) -> None:
         na_position="last",
     )
 
-    out_path = (base_dir / args.out).resolve()
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    report.to_csv(out_path, index=False)
+    out_path = Path(args.out)
+    if not out_path.is_absolute():
+        out_path = REPO_ROOT / out_path
 
     text_filename = out_path.with_suffix(".txt").name
     if out_path.parent.name.lower() in {'csv_out'}:
-        text_dir = out_path.parent.parent / "txt_out"
+        text_dir = out_path.parent.parent / "text_out"
     else:
         text_dir = out_path.parent
-    text_dir.mkdir(parents=True, exist_ok=True)
     text_path = text_dir / text_filename
+    validate_output_paths((out_path, text_path), REPO_ROOT)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    report.to_csv(out_path, index=False)
+    text_dir.mkdir(parents=True, exist_ok=True)
     text_path.write_text(stamp_text_block(build_text_report(report)), encoding="utf-8")
 
     preview = report.head(12)

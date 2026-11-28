@@ -1,0 +1,126 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "cincinnati-one-gain-one-new-problem",
+  "title": "Cincinnati gained on Houston and picked up a rival",
+  "kind": "beat",
+  "byline": "Cincinnati Cougars beat",
+  "team_ids": [
+    14
+  ],
+  "story_ids": [
+    "14:1981:race",
+    "14:1981:player:7584:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Cincinnati lost to Houston in 16 innings August 24. The next day Alex Perez struck out ten and held the Mavericks scoreless for 8⅓ innings in a 4–0 win. The split was useful. The Cougars gained a game and a half on Houston over the challenge even though they went 4–6.",
+        "The trip to St. Louis shows why that progress has limits. The Cougars scored one run in the first two games combined. Jordan Pedroza drove in four in their 6–5 win on August 29. St. Louis won the last game 4–2, leaving both clubs 67–64, eight back of Houston and four off the wild-card line.",
+        "Cincinnati opens at New York. Before taking four more games against Houston on the final weekend, it gets another four with St. Louis at home September 24–27. A good start away from the division would give both of those series more room to matter."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 14. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1461,1473,1485,1497,1506,1516,1534,1546,1558,1570. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1577,1587,1599,1821,1833,1845,1857,1905,1941. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 7584,7393. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+  ],
+  "claim_games": [
+    1461,
+    1473,
+    1485,
+    1497,
+    1506,
+    1516,
+    1534,
+    1546,
+    1558,
+    1570,
+    1577,
+    1587,
+    1599,
+    1821,
+    1833,
+    1845,
+    1857,
+    1905,
+    1941
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1461
+      ],
+      "claim": "1981-08-20. Nashville Blues 7, Cincinnati Cougars 0."
+    },
+    {
+      "games": [
+        1473
+      ],
+      "claim": "1981-08-21. Nashville Blues 7, Cincinnati Cougars 8."
+    },
+    {
+      "games": [
+        1485
+      ],
+      "claim": "1981-08-22. Nashville Blues 8, Cincinnati Cougars 5."
+    },
+    {
+      "games": [
+        1497
+      ],
+      "claim": "1981-08-23. Nashville Blues 3, Cincinnati Cougars 5."
+    },
+    {
+      "games": [
+        1506
+      ],
+      "claim": "1981-08-24. Houston Mavericks 3, Cincinnati Cougars 2."
+    },
+    {
+      "games": [
+        1516
+      ],
+      "claim": "1981-08-25. Houston Mavericks 0, Cincinnati Cougars 4."
+    },
+    {
+      "games": [
+        1534
+      ],
+      "claim": "1981-08-27. Cincinnati Cougars 0, St. Louis Stallions 6."
+    },
+    {
+      "games": [
+        1546
+      ],
+      "claim": "1981-08-28. Cincinnati Cougars 1, St. Louis Stallions 12."
+    },
+    {
+      "games": [
+        1558
+      ],
+      "claim": "1981-08-29. Cincinnati Cougars 6, St. Louis Stallions 5."
+    },
+    {
+      "games": [
+        1570
+      ],
+      "claim": "1981-08-30. Cincinnati Cougars 2, St. Louis Stallions 4."
+    }
+  ],
+  "review": {
+    "decision": "approve",
+    "reviewer": "Preview fixture only (publication approval pending)",
+    "copy_sha256": "eedb8e4cdee6cae21816228e5115714779a79b1a6d4065d2dd5adf3823f4200a",
+    "question": "Alex Perez earned a split with Houston. The Cougars still finished tied with St. Louis after losing three games there.",
+    "promise": "Cincinnati gained on Houston and picked up a rival",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Alex Perez earned a split with Houston. The Cougars still finished tied with St. Louis after losing three games there.",
+    "ending": "Cincinnati opens at New York. Before taking four more games against Houston on the final weekend, it gets another four with St. Louis at home September 24–27. A good start away from the division would give both of those series more room to matter."
+  }
+}

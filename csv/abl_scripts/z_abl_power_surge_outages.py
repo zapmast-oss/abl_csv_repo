@@ -3,13 +3,18 @@
 from __future__ import annotations
 
 import argparse
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from bs4 import BeautifulSoup
 from abl_config import stamp_text_block
+from abl_path_policy import validate_output_paths
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -71,6 +76,15 @@ def resolve_path(base: Path, value: Optional[str]) -> Optional[Path]:
 
 def load_team_names(base: Path, override: Optional[Path]) -> Dict[int, str]:
     df = read_first(base, override, TEAM_INFO_CANDIDATES)
+    if df is None:
+        for candidate in [
+            base / "csv" / "teams.csv",
+            base / "csv" / "ootp_csv" / "teams.csv",
+            base / "ootp_csv" / "teams.csv",
+        ]:
+            if candidate.exists():
+                df = pd.read_csv(candidate)
+                break
     if df is None:
         return {}
     team_col = pick_column(df, "team_id", "teamid", "TeamID")
@@ -147,6 +161,9 @@ def load_logs(base: Path, override_logs: Optional[Path], override_boxes: Optiona
     boxes = read_first(base, override_boxes, BOX_CANDIDATES)
     games = read_first(base, override_games, GAMES_CANDIDATES)
     if boxes is None or games is None:
+        html_data = load_html_boxes(base)
+        if html_data is not None and not html_data.empty:
+            return html_data
         raise FileNotFoundError("Unable to find suitable logs/boxes+games data.")
     team_col = pick_column(boxes, "team_id", "teamid")
     date_col = pick_column(boxes, "game_date", "date")
@@ -188,6 +205,107 @@ def load_logs(base: Path, override_logs: Optional[Path], override_boxes: Optiona
     merged = box_data.merge(game_info, on="game_id", how="left")
     merged["park_id"] = merged["park_id"].astype(str).fillna("")
     return merged[["team_id", "game_date", "park_id", "HR", "PA"]]
+
+
+def parse_html_box_file(path: Path) -> Optional[pd.DataFrame]:
+    """Parse a single HTML box score to extract team-level HR and PA."""
+    try:
+        text = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+
+    soup = BeautifulSoup(text, "html.parser")
+
+    # Game date from title
+    m_date = re.search(r",\s*([0-9]{2}/[0-9]{2}/[0-9]{4})", text)
+    game_date = pd.NaT
+    if m_date:
+        game_date = pd.to_datetime(m_date.group(1), errors="coerce")
+
+    # Team ids appear in team links near the top; first is away, second is home
+    team_ids = re.findall(r"teams/team_(\d+)\.html", text)
+    if len(team_ids) < 2:
+        return None
+    team_ids = [int(team_ids[0]), int(team_ids[1])]
+
+    # Totals rows for each batting table
+    total_rows = soup.find_all("tr", class_="hsx sortbottom")
+    if len(total_rows) < 2:
+        return None
+
+    def grab_totals(row):
+        cells = row.find_all("th", class_="dc")
+        vals = []
+        for cell in cells:
+            try:
+                vals.append(int(cell.get_text(strip=True).replace(",", "")))
+            except ValueError:
+                vals.append(0)
+        if len(vals) < 5:
+            return None
+        ab = vals[0]
+        bb = vals[4] if len(vals) >= 5 else 0
+        h = vals[2] if len(vals) >= 3 else 0
+        return ab, bb, h
+
+    def count_events(label: str, idx: int) -> int:
+        tags = [b for b in soup.find_all("b") if b.get_text(strip=True) == label]
+        if idx >= len(tags):
+            return 0
+        tag = tags[idx]
+        count = 0
+        for sib in tag.next_siblings:
+            if getattr(sib, "name", None) == "br":
+                break
+            if getattr(sib, "name", None) == "a":
+                count += 1
+        return count
+
+    records = []
+    for idx, row in enumerate(total_rows[:2]):
+        totals = grab_totals(row)
+        if not totals:
+            continue
+        ab, bb, _ = totals
+        hr = count_events("Home Runs:", idx)
+        hbp = count_events("Hit by Pitch:", idx)
+        sf = count_events("Sac Fly:", idx)
+        sh = count_events("Sac Bunt:", idx)
+        pa = ab + bb + hbp + sf + sh
+        records.append(
+            {
+                "team_id": team_ids[idx],
+                "game_date": game_date,
+                "park_id": "",
+                "HR": hr,
+                "PA": pa,
+            }
+        )
+    if not records:
+        return None
+    return pd.DataFrame(records)
+
+
+def load_html_boxes(base: Path) -> Optional[pd.DataFrame]:
+    box_dir = base / "data_raw" / "ootp_html" / "box_scores"
+    if not box_dir.exists():
+        return None
+    frames = []
+    for path in box_dir.glob("game_box_*.html"):
+        df = parse_html_box_file(path)
+        if df is not None:
+            frames.append(df)
+    if not frames:
+        return None
+    data = pd.concat(frames, ignore_index=True)
+    data = data.dropna(subset=["game_date", "team_id"])
+    data = data[
+        (data["team_id"] >= TEAM_MIN)
+        & (data["team_id"] <= TEAM_MAX)
+        & (data["HR"].notna())
+        & (data["PA"].notna())
+    ]
+    return data[["team_id", "game_date", "park_id", "HR", "PA"]]
 
 
 def determine_weeks(dates: pd.Series, week_end: Optional[str]) -> Tuple[pd.Timestamp, pd.Timestamp]:
@@ -296,7 +414,7 @@ TABLE_COLUMNS: Sequence[Tuple[str, str, int, bool, str]] = [
     ("HR", "HR_current", 4, True, ".0f"),
     ("PA", "PA_current", 6, True, ".0f"),
     ("HR/PA", "HR_per_PA_current", 8, True, ".3f"),
-    ("ΔHR/PA", "delta_HR_per_PA", 8, True, ".3f"),
+    ("Delta HR/PA", "delta_HR_per_PA", 10, True, ".3f"),
 ]
 
 CSV_COLUMNS = [
@@ -332,8 +450,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/csv_out/z_ABL_Power_Surge_Outages.csv",
-        help="Output CSV path (defaults to out/csv_out/...).",
+        default="csv/out/csv_out/z_ABL_Power_Surge_Outages.csv",
+        help="Output CSV path (defaults to csv/out/csv_out/...).",
     )
     return parser.parse_args(list(argv) if argv is not None else None)
 
@@ -398,6 +516,12 @@ def render_report_text(
     windows: Optional[Tuple[Tuple[pd.Timestamp, pd.Timestamp], Tuple[pd.Timestamp, pd.Timestamp]]],
     limit: int,
 ) -> str:
+    header_lines = [
+        "ABL Power Surge & Outage Tracker",
+        "=================================",
+        "Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.",
+        "Why it matters: flags lineup or park-influenced power trends for storylines, broadcasts, and matchup prep.",
+    ]
     if windows:
         (curr_start, curr_end), (prev_start, prev_end) = windows
         header = (
@@ -406,6 +530,7 @@ def render_report_text(
         )
     else:
         header = "Window: No valid date range detected."
+    header_block = "\n".join(header_lines + [header])
     surges_section = text_table(
         surges.head(limit),
         TABLE_COLUMNS,
@@ -416,7 +541,7 @@ def render_report_text(
         ],
         [
             "HR/PA = home runs divided by plate appearances.",
-            "ΔHR/PA compares current seven-day window to the previous seven-day window.",
+            "HR/PA compares current seven-day window to the previous seven-day window.",
         ],
     )
     outages_section = text_table(
@@ -432,8 +557,7 @@ def render_report_text(
             "Prior metrics are included in the CSV for deeper dives.",
         ],
     )
-    return "\n\n".join([header, surges_section, outages_section])
-
+    return "\n\n".join([header_block, surges_section, outages_section])
 
 def write_report(
     base_dir: Path,
@@ -441,17 +565,21 @@ def write_report(
     report_df: pd.DataFrame,
     text_payload: str,
 ) -> None:
-    out_path = (base_dir / csv_path_value).resolve()
+    out_path = Path(csv_path_value)
+    if not out_path.is_absolute():
+        out_path = REPO_ROOT / out_path
+    text_filename = out_path.with_suffix(".txt").name
+    if out_path.parent.name.lower() == "csv_out":
+        text_dir = out_path.parent.parent / "text_out"
+    else:
+        text_dir = out_path.parent
+    text_path = text_dir / text_filename
+    validate_output_paths((out_path, text_path), REPO_ROOT)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     csv_df = report_df.reindex(columns=CSV_COLUMNS)
     csv_df.to_csv(out_path, index=False)
-    text_filename = out_path.with_suffix(".txt").name
-    if out_path.parent.name.lower() == "csv_out":
-        text_dir = out_path.parent.parent / "txt_out"
-    else:
-        text_dir = out_path.parent
     text_dir.mkdir(parents=True, exist_ok=True)
-    (text_dir / text_filename).write_text(stamp_text_block(text_payload), encoding="utf-8")
+    text_path.write_text(stamp_text_block(text_payload), encoding="utf-8")
 
 
 def main(argv: Optional[Sequence[str]] = None) -> None:
@@ -472,6 +600,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     if report_df.empty:
         text_payload = (
             "ABL Power Surge & Outage Tracker\n"
+            "Tracks week-over-week changes in team HR/PA to surface the hottest and coldest power bats.\n"
             "Data unavailable for the requested window; ensure batting logs are exported before running this report."
         )
         write_report(base_dir, args.out, report_df, text_payload)

@@ -1,0 +1,23 @@
+{
+  "season": 1981,
+  "as_of_date": "1981-07-19",
+  "fresh_tables_recommended_for_promotion": 25,
+  "accepted_schema_drift": 1,
+  "accepted_reshaped_schema": 1,
+  "additive_improvements": 5,
+  "reordered_overlap_tables": 2,
+  "hold_review_tables": 0,
+  "intentional_exclusions": [
+    6,
+    27
+  ],
+  "blockers": [],
+  "feed3_safe_for_separate_authorized_promotion": true,
+  "promotion_authorized": false,
+  "conditions": [
+    "Retain field-level authority labels.",
+    "Disable missing table 1 mood/objective/goal signals.",
+    "Do not double count tables 7 and 8.",
+    "Do not enable story signals until post-promotion integration."
+  ]
+}

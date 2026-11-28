@@ -1,0 +1,124 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "dallas-sweep-does-not-buy-breathing-room",
+  "title": "Dallas swept the champions and still has Chicago behind it",
+  "kind": "beat",
+  "byline": "Dallas Rustlers beat",
+  "team_ids": [
+    4
+  ],
+  "story_ids": [
+    "4:1981:race",
+    "4:1981:player:5873:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Dallas opened the challenge with 17 runs at Minneapolis and lost the next three there. It split two games in Chicago and was level with the Fire when Detroit arrived. The Rustlers’ four-game sweep of the defending champions was emphatic, by a combined 20–4. The reward in the standings was a one-game lead, with Chicago still close enough to make the next Dallas loss count.",
+        "Anton Garay allowed four hits over eight scoreless innings against Detroit on August 29. He had already given Dallas eight scoreless innings in Minneapolis with no decision, in a game the Rustlers lost 1–0 in ten. The two starts tell the difference between getting a good outing and turning it into an August result.",
+        "Dallas opens at home against Atlanta, an 8–2 club in the challenge. Six games remain against the Fire. Two are in Chicago in September, and the final four of the season are in Dallas."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 4. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1456,1468,1480,1492,1502,1510,1527,1539,1551,1563. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1573,1789,1798,1899,1911,1923,1935. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 5873,6196,2859. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger."
+  ],
+  "claim_games": [
+    1456,
+    1468,
+    1480,
+    1492,
+    1502,
+    1510,
+    1527,
+    1539,
+    1551,
+    1563,
+    1573,
+    1789,
+    1798,
+    1899,
+    1911,
+    1923,
+    1935
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1456
+      ],
+      "claim": "1981-08-20. Dallas Rustlers 17, Minneapolis Blizzard 3."
+    },
+    {
+      "games": [
+        1468
+      ],
+      "claim": "1981-08-21. Dallas Rustlers 3, Minneapolis Blizzard 7."
+    },
+    {
+      "games": [
+        1480
+      ],
+      "claim": "1981-08-22. Dallas Rustlers 0, Minneapolis Blizzard 1."
+    },
+    {
+      "games": [
+        1492
+      ],
+      "claim": "1981-08-23. Dallas Rustlers 1, Minneapolis Blizzard 10."
+    },
+    {
+      "games": [
+        1502
+      ],
+      "claim": "1981-08-24. Dallas Rustlers 1, Chicago Fire 3."
+    },
+    {
+      "games": [
+        1510
+      ],
+      "claim": "1981-08-25. Dallas Rustlers 3, Chicago Fire 1."
+    },
+    {
+      "games": [
+        1527
+      ],
+      "claim": "1981-08-27. Detroit Dukes 1, Dallas Rustlers 7."
+    },
+    {
+      "games": [
+        1539
+      ],
+      "claim": "1981-08-28. Detroit Dukes 1, Dallas Rustlers 5."
+    },
+    {
+      "games": [
+        1551
+      ],
+      "claim": "1981-08-29. Detroit Dukes 0, Dallas Rustlers 4."
+    },
+    {
+      "games": [
+        1563
+      ],
+      "claim": "1981-08-30. Detroit Dukes 2, Dallas Rustlers 4."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "Anton Garay’s eight scoreless innings helped Dallas win a series it needed just to retain a one-game lead.",
+    "promise": "Dallas swept the champions and still has Chicago behind it",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Anton Garay’s eight scoreless innings helped Dallas win a series it needed just to retain a one-game lead.",
+    "ending": "Dallas opens at home against Atlanta, an 8–2 club in the challenge. Six games remain against the Fire. Two are in Chicago in September, and the final four of the season are in Dallas."
+  }
+}

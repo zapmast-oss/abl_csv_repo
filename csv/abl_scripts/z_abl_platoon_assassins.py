@@ -9,6 +9,9 @@ from typing import Dict, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 from abl_config import stamp_text_block
+from abl_path_policy import validate_output_paths
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 TEAM_MIN, TEAM_MAX = 1, 24
 
@@ -398,8 +401,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--out",
         type=str,
-        default="out/csv_out/z_ABL_Platoon_Assassins.csv",
-        help="Output CSV path (default inside out/csv_out).",
+        default="csv/out/csv_out/z_ABL_Platoon_Assassins.csv",
+        help="Output CSV path (default inside csv/out/csv_out).",
     )
     return parser.parse_args(list(argv) if argv is not None else None)
 
@@ -426,8 +429,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
 
     out_path = Path(args.out)
     if not out_path.is_absolute():
-        out_path = base_dir / out_path
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path = REPO_ROOT / out_path
 
     csv_df = final.copy()
     numeric_cols = [
@@ -464,16 +466,18 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         "delta_z",
         "clutch_rating",
     ]
-    csv_df[csv_columns].to_csv(out_path, index=False)
-
     text_report = build_text_report(final.head(25), args.min_pa_both, args.min_pa_adv)
     text_filename = out_path.with_suffix(".txt").name
     if out_path.parent.name.lower() in {'csv_out'}:
-        text_dir = out_path.parent.parent / "txt_out"
+        text_dir = out_path.parent.parent / "text_out"
     else:
         text_dir = out_path.parent
+    text_path = text_dir / text_filename
+    validate_output_paths((out_path, text_path), REPO_ROOT)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    csv_df[csv_columns].to_csv(out_path, index=False)
     text_dir.mkdir(parents=True, exist_ok=True)
-    (text_dir / text_filename).write_text(stamp_text_block(text_report), encoding="utf-8")
+    text_path.write_text(stamp_text_block(text_report), encoding="utf-8")
 
     if final.empty:
         print("No hitters met the qualification thresholds.")

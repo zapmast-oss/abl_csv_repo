@@ -1,0 +1,10 @@
+# Grand Series 1974 Recap (League 200)
+Generated on: 2025-12-01 21:25:28 (local time)
+
+1. 1974-10-21 — Pittsburgh Express 1 vs Miami Hurricanes 3 (winner: Miami Hurricanes; tally: Miami Hurricanes:1)
+2. 1974-10-22 — Pittsburgh Express 3 vs Miami Hurricanes 5 (winner: Miami Hurricanes; tally: Miami Hurricanes:2)
+3. 1974-10-24 — Miami Hurricanes 1 vs Pittsburgh Express 5 (winner: Pittsburgh Express; tally: Miami Hurricanes:2, Pittsburgh Express:1)
+4. 1974-10-25 — Miami Hurricanes 2 vs Pittsburgh Express 3 (winner: Pittsburgh Express; tally: Miami Hurricanes:2, Pittsburgh Express:2)
+5. 1974-10-26 — Miami Hurricanes 0 vs Pittsburgh Express 2 (winner: Pittsburgh Express; tally: Miami Hurricanes:2, Pittsburgh Express:3)
+6. 1974-10-28 — Pittsburgh Express 5 vs Miami Hurricanes 8 (winner: Miami Hurricanes; tally: Miami Hurricanes:3, Pittsburgh Express:3)
+7. 1974-10-29 — Pittsburgh Express 2 vs Miami Hurricanes 7 (winner: Miami Hurricanes; tally: Miami Hurricanes:4, Pittsburgh Express:3)

@@ -1,0 +1,394 @@
+{
+  "releases": [
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "The contenders can hear each other now",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\observer\\one-game-is-the-new-margin.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "956627c4d770f11749d1ba5b2e1db36fab55733879d6a9d7fd2acce47c93144f",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "956627c4d770f11749d1ba5b2e1db36fab55733879d6a9d7fd2acce47c93144f"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Atlanta made the East leaders earn it",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\atlanta-made-the-east-work.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "9694069309e749fe08a7f252f7f6f5c70b3512dc973d1e76e8b843b8191fe85f",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "9694069309e749fe08a7f252f7f6f5c70b3512dc973d1e76e8b843b8191fe85f"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Six division races and two wild cards after the August challenge",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\league\\august-31-division-and-wild-card-board.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "d87706f04d2ace13cbf3fe9082403900a791a512e11c5b50e95df23f4875f1af",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "d87706f04d2ace13cbf3fe9082403900a791a512e11c5b50e95df23f4875f1af"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Jorge Galvez gave Boston room to breathe",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\boston-galvez-bought-room.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "52892c88052e6f98c359dcd19347a5f8827cc447a251016ab6cfcc8b6631a610",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "52892c88052e6f98c359dcd19347a5f8827cc447a251016ab6cfcc8b6631a610"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Charlotte’s lead survived four close losses",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\charlotte-lead-after-miami.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "c2d2cd605ff79ef813d7a609c62e4cb89ca40432c07c560ae66da20900ae1258",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "c2d2cd605ff79ef813d7a609c62e4cb89ca40432c07c560ae66da20900ae1258"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Chicago earned the right to chase Dallas",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\chicago-earned-the-right-to-chase.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "763d3bba79cc458113112b359a140e918513132d25e7e55338937556841b5a73",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "763d3bba79cc458113112b359a140e918513132d25e7e55338937556841b5a73"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Cincinnati gained on Houston and picked up a rival",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\cincinnati-one-gain-one-new-problem.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "4e9fc08bd16fc7beee42e93e2ccf8e652121b470a80b98f300c519933836b97e",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "4e9fc08bd16fc7beee42e93e2ccf8e652121b470a80b98f300c519933836b97e"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Dallas swept the champions and still has Chicago behind it",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\dallas-sweep-does-not-buy-breathing-room.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "e6d802fbf9573563a0615a878c9fa353406211088ec91f044787a7ffe007d6bc",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "e6d802fbf9573563a0615a878c9fa353406211088ec91f044787a7ffe007d6bc"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Denver put the division within reach",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\denver-earned-both-routes.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "ae98a8974106e7d4882f91b21cdf0a028039f93a00e4221f95a23eecadf44cbf",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "ae98a8974106e7d4882f91b21cdf0a028039f93a00e4221f95a23eecadf44cbf"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Detroit’s title defense reaches San Francisco six back",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\detroit-runs-short-on-the-road.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "09baccd1b77e08d07fe6f2cd4d622dd76dbcfbcbb60d0e59975aadacf9f1b905",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "09baccd1b77e08d07fe6f2cd4d622dd76dbcfbcbb60d0e59975aadacf9f1b905"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Houston still has eight games to spend",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\houston-eight-game-buffer.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "68a5a8a89bdb7e655835268c68a5f64625c8b9055e6f010049700a2aa50761de",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "68a5a8a89bdb7e655835268c68a5f64625c8b9055e6f010049700a2aa50761de"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Las Vegas brought one game of its lead home",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\las-vegas-one-game-left-of-cushion.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "03736c9855c08992f9912b4ef6007bca2a384942ac0d7420ff2082a9e371078a",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "03736c9855c08992f9912b4ef6007bca2a384942ac0d7420ff2082a9e371078a"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "The Cobras won 14 innings and gained no ground on Phoenix",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\los-angeles-fourteen-innings-but-no-ground.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "346ad04842db28ef3a45cd22382bfc7e4cce9de40e9f90ea3cb78d16aff2f5f3",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "346ad04842db28ef3a45cd22382bfc7e4cce9de40e9f90ea3cb78d16aff2f5f3"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Miami made all four count",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\miami-makes-four-count.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "82d9047369b6f31144e091576dcf7e2480091f141961026a073e08e177ccc2c3",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "82d9047369b6f31144e091576dcf7e2480091f141961026a073e08e177ccc2c3"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Minneapolis made three one-run games count",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\minneapolis-one-run-games.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "1887489913df42c44cb91eeb81c118d46d87391dd4ec733ad3da8bc8fa0ff40a",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "1887489913df42c44cb91eeb81c118d46d87391dd4ec733ad3da8bc8fa0ff40a"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Nashville split with every Central opponent",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\nashville-even-with-everyone.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "7cbe34db599de004342bc5fdb4f42ffe9d74ef559f5928dbb4b9ee1133f7a2d9",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "7cbe34db599de004342bc5fdb4f42ffe9d74ef559f5928dbb4b9ee1133f7a2d9"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "New York went from twelve runs to two shutouts",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\new-york-from-twelve-to-zero.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "7ba1daa57746e4a6adeab8bbc6a595921646d65319da1b8abd33d0f42c1098b0",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "7ba1daa57746e4a6adeab8bbc6a595921646d65319da1b8abd33d0f42c1098b0"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Eight straight wins brought Philadelphia back within three",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\philadelphia-eight-straight.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "db089a40560a4b801b316f08274909a6188a13cc906b281dccada48c88138d82",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "db089a40560a4b801b316f08274909a6188a13cc906b281dccada48c88138d82"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Phoenix took the lead on San Francisco’s field",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\phoenix-started-by-winning-in-san-francisco.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "f22760b690d1c72412292086e57dd1c5892f2af17a75e31ffb30f1e5f1ad7477",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "f22760b690d1c72412292086e57dd1c5892f2af17a75e31ffb30f1e5f1ad7477"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Joe Good gave Pittsburgh a start it can build on",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\pittsburgh-good-first-reference-point.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "b840a8755e2febd748b2b993e68aaec270f4bd9e1eb5e70bbb26271d4b6c8697",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "b840a8755e2febd748b2b993e68aaec270f4bd9e1eb5e70bbb26271d4b6c8697"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Jeremy Campbell gave the West something to work around",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\portland-campbell-and-the-contenders.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "cdbb777622d797287504a431eba417a29da7dd7378f5abf7ae27d5231e2faa06",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "cdbb777622d797287504a431eba417a29da7dd7378f5abf7ae27d5231e2faa06"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "San Diego found a way to take two from first place",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\san-diego-what-two-wins-took.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "22f8b52da1362641cd5d5191bb37fe98729bb5fc73018dd23913e4c9f805a3d8",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "22f8b52da1362641cd5d5191bb37fe98729bb5fc73018dd23913e4c9f805a3d8"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "San Francisco found a foothold against Los Angeles",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\san-francisco-foothold-against-los-angeles.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "97caa79823427aa197f9fa9d4b7e2d655248328f96c1bba57995b60e0f987cee",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "97caa79823427aa197f9fa9d4b7e2d655248328f96c1bba57995b60e0f987cee"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Seattle saw both sides of a one-run finish",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\seattle-what-a-one-run-game-costs.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "dc9304759b661cf009f1b28afbfaccdd1dcc577a8762d4beac2bdfb1bad1b4d7",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "dc9304759b661cf009f1b28afbfaccdd1dcc577a8762d4beac2bdfb1bad1b4d7"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "St. Louis made up six games and earned another look",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\st-louis-made-up-six-games.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "2bf0a513e67b3b0f9a5494b08d2f3141c400140d4bebc351fb1970b120891527",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "2bf0a513e67b3b0f9a5494b08d2f3141c400140d4bebc351fb1970b120891527"
+      }
+    },
+    {
+      "lane": "editorial",
+      "channel": "EAB",
+      "title": "Tampa Bay kept finding Walter Kimpton on base",
+      "artifact": "C:\\sbv_repo\\abl_csv_repo\\tmp\\august31-complete-edition-review\\newsroom\\issues\\1981-08-30_461bc955c6db88b4\\780558bbd7c8c817fdf6\\beat\\tampa-bay-kimpton-kept-reaching.md",
+      "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+      "source_cutoff": "1981-08-30",
+      "revision": "780558bbd7c8c817fdf6",
+      "sha256": "9028578b761f0060707a597fe74ea8a1ac63578c6887a348544a418237580ec0",
+      "approval": {
+        "reviewer": "Preview fixture only (publication approval pending)",
+        "at": "2026-11-28T12:50:54Z",
+        "sha256": "9028578b761f0060707a597fe74ea8a1ac63578c6887a348544a418237580ec0"
+      }
+    }
+  ]
+}

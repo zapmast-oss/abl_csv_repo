@@ -1,0 +1,134 @@
+{
+  "source_id": "461bc955c6db88b42b31da7c12c95fc8e1d15796ddd1d26de6f51af30296118d",
+  "league_date": "1981-08-31",
+  "cutoff": "1981-08-30",
+  "slug": "houston-eight-game-buffer",
+  "title": "Houston still has eight games to spend",
+  "kind": "beat",
+  "byline": "Houston Mavericks beat",
+  "team_ids": [
+    23
+  ],
+  "story_ids": [
+    "23:1981:race",
+    "23:1981:player:2383:pit"
+  ],
+  "lead": false,
+  "sections": [
+    [
+      "",
+      [
+        "Houston lost twice to St. Louis on August 20, on different fields. First came the 5–3 completion of the unfinished game in Houston, then a 7–1 loss in St. Louis to open the regular four-game set. Houston lost those four by a combined 32–3. A stretch that began with the league’s best record ended with eight losses in 11 games.",
+        "There were ways for Houston to win even in that stretch. Scott Szell allowed three earned runs in 25 innings across three starts. The Mavericks beat Cincinnati 3–2 in 16 innings, and their bats recovered for 10–0 and 10–9 wins to finish against Nashville. Apostolos Georghiou homered and had three hits in the last game. Houston still leads Cincinnati and St. Louis by eight.",
+        "Boston and Denver come to Houston to start September. The East leader and one of the two clubs tied for the wild card give Houston an early look at the company it may have in October."
+      ]
+    ]
+  ],
+  "evidence": [
+    "team_record.csv, teams.csv and divisions.csv, team IDs 23. Compare the sealed August 19 and August 30 standings. See the club entries in the companion challenge ledger.",
+    "games.csv, completed game IDs 1113,1462,1474,1486,1498,1506,1516,1533,1545,1557,1569. Game dates, scores, opponents and inning counts. The companion challenge ledger lists the entire comparable window by club.",
+    "games.csv, scheduled game IDs 1588,1600,1607,1620,1632,1644,1870,1905,1941. The companion ledger carries the full remaining schedule and venue for each club.",
+    "players.csv, players_game_batting.csv and players_game_pitching_stats.csv, player IDs 2383,8032. Retain the reconciled game lines for each player and check the stated August 20–30 or single-game statistic against the companion ledger.",
+    "Sealed August 20 Special Coverage briefing and The Pennant Races Come Home. Use the forecast and schedule as pre-challenge evidence. Compare results to the August 30 cutoff."
+  ],
+  "claim_games": [
+    1113,
+    1462,
+    1474,
+    1486,
+    1498,
+    1506,
+    1516,
+    1533,
+    1545,
+    1557,
+    1569,
+    1588,
+    1600,
+    1607,
+    1620,
+    1632,
+    1644,
+    1870,
+    1905,
+    1941
+  ],
+  "claim_map": [
+    {
+      "games": [
+        1113
+      ],
+      "claim": "1981-08-20. St. Louis Stallions 5, Houston Mavericks 3."
+    },
+    {
+      "games": [
+        1462
+      ],
+      "claim": "1981-08-20. Houston Mavericks 1, St. Louis Stallions 7."
+    },
+    {
+      "games": [
+        1474
+      ],
+      "claim": "1981-08-21. Houston Mavericks 2, St. Louis Stallions 6."
+    },
+    {
+      "games": [
+        1486
+      ],
+      "claim": "1981-08-22. Houston Mavericks 0, St. Louis Stallions 10."
+    },
+    {
+      "games": [
+        1498
+      ],
+      "claim": "1981-08-23. Houston Mavericks 0, St. Louis Stallions 9."
+    },
+    {
+      "games": [
+        1506
+      ],
+      "claim": "1981-08-24. Houston Mavericks 3, Cincinnati Cougars 2."
+    },
+    {
+      "games": [
+        1516
+      ],
+      "claim": "1981-08-25. Houston Mavericks 0, Cincinnati Cougars 4."
+    },
+    {
+      "games": [
+        1533
+      ],
+      "claim": "1981-08-27. Nashville Blues 5, Houston Mavericks 1."
+    },
+    {
+      "games": [
+        1545
+      ],
+      "claim": "1981-08-28. Nashville Blues 6, Houston Mavericks 5."
+    },
+    {
+      "games": [
+        1557
+      ],
+      "claim": "1981-08-29. Nashville Blues 0, Houston Mavericks 10."
+    },
+    {
+      "games": [
+        1569
+      ],
+      "claim": "1981-08-30. Nashville Blues 9, Houston Mavericks 10."
+    }
+  ],
+  "review": {
+    "decision": "pending",
+    "reviewer": "",
+    "copy_sha256": "",
+    "question": "Five losses to St. Louis made Houston’s lead look less comfortable. Two late wins over Nashville kept it substantial.",
+    "promise": "Houston still has eight games to spend",
+    "sequence": "Read the window chronologically and verify against the dated selectors.",
+    "stakes": "Five losses to St. Louis made Houston’s lead look less comfortable. Two late wins over Nashville kept it substantial.",
+    "ending": "Boston and Denver come to Houston to start September. The East leader and one of the two clubs tied for the wild card give Houston an early look at the company it may have in October."
+  }
+}

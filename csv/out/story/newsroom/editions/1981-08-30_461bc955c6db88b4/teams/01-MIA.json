@@ -1,0 +1,833 @@
+{
+  "team_id": 1,
+  "team": "Miami Hurricanes",
+  "abbr": "MIA",
+  "division": "NBC Eastern Division",
+  "conference": "NBC",
+  "wins": 71,
+  "losses": 59,
+  "gb": 1.5,
+  "priority": 2,
+  "division_leaders_change": false,
+  "division_leaders": [
+    6
+  ],
+  "intensity": "analysis",
+  "headline": "Miami beat Charlotte 6-5",
+  "brief": "Miami beat Charlotte 6-5. [games.csv game_id=1561 date=1981-08-30 league_id=200 game_type=0 played=1] Miami is 71-59 and trails Charlotte by 1.5 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-20 — Miami fell to Atlanta 3-2 in 10 innings. [games.csv game_id=1453 date=1981-08-20 league_id=200 game_type=0 played=1] Addie de Ruijter (#1849) went 2-for-3 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1453, team_id=1, player_id=1849] Bill Borden (#1987) worked 8 innings, allowed 0 earned runs and struck out 3. [players_game_pitching_stats.csv, game_id=1453, team_id=1, player_id=1987]",
+        "1981-08-21 — Miami beat Atlanta 3-2 in 11 innings. [games.csv game_id=1465 date=1981-08-21 league_id=200 game_type=0 played=1] Jorge Suarez (#5755) went 1-for-4 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1465, team_id=1, player_id=5755] David Victorero (#4791) worked 7 innings, allowed 2 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1465, team_id=1, player_id=4791]",
+        "1981-08-22 — Miami fell to Atlanta 5-4 in 9 innings. [games.csv game_id=1477 date=1981-08-22 league_id=200 game_type=0 played=1] Ernesto Ortega (#7092) went 2-for-4 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1477, team_id=1, player_id=7092] Chris Stella (#620) worked 7 2/3 innings, allowed 4 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1477, team_id=1, player_id=620]",
+        "1981-08-23 — Miami fell to Atlanta 8-3 in 9 innings. [games.csv game_id=1489 date=1981-08-23 league_id=200 game_type=0 played=1] Addie de Ruijter (#1849) went 2-for-4 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1489, team_id=1, player_id=1849] Leo Mendoza (#5312) worked 5 2/3 innings, allowed 5 earned runs and struck out 2. [players_game_pitching_stats.csv, game_id=1489, team_id=1, player_id=5312]",
+        "1981-08-25 — Miami beat Tampa Bay 10-3 in 9 innings. [games.csv game_id=1509 date=1981-08-25 league_id=200 game_type=0 played=1] Pat Watters (#1972) went 1-for-4 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1509, team_id=1, player_id=1972] Gil Aguilar (#6734) worked 9 innings, allowed 3 earned runs and struck out 10. [players_game_pitching_stats.csv, game_id=1509, team_id=1, player_id=6734]",
+        "1981-08-26 — Miami beat Tampa Bay 9-1 in 9 innings. [games.csv game_id=1520 date=1981-08-26 league_id=200 game_type=0 played=1] Oscar Romero (#5770) went 2-for-5 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1520, team_id=1, player_id=5770] Bill Borden (#1987) worked 6 1/3 innings, allowed 1 earned run and struck out 3. [players_game_pitching_stats.csv, game_id=1520, team_id=1, player_id=1987]",
+        "1981-08-27 — Miami beat Charlotte 4-2 in 9 innings. [games.csv game_id=1525 date=1981-08-27 league_id=200 game_type=0 played=1] Addie de Ruijter (#1849) went 3-for-3 with 1 HR and 4 RBI. [players_game_batting.csv, game_id=1525, team_id=1, player_id=1849] David Victorero (#4791) worked 6 1/3 innings, allowed 2 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1525, team_id=1, player_id=4791]",
+        "1981-08-28 — Miami beat Charlotte 4-3 in 9 innings. [games.csv game_id=1537 date=1981-08-28 league_id=200 game_type=0 played=1] Oscar Romero (#5770) went 1-for-3 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1537, team_id=1, player_id=5770] Chris Stella (#620) worked 7 innings, allowed 2 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1537, team_id=1, player_id=620]",
+        "1981-08-29 — Miami beat Charlotte 5-3 in 9 innings. [games.csv game_id=1549 date=1981-08-29 league_id=200 game_type=0 played=1] Pete Rick (#2026) went 1-for-2 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1549, team_id=1, player_id=2026] Leo Mendoza (#5312) worked 5 1/3 innings, allowed 3 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1549, team_id=1, player_id=5312]",
+        "1981-08-30 — Miami beat Charlotte 6-5 in 9 innings. [games.csv game_id=1561 date=1981-08-30 league_id=200 game_type=0 played=1] Addie de Ruijter (#1849) went 1-for-4 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1561, team_id=1, player_id=1849] Gil Aguilar (#6734) worked 6 2/3 innings, allowed 5 earned runs and struck out 8. [players_game_pitching_stats.csv, game_id=1561, team_id=1, player_id=6734]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Miami is 71-59 and trails Charlotte by 1.5 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "Division records — Charlotte 73-58, Miami 71-59, Atlanta 63-68, Tampa Bay 54-77. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "Over its last 7 games the club went 6-1, scoring 41 runs and allowing 25. Season totals are 503 scored and 513 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1. Recent game IDs 1489, 1509, 1520, 1525, 1537, 1549, 1561]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Charlotte Colonels, Miami is 10-8 with 66 runs scored and 74 allowed. [games.csv 1981 completed regular season, team IDs 1/6, latest game #1561, 1981-08-30]",
+        "Against Atlanta Kings, Miami is 7-12 with 58 runs scored and 75 allowed. [games.csv 1981 completed regular season, team IDs 1/3, latest game #1489, 1981-08-23]",
+        "Against Tampa Bay Storm, Miami is 9-7 with 82 runs scored and 76 allowed. [games.csv 1981 completed regular season, team IDs 1/8, latest game #1520, 1981-08-26]",
+        "Miami visits Phoenix Firebirds in the next listed game on 1981-08-31. [games.csv game_id=1575, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Pat Watters (#1972) leads the club with 121 hits in 458 at-bats, including 11 home runs. [players_game_batting.csv joined to played games.csv, team_id=1, year=1981, through 1981-08-30]",
+        "Gil Aguilar (#6734) leads the staff in innings pitched (207 2/3), with 194 strikeouts, 94 walks and a 3.29 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=1, year=1981, through 1981-08-30]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (6) — 1972, 1973, 1974, 1975, 1978, 1979. League titles (2) — 1974, 1978. [team_history.csv, team_id=1, league_id=200, year=1972–1980]",
+        "The club finished 73-89 in 1980, division place 4. [team_history_record.csv, team_id=1, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-31 export lists 26 active players. [players_roster_status.csv team_id=1 is_active=1 joined to players.csv player_id, export league date 1981-08-31]",
+        "P — Al McHaney (#4830), Anthony Jackson (#985), Bill Borden (#1987), Chris Stella (#620), David Victorero (#4791), Eric Behan (#1045), Gil Aguilar (#6734), Joe Puerta (#671), Mario Ayala (#5690), Ricky Velez (#3034), Vicente Gutierrez (#2765).",
+        "C — Dwayne Postell (#9405), Jorge Suarez (#5755).",
+        "1B — Oscar Romero (#5770), Pat Watters (#1972).",
+        "2B — Addie de Ruijter (#1849).",
+        "3B — Chris Velasquez (#16), Daniel Vega (#8655), Raul Rodriguez (#252).",
+        "SS — Jalen Smith (#4570).",
+        "LF — Jason Bozeman (#5901), Leo Mendoza (#5312).",
+        "CF — Gary McMinn (#2876), Pete Rick (#2026).",
+        "RF — Ernesto Ortega (#7092), Jim White (#10162).",
+        "Active players carrying an injury flag on the 1981-08-31 snapshot: Pat Watters (#1972). Game-day availability requires a dated roster update. [players.csv injury_is_injured=1, players_roster_status.csv team_id=1 is_active=1 joined to players.csv player_id, export league date 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Pedro Aldana (#11955), 21, 2B at Ackerman Classics — drafted in 1981 with overall pick 9. [players.csv player_id=11955, team_affiliations.csv team_id=1 affiliated_team_id=60, teams.csv, export 1981-08-31]",
+        "Danny Bodden (#9403), 25, C at Arlington Patriots — drafted in 1978 with overall pick 15. [players.csv player_id=9403, team_affiliations.csv team_id=1 affiliated_team_id=28, teams.csv, export 1981-08-31]",
+        "Pedro Garcia (#8913), 23, 1B at Ackerman Classics — drafted in 1979 with overall pick 20. [players.csv player_id=8913, team_affiliations.csv team_id=1 affiliated_team_id=60, teams.csv, export 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-07-27 — In a trade with St. Louis, Miami received Joe Puerta (#671) and sent Daniel Smith (#6345). [trade_history.csv date=1981-07-27 team_id_0=19 team_id_1=1 message_id=19852]",
+        "1981-07-28 — In a trade with Pittsburgh, Miami received Daniel Vega (#8655) and sent Joe Good (#3032), Quadir May (#9550). [trade_history.csv date=1981-07-28 team_id_0=1 team_id_1=21 message_id=19868]",
+        "1981-07-29 — In a trade with Phoenix, Miami received Addie de Ruijter (#1849) and sent Omar Garcia (#1184). [trade_history.csv date=1981-07-29 team_id_0=1 team_id_1=2 message_id=19877]",
+        "Addie de Ruijter (#1849) has 106 batting PA and 0 pitching innings for Miami in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1849, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Miami stand against its division opponents? Miami is 71-59 and trails Charlotte by 1.5 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "Will the next series change Miami's recent scoring margin? Over its last 7 games the club went 6-1, scoring 41 runs and allowing 25. Season totals are 503 scored and 513 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1. Recent game IDs 1489, 1509, 1520, 1525, 1537, 1549, 1561]",
+        "What role will Addie de Ruijter (#1849) earn with Miami? Addie de Ruijter (#1849) has 106 batting PA and 0 pitching innings for Miami in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1849, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1] [trade_history.csv date=1981-07-29 team_id_0=1 team_id_1=2 message_id=19877]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Miami Hurricanes is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md.",
+        "Earlier internal coverage naming Miami Hurricanes is filed at csv/out/story/production/abl_weekday17_desk_1981_07_27_asof_1981-07-26.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "1:1981:division",
+      "question": "Where does Miami stand against its division opponents?",
+      "evidence": "Miami is 71-59 and trails Charlotte by 1.5 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]"
+    },
+    {
+      "key": "1:1981:runs",
+      "question": "Will the next series change Miami's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 6-1, scoring 41 runs and allowing 25. Season totals are 503 scored and 513 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1. Recent game IDs 1489, 1509, 1520, 1525, 1537, 1549, 1561]"
+    },
+    {
+      "key": "1:1981:trade:19877:1849",
+      "question": "What role will Addie de Ruijter (#1849) earn with Miami?",
+      "evidence": "Addie de Ruijter (#1849) has 106 batting PA and 0 pitching innings for Miami in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1849, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1] [trade_history.csv date=1981-07-29 team_id_0=1 team_id_1=2 message_id=19877]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1453,
+      "date": "1981-08-20",
+      "home_id": 3,
+      "away_id": 1,
+      "runs_away": 2,
+      "runs_home": 3,
+      "innings": 10,
+      "summary": "Miami 2, Atlanta 3",
+      "source": "games.csv game_id=1453 date=1981-08-20 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1465,
+      "date": "1981-08-21",
+      "home_id": 3,
+      "away_id": 1,
+      "runs_away": 3,
+      "runs_home": 2,
+      "innings": 11,
+      "summary": "Miami 3, Atlanta 2",
+      "source": "games.csv game_id=1465 date=1981-08-21 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1477,
+      "date": "1981-08-22",
+      "home_id": 3,
+      "away_id": 1,
+      "runs_away": 4,
+      "runs_home": 5,
+      "innings": 9,
+      "summary": "Miami 4, Atlanta 5",
+      "source": "games.csv game_id=1477 date=1981-08-22 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1489,
+      "date": "1981-08-23",
+      "home_id": 3,
+      "away_id": 1,
+      "runs_away": 3,
+      "runs_home": 8,
+      "innings": 9,
+      "summary": "Miami 3, Atlanta 8",
+      "source": "games.csv game_id=1489 date=1981-08-23 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1509,
+      "date": "1981-08-25",
+      "home_id": 1,
+      "away_id": 8,
+      "runs_away": 3,
+      "runs_home": 10,
+      "innings": 9,
+      "summary": "Tampa Bay 3, Miami 10",
+      "source": "games.csv game_id=1509 date=1981-08-25 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1520,
+      "date": "1981-08-26",
+      "home_id": 1,
+      "away_id": 8,
+      "runs_away": 1,
+      "runs_home": 9,
+      "innings": 9,
+      "summary": "Tampa Bay 1, Miami 9",
+      "source": "games.csv game_id=1520 date=1981-08-26 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1525,
+      "date": "1981-08-27",
+      "home_id": 1,
+      "away_id": 6,
+      "runs_away": 2,
+      "runs_home": 4,
+      "innings": 9,
+      "summary": "Charlotte 2, Miami 4",
+      "source": "games.csv game_id=1525 date=1981-08-27 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1537,
+      "date": "1981-08-28",
+      "home_id": 1,
+      "away_id": 6,
+      "runs_away": 3,
+      "runs_home": 4,
+      "innings": 9,
+      "summary": "Charlotte 3, Miami 4",
+      "source": "games.csv game_id=1537 date=1981-08-28 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1549,
+      "date": "1981-08-29",
+      "home_id": 1,
+      "away_id": 6,
+      "runs_away": 3,
+      "runs_home": 5,
+      "innings": 9,
+      "summary": "Charlotte 3, Miami 5",
+      "source": "games.csv game_id=1549 date=1981-08-29 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1561,
+      "date": "1981-08-30",
+      "home_id": 1,
+      "away_id": 6,
+      "runs_away": 5,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Charlotte 5, Miami 6",
+      "source": "games.csv game_id=1561 date=1981-08-30 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1453,
+    1465,
+    1477,
+    1489,
+    1509,
+    1520,
+    1525,
+    1537,
+    1549,
+    1561
+  ],
+  "transactions": [
+    {
+      "id": "trade:19852",
+      "date": "1981-07-27",
+      "partner_id": 19,
+      "incoming_ids": [
+        671
+      ],
+      "outgoing_ids": [
+        6345
+      ],
+      "summary": "In a trade with St. Louis, Miami received Joe Puerta (#671) and sent Daniel Smith (#6345)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=19 team_id_1=1 message_id=19852"
+    },
+    {
+      "id": "trade:19868",
+      "date": "1981-07-28",
+      "partner_id": 21,
+      "incoming_ids": [
+        8655
+      ],
+      "outgoing_ids": [
+        3032,
+        9550
+      ],
+      "summary": "In a trade with Pittsburgh, Miami received Daniel Vega (#8655) and sent Joe Good (#3032), Quadir May (#9550)",
+      "source": "trade_history.csv date=1981-07-28 team_id_0=1 team_id_1=21 message_id=19868"
+    },
+    {
+      "id": "trade:19877",
+      "date": "1981-07-29",
+      "partner_id": 2,
+      "incoming_ids": [
+        1849
+      ],
+      "outgoing_ids": [
+        1184
+      ],
+      "summary": "In a trade with Phoenix, Miami received Addie de Ruijter (#1849) and sent Omar Garcia (#1184)",
+      "source": "trade_history.csv date=1981-07-29 team_id_0=1 team_id_1=2 message_id=19877"
+    }
+  ],
+  "roster_ids": [
+    16,
+    252,
+    620,
+    671,
+    985,
+    1045,
+    1849,
+    1972,
+    1987,
+    2026,
+    2765,
+    2876,
+    3034,
+    4570,
+    4791,
+    4830,
+    5312,
+    5690,
+    5755,
+    5770,
+    5901,
+    6734,
+    7092,
+    8655,
+    9405,
+    10162
+  ],
+  "roster": [
+    {
+      "player_id": 5770,
+      "name": "Oscar Romero (#5770)",
+      "age": 29,
+      "position": "1B",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1972,
+      "name": "Pat Watters (#1972)",
+      "age": 34,
+      "position": "1B",
+      "team_id": 1,
+      "injury_flag": 1,
+      "day_to_day_flag": 1
+    },
+    {
+      "player_id": 1849,
+      "name": "Addie de Ruijter (#1849)",
+      "age": 34,
+      "position": "2B",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 16,
+      "name": "Chris Velasquez (#16)",
+      "age": 38,
+      "position": "3B",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8655,
+      "name": "Daniel Vega (#8655)",
+      "age": 29,
+      "position": "3B",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 252,
+      "name": "Raul Rodriguez (#252)",
+      "age": 34,
+      "position": "3B",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 9405,
+      "name": "Dwayne Postell (#9405)",
+      "age": 26,
+      "position": "C",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5755,
+      "name": "Jorge Suarez (#5755)",
+      "age": 26,
+      "position": "C",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2876,
+      "name": "Gary McMinn (#2876)",
+      "age": 29,
+      "position": "CF",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2026,
+      "name": "Pete Rick (#2026)",
+      "age": 34,
+      "position": "CF",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5901,
+      "name": "Jason Bozeman (#5901)",
+      "age": 26,
+      "position": "LF",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5312,
+      "name": "Leo Mendoza (#5312)",
+      "age": 26,
+      "position": "LF",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4830,
+      "name": "Al McHaney (#4830)",
+      "age": 31,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 985,
+      "name": "Anthony Jackson (#985)",
+      "age": 36,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1987,
+      "name": "Bill Borden (#1987)",
+      "age": 33,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 620,
+      "name": "Chris Stella (#620)",
+      "age": 33,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4791,
+      "name": "David Victorero (#4791)",
+      "age": 27,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1045,
+      "name": "Eric Behan (#1045)",
+      "age": 32,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6734,
+      "name": "Gil Aguilar (#6734)",
+      "age": 29,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 671,
+      "name": "Joe Puerta (#671)",
+      "age": 38,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5690,
+      "name": "Mario Ayala (#5690)",
+      "age": 26,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3034,
+      "name": "Ricky Velez (#3034)",
+      "age": 30,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2765,
+      "name": "Vicente Gutierrez (#2765)",
+      "age": 31,
+      "position": "P",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7092,
+      "name": "Ernesto Ortega (#7092)",
+      "age": 23,
+      "position": "RF",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 10162,
+      "name": "Jim White (#10162)",
+      "age": 23,
+      "position": "RF",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4570,
+      "name": "Jalen Smith (#4570)",
+      "age": 28,
+      "position": "SS",
+      "team_id": 1,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 11955,
+      "name": "Pedro Aldana (#11955)",
+      "age": 21,
+      "position": "2B",
+      "team_id": 60,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 9,
+      "affiliate": "Ackerman Classics"
+    },
+    {
+      "player_id": 9403,
+      "name": "Danny Bodden (#9403)",
+      "age": 25,
+      "position": "C",
+      "team_id": 28,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1978,
+      "draft_pick": 15,
+      "affiliate": "Arlington Patriots"
+    },
+    {
+      "player_id": 8913,
+      "name": "Pedro Garcia (#8913)",
+      "age": 23,
+      "position": "1B",
+      "team_id": 60,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 20,
+      "affiliate": "Ackerman Classics"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1489,
+    1509,
+    1520,
+    1525,
+    1537,
+    1549,
+    1561
+  ],
+  "continuity": {
+    "threads": {
+      "1:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Where does Miami stand against its division opponents?",
+        "evidence": "Miami is 71-59 and trails Charlotte by 1.5 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 1,3,6,8]",
+        "status": "watching"
+      },
+      "1:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Will the next series change Miami's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 6-1, scoring 41 runs and allowing 25. Season totals are 503 scored and 513 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1. Recent game IDs 1489, 1509, 1520, 1525, 1537, 1549, 1561]",
+        "status": "watching"
+      },
+      "1:1981:rival:3": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Miami–Atlanta game do to the division race?",
+        "evidence": "Miami visits Atlanta Kings in the next listed game on 1981-08-20. [games.csv game_id=1453, played=0] Miami is 64-56 and trails Charlotte by 4.5 games in the NBC Eastern Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 1,3,6,8]",
+        "status": "carried from earlier coverage"
+      },
+      "1:1981:trade:19877:1849": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "What role will Addie de Ruijter (#1849) earn with Miami?",
+        "evidence": "Addie de Ruijter (#1849) has 106 batting PA and 0 pitching innings for Miami in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1849, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=1] [trade_history.csv date=1981-07-29 team_id_0=1 team_id_1=2 message_id=19877]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      16,
+      252,
+      620,
+      671,
+      985,
+      1045,
+      1849,
+      1972,
+      1987,
+      2026,
+      2765,
+      2876,
+      3034,
+      4570,
+      4791,
+      4830,
+      5312,
+      5690,
+      5755,
+      5770,
+      5901,
+      6734,
+      7092,
+      8655,
+      9405,
+      10162
+    ],
+    "names": {
+      "5770": "Oscar Romero (#5770)",
+      "1972": "Pat Watters (#1972)",
+      "1849": "Addie de Ruijter (#1849)",
+      "16": "Chris Velasquez (#16)",
+      "8655": "Daniel Vega (#8655)",
+      "252": "Raul Rodriguez (#252)",
+      "9405": "Dwayne Postell (#9405)",
+      "5755": "Jorge Suarez (#5755)",
+      "2876": "Gary McMinn (#2876)",
+      "2026": "Pete Rick (#2026)",
+      "5901": "Jason Bozeman (#5901)",
+      "5312": "Leo Mendoza (#5312)",
+      "4830": "Al McHaney (#4830)",
+      "985": "Anthony Jackson (#985)",
+      "1987": "Bill Borden (#1987)",
+      "620": "Chris Stella (#620)",
+      "4791": "David Victorero (#4791)",
+      "1045": "Eric Behan (#1045)",
+      "6734": "Gil Aguilar (#6734)",
+      "671": "Joe Puerta (#671)",
+      "5690": "Mario Ayala (#5690)",
+      "3034": "Ricky Velez (#3034)",
+      "2765": "Vicente Gutierrez (#2765)",
+      "7092": "Ernesto Ortega (#7092)",
+      "10162": "Jim White (#10162)",
+      "4570": "Jalen Smith (#4570)"
+    },
+    "flags": {
+      "5770": [
+        0,
+        0
+      ],
+      "1972": [
+        1,
+        1
+      ],
+      "1849": [
+        0,
+        0
+      ],
+      "16": [
+        0,
+        0
+      ],
+      "8655": [
+        0,
+        0
+      ],
+      "252": [
+        0,
+        0
+      ],
+      "9405": [
+        0,
+        0
+      ],
+      "5755": [
+        0,
+        0
+      ],
+      "2876": [
+        0,
+        0
+      ],
+      "2026": [
+        0,
+        0
+      ],
+      "5901": [
+        0,
+        0
+      ],
+      "5312": [
+        0,
+        0
+      ],
+      "4830": [
+        0,
+        0
+      ],
+      "985": [
+        0,
+        0
+      ],
+      "1987": [
+        0,
+        0
+      ],
+      "620": [
+        0,
+        0
+      ],
+      "4791": [
+        0,
+        0
+      ],
+      "1045": [
+        0,
+        0
+      ],
+      "6734": [
+        0,
+        0
+      ],
+      "671": [
+        0,
+        0
+      ],
+      "5690": [
+        0,
+        0
+      ],
+      "3034": [
+        0,
+        0
+      ],
+      "2765": [
+        0,
+        0
+      ],
+      "7092": [
+        0,
+        0
+      ],
+      "10162": [
+        0,
+        0
+      ],
+      "4570": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:19852": "In a trade with St. Louis, Miami received Joe Puerta (#671) and sent Daniel Smith (#6345)",
+      "trade:19868": "In a trade with Pittsburgh, Miami received Daniel Vega (#8655) and sent Joe Good (#3032), Quadir May (#9550)",
+      "trade:19877": "In a trade with Phoenix, Miami received Addie de Ruijter (#1849) and sent Omar Garcia (#1184)"
+    }
+  },
+  "previous_edition": "1981-08-19_2acae29146076f62"
+}

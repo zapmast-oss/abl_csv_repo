@@ -1,0 +1,834 @@
+{
+  "team_id": 24,
+  "team": "Seattle Comets",
+  "abbr": "SEA",
+  "division": "ABC Western Division",
+  "conference": "ABC",
+  "wins": 71,
+  "losses": 60,
+  "gb": 1.0,
+  "priority": 4,
+  "division_leaders_change": false,
+  "division_leaders": [
+    17
+  ],
+  "intensity": "feature",
+  "headline": "Seattle beat Las Vegas 4-3",
+  "brief": "Seattle beat Las Vegas 4-3. [games.csv game_id=1476 date=1981-08-21 league_id=200 game_type=0 played=1] Seattle is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-20 — Seattle beat Las Vegas 4-0 in 9 innings. [games.csv game_id=1464 date=1981-08-20 league_id=200 game_type=0 played=1] Adam Wilson (#1952) went 1-for-3 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1464, team_id=24, player_id=1952] Tony Miller (#6735) worked 8 innings, allowed 0 earned runs and struck out 5. [players_game_pitching_stats.csv, game_id=1464, team_id=24, player_id=6735]",
+        "Seattle scored 3 of its 4 runs in inning 8. [games_score.csv game_id=1464 team=1, inning=8]",
+        "1981-08-21 — Seattle beat Las Vegas 4-3 in 14 innings. [games.csv game_id=1476 date=1981-08-21 league_id=200 game_type=0 played=1] Adam Wilson (#1952) went 3-for-7 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1476, team_id=24, player_id=1952] Ricardo Sanchez (#5988) worked 8 innings, allowed 2 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1476, team_id=24, player_id=5988]",
+        "Seattle scored 2 of its 4 runs in inning 4. [games_score.csv game_id=1476 team=1, inning=4]",
+        "1981-08-22 — Seattle beat Las Vegas 7-2 in 9 innings. [games.csv game_id=1488 date=1981-08-22 league_id=200 game_type=0 played=1] Carlos Merlos (#6611) went 4-for-5 with 0 HR and 4 RBI. [players_game_batting.csv, game_id=1488, team_id=24, player_id=6611] Antonio Romo (#26) worked 7 innings, allowed 2 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1488, team_id=24, player_id=26]",
+        "1981-08-23 — Seattle fell to Las Vegas 3-2 in 9 innings. [games.csv game_id=1500 date=1981-08-23 league_id=200 game_type=0 played=1] David Olguin (#8049) went 3-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1500, team_id=24, player_id=8049] Eddie Sandoval (#5737) worked 6 innings, allowed 3 earned runs and struck out 2. [players_game_pitching_stats.csv, game_id=1500, team_id=24, player_id=5737]",
+        "1981-08-25 — Seattle beat Portland 8-3 in 9 innings. [games.csv game_id=1519 date=1981-08-25 league_id=200 game_type=0 played=1] Do-hyun Hu (#9303) went 1-for-3 with 1 HR and 3 RBI. [players_game_batting.csv, game_id=1519, team_id=24, player_id=9303] Tony Miller (#6735) worked 7 innings, allowed 2 earned runs and struck out 6. [players_game_pitching_stats.csv, game_id=1519, team_id=24, player_id=6735]",
+        "1981-08-26 — Seattle beat Portland 7-6 in 9 innings. [games.csv game_id=1524 date=1981-08-26 league_id=200 game_type=0 played=1] Pedro Medina (#111) went 1-for-4 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1524, team_id=24, player_id=111] Jahiem Bryant (#1906) worked 4 2/3 innings, allowed 6 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1524, team_id=24, player_id=1906]",
+        "1981-08-27 — Seattle beat Denver 6-5 in 9 innings. [games.csv game_id=1536 date=1981-08-27 league_id=200 game_type=0 played=1] Kevin Fink (#1528) went 1-for-1 with 0 HR and 2 RBI. [players_game_batting.csv, game_id=1536, team_id=24, player_id=1528] Ricardo Sanchez (#5988) worked 8 innings, allowed 5 earned runs and struck out 8. [players_game_pitching_stats.csv, game_id=1536, team_id=24, player_id=5988]",
+        "1981-08-28 — Seattle beat Denver 2-1 in 9 innings. [games.csv game_id=1548 date=1981-08-28 league_id=200 game_type=0 played=1] Carlos Merlos (#6611) went 2-for-4 with 1 HR and 2 RBI. [players_game_batting.csv, game_id=1548, team_id=24, player_id=6611] Antonio Romo (#26) worked 8 innings, allowed 1 earned run and struck out 5. [players_game_pitching_stats.csv, game_id=1548, team_id=24, player_id=26]",
+        "1981-08-29 — Seattle fell to Denver 4-2 in 9 innings. [games.csv game_id=1560 date=1981-08-29 league_id=200 game_type=0 played=1] Adam Wilson (#1952) went 2-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1560, team_id=24, player_id=1952] Rene Oregon (#2255) worked 7 innings, allowed 3 earned runs and struck out 7. [players_game_pitching_stats.csv, game_id=1560, team_id=24, player_id=2255]",
+        "1981-08-30 — Seattle fell to Denver 2-1 in 9 innings. [games.csv game_id=1572 date=1981-08-30 league_id=200 game_type=0 played=1] Do-hyun Hu (#9303) went 1-for-4 with 0 HR and 1 RBI. [players_game_batting.csv, game_id=1572, team_id=24, player_id=9303] Tony Miller (#6735) worked 7 1/3 innings, allowed 1 earned run and struck out 8. [players_game_pitching_stats.csv, game_id=1572, team_id=24, player_id=6735]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Seattle is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "Division records — Las Vegas 72-59, Denver 71-60, Seattle 71-60, Portland 54-77. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "Over its last 7 games the club went 4-3, scoring 28 runs and allowing 24. Season totals are 559 scored and 538 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24. Recent game IDs 1500, 1519, 1524, 1536, 1548, 1560, 1572]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Las Vegas Gamblers, Seattle is 9-10 with 61 runs scored and 69 allowed. [games.csv 1981 completed regular season, team IDs 24/17, latest game #1500, 1981-08-23]",
+        "Against Denver Rocketeers, Seattle is 9-9 with 93 runs scored and 85 allowed. [games.csv 1981 completed regular season, team IDs 24/13, latest game #1572, 1981-08-30]",
+        "Against Portland Lumberjacks, Seattle is 13-3 with 79 runs scored and 53 allowed. [games.csv 1981 completed regular season, team IDs 24/18, latest game #1524, 1981-08-26]",
+        "Seattle hosts Nashville Blues in the next listed game on 1981-08-31. [games.csv game_id=1580, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Alex Bautista (#7886) leads the club with 139 hits in 474 at-bats, including 8 home runs. [players_game_batting.csv joined to played games.csv, team_id=24, year=1981, through 1981-08-30]",
+        "Ricardo Sanchez (#5988) leads the staff in innings pitched (214 1/3), with 171 strikeouts, 85 walks and a 3.99 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=24, year=1981, through 1981-08-30]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (2) — 1975, 1979. League titles (0) — none. [team_history.csv, team_id=24, league_id=200, year=1972–1980]",
+        "The club finished 74-88 in 1980, division place 4. [team_history_record.csv, team_id=24, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-31 export lists 26 active players. [players_roster_status.csv team_id=24 is_active=1 joined to players.csv player_id, export league date 1981-08-31]",
+        "P — Antonio Romo (#26), Eddie Sandoval (#5737), Eduardo Gonzales (#952), Harry Benjamin (#5944), Jahiem Bryant (#1906), Jesse Street (#1490), Nelson Majano (#1262), Rene Oregon (#2255), Ricardo Sanchez (#5988), Sergio Lopez (#8818), Tony Miller (#6735).",
+        "C — Josiah King (#5948), Luis Chaves (#5997).",
+        "1B — Carlos Merlos (#6611), Jordan Cooper (#4546), Kevin Fink (#1528), Mike Martinez (#6766).",
+        "2B — Antonio Luciano (#6649), Kevin Richardson (#4831).",
+        "3B — Ben Nattrass (#2673), Do-hyun Hu (#9303).",
+        "SS — Luis Rodriguez (#2330).",
+        "LF — Adam Wilson (#1952), Alex Bautista (#7886).",
+        "CF — Pedro Medina (#111).",
+        "RF — David Olguin (#8049)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Raul Colunga (#8808), 21, RF at Mobile Voyagers — drafted in 1978 with overall pick 3. [players.csv player_id=8808, team_affiliations.csv team_id=24 affiliated_team_id=47, teams.csv, export 1981-08-31]",
+        "Aaron Higginbotham (#10817), 21, RF at Newark Kernels — drafted in 1981 with overall pick 11. [players.csv player_id=10817, team_affiliations.csv team_id=24 affiliated_team_id=53, teams.csv, export 1981-08-31]",
+        "Manny Medina (#8415), 20, 1B at Irvine Dingos — drafted in 1979 with overall pick 16. [players.csv player_id=8415, team_affiliations.csv team_id=24 affiliated_team_id=79, teams.csv, export 1981-08-31]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-01-02 — In a trade with Las Vegas, Seattle received Danny Sanchez (#4811) and sent Trevon Washington (#5361), Georber Alvarez (#6092). [trade_history.csv date=1981-01-02 team_id_0=24 team_id_1=17 message_id=18870]",
+        "1981-01-22 — In a trade with Phoenix, Seattle received Bobby Perez (#9888) and sent Jose Contreras (#677). [trade_history.csv date=1981-01-22 team_id_0=2 team_id_1=24 message_id=18901]",
+        "1981-07-28 — In a trade with St. Louis, Seattle received Harry Benjamin (#5944) and sent Isaiah Gibson (#6307). [trade_history.csv date=1981-07-28 team_id_0=19 team_id_1=24 message_id=19866]",
+        "Harry Benjamin (#5944) has 0 batting PA and 5 pitching innings for Seattle in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=5944, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Seattle stand against its division opponents? Seattle is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "Will the next series change Seattle's recent scoring margin? Over its last 7 games the club went 4-3, scoring 28 runs and allowing 24. Season totals are 559 scored and 538 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24. Recent game IDs 1500, 1519, 1524, 1536, 1548, 1560, 1572]",
+        "What role will Harry Benjamin (#5944) earn with Seattle? Harry Benjamin (#5944) has 0 batting PA and 5 pitching innings for Seattle in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=5944, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24] [trade_history.csv date=1981-07-28 team_id_0=19 team_id_1=24 message_id=19866]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Seattle Comets is filed at baseball_observer_showcase_hou_at_lv_1981_08_19_pregame_desk.md.",
+        "Earlier internal coverage naming Seattle Comets is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "24:1981:division",
+      "question": "Where does Seattle stand against its division opponents?",
+      "evidence": "Seattle is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]"
+    },
+    {
+      "key": "24:1981:runs",
+      "question": "Will the next series change Seattle's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 4-3, scoring 28 runs and allowing 24. Season totals are 559 scored and 538 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24. Recent game IDs 1500, 1519, 1524, 1536, 1548, 1560, 1572]"
+    },
+    {
+      "key": "24:1981:trade:19866:5944",
+      "question": "What role will Harry Benjamin (#5944) earn with Seattle?",
+      "evidence": "Harry Benjamin (#5944) has 0 batting PA and 5 pitching innings for Seattle in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=5944, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24] [trade_history.csv date=1981-07-28 team_id_0=19 team_id_1=24 message_id=19866]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1464,
+      "date": "1981-08-20",
+      "home_id": 24,
+      "away_id": 17,
+      "runs_away": 0,
+      "runs_home": 4,
+      "innings": 9,
+      "summary": "Las Vegas 0, Seattle 4",
+      "source": "games.csv game_id=1464 date=1981-08-20 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1476,
+      "date": "1981-08-21",
+      "home_id": 24,
+      "away_id": 17,
+      "runs_away": 3,
+      "runs_home": 4,
+      "innings": 14,
+      "summary": "Las Vegas 3, Seattle 4",
+      "source": "games.csv game_id=1476 date=1981-08-21 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1488,
+      "date": "1981-08-22",
+      "home_id": 24,
+      "away_id": 17,
+      "runs_away": 2,
+      "runs_home": 7,
+      "innings": 9,
+      "summary": "Las Vegas 2, Seattle 7",
+      "source": "games.csv game_id=1488 date=1981-08-22 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1500,
+      "date": "1981-08-23",
+      "home_id": 24,
+      "away_id": 17,
+      "runs_away": 3,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Las Vegas 3, Seattle 2",
+      "source": "games.csv game_id=1500 date=1981-08-23 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1519,
+      "date": "1981-08-25",
+      "home_id": 18,
+      "away_id": 24,
+      "runs_away": 8,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "Seattle 8, Portland 3",
+      "source": "games.csv game_id=1519 date=1981-08-25 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1524,
+      "date": "1981-08-26",
+      "home_id": 18,
+      "away_id": 24,
+      "runs_away": 7,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Seattle 7, Portland 6",
+      "source": "games.csv game_id=1524 date=1981-08-26 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1536,
+      "date": "1981-08-27",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 5,
+      "runs_home": 6,
+      "innings": 9,
+      "summary": "Denver 5, Seattle 6",
+      "source": "games.csv game_id=1536 date=1981-08-27 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1548,
+      "date": "1981-08-28",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 1,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Denver 1, Seattle 2",
+      "source": "games.csv game_id=1548 date=1981-08-28 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1560,
+      "date": "1981-08-29",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 4,
+      "runs_home": 2,
+      "innings": 9,
+      "summary": "Denver 4, Seattle 2",
+      "source": "games.csv game_id=1560 date=1981-08-29 league_id=200 game_type=0 played=1"
+    },
+    {
+      "game_id": 1572,
+      "date": "1981-08-30",
+      "home_id": 24,
+      "away_id": 13,
+      "runs_away": 2,
+      "runs_home": 1,
+      "innings": 9,
+      "summary": "Denver 2, Seattle 1",
+      "source": "games.csv game_id=1572 date=1981-08-30 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1464,
+    1476,
+    1488,
+    1500,
+    1519,
+    1524,
+    1536,
+    1548,
+    1560,
+    1572
+  ],
+  "transactions": [
+    {
+      "id": "trade:18870",
+      "date": "1981-01-02",
+      "partner_id": 17,
+      "incoming_ids": [
+        4811
+      ],
+      "outgoing_ids": [
+        5361,
+        6092
+      ],
+      "summary": "In a trade with Las Vegas, Seattle received Danny Sanchez (#4811) and sent Trevon Washington (#5361), Georber Alvarez (#6092)",
+      "source": "trade_history.csv date=1981-01-02 team_id_0=24 team_id_1=17 message_id=18870"
+    },
+    {
+      "id": "trade:18901",
+      "date": "1981-01-22",
+      "partner_id": 2,
+      "incoming_ids": [
+        9888
+      ],
+      "outgoing_ids": [
+        677
+      ],
+      "summary": "In a trade with Phoenix, Seattle received Bobby Perez (#9888) and sent Jose Contreras (#677)",
+      "source": "trade_history.csv date=1981-01-22 team_id_0=2 team_id_1=24 message_id=18901"
+    },
+    {
+      "id": "trade:19866",
+      "date": "1981-07-28",
+      "partner_id": 19,
+      "incoming_ids": [
+        5944
+      ],
+      "outgoing_ids": [
+        6307
+      ],
+      "summary": "In a trade with St. Louis, Seattle received Harry Benjamin (#5944) and sent Isaiah Gibson (#6307)",
+      "source": "trade_history.csv date=1981-07-28 team_id_0=19 team_id_1=24 message_id=19866"
+    }
+  ],
+  "roster_ids": [
+    26,
+    111,
+    952,
+    1262,
+    1490,
+    1528,
+    1906,
+    1952,
+    2255,
+    2330,
+    2673,
+    4546,
+    4831,
+    5737,
+    5944,
+    5948,
+    5988,
+    5997,
+    6611,
+    6649,
+    6735,
+    6766,
+    7886,
+    8049,
+    8818,
+    9303
+  ],
+  "roster": [
+    {
+      "player_id": 6611,
+      "name": "Carlos Merlos (#6611)",
+      "age": 24,
+      "position": "1B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4546,
+      "name": "Jordan Cooper (#4546)",
+      "age": 28,
+      "position": "1B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1528,
+      "name": "Kevin Fink (#1528)",
+      "age": 28,
+      "position": "1B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6766,
+      "name": "Mike Martinez (#6766)",
+      "age": 24,
+      "position": "1B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6649,
+      "name": "Antonio Luciano (#6649)",
+      "age": 29,
+      "position": "2B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4831,
+      "name": "Kevin Richardson (#4831)",
+      "age": 31,
+      "position": "2B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2673,
+      "name": "Ben Nattrass (#2673)",
+      "age": 31,
+      "position": "3B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 9303,
+      "name": "Do-hyun Hu (#9303)",
+      "age": 31,
+      "position": "3B",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5948,
+      "name": "Josiah King (#5948)",
+      "age": 30,
+      "position": "C",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5997,
+      "name": "Luis Chaves (#5997)",
+      "age": 28,
+      "position": "C",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 111,
+      "name": "Pedro Medina (#111)",
+      "age": 32,
+      "position": "CF",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1952,
+      "name": "Adam Wilson (#1952)",
+      "age": 32,
+      "position": "LF",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7886,
+      "name": "Alex Bautista (#7886)",
+      "age": 24,
+      "position": "LF",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 26,
+      "name": "Antonio Romo (#26)",
+      "age": 34,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5737,
+      "name": "Eddie Sandoval (#5737)",
+      "age": 30,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 952,
+      "name": "Eduardo Gonzales (#952)",
+      "age": 35,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5944,
+      "name": "Harry Benjamin (#5944)",
+      "age": 30,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1906,
+      "name": "Jahiem Bryant (#1906)",
+      "age": 33,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1490,
+      "name": "Jesse Street (#1490)",
+      "age": 36,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1262,
+      "name": "Nelson Majano (#1262)",
+      "age": 36,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2255,
+      "name": "Rene Oregon (#2255)",
+      "age": 32,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5988,
+      "name": "Ricardo Sanchez (#5988)",
+      "age": 25,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8818,
+      "name": "Sergio Lopez (#8818)",
+      "age": 24,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6735,
+      "name": "Tony Miller (#6735)",
+      "age": 29,
+      "position": "P",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8049,
+      "name": "David Olguin (#8049)",
+      "age": 27,
+      "position": "RF",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2330,
+      "name": "Luis Rodriguez (#2330)",
+      "age": 30,
+      "position": "SS",
+      "team_id": 24,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 8808,
+      "name": "Raul Colunga (#8808)",
+      "age": 21,
+      "position": "RF",
+      "team_id": 47,
+      "injury_flag": 1,
+      "day_to_day_flag": 0,
+      "draft_year": 1978,
+      "draft_pick": 3,
+      "affiliate": "Mobile Voyagers"
+    },
+    {
+      "player_id": 10817,
+      "name": "Aaron Higginbotham (#10817)",
+      "age": 21,
+      "position": "RF",
+      "team_id": 53,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 11,
+      "affiliate": "Newark Kernels"
+    },
+    {
+      "player_id": 8415,
+      "name": "Manny Medina (#8415)",
+      "age": 20,
+      "position": "1B",
+      "team_id": 79,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1979,
+      "draft_pick": 16,
+      "affiliate": "Irvine Dingos"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1500,
+    1519,
+    1524,
+    1536,
+    1548,
+    1560,
+    1572
+  ],
+  "continuity": {
+    "threads": {
+      "24:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Where does Seattle stand against its division opponents?",
+        "evidence": "Seattle is 71-60 and trails Las Vegas by 1 game in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-30, division team IDs 13,17,18,24]",
+        "status": "watching"
+      },
+      "24:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "Will the next series change Seattle's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 4-3, scoring 28 runs and allowing 24. Season totals are 559 scored and 538 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24. Recent game IDs 1500, 1519, 1524, 1536, 1548, 1560, 1572]",
+        "status": "watching"
+      },
+      "24:1981:rival:17": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Seattle–Las Vegas game do to the division race?",
+        "evidence": "Seattle hosts Las Vegas Gamblers in the next listed game on 1981-08-20. [games.csv game_id=1464, played=0] Seattle is 64-57 and trails Las Vegas by 5 games in the ABC Western Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 13,17,18,24]",
+        "status": "carried from earlier coverage"
+      },
+      "24:1981:trade:19866:5944": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 2,
+        "last_update": "1981-08-30_461bc955c6db88b4",
+        "question": "What role will Harry Benjamin (#5944) earn with Seattle?",
+        "evidence": "Harry Benjamin (#5944) has 0 batting PA and 5 pitching innings for Seattle in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=5944, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-30, team_id=24] [trade_history.csv date=1981-07-28 team_id_0=19 team_id_1=24 message_id=19866]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      26,
+      111,
+      952,
+      1262,
+      1490,
+      1528,
+      1906,
+      1952,
+      2255,
+      2330,
+      2673,
+      4546,
+      4831,
+      5737,
+      5944,
+      5948,
+      5988,
+      5997,
+      6611,
+      6649,
+      6735,
+      6766,
+      7886,
+      8049,
+      8818,
+      9303
+    ],
+    "names": {
+      "6611": "Carlos Merlos (#6611)",
+      "4546": "Jordan Cooper (#4546)",
+      "1528": "Kevin Fink (#1528)",
+      "6766": "Mike Martinez (#6766)",
+      "6649": "Antonio Luciano (#6649)",
+      "4831": "Kevin Richardson (#4831)",
+      "2673": "Ben Nattrass (#2673)",
+      "9303": "Do-hyun Hu (#9303)",
+      "5948": "Josiah King (#5948)",
+      "5997": "Luis Chaves (#5997)",
+      "111": "Pedro Medina (#111)",
+      "1952": "Adam Wilson (#1952)",
+      "7886": "Alex Bautista (#7886)",
+      "26": "Antonio Romo (#26)",
+      "5737": "Eddie Sandoval (#5737)",
+      "952": "Eduardo Gonzales (#952)",
+      "5944": "Harry Benjamin (#5944)",
+      "1906": "Jahiem Bryant (#1906)",
+      "1490": "Jesse Street (#1490)",
+      "1262": "Nelson Majano (#1262)",
+      "2255": "Rene Oregon (#2255)",
+      "5988": "Ricardo Sanchez (#5988)",
+      "8818": "Sergio Lopez (#8818)",
+      "6735": "Tony Miller (#6735)",
+      "8049": "David Olguin (#8049)",
+      "2330": "Luis Rodriguez (#2330)"
+    },
+    "flags": {
+      "6611": [
+        0,
+        0
+      ],
+      "4546": [
+        0,
+        0
+      ],
+      "1528": [
+        0,
+        0
+      ],
+      "6766": [
+        0,
+        0
+      ],
+      "6649": [
+        0,
+        0
+      ],
+      "4831": [
+        0,
+        0
+      ],
+      "2673": [
+        0,
+        0
+      ],
+      "9303": [
+        0,
+        0
+      ],
+      "5948": [
+        0,
+        0
+      ],
+      "5997": [
+        0,
+        0
+      ],
+      "111": [
+        0,
+        0
+      ],
+      "1952": [
+        0,
+        0
+      ],
+      "7886": [
+        0,
+        0
+      ],
+      "26": [
+        0,
+        0
+      ],
+      "5737": [
+        0,
+        0
+      ],
+      "952": [
+        0,
+        0
+      ],
+      "5944": [
+        0,
+        0
+      ],
+      "1906": [
+        0,
+        0
+      ],
+      "1490": [
+        0,
+        0
+      ],
+      "1262": [
+        0,
+        0
+      ],
+      "2255": [
+        0,
+        0
+      ],
+      "5988": [
+        0,
+        0
+      ],
+      "8818": [
+        0,
+        0
+      ],
+      "6735": [
+        0,
+        0
+      ],
+      "8049": [
+        0,
+        0
+      ],
+      "2330": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18870": "In a trade with Las Vegas, Seattle received Danny Sanchez (#4811) and sent Trevon Washington (#5361), Georber Alvarez (#6092)",
+      "trade:18901": "In a trade with Phoenix, Seattle received Bobby Perez (#9888) and sent Jose Contreras (#677)",
+      "trade:19866": "In a trade with St. Louis, Seattle received Harry Benjamin (#5944) and sent Isaiah Gibson (#6307)"
+    }
+  },
+  "previous_edition": "1981-08-19_2acae29146076f62"
+}

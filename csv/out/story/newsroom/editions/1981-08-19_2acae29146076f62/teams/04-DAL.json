@@ -1,0 +1,736 @@
+{
+  "team_id": 4,
+  "team": "Dallas Rustlers",
+  "abbr": "DAL",
+  "division": "NBC Central Division",
+  "conference": "NBC",
+  "wins": 66,
+  "losses": 55,
+  "gb": 0.0,
+  "priority": 3,
+  "division_leaders_change": false,
+  "division_leaders": [
+    4
+  ],
+  "intensity": "analysis",
+  "headline": "Dallas fell to Phoenix 3-0",
+  "brief": "Dallas fell to Phoenix 3-0. [games.csv game_id=1444 date=1981-08-19 league_id=200 game_type=0 played=1] Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+  "sections": [
+    {
+      "title": "Reporting focus",
+      "paragraphs": [
+        "1981-08-19 — Dallas fell to Phoenix 3-0 in 9 innings. [games.csv game_id=1444 date=1981-08-19 league_id=200 game_type=0 played=1] Jalen Smith (#7373) went 2-for-4 with 0 HR and 0 RBI. [players_game_batting.csv, game_id=1444, team_id=4, player_id=7373] Warren Holster (#1732) worked 5 2/3 innings, allowed 3 earned runs and struck out 4. [players_game_pitching_stats.csv, game_id=1444, team_id=4, player_id=1732]",
+        "Phoenix kept Dallas scoreless across all 9 innings. [games_score.csv game_id=1444 team=0]"
+      ]
+    },
+    {
+      "title": "Division and recent form",
+      "paragraphs": [
+        "Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Division records — Dallas 66-55, Detroit 65-56, Chicago 64-57, Minneapolis 54-66. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Over its last 7 games the club went 3-4, scoring 25 runs and allowing 23. Season totals are 573 scored and 492 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4. Recent game IDs 1378, 1383, 1395, 1407, 1420, 1432, 1444]"
+      ]
+    },
+    {
+      "title": "Division opponents and next fixture",
+      "paragraphs": [
+        "Against Detroit Dukes, Dallas is 5-9 with 49 runs scored and 69 allowed. [games.csv 1981 completed regular season, team IDs 4/5, latest game #1191, 1981-07-26]",
+        "Against Chicago Fire, Dallas is 5-9 with 51 runs scored and 67 allowed. [games.csv 1981 completed regular season, team IDs 4/12, latest game #1155, 1981-07-23]",
+        "Against Minneapolis Blizzard, Dallas is 9-6 with 88 runs scored and 65 allowed. [games.csv 1981 completed regular season, team IDs 4/11, latest game #1107, 1981-07-19]",
+        "Dallas visits Minneapolis Blizzard in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0]"
+      ]
+    },
+    {
+      "title": "Season performances",
+      "paragraphs": [
+        "Jose Castillo (#7537) leads the club with 124 hits in 433 at-bats, including 7 home runs. [players_game_batting.csv joined to played games.csv, team_id=4, year=1981, through 1981-08-19]",
+        "Gabriel Zayas (#5136) leads the staff in innings pitched (182 1/3), with 112 strikeouts, 61 walks and a 3.70 ERA. [players_game_pitching_stats.csv joined to played games.csv, team_id=4, year=1981, through 1981-08-19]"
+      ]
+    },
+    {
+      "title": "Franchise record",
+      "paragraphs": [
+        "Seasons 1972–1980 cover 9 recorded campaigns. Tournament appearances (1) — 1977. League titles (1) — 1977. [team_history.csv, team_id=4, league_id=200, year=1972–1980]",
+        "The club finished 72-90 in 1980, division place 3. [team_history_record.csv, team_id=4, league_id=200, year=1980]"
+      ]
+    },
+    {
+      "title": "Active roster",
+      "paragraphs": [
+        "The 1981-08-20 export lists 26 active players. [players_roster_status.csv team_id=4 is_active=1 joined to players.csv player_id, export league date 1981-08-20]",
+        "P — Alfredo Noriega (#716), Anton Garay (#5873), Brian Manchester (#1656), Doug Farmer (#2859), Eric Strickland (#1737), Gabriel Zayas (#5136), Joe Guy (#8693), Lorenzo Nava (#4622), Ryan Millich (#486), Vinny Gonzalez (#2884), Warren Holster (#1732).",
+        "C — Andy Casas (#5093), Devon Barlow (#6196).",
+        "1B — Bill Parlier (#914), Bill Rambow (#841).",
+        "2B — Jalen Smith (#7373), Jose Castillo (#7537), Mike Frierson (#3809).",
+        "3B — Cliff Barron (#7386).",
+        "SS — John Thurston (#872).",
+        "LF — Alejandro Rosado (#473), Bill Martenson (#1014), Bryce Rose (#292).",
+        "CF — Alex Moreno (#4691).",
+        "RF — Jimmy Docherty (#10053), Rich Vela (#4786)."
+      ]
+    },
+    {
+      "title": "Organization and draft watch",
+      "paragraphs": [
+        "Development watch follows up to three affiliate players age 25 or younger drafted by the club in the current or previous three draft years, ordered by earliest overall pick.",
+        "Amari Edwards (#6975), 22, P at Chula Vista Blackhawks — drafted in 1980 with overall pick 1. [players.csv player_id=6975, team_affiliations.csv team_id=4 affiliated_team_id=26, teams.csv, export 1981-08-20]",
+        "Tony Aragones (#12057), 22, P at Chula Vista Blackhawks — drafted in 1981 with overall pick 5. [players.csv player_id=12057, team_affiliations.csv team_id=4 affiliated_team_id=26, teams.csv, export 1981-08-20]",
+        "Tony Melendez (#9649), 22, P at Chula Vista Blackhawks — drafted in 1980 with overall pick 29. [players.csv player_id=9649, team_affiliations.csv team_id=4 affiliated_team_id=26, teams.csv, export 1981-08-20]"
+      ]
+    },
+    {
+      "title": "Recent front-office record",
+      "paragraphs": [
+        "1981-07-24 — trade with Tampa Bay. received Brian Manchester (#1656). sent Jonathan Funches (#6782). [trade_history.csv date=1981-07-24 team_id_0=8 team_id_1=4 message_id=19798]",
+        "1981-07-24 — trade with Pittsburgh. received Doug Farmer (#2859). sent Ricky Perez (#8879), Marcos Guerrero (#6438). [trade_history.csv date=1981-07-24 team_id_0=4 team_id_1=21 message_id=19799]",
+        "1981-07-27 — trade with San Diego. received Eric Strickland (#1737). sent Josh Brown (#9507). [trade_history.csv date=1981-07-27 team_id_0=4 team_id_1=7 message_id=19849]",
+        "Eric Strickland (#1737) has 0 batting PA and 7 pitching innings for Dallas in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1737, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4]"
+      ]
+    },
+    {
+      "title": "Continuing questions",
+      "paragraphs": [
+        "Where does Dallas stand against its division opponents? Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "Will the next series change Dallas's recent scoring margin? Over its last 7 games the club went 3-4, scoring 25 runs and allowing 23. Season totals are 573 scored and 492 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4. Recent game IDs 1378, 1383, 1395, 1407, 1420, 1432, 1444]",
+        "What will the next Dallas–Minneapolis game do to the division race? Dallas visits Minneapolis Blizzard in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0] Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "What role will Eric Strickland (#1737) earn with Dallas? Eric Strickland (#1737) has 0 batting PA and 7 pitching innings for Dallas in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1737, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4] [trade_history.csv date=1981-07-27 team_id_0=4 team_id_1=7 message_id=19849]"
+      ]
+    },
+    {
+      "title": "Prior coverage",
+      "paragraphs": [
+        "The league's 1981-07-20 publication checkpoint records completed coverage for Baseball Observer video, Baseball Observer forum post, ABL forum post. [csv/out/story/manifests/july20_publication_checkpoint_1981_07_20_asof_1981-07-19.md]",
+        "Earlier internal coverage naming Dallas Rustlers is filed at ernie_bewell_conference_challenges_1981_08_18_asof_1981-08-18.md.",
+        "Earlier internal coverage naming Dallas Rustlers is filed at csv/out/story/production/abl_weekday17_desk_1981_07_27_asof_1981-07-26.md."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "key": "4:1981:division",
+      "question": "Where does Dallas stand against its division opponents?",
+      "evidence": "Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "4:1981:runs",
+      "question": "Will the next series change Dallas's recent scoring margin?",
+      "evidence": "Over its last 7 games the club went 3-4, scoring 25 runs and allowing 23. Season totals are 573 scored and 492 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4. Recent game IDs 1378, 1383, 1395, 1407, 1420, 1432, 1444]"
+    },
+    {
+      "key": "4:1981:rival:11",
+      "question": "What will the next Dallas–Minneapolis game do to the division race?",
+      "evidence": "Dallas visits Minneapolis Blizzard in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0] Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]"
+    },
+    {
+      "key": "4:1981:trade:19849:1737",
+      "question": "What role will Eric Strickland (#1737) earn with Dallas?",
+      "evidence": "Eric Strickland (#1737) has 0 batting PA and 7 pitching innings for Dallas in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1737, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4] [trade_history.csv date=1981-07-27 team_id_0=4 team_id_1=7 message_id=19849]"
+    }
+  ],
+  "games": [
+    {
+      "game_id": 1444,
+      "date": "1981-08-19",
+      "home_id": 2,
+      "away_id": 4,
+      "runs_away": 0,
+      "runs_home": 3,
+      "innings": 9,
+      "summary": "Dallas 0, Phoenix 3",
+      "source": "games.csv game_id=1444 date=1981-08-19 league_id=200 game_type=0 played=1"
+    }
+  ],
+  "game_ids": [
+    1444
+  ],
+  "transactions": [
+    {
+      "id": "trade:18931",
+      "date": "1981-02-21",
+      "partner_id": 16,
+      "incoming_ids": [
+        841
+      ],
+      "outgoing_ids": [
+        7640
+      ],
+      "summary": "trade with Nashville. received Bill Rambow (#841). sent Corey Nelson (#7640)",
+      "source": "trade_history.csv date=1981-02-21 team_id_0=4 team_id_1=16 message_id=18931"
+    },
+    {
+      "id": "trade:19798",
+      "date": "1981-07-24",
+      "partner_id": 8,
+      "incoming_ids": [
+        1656
+      ],
+      "outgoing_ids": [
+        6782
+      ],
+      "summary": "trade with Tampa Bay. received Brian Manchester (#1656). sent Jonathan Funches (#6782)",
+      "source": "trade_history.csv date=1981-07-24 team_id_0=8 team_id_1=4 message_id=19798"
+    },
+    {
+      "id": "trade:19799",
+      "date": "1981-07-24",
+      "partner_id": 21,
+      "incoming_ids": [
+        2859
+      ],
+      "outgoing_ids": [
+        8879,
+        6438
+      ],
+      "summary": "trade with Pittsburgh. received Doug Farmer (#2859). sent Ricky Perez (#8879), Marcos Guerrero (#6438)",
+      "source": "trade_history.csv date=1981-07-24 team_id_0=4 team_id_1=21 message_id=19799"
+    },
+    {
+      "id": "trade:19849",
+      "date": "1981-07-27",
+      "partner_id": 7,
+      "incoming_ids": [
+        1737
+      ],
+      "outgoing_ids": [
+        9507
+      ],
+      "summary": "trade with San Diego. received Eric Strickland (#1737). sent Josh Brown (#9507)",
+      "source": "trade_history.csv date=1981-07-27 team_id_0=4 team_id_1=7 message_id=19849"
+    }
+  ],
+  "roster_ids": [
+    292,
+    473,
+    486,
+    716,
+    841,
+    872,
+    914,
+    1014,
+    1656,
+    1732,
+    1737,
+    2859,
+    2884,
+    3809,
+    4622,
+    4691,
+    4786,
+    5093,
+    5136,
+    5873,
+    6196,
+    7373,
+    7386,
+    7537,
+    8693,
+    10053
+  ],
+  "roster": [
+    {
+      "player_id": 914,
+      "name": "Bill Parlier (#914)",
+      "age": 39,
+      "position": "1B",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 841,
+      "name": "Bill Rambow (#841)",
+      "age": 37,
+      "position": "1B",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7373,
+      "name": "Jalen Smith (#7373)",
+      "age": 29,
+      "position": "2B",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7537,
+      "name": "Jose Castillo (#7537)",
+      "age": 23,
+      "position": "2B",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 3809,
+      "name": "Mike Frierson (#3809)",
+      "age": 29,
+      "position": "2B",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 7386,
+      "name": "Cliff Barron (#7386)",
+      "age": 27,
+      "position": "3B",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5093,
+      "name": "Andy Casas (#5093)",
+      "age": 26,
+      "position": "C",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 6196,
+      "name": "Devon Barlow (#6196)",
+      "age": 24,
+      "position": "C",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4691,
+      "name": "Alex Moreno (#4691)",
+      "age": 31,
+      "position": "CF",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 473,
+      "name": "Alejandro Rosado (#473)",
+      "age": 34,
+      "position": "LF",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1014,
+      "name": "Bill Martenson (#1014)",
+      "age": 36,
+      "position": "LF",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 292,
+      "name": "Bryce Rose (#292)",
+      "age": 36,
+      "position": "LF",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 716,
+      "name": "Alfredo Noriega (#716)",
+      "age": 33,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5873,
+      "name": "Anton Garay (#5873)",
+      "age": 28,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1656,
+      "name": "Brian Manchester (#1656)",
+      "age": 33,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2859,
+      "name": "Doug Farmer (#2859)",
+      "age": 32,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1737,
+      "name": "Eric Strickland (#1737)",
+      "age": 32,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 5136,
+      "name": "Gabriel Zayas (#5136)",
+      "age": 25,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 8693,
+      "name": "Joe Guy (#8693)",
+      "age": 25,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4622,
+      "name": "Lorenzo Nava (#4622)",
+      "age": 27,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 486,
+      "name": "Ryan Millich (#486)",
+      "age": 40,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 2884,
+      "name": "Vinny Gonzalez (#2884)",
+      "age": 29,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 1732,
+      "name": "Warren Holster (#1732)",
+      "age": 33,
+      "position": "P",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 10053,
+      "name": "Jimmy Docherty (#10053)",
+      "age": 24,
+      "position": "RF",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 4786,
+      "name": "Rich Vela (#4786)",
+      "age": 29,
+      "position": "RF",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    },
+    {
+      "player_id": 872,
+      "name": "John Thurston (#872)",
+      "age": 33,
+      "position": "SS",
+      "team_id": 4,
+      "injury_flag": 0,
+      "day_to_day_flag": 0
+    }
+  ],
+  "prospects": [
+    {
+      "player_id": 6975,
+      "name": "Amari Edwards (#6975)",
+      "age": 22,
+      "position": "P",
+      "team_id": 26,
+      "injury_flag": 1,
+      "day_to_day_flag": 1,
+      "draft_year": 1980,
+      "draft_pick": 1,
+      "affiliate": "Chula Vista Blackhawks"
+    },
+    {
+      "player_id": 12057,
+      "name": "Tony Aragones (#12057)",
+      "age": 22,
+      "position": "P",
+      "team_id": 26,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1981,
+      "draft_pick": 5,
+      "affiliate": "Chula Vista Blackhawks"
+    },
+    {
+      "player_id": 9649,
+      "name": "Tony Melendez (#9649)",
+      "age": 22,
+      "position": "P",
+      "team_id": 26,
+      "injury_flag": 0,
+      "day_to_day_flag": 0,
+      "draft_year": 1980,
+      "draft_pick": 29,
+      "affiliate": "Chula Vista Blackhawks"
+    }
+  ],
+  "sources": [
+    "games.csv",
+    "teams.csv",
+    "leagues.csv",
+    "divisions.csv",
+    "sub_leagues.csv",
+    "players.csv",
+    "players_game_batting.csv",
+    "players_game_pitching_stats.csv",
+    "team_history.csv",
+    "team_history_record.csv",
+    "trade_history.csv",
+    "team_affiliations.csv",
+    "players_roster_status.csv"
+  ],
+  "recent_game_ids": [
+    1378,
+    1383,
+    1395,
+    1407,
+    1420,
+    1432,
+    1444
+  ],
+  "continuity": {
+    "threads": {
+      "4:1981:division": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Where does Dallas stand against its division opponents?",
+        "evidence": "Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "4:1981:runs": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "Will the next series change Dallas's recent scoring margin?",
+        "evidence": "Over its last 7 games the club went 3-4, scoring 25 runs and allowing 23. Season totals are 573 scored and 492 allowed. [games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4. Recent game IDs 1378, 1383, 1395, 1407, 1420, 1432, 1444]",
+        "status": "watching"
+      },
+      "4:1981:rival:11": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What will the next Dallas–Minneapolis game do to the division race?",
+        "evidence": "Dallas visits Minneapolis Blizzard in the next listed game on 1981-08-20. [games.csv game_id=1456, played=0] Dallas is 66-55 and leads Detroit by 1 games in the NBC Central Division. [teams.csv and games.csv league_id=200, completed regular season through 1981-08-19, division team IDs 4,5,11,12]",
+        "status": "watching"
+      },
+      "4:1981:trade:19849:1737": {
+        "opened": "1981-08-19_2acae29146076f62",
+        "first_cutoff": "1981-08-19",
+        "observations": 1,
+        "last_update": "1981-08-19_2acae29146076f62",
+        "question": "What role will Eric Strickland (#1737) earn with Dallas?",
+        "evidence": "Eric Strickland (#1737) has 0 batting PA and 7 pitching innings for Dallas in completed major-league games this season. [players_game_batting.csv and players_game_pitching_stats.csv, player_id=1737, games.csv, league_id=200, game_type=0, played=1, year=1981, through 1981-08-19, team_id=4] [trade_history.csv date=1981-07-27 team_id_0=4 team_id_1=7 message_id=19849]",
+        "status": "watching"
+      }
+    },
+    "roster_ids": [
+      292,
+      473,
+      486,
+      716,
+      841,
+      872,
+      914,
+      1014,
+      1656,
+      1732,
+      1737,
+      2859,
+      2884,
+      3809,
+      4622,
+      4691,
+      4786,
+      5093,
+      5136,
+      5873,
+      6196,
+      7373,
+      7386,
+      7537,
+      8693,
+      10053
+    ],
+    "names": {
+      "914": "Bill Parlier (#914)",
+      "841": "Bill Rambow (#841)",
+      "7373": "Jalen Smith (#7373)",
+      "7537": "Jose Castillo (#7537)",
+      "3809": "Mike Frierson (#3809)",
+      "7386": "Cliff Barron (#7386)",
+      "5093": "Andy Casas (#5093)",
+      "6196": "Devon Barlow (#6196)",
+      "4691": "Alex Moreno (#4691)",
+      "473": "Alejandro Rosado (#473)",
+      "1014": "Bill Martenson (#1014)",
+      "292": "Bryce Rose (#292)",
+      "716": "Alfredo Noriega (#716)",
+      "5873": "Anton Garay (#5873)",
+      "1656": "Brian Manchester (#1656)",
+      "2859": "Doug Farmer (#2859)",
+      "1737": "Eric Strickland (#1737)",
+      "5136": "Gabriel Zayas (#5136)",
+      "8693": "Joe Guy (#8693)",
+      "4622": "Lorenzo Nava (#4622)",
+      "486": "Ryan Millich (#486)",
+      "2884": "Vinny Gonzalez (#2884)",
+      "1732": "Warren Holster (#1732)",
+      "10053": "Jimmy Docherty (#10053)",
+      "4786": "Rich Vela (#4786)",
+      "872": "John Thurston (#872)"
+    },
+    "flags": {
+      "914": [
+        0,
+        0
+      ],
+      "841": [
+        0,
+        0
+      ],
+      "7373": [
+        0,
+        0
+      ],
+      "7537": [
+        0,
+        0
+      ],
+      "3809": [
+        0,
+        0
+      ],
+      "7386": [
+        0,
+        0
+      ],
+      "5093": [
+        0,
+        0
+      ],
+      "6196": [
+        0,
+        0
+      ],
+      "4691": [
+        0,
+        0
+      ],
+      "473": [
+        0,
+        0
+      ],
+      "1014": [
+        0,
+        0
+      ],
+      "292": [
+        0,
+        0
+      ],
+      "716": [
+        0,
+        0
+      ],
+      "5873": [
+        0,
+        0
+      ],
+      "1656": [
+        0,
+        0
+      ],
+      "2859": [
+        0,
+        0
+      ],
+      "1737": [
+        0,
+        0
+      ],
+      "5136": [
+        0,
+        0
+      ],
+      "8693": [
+        0,
+        0
+      ],
+      "4622": [
+        0,
+        0
+      ],
+      "486": [
+        0,
+        0
+      ],
+      "2884": [
+        0,
+        0
+      ],
+      "1732": [
+        0,
+        0
+      ],
+      "10053": [
+        0,
+        0
+      ],
+      "4786": [
+        0,
+        0
+      ],
+      "872": [
+        0,
+        0
+      ]
+    },
+    "deals": {
+      "trade:18931": "trade with Nashville. received Bill Rambow (#841). sent Corey Nelson (#7640)",
+      "trade:19798": "trade with Tampa Bay. received Brian Manchester (#1656). sent Jonathan Funches (#6782)",
+      "trade:19799": "trade with Pittsburgh. received Doug Farmer (#2859). sent Ricky Perez (#8879), Marcos Guerrero (#6438)",
+      "trade:19849": "trade with San Diego. received Eric Strickland (#1737). sent Josh Brown (#9507)"
+    }
+  },
+  "previous_edition": null
+}

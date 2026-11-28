@@ -1,0 +1,614 @@
+{
+  "run_id": "current_1981_07_20_asof_1981-07-19",
+  "newsroom_date": "1981-07-20",
+  "as_of_date": "1981-07-19",
+  "editorial_rule": "Data points where to look; the game proves the story.",
+  "source_state": {
+    "preflight": "READY_FOR_CURRENT_RUN",
+    "completed_games_through": "1981-07-19",
+    "july_20_results_used": false
+  },
+  "candidate_count": 15,
+  "sections": [
+    {
+      "candidate_class": "proven_current_fact",
+      "stories": [
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-western-division",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "National Baseball Conference Western Division",
+          "subject_name": "National Baseball Conference Western Division",
+          "related_subjects": "San Francisco Warriors|Phoenix Firebirds",
+          "headline_factual": "San Francisco Warriors leads Phoenix Firebirds by 2 game(s) in National Baseball Conference Western Division",
+          "stakes": "With fewer games remaining, each direct result has less schedule left to absorb it.",
+          "evidence_summary": "Through July 19: San Francisco Warriors 50-43; Phoenix Firebirds 48-45.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv|csv/ootp_csv/divisions.csv|csv/ootp_csv/sub_leagues.csv",
+          "signal_score": 86,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-western-division__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-western-division",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "division_records",
+              "value": "50-43 vs 48-45",
+              "comparison": "lead=2",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "division=National Baseball Conference Western Division;through=1981-07-19",
+              "notes": "Recomputed from completed games."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-central-division",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "National Baseball Conference Central Division",
+          "subject_name": "National Baseball Conference Central Division",
+          "related_subjects": "Dallas Rustlers|Detroit Dukes",
+          "headline_factual": "Dallas Rustlers leads Detroit Dukes by 2 game(s) in National Baseball Conference Central Division",
+          "stakes": "With fewer games remaining, each direct result has less schedule left to absorb it.",
+          "evidence_summary": "Through July 19: Dallas Rustlers 52-41; Detroit Dukes 50-43.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv|csv/ootp_csv/divisions.csv|csv/ootp_csv/sub_leagues.csv",
+          "signal_score": 86,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-central-division__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__division_race__national-baseball-conference-central-division",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "division_records",
+              "value": "52-41 vs 50-43",
+              "comparison": "lead=2",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "division=National Baseball Conference Central Division;through=1981-07-19",
+              "notes": "Recomputed from completed games."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-western-division",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "American Baseball Conference Western Division",
+          "subject_name": "American Baseball Conference Western Division",
+          "related_subjects": "Las Vegas Gamblers|Seattle Comets",
+          "headline_factual": "Las Vegas Gamblers leads Seattle Comets by 3 game(s) in American Baseball Conference Western Division",
+          "stakes": "With fewer games remaining, each direct result has less schedule left to absorb it.",
+          "evidence_summary": "Through July 19: Las Vegas Gamblers 54-39; Seattle Comets 51-42.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv|csv/ootp_csv/divisions.csv|csv/ootp_csv/sub_leagues.csv",
+          "signal_score": 83,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-western-division__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-western-division",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "division_records",
+              "value": "54-39 vs 51-42",
+              "comparison": "lead=3",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "division=American Baseball Conference Western Division;through=1981-07-19",
+              "notes": "Recomputed from completed games."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-eastern-division",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "American Baseball Conference Eastern Division",
+          "subject_name": "American Baseball Conference Eastern Division",
+          "related_subjects": "Boston Patriots|New York Aces",
+          "headline_factual": "Boston Patriots leads New York Aces by 4 game(s) in American Baseball Conference Eastern Division",
+          "stakes": "With fewer games remaining, each direct result has less schedule left to absorb it.",
+          "evidence_summary": "Through July 19: Boston Patriots 48-45; New York Aces 44-49.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv|csv/ootp_csv/divisions.csv|csv/ootp_csv/sub_leagues.csv",
+          "signal_score": 80,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-eastern-division__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-eastern-division",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "division_records",
+              "value": "48-45 vs 44-49",
+              "comparison": "lead=4",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "division=American Baseball Conference Eastern Division;through=1981-07-19",
+              "notes": "Recomputed from completed games."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-central-division",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "standings",
+          "signal_type": "division_race",
+          "subject_type": "division",
+          "subject_id": "American Baseball Conference Central Division",
+          "subject_name": "American Baseball Conference Central Division",
+          "related_subjects": "Houston Mavericks|Cincinnati Cougars",
+          "headline_factual": "Houston Mavericks leads Cincinnati Cougars by 5 game(s) in American Baseball Conference Central Division",
+          "stakes": "With fewer games remaining, each direct result has less schedule left to absorb it.",
+          "evidence_summary": "Through July 19: Houston Mavericks 53-39; Cincinnati Cougars 48-45.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv|csv/ootp_csv/divisions.csv|csv/ootp_csv/sub_leagues.csv",
+          "signal_score": 77,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-central-division__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__division_race__american-baseball-conference-central-division",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "division_records",
+              "value": "53-39 vs 48-45",
+              "comparison": "lead=5",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "division=American Baseball Conference Central Division;through=1981-07-19",
+              "notes": "Recomputed from completed games."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__weekly_rise__3",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "race",
+          "signal_type": "weekly_rise",
+          "subject_type": "team",
+          "subject_id": "3",
+          "subject_name": "Atlanta Kings",
+          "related_subjects": "",
+          "headline_factual": "Atlanta Kings posted the week's sharpest rise",
+          "stakes": "The week changed immediate race pressure; the next games determine whether that movement persists.",
+          "evidence_summary": "July 13-19 record: 3-1; season record 40-53.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 80,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__weekly_rise__3__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__weekly_rise__3",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "trailing_seven_day_record",
+              "value": "3-1",
+              "comparison": "season=40-53",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "team_id=3;1981-07-13..1981-07-19",
+              "notes": "Completed games only."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__weekly_fall__22",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "race",
+          "signal_type": "weekly_fall",
+          "subject_type": "team",
+          "subject_id": "22",
+          "subject_name": "Philadelphia Fury",
+          "related_subjects": "",
+          "headline_factual": "Philadelphia Fury posted the week's sharpest fall",
+          "stakes": "The week changed immediate race pressure; the next games determine whether that movement persists.",
+          "evidence_summary": "July 13-19 record: 1-3; season record 43-50.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 80,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__weekly_fall__22__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__weekly_fall__22",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "trailing_seven_day_record",
+              "value": "1-3",
+              "comparison": "season=43-50",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "team_id=22;1981-07-13..1981-07-19",
+              "notes": "Completed games only."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__ace_value_leader__5832",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "players",
+          "signal_type": "ace_value_leader",
+          "subject_type": "player",
+          "subject_id": "5832",
+          "subject_name": "Jose Coronado",
+          "related_subjects": "St. Louis Stallions",
+          "headline_factual": "Jose Coronado has built the strongest current starter value case",
+          "stakes": "Each remaining start carries team-race weight and the burden of sustaining an ace-level season.",
+          "evidence_summary": "4.3 WAR, 2.86 ERA, 141.7 innings, 7-7 record.",
+          "source_files": "csv/ootp_csv/players_career_pitching_stats.csv|csv/ootp_csv/players.csv",
+          "signal_score": 84,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__ace_value_leader__5832__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__ace_value_leader__5832",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "starter_war",
+              "value": "4.3",
+              "comparison": "highest workload-qualified ABL starter",
+              "source_file": "csv/ootp_csv/players_career_pitching_stats.csv",
+              "source_row_key": "player_id=5832;year=1981",
+              "notes": "Raw current-season cumulative total."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__position_player_value_leader__5463",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "players",
+          "signal_type": "position_player_value_leader",
+          "subject_type": "player",
+          "subject_id": "5463",
+          "subject_name": "Manny Flores",
+          "related_subjects": "Charlotte Colonels",
+          "headline_factual": "Manny Flores owns the strongest current position-player value line",
+          "stakes": "The remaining schedule tests whether that broad contribution retains league-leading weight.",
+          "evidence_summary": "4.3 WAR, 18 HR and 384 PA.",
+          "source_files": "csv/ootp_csv/players_career_batting_stats.csv|csv/ootp_csv/players.csv",
+          "signal_score": 82,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__position_player_value_leader__5463__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__position_player_value_leader__5463",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "position_player_war",
+              "value": "4.3",
+              "comparison": "highest among ABL hitters with >=200 PA",
+              "source_file": "csv/ootp_csv/players_career_batting_stats.csv",
+              "source_row_key": "player_id=5463;year=1981",
+              "notes": "Raw current-season cumulative total."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__pythag_record_gap__3",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "team",
+          "signal_type": "pythag_record_gap",
+          "subject_type": "team",
+          "subject_id": "3",
+          "subject_name": "Atlanta Kings",
+          "related_subjects": "",
+          "headline_factual": "Atlanta Kings's record and run balance remain far apart",
+          "stakes": "The gap is a condition to monitor, not proof that reversal is due.",
+          "evidence_summary": "Record 40-53; runs 378-393; expected wins 44.7; gap -4.7.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 76.7,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__pythag_record_gap__3__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__pythag_record_gap__3",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "pythag_win_gap",
+              "value": "-4.7",
+              "comparison": "actual=40;expected=44.7",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "team_id=3;through=1981-07-19",
+              "notes": "RS^2/(RS^2+RA^2); descriptive, not predictive."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__pythag_record_gap__24",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "team",
+          "signal_type": "pythag_record_gap",
+          "subject_type": "team",
+          "subject_id": "24",
+          "subject_name": "Seattle Comets",
+          "related_subjects": "",
+          "headline_factual": "Seattle Comets's record and run balance remain far apart",
+          "stakes": "The gap is a condition to monitor, not proof that reversal is due.",
+          "evidence_summary": "Record 51-42; runs 405-405; expected wins 46.5; gap +4.5.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 76.5,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__pythag_record_gap__24__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__pythag_record_gap__24",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "pythag_win_gap",
+              "value": "+4.5",
+              "comparison": "actual=51;expected=46.5",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "team_id=24;through=1981-07-19",
+              "notes": "RS^2/(RS^2+RA^2); descriptive, not predictive."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__scheduled_matchup_stakes__1127",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "proven_current_fact",
+          "hierarchy_level": "game",
+          "signal_type": "scheduled_matchup_stakes",
+          "subject_type": "matchup",
+          "subject_id": "1127",
+          "subject_name": "Las Vegas Gamblers at Denver Rocketeers",
+          "related_subjects": "Las Vegas Gamblers|Denver Rocketeers",
+          "headline_factual": "Las Vegas Gamblers at Denver Rocketeers places current standings pressure on the field",
+          "stakes": "This is an unplayed July 20 schedule fact. No July 20 result is assumed or required.",
+          "evidence_summary": "Scheduled July 20; records 54-39 and 50-43; same division=True.",
+          "source_files": "csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv|csv/ootp_csv/divisions.csv",
+          "signal_score": 76,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__scheduled_matchup_stakes__1127__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__scheduled_matchup_stakes__1127",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "proven_current_fact",
+              "metric": "unplayed_scheduled_game",
+              "value": "1981-07-20",
+              "comparison": "54-39 vs 50-43",
+              "source_file": "csv/ootp_csv/games.csv",
+              "source_row_key": "game_id=1127;played=0",
+              "notes": "Schedule context only; not game-results evidence."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_class": "enrichment_signal",
+      "stories": [
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__attendance_interest__5",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "enrichment_signal",
+          "hierarchy_level": "fans",
+          "signal_type": "attendance_interest",
+          "subject_type": "team",
+          "subject_id": "5",
+          "subject_name": "Detroit Dukes",
+          "related_subjects": "",
+          "headline_factual": "Detroit Dukes is drawing the league's largest listed home crowd per game",
+          "stakes": "Attendance gives the race public scale; it does not establish what fans feel or predict results.",
+          "evidence_summary": "Sortable report attendance/game: 26 990; raw season record 50-43.",
+          "source_files": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv|csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 68,
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__attendance_interest__5__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__attendance_interest__5",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "enrichment_signal",
+              "metric": "attendance_per_game",
+              "value": "26 990",
+              "comparison": "highest promoted sortable team-finance value",
+              "source_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+              "source_row_key": "ID=5",
+              "notes": "Fan-interest context only; no sentiment inferred."
+            }
+          ]
+        },
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__payroll_record_pressure__8",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "enrichment_signal",
+          "hierarchy_level": "management_organization",
+          "signal_type": "payroll_record_pressure",
+          "subject_type": "team",
+          "subject_id": "8",
+          "subject_name": "Tampa Bay Storm",
+          "related_subjects": "A. Gonzalez",
+          "headline_factual": "Tampa Bay Storm's payroll commitment and record create an organization question",
+          "stakes": "Resources and results can be compared; motive, blame, and future action remain unproven.",
+          "evidence_summary": "Listed payroll $10.8m; record 42-51; mode Win Now!.",
+          "source_files": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv|csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 70,
+          "confidence": "medium",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__payroll_record_pressure__8__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__payroll_record_pressure__8",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "enrichment_signal",
+              "metric": "payroll_and_record",
+              "value": "$10.8m",
+              "comparison": "record=42-51",
+              "source_file": "csv/abl_statistics/abl_statistics_team_statistics___info_-_sortable_stats_team_finan.csv",
+              "source_row_key": "ID=8",
+              "notes": "Organization context; no causal claim."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_class": "historical_echo",
+      "stories": [
+        {
+          "candidate_id": "1981_07_20_asof_1981-07-19__prior_qualifier_echo__6",
+          "run_id": "current_1981_07_20_asof_1981-07-19",
+          "newsroom_date": "1981-07-20",
+          "as_of_date": "1981-07-19",
+          "season": 1981,
+          "candidate_class": "historical_echo",
+          "hierarchy_level": "tournament",
+          "signal_type": "prior_qualifier_echo",
+          "subject_type": "historical_link",
+          "subject_id": "6",
+          "subject_name": "Charlotte Colonels",
+          "related_subjects": "National Baseball Conference Eastern Division",
+          "headline_factual": "1980 qualifier Charlotte Colonels remains central to the 1981 race",
+          "stakes": "Prior achievement gives the current race context, not a forecast.",
+          "evidence_summary": "1980 record 91-71; current record 57-36 through July 19.",
+          "source_files": "csv/out/almanac/1980/league_champions_1980_league200.csv|csv/ootp_csv/games.csv|csv/ootp_csv/teams.csv",
+          "signal_score": 78,
+          "confidence": "high",
+          "status": "candidate",
+          "evidence": [
+            {
+              "evidence_id": "1981_07_20_asof_1981-07-19__prior_qualifier_echo__6__e01",
+              "candidate_id": "1981_07_20_asof_1981-07-19__prior_qualifier_echo__6",
+              "newsroom_date": "1981-07-20",
+              "as_of_date": "1981-07-19",
+              "season": 1981,
+              "evidence_class": "historical_context",
+              "metric": "prior_and_current_record",
+              "value": "1980 91-71; 1981 57-36",
+              "comparison": "National Baseball Conference Eastern Division",
+              "source_file": "csv/out/almanac/1980/league_champions_1980_league200.csv",
+              "source_row_key": "team_id=6;season=1980",
+              "notes": "Historical echo only."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "disabled_signals": [
+    {
+      "signal": "manager_tendency",
+      "reason": "Staff names available, but no cutoff-compatible tactical tendency source."
+    },
+    {
+      "signal": "staff_id_complete_linkage",
+      "reason": "Removed staff ID fields; unresolved coach-name matches must remain null."
+    },
+    {
+      "signal": "caught_stealing_rate",
+      "reason": "CS and SB% unavailable in accepted team batting schema without another validated source."
+    },
+    {
+      "signal": "BatR",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "wSB",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "UBR",
+      "reason": "Removed and unavailable."
+    },
+    {
+      "signal": "BsR",
+      "reason": "Removed and unavailable."
+    }
+  ]
+}
